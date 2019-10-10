@@ -24,9 +24,11 @@ use Facade\Ignition\Middleware\AddQueries;
 use Facade\Ignition\LogRecorder\LogRecorder;
 use Facade\Ignition\Middleware\AddSolutions;
 use Facade\Ignition\Views\Engines\PhpEngine;
+use Facade\Ignition\Exceptions\InvalidConfig;
 use Facade\Ignition\DumpRecorder\DumpRecorder;
 use Facade\Ignition\Middleware\SetNotifierName;
 use Facade\Ignition\QueryRecorder\QueryRecorder;
+use Facade\Ignition\Commands\SolutionMakeCommand;
 use Facade\Ignition\Middleware\AddGitInformation;
 use Facade\Ignition\Views\Engines\CompilerEngine;
 use Facade\Ignition\Context\LaravelContextDetector;
@@ -39,6 +41,7 @@ use Illuminate\View\Engines\PhpEngine as LaravelPhpEngine;
 use Facade\Ignition\Http\Controllers\HealthCheckController;
 use Facade\Ignition\Http\Controllers\ShareReportController;
 use Facade\Ignition\Http\Controllers\ExecuteSolutionController;
+use Facade\Ignition\Http\Middleware\IgnitionConfigValueEnabled;
 use Facade\Ignition\SolutionProviders\SolutionProviderRepository;
 use Facade\Ignition\SolutionProviders\ViewNotFoundSolutionProvider;
 use Facade\Ignition\SolutionProviders\BadMethodCallSolutionProvider;
@@ -50,7 +53,10 @@ use Facade\Ignition\SolutionProviders\MissingImportSolutionProvider;
 use Facade\Ignition\SolutionProviders\TableNotFoundSolutionProvider;
 use Illuminate\View\Engines\CompilerEngine as LaravelCompilerEngine;
 use Facade\Ignition\SolutionProviders\MissingPackageSolutionProvider;
+use Facade\Ignition\SolutionProviders\UndefinedVariableSolutionProvider;
+use Facade\Ignition\SolutionProviders\UnknownValidationSolutionProvider;
 use Facade\Ignition\SolutionProviders\InvalidRouteActionSolutionProvider;
+use Facade\Ignition\SolutionProviders\RunningLaravelDuskInProductionProvider;
 use Facade\Ignition\SolutionProviders\IncorrectValetDbCredentialsSolutionProvider;
 use Facade\IgnitionContracts\SolutionProviderRepository as SolutionProviderRepositoryContract;
 
@@ -70,7 +76,13 @@ class IgnitionServiceProvider extends ServiceProvider
 
         $this
             ->registerViewEngines()
+            ->registerHousekeepingRoutes()
+            ->registerLogHandler()
             ->setupQueue($this->app->queue);
+
+        $this->app->make(QueryRecorder::class)->register();
+        $this->app->make(LogRecorder::class)->register();
+        $this->app->make(DumpRecorder::class)->register();
     }
 
     public function register()
@@ -79,13 +91,11 @@ class IgnitionServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/ignition.php', 'ignition');
 
         $this
-            ->registerHousekeepingRoutes()
             ->registerSolutionProviderRepository()
             ->registerExceptionRenderer()
             ->registerWhoopsHandler()
             ->registerIgnitionConfig()
             ->registerFlare()
-            ->registerLogHandler()
             ->registerLogRecorder()
             ->registerDumpCollector()
             ->registerCommands();
@@ -125,8 +135,12 @@ class IgnitionServiceProvider extends ServiceProvider
             'middleware' => [IgnitionEnabled::class],
         ], function () {
             Route::get('health-check', HealthCheckController::class);
-            Route::post('execute-solution', ExecuteSolutionController::class);
-            Route::post('share-report', ShareReportController::class);
+
+            Route::post('execute-solution', ExecuteSolutionController::class)
+                ->middleware(IgnitionConfigValueEnabled::class.':enableRunnableSolutions');
+
+            Route::post('share-report', ShareReportController::class)
+                ->middleware(IgnitionConfigValueEnabled::class.':enableShareButton');
 
             Route::get('scripts/{script}', ScriptController::class);
             Route::get('styles/{style}', StyleController::class);
@@ -211,8 +225,16 @@ class IgnitionServiceProvider extends ServiceProvider
     protected function registerLogHandler()
     {
         $this->app->singleton('flare.logger', function ($app) {
+            $handler = new FlareHandler($app->make('flare.client'));
+
+            $logLevelString = config('logging.channels.flare.level', 'error');
+
+            $logLevel = $this->getLogLevel($logLevelString);
+
+            $handler->setMinimumReportLogLevel($logLevel);
+
             $logger = new Logger('Flare');
-            $logger->pushHandler(new FlareHandler($app->make('flare.client')));
+            $logger->pushHandler($handler);
 
             return $logger;
         });
@@ -228,9 +250,20 @@ class IgnitionServiceProvider extends ServiceProvider
         return $this;
     }
 
+    protected function getLogLevel(string $logLevelString): int
+    {
+        $logLevel = Logger::getLevels()[strtoupper($logLevelString)] ?? null;
+
+        if (! $logLevel) {
+            throw InvalidConfig::invalidLogLevel($logLevelString);
+        }
+
+        return $logLevel;
+    }
+
     protected function registerLogRecorder()
     {
-        $logCollector = $this->app->make(LogRecorder::class)->register();
+        $logCollector = $this->app->make(LogRecorder::class);
 
         $this->app->singleton(LogRecorder::class);
 
@@ -241,7 +274,7 @@ class IgnitionServiceProvider extends ServiceProvider
 
     protected function registerDumpCollector()
     {
-        $dumpCollector = $this->app->make(DumpRecorder::class)->register();
+        $dumpCollector = $this->app->make(DumpRecorder::class);
 
         $this->app->singleton(DumpRecorder::class);
 
@@ -253,15 +286,17 @@ class IgnitionServiceProvider extends ServiceProvider
     protected function registerCommands()
     {
         $this->app->bind('command.flare:test', TestCommand::class);
+        $this->app->bind('command.make:solution', SolutionMakeCommand::class);
 
         $this->commands([
             'command.flare:test',
+            'command.make:solution',
         ]);
     }
 
     protected function registerQueryRecorder()
     {
-        $queryCollector = $this->app->make(QueryRecorder::class)->register();
+        $queryCollector = $this->app->make(QueryRecorder::class);
 
         $this->app->singleton(QueryRecorder::class);
 
@@ -307,8 +342,11 @@ class IgnitionServiceProvider extends ServiceProvider
             MissingPackageSolutionProvider::class,
             InvalidRouteActionSolutionProvider::class,
             ViewNotFoundSolutionProvider::class,
+            UndefinedVariableSolutionProvider::class,
             MergeConflictSolutionProvider::class,
+            RunningLaravelDuskInProductionProvider::class,
             MissingColumnSolutionProvider::class,
+            UnknownValidationSolutionProvider::class,
         ];
     }
 

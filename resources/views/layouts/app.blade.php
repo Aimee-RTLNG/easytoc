@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Homeee</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Homeee Allo?</a></li>
 
                     </ul>
 

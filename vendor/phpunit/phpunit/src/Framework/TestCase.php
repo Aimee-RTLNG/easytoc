@@ -14,15 +14,20 @@ use PHPUnit\Framework\Constraint\Exception as ExceptionConstraint;
 use PHPUnit\Framework\Constraint\ExceptionCode;
 use PHPUnit\Framework\Constraint\ExceptionMessage;
 use PHPUnit\Framework\Constraint\ExceptionMessageRegularExpression;
+use PHPUnit\Framework\Error\Deprecated;
+use PHPUnit\Framework\Error\Error;
+use PHPUnit\Framework\Error\Notice;
+use PHPUnit\Framework\Error\Warning as WarningError;
 use PHPUnit\Framework\MockObject\Generator as MockGenerator;
-use PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount as AnyInvokedCountMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtIndex as InvokedAtIndexMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtLeastCount as InvokedAtLeastCountMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtLeastOnce as InvokedAtLeastOnceMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtMostCount as InvokedAtMostCountMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedCount as InvokedCountMatcher;
 use PHPUnit\Framework\MockObject\MockBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount as AnyInvokedCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtIndex as InvokedAtIndexMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtLeastCount as InvokedAtLeastCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtLeastOnce as InvokedAtLeastOnceMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtMostCount as InvokedAtMostCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedCount as InvokedCountMatcher;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls as ConsecutiveCallsStub;
 use PHPUnit\Framework\MockObject\Stub\Exception as ExceptionStub;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument as ReturnArgumentStub;
@@ -489,9 +494,17 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->expectedExceptionMessage = $message;
     }
 
-    public function expectExceptionMessageRegExp(string $messageRegExp): void
+    public function expectExceptionMessageMatches(string $regularExpression): void
     {
-        $this->expectedExceptionMessageRegExp = $messageRegExp;
+        $this->expectedExceptionMessageRegExp = $regularExpression;
+    }
+
+    /**
+     * @deprecated Use expectExceptionMessageMatches() instead
+     */
+    public function expectExceptionMessageRegExp(string $regularExpression): void
+    {
+        $this->expectExceptionMessageMatches($regularExpression);
     }
 
     /**
@@ -509,6 +522,66 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     public function expectNotToPerformAssertions(): void
     {
         $this->doesNotPerformAssertions = true;
+    }
+
+    public function expectDeprecation(): void
+    {
+        $this->expectException(Deprecated::class);
+    }
+
+    public function expectDeprecationMessage(string $message): void
+    {
+        $this->expectExceptionMessage($message);
+    }
+
+    public function expectDeprecationMessageMatches(string $regularExpression): void
+    {
+        $this->expectExceptionMessageRegExp($regularExpression);
+    }
+
+    public function expectNotice(): void
+    {
+        $this->expectException(Notice::class);
+    }
+
+    public function expectNoticeMessage(string $message): void
+    {
+        $this->expectExceptionMessage($message);
+    }
+
+    public function expectNoticeMessageMatches(string $regularExpression): void
+    {
+        $this->expectExceptionMessageRegExp($regularExpression);
+    }
+
+    public function expectWarning(): void
+    {
+        $this->expectException(WarningError::class);
+    }
+
+    public function expectWarningMessage(string $message): void
+    {
+        $this->expectExceptionMessage($message);
+    }
+
+    public function expectWarningMessageMatches(string $regularExpression): void
+    {
+        $this->expectExceptionMessageRegExp($regularExpression);
+    }
+
+    public function expectError(): void
+    {
+        $this->expectException(Error::class);
+    }
+
+    public function expectErrorMessage(string $message): void
+    {
+        $this->expectExceptionMessage($message);
+    }
+
+    public function expectErrorMessageMatches(string $regularExpression): void
+    {
+        $this->expectExceptionMessageRegExp($regularExpression);
     }
 
     public function getStatus(): int
@@ -1472,7 +1545,19 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a test double for the specified class.
+     * Makes configurable stub for the specified class.
+     *
+     * @psalm-template RealInstanceType of object
+     * @psalm-param    class-string<RealInstanceType> $originalClassName
+     * @psalm-return   Stub&RealInstanceType
+     */
+    protected function createStub(string $originalClassName): Stub
+    {
+        return $this->createMock($originalClassName);
+    }
+
+    /**
+     * Returns a mock object for the specified class.
      *
      * @param string|string[] $originalClassName
      *
@@ -1491,7 +1576,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a configured test double for the specified class.
+     * Returns a configured mock object for the specified class.
      *
      * @param string|string[] $originalClassName
      *
@@ -1511,7 +1596,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a partial test double for the specified class.
+     * Returns a partial mock object for the specified class.
      *
      * @param string|string[] $originalClassName
      * @param string[]        $methods
@@ -1527,9 +1612,12 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         foreach ($class_names as $class_name) {
             $reflection = new \ReflectionClass($class_name);
 
-            $mockedMethodsThatDontExist = \array_filter($methods, function (string $method) use ($reflection) {
-                return !$reflection->hasMethod($method);
-            });
+            $mockedMethodsThatDontExist = \array_filter(
+                $methods,
+                static function (string $method) use ($reflection) {
+                    return !$reflection->hasMethod($method);
+                }
+            );
 
             if ($mockedMethodsThatDontExist) {
                 $this->addWarning(

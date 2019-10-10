@@ -13,7 +13,6 @@ use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\Filter\Factory;
 use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Util\FileLoader;
-use PHPUnit\Util\InvalidArgumentHelper;
 use PHPUnit\Util\Test as TestUtil;
 
 /**
@@ -57,7 +56,7 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
     /**
      * The tests in the test suite.
      *
-     * @var TestCase[]
+     * @var Test[]
      */
     protected $tests = [];
 
@@ -124,7 +123,7 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
     public function __construct($theClass = '', string $name = '')
     {
         if (!\is_string($theClass) && !$theClass instanceof \ReflectionClass) {
-            throw InvalidArgumentHelper::factory(
+            throw InvalidArgumentException::create(
                 1,
                 'ReflectionClass object or string'
             );
@@ -269,7 +268,7 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
     public function addTestSuite($testClass): void
     {
         if (!(\is_object($testClass) || (\is_string($testClass) && \class_exists($testClass)))) {
-            throw InvalidArgumentHelper::factory(
+            throw InvalidArgumentException::create(
                 1,
                 'class name or object'
             );
@@ -511,7 +510,9 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
             return $result;
         }
 
-        $hookMethods = TestUtil::getHookMethods($this->name);
+        /** @psalm-var class-string $className */
+        $className   = $this->name;
+        $hookMethods = TestUtil::getHookMethods($className);
 
         $result->startTestSuite($this);
 
@@ -615,6 +616,8 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
 
     /**
      * Returns the tests as an enumeration.
+     *
+     * @return Test[]
      */
     public function tests(): array
     {
@@ -623,6 +626,8 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
 
     /**
      * Set tests of the test suite
+     *
+     * @param Test[] $tests
      */
     public function setTests(array $tests): void
     {
