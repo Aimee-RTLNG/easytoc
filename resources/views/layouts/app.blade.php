@@ -32,15 +32,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
-                        <!-- 
-                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Créer un menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('table.index') }}">Créer un tableau</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('form.index') }}">Créer un formulaire</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('help.index') }}">Aide</a></li> 
-                        @can('viewAny', \App\Account::class)             
-                        <li class="nav-item"><a class="nav-link" href="{{ route('account.index') }}">Mon compte</a></li>
-                        @endcan
-                        -->
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
