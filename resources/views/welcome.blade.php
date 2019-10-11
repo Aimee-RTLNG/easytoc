@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
         <style>
             html, body {
                 background-color: #fff;
@@ -81,7 +82,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <h1>Laravel</h1>
                 </div>
 
                 <div class="links">
@@ -97,5 +98,9 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{asset(mix('js/manifest.js'))}}" ></script>
+        <script src="{{asset(mix('js/vendor.js'))}}" ></script>
+        <script src="{{asset(mix('js/app.js'))}}" ></script>
     </body>
 </html>
