@@ -9,6 +9,9 @@
     <body>
                 <ul class="nav navbar-dark bg-dark">
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Accueil</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Créer un menu</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Créer un tableau</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Créer un formulaire</a></li>
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">Aide</a></li>
                 </ul>
                 @yield('content')

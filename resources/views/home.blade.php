@@ -1,5 +1,5 @@
 
-@extends('layout')
+@extends('layouts/app')
 
 @section('titre') Accueil - EasyToC @endsection
 
