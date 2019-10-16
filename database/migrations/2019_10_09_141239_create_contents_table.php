@@ -18,6 +18,8 @@ class CreateContentsTable extends Migration
             $table->bigInteger('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types');
             $table->timestamps();
+            $table->string('title', 150);
+            $table->string('description', 300);
             $table->string('html');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
