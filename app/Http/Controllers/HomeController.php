@@ -29,6 +29,13 @@ class HomeController extends Controller
         return view('cgu');
     }
 
+    public function language(String $locale)
+    {
+        $locale = in_array($locale, config('app.locales')) ? $locale : config('app.fallback_locale');
+        session(['locale' => $locale]);
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
