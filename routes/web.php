@@ -23,6 +23,12 @@ Route::get('/menu', 'MenuController@index')->name('menu');
 Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
 Route::get('/tableau', 'TableauController@index')->name('tableau');
 
+// ROUTE LANGUES
+// Route qui permet de connaître la langue active
+Route::get('locale', 'LocalizationController@getLang')->name('getlang');
+// Route qui permet de modifier la langue
+Route::get('locale/{lang}', 'LocalizationController@setLang')->name('setlang');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
