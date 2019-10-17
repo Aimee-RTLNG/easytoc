@@ -30,13 +30,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Accueil</a></li>
-                      <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Créer un menu</a></li>
-                      <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Créer un tableau</a></li>
-                      <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Créer un formulaire</a></li>
-                      <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">Aide</a></li>
-                    </ul>
+                  <ul class="nav navbar-dark bg-dark">
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}">Accueil</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}">Créer un menu</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}">Créer un tableau</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}">Créer un formulaire</a></li>
+                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">Aide</a></li>
+                </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -79,6 +79,8 @@
     <footer>
         <ul class="nav navbar-dark bg-dark">
             <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}">Mentions légales</a></li>
+            <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}">CGU</a></li>
+            <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">Aide</a></li>
         </ul>
     </footer>
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
