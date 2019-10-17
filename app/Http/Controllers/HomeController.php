@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Home;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
+
+ public function index()
     {
         return view('home');
     }
@@ -56,42 +56,10 @@ class HomeController extends Controller
      * @param  \App\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+
+    public function __construct()
     {
-        //
+       // $this->middleware('auth');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Home $home)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Home $home)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Home $home)
-    {
-        //
-    }
 }

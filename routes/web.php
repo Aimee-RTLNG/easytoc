@@ -22,3 +22,7 @@ Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 Route::get('/menu', 'MenuController@index')->name('menu');
 Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
 Route::get('/tableau', 'TableauController@index')->name('tableau');
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

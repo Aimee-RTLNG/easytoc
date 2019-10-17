@@ -1,5 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Expletus+Sans');
 
 // Variables
 @import 'variables';
@@ -10,4 +11,10 @@
 
 h1 {
     color: red;
+    font-family: 'Expletus Sans',
+        cursive;
+}
+
+#logo-nav {
+    width: 100px;
 }
