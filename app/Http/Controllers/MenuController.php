@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Home;
+use App\Menu;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-    public function aide()
-    {
-        return view('aide');
-    }
-    public function mentions_legales()
-    {
-        return view('mentions_legales');
-    }
-    public function cgu()
-    {
-        return view('cgu');
+        return view('menu');
     }
 
     /**
@@ -53,10 +41,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Home  $home
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show(Menu $menu)
     {
         //
     }
@@ -64,10 +52,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Home  $home
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit(Menu $menu)
     {
         //
     }
@@ -76,10 +64,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Home  $home
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, Menu $menu)
     {
         //
     }
@@ -87,10 +75,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Home  $home
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
+    public function destroy(Menu $menu)
     {
         //
     }

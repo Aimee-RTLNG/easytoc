@@ -4,5 +4,5 @@
 @section('titre') Menu - EasyToC @endsection
 
 @section('content')
-    <h1>Menu légales</h1>
+    <h1>Menu</h1>
 @endsection

@@ -16,7 +16,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/aide', 'HomeController@aide')->name('aide');
 Route::get('/mentions_legales', 'HomeController@mentions_legales')->name('mentions_legales');
+Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 
-Route::get('/menu', 'MenuController@aide')->name('menu');
-Route::get('/formulaire', 'FormulaireController@formulaire')->name('formulaire');
-Route::get('/tableau', 'TableauController@tableau')->name('tableau');
+// ROUTE WIDGETS
+Route::get('/menu', 'MenuController@index')->name('menu');
+Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
+Route::get('/tableau', 'TableauController@index')->name('tableau');
