@@ -22,7 +22,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    <img src="./images/Logo-white.png" id="logo-nav"/>
+                    <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -38,10 +38,10 @@
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">{{ __('Aide') }}</a></li>
                 </ul>
 
-<ul class="navbar-nav mr-auto">
-    <a href="locale/en">{{ __('EN') }}</a>
-    <a href="locale/fr">{{ __('FR') }}</a>
-</ul>
+                    <ul class="navbar-nav mr-auto">
+                        <a href="locale/en">{{ __('EN') }}</a>
+                        <a href="locale/fr">{{ __('FR') }}</a>
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

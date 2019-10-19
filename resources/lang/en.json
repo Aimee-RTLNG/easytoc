@@ -26,5 +26,14 @@
     "Mot de passe (encore)": "Password (again)",
     "Se souvenir de moi": "Remember me",
     "J'ai oublié mon mot de passe": "I forgot my password",
-    "J'ai déjà un compte": "I already have an account"
+    "J'ai déjà un compte": "I already have an account",
+
+    "Vérifier votre adresse e-mail":"Verify Your Email Address",
+    "Un lien de vérification vous a été envoyé sur votre adresse e-mail.":"A fresh verification link has been sent to your email address.",
+    "Avant de continuer, veuillez valider votre adresse e-mail":"Before proceeding, please check your email for a verification link.",
+    "Si vous n'avez pas reçu d'adresse e-mail":"If you did not receive the email",
+    "cliquez ici pour faire une nouvelle demande":"click here to request another",
+
+    "Réinitialiser mon mot de passe": "Reset Password",
+    "Envoyer un lien de réinitialisation": "Send Password Reset Link"
 }
