@@ -167,6 +167,9 @@ return [
          * Package Service Providers...
          */
 
+         // Connexion réseaux sociaux
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -221,6 +224,9 @@ return [
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
+        // connexion RS
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        //
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,

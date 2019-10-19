@@ -39,9 +39,8 @@
                 </ul>
 
 <ul class="navbar-nav mr-auto">
-    <a href="locale/en">{{ __('Anglais') }}</a>
-    <a href="locale/fr">{{ __('Français') }}</a>
-    <p>{{ __("Accueil") }}</p>
+    <a href="locale/en">{{ __('EN') }}</a>
+    <a href="locale/fr">{{ __('FR') }}</a>
 </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
