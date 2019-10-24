@@ -1,15 +1,41 @@
 {
-    "Accueil": "Home",
     "Proposer": "Submit",
+    "Envoyer": "Submit",
     "Liste": "List",
     "Contact": "Contact",
-    "Connexion": "Login",
-    "Inscription": "Register",
-    "Déconnexion": "Logout",
+
+    "Accueil": "Home",
     "Aide": "Help",
     "Créer un formulaire": "Create a form",
     "Créer un tableau": "Create a table",
     "Créer un menu": "Create a menu",
+
     "Mentions légales": "Legal Notice",
-    "Conditions générales d'utilisation": "End-user license agreement"
+    "Conditions générales d'utilisation": "End-user license agreement",
+
+    "Connexion": "Login",
+    "Inscription": "Register",
+    "Déconnexion": "Logout",
+    "Adresse e-mail": "E-Mail Address",
+    "S'inscrire": "Sign up",
+    "S'inscrire avec": "Sign up with",
+    "Se connecter": "Sign in",
+    "Se connecter avec": "Sign in with",
+    "Nom": "Name",
+    "Mot de passe": "Password",
+    "Mot de passe (encore)": "Password (again)",
+    "Se souvenir de moi": "Remember me",
+    "J'ai oublié mon mot de passe": "I forgot my password",
+    "J'ai déjà un compte": "I already have an account",
+
+    "Vérifier votre adresse e-mail":"Verify Your Email Address",
+    "Un lien de vérification vous a été envoyé sur votre adresse e-mail.":"A fresh verification link has been sent to your email address.",
+    "Avant de continuer, veuillez valider votre adresse e-mail":"Before proceeding, please check your email for a verification link.",
+    "Si vous n'avez pas reçu d'adresse e-mail":"If you did not receive the email",
+    "cliquez ici pour faire une nouvelle demande":"click here to request another",
+
+    "Réinitialiser mon mot de passe": "Reset Password",
+    "Envoyer un lien de réinitialisation": "Send Password Reset Link",
+    "Mettre à jour mon mot de passe": "Reset my password"
+
 }

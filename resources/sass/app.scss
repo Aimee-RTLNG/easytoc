@@ -1,20 +1,8 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css?family=Expletus+Sans');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-
-h1 {
-    color: red;
-    font-family: 'Expletus Sans',
-        cursive;
-}
-
-#logo-nav {
-    width: 100px;
-}
