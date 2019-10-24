@@ -42,3 +42,5 @@ Route::get('/{provider}/callback', [
 ]);
 
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

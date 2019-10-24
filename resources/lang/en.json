@@ -35,5 +35,7 @@
     "cliquez ici pour faire une nouvelle demande":"click here to request another",
 
     "Réinitialiser mon mot de passe": "Reset Password",
-    "Envoyer un lien de réinitialisation": "Send Password Reset Link"
+    "Envoyer un lien de réinitialisation": "Send Password Reset Link",
+    "Mettre à jour mon mot de passe": "Reset my password"
+
 }
