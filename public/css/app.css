@@ -10754,6 +10754,47 @@ h1 {
   font-size: 1.2rem;
 }
 
+.footer {
+  height: 200px;
+  color: white;
+}
+
+.footer .row,
+.footer .container {
+  height: 100%;
+}
+
+.footer-cont {
+  align-content: space-around;
+}
+
+.footer__info-2 {
+  text-align: right;
+}
+
+.footer-title {
+  font-size: 2.4rem;
+}
+
+.footer-txt {
+  font-size: 1.8rem;
+}
+
+.menu-footer {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-footer .nav-link {
+  padding: 0px 16px;
+}
+
+.menu-footer .nav-items:not(:first-child) .nav-link {
+  border-left: 1px solid white;
+}
+
 .register {
   font-family: "Expletus Sans", cursive, sans-serif;
   position: relative;

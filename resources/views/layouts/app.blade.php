@@ -80,13 +80,29 @@
 
         @yield('content')
 
-    <footer>
-        <ul class="nav navbar-dark bg-dark">
-            <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}">{{ __('Mentions légales') }}</a></li>
-            <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}">{{ __('Conditions générales d\'utilisation') }}</a></li>
-            <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">{{ __('Aide') }}</a></li>
-        </ul>
+    <footer class="bg-dark footer">
+       <div class="container">
+            <div class="row footer-cont">
+                <div class="col-md-6 footer__info">
+                    <h3 class="footer-title">Besoin d'aide ?</h3>
+                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page Aide</p>
+                </div>
+                <div class="col-md-6 footer__info-2 footer__info">
+                    <h3 class="footer-title">Contact</h3>
+                    <p  class="footer-txt">adresse@mail.fr / 06 88 45 12 32</p>
+                </div>
+                <div class="col-12 menu-footer">
+                    <ul class="nav navbar-dark ">
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}">{{ __('Mentions légales') }}</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}">{{ __('Conditions générales d\'utilisation') }}</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">{{ __('Aide') }}</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" >Copiright 2019</a></li>
+                    </ul>
+                </div>
+            </div>
+       </div>
     </footer>
+
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
