@@ -16,6 +16,7 @@ html {
 }
 body {
     font-size: 1.4rem;
+    @include acumin;
 }
 a {
     color: inherit;
@@ -23,6 +24,14 @@ a {
         color: inherit;
         text-decoration: none;
     }
+}
+p, h1, h2{
+    margin: 0px;
+}
+.commentaire {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: $gris-fonce;
 }
 
 // Header
@@ -74,6 +83,165 @@ h1 {
         font-size: 1.2rem;
     }
 }
-
 // Inscription
-
+.register {
+    @include expletus;
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    width: 100%;
+    height: 600px;
+    @include flex-row-between-center;
+    @include shadow-box;
+    background-color: white;
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 600px 0 0 100px;
+        border-color: transparent transparent transparent white;
+    }
+    &__info {
+        width: 50%;
+        height: 100%;
+        padding: 30px;
+        @include flex-col-between-start;
+    }
+    &__illu {
+        width: 50%;
+        @include back-img;
+        height: 100%;
+    }
+    &__title {
+        font-size: 3.4rem;
+        font-weight: bold;
+    }
+    &__under-title {
+        height: 5px;
+        width: 90px;
+        background-color: $bleu;
+        margin-top: 10px;
+    }
+    &__form {
+        width: 100%;
+        height: calc(100% - 70px);
+        @include flex-col-between-start;
+        .form-control {
+            width: 70%;
+            height: 45px;
+            background-color: $gris-fonce;
+            color: white;
+            font-weight: bold;
+            border-radius : 10px;
+            font-size: 1.4rem;
+            padding-left: 10px;
+            &:focus {
+                border-color: $bleu;
+                border-width: 3px;
+                box-shadow: none;
+            }
+        }
+        .form-control-mail {
+            width: 83%;
+        }
+        .form-label {
+            font-weight: bold;
+            font-size: 1.6rem;
+            padding-left: 20px;
+        }
+    }
+    &__line {
+        width: 100%;
+        &--mdp {
+            @include flex-row-between-center;
+            &__item {
+                width: 49%;
+                .form-control {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &__check {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        & > div {
+            width: 50%;
+        }
+    }
+    &__form-final {
+       @include flex-col-between-end; 
+    } 
+}
+.btn-form-final {
+    @include flex-row-between-center;
+    padding: 2px 20px;
+    height: 45px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    p {
+        margin-left: 20px;
+    }
+}
+.connect-network {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 0 3px;
+    @include flex-row-between-start;
+    &__img {
+        width: 15px;
+        height: 15px;
+        margin-right: 7px;
+    }
+    a {
+        width: 196px;
+        border-radius: 5px;
+        background-color: $gris-clair;
+        box-shadow: 0px 0px 18px -11px rgba(0, 0, 0, 1);
+        height: 30px;
+        @include flex-row-between-center;
+        padding: 0 10px;
+        &:nth-child(2) {
+            margin-left: 10px;
+        }
+    }
+}
+.check-conditions {
+    @include flex-row-start-between;
+    .check {
+        margin-top: 5px;
+        margin-right: 10px;
+        background-color: $gris-fonce;
+    }
+    &__txt {
+        line-height: 1.8rem;
+        font-weight: bold;
+        a {
+            color: $bleu;
+            &:hover {
+                color: $bleu;
+            }
+        }
+    }
+}
+.link-account-ok {
+    color: $bleu;
+    margin-top: 2px;
+    &:hover {
+        color: $bleu;
+    }
+}
+.invalid-feedback {
+    position: absolute;
+}
+.form-control.is-invalid {
+    border-width: 3px;
+}
