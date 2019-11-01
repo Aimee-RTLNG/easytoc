@@ -10674,6 +10674,24 @@ h2 {
   color: #171819;
 }
 
+.entete {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.entete__title {
+  font-family: "Expletus Sans", cursive, sans-serif;
+  font-size: 3.4rem;
+  font-weight: bold;
+}
+
+.entete__under {
+  height: 5px;
+  width: 90px;
+  background-color: #45B8FF;
+  margin-top: 10px;
+}
+
 h1 {
   color: green;
 }
