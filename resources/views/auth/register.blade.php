@@ -63,8 +63,7 @@
                         <div class="register__form-final">
                             <button type="submit" class="btn btn-primary btn-form-final">
                                 <i class="fas fa-arrow-right"></i>
-                                {{-- <p>{{ __('S\'inscrire') }}</p> --}}
-                                <p>Créer un compte</p>
+                                <p>{{ __('S\'inscrire') }}</p>
                             </button>
                             <a class="link-account-ok" href="{{ route('login') }}">
                                 <i class="fas fa-arrow-right"></i> {{ __('J\'ai déjà un compte') }}
@@ -75,7 +74,6 @@
                 </form>
         </div>
         <div class="register__illu" style="background-image: url('./images/register-fond.jpg');">
-
         </div>
     </div>
 

@@ -10865,6 +10865,10 @@ h1 {
   align-items: flex-end;
 }
 
+.register input:-internal-autofill-selected {
+  background-color: #171819 !important;
+}
+
 .btn-form-final {
   display: flex;
   justify-content: space-between;
@@ -10888,6 +10892,10 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.connect-network--connexion {
+  margin-bottom: 30px;
 }
 
 .connect-network__img {
@@ -10937,12 +10945,14 @@ h1 {
   color: #45B8FF;
 }
 
-.link-account-ok {
+.link-account-ok,
+.link-form {
   color: #45B8FF;
   margin-top: 2px;
 }
 
-.link-account-ok:hover {
+.link-account-ok:hover,
+.link-form:hover {
   color: #45B8FF;
 }
 
@@ -10952,5 +10962,27 @@ h1 {
 
 .form-control.is-invalid {
   border-width: 3px;
+}
+
+.me-forever {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.link-mdp-forgot {
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding-right: calc(100% - 83%);
+}
+
+.connexion {
+  height: 550px;
+}
+
+.connexion:after {
+  border-width: 550px 0 0 100px;
 }
 

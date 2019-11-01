@@ -178,6 +178,9 @@ h1 {
     &__form-final {
        @include flex-col-between-end; 
     } 
+    input:-internal-autofill-selected {
+        background-color:$gris-fonce !important;
+    }
 }
 .btn-form-final {
     @include flex-row-between-center;
@@ -192,6 +195,9 @@ h1 {
     }
 }
 .connect-network {
+    &--connexion {
+        margin-bottom: 30px;
+    }
     margin-top: 30px;
     margin-bottom: 10px;
     padding: 0 3px;
@@ -232,7 +238,7 @@ h1 {
         }
     }
 }
-.link-account-ok {
+.link-account-ok, .link-form {
     color: $bleu;
     margin-top: 2px;
     &:hover {
@@ -244,4 +250,19 @@ h1 {
 }
 .form-control.is-invalid {
     border-width: 3px;
+}
+.me-forever {
+    @include flex-col-between-start;
+}
+.link-mdp-forgot {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-right: calc(100% - 83%);
+}
+.connexion {
+    height: 550px;
+    &:after {
+        border-width: 550px 0 0 100px;
+    }
 }
