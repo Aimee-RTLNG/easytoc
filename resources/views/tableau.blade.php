@@ -1,8 +1,8 @@
 
 @extends('layouts/app')
 
-@section('titre') Tableau - EasyToC @endsection
+@section('titre') {{ __('Tableau - EasyToC') }} @endsection
 
 @section('content')
-    <h1>Tableau</h1>
+    <h1>{{ __('Tableau') }}</h1>
 @endsection

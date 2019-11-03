@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('titre')</title>
+        <title> @yield('titre') </title>
 
         <!-- Favicon -->
-        <link rel="icon" href="../favicon.ico" type="image/ico">
+        <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/ico">
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">

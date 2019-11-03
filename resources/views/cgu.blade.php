@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
-@section('titre') Condition d'Utilisations - EasyToC @endsection
+@section('titre') {{ __('Condition d'Utilisations - EasyToC') }} @endsection
 
 @section('content')
-    <h1>CGU</h1>
+    <h1>{{ __('Conditions générales d'utilisation') }}</h1>
 @endsection

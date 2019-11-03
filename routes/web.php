@@ -31,7 +31,6 @@ Route::get('locale', 'LocalizationController@getLang')->name('getlang');
 Route::get('locale/{lang}', 'LocalizationController@setLang')->name('setlang');
 
 // Routes connexion Reseaux sociaux
-
 Route::get('/login/{provider}', [
     'as'=>'provider_login', 
     'uses'=>'Auth\LoginController@redirectToProvider' 
@@ -42,5 +41,3 @@ Route::get('/{provider}/callback', [
 ]);
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
