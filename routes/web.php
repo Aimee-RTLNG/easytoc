@@ -44,3 +44,7 @@ Route::get('/{provider}/callback', [
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Profile
+
+require __DIR__ . '/profile/profile.php';

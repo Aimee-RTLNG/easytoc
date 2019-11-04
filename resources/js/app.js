@@ -8,6 +8,15 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.component('profile', require('./components/profile/Profile.vue'));
+
+import Toasted from 'vue-toasted';
+Vue.use(Toasted)
+Vue.toasted.register('error', message => message, {
+    position: 'bottom-center',
+    duration: 1000
+})
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
