@@ -6,9 +6,9 @@ Route::middleware('auth')->group(function () {
         // api
         Route::group(['prefix' => 'api/profile'], function() {
             Route::get('/getAuthUser',
-                       'ProfileController@getAuthUser')->name('profile');
+                       'ProfileController@getAuthUser')->name('profileGet');
             Route::put('/updateAuthUser',
-                       'ProfileController@updateAuthUser')->name('updateprofile');
+                       'ProfileController@updateAuthUser')->name('profileEdit');
         });
     });
 });
