@@ -1,0 +1,60 @@
+// ---------- Flexbox ----------//
+
+@mixin flex-row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-row-between-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin flex-row-between-start{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+@mixin flex-row-start-between {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+@mixin flex-col-between-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+@mixin flex-col-between-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+// ---------Image -------//
+@mixin back-img {
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+// -------- Shadow ----------//
+@mixin shadow-box {
+    -webkit-box-shadow: -1px 3px 55px -13px rgba(0,0,0,0.58);
+    -moz-box-shadow: -1px 3px 55px -13px rgba(0,0,0,0.58);
+    box-shadow: 0px 0px 18px -11px rgba(0, 0, 0, 1);
+}
+
+
+// -------- Fonts ---------//
+@mixin expletus {
+    font-family: 'Expletus Sans', cursive, sans-serif;
+}
+@mixin acumin {
+    font-family: "Nunito", sans-serif;
+}
