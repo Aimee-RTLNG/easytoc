@@ -79,6 +79,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+console.log("OH");
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -94,15 +95,17 @@ __webpack_require__.r(__webpack_exports__);
     getAuthUser: function getAuthUser() {
       var _this = this;
 
-      axios.get("/api/profile/getAuthUser").then(function (response) {
+      // à changer
+      axios.get("./api/profile/getAuthUser").then(function (response) {
         _this.user = response.data;
       });
     },
     updateAuthUser: function updateAuthUser() {
       var _this2 = this;
 
-      this.submiting = true;
-      axios.put("/api/profile/updateAuthUser", this.user).then(function (response) {
+      this.submiting = true; // à changer
+
+      axios.put("./api/profile/updateAuthUser", this.user).then(function (response) {
         _this2.errors = {};
         _this2.submiting = false;
 
@@ -312,45 +315,45 @@ render._withStripped = true
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
-/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/profile/Profile.vue */ "./resources/js/components/profile/Profile.vue");
+/* harmony import */ var _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue");
+/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
+/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.component('profile', __webpack_require__(/*! ./components/profile/Profile.vue */ "./resources/js/components/profile/Profile.vue"));
 
-Vue.use(vue_toasted__WEBPACK_IMPORTED_MODULE_0___default.a);
-Vue.toasted.register('error', function (message) {
+
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+var routes = [{
+  path: '/profile',
+  component: _components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+}];
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('profile', __webpack_require__(/*! ./components/profile/Profile.vue */ "./resources/js/components/profile/Profile.vue"));
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toasted__WEBPACK_IMPORTED_MODULE_4___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.toasted.register('error', function (message) {
   return message;
 }, {
   position: 'bottom-center',
   duration: 1000
 });
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  routes: routes // short for `routes: routes`
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-var app = new Vue({
-  el: '#app'
 });
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('example-component', _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+  router: router,
+  render: function render(h) {
+    return h(_components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  }
+}).$mount('#profile');
 
 /***/ }),
 

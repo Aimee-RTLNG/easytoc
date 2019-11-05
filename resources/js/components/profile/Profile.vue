@@ -36,6 +36,9 @@
 </template>
 
 <script>
+
+console.log("OH");
+
 export default {
   data () {
     return {
@@ -49,14 +52,16 @@ export default {
   },
   methods: {
     getAuthUser () {
-      axios.get(`/api/profile/getAuthUser`)
+      // à changer
+      axios.get(`laravel/easytoc/public/api/profile/getAuthUser`)
       .then(response => {
         this.user = response.data
       })
     },
     updateAuthUser () {
       this.submiting = true
-      axios.put(`/api/profile/updateAuthUser`, this.user)
+      // à changer
+      axios.put(`laravel/easytoc/public/api/profile/updateAuthUser`, this.user)
       .then(response => {
         this.errors = {}
         this.submiting = false

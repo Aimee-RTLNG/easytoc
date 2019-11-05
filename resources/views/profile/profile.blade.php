@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts/app')
 
 @section('content')
 <div class="py-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <profile></profile>
+            <div id="profile">
+            </div>
         </div>
     </div>
 </div>
