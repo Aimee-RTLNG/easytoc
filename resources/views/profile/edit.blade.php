@@ -27,7 +27,7 @@
                 <h3 class="panel-heading">{{ __('Modifier mes informations') }}</h3>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('profile.update', ['user' => $user]) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('profile.update', ['user' => $user]) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -56,10 +56,24 @@
                             </div>
                         </div>
 
+                    
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Enregistrer les informations') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" method="POST" action="{{ route('profile.update', ['user' => $user]) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+
                         <h3 class="panel-heading">{{ __('Modifier le mot de passe') }}</h3>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">{{ __('Mot de passe') }}</label>
+                            <label for="password" class="col-md-4 control-label">{{ __('Nouveau mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
@@ -73,14 +87,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">{{ __('Mot de passe (encore)') }}</label>
+                            <label for="password-confirm" class="col-md-4 control-label">{{ __('Nouveau mot de passe (encore)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
-
-                        <h3 class="panel-heading">{{ __('Enregistrer les modifications') }}</h3>
 
                         @if (!is_null($user->password))
 
@@ -103,7 +115,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Enregistrer les modifications') }}
+                                    {{ __('Modifier mon mot de passe') }}
                                 </button>
                             </div>
                         </div>
