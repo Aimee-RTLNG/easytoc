@@ -2,11 +2,16 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+// import VueMaterial from 'vue-material';
+// import VeeValidare from 'vee-validate';
+
 import Profile from './components/profile/Profile.vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import Toasted from 'vue-toasted';
 
 Vue.use(VueRouter);
+// Vue.use(VueMaterial);
+// Vue.use(VeeValidate);
 
 window.Vue = require('vue');
 

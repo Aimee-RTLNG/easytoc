@@ -46,4 +46,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Profile
 
-require __DIR__ . '/profile/profile.php';
+Route::get('/profile/{user}/edit', 'profile\ProfileController@edit')->name('profile.edit');
+Route::put('/profile/{user}', 'profile\ProfileController@update')->name('profile.update');
+
