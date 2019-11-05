@@ -72,11 +72,12 @@ h1 {
     background-color: $white;
     color: black;
     height: 25px;
-    width: 116px;
+    // width: 116px;
     border-radius: 12px;
     @include flex-row-between-center;
     padding: 2px 18px 2px 5px;
     &__icon {
+        margin-right: 10px;
         background-color: $gris-fonce;
         color: white;
         height: 20px;

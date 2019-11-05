@@ -10718,7 +10718,6 @@ h1 {
   background-color: #fff;
   color: black;
   height: 25px;
-  width: 116px;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
@@ -10727,6 +10726,7 @@ h1 {
 }
 
 .btn-connect__icon {
+  margin-right: 10px;
   background-color: #171819;
   color: white;
   height: 20px;
