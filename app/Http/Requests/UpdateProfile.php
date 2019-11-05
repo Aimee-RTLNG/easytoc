@@ -43,17 +43,16 @@ class UpdateProfile extends FormRequest
     {
         // checks user current password
         // before making changes
-        $pw_entered = $this->current_password;
-        $pw_db = $this->user()->password;
-
-        if(!is_null($pw_db)){
-            $validator->after(function ($validator) {
+        $validator->after(function ($validator) {
+            $pw_db = $this->user()->password;
+            if(!is_null($pw_db)){
+                $pw_entered = $this->current_password;
                 // $hashed = Hash::make($pw);
                 if ( !Hash::check($pw_entered, $pw_db) ) {
                     $validator->errors()->add('current_password', 'Your current password is incorrect.');
                 };
-            });
-        };
+            };
+        });
         return;
     }
 }

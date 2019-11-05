@@ -4,7 +4,72 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+        <div class="register connexion">
+                <div class="register__info">
+                    <div class="entete-title">
+                        <h2 class="register__title">{{ __('Connexion') }}</h2>
+                        <div class="register__under-title"></div>
+                    </div>
+                    <form class="register__form" method="POST" action="{{ route('login') }}">
+                            @csrf
+                           <div>
+                                <div class="connect-network connect-network--connexion">
+                                    <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Facebook</a>
+                                    <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Google</a>
+                                </div>
+                                <p class="commentaire">Tous les champs sont obligatoires</p>
+                           </div>
+        
+                            <div class="register__line">
+                                <label for="email" class="form-label">{{ __('Adresse e-mail') }}</label>
+                                <input id="email" type="email" class="form-control form-control-mail @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="register__line">
+                                <label for="password" class="form-label">{{ __('Mot de passe') }}</label>
+                                <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    @if (Route::has('password.request'))
+                                        <a class="link-form link-mdp-forgot" href="{{ route('password.request') }}">
+                                            {{ __('J\'ai oublié mon mot de passe') }}
+                                        </a>
+                                    @endif
+                            </div>
+
+                            <div class="register__check">
+                                <div class="check-conditions me-forever">
+                                   <div>
+                                        <input type="checkbox" class="check" id="lire">
+                                        <label class="check-conditions__txt" for="lire">{{ __('Se souvenir de moi') }}</label>
+                                   </div>
+                                   <a class="link-account-ok" href="{{ route('login') }}">
+                                        <i class="fas fa-arrow-right"></i> {{ __('J\'ai déjà un compte') }}
+                                    </a>
+                                </div>
+                                <div class="register__form-final">
+                                    <button type="submit" class="btn btn-primary btn-form-final">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <p>{{ __('Se connecter') }}</p>
+                                    </button>
+                                </div> 
+                            </div>
+
+                        </form>
+                </div>
+                <div class="register__illu" style="background-image: url('./images/hand.jpg');">
+        
+                </div>
+            </div>
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Connexion') }}</div>
@@ -77,6 +142,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

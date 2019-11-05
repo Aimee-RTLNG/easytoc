@@ -4,5 +4,10 @@
 @section('titre') {{ __('Aide - EasyToC') }} @endsection
 
 @section('content')
-    <h1>{{ __('Aide') }}</h1>
+    <div class="container">
+        <div class="entete">
+            <h2 class="entete__title">{{ __('Aide') }}</h2>
+            <div class="entete__under"></div>
+        </div>
+    </div>
 @endsection
