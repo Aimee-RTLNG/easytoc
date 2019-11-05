@@ -29,4 +29,12 @@ class HomeController extends Controller
     {
         return view('aide');
     }
+    public function cgu()
+    {
+        return view('cgu');
+    }
+    public function mentions_legales()
+    {
+        return view('mentions_legales');
+    }
 }

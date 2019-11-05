@@ -84,11 +84,11 @@
        <div class="container">
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
-                    <h3 class="footer-title">Besoin d'aide ?</h3>
+                    <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
                     <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page Aide</p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
-                    <h3 class="footer-title">Contact</h3>
+                    <h3 class="footer-title">{{ __('Contact') }}</h3>
                     <p  class="footer-txt">adresse@mail.fr / 06 88 45 12 32</p>
                 </div>
                 <div class="col-12 menu-footer">
