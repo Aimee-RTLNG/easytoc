@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('titre') {{ __('Mon compte - EasyToC') }} @endsection
+
 @section('content')
 <div class="container">
     @if (session('info'))

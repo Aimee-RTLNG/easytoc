@@ -60,7 +60,7 @@
                         {{-- {{ Auth::user()->name }} --}}
                             <li class="nav-item btn-connect">
                                 <div class="btn-connect__icon"><i class="far fa-user"></i></div>
-                                <a class=" btn-connect__link" href="{{ route('profile.edit', auth()->user()) }}">{{ __('Mon compte') }}</a>
+                                <a class=" btn-connect__link" href="{{ route('profile.view', auth()->user()) }}">{{ __('Mon compte') }}</a>
                             </li>
                             <li class="nav-item btn-connect btn-connect--two">
                                 <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>

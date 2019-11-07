@@ -46,6 +46,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Profile
 
-Route::get('/profile/{user}/edit', 'profile\ProfileController@edit')->name('profile.edit');
+Route::get('/profile/{user}/view', 'profile\ProfileController@edit')->name('profile.view');
 Route::put('/profile/{user}', 'profile\ProfileController@update')->name('profile.update');
 

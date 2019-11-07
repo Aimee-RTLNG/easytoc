@@ -31,7 +31,7 @@ class ProfileController extends Controller
             'user' => $user,
         ];
         // render view with data
-        return view('profile.edit', $viewData);
+        return view('profile.view', $viewData);
     }
 
     /**
@@ -51,7 +51,7 @@ class ProfileController extends Controller
             $data["password"] = $user->password;
         }
         $user->update($data);
-        return redirect(route('profile.edit', ['user' => $user]))
+        return redirect(route('profile.view', ['user' => $user]))
                     ->with('info', 'Your profile has been updated successfully.');
     }
 }
