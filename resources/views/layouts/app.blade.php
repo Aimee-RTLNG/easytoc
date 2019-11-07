@@ -96,7 +96,7 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}">{{ __('Conditions générales d\'utilisation') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">{{ __('Aide') }}</a></li>
-                        <li class="nav-items"><a class="nav-link text-light" >Copiright 2019</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" >Copyright 2019</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,46 @@
+
+#logo-nav {
+    height: 50px;
+}
+.main-menu .nav-link {
+    padding-right: 0px;
+    &:after{
+        content: '|';
+        color: white;
+        padding-left: 20px;
+    }
+}
+.menu-lang a{
+    text-decoration: none;
+}
+.btn-connect {
+    background-color: $white;
+    color: black;
+    height: 25px;
+    // width: 116px;
+    border-radius: 12px;
+    @include flex-row-between-center;
+    padding: 2px 18px 2px 5px;
+    &__icon {
+        margin-right: 10px;
+        background-color: $gris-fonce;
+        color: white;
+        height: 20px;
+        width: 20px;
+        border-radius: 20px;
+        @include flex-row-center;
+        i {
+            font-size: 11px;
+        }
+        .fa-times {
+            padding-top: 2px;
+        }
+    }
+    &--two {
+        margin-left: 20px;
+    }
+    &__link {
+        color: $gris-fonce;
+        font-size: 1.2rem;
+    }
+}
