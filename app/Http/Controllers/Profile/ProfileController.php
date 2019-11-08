@@ -26,12 +26,22 @@ class ProfileController extends Controller
      */
     public function edit(Request $request, User $user)
     {
-        // user
+        // On récupère les identifiants de l'utilisateur dont la page est demandé
         $viewData = [
             'user' => $user,
+            'id' =>  $user->id
         ];
-        // render view with data
-        return view('profile.view', $viewData);
+
+        // On récupère les identifiants de l'utilisateur
+        $user = Auth::user();
+
+        // Si l'url du profil demandé est le bon
+        if( $user->id == $viewData["id"]){
+            return view('profile.view', $viewData);
+        }else{
+            return view('home');
+        }
+        
     }
 
     /**
