@@ -59,7 +59,7 @@
 
                     <div class="register__check">
                         <div class="check-conditions">
-                            <input type="checkbox" class="check" id="lire">
+                            <input type="checkbox" class="check" id="lire" required>
                             <label class="check-conditions__txt" for="lire">J'ai lu et j'accepte les <a href="">Conditions générales d'utilisation</a> du site</label>
                         </div>
                         <div class="register__form-final">
