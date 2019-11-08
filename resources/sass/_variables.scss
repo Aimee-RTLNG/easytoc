@@ -2,12 +2,15 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Expletus Sans',
-sans-serif;
+$font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
+$dark : #171819;
+$primary : #45B8FF;
+
+
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
@@ -18,3 +21,9 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+// Own 
+$gris-fonce : #171819;
+$gris : #333333;
+$bleu : #45B8FF;
+$gris-clair : #F4F2F0;
