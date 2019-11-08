@@ -52,7 +52,7 @@
                             </div>
         
                             <div class="register__line--mdp__item">
-                                <label for="password-confirm" class="form-label">{{ __('Mot de passe (encore)') }}</label>
+                                <label for="password-confirm" class="form-label">{{ __('Confirmation du mot de passe') }}</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                     </div>

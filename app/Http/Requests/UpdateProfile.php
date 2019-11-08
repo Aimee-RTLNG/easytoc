@@ -29,7 +29,7 @@ class UpdateProfile extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'password' => 'nullable|required_with:password_confirmation|string|confirmed',
-            'current_password' => 'required',
+            'current_password' => 'nullable|required_with:password|string',
         ];
     }
 
@@ -48,8 +48,8 @@ class UpdateProfile extends FormRequest
             if(!is_null($pw_db)){
                 $pw_entered = $this->current_password;
                 // $hashed = Hash::make($pw);
-                if ( !Hash::check($pw_entered, $pw_db) ) {
-                    $validator->errors()->add('current_password', 'Your current password is incorrect.');
+                if ( !empty($pw_entered) && !Hash::check($pw_entered, $pw_db) ) {
+                    $validator->errors()->add('current_password', __('Le mot de passe actuel entré est incorrect') );
                 };
             };
         });

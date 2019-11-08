@@ -36,6 +36,9 @@
     "Modifier mes informations": "Change my informations",
     "Mot de passe actuel": "Current password",
 
+    "Le mot de passe actuel entré est incorrect": "Your current password is incorrect",
+    "Votre profil a été mis à jour":"Your profile has been updated successfully"
+
     "Vérifier votre adresse e-mail": "Verify your Email address",
     "Vérification de l'e-mail": "Email Address verification",
     "Un lien de vérification vous a été envoyé sur votre adresse e-mail.": "A fresh verification link has been sent to your email address.",

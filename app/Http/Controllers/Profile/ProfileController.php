@@ -52,6 +52,6 @@ class ProfileController extends Controller
         }
         $user->update($data);
         return redirect(route('profile.view', ['user' => $user]))
-                    ->with('info', 'Your profile has been updated successfully.');
+                    ->with('info', __('Votre profil a été mis à jour'));
     }
 }
