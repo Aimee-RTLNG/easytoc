@@ -10748,6 +10748,7 @@ h2 {
 .btn-connect__link {
   color: #171819;
   font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .footer {
@@ -11039,5 +11040,133 @@ h2 {
 
 .connexion:after {
   border-width: 550px 0 0 100px;
+}
+
+@media (max-width: 992px) {
+  .connect-network {
+    margin-top: 15px;
+  }
+
+  .connect-network--connexion {
+    margin-bottom: 15px;
+  }
+
+  .register {
+    flex-direction: column;
+  }
+
+  .register__illu {
+    width: 100%;
+    height: 250px;
+    order: 2;
+  }
+
+  .register__info {
+    height: calc(100% - 250px);
+    width: 100%;
+  }
+
+  .register__form .form-control-mail {
+    width: 100%;
+  }
+
+  .register__form .form-control {
+    width: 100%;
+  }
+
+  .register:after {
+    display: none;
+  }
+
+  .connexion,
+  .register {
+    height: 820px;
+  }
+
+  .connexion:after,
+  .register:after {
+    border: none;
+  }
+
+  .connexion {
+    height: 750px;
+  }
+
+  .link-mdp-forgot {
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 576px) {
+  .register {
+    height: 575px;
+  }
+
+  .register__illu {
+    display: none;
+  }
+
+  .register__info {
+    height: 100%;
+  }
+
+  .connexion {
+    height: 480px;
+  }
+
+  .btn-form-final {
+    width: 98%;
+  }
+}
+
+@media (max-width: 490px) {
+  .connect-network {
+    flex-direction: column;
+  }
+
+  .connect-network a:nth-child(2) {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+
+  .register__check {
+    flex-direction: column;
+  }
+
+  .register__check > div {
+    width: 100%;
+  }
+
+  .connexion {
+    height: 560px;
+  }
+
+  .btn-form-final {
+    width: 100%;
+  }
+
+  .me-forever {
+    margin-bottom: 10px;
+  }
+
+  .register__line--mdp {
+    flex-direction: column;
+  }
+
+  .register__line--mdp__item {
+    width: 100%;
+  }
+
+  .inscription {
+    height: 725px;
+  }
+
+  .inscription .register__check {
+    margin-top: 35px;
+  }
+
+  .link-account-ok {
+    margin-top: 15px;
+  }
 }
 
