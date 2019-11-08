@@ -103,25 +103,31 @@
                                 </div>
                             </div>
 
-                            <!-- Si l'utilisateur n'a pas de mot de passe (Google \ Facebook) -->
+                            <!-- Si l'utilisateur a un de mot de passe (hors Google \ Facebook) -->
                             @if (!is_null($user->password))
 
-                            <!-- Vérification du mot de passe actuel -->    
-                            <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
-                                <label for="current-password" class="col-md-4 control-label">{{ __('Mot de passe actuel') }}</label>
+                                <!-- Vérification du mot de passe actuel -->    
+                                <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
+                                    <label for="current-password" class="col-md-4 control-label">{{ __('Mot de passe actuel') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="current-password" type="password" class="form-control" name="current_password">
+                                    <div class="col-md-6">
+                                        <input id="current-password" type="password" class="form-control" name="current_password">
 
-                                    @if ($errors->has('current_password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('current_password') }}</strong>
-                                    </span>
-                                    @endif
+                                        @if ($errors->has('current_password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('current_password') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-
+                            @else 
+                                @if ($errors->has('current_password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('current_password') }}</strong>
+                                </span>
+                                @endif
                             @endif
+
 
                             <!-- Bouton d'envoi -->      
                             <div class="form-group">

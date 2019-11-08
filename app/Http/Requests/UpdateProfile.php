@@ -25,11 +25,12 @@ class UpdateProfile extends FormRequest
      */
     public function rules()
     {
+        $pw_db = $this->user()->password;
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'password' => 'nullable|required_with:password_confirmation|string|confirmed',
-            'current_password' => 'nullable|required_with:password|string',
+            'current_password' => 'sometimes|required_with:password_confirmation',
         ];
     }
 
@@ -45,8 +46,8 @@ class UpdateProfile extends FormRequest
         // before making changes
         $validator->after(function ($validator) {
             $pw_db = $this->user()->password;
+            $pw_entered = $this->current_password;
             if(!is_null($pw_db)){
-                $pw_entered = $this->current_password;
                 // $hashed = Hash::make($pw);
                 if ( !empty($pw_entered) && !Hash::check($pw_entered, $pw_db) ) {
                     $validator->errors()->add('current_password', __('Le mot de passe actuel entré est incorrect') );
