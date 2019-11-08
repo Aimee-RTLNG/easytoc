@@ -11055,6 +11055,7 @@ h2 {
   color: white;
   font-weight: bold;
   border-radius: 10px;
+  text-align: center;
   font-size: 1.6rem;
 }
 
@@ -11312,7 +11313,7 @@ h2 {
 }
 
 .authen__form {
-  height: calc(100% - 55px - 95px);
+  height: calc(100% - 55px - 75px);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11341,14 +11342,26 @@ h2 {
   margin-top: 20px;
 }
 
+.reset-email .authen__content {
+  height: 530px;
+}
+
+.btn-reset {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 @media (max-width: 400px) {
   .authen__content {
     min-height: 360px;
     height: auto;
   }
 
-  .btn-reini {
+  .btn-reini,
+  .btn-reset {
     padding: 2px 10px;
+    min-height: 45px;
     height: auto;
   }
 }
