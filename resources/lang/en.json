@@ -1,9 +1,10 @@
 {
+    "###____PAS____RANGé____###":"############################################################",
     "Proposer": "Submit",
     "Envoyer": "Submit",
     "Liste": "List",
-    "Contact": "Contact",
 
+    "###____PAGE_____HEADER____###":"########################################################",
     "Accueil": "Home",
     "Aide": "Help",
     "Menu": "Menu",
@@ -13,9 +14,12 @@
     "Créer un tableau": "Create a table",
     "Créer un menu": "Create a menu",
 
+    "###____PAGE_____FOOTER____###":"########################################################",
     "Mentions légales": "Legal Notice",
     "Conditions générales d'utilisation": "End-user license agreement",
+    "Contact": "Contact",
 
+    "###____PAGE_____CONNEXION ET INSCRIPTION____###":"######################################",
     "Connexion": "Login",
     "Inscription": "Register",
     "Déconnexion": "Logout",
@@ -31,14 +35,18 @@
     "J'ai oublié mon mot de passe": "I forgot my password",
     "J'ai déjà un compte": "I already have an account",
 
+    "###____PAGE_____ACCUEIL_____###":"########################################################",
+
+    "###____PAGE_____PROFIL_____###":"########################################################",
+    "Informations de compte":"Account informations",
+    "Le mot de passe actuel entré est incorrect": "Your current password is incorrect",
+    "Votre profil a été mis à jour":"Your profile has been updated successfully",
     "Enregistrer les modifications": "Update changes",
-    "Modifier le mot de passe": "Set a new password",
-    "Modifier mes informations": "Change my informations",
+    "Modifier le mot de passe": "Update password",
+    "Modifier mes identifiants": "Update profile",
     "Mot de passe actuel": "Current password",
 
-    "Le mot de passe actuel entré est incorrect": "Your current password is incorrect",
-    "Votre profil a été mis à jour":"Your profile has been updated successfully"
-
+    "###____PAGE_____RéINITIALISATION MOT DE PASSE_____###":"#################################",
     "Vérifier votre adresse e-mail": "Verify your Email address",
     "Vérification de l'e-mail": "Email Address verification",
     "Un lien de vérification vous a été envoyé sur votre adresse e-mail.": "A fresh verification link has been sent to your email address.",
