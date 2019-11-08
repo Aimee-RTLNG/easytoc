@@ -1,2 +1,2 @@
-Hello, {{$user->username}}
+{{ __('Bonjour') }}, {{$user->username}}
 //And Body of Reset link goes here

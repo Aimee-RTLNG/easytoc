@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+/*
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import VueMaterial from 'vue-material';
@@ -38,3 +39,4 @@ new Vue({
     router,
     render: (h) => h(Profile)
 }).$mount('#profile');
+*/
