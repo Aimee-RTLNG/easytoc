@@ -10,8 +10,14 @@
         padding-left: 20px;
     }
 }
-.menu-lang a{
-    text-decoration: none;
+.menu-lang  {
+    margin-left: 3rem;
+    a{
+        text-decoration: none;
+    }
+    a:first-child {
+        margin-right: 2rem;
+    }
 }
 .btn-connect {
     background-color: $white;
@@ -45,4 +51,94 @@
         white-space: nowrap;
     }
 }
+.bars {
+    position: relative;
+    height: 25px;
+    width: 36px;
+    @include flex-col-between-center;
+    &__line {
+        border-radius: 5px;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+    }
+}
+.bars.open {
+    .bars__line {
+        position: absolute;
+        transition: transform 0.25s ;
+    }
+    .bars--snd {
+        display: none;
+    }
+    .bars--first {
+        transform: rotate(45deg);
+        top: 50%;
+        transition: transform 0.5s ;
+    }
+    .bars--last {
+        transform: rotate(-45deg);
+        top: 50%;
+    }
+}
 
+@media (max-width: 1200px) {
+    .btn-connect--two {
+        margin-left: 8px;
+    }
+    .menu-lang  {
+        margin-left: 4px;
+        a {
+            &:first-child {
+                margin-right: 8px;
+            }
+        }
+        .nav-link {
+            padding: 0.5rem 0.5rem;
+        }
+    }
+    .main-menu {
+        .nav-link:after {
+            padding-left: 10px;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .navbar-dark .navbar-toggler {
+        border: none;
+        font-size: 25px;
+    }
+    .main-menu {
+        flex-direction: column;
+        .nav-link {
+            padding: 10px 0px;
+            font-size: 1.8rem;
+            &:after {
+                display: none;
+            }
+        }
+    }
+    .menu-connect {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+    .btn-connect {
+        height: 35px;
+        width: 50%;
+        &__link {
+            font-size: 1.5rem;
+        }
+    }
+    .menu-lang {
+        margin-left: 0px;
+        margin-bottom: 20px;
+        flex-direction: row;
+        font-size: 1.8rem;
+        a:first-child {
+            margin-right: 10px;
+        }
+    }
+}

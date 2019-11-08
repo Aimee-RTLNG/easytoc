@@ -10706,8 +10706,16 @@ h2 {
   padding-left: 20px;
 }
 
+.menu-lang {
+  margin-left: 3rem;
+}
+
 .menu-lang a {
   text-decoration: none;
+}
+
+.menu-lang a:first-child {
+  margin-right: 2rem;
 }
 
 .btn-connect {
@@ -10749,6 +10757,111 @@ h2 {
   color: #171819;
   font-size: 1.2rem;
   white-space: nowrap;
+}
+
+.bars {
+  position: relative;
+  height: 25px;
+  width: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bars__line {
+  border-radius: 5px;
+  height: 3px;
+  width: 100%;
+  background-color: white;
+}
+
+.bars.open .bars__line {
+  position: absolute;
+  transition: transform 0.25s;
+}
+
+.bars.open .bars--snd {
+  display: none;
+}
+
+.bars.open .bars--first {
+  transform: rotate(45deg);
+  top: 50%;
+  transition: transform 0.5s;
+}
+
+.bars.open .bars--last {
+  transform: rotate(-45deg);
+  top: 50%;
+}
+
+@media (max-width: 1200px) {
+  .btn-connect--two {
+    margin-left: 8px;
+  }
+
+  .menu-lang {
+    margin-left: 4px;
+  }
+
+  .menu-lang a:first-child {
+    margin-right: 8px;
+  }
+
+  .menu-lang .nav-link {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .main-menu .nav-link:after {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-dark .navbar-toggler {
+    border: none;
+    font-size: 25px;
+  }
+
+  .main-menu {
+    flex-direction: column;
+  }
+
+  .main-menu .nav-link {
+    padding: 10px 0px;
+    font-size: 1.8rem;
+  }
+
+  .main-menu .nav-link:after {
+    display: none;
+  }
+
+  .menu-connect {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
+  .btn-connect {
+    height: 35px;
+    width: 50%;
+  }
+
+  .btn-connect__link {
+    font-size: 1.5rem;
+  }
+
+  .menu-lang {
+    margin-left: 0px;
+    margin-bottom: 20px;
+    flex-direction: row;
+    font-size: 1.8rem;
+  }
+
+  .menu-lang a:first-child {
+    margin-right: 10px;
+  }
 }
 
 .footer {

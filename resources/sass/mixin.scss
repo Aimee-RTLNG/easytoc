@@ -1,5 +1,5 @@
-// ---------- Flexbox ----------//
-
+// ------------------------ Flexbox --------------------//
+// --------- ROW ----------//
 @mixin flex-row-center {
     display: flex;
     justify-content: center;
@@ -21,7 +21,13 @@
     align-items: flex-start;
 }
 
-
+// --------- COLUMN ----------//
+@mixin flex-col-between-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+}
 @mixin flex-col-between-start {
     display: flex;
     flex-direction: column;
