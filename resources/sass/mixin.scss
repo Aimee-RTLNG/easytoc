@@ -21,12 +21,19 @@
     align-items: flex-start;
 }
 
+
 // --------- COLUMN ----------//
 @mixin flex-col-between-center {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center; 
+}
+@mixin flex-col-arround-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start; 
 }
 @mixin flex-col-between-start {
     display: flex;

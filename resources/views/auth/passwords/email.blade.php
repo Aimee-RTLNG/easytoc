@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container forget-email">
+<div class="container forget-email authen">
     <div class="row justify-content-center">
-        <div class="col-8">
-           <div class="forget-email__content">
+        <div class="col-lg-8">
+           <div class="forget-email__content authen__content">
                 <div class="entete">
                     <div class="entete-title">
                         <h2 class="register__title">{{ __('Réinitialiser mon mot de passe') }}</h2>
@@ -16,7 +16,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form method="POST" action="{{ route('password.email') }}">
+                <form method="POST" class="authen__form" action="{{ route('password.email') }}">
                     @csrf
 
                     <div class="register__line">
@@ -29,8 +29,8 @@
                         @enderror
                     </div>
 
-                    <div class="register__line">
-                        <button type="submit" class="btn btn-primary btn-form-final">
+                    <div class="register__line register__line--send">
+                        <button type="submit" class="btn btn-primary btn-form-final btn-reini">
                             {{ __('Envoyer un lien de réinitialisation') }}
                         </button>
                     </div>
