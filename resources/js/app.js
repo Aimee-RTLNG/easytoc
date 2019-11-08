@@ -27,6 +27,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+// Attention Merge à decommenter 
+// const app = new Vue({
+//     el: '#app',
+// });
+
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    
+    var btn_burger = document.getElementById('bars');
+    btn_burger.addEventListener('click', function() {
+        btn_burger.classList.toggle('open');
+    })
+
+
+
+
+  });
