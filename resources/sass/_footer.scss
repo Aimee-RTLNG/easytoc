@@ -28,3 +28,12 @@
         border-left: 1px solid white;
     }
 }
+
+@media (max-width: 767px) {
+    .menu-footer {
+        .nav-link {
+            padding: 0px 10px;
+            font-size: 1.2rem;
+        }
+    }
+}

@@ -79,6 +79,8 @@
     .bars--last {
         transform: rotate(-45deg);
         top: 50%;
+        transition: transform 0.5s ;
+
     }
 }
 

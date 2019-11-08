@@ -1,0 +1,17 @@
+// View reset & email
+
+.forget-email {
+    min-height: calc(100vh - (268px));
+    &__content {
+        padding: 30px;
+        @include expletus;
+        position: relative;
+        margin-top: 70px;
+        margin-bottom: 70px;
+        width: 100%;
+        height: 250px;
+        @include flex-col-between-start;
+        @include shadow-box;
+        background-color: white;
+    }
+}
