@@ -1,0 +1,39 @@
+// Généraux
+html {
+    font-size: 10px;
+}
+body {
+    font-size: 1.4rem;
+    @include acumin;
+}
+a {
+    color: inherit;
+    &:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+p, h1, h2{
+    margin: 0px;
+}
+.commentaire {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: $gris-fonce;
+}
+.entete {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    &__title {
+        @include expletus;
+        font-size: 3.4rem;
+        font-weight: bold;
+    }
+    &__under {
+        height: 5px;
+        width: 90px;
+        background-color: #45B8FF;
+        margin-top: 10px;
+    }
+}
+
