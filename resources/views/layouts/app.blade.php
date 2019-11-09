@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>
-                    <p  class="footer-txt">adresse@mail.fr / 06 88 45 12 32</p>
+                    <p  class="footer-txt">easytoc@outlook.com</p>
                 </div>
                 <div class="col-12 menu-footer">
                     <ul class="nav navbar-dark ">
