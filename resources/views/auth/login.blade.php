@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('titre') {{ __('Connexion') }} - EasyToC @endsection
+
 @section('content')
 <div class="container">
         <div class="register connexion">
@@ -30,17 +32,27 @@
 
                             <div class="register__line">
                                 <label for="password" class="form-label">{{ __('Mot de passe') }}</label>
-                                <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    @if (Route::has('password.request'))
-                                        <a class="link-form link-mdp-forgot" href="{{ route('password.request') }}">
-                                            {{ __('J\'ai oublié mon mot de passe') }}
-                                        </a>
-                                    @endif
+                                <div class="password-input d-flex">
+                                    <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                                <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
+                                    <span class="warning-block" style="display: none">
+                                        <strong>{{ __('La touche Majuscules est active') }}</strong>
+                                    </span>
+                                <!-- -->
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                @if (Route::has('password.request'))
+                                    <a class="link-form link-mdp-forgot" href="{{ route('password.request') }}">
+                                        {{ __('J\'ai oublié mon mot de passe') }}
+                                    </a>
+                                @endif
                             </div>
 
                             <div class="register__check">
