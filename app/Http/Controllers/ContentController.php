@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -33,7 +32,7 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\ContentRequest $request)
     {
         $data = $request->validated();
         $content = new \App\Content();
@@ -48,7 +47,7 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(Content $content)
+    public function show(\App\Content $content)
     {
         return view('content.show', ['content'=>$content]);
     }
@@ -59,9 +58,9 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function edit(Content $content)
+    public function edit(\App\Content $content)
     {
-        return view('content.edit');
+        return view('content.edit', ['content'=>$content] );
     }
 
     /**
@@ -71,7 +70,7 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(\App\Http\Requests\ContentRequest $request, \App\Content $content)
     {
         $data = $request->validated();
         $content->fill($data);
@@ -85,7 +84,7 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Content $content)
+    public function destroy(\App\Content $content)
     {
         $content->delete();
         return redirect()->route('profile.view');

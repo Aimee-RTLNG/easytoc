@@ -27,7 +27,8 @@ class ContentRequest extends FormRequest
             'title' => 'required|max:150',
             'description' => 'nullable|max:300',
             'html' => 'required',
-            'type_id' => 'required|numeric|min:1|max:3'
+            'type_id' => 'required|numeric|min:1|max:3',
+            'user_id' => 'required|numeric|min:1'
         ];
     }
 }

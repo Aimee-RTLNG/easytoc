@@ -54,11 +54,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Content
 
-Route::get('/content', 'contentController@index')->name('content.index');
-Route::get('/content/{content}', 'contentController@show')->name('content.show')->where('content', '[0-9]+');
-Route::get('/content/create', 'contentController@create')->name('content.create');
-Route::post('/content/create', 'contentController@store')->name('content.store');
-Route::get('/content/{content}/edit', 'contentController@edit')->name('content.edit')->where('content', '[0-9]+');
-Route::put('/content/{content}/edit', 'contentController@update')->name('content.update')->where('content', '[0-9]+');
-Route::delete('/content/{content}', 'contentController@destroy')->name('content.destroy')->where('content', '[0-9]+');
+Route::get('/content', 'ContentController@index')->name('content.index');
+Route::get('/content/{content}', 'ContentController@show')->name('content.show')->where('content', '[0-9]+');
+Route::get('/content/create', 'ContentController@create')->name('content.create');
+Route::post('/content/create', 'ContentController@store')->name('content.store');
+Route::get('/content/{content}/edit', 'ContentController@edit')->name('content.edit')->where('content', '[0-9]+');
+Route::put('/content/{content}/edit', 'ContentController@update')->name('content.update')->where('content', '[0-9]+');
+Route::delete('/content/{content}', 'ContentController@destroy')->name('content.destroy')->where('content', '[0-9]+');
 
