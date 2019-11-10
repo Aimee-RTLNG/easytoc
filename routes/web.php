@@ -49,8 +49,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{user}/view', 'profile\ProfileController@edit')->name('profile.view');
     Route::put('/profile/{user}/info', 'profile\ProfileController@updateInfo')->name('profile.updateInfo');
-    Route::put('/profile/{user}/password', 'profile\ProfileController@updatePass')->name('profile.updatePass');
-    
+    Route::put('/profile/{user}/password', 'profile\ProfileController@updatePass')->name('profile.updatePass'); 
 });
 
+// Content
+
+Route::get('/content', 'contentController@index')->name('content.index');
+Route::get('/content/{content}', 'contentController@show')->name('content.show')->where('content', '[0-9]+');
+Route::get('/content/create', 'contentController@create')->name('content.create');
+Route::post('/content/create', 'contentController@store')->name('content.store');
+Route::get('/content/{content}/edit', 'contentController@edit')->name('content.edit')->where('content', '[0-9]+');
+Route::put('/content/{content}/edit', 'contentController@update')->name('content.update')->where('content', '[0-9]+');
+Route::delete('/content/{content}', 'contentController@destroy')->name('content.destroy')->where('content', '[0-9]+');
 
