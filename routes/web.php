@@ -47,9 +47,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Profile
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/profile/{user}/view', 'profile\ProfileController@edit')->name('profile.view');
-    Route::put('/profile/{user}/info', 'profile\ProfileController@updateInfo')->name('profile.updateInfo');
-    Route::put('/profile/{user}/password', 'profile\ProfileController@updatePass')->name('profile.updatePass');
+    Route::get('/profile/{user}/view', 'Profile\ProfileController@edit')->name('profile.view');
+    Route::put('/profile/{user}/info', 'Profile\ProfileController@updateInfo')->name('profile.updateInfo');
+    Route::put('/profile/{user}/password', 'Profile\ProfileController@updatePass')->name('profile.updatePass');
 });
 
 
