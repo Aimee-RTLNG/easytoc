@@ -1,0 +1,39 @@
+//footer 
+.footer {
+    height: 200px;
+    color: white;
+    .row, .container {
+        height: 100%;
+    }
+    &-cont {
+        align-content: space-around;
+    }
+    &__info-2 {
+        text-align: right;
+    }
+    &-title {
+        font-size: 2.4rem;
+    }
+    &-txt {
+        font-size: 1.8rem;
+    }
+}
+.menu-footer {
+    text-transform: uppercase;
+    @include flex-row-center;
+    .nav-link {
+        padding: 0px 16px;
+    }
+    .nav-items:not(:first-child) .nav-link{
+        border-left: 1px solid white;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu-footer {
+        .nav-link {
+            padding: 0px 10px;
+            font-size: 1.2rem;
+        }
+    }
+}

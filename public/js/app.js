@@ -41,6 +41,23 @@ Vue.toasted.register('error', message => message, {
 
 const router = new VueRouter({
     routes // short for `routes: routes`
+
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+// Attention Merge à decommenter 
+// const app = new Vue({
+//     el: '#app',
+// });
+
+window.addEventListener("DOMContentLoaded", function (event) {
+  var btn_burger = document.getElementById('bars');
+  btn_burger.addEventListener('click', function () {
+    btn_burger.classList.toggle('open');
+  });
 });
 
 Vue.component('example-component', ExampleComponent);
