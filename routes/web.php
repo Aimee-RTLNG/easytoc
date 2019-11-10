@@ -50,7 +50,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{user}/view', 'profile\ProfileController@edit')->name('profile.view');
     Route::put('/profile/{user}/info', 'profile\ProfileController@updateInfo')->name('profile.updateInfo');
     Route::put('/profile/{user}/password', 'profile\ProfileController@updatePass')->name('profile.updatePass');
-    
 });
 
 

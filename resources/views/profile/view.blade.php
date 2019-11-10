@@ -28,7 +28,7 @@
             <div class="panel m-5 panel-default">
                 <div class="panel-body">
                     <h2 class="panel-heading">{{ __('Informations de compte') }}</h2>
-                    <form if="formInfos" class="form-horizontal" method="POST" action="{{ route('profile.updateInfo', ['user' => $user]) }}">
+                    <form id="formInfos" class="form-horizontal" method="POST" action="{{ route('profile.updateInfo', ['user' => $user]) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 

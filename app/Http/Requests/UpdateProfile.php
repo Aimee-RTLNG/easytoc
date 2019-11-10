@@ -30,7 +30,7 @@ class UpdateProfile extends FormRequest
             'name' => 'string|min:3|max:255',
             'email' => 'string|min:10|max:255',
             'password' => 'sometimes|nullable|required_with:password_confirmation|string|confirmed',
-            'password_confirmation' => 'sometimes|nullable|required_with:password|string|confirmed',
+            'password_confirmation' => 'sometimes|nullable|required_with:password|string',
             'current_password' => 'sometimes|required_with:password',
         ];
     }
