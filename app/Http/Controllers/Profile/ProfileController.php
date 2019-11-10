@@ -51,7 +51,23 @@ class ProfileController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfile $request, User $user)
+    public function updateInfo(UpdateProfile $request, User $user)
+    {
+        // form data
+        $data = $request->validated();
+        $user->update($data);
+        return redirect(route('profile.view', ['user' => $user]))
+                    ->with('info', __('Votre profil a été mis à jour'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePass(UpdateProfile $request, User $user)
     {
         // form data
         $data = $request->validated();
@@ -62,6 +78,6 @@ class ProfileController extends Controller
         }
         $user->update($data);
         return redirect(route('profile.view', ['user' => $user]))
-                    ->with('info', __('Votre profil a été mis à jour'));
+                    ->with('info', __('Votre mot de passe a été mis à jour'));
     }
 }

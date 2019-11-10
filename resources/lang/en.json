@@ -3,6 +3,10 @@
     "Proposer": "Submit",
     "Envoyer": "Submit",
     "Liste": "List",
+    "Afficher/masquer le mot de passe en clair" : "Show password as plain text",
+    "Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran": "Show password as plain text. Note: this will visually expose your password on the screen",
+    "Masquer le mot de passe" : "Hide password",
+    "La touche Majuscules est active" : "Warning : Caps Lock is on",
 
     "###____PAGE_____HEADER____###":"########################################################",
     "Accueil": "Home",
@@ -45,6 +49,7 @@
     "Modifier le mot de passe": "Update password",
     "Modifier mes identifiants": "Update profile",
     "Mot de passe actuel": "Current password",
+    
 
     "###____PAGE_____RéINITIALISATION MOT DE PASSE_____###":"#################################",
     "Vérifier votre adresse e-mail": "Verify your Email address",

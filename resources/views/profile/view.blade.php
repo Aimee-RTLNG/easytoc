@@ -27,8 +27,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel m-5 panel-default">
                 <div class="panel-body">
-                    <h3 class="panel-heading">{{ __('Informations de compte') }}</h3>
-                    <form class="form-horizontal" method="POST" action="{{ route('profile.update', ['user' => $user]) }}">
+                    <h2 class="panel-heading">{{ __('Informations de compte') }}</h2>
+                    <form if="formInfos" class="form-horizontal" method="POST" action="{{ route('profile.updateInfo', ['user' => $user]) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
@@ -67,14 +67,17 @@
                             <!-- Bouton d'envoi -->
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" form="formInfos" class="btn btn-primary">
                                         {{ __('Enregistrer les informations') }}
                                     </button>
                                 </div>
                             </div>
                             
                         </div>
-
+                    </form>
+                    <form id="formPassword" class="form-horizontal" method="POST" action="{{ route('profile.updatePass', ['user' => $user]) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
                         <!-- Mot de passe -->
                         <div>
                             <h3 class="panel-heading">{{ __('Modifier mon mot de passe') }}</h3>
@@ -84,7 +87,17 @@
                                 <label for="password" class="col-md-4 control-label">{{ __('Nouveau mot de passe') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password">
+                                    <div class="password-input d-flex">
+                                        <input id="password" type="password" class="form-control" name="password">
+                                        <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
+                                                <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
+                                    <span class="warning-block" style="display: none">
+                                        <strong>{{ __('La touche Majuscules est active') }}</strong>
+                                    </span>
+                                    <!-- -->
 
                                     @if ($errors->has('password'))
                                     <span class="help-block">
@@ -99,7 +112,23 @@
                                 <label for="password-confirm" class="col-md-4 control-label">{{ __('Confimation du nouveau mot de passe') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                    <div class="password-input d-flex">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                        <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>  
+                                    <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
+                                    <span class="warning-block" style="display: none">
+                                        <strong>{{ __('La touche Majuscules est active') }}</strong>
+                                    </span>
+                                    <!-- -->
+                                    
+                                    @if ($errors->has('password_confirmation'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        </span>
+                                     @endif
                                 </div>
                             </div>
 
@@ -111,8 +140,17 @@
                                     <label for="current-password" class="col-md-4 control-label">{{ __('Mot de passe actuel') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="current-password" type="password" class="form-control" name="current_password">
-
+                                        <div class="password-input d-flex">
+                                            <input id="current-password" type="password" class="form-control" name="current_password">
+                                            <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
+                                                <i class="far fa-eye"></i>
+                                            </button>
+                                        </div>  
+                                        <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
+                                        <span class="warning-block" style="display: none">
+                                            <strong>{{ __('La touche Majuscules est active') }}</strong>
+                                        </span>
+                                        <!-- -->
                                         @if ($errors->has('current_password'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('current_password') }}</strong>
@@ -132,7 +170,7 @@
                             <!-- Bouton d'envoi -->      
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" form="formPassword" class="btn btn-primary">
                                         {{ __('Modifier mon mot de passe') }}
                                     </button>
                                 </div>
