@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Content;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ContentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(\App\Content::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +24,18 @@ class ContentController extends Controller
     public function index()
     {
         return view('profile.view');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Content  $content
+     * @return \Illuminate\Http\Response
+     */
+    public function show(\App\Content $content)
+    {
+        return view('content.show', ['content'=>$content]);
     }
 
     /**
@@ -39,17 +61,6 @@ class ContentController extends Controller
         $content->fill($data);
         $content->save();
         return redirect()->route('content.show', ['content'=>$content]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Content  $content
-     * @return \Illuminate\Http\Response
-     */
-    public function show(\App\Content $content)
-    {
-        return view('content.show', ['content'=>$content]);
     }
 
     /**
@@ -87,6 +98,6 @@ class ContentController extends Controller
     public function destroy(\App\Content $content)
     {
         $content->delete();
-        return redirect()->route('profile.view');
+        return redirect()->route('profile.view', Auth::user());
     }
 }

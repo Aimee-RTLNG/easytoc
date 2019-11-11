@@ -38,8 +38,8 @@
                 </ul>
 
                     <ul class="navbar-nav mr-auto text-light ml-3 menu-lang">
-                        <a class="mr-2 text-light" href="{{ route('setlang', 'en') }}">{{ __('EN') }}</a>
-                        <a class="text-light" href="{{ route('setlang', 'fr') }}">{{ __('FR') }}</a>
+                        <a class="d-flex mr-5 text-light" href="{{ route('setlang', 'en') }}"><img src="{{ URL::asset('images/united-kingdom.svg') }}" id="flag-en"/><span class="ml-2">{{ __('EN') }}</span></a>
+                        <a class="d-flex ml-3 text-light" href="{{ route('setlang', 'fr') }}"><img src="{{ URL::asset('images/france.svg') }}" id="flag-fr"/><span class="ml-2">{{ __('FR') }}</span></a>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -47,12 +47,12 @@
                         @guest
                             @if (Route::has('register'))
                                 <li class="nav-item btn-connect ">
-                                    <div class="btn-connect__icon"><i class="fas fa-arrow-right"></i></div>
+                                    <div class="btn-connect__icon"><i class="fas fa-pen"></i></div>
                                     <a class=" btn-connect__link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item btn-connect btn-connect--two">
-                                <div class="btn-connect__icon"><i class="fas fa-pen"></i></div>
+                                <div class="btn-connect__icon"><i class="fas fa-arrow-right"></i></div>
                                 <a class=" btn-connect__link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             </li>
                         @else

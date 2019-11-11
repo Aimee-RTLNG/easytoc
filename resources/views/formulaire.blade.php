@@ -43,7 +43,7 @@
                         <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
                         <textarea type="text" name="description" placeholder="description">{{ old('description') }}</textarea>
                         <textarea type="text" name="html" placeholder="html">{{ old('html') }}</textarea>
-                        <button type="submit">Sauvegarder ce formulaire</button>
+                        <button type="submit">{{ __('Sauvegarder ce formulaire') }}</button>
                     </form>
                 @endguest
 

@@ -30,25 +30,29 @@
         </div>
         <div class="row">
             <div class="col-7 col-md-offset-2">
-                <div class="full-list">
-                        <h2>Content</h2>
-                        <ul>
-                            @foreach ($user->contents as $content)
-                            <li>
-                                @can('view', $content)
-                                <a href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a>
-                                @else
-                                {{ $content->title }}
-                                @endcan
-                            </li>    
-                            @endforeach        
-                        </ul>
+                <h2>{{ __('Vos créations') }}</h2>
+                <div class="panel m-5 panel-default full-list">
+                    @foreach ($user->contents as $content)
+                        <div class="d-flex justify-content-between list-element">
+                            <div class="d-flex element-info">
+                                <a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a>
+                            </div>
+                            <div class="d-flex element-actions">
+                                <a class="btn btn-info edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">{{ __('Modifier') }}</a>
+                                <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="{{ __('Supprimer') }}" class="btn btn-danger delete-content-button" onclick="return confirm('Are you sure to delete?')">       
+                                </form>
+                            </div>
+                        </div>    
+                    @endforeach        
                 </div>
             </div>
             <div class="col-5 col-md-offset-2">
+                <h2>{{ __('Votre compte') }}</h2>
                 <div class="panel m-5 panel-default">
                     <div class="panel-body">
-                        <h2 class="panel-heading">{{ __('Informations de compte') }}</h2>
                         <form if="formInfos" class="form-horizontal" method="POST" action="{{ route('profile.updateInfo', ['user' => $user]) }}">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
@@ -96,6 +100,7 @@
                                 
                             </div>
                         </form>
+                        <hr>
                         <form id="formPassword" class="form-horizontal" method="POST" action="{{ route('profile.updatePass', ['user' => $user]) }}">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
@@ -192,7 +197,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" form="formPassword" class="btn btn-primary">
-                                            {{ __('Modifier mon mot de passe') }}
+                                            {{ __('Sauvegarder mon nouveau mot de passe') }}
                                         </button>
                                     </div>
                                 </div>
