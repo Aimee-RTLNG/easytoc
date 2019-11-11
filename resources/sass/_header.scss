@@ -1,0 +1,146 @@
+
+#logo-nav {
+    height: 50px;
+}
+.main-menu .nav-link {
+    padding-right: 0px;
+    &:after{
+        content: '|';
+        color: white;
+        padding-left: 20px;
+    }
+}
+.menu-lang  {
+    margin-left: 3rem;
+    a{
+        text-decoration: none;
+    }
+    a:first-child {
+        margin-right: 2rem;
+    }
+}
+.btn-connect {
+    background-color: $white;
+    color: black;
+    height: 25px;
+    // width: 116px;
+    border-radius: 12px;
+    @include flex-row-between-center;
+    padding: 2px 18px 2px 5px;
+    &__icon {
+        margin-right: 10px;
+        background-color: $gris-fonce;
+        color: white;
+        height: 20px;
+        width: 20px;
+        border-radius: 20px;
+        @include flex-row-center;
+        i {
+            font-size: 11px;
+        }
+        .fa-times {
+            padding-top: 2px;
+        }
+    }
+    &--two {
+        margin-left: 20px;
+    }
+    &__link {
+        color: $gris-fonce;
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+}
+.bars {
+    position: relative;
+    height: 25px;
+    width: 36px;
+    @include flex-col-between-center;
+    &__line {
+        border-radius: 5px;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+    }
+}
+.bars.open {
+    .bars__line {
+        position: absolute;
+        transition: transform 0.25s ;
+    }
+    .bars--snd {
+        display: none;
+    }
+    .bars--first {
+        transform: rotate(45deg);
+        top: 50%;
+        transition: transform 0.5s ;
+    }
+    .bars--last {
+        transform: rotate(-45deg);
+        top: 50%;
+        transition: transform 0.5s ;
+
+    }
+}
+
+@media (max-width: 1200px) {
+    .btn-connect--two {
+        margin-left: 8px;
+    }
+    .menu-lang  {
+        margin-left: 4px;
+        a {
+            &:first-child {
+                margin-right: 8px;
+            }
+        }
+        .nav-link {
+            padding: 0.5rem 0.5rem;
+        }
+    }
+    .main-menu {
+        .nav-link:after {
+            padding-left: 10px;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .navbar-dark .navbar-toggler {
+        border: none;
+        font-size: 25px;
+    }
+    .main-menu {
+        flex-direction: column;
+        .nav-link {
+            padding: 10px 0px;
+            font-size: 1.8rem;
+            &:after {
+                display: none;
+            }
+        }
+    }
+    .menu-connect {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+    .btn-connect {
+        height: 35px;
+        width: 50%;
+        &__link {
+            font-size: 1.5rem;
+        }
+    }
+    .menu-lang {
+        margin-left: 0px;
+        margin-bottom: 20px;
+        flex-direction: row;
+        font-size: 1.8rem;
+        a:first-child {
+            margin-right: 10px;
+        }
+    }
+}

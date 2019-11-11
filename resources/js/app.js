@@ -41,4 +41,22 @@ new Vue({
     router,
     render: (h) => h(Profile)
 }).$mount('#profile');
+
 */
+// Attention Merge à decommenter 
+// const app = new Vue({
+//     el: '#app',
+// });
+
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    
+    var btn_burger = document.getElementById('bars');
+    btn_burger.addEventListener('click', function() {
+        btn_burger.classList.toggle('open');
+    })
+
+
+
+
+  });
