@@ -78,8 +78,8 @@
 
                     <div class="register__check">
                         <div class="check-conditions">
-                            <input type="checkbox" class="check" id="lire" required>
-                            <label class="check-conditions__txt" for="lire">J'ai lu et j'accepte les <a href="">Conditions générales d'utilisation</a> du site</label>
+                            <input type="checkbox" class="check" id="cgu" required>
+                            <label class="check-conditions__txt" for="cgu">{{ __("J'ai lu et j'accepte les") }} <a href="{{ route('cgu') }}">{{ __("Conditions générales d'utilisation du site") }}</a></label>
                         </div>
                         <div class="register__form-final">
                             <button type="submit" class="btn btn-primary btn-form-final">

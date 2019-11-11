@@ -58,11 +58,11 @@
                             <div class="register__check">
                                 <div class="check-conditions me-forever">
                                    <div>
-                                        <input type="checkbox" class="check" id="lire">
-                                        <label class="check-conditions__txt" for="lire">{{ __('Se souvenir de moi') }}</label>
+                                        <input type="checkbox" class="check" id="remember_me">
+                                        <label class="check-conditions__txt" for="remember_me">{{ __('Se souvenir de moi') }}</label>
                                    </div>
-                                   <a class="link-account-ok" href="{{ route('login') }}">
-                                        <i class="fas fa-arrow-right"></i> {{ __('J\'ai déjà un compte') }}
+                                   <a class="link-account-ok" href="{{ route('register') }}">
+                                        <i class="fas fa-arrow-right"></i> {{ __('Je n\'ai pas encore de compte') }}
                                     </a>
                                 </div>
                                 <div class="register__form-final">
