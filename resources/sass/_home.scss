@@ -1,0 +1,14 @@
+.home-present {
+    height: calc(100vh - 66px);
+    @include flex-row-between-center;
+    &__item {
+        width: 50%;
+    }
+    &__txt {
+        padding-right: 60px;
+    }
+}
+.home-tools {
+    height: 100vh;
+    background-color: $gris-clair;
+}

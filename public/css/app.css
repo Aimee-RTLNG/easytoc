@@ -10916,8 +10916,8 @@ h2 {
 .register {
   font-family: "Expletus Sans", cursive, sans-serif;
   position: relative;
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin-top: 35px;
+  margin-bottom: 35px;
   width: 100%;
   height: 600px;
   display: flex;
@@ -11364,5 +11364,25 @@ h2 {
     min-height: 45px;
     height: auto;
   }
+}
+
+.home-present {
+  height: calc(100vh - 66px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-present__item {
+  width: 50%;
+}
+
+.home-present__txt {
+  padding-right: 60px;
+}
+
+.home-tools {
+  height: 100vh;
+  background-color: #F4F2F0;
 }
 

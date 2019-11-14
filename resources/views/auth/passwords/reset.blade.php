@@ -7,7 +7,7 @@
            <div class="authen__content">
                 <div class="entete">
                     <div class="entete-title">
-                        <h2 class="register__title">{{ __('Réinitialiser mon mot de passe') }}</h2>
+                        <h2 class="register__title">{{ __('Mettre à jour mon mot de passe') }}</h2>
                         <div class="register__under-title"></div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     </div>
     
                     <button type="submit" class="btn btn-primary btn-form-final btn-reset">
-                        {{ __('Mettre à jour mon mot de passe') }}
+                        {{ __('Mise à jour') }}
                     </button>
                 </form>
            </div>
