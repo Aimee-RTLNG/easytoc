@@ -42,8 +42,8 @@
                 </ul>
 
                     <ul class="navbar-nav mr-auto text-light menu-lang">
-                        <a class="text-light" href="{{ route('setlang', 'en') }}">{{ __('EN') }}</a>
-                        <a class="text-light" href="{{ route('setlang', 'fr') }}">{{ __('FR') }}</a>
+                        <a class="text-light link-flag" href="{{ route('setlang', 'en') }}"> <div class="flag flag-en" style="background-image: url('./images/en.png');"></div> {{ __('EN') }}</a>
+                        <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}"><div class="flag flag-fr" style="background-image: url('./images/fr.png');"></div> {{ __('FR') }}</a>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto menu-connect">

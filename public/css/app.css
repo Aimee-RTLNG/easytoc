@@ -10692,6 +10692,23 @@ h2 {
   margin-top: 10px;
 }
 
+.flag {
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  margin-right: 7px;
+}
+
+.link-flag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #logo-nav {
   height: 50px;
 }
@@ -10798,6 +10815,10 @@ h2 {
 }
 
 @media (max-width: 1200px) {
+  .flag {
+    margin-right: 5px;
+  }
+
   .btn-connect--two {
     margin-left: 8px;
   }
@@ -10816,6 +10837,12 @@ h2 {
 
   .main-menu .nav-link:after {
     padding-left: 10px;
+  }
+}
+
+@media (max-width: 996px) {
+  .main-menu .nav-link {
+    padding: 2px 4px;
   }
 }
 
