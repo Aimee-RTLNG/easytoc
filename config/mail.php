@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'help@easytoc.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'easytoc@outlook.com'),
         'name' => env('MAIL_FROM_NAME', 'Easy to C'),
     ],
 

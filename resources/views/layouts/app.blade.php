@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('titre')</title>
+        <title> @yield('titre') </title>
 
         <!-- Favicon -->
-        <link rel="icon" href="../favicon.ico" type="image/ico">
+        <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/ico">
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -60,10 +60,11 @@
                                 <a class=" btn-connect__link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             </li>
                         @else
+
                         {{-- {{ Auth::user()->name }} --}}
                             <li class="nav-item btn-connect">
                                 <div class="btn-connect__icon"><i class="far fa-user"></i></div>
-                                <a class=" btn-connect__link" href="">{{ __('Mon compte') }}</a>
+                                <a class=" btn-connect__link" href="{{ route('profile.view', auth()->user()) }}">{{ __('Mon compte') }}</a>
                             </li>
                             <li class="nav-item btn-connect btn-connect--two">
                                 <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>
@@ -93,7 +94,7 @@
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>
-                    <p  class="footer-txt">adresse@mail.fr / 06 88 45 12 32</p>
+                    <p  class="footer-txt">easytoc@outlook.com</p>
                 </div>
                 <div class="col-12 menu-footer">
                     <ul class="nav navbar-dark ">

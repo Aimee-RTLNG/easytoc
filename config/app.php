@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://easytoc.ritleng.mmi-unistra.fr'), 
+    'url' => env('APP_URL', 'http://localhost/'), 
 
     'asset_url' => env('ASSET_URL', null),
 

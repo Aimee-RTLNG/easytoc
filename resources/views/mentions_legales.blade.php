@@ -1,14 +1,16 @@
 
 @extends('layouts/app')
 
-@section('titre') Mentions légales - EasyToC @endsection
+@section('titre') {{ __('Mentions légales - EasyToC') }} @endsection
 
 @section('content')
+
 <div class="container">
     <div class="entete">
         <h2 class="entete__title">Mentions légales</h2>
         <div class="entete__under"></div>
     </div>
+
     <p>Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l'économie numérique, dite L.C.E.N., nous portons à la connaissance des utilisateurs et visiteurs du site : www.generer-mentions-legales.com les informations suivantes :</p>
 
     <h3>1. Informations légales :</h3>
