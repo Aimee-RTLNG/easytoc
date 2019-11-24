@@ -1,4 +1,18 @@
 // Inscription
+.password-input {
+    position: relative;
+}
+.btn-seepassword__icon {
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    top: 0px;
+    color: white;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 36px;
+}
 .register{
     @include expletus;
     position: relative;
@@ -180,6 +194,9 @@
     height: 550px;
     &:after {
         border-width: 550px 0 0 100px;
+    }
+    .btn-seepassword__icon {
+        right: calc(100% - 83%);
     }
 }
 

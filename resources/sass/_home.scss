@@ -1,14 +1,212 @@
-.home-present {
-    height: calc(100vh - 66px);
-    @include flex-row-between-center;
-    &__item {
+.section-home:nth-child(2n) {
+    background-color: $gris-clair;
+}
+.section-home {
+    height: 100vh;
+    min-height: 700px;
+    max-height: 1200px;
+    &__title {
+        @include expletus;
+        font-weight: bold;
+        font-size: 4.0rem;
         width: 50%;
+        min-width: 660px;
     }
-    &__txt {
-        padding-right: 60px;
+    &__underline {
+        height: 5px;
+        width: 200px;
+        background-color: $bleu;
+        margin-top: 20px;
+    }
+    & > .container {
+        height: 100%;
     }
 }
+.home-present {
+    .section-home__title {
+        width: 100%;
+        min-width: 100px;
+    }
+    height: calc(100vh - 66px);
+    min-height: 700px;
+    max-height: 1140px;
+    @include flex-row-between-center;
+    &__txt {
+        &__descr {
+            font-size: 1.6rem;
+            margin : 30px 0px;
+            font-weight: 500;
+        }
+        &__tips {
+            font-size: 1.8rem;
+            color: $bleu;
+            line-height: 3.0rem;
+            padding-left: 48px;
+            list-style-type: none;
+            li:before {
+                content :'\f061';
+                font-size: 18px;
+                color: $bleu;
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                padding-right: 20px;
+            }
+        }
+        &__btn {
+            @include flex-row-between-center;
+            margin-bottom: 40px;
+        }
+    }
+    &__video {
+        padding-left: 60px;
+        height: 100%;
+        @include flex-col-center-center;
+    }
+    & > .container {
+        height: auto;
+    }
+}
+.video-yt{
+    width: 100%;
+    height: 400px;
+    border: none;
+    &__btn {
+        margin-top: 15px;
+        @include flex-row-between-center;
+        width: 100%;
+        a {
+            height: 30px;
+            font-size: 1.2rem;
+        }
+    }
+}
+// Section outils
 .home-tools {
-    height: 100vh;
-    background-color: $gris-clair;
+   &__item {
+       @include flex-col-between-center;
+        height: 450px;
+        background-color: $gris-fonce;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 25px;
+        &__name {
+            text-transform: uppercase;
+            @include expletus;
+            font-size: 2.0rem;
+            font-weight: bold;
+        }
+        &__illu{
+            width: 100%;
+            height: 180px;
+            @include back-img-contain;
+            border-radius: 10px;
+        }
+        &__txt {
+            height: calc(100% - 180px);
+            padding-top: 15px;
+            text-align: center;
+            @include flex-col-between-center;
+            a {
+                text-align: center;
+                width: 100%;
+                justify-content: center;
+                font-size: 2.0rem;
+            }
+        }
+    }
+    &__underline {
+        height: 4px;
+        width: 70px;
+        background-color: $gris;
+        margin: 0 auto;
+    }
+    &__blocs {
+        align-content: space-around;
+        height: 100%;
+    }
+}
+// Section utilité du site
+.use-list {
+    &__item {
+        position: relative;
+        @include flex-col-between-center;
+        height: 295px;
+        background-color: $gris-fonce;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 25px;
+        text-align: center;
+        z-index: 2;
+        &__icon {
+            height: 59px;
+            transform: rotate(12deg);
+            width: 67px;
+            color: white;
+            @include back-img-contain;
+            background-color: $gris-fonce;
+        }
+        &__txt {
+            font-weight: normal;
+        }
+        &__titre {
+            font-size: 2.3rem;
+        }
+        i {
+            font-size: 70px;
+            transform: rotate(-10deg);
+        }
+        &__ombre {
+            height: 38px;
+            width: calc(100% - 15px - 15px);
+            background-color: $bleu;
+            border-radius: 10px;
+            position: absolute;
+            top: calc(100% - 20px);
+            left: 15px;
+            z-index: 1;
+        }
+    }
+    &__blocs {
+        align-content: space-around;
+        height: 100%;
+        padding-bottom: 100px;
+    }
+}
+
+// Section définition accessibilité
+.def {
+    &__blocs {
+        align-content: space-around;
+        height: 100%;
+    }
+    &__illu {
+        @include back-img-contain;
+        height: 100%;
+        background-color: transparent;
+    }
+    &__txt {
+        &__citation {
+            margin: 20px 5px 20px 35px;
+            @include expletus;
+            font-weight: bold;
+            font-size: 2.0rem;
+            line-height: 2.3rem;
+            position: relative;
+            &:before {
+                content : "«";
+                color: $bleu;
+                position: absolute;
+                left: -22px;
+                font-size: 2.5rem;
+                top: 0px;
+            }
+            &:after {
+                content : "\BB";
+                color: $bleu;
+                position: relative;
+                right: 0;
+                bottom: 0px;
+            }
+        }
+    }
 }
