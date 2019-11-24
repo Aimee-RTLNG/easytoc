@@ -29,6 +29,12 @@
     justify-content: space-between;
     align-items: center; 
 }
+@mixin flex-col-center-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
 @mixin flex-col-arround-start {
     display: flex;
     flex-direction: column;
@@ -55,6 +61,12 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+@mixin back-img-contain {
+    background-color: $gris-fonce;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 // -------- Shadow ----------//
 @mixin shadow-box {
@@ -69,5 +81,5 @@
     font-family: 'Expletus Sans', cursive, sans-serif;
 }
 @mixin acumin {
-    font-family: "Nunito", sans-serif;
+    font-family: "Roboto", sans-serif;
 }

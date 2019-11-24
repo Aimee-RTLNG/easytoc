@@ -11,7 +11,8 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">        <!-- Style -->
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
@@ -42,8 +43,8 @@
                 </ul>
 
                     <ul class="navbar-nav mr-auto text-light menu-lang">
-                        <a class="text-light" href="{{ route('setlang', 'en') }}">{{ __('EN') }}</a>
-                        <a class="text-light" href="{{ route('setlang', 'fr') }}">{{ __('FR') }}</a>
+                        <a class="text-light link-flag" href="{{ route('setlang', 'en') }}"> <div class="flag flag-en" style="background-image: url('./images/en.png');"></div> {{ __('EN') }}</a>
+                        <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}"><div class="flag flag-fr" style="background-image: url('./images/fr.png');"></div> {{ __('FR') }}</a>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto menu-connect">

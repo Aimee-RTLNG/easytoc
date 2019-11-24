@@ -14,8 +14,8 @@
                             @csrf
                            <div>
                                 <div class="connect-network connect-network--connexion">
-                                    <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Facebook</a>
-                                    <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Google</a>
+                                    <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img">{{ __('Connexion') }} Facebook</a>
+                                    <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" class="connect-network__img">{{ __('Connexion') }} Google</a>
                                 </div>
                                 <p class="commentaire">Tous les champs sont obligatoires</p>
                            </div>
@@ -34,7 +34,7 @@
                                 <label for="password" class="form-label">{{ __('Mot de passe') }}</label>
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                    <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
+                                    <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
                                         <i class="far fa-eye"></i>
                                     </button>
                                 </div>
