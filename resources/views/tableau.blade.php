@@ -33,7 +33,13 @@
                 @include('common.errors')
         
                 @guest
-
+                    <form action="{{ route('content.store') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="type_id" value="2">
+                        <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
+                        <textarea type="text" name="description" placeholder="description">{{ old('description') }}</textarea>
+                        <textarea type="text" name="html" placeholder="html">{{ old('html') }}</textarea>
+                    </form>
 
                 @else 
                     <form action="{{ route('content.store') }}" method="post">
