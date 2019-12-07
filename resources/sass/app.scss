@@ -1,1 +1,20 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Mixin (Flexbox)
+@import 'mixin';
+@import '_global';
+@import '_header';
+@import '_footer';
+@import '_inscription';
+@import '_auth';
+
+// Ajouts Aimee 
+@import '_form'; // pas en sass
+@import '_profile';
