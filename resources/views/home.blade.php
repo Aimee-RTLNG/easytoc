@@ -16,25 +16,31 @@
                                 Easy to C peut vous aider dans cette démarche.
                         </p>
                         <div class="home-present__txt__btn">
-                            <a href="" class="btn-primary btn-form-final">
-                                <i class="fas fa-arrow-right"></i>
-                                <p>Commencer un projet</p>
-                            </a>
-                            <a href="" class="btn-primary btn-form-final">
+                            <div class="dropdown btn-primary btn-form-final">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-arrow-right"></i> Commencer un projet
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="menu">Menu</a>
+                                        <a class="dropdown-item" href="formulaire">Formulaire</a>
+                                        <a class="dropdown-item" href="tableau">Tableau</a>
+                                    </div>
+                            </div>
+                            <a href="register" class="btn-primary btn-form-final">
                                 <i class="fas fa-arrow-right"></i>
                                 <p>S'inscrire</p>
                             </a>
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li>Pourquoi rendre son site accessible ?</li>
-                            <li>Pourquoi rendre son site accessible ?</li>
-                            <li>Pourquoi rendre son site accessible ?</li>
+                            <li><a href="#reasons">Pourquoi rendre son site accessible ?</a></li>
+                            <li><a href="#tools">Comment Easy to C peut m'aider ?</a></li>
+                            <li><a href="#how">Comment fonctionnent les outils Easy to C ?</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="home-present__video">
-µ                        <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
+                        <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
                         <div class="video-yt__btn">
                             <a class="btn-primary btn-form-final" href="#">Auto-Description</a>
                             <a class="btn-primary btn-form-final" href="#">Activer les sous-titres</a>
@@ -44,7 +50,7 @@
             </div>
         </div>
     </section>
-    <section class="home-tools section-home">
+    <section class="home-tools section-home" id="tools">
         <div class="container">
             <div class="row home-tools__blocs">
                 <div class="col-12">
@@ -60,7 +66,7 @@
                             <h3 class="home-tools__item__name">Menu</h3>
                             <div class="home-tools__underline"></div>
                             <p class="home-tools__item__descr">
-                                Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Sin autem ad adulescentiam perduxissent, direm.
+                                Nous vous proposons un outil de création de menu de navigation pour votre site. Vous pouvez le personnaliser et même ajouter plusieurs niveaux de profondeurs : il sera accessible par tous vos utilisateurs !
                             </p>
                             <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
                         </div>
@@ -75,7 +81,7 @@
                             <h3 class="home-tools__item__name">Tableau</h3>
                             <div class="home-tools__underline"></div>
                             <p class="home-tools__item__descr">
-                                Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Sin autem ad adulescentiam perduxissent, direm.
+                                Il est parfois compliqué de rendre un tableau de données lisible et compréhensible par tous. C'est pourquoi vous pouvez créer un tableau via notre outil : il sera formatté pour être accessible, peu importe les données.
                             </p>
                             <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
                         </div>
@@ -90,7 +96,7 @@
                             <h3 class="home-tools__item__name">Formulaire</h3>
                             <div class="home-tools__underline"></div>
                             <p class="home-tools__item__descr">
-                                Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Sin autem ad adulescentiam perduxissent, direm.
+                                Un formulaire de contact est très utile pour communiquer avec vos internautes : pour obtenir le plus de réponses possibles, il est important d'avoir un formulaire accessible. Notre outil vous aidera à faire cela.
                             </p>
                             <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
                         </div>
@@ -99,7 +105,7 @@
             </div>
         </div>
     </section>
-    <section class="section-home use-list">
+    <section class="section-home use-list" id="how">
         <div class="container">
             <div class="row use-list__blocs">
                 <div class="col-12">
@@ -111,7 +117,7 @@
                         <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                         <h3 class="use-list__item__titre">Améliorer la visibilité</h3>
                         <p class="use-list__item__txt">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            Les utilisateurs de votre site doivent pouvoir voir tout le contenu important proposé : avec Easy to C, peu importe l'affichage ou la vue de l'utilisateur, votre contenu sera perceptible par tous, de la façon dont vous le souhaitez.
                         </p>
                     </div>
                     <div class="use-list__item__ombre"></div>
@@ -121,7 +127,7 @@
                         <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                         <h3 class="use-list__item__titre">Rendre l'intéraction facile</h3>
                         <p class="use-list__item__txt">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            Avec Easy to C, les utilisateurs pourront utiliser vos composants d'interface utilisateur et naviguer dans le contenu, même si ils ne peuvent pas utiliser de souris ou clavier, ou s'ils sont sur un écran tactile. 
                         </p>
                     </div>
                     <div class="use-list__item__ombre"></div>
@@ -129,9 +135,9 @@
                 <div class="col-4">
                     <div class="use-list__item">
                         <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
-                        <h3 class="use-list__item__titre">Etre compris sans être vu</h3>
+                        <h3 class="use-list__item__titre">Etre compris par tous</h3>
                         <p class="use-list__item__txt">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            Les composants crées avec les outils Easy to C permettront aux utilisateurs de comprendre les informations transmises, sans confusion ou doutes. Avec nos différents guides, vous pourrez également adapter votre contenu.
                         </p>
                     </div>
                     <div class="use-list__item__ombre"></div>
@@ -139,7 +145,7 @@
             </div>
         </div>
     </section>
-    <section class="section-home def">
+    <section class="section-home def" id="reasons">
         <div class="container">
             <div class="row def__blocs">
                 <div class="col-12">
@@ -148,11 +154,11 @@
                 </div>
                 <div class="col-4">
                    <div class="def__txt">
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
+                        <p>Lorsque l’on vous parle d’accessibilité numérique, vous pensez sûrement en priorité à une partie de la population : les personnes handicapées. Vous n’avez pas tout à fait tort car cette catégorie de personnes possède des besoins particuliers qui doivent être pris en compte, notamment dans la création de sites web.
                         </p>
                         <p class="def__txt__citation"> L’accessibilité pourrait être considérée comme une source d’opportunités et de développement par les acteurs du Web.
                         </p>
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
+                        <p>Par exemple, les personnes aveugles doivent pouvoir accéder aux informations des sites internet comme les autres, grâce à du matériel dédié, permettant de restituer la page sous forme audio ou en braille. Une personne sourde doit également avoir la possibilité de mettre des sous-titres sur une vidéo et les internautes handicapés moteur doivent avoir la possibilité de naviguer uniquement à l’aide du clavier. Par exemple, les personnes aveugles doivent pouvoir accéder aux informations des sites internet comme les autres, grâce à du matériel dédié, permettant de restituer la page sous forme audio ou en braille. 
                         </p>
                    </div>
                 </div>
@@ -161,12 +167,12 @@
                 </div>
                 <div class="col-4">
                     <div class="def__txt">
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
-                            </p>
-                            <p class="def__txt__citation">L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais comme un outil favorisant l’inclusion sociale.
-                            </p>
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
-                            </p>
+                        <p>Une personne sourde doit également avoir la possibilité de mettre des sous-titres  De plus, cette “partie infime de la population” représente 80 millions de personnes en Europe : l’accessibilité numérique est donc primordiale pour ces individus et leur permet une meilleure intégration sociale. 
+                        </p>
+                        <p class="def__txt__citation">L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais comme un outil favorisant l’inclusion sociale.
+                        </p>
+                        <p>L’accessibilité ne touche pas seulement cette catégorie de personne spécifique, mais bel et bien tous les individus utilisant le web. Effectivement, de nombreux utilisateurs peuvent rencontrer des difficultés d’accès aux services en ligne : les personnes connectées en bas débit, peu compétentes au niveau informatique, équipées de configurations spécifiques, ou encore les seniors, de plus en plus présents sur le web. L’accessibilité numérique serait alors utile à toutes les sphères de la société et à tous les individus : il semble donc nécessaire de la mettre en place rapidement.
+                        </p>
                     </div>
                 </div>
             </div>

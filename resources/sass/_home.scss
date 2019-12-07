@@ -121,7 +121,7 @@
         margin: 0 auto;
     }
     &__blocs {
-        align-content: space-around;
+        align-content: space-evenly;
         height: 100%;
     }
 }
@@ -167,7 +167,7 @@
         }
     }
     &__blocs {
-        align-content: space-around;
+        align-content: space-evenly;
         height: 100%;
         padding-bottom: 100px;
     }
@@ -176,7 +176,7 @@
 // Section définition accessibilité
 .def {
     &__blocs {
-        align-content: space-around;
+        align-content: space-evenly;
         height: 100%;
     }
     &__illu {

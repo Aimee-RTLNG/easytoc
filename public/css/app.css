@@ -11576,7 +11576,7 @@ h2 {
 }
 
 .home-tools__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
 }
 
@@ -11632,13 +11632,13 @@ h2 {
 }
 
 .use-list__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
   padding-bottom: 100px;
 }
 
 .def__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
 }
 
