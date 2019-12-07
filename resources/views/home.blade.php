@@ -7,7 +7,7 @@
     <section class="home-present section-home">
         <div class="container">
             <div class="row">
-                <div class="col-5">
+                <div class="col-xl-5 col-6">
                     <div class="home-present__txt">
                         <h2 class="home-present__txt__titre section-home__title">Laissez nous vous aider à rendre votre site web plus accessible</h2>
                         <p class="home-present__txt__descr">Pour certaines personnes, l’accès aux ressources web est difficile et pénible.
@@ -26,15 +26,15 @@
                             </a>
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li>Pourquoi rendre son site accessible ?</li>
-                            <li>Pourquoi rendre son site accessible ?</li>
-                            <li>Pourquoi rendre son site accessible ?</li>
+                            <li><a href="#">Pourquoi rendre son site accessible ?</a></li>
+                            <li><a href="#">Comment Easy to C peut m’aider ?</a></li>
+                            <li><a href="#">Comment fonctionnent les outils Easy to C ?</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-xl-7 col-6">
                     <div class="home-present__video">
-µ                        <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
+                        <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
                         <div class="video-yt__btn">
                             <a class="btn-primary btn-form-final" href="#">Auto-Description</a>
                             <a class="btn-primary btn-form-final" href="#">Activer les sous-titres</a>
@@ -60,7 +60,7 @@
                             <h3 class="home-tools__item__name">Menu</h3>
                             <div class="home-tools__underline"></div>
                             <p class="home-tools__item__descr">
-                                Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Sin autem ad adulescentiam perduxissent, direm.
+                                Un menu simple et design. Il permettra à vos utilisateur de naviguer paisiblement sur votre site web. Il suffit de quelques clics pour faire disparaître la complexité du code et faire apparaître le menu dont vous avez besoin.
                             </p>
                             <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
                         </div>
@@ -75,7 +75,7 @@
                             <h3 class="home-tools__item__name">Tableau</h3>
                             <div class="home-tools__underline"></div>
                             <p class="home-tools__item__descr">
-                                Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Sin autem ad adulescentiam perduxissent, direm.
+                                Facile à analyser, code optimisé et accessible. Ses fonctionnalités permettent la création de lignes et colonnes à l’infini ainsi que la composition de cases à fusionner et bien d’autres fonctions encore.
                             </p>
                             <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
                         </div>
@@ -90,8 +90,7 @@
                             <h3 class="home-tools__item__name">Formulaire</h3>
                             <div class="home-tools__underline"></div>
                             <p class="home-tools__item__descr">
-                                Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Sin autem ad adulescentiam perduxissent, direm.
-                            </p>
+                               Afin de recevoir des réponses favorables sur vos formulaires, il faut se poser la question : est-ce que tout le monde peut y répondre ? EasyToC vous permet de manipuler tous types de champs de formulaire pour créer celui dont vous avez besoin.                             </p>
                             <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
                         </div>
                     </div>
@@ -111,7 +110,7 @@
                         <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                         <h3 class="use-list__item__titre">Améliorer la visibilité</h3>
                         <p class="use-list__item__txt">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            Un site web accessible reflète un code optimisé, c’est à dire quelque chose de propre. Et même si vos utilisateur ne le vois pas, votre navigateur passe plus de temps sur vos pages et ainsi favorise votre référencement naturel. Ce qui permet d’être mieux vu et par tous. 
                         </p>
                     </div>
                     <div class="use-list__item__ombre"></div>
@@ -121,7 +120,7 @@
                         <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                         <h3 class="use-list__item__titre">Rendre l'intéraction facile</h3>
                         <p class="use-list__item__txt">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            Interagir avec une page internet peut parfois s’avérer contraignant. Une erreur de code peut  gêner vos utilisateur, qui mécontent ou simplement désarçonner quitte le site. EasyToC vous guide, pour ne pas commettre d’erreurs et ainsi penser au confort de vos utilisateurs.
                         </p>
                     </div>
                     <div class="use-list__item__ombre"></div>
@@ -131,7 +130,7 @@
                         <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
                         <h3 class="use-list__item__titre">Etre compris sans être vu</h3>
                         <p class="use-list__item__txt">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            Négliger l’accessibilité d’un site web peut provoquer la perte de nombreux prospects. C’est pourquoi, EasyToC permet à vos utilisateur de voir et de comprendre vos contenus sans pour autant avoir la capacité de voir. Notamment avec la compatibilité de son code et les lecteurs d’écrans.
                         </p>
                     </div>
                     <div class="use-list__item__ombre"></div>
@@ -148,11 +147,13 @@
                 </div>
                 <div class="col-4">
                    <div class="def__txt">
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
+                        <p>
+                            <span class="citation">"Mettre le Web et ses services à la disposition de tous les individus, quels que soient leur matériel ou logiciel, leur infrastructure réseau, leur langue maternelle, leur culture, leur localisation, géographique, ou leurs aptitudes physiques ou mentales."</span>
+                            Voici la définition de l'accessibilité. Nous pouvons souvent avoir une image réductrice de l’accessibilité en pensant qu’il s’agit uniquement d’adaptements pour les handicapés mais ce terme concerne bien plus de monde. C’est ce qui est transcrit à travers de cette définition.
                         </p>
                         <p class="def__txt__citation"> L’accessibilité pourrait être considérée comme une source d’opportunités et de développement par les acteurs du Web.
                         </p>
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
+                        <p> Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels.
                         </p>
                    </div>
                 </div>
@@ -161,12 +162,12 @@
                 </div>
                 <div class="col-4">
                     <div class="def__txt">
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
-                            </p>
-                            <p class="def__txt__citation">L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais comme un outil favorisant l’inclusion sociale.
-                            </p>
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, 
-                            </p>
+                        <p>En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.
+                        </p>
+                        <p class="def__txt__citation">L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais comme un outil favorisant l’inclusion sociale.
+                        </p>
+                        <p>L’Europe parle de l’accessibilité numérique comme d’une obligation citoyenne : une plus large diffusion de produits et services numériques accessibles favorise l’insertion professionnelle, l’intégration sociale et un cadre de vie autonome.
+                        </p>
                     </div>
                 </div>
             </div>

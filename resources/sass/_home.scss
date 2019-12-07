@@ -51,6 +51,11 @@
                 font-weight: 900;
                 padding-right: 20px;
             }
+            li:hover:before{
+                position: relative;
+                left: 10px;
+                transition: left 0.5s;
+            }
         }
         &__btn {
             @include flex-row-between-center;
@@ -134,11 +139,12 @@
         background-color: $gris-fonce;
         border-radius: 10px;
         color: white;
-        padding: 15px 25px;
+        padding: 15px 19px;
         text-align: center;
         z-index: 2;
         &__icon {
             height: 59px;
+            min-height: 59px;
             transform: rotate(12deg);
             width: 67px;
             color: white;
@@ -207,6 +213,25 @@
                 right: 0;
                 bottom: 0px;
             }
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) { 
+    .home-present__video {
+        padding-left: 0px;
+    }
+    .video-yt {
+        height: 256px;
+    }
+    .home-tools__item__txt a {
+        height: 36px;
+    }
+    .use-list__item {
+        padding: 8px 14px;
+        &__icon {
+            height: 39px;
+            min-height: 39px;
         }
     }
 }

@@ -10672,6 +10672,11 @@ h2 {
   margin: 0px;
 }
 
+.citation {
+  font-style: italic;
+  font-weight: 300;
+}
+
 .commentaire {
   font-size: 1.2rem;
   font-style: italic;
@@ -11483,6 +11488,12 @@ h2 {
   padding-right: 20px;
 }
 
+.home-present__txt__tips li:hover:before {
+  position: relative;
+  left: 10px;
+  transition: left 0.5s;
+}
+
 .home-present__txt__btn {
   display: flex;
   justify-content: space-between;
@@ -11590,13 +11601,14 @@ h2 {
   background-color: #171819;
   border-radius: 10px;
   color: white;
-  padding: 15px 25px;
+  padding: 15px 19px;
   text-align: center;
   z-index: 2;
 }
 
 .use-list__item__icon {
   height: 59px;
+  min-height: 59px;
   transform: rotate(12deg);
   width: 67px;
   color: white;
@@ -11675,5 +11687,28 @@ h2 {
   position: relative;
   right: 0;
   bottom: 0px;
+}
+
+@media (max-width: 1199.98px) {
+  .home-present__video {
+    padding-left: 0px;
+  }
+
+  .video-yt {
+    height: 256px;
+  }
+
+  .home-tools__item__txt a {
+    height: 36px;
+  }
+
+  .use-list__item {
+    padding: 8px 14px;
+  }
+
+  .use-list__item__icon {
+    height: 39px;
+    min-height: 39px;
+  }
 }
 

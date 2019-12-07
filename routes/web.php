@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/aide', 'HomeController@aide')->name('aide');
 Route::get('/mentions_legales', 'HomeController@mentions_legales')->name('mentions_legales');
-Route::get('/cgu', 'HomeController@cgu')->name('cgu');
+Route::get('/cgu', 'HomeControllers@cgu')->name('cgu');
 
 // ROUTE WIDGETS
 Route::get('/menu', 'MenuController@index')->name('menu');
