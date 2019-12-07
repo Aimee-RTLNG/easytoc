@@ -11,8 +11,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/run_prettify.js */ "./resources/js/components/run_prettify.js");
 
-__webpack_require__(/*! ./components/profile/profile.js */ "./resources/js/components/profile/profile.js");
-
 __webpack_require__(/*! ./components/form.js */ "./resources/js/components/form.js");
 /*
 import Vue from 'vue';
@@ -258,7 +256,7 @@ $('.add-element').on('click', function () {
     }
 
     actions_content = $('#form-actions').html();
-  } else if (element_type == "type-question") {
+  } else if (element_type == "type-question" && (element_type_name == "insert-one_answer" || element_type_name == "insert-many_answer" || element_type_name == "insert-list_answer")) {
     // on ajoute l'element mais aussi plusieurs réponses exemple
     switch (element_type_name) {
       case "insert-one_answer":
@@ -312,126 +310,6 @@ $('#btn-save-project').on('click', function () {
     console.log(xhr.responseText);
     console.log(status);
     console.log(error);
-  });
-});
-
-/***/ }),
-
-/***/ "./resources/js/components/profile/profile.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/profile/profile.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// Voir les mots de passes
-$(".btn-seepassword__icon").on('click', function () {
-  var password_input = $(this).parent().find('input')[0];
-  var vision_button_icon = $(this).find('i')[0];
-
-  if (password_input.type === "password") {
-    password_input.type = "text";
-    vision_button_icon.className = "far fa-eye-slash";
-  } else {
-    password_input.type = "password";
-    vision_button_icon.className = "far fa-eye";
-  }
-});
-$('input[type="password"').on('keyup', function (event) {
-  var text = $(this).parent().parent().find("span.warning-block")[0];
-
-  if (event.originalEvent.getModifierState("CapsLock")) {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-});
-$('input[type="password"').on('focusout', function () {
-  var text = $(this).parent().parent().find("span.warning-block")[0];
-  text.style.display = "none";
-}); // Ajout de la classe Active sur le bouton filtre
-
-var btnContainer = document.getElementById("list-filters");
-var btns = btnContainer.getElementsByClassName("btn-filter-type");
-
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function () {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-} // Filtres par type
-
-
-$("#list-filters .btn-filter-type").on('click', function () {
-  var filter_type = $(this).attr('data-type');
-
-  switch (filter_type) {
-    case "all":
-      $('.list-element').fadeIn();
-      break;
-
-    default:
-      $('.list-element').hide();
-      $('.list-element[data-type=' + filter_type + ']').fadeIn();
-      break;
-  }
-});
-var full_list = $(".full-list");
-
-function sortList(order) {
-  var sorted_list = full_list.children('.list-element').detach().get();
-
-  switch (order) {
-    case "ascending":
-      sorted_list.sort(function (a, b) {
-        return new Date($(b).data("date")) - new Date($(a).data("date"));
-      });
-      full_list.append(sorted_list);
-      break;
-
-    case "descending":
-      sorted_list.sort(function (a, b) {
-        return new Date($(a).data("date")) - new Date($(b).data("date"));
-      });
-      full_list.append(sorted_list);
-      break;
-  }
-} // Filtres par nom
-
-
-$("#list-filters .btn-filter-date").on('click', function () {
-  if (!$(this).hasClass('active')) {
-    $(this).addClass('active');
-  }
-
-  var filter_date = $(this).attr('data-date');
-
-  switch (filter_date) {
-    case "all":
-      sortList("descending");
-      $(this).removeClass('active');
-      $(this).attr('data-date', "old");
-      $(".fas", this).attr('class', 'fas fa-sort');
-      break;
-
-    case "old":
-      sortList("descending");
-      $(this).attr('data-date', "recent");
-      $(".fas", this).attr('class', 'fas fa-sort-down');
-      break;
-
-    case "recent":
-      sortList("ascending");
-      $(this).attr('data-date', "old");
-      $(".fas", this).attr('class', 'fas fa-sort-up');
-      break;
-  }
-});
-$('.filter-name input').on('keyup', function () {
-  var value = $(this).val().toLowerCase();
-  $(".full-list .list-element").filter(function () {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
   });
 });
 
@@ -1216,8 +1094,8 @@ $('.filter-name input').on('keyup', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

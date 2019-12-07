@@ -1,7 +1,6 @@
 require('./bootstrap');
 
 require('./components/run_prettify.js');
-require("./components/profile/profile.js");
 
 require('./components/form.js');
 

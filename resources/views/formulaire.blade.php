@@ -313,7 +313,12 @@
             </div>
    </div>
    
-   {{-- Script PRETTIFY + skin --}}
-   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
+   
 
+@endsection
+
+@section('pagespecificscripts')
+    <script type="application/javascript" src="{{ asset('/resources/js/components/form.js') }}"></script>
+    {{-- Script PRETTIFY + skin --}}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection

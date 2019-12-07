@@ -10696,6 +10696,10 @@ h2 {
   margin-top: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
 .flag {
   background-color: black;
   background-size: cover;

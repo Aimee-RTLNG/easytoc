@@ -113,5 +113,8 @@
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
 
+        <!-- page specific scripts -->
+        @yield('pagespecificscripts')
+
     </body>
 </html>

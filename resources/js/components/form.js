@@ -152,7 +152,7 @@ $('.add-element').on('click', function () {
             $('#form-actions').html(element_content + actions_content);
         }
         actions_content = $('#form-actions').html();
-    } else if (element_type == "type-question") {
+    } else if (element_type == "type-question" && ( element_type_name=="insert-one_answer" || element_type_name=="insert-many_answer" || element_type_name=="insert-list_answer")) {
         // on ajoute l'element mais aussi plusieurs réponses exemple
         switch (element_type_name) {
             case "insert-one_answer":
