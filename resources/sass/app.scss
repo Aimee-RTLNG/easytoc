@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
+// @import '_fonts';
 @import 'variables';
 
 // Bootstrap
@@ -14,7 +15,10 @@
 @import '_footer';
 @import '_inscription';
 @import '_auth';
+@import '_home';
 
 // Ajouts Aimee 
 @import '_form'; // pas en sass
 @import '_profile';
+
+

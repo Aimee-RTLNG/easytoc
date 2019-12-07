@@ -6,6 +6,9 @@ body {
     font-size: 1.4rem;
     @include acumin;
 }
+.btn-primary {
+    @include expletus;
+}
 a {
     color: inherit;
     &:hover {
