@@ -11,9 +11,9 @@
 |
 */
 
-// Route::resource('/', 'HomeController');
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/', 'HomeController');
+// Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/aide', 'HomeController@aide')->name('aide');
 Route::get('/mentions_legales', 'HomeController@mentions_legales')->name('mentions_legales');
