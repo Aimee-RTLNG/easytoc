@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title> @yield('titre') </title>
 
@@ -41,7 +42,6 @@
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a></li>
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">{{ __('Aide') }}</a></li>
                 </ul>
-
                     <ul class="navbar-nav mr-auto text-light menu-lang">
                         <a class="text-light link-flag" href="{{ route('setlang', 'en') }}"> <div class="flag flag-en" style="background-image: url('./images/en.png');"></div> {{ __('EN') }}</a>
                         <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}"><div class="flag flag-fr" style="background-image: url('./images/fr.png');"></div> {{ __('FR') }}</a>
@@ -52,12 +52,12 @@
                         @guest
                             @if (Route::has('register'))
                                 <li class="nav-item btn-connect ">
-                                    <div class="btn-connect__icon"><i class="fas fa-arrow-right"></i></div>
+                                    <div class="btn-connect__icon"><i class="fas fa-pen"></i></div>
                                     <a class=" btn-connect__link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item btn-connect btn-connect--two">
-                                <div class="btn-connect__icon"><i class="fas fa-pen"></i></div>
+                                <div class="btn-connect__icon"><i class="fas fa-arrow-right"></i></div>
                                 <a class=" btn-connect__link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             </li>
                         @else

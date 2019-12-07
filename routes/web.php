@@ -52,4 +52,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/profile/{user}/password', 'Profile\ProfileController@updatePass')->name('profile.updatePass');
 });
 
+// Content
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/content', 'ContentController@index')->name('content.index');
+    Route::get('/content/{content}', 'ContentController@show')->name('content.show')->where('content', '[0-9]+');
+    Route::get('/content/create', 'ContentController@create')->name('content.create');
+    Route::post('/content/create', 'ContentController@store')->name('content.store');
+    Route::get('/content/{content}/edit', 'ContentController@edit')->name('content.edit')->where('content', '[0-9]+');
+    Route::put('/content/{content}/edit', 'ContentController@update')->name('content.update')->where('content', '[0-9]+');
+    Route::delete('/content/{content}', 'ContentController@destroy')->name('content.destroy')->where('content', '[0-9]+');
+});

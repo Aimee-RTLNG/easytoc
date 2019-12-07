@@ -1,0 +1,89 @@
+.full-list {
+    overflow: hidden;
+}
+
+
+.profile_content {
+
+    margin-bottom: 30px;
+
+    h2 {
+        margin: 20px 0;
+    }
+}
+
+.account-infos {
+    border-left: 1px solid rgba(214, 214, 214, 0.637);
+}
+
+.type-pin {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 30px;
+
+    &[data-type="Menu"] {
+        background-color: rgb(226, 95, 95);
+    }
+
+    &[data-type="Table"] {
+        background-color: rgb(90, 180, 68);
+    }
+
+    &[data-type="Form"] {
+        background-color: rgb(43, 139, 177);
+    }
+
+}
+
+.list-element {
+
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px auto;
+
+    .element-info {
+        align-items: center;
+    }
+
+    .type-name {
+        font-style: italic;
+    }
+
+    .see-content-button:hover {
+        font-weight: bold;
+    }
+
+    .btn {
+        margin: 0 10px;
+    }
+
+}
+
+.show {
+    display: block;
+}
+
+#list-filters {
+
+    .btn {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #ddd;
+    }
+
+    .btn.active {
+        background-color: #666;
+        color: white;
+    }
+
+}

@@ -1,0 +1,68 @@
+body {
+    background-color: #fafafa;
+}
+
+/* utile */
+
+.hidden {
+    /* attention : en utilisant cette classe, il faut ajouter aria-hidden="true" à l'élement */
+    display: none;
+}
+
+/* style du blueprint */
+
+    #content-created-blueprint {
+        background-color: #f2f2f2;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+    }
+
+/* style du preview */
+
+
+    #content-created-preview {
+        padding: 2em;
+    }
+
+/* style du code généré */
+
+    xmp{
+        margin: 0;
+        padding: 0;
+        white-space: pre-line;
+        display: inherit;
+    }
+
+    pre.prettyprinted{
+        font-size: 100% !important;
+        margin: 0 !important;
+        padding: 1.5em !important;
+        width: 100% !important;
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+        border-bottom-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        background-color: #212529;
+    }
+
+
+/* style de l'interface actions */
+
+#content-created-blueprint form *{
+    border: 3px dotted rgba(0,0,0,0);
+    padding: 5px;
+    cursor: text;
+}
+
+#content-created-blueprint form *:hover{
+    border: 3px dotted black;
+}
+
+form {
+    border: 0 !important;
+}
+
+easytoc, easytoc *:hover, easytoc:hover {
+    cursor: pointer !important;
+    padding: 0px !important;
+    border: 3px dotted rgba(0,0,0,0) !important;
+}
