@@ -122,37 +122,42 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#content-created-blueprint').html('<form id="generated-form" contenteditable action="#" method="get" name="emailform">\n\t<h1 id="form-title">Titre du formulaire</h1>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input form="generated-form" type="submit" value="Envoyer" accesskey="s">\n</div>\n'); // OBTENIR LE NB DE CARACTERES RESTANTS
+// Contenu initial du formulaire 
+var initial_content = '<form id="generated-form" contenteditable action="#" method="get" name="emailform">\n\t<h1 id="form-title">Titre du formulaire</h1>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input form="generated-form" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
+$('#content-created-blueprint').html(initial_content); // Données initiales (user id et type id)
 
-$('#exampleFormControlTextarea1').keypress(function (e) {
-  var tval = $('#exampleFormControlTextarea1').val(),
+var user_id = $('input[name=user_id]').val();
+var type_id = $('input[name=type_id]').val();
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // Caractères restants Description du projet
+
+$('#desc-input').keypress(function (e) {
+  var tval = $('#desc-input').val(),
       tlength = tval.length,
       set = 200,
       remain = parseInt(set - tlength);
   $('#chara-desc-remains').text(remain + " caractères restants");
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
-    $('#exampleFormControlTextarea1').val(tval.substring(0, tlength - 1));
+    $('#desc-input').val(tval.substring(0, tlength - 1));
   }
-});
-$('#exampleFormControlInput1').keypress(function (e) {
-  var tval = $('#exampleFormControlInput1').val(),
+}); // Titre du projet
+
+$('#title-input').keypress(function (e) {
+  var tval = $('#title-input').val(),
       tlength = tval.length,
       set = 30,
       remain = parseInt(set - tlength);
   $('#chara-title-remains').text(remain + " caractères restants");
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
-    $('#exampleFormControlInput1').val(tval.substring(0, tlength - 1));
+    $('#title-input').val(tval.substring(0, tlength - 1));
   }
-}); // LISTE DE TOUS LES TAGS POSSIBLES
+}); // Liste de tous les tags possibles dans un formulaire
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // TRAITEMENT DU BLUEPRINT VERS LE PREVIEW
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // Traitement du code vers la prévisualisation
 
 function updatecontent() {
   console.log('Mise a jour du contenu');
-  $('#content-created-preview form').html("");
-  $('#content-created-code').html("");
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
 
   blueprint_content = blueprint_content.replace(/<easytoc (.*?)\>/g, "");
@@ -179,8 +184,21 @@ $('#nav-code-tab').on('click', function () {
   $('#generated-form').attr("action", $('#form-creator-link').val());
   $('#generated-form').attr("method", $('#form-creator-method').val());
   updatecontent();
+});
+$('#form-creator-title').on('keyup', function () {
+  $('#form-title').text($('#form-creator-title').val());
+  updatecontent();
+});
+$('#form-creator-link').on('keyup', function () {
+  $('#generated-form').attr("action", $('#form-creator-link').val());
+  updatecontent();
+});
+$('#form-creator-method').on('change', function () {
+  $('#generated-form').attr("method", $('#form-creator-method').val());
+  updatecontent();
 }); // Actions WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
+// La balise EASYTOC permet de cocher une case quand l'attribut contenteditable est présent
 
 var element_types = {
   "type-question": {
@@ -208,9 +226,10 @@ var element_types = {
     "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
     "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
   }
-};
+}; // Quand on ajoute un élément
+
 $('.add-element').on('click', function () {
-  // permettra d'identifier l'élément
+  // permettra d'identifier l'élément (lui donne un ID aléatoire)
   var element_id = Math.random().toString(36).substr(2, 9); // on différencie les éléments questions, layout, special etc 
 
   var element_type = $(this).attr("class");
@@ -239,7 +258,21 @@ $('.add-element').on('click', function () {
     }
 
     actions_content = $('#form-actions').html();
-  } else if (element_type == "type-question" && element_type_name == "insert-oneanswer") {// on ajoute l'element mais aussi plusieurs réponses exemple
+  } else if (element_type == "type-question") {
+    // on ajoute l'element mais aussi plusieurs réponses exemple
+    switch (element_type_name) {
+      case "insert-one_answer":
+        // code block
+        break;
+
+      case "insert-many_answer":
+        // code block
+        break;
+
+      case "insert-list_answer":
+        // code block
+        break;
+    }
   } else {
     // et on y ajoute l'élément voulu
     $('#content-created-blueprint form').html(previous_content + element_content);
@@ -247,15 +280,40 @@ $('.add-element').on('click', function () {
 
 
   updatecontent();
+}); // Annuler les modifications et redirection
+
+$('#btn-cancel-project').on('click', function () {
+  console.log("Annulation");
+  var answer = window.confirm("Voulez vous vraiment fermer ce projet sans sauvegarder ?");
+
+  if (answer) {
+    window.location.href = "profile/" + user_id + "/view";
+  }
+}); // Sauvegarder les modifications
+
+$('#btn-save-project').on('click', function () {
+  console.log("Sauvegarde");
+  var post_url = $("#full-form-post").attr('action');
+  $.ajax({
+    method: "POST",
+    url: post_url,
+    data: {
+      "_token": csrf_token,
+      "type_id": type_id,
+      "user_id": user_id,
+      "title": $('#title-input').val(),
+      "description": $('#desc-input').val(),
+      "html": $('#raw-code').val()
+    }
+  }).done(function (msg) {
+    console.log(msg);
+    window.location.href = "profile/" + user_id + "/view";
+  }).fail(function (xhr, status, error) {
+    console.log(xhr.responseText);
+    console.log(status);
+    console.log(error);
+  });
 });
-/* ne marche pas 
-$('#btn-save-project').on('click', function(){
-    console.log("ye");
-    $("#full-form-post").submit(function(){
-        console.log("Submitted");
-      });
-})
-*/
 
 /***/ }),
 
@@ -266,6 +324,7 @@ $('#btn-save-project').on('click', function(){
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// Voir les mots de passes
 $(".btn-seepassword__icon").on('click', function () {
   var password_input = $(this).parent().find('input')[0];
   var vision_button_icon = $(this).find('i')[0];
@@ -279,7 +338,6 @@ $(".btn-seepassword__icon").on('click', function () {
   }
 });
 $('input[type="password"').on('keyup', function (event) {
-  // If "caps lock" is pressed, display the warning text
   var text = $(this).parent().parent().find("span.warning-block")[0];
 
   if (event.originalEvent.getModifierState("CapsLock")) {
@@ -289,9 +347,92 @@ $('input[type="password"').on('keyup', function (event) {
   }
 });
 $('input[type="password"').on('focusout', function () {
-  // If "caps lock" is pressed, display the warning text
   var text = $(this).parent().parent().find("span.warning-block")[0];
   text.style.display = "none";
+}); // Ajout de la classe Active sur le bouton filtre
+
+var btnContainer = document.getElementById("list-filters");
+var btns = btnContainer.getElementsByClassName("btn-filter-type");
+
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+} // Filtres par type
+
+
+$("#list-filters .btn-filter-type").on('click', function () {
+  var filter_type = $(this).attr('data-type');
+
+  switch (filter_type) {
+    case "all":
+      $('.list-element').fadeIn();
+      break;
+
+    default:
+      $('.list-element').hide();
+      $('.list-element[data-type=' + filter_type + ']').fadeIn();
+      break;
+  }
+});
+var full_list = $(".full-list");
+
+function sortList(order) {
+  var sorted_list = full_list.children('.list-element').detach().get();
+
+  switch (order) {
+    case "ascending":
+      sorted_list.sort(function (a, b) {
+        return new Date($(b).data("date")) - new Date($(a).data("date"));
+      });
+      full_list.append(sorted_list);
+      break;
+
+    case "descending":
+      sorted_list.sort(function (a, b) {
+        return new Date($(a).data("date")) - new Date($(b).data("date"));
+      });
+      full_list.append(sorted_list);
+      break;
+  }
+} // Filtres par nom
+
+
+$("#list-filters .btn-filter-date").on('click', function () {
+  if (!$(this).hasClass('active')) {
+    $(this).addClass('active');
+  }
+
+  var filter_date = $(this).attr('data-date');
+
+  switch (filter_date) {
+    case "all":
+      sortList("descending");
+      $(this).removeClass('active');
+      $(this).attr('data-date', "old");
+      $(".fas", this).attr('class', 'fas fa-sort');
+      break;
+
+    case "old":
+      sortList("descending");
+      $(this).attr('data-date', "recent");
+      $(".fas", this).attr('class', 'fas fa-sort-down');
+      break;
+
+    case "recent":
+      sortList("ascending");
+      $(this).attr('data-date', "old");
+      $(".fas", this).attr('class', 'fas fa-sort-up');
+      break;
+  }
+});
+$('.filter-name input').on('keyup', function () {
+  var value = $(this).val().toLowerCase();
+  $(".full-list .list-element").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+  });
 });
 
 /***/ }),

@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+
     @if (session('info'))
     <div class="row">
         <div class="col-md-12">
@@ -28,16 +29,83 @@
             <h2 class="entete__title">{{ __('Voici votre espace') }}, {{ $user->name }}</h2>
             <div class="entete__under"></div>
         </div>
-        <div class="row">
-            <div class="col-7 col-md-offset-2">
+        <div class="row profile_content">
+            <div class="col col-md-offset-2">
                 <h2>{{ __('Vos créations') }}</h2>
-                <div class="panel m-5 panel-default full-list">
+                <div>  
+                    <i class="fas fa-plus-circle"></i>
+                    <select onchange="location = this.value;">
+                        <option selected disabled>{{ __('Créer un projet') }}</option>
+                        <option value="{{ route('menu') }}">{{ __('Menu') }}</option>
+                        <option value="{{ route('formulaire') }}">{{ __('Formulaire') }}</option>
+                        <option value="{{ route('tableau') }}">{{ __('Tableau') }}</option>
+                    </select>
+                </div>
+                <div id="list-filters">
+                    <button class="btn btn-filter-type active" data-type="all">
+                        {{ __('Tout voir') }}
+                        <span class="type-pin type-Menu" data-type="Menu"></span>
+                        <span class="type-pin type-Form" data-type="Form"></span>
+                        <span class="type-pin type-Table" data-type="Table"></span>
+                    </button>
+                    <button class="btn btn-filter-type" data-type="Menu">
+                        {{ __('Menu') }}
+                        <span class="type-pin type-Menu" data-type="Menu"></span>
+                    </button>
+                    <button class="btn btn-filter-type" data-type="Form">
+                        {{ __('Formulaire') }}
+                        <span class="type-pin type-Form" data-type="Form"></span>
+                    </button>
+                    <button class="btn btn-filter-type" data-type="Table">
+                        {{ __('Tableau') }}
+                        <span class="type-pin type-Table" data-type="Table"></span>
+                    </button>
+                    <button class="btn btn-filter-date" data-date="old">
+                        {{ __('Trier par date de modification') }}
+                        <i class="fas fa-sort"></i>
+                    </button>
+                    <div class="filter-name">
+                        <input type="text" placeholder="{{ __('Search') }}">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="panel m-2 panel-default full-list">
                     @foreach ($user->contents as $content)
-                        <div class="d-flex justify-content-between list-element">
+                        <div class="justify-content-between list-element" data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}">
                             <div class="d-flex element-info">
-                                <a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a>
+                                <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
+                                <div>
+                                    <h3><a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a></h3>
+                                    <div class="content-description">
+                                        <p class="content-description-text">{{ $content->description }}</p>
+                                    </div>
+                                    <?php 
+                                        if (App::isLocale('en')) {
+                                    ?>
+                                        <span class="mr-2 type-name type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}">
+                                            {{ $content->type->name_en }}
+                                        </span>
+                                        / 
+                                        <span class="ml-2 type-date">
+                                            {{ $content->updated_at }}
+                                        </span>
+                                    <?php
+                                    }else if (App::isLocale('fr')) {
+                                    ?>
+                                        <span class="mr-2 type-name type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}">
+                                            {{ $content->type->name_fr }}
+                                        </span>
+                                        / 
+                                        <span class="ml-2 type-date">
+                                            {{ $content->updated_at }}
+                                        </span>
+                                    <?php
+                                        }
+                                    ?>
+                                </div>
                             </div>
-                            <div class="d-flex element-actions">
+                            <div class="d-flex flex-column element-actions">
+                                <a class="btn btn-info view-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ __('Visualiser') }}</a>
                                 <a class="btn btn-info edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">{{ __('Modifier') }}</a>
                                 <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                                     @csrf
@@ -49,9 +117,9 @@
                     @endforeach        
                 </div>
             </div>
-            <div class="col-5 col-md-offset-2">
+            <div class="col-4 col-md-offset-2 account-infos">
                 <h2>{{ __('Votre compte') }}</h2>
-                <div class="panel m-5 panel-default">
+                <div class="panel m-2 panel-default">
                     <div class="panel-body">
                         <form id="formInfos" class="form-horizontal" method="POST" action="{{ route('profile.updateInfo', ['user' => $user]) }}">
                             {{ csrf_field() }}
@@ -60,11 +128,10 @@
                             <!-- Identifiants (nom et mot de passe) -->
                             <div>
                                 <h3 class="panel-heading">{{ __('Modifier mes identifiants') }}</h3>
-
                                 <!-- Nom -->
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">{{ __('Nom') }}</label>
-                                    <div class="col-md-6">
+                                    <label for="name" class="control-label">{{ __('Nom') }}</label>
+                                    <div class="col">
                                         <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}">
 
                                         @if ($errors->has('name'))
@@ -77,8 +144,8 @@
 
                                 <!-- Email -->
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">{{ __('Adresse e-mail') }}</label>
-                                    <div class="col-md-6">
+                                    <label for="email" class="control-label">{{ __('Adresse e-mail') }}</label>
+                                    <div class="col">
                                         <input id="email" type="text" class="form-control" name="email" value="{{ $user->email }}">
 
                                         @if ($errors->has('email'))
@@ -91,7 +158,7 @@
 
                                 <!-- Bouton d'envoi -->
                                 <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
+                                    <div class="col">
                                         <button type="submit" form="formInfos" class="btn btn-primary">
                                             {{ __('Enregistrer les informations') }}
                                         </button>
@@ -110,9 +177,9 @@
 
                                 <!-- Nouveau mot de passe-->
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password" class="col-md-4 control-label">{{ __('Nouveau mot de passe') }}</label>
+                                    <label for="password" class="control-label">{{ __('Nouveau mot de passe') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col">
                                         <div class="password-input d-flex">
                                             <input id="password" type="password" class="form-control" name="password">
                                             <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
@@ -135,9 +202,9 @@
 
                                 <!-- Confirmation du nouveau mot de passe-->
                                 <div class="form-group">
-                                    <label for="password-confirm" class="col-md-4 control-label">{{ __('Confimation du nouveau mot de passe') }}</label>
+                                    <label for="password-confirm" class="control-label">{{ __('Confimation du nouveau mot de passe') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col">
                                         <div class="password-input d-flex">
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                             <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
@@ -163,9 +230,9 @@
 
                                     <!-- Vérification du mot de passe actuel -->    
                                     <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
-                                        <label for="current-password" class="col-md-4 control-label">{{ __('Mot de passe actuel') }}</label>
+                                        <label for="current-password" class="control-label">{{ __('Mot de passe actuel') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col">
                                             <div class="password-input d-flex">
                                                 <input id="current-password" type="password" class="form-control" name="current_password">
                                                 <button type="button" class="btn-seepassword__icon" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
@@ -195,7 +262,7 @@
 
                                 <!-- Bouton d'envoi -->      
                                 <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
+                                    <div class="col">
                                         <button type="submit" form="formPassword" class="btn btn-primary">
                                             {{ __('Sauvegarder mon nouveau mot de passe') }}
                                         </button>
