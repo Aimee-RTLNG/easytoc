@@ -86,6 +86,9 @@
     }
 }
 // Section outils
+.slider-tools {
+    display: flex;
+}
 .home-tools {
    &__item {
        @include flex-col-between-center;
@@ -218,6 +221,7 @@
 }
 
 @include media-breakpoint-down(lg) { 
+    //1199
     .home-present__video {
         padding-left: 0px;
     }
@@ -234,4 +238,24 @@
             min-height: 39px;
         }
     }
+}
+@include media-breakpoint-down(md) { 
+    //992
+    .section-home {
+        height: auto;
+        padding: 40px 0px;
+        &__row {
+            flex-direction: column;
+        }
+    }
+    .home-present__txt {
+        padding-bottom: 30px;
+    }
+    .video-yt {
+        height: 390px;
+    }
+    .home-tools__item {
+        margin-bottom: 10px;
+    }
+
 }

@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">        <!-- Style -->
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
-        
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -108,10 +108,9 @@
             </div>
        </div>
     </footer>
-
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
-
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     </body>
 </html>

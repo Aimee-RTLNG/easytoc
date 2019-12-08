@@ -28,13 +28,17 @@
         Le Webmaster est : <strong>Aimee RITLENG</strong><br />
         Contacter le Webmaster : <strong><a href="mailto:aimeeritleng@outlook.com?subject=Contact a partir des mentions lÃ©gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong><br />
         L’hebergeur du site est : <strong>OVH 2 rue Kellermann 59100 Roubaix </strong><br />
-        {{-- <strong><u>CREDIT :</u> </strong> Les mentions légales ont étés générées par<strong> <a href="https://www.generer-mentions-legales.com/generateur-mentions-legales.html" target="_blank">générateur de mentions legales</a></strong><br /></p> --}}
+        <strong><u>CREDIT :</u> </strong> Les mentions légales ont étés générées par<strong> <a
+                href="https://www.generer-mentions-legales.com/generateur-mentions-legales.html"
+                target="_blank">générateur de mentions legales</a></strong><br /></p>
+
     <br />
 
     <h3><strong>2. Présentation et principe :</strong></h3><br />
 
     <p>Est désigné ci-après : <strong>Utilisateur</strong>, tout internaute se connectant et
-        utilisant le site susnommé : <a href="http://easytoc.ritleng.mmi-unistra.fr" target="_blank">easytoc.ritleng.mmi-unistra.fr</a>.<br />
+        utilisant le site susnommé : <a href="http://easytoc.ritleng.mmi-unistra.fr"
+            target="_blank">easytoc.ritleng.mmi-unistra.fr</a>.<br />
         Le site <strong>easytoc.ritleng.mmi-unistra.fr</strong><strong> </strong>regroupe un ensemble de services, dans
         l'état, mis à la disposition des utilisateurs. Il est ici précisé que ces derniers doivent rester courtois et
         faire preuve de bonne foi tant envers les autres utilisateurs qu'envers le webmaster du site
@@ -47,6 +51,8 @@
         utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa
         responsabilité exclusive.</p>
 
+    <br />
+
     <h3><strong>3. Accessibilité :</strong></h3><br />
 
     <p>Le site easytoc.ritleng.mmi-unistra.fr est par principe accessible aux utilisateurs 24/24h, 7/7j, sauf interruption,
@@ -56,9 +62,11 @@
     soumis qu’à une obligation de moyen, easytoc.ritleng.mmi-unistra.fr ne saurait être tenu pour responsable de tout
     dommage, quelle qu’en soit la nature, résultant d’une indisponibilité du service.</p>
 
+    <br />
+
     <h3><strong>4. Propriété intellectuelle :</strong></h3>
 
-    <p>
+    <p><br />
         <em>Aimée RITLENG</em> est propriétaire exclusif de tous les droits de propriété intellectuelle ou détient les
         droits d’usage sur tous les éléments accessibles sur le site, tant sur la structure que sur les textes, images,
         graphismes, logo, icônes, sons, logiciels…<br />
@@ -69,7 +77,8 @@
         constitutive d’une contrefaçon et passible de poursuite conformément aux dispositions des articles L.335-2 et
         suivants du Code de Propriété Intellectuelle.</p>
 
-    <h3><strong>5. Liens hypertextes et cookies :</strong></h3>
+    <h3><br />
+        <strong>5. Liens hypertextes et cookies :</strong></h3><br />
 
     <p>Le site <strong>easytoc.ritleng.mmi-unistra.fr</strong> contient un certain nombre de liens hypertextes vers
     d’autres sites (partenaires, informations …) mis en place avec l’autorisation de <em>Aimée RITLENG</em>. Cependant,
@@ -86,7 +95,7 @@
     cookies, tapez dans votre moteur de recherche : bloquage des cookies sous IE ou firefox et suivez les instructions
     en fonction de votre version.</p>
 
-    <h3><strong>6. Protection des biens et des personnes - gestion des données personnelles :</strong></h3>
+    <h3><br /><strong>6. Protection des biens et des personnes - gestion des données personnelles :</strong></h3><br />
 
     <p>En France, les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n°
     2004-801 du 6 août 2004, l'article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995.</p><br />
@@ -100,7 +109,8 @@
         Conformément aux dispositions des articles 38 et suivants de la loi 78-17 du 6 janvier 1978 relative à
         l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de
         suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à
-        <strong>easytoc.ritleng.mmi-unistra.fr</strong> par email : <strong><a href="mailto:aimeeritleng@outlook.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong>
+        <strong>easytoc.ritleng.mmi-unistra.fr</strong> par email : <strong><a
+                href="mailto:aimeeritleng@outlook.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong>
         ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce,
         en précisant l’adresse à laquelle la réponse doit être envoyée.</p>
     <br />
@@ -114,9 +124,12 @@
         <strong>http://easytoc.ritleng.mmi-unistra.fr/mentions_legales.</strong></p>
 
     <p>Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998
-        transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.</p>
+        transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.</p><br />
+
 
 </div>
+
+
 
 
 

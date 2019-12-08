@@ -11533,6 +11533,10 @@ h2 {
   font-size: 1.2rem;
 }
 
+.slider-tools {
+  display: flex;
+}
+
 .home-tools__item {
   display: flex;
   flex-direction: column;
@@ -11709,6 +11713,29 @@ h2 {
   .use-list__item__icon {
     height: 39px;
     min-height: 39px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .section-home {
+    height: auto;
+    padding: 40px 0px;
+  }
+
+  .section-home__row {
+    flex-direction: column;
+  }
+
+  .home-present__txt {
+    padding-bottom: 30px;
+  }
+
+  .video-yt {
+    height: 390px;
+  }
+
+  .home-tools__item {
+    margin-bottom: 10px;
   }
 }
 

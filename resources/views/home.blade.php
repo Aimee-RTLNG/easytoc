@@ -6,14 +6,14 @@
 @section('content')
     <section class="home-present section-home">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-5 col-6">
+            <div class="row section-home__row">
+                <div class="col-xl-5 col-lg-6">
                     <div class="home-present__txt">
                         <h2 class="home-present__txt__titre section-home__title">Laissez nous vous aider à rendre votre site web plus accessible</h2>
                         <p class="home-present__txt__descr">Pour certaines personnes, l’accès aux ressources web est difficile et pénible.
-                                Rendre les sites accessibles est important pour que chacun, peu importe sa
-                                condition, ait un accès égal aux savoirs et aux connaissances.
-                                Easy to C peut vous aider dans cette démarche.
+                            Rendre les sites accessibles est important pour que chacun, peu importe sa
+                            condition, ait un accès égal aux savoirs et aux connaissances.
+                            Easy to C peut vous aider dans cette démarche.
                         </p>
                         <div class="home-present__txt__btn">
                             <a href="" class="btn-primary btn-form-final">
@@ -32,7 +32,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-7 col-6">
+                <div class="col-xl-7 col-lg-6">
                     <div class="home-present__video">
                         <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
                         <div class="video-yt__btn">
@@ -51,49 +51,51 @@
                     <h2 class="section-home__title">Nous vous proposons trois outils pour vous faciliter la vie</h2>
                     <div class="section-home__underline"></div>
                 </div>
-                <div class="col-4">
-                    <div class="home-tools__item">
-                        <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.png');">
-
+                <div class="slider-tools row">
+                    <div class="col-lg-4 col-md-6">
+                            <div class="home-tools__item">
+                                <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.png');">
+        
+                                </div>
+                                <div class="home-tools__item__txt">
+                                    <h3 class="home-tools__item__name">Menu</h3>
+                                    <div class="home-tools__underline"></div>
+                                    <p class="home-tools__item__descr">
+                                        Un menu simple et design. Il permettra à vos utilisateur de naviguer paisiblement sur votre site web. Il suffit de quelques clics pour faire disparaître la complexité du code et faire apparaître le menu dont vous avez besoin.
+                                    </p>
+                                    <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="home-tools__item__txt">
-                            <h3 class="home-tools__item__name">Menu</h3>
-                            <div class="home-tools__underline"></div>
-                            <p class="home-tools__item__descr">
-                                Un menu simple et design. Il permettra à vos utilisateur de naviguer paisiblement sur votre site web. Il suffit de quelques clics pour faire disparaître la complexité du code et faire apparaître le menu dont vous avez besoin.
-                            </p>
-                            <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="home-tools__item">
+                                <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
+        
+                                </div>
+                                <div class="home-tools__item__txt">
+                                    <h3 class="home-tools__item__name">Tableau</h3>
+                                    <div class="home-tools__underline"></div>
+                                    <p class="home-tools__item__descr">
+                                        Facile à analyser, code optimisé et accessible. Ses fonctionnalités permettent la création de lignes et colonnes à l’infini ainsi que la composition de cases à fusionner et bien d’autres fonctions encore.
+                                    </p>
+                                    <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="home-tools__item">
-                        <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
-
+                        <div class="col-lg-4 col-md-6">
+                            <div class="home-tools__item">
+                                <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
+        
+                                </div>
+                                <div class="home-tools__item__txt">
+                                    <h3 class="home-tools__item__name">Formulaire</h3>
+                                    <div class="home-tools__underline"></div>
+                                    <p class="home-tools__item__descr">
+                                        Afin de recevoir des réponses favorables sur vos formulaires, il faut se poser la question : est-ce que tout le monde peut y répondre ? EasyToC vous permet de manipuler tous types de champs de formulaire pour créer celui dont vous avez besoin.                             </p>
+                                    <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="home-tools__item__txt">
-                            <h3 class="home-tools__item__name">Tableau</h3>
-                            <div class="home-tools__underline"></div>
-                            <p class="home-tools__item__descr">
-                                Facile à analyser, code optimisé et accessible. Ses fonctionnalités permettent la création de lignes et colonnes à l’infini ainsi que la composition de cases à fusionner et bien d’autres fonctions encore.
-                            </p>
-                            <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="home-tools__item">
-                        <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
-
-                        </div>
-                        <div class="home-tools__item__txt">
-                            <h3 class="home-tools__item__name">Formulaire</h3>
-                            <div class="home-tools__underline"></div>
-                            <p class="home-tools__item__descr">
-                               Afin de recevoir des réponses favorables sur vos formulaires, il faut se poser la question : est-ce que tout le monde peut y répondre ? EasyToC vous permet de manipuler tous types de champs de formulaire pour créer celui dont vous avez besoin.                             </p>
-                            <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
