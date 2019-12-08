@@ -16,23 +16,25 @@
                             Easy to C peut vous aider dans cette démarche.
                         </p>
                         <div class="home-present__txt__btn">
-                            <div class="dropdown btn-primary btn-form-final">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{-- <div class="dropdown btn-primary btn-form-final"> --}}
+                                    {{-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-arrow-right"></i> Commencer un projet
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="menu">Menu</a>
-                                        <a class="dropdown-item" href="formulaire">Formulaire</a>
-                                        <a class="dropdown-item" href="tableau">Tableau</a>
+                                    </button> --}}
+                                <div class="nav-item dropdown select-home btn-form-final btn-primary">
+                                    <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Commencer un projet</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
+                                        <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
+                                        <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
                                     </div>
-                            </div>
+                                </div>
                             <a href="register" class="btn-primary btn-form-final">
                                 <i class="fas fa-arrow-right"></i>
                                 <p>S'inscrire</p>
                             </a>
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li><a href="#">Pourquoi rendre son site accessible ?</a></li>
+                            <li><a clas href="#">Pourquoi rendre son site accessible ?</a></li>
                             <li><a href="#">Comment Easy to C peut m’aider ?</a></li>
                             <li><a href="#">Comment fonctionnent les outils Easy to C ?</a></li>
                         </ul>

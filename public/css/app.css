@@ -11180,7 +11180,7 @@ h2 {
 
 .check-conditions {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
@@ -11479,7 +11479,30 @@ h2 {
   height: 100%;
 }
 
+.select-home {
+  background-color: #45B8FF;
+}
+
+.select-home__link:before {
+  content: "\F061";
+  font-family: "Font Awesome 5 Free";
+  position: relative;
+  left: -10px;
+}
+
+.select-home .dropdown-menu.show {
+  font-size: 1.4rem;
+  width: 100%;
+  left: -20px !important;
+}
+
+.show .select-home__link {
+  top: 2px;
+  position: relative;
+}
+
 .home-present {
+  position: relative;
   height: calc(100vh - 66px);
   min-height: 660px;
   max-height: 1140px;
@@ -11841,6 +11864,34 @@ h2 {
 
   .def__txt__citation {
     margin: 20px 5px 20px 16px;
+  }
+}
+
+@media (max-width: 475px) {
+  .home-present__txt__btn {
+    flex-direction: column;
+  }
+
+  .select-home {
+    margin-bottom: 10px;
+  }
+
+  .select-home__link {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .section-home.home-present .home-present__txt__btn .btn-form-final {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .select-home .dropdown-menu.show {
+    left: -10px !important;
   }
 }
 
