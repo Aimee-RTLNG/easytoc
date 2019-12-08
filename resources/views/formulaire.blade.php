@@ -3,6 +3,10 @@
 
 @section('titre') {{ __('Formulaire - EasyToC') }} @endsection
 
+@section('pagespecificstyles')
+    <link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     @if (session('info'))
@@ -84,7 +88,7 @@
                                         <label for="radio01">{{ __('Bleu') }}</label>
                                     </div>
                                     <div>
-                                        <input type="radio" value="white" id="radio02" name="theme">
+                                        <input type="radio" value="white" id="radio02" name="theme" checked>
                                         <label for="radio02">{{ __('Blanc') }}</label>
                                     </div>
                                 </div>
@@ -121,12 +125,12 @@
                             <!-- navigation entre les panneaux -->
 
                             <div class="d-flex justify-content-around mb-2" role="region">
-                                <div class="col-4" role="region">
+                                <div class="col p-0" role="region">
                                     <label for="form-creator-title">{{ __('Titre du formulaire') }}</label>
                                     <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire"
                                         class="form-control" size="30" value="Titre du formulaire" />
                                 </div>
-                                <div class="col-4" role="region">
+                                <div class="col p-0 ml-2" role="region">
                                     <label for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
                                     <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire"
                                         class="form-control" size="30" />
@@ -136,7 +140,7 @@
                                         name="reset-button">
                                     <label for="reset-button" class="ml-3">{{ __('Option de réinitialisation') }}</label>
                                 </div>
-                                <div class="col-2 d-flex align-items-center justify-content-center" role="region">
+                                <div class="col-2 d-flex flex-column align-items-center justify-content-center" role="region">
                                     <label for="form-creator-method" class="mr-3">{{ __('Méthode') }}</label>
                                     <select name="form-creator-method" id="form-creator-method">
                                         <option value="get">GET</option>
@@ -145,22 +149,38 @@
                                 </div>
                             </div>
 
-                            
                                 <div role="section" aria-labelledby="form_actions_element">
-                                    <h3 id="form_actions_element" class="mb-3 font-weight-bold">{{ __("Actions sur l'élement") }}</h3>
                                     <div role="section" aria-label="Actions sur l'élement">
+                                        <h3 id="form_actions_element" class="mb-3 font-weight-bold">{{ __("Actions sur l'élement") }}</h3>
                                         <input class="btn btn-light" type="button" aria-label="Couper" value="Couper"
                                             id="element_cut" role="listitem">
                                         <input class="btn btn-light" type="button" aria-label="Copier" value="Copier"
                                             id="element_copy" role="listitem">
                                         <input class="btn btn-light" type="button" aria-label="Coller" value="Coller"
                                             id="element_paste" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Supprimer l'élement"
-                                            value="Supprimer l'élement" id="element_delete" role="listitem">
+                                        <input class="btn btn-light element_delete" type="button" aria-label="Supprimer l'élement"
+                                            value="Supprimer l'élement" role="listitem">
                                         <input class="btn btn-light" type="button" aria-label="Annuler" value="Annuler"
                                             id="element_undo" role="listitem">
                                         <input class="btn btn-light" type="button" aria-label="Rétablir" value="Rétablir"
                                             id="element_redo" role="listitem">
+                                    </div>
+                                    <div role="section" aria-labelledby="form_actions_text">
+                                        <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
+                                        <input class="btn btn-light" type="button" aria-label="Gras" value="Gras" id="element_bold"
+                                            role="listitem">
+                                        <input class="btn btn-light" type="button" aria-label="Italique" value="Italique"
+                                            id="element_italic" role="listitem">
+                                        <input class="btn btn-light" type="button" aria-label="Souligné" value="Souligné"
+                                            id="element_underline" role="listitem">
+                                        <input class="btn btn-light" type="button" aria-label="Aligner à gauche"
+                                            value="Aligner à gauche" id="justify-left" role="listitem">
+                                        <input class="btn btn-light" type="button" aria-label="Aligner à droite"
+                                            value="Aligner à droite" id="justify-right" role="listitem">
+                                        <input class="btn btn-light" type="button" aria-label="Centrer" value="Centrer"
+                                            id="justify-center" role="listitem">
+                                        <input class="btn btn-light" type="button" aria-label="Justifier" value="Justifier"
+                                            id="justify-full" role="listitem">
                                     </div>
                                 </div>
                                 <div role="section" aria-labelledby="form_add_static">
@@ -226,21 +246,27 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                                    <h3>Liens CSS à mettre dans la balise &lt;head&gt; </h3>
+                                    <a href="aide#use">Besoin d'aide !</a>
+                                    <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link">Copier</button></div>
+                                    <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
+                                    <h3>Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !</h3>
+                                    <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code">Copier</button></div>
                                     <pre class="prettyprint content-panel" id="formatted-code"></pre> <!-- Code formatté -->
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div id="actions-interface" class="col-6 border bg-white rounded mt-3 p-3 d-none" role="section" >
-                            <div>
-                                <div class="d-flex justify-content-between flex-wrap" role="section">
-                                    <div class="col-4" role="section">
-                                        <label for="elem-title">{{ __('Intitulé de la question') }}</label>
-                                        <input name="elem-title" placeholder="Quelle est la question ?" class="form-control"
+                        
+                    
+                    
+                        <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section" >
+                            <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
+                                <div class="d-flex" role="section">     
+                                    <div class="" role="section">
+                                        <label for="elem-title">{{ __("Intitulé de l'élément") }}</label>
+                                        <input id="elem-title" name="elem-title" placeholder="Quelle est la question ?" class="form-control"
                                             size="25" />
                                     </div>
-                                    <div class="col-3" role="section">
+                                    <div class="" role="section">
                                         <label for="elem-type">{{ __('Type de réponse') }}</label>
                                         <select name="elem-type" class="form-control">
                                             <option selected disabled>{{ __('Type') }}</option>
@@ -250,7 +276,7 @@
                                             <option value="text">{{ __('Texte') }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-3" role="section">
+                                    <div class="" role="section">
                                         <label for="elem-length">{{ __('Longueur max') }}</label>
                                         <div class="d-flex justify-content-center align-items-center" role="section">
                                             <input type="number" name="elem-length" placeholder="15" class="form-control"
@@ -258,42 +284,25 @@
                                             <a class="ml-2">{{ __('caractères') }}</a>
                                         </div>
                                     </div>
-                                    <div class="col-2 d-flex align-items-center mt-4" role="section">
+                                    <div class="d-flex align-items-center mt-4" role="section">
                                         <input type="checkbox" name="elem-required" class="mr-2" role="section">
                                         <label for="elem-required">{{ __('Réponse obligatoire') }}</label>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between flex-wrap" role="section">
-                                    <div class="col-4" role="section">
+                                <div class="d-flex" role="section">
+                                    <div class="" role="section">
                                         <label for="elem-placeholder">{{ __('Exemple de réponse') }}</label>
                                         <input name="elem-placeholder" placeholder="Ceci est le placeholder" class="form-control"
                                             size="25" aria-label="Exemple de réponse" />
                                     </div>
-                                    <div class="col-3" role="section">
+                                    <div class="" role="section">
                                         <label for="elem-name">{{ __('Identifiant') }}</label>
                                         <input name="elem-name" placeholder="couleur-ciel" class="form-control" size="25"
                                             aria-label="Identifiant" />
                                     </div>
-                                    <div class="col-2 d-flex align-items-center mt-4" role="section">
-                                        <button aria-label="Supprimer">{{ __('Supprimer') }}</button>
+                                    <div class="d-flex align-items-center mt-4" role="section">
+                                        <button aria-label="Supprimer" class="element_delete">{{ __('Supprimer') }}</button>
                                     </div>
-                                </div>
-                                <div role="section" aria-labelledby="form_actions_text">
-                                    <h6 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h6>
-                                    <input class="btn btn-light" type="button" aria-label="Gras" value="Gras" id="element_bold"
-                                        role="listitem">
-                                    <input class="btn btn-light" type="button" aria-label="Italique" value="Italique"
-                                        id="element_italic" role="listitem">
-                                    <input class="btn btn-light" type="button" aria-label="Souligné" value="Souligné"
-                                        id="element_underline" role="listitem">
-                                    <input class="btn btn-light" type="button" aria-label="Aligner à gauche"
-                                        value="Aligner à gauche" id="justify-left" role="listitem">
-                                    <input class="btn btn-light" type="button" aria-label="Aligner à droite"
-                                        value="Aligner à droite" id="justify-right" role="listitem">
-                                    <input class="btn btn-light" type="button" aria-label="Centrer" value="Centrer"
-                                        id="justify-center" role="listitem">
-                                    <input class="btn btn-light" type="button" aria-label="Justifier" value="Justifier"
-                                        id="justify-full" role="listitem">
                                 </div>
                             </div>
                         </div>

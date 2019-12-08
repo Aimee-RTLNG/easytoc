@@ -11714,16 +11714,22 @@ xmp {
   display: inherit;
 }
 
+.code-display {
+  font-size: 100% !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-radius: 5px !important;
+  background-color: black;
+  color: white;
+}
+
 pre.prettyprinted {
   font-size: 100% !important;
   margin: 0 !important;
   padding: 1.5em !important;
   width: 100% !important;
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-  border-bottom-left-radius: 5px !important;
-  border-bottom-right-radius: 5px !important;
-  background-color: #212529;
+  border-radius: 5px !important;
 }
 
 /* style de l'interface actions */
@@ -11738,16 +11744,34 @@ pre.prettyprinted {
   border: 3px dotted black;
 }
 
+.content-editable-selected {
+  border: 3px dotted blue !important;
+}
+
 form {
   border: 0 !important;
 }
 
-easytoc,
-easytoc *:hover,
-easytoc:hover {
+input[type=checkbox],
+input[type=radio] {
   cursor: pointer !important;
-  padding: 0px !important;
-  border: 3px dotted rgba(0, 0, 0, 0) !important;
+}
+
+input[type=text],
+textarea {
+  border: 1px solid black !important;
+}
+
+#copy-css-link,
+#copy-raw-code {
+  position: relative;
+  bottom: -10px;
+  right: 30px;
+  background-color: white;
+}
+
+.copy-container {
+  position: absolute;
 }
 
 .full-list {

@@ -2,6 +2,8 @@ require('./bootstrap');
 
 require('./components/run_prettify.js');
 
+require('./components/clipboard.min.js');
+
 /*
 import Vue from 'vue';
 import VueRouter from 'vue-router';
