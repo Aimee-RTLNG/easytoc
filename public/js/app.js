@@ -60,6 +60,20 @@ window.addEventListener("DOMContentLoaded", function (event) {
   var btn_burger = document.getElementById('bars');
   btn_burger.addEventListener('click', function () {
     btn_burger.classList.toggle('open');
+  }); // Scroll vers ancres
+
+  function scrollTo(target) {
+    console.log(target);
+
+    if (target.length) {
+      $("html, body").stop().animate({
+        scrollTop: target.offset().top
+      }, 500);
+    }
+  }
+
+  $('.next-section i').on('click', function () {
+    scrollTo($('#tools'));
   }); // Slider Home
   // console.log($('.slider-tools'));
   // $('.slider-tools').slick({

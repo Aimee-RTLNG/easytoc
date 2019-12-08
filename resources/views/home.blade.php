@@ -49,6 +49,9 @@
                 </div>
             </div>
         </div>
+        <div class="next-section">
+            <i tabindex="0" class="fas fa-arrow-down"></i>
+        </div>
     </section>
     <section class="home-tools section-home" id="tools">
         <div class="container">

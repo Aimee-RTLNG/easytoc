@@ -10859,7 +10859,7 @@ h2 {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
   .navbar-dark .navbar-toggler {
     border: none;
     font-size: 25px;
@@ -10903,9 +10903,7 @@ h2 {
   .menu-lang a:first-child {
     margin-right: 10px;
   }
-}
 
-@media (max-width: 575.98px) {
   .btn-connect__icon {
     height: 30px;
     width: 30px;
@@ -10968,6 +10966,14 @@ h2 {
   .footer {
     height: 250px;
     padding: 15px 0px;
+  }
+
+  .footer-txt {
+    font-size: 1.4rem;
+  }
+
+  .menu-footer .nav-link {
+    padding: 0px 6px;
   }
 }
 
@@ -11475,7 +11481,7 @@ h2 {
 
 .home-present {
   height: calc(100vh - 66px);
-  min-height: 700px;
+  min-height: 660px;
   max-height: 1140px;
   display: flex;
   justify-content: space-between;
@@ -11553,6 +11559,19 @@ h2 {
 .video-yt__btn a {
   height: 30px;
   font-size: 1.2rem;
+}
+
+.next-section {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.next-section i {
+  cursor: pointer;
+  font-size: 2.5rem;
 }
 
 .slider-tools {
@@ -11795,6 +11814,10 @@ h2 {
     height: 240px;
     margin: 20px 0px;
   }
+
+  .video-yt {
+    height: 300px;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -11814,6 +11837,10 @@ h2 {
 
   .video-yt {
     height: 200px;
+  }
+
+  .def__txt__citation {
+    margin: 20px 5px 20px 16px;
   }
 }
 

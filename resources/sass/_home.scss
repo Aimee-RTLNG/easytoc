@@ -28,7 +28,7 @@
         min-width: 100px;
     }
     height: calc(100vh - 66px);
-    min-height: 700px;
+    min-height: 660px;
     max-height: 1140px;
     @include flex-row-between-center;
     &__txt {
@@ -83,6 +83,17 @@
             height: 30px;
             font-size: 1.2rem;
         }
+    }
+}
+.next-section {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    i {
+        cursor: pointer;
+        font-size: 2.5rem;
     }
 }
 // Section outils
@@ -288,6 +299,9 @@
         height: 240px;
         margin: 20px 0px;
     }
+    .video-yt {
+        height: 300px;
+    }
 
 }
 
@@ -305,5 +319,8 @@
     }
     .video-yt {
         height: 200px;
+    }
+    .def__txt__citation {
+        margin: 20px 5px 20px 16px;
     }
 }
