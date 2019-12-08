@@ -124,7 +124,7 @@
     }
 }
 
-@media (max-width: 991px) {
+@include media-breakpoint-down(md) { 
     .navbar-dark .navbar-toggler {
         border: none;
         font-size: 25px;
@@ -160,4 +160,9 @@
             margin-right: 10px;
         }
     }
+    .btn-connect__icon {
+        height: 30px;
+        width: 30px;
+    }
 }
+    

@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-require('./components/run_prettify.js');
+// require('./components/run_prettify.js');
 
 /*
 import Vue from 'vue';
@@ -54,4 +54,39 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');
     })
+
+    
+    // Scroll vers ancres
+    function scrollTo( target ) {
+        console.log(target);
+	        if( target.length ) {
+	            $("html, body").stop().animate( { scrollTop: target.offset().top }, 500);
+	        }
+	    }
+	$('.next-section i').on('click', function() {
+		scrollTo($('#tools'));
+	})
+
+    // Slider Home
+
+    // console.log($('.slider-tools'));
+    // $('.slider-tools').slick({
+    //     infinite: true,
+    //     slidesToShow: 2,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     dots: true,
+    //     responsive: [
+    //         {
+    //             breakpoint: 3500,
+    //             settings: "unslick"
+    //         },
+    //         {
+    //             breakpoint: 767,
+    //             slidesToShow: 2,
+    //             settings: "slick",
+    //             dots: true,
+    //         }
+    //         ]
+    //     });
 });
