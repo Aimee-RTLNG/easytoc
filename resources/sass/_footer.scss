@@ -37,3 +37,12 @@
         }
     }
 }
+@include media-breakpoint-down(xs) { 
+    .section-home .btn-form-final {
+        width: auto;
+    }
+    .footer {
+        height: 250px;
+        padding: 15px 0px;
+    }
+}

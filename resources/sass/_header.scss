@@ -161,3 +161,9 @@
         }
     }
 }
+@include media-breakpoint-down(xs) { 
+    .btn-connect__icon {
+        height: 30px;
+        width: 30px;
+    }
+}

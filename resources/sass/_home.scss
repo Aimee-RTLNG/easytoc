@@ -88,6 +88,8 @@
 // Section outils
 .slider-tools {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .home-tools {
    &__item {
@@ -134,6 +136,11 @@
     }
 }
 // Section utilité du site
+.slider-use-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .use-list {
     &__item {
         position: relative;
@@ -244,8 +251,13 @@
     .section-home {
         height: auto;
         padding: 40px 0px;
+        min-height: 700px;
+        max-height: none;
         &__row {
             flex-direction: column;
+        }
+        &__title {
+            min-width: 85%;
         }
     }
     .home-present__txt {
@@ -255,7 +267,43 @@
         height: 390px;
     }
     .home-tools__item {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .section-home__entete {
+        margin-bottom: 20px;
+    }
+    .use-list {
+        &__blocs {
+            padding-bottom: 0px;
+        }
+        &__item {
+            margin-bottom: 40px;
+            padding: 14px 17px;
+            &__ombre {
+                top: calc(100% - 60px);
+            }
+        }
+    }
+    .def__illu {
+        height: 240px;
+        margin: 20px 0px;
     }
 
+}
+
+@include media-breakpoint-down(xs) { 
+    ul.home-present__txt__tips {
+        padding-left: 0px;
+    }
+    .section-home__title {
+        width: 100%;
+        min-width: 100%;
+        font-size: 3rem;
+    }
+    .home-present__txt__tips li:before{
+        padding-right: 14px;
+    }
+    .video-yt {
+        height: 200px;
+    }
 }
