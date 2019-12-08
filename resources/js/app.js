@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-require("./components/profile/profile.js");
+// require('./components/run_prettify.js');
 
 /*
 import Vue from 'vue';
@@ -50,13 +50,8 @@ new Vue({
 
 
 window.addEventListener("DOMContentLoaded", (event) => {
-    
     var btn_burger = document.getElementById('bars');
-    btn_burger.addEventListener('click', function() {
+    btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');
     })
-
-
-
-
-  });
+});

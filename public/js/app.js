@@ -7,9 +7,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // require('./components/run_prettify.js');
 
-__webpack_require__(/*! ./components/profile/profile.js */ "./resources/js/components/profile/profile.js");
 /*
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -108,43 +107,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/components/profile/profile.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/profile/profile.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(".btn-seepassword__icon").on('click', function () {
-  var password_input = $(this).parent().find('input')[0];
-  var vision_button_icon = $(this).find('i')[0];
-
-  if (password_input.type === "password") {
-    password_input.type = "text";
-    vision_button_icon.className = "far fa-eye-slash";
-  } else {
-    password_input.type = "password";
-    vision_button_icon.className = "far fa-eye";
-  }
-});
-$('input[type="password"').on('keyup', function (event) {
-  // If "caps lock" is pressed, display the warning text
-  var text = $(this).parent().parent().find("span.warning-block")[0];
-
-  if (event.originalEvent.getModifierState("CapsLock")) {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-});
-$('input[type="password"').on('focusout', function () {
-  // If "caps lock" is pressed, display the warning text
-  var text = $(this).parent().parent().find("span.warning-block")[0];
-  text.style.display = "none";
-});
 
 /***/ }),
 

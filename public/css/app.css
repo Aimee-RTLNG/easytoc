@@ -10701,6 +10701,10 @@ h2 {
   margin-top: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
 .flag {
   background-color: black;
   background-size: cover;
@@ -11591,7 +11595,7 @@ h2 {
 }
 
 .home-tools__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
 }
 
@@ -11648,13 +11652,13 @@ h2 {
 }
 
 .use-list__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
   padding-bottom: 100px;
 }
 
 .def__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
 }
 
@@ -11737,5 +11741,155 @@ h2 {
   .home-tools__item {
     margin-bottom: 10px;
   }
+}
+
+body {
+  background-color: #fafafa;
+}
+
+/* utile */
+
+.hidden {
+  /* attention : en utilisant cette classe, il faut ajouter aria-hidden="true" à l'élement */
+  display: none;
+}
+
+/* style du blueprint */
+
+#content-created-blueprint {
+  background-color: #f2f2f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* style du preview */
+
+#content-created-preview {
+  padding: 2em;
+}
+
+/* style du code généré */
+
+xmp {
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+  display: inherit;
+}
+
+pre.prettyprinted {
+  font-size: 100% !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  background-color: #212529;
+}
+
+/* style de l'interface actions */
+
+#content-created-blueprint form * {
+  border: 3px dotted rgba(0, 0, 0, 0);
+  padding: 5px;
+  cursor: text;
+}
+
+#content-created-blueprint form *:hover {
+  border: 3px dotted black;
+}
+
+form {
+  border: 0 !important;
+}
+
+easytoc,
+easytoc *:hover,
+easytoc:hover {
+  cursor: pointer !important;
+  padding: 0px !important;
+  border: 3px dotted rgba(0, 0, 0, 0) !important;
+}
+
+.full-list {
+  overflow: hidden;
+}
+
+.profile_content {
+  margin-bottom: 30px;
+}
+
+.profile_content h2 {
+  margin: 20px 0;
+}
+
+.account-infos {
+  border-left: 1px solid rgba(214, 214, 214, 0.637);
+}
+
+.type-pin {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 30px;
+}
+
+.type-pin[data-type=Menu] {
+  background-color: #e25f5f;
+}
+
+.type-pin[data-type=Table] {
+  background-color: #5ab444;
+}
+
+.type-pin[data-type=Form] {
+  background-color: #2b8bb1;
+}
+
+.list-element {
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+.list-element .element-info {
+  align-items: center;
+}
+
+.list-element .type-name {
+  font-style: italic;
+}
+
+.list-element .see-content-button:hover {
+  font-weight: bold;
+}
+
+.list-element .btn {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
+#list-filters .btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+#list-filters .btn:hover {
+  background-color: #ddd;
+}
+
+#list-filters .btn.active {
+  background-color: #666;
+  color: white;
 }
 

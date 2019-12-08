@@ -15,8 +15,28 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('name', 100);
+            $table->string('name_fr', 100);
+            $table->string('name_en', 100);
         });
+
+        // Insert some stuff
+        DB::table('types')->insert(
+            array(
+                'id' => '1',
+                'name_fr' => 'formulaire',
+                'name_en' => 'form',
+            ), 
+            array(
+                'id' => '2',
+                'name_fr' => 'tableau',
+                'name_en' => 'table',
+            ), 
+            array(
+                'id' => '3',
+                'name_fr' => 'menu',
+                'name_en' => 'menu',
+            )
+        );
     }
 
     /**

@@ -38,6 +38,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        Auth::viaRemember();
+        Auth::check();
+        Auth::viaRemember();
         $this->middleware('guest')->except('logout');
     }
     
