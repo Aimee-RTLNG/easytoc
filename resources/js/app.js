@@ -58,13 +58,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
     
     // Scroll vers ancres
     function scrollTo( target ) {
-        console.log(target);
 	        if( target.length ) {
 	            $("html, body").stop().animate( { scrollTop: target.offset().top }, 500);
 	        }
 	    }
 	$('.next-section i').on('click', function() {
 		scrollTo($('#tools'));
+    })
+    $('.link-ancre').on('click', function() {
+        var id = $(this).attr('href');
+		scrollTo($(id));
 	})
 
     // Slider Home

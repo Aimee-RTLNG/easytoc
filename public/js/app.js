@@ -63,8 +63,6 @@ window.addEventListener("DOMContentLoaded", function (event) {
   }); // Scroll vers ancres
 
   function scrollTo(target) {
-    console.log(target);
-
     if (target.length) {
       $("html, body").stop().animate({
         scrollTop: target.offset().top
@@ -74,6 +72,10 @@ window.addEventListener("DOMContentLoaded", function (event) {
 
   $('.next-section i').on('click', function () {
     scrollTo($('#tools'));
+  });
+  $('.link-ancre').on('click', function () {
+    var id = $(this).attr('href');
+    scrollTo($(id));
   }); // Slider Home
   // console.log($('.slider-tools'));
   // $('.slider-tools').slick({
