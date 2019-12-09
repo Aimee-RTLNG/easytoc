@@ -38,6 +38,10 @@ p, h1, h2{
         @include expletus;
         font-size: 3.4rem;
         font-weight: bold;
+        &--username {
+            color: $bleu;
+            display: block;
+        }
     }
     &__under {
         height: 5px;

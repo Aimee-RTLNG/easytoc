@@ -124,12 +124,12 @@
                                 <div class="col-4" role="region">
                                     <label for="form-creator-title">{{ __('Titre du formulaire') }}</label>
                                     <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire"
-                                        class="form-control" size="30" value="Titre du formulaire" />
+                                        class="form-control" size="140" value="Titre du formulaire" />
                                 </div>
                                 <div class="col-4" role="region">
                                     <label for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
                                     <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire"
-                                        class="form-control" size="30" />
+                                        class="form-control" size="60" />
                                 </div>
                                 <div class="col-2 d-flex align-items-center justify-content-center" role="region">
                                     <input type="checkbox" class="add-element type-special" value="" id="reset-button"

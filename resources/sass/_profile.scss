@@ -1,74 +1,65 @@
 .full-list {
     overflow: hidden;
 }
-
-
 .profile_content {
-
     margin-bottom: 30px;
-
-    h2 {
-        margin: 20px 0;
+    &__list-crea {
+        width: 250px;
+        &__link {
+            width: 100%;
+        }
+    }
+    &__filters {
+        @include flex-row-between-center;
+    }
+    &__options, &__sort {
+        width: 48%;
+        @include flex-row-start-center;
+        & > div {
+            flex: 1 1;
+        }
     }
 }
-
-.account-infos {
-    border-left: 1px solid rgba(214, 214, 214, 0.637);
-}
-
 .type-pin {
     display: inline-block;
     width: 10px;
     height: 10px;
     margin-right: 10px;
     border-radius: 30px;
-
     &[data-type="Menu"] {
         background-color: rgb(226, 95, 95);
     }
-
     &[data-type="Table"] {
         background-color: rgb(90, 180, 68);
     }
-
     &[data-type="Form"] {
         background-color: rgb(43, 139, 177);
     }
-
 }
-
 .list-element {
-
     display: flex;
     padding: 10px;
     background-color: white;
     border-radius: 5px;
     margin: 10px auto;
-
     .element-info {
         align-items: center;
     }
-
     .type-name {
         font-style: italic;
     }
-
     .see-content-button:hover {
         font-weight: bold;
     }
-
     .btn {
         margin: 0 10px;
     }
-
 }
-
 .show {
     display: block;
 }
 
 #list-filters {
-
     .btn {
         border: none;
         outline: none;
@@ -76,14 +67,49 @@
         background-color: #f1f1f1;
         cursor: pointer;
     }
-
     .btn:hover {
         background-color: #ddd;
     }
-
     .btn.active {
         background-color: #666;
         color: white;
     }
-
+}
+.dashboard {
+    height: calc(100% - 120px);
+    @include shadow-box;
+    background-color: $gris-clair;
+    padding: 35px 35px 20px 0px;
+    border-radius: 12px;
+    font-size: 2.0rem;
+    @include expletus;
+    font-weight: bold;
+    &__title {
+        padding-left:45px;
+    }
+    &__crea {
+        @include flex-col-center-center;
+        &__separator {
+            width: 130px;
+            height:5px;
+            background-color: $dark;
+            margin: 38px 0px;
+        }
+    }
+}
+.btn-new {
+    justify-content: flex-start;
+    height: 70px;
+    width: 100%;
+    margin-bottom: 20px;
+    @include shadow-box;
+    i {
+        font-size: 4.5rem;
+    }
+}
+.mon-compte {
+    background-color: white;
+    @include shadow-box;
+    border-radius: 12px;
+    padding: 15px 10px;
 }
