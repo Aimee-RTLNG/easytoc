@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('pagespecificstyles')
+    <link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
         <div class="panel panel-default">
@@ -43,4 +47,10 @@
 
         </div>
 
+@endsection
+
+@section('pagespecificscripts')
+    <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
+    {{-- Script PRETTIFY + skin --}}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection

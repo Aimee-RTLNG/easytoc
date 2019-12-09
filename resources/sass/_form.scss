@@ -16,11 +16,12 @@ body {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
     }
 
-/* style du preview */
+/* style du code */
 
-
-    #content-created-preview {
+    #nav-code {
         padding: 2em;
+        border: 1px solid rgba(0, 0, 0, 0.192);
+        border-top: 1px solid rgba(0, 0, 0, 0)
     }
 
 /* style du code généré */
@@ -67,6 +68,10 @@ body {
     border: 3px dotted blue !important;
 }
 
+.type-layout, .type-layout:hover{
+    border: 0px dotted rgba(0,0,0,0) !important;
+}
+
 form {
     border: 0 !important;
 }
@@ -84,10 +89,41 @@ input[type="text"], textarea{
 #copy-css-link, #copy-raw-code {
     position: relative;
     bottom: -10px;
-    right: 30px;
+    right: 100px;
     background-color: white;
 }
 
 .copy-container{
     position: absolute;
+}
+
+// Side tools (déplacer supprimer)
+
+.side-tool {
+    width: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    button{
+        margin: 0;
+        padding: 0;
+        border-radius: 2px;
+        color: white;
+        border: none;
+    }
+
+    #tool-delete {
+        background-color: rgb(241, 62, 62);
+        width: 100%;
+    }
+
+    #tool-move-up {
+        background-color: rgb(60, 101, 235);
+    }
+
+    #tool-move-down {
+        background-color: rgb(60, 101, 235);
+    }
+
 }

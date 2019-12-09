@@ -12,6 +12,7 @@
     "devDependencies": {
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
+        "clipboard": "^2.0.4",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
@@ -24,7 +25,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "clipboard": "^2.0.4",
         "vee-validate": "^3.0.11",
         "vue-material": "^1.0.0-beta-11",
         "vue-router": "^3.1.3",

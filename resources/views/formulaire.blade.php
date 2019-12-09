@@ -49,13 +49,13 @@
                                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                 <div class="form-group" role="region">
                                     <label for="title">{{ __('Titre du projet') }}</label>
-                                    <input type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="30"  value="{{ old('title') }}">
+                                    <input type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="150"  value="{{ old('title') }}">
                                     <p id="chara-title-remains"></p>
                                 </div>
                                 <div class="form-group" role="region">
                                     <label for="desc-input">{{ __('Description du projet') }}</label>
                                     <textarea type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="2"
-                                        maxlength="200"></textarea>
+                                        maxlength="300"></textarea>
                                     <p id="chara-desc-remains"></p>
                                 </div>
                             </form>
@@ -149,8 +149,8 @@
                                 </div>
                             </div>
 
-                                <div role="section" aria-labelledby="form_actions_element">
-                                    <div role="section" aria-label="Actions sur l'élement">
+                                <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
+                                    <div role="section" class="col" aria-label="Actions sur l'élement">
                                         <h3 id="form_actions_element" class="mb-3 font-weight-bold">{{ __("Actions sur l'élement") }}</h3>
                                         <input class="btn btn-light" type="button" aria-label="Couper" value="Couper"
                                             id="element_cut" role="listitem">
@@ -165,7 +165,7 @@
                                         <input class="btn btn-light" type="button" aria-label="Rétablir" value="Rétablir"
                                             id="element_redo" role="listitem">
                                     </div>
-                                    <div role="section" aria-labelledby="form_actions_text">
+                                    <div role="section" class="col" aria-labelledby="form_actions_text">
                                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
                                         <input class="btn btn-light" type="button" aria-label="Gras" value="Gras" id="element_bold"
                                             role="listitem">
@@ -183,79 +183,100 @@
                                             id="justify-full" role="listitem">
                                     </div>
                                 </div>
-                                <div role="section" aria-labelledby="form_add_static">
-                                    <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un élément statique') }}</h3>
-                                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Nouvelle section"
-                                        value="Nouvelle section" id="insert-horizontal_rule" role="listitem">
-                                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Titre"
-                                        value="Titre" id="insert-title" role="listitem">
-                                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Paragraphe"
-                                        value="Paragraphe" id="insert-paragraph" role="listitem">
-                                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Lien"
-                                        value="Lien" id="insert-link" role="listitem">
-                                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste numérotée"
-                                        value="Liste numérotée" id="insert-ordered_list" role="listitem">
-                                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste à puces"
-                                        value="Liste à puces" id="insert-unordered_list" role="listitem">
-                                </div>
-                                <div role="section" aria-labelledby="form_add_question">
-                                    <h3 id="form_add_question" class="mb-3 font-weight-bold">{{ __('Ajouter une question') }}</h3>
-                                    <input class="btn btn-light add-element type-question" type="button"
-                                        aria-label="Réponse libre courte" value="Réponse libre courte" id="insert-short_answer">
-                                    <input class="btn btn-light add-element type-question" type="button"
-                                        aria-label="Réponse libre longue" value="Réponse libre longue" id="insert-long_answer">
-                                    <input class="btn btn-light add-element type-question" type="button"
-                                        aria-label="Réponse Oui/Non" value="Réponse Oui/Non" id="insert-binary_answer">
-                                    <input class="btn btn-light add-element type-question" type="button" aria-label="Choix unique"
-                                        value="Choix unique" id="insert-one_answer">
-                                    <input class="btn btn-light add-element type-question" type="button" aria-label="Choix multiple"
-                                        value="Choix multiple" id="insert-many_answer">
-                                    <input class="btn btn-light add-element type-question" type="button" aria-label="Choix en liste"
-                                        value="Choix en liste" id="insert-list_answer">
+                                <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
+                                    <div role="section" class="col" aria-labelledby="form_add_question">
+                                        <h3 id="form_add_question" class="mb-3 font-weight-bold">{{ __('Ajouter une question') }}</h3>
+                                        <input class="btn btn-light add-element type-question" type="button"
+                                            aria-label="Réponse libre courte" value="Réponse libre courte" id="insert-short_answer">
+                                        <input class="btn btn-light add-element type-question" type="button"
+                                            aria-label="Réponse libre longue" value="Réponse libre longue" id="insert-long_answer">
+                                        <input class="btn btn-light add-element type-question" type="button"
+                                            aria-label="Réponse Oui/Non" value="Réponse Oui/Non" id="insert-binary_answer">
+                                        <input class="btn btn-light add-element type-question" type="button" aria-label="Choix unique"
+                                            value="Choix unique" id="insert-one_answer">
+                                        <input class="btn btn-light add-element type-question" type="button" aria-label="Choix multiple"
+                                            value="Choix multiple" id="insert-many_answer">
+                                        <input class="btn btn-light add-element type-question" type="button" aria-label="Choix en liste"
+                                            value="Choix en liste" id="insert-list_answer">
+                                    </div>
+                                    <div role="section" class="col" aria-labelledby="form_add_static">
+                                        <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un élément statique') }}</h3>
+                                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Nouvelle section"
+                                            value="Nouvelle section" id="insert-horizontal_rule" role="listitem">
+                                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Titre"
+                                            value="Titre" id="insert-title" role="listitem">
+                                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Paragraphe"
+                                            value="Paragraphe" id="insert-paragraph" role="listitem">
+                                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Lien"
+                                            value="Lien" id="insert-link" role="listitem">
+                                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste numérotée"
+                                            value="Liste numérotée" id="insert-ordered_list" role="listitem">
+                                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste à puces"
+                                            value="Liste à puces" id="insert-unordered_list" role="listitem">
+                                    </div>
                                 </div>
                             
 
-                            <nav>
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab"
-                                        href="#nav-blueprint" role="tab" aria-controls="nav-blueprint"
-                                        aria-selected="true">{{ __('Blueprint') }}</a>
-                                    <!--
-                                        <a class="nav-item nav-link" id="nav-preview-tab" data-toggle="tab" href="#nav-preview" role="tab"
-                                            aria-controls="nav-preview" aria-selected="false">Preview</a>
-                                        -->
-                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab"
-                                        aria-controls="nav-code" aria-selected="false">{{ __('Code') }}</a>
-                                </div>
-                            </nav>
-                        
+                        <div class="row d-flex m-0 mb-3">
 
-                            <!-- panneaux -->
-                            <div class="tab-content" id="nav-tabContent" role="section">
+                            <div class="side-tool" style="display: none">
+                                <button id="tool-move-up" class="mb-2" title="Déplacer vers le haut">
+                                    <i class="fas fa-caret-up"></i>
+                                </button>
+                                <button id="tool-move-down" title="Déplacer vers le bas">
+                                    <i class="fas fa-sort-down"></i>
+                                </button>
+                            </div>
 
-                                <!-- Code en brut (non formatté) -->
-                                <textarea type="text" name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea> 
+                            <div class="col p-0 m-0">
+                                <nav class="mt-5">
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab"
+                                            href="#nav-blueprint" role="tab" aria-controls="nav-blueprint"
+                                            aria-selected="true">{{ __('Blueprint') }}</a>
+                                        <!--
+                                            <a class="nav-item nav-link" id="nav-preview-tab" data-toggle="tab" href="#nav-preview" role="tab"
+                                                aria-controls="nav-preview" aria-selected="false">Preview</a>
+                                            -->
+                                        <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab"
+                                            aria-controls="nav-code" aria-selected="false">{{ __('Code') }}</a>
+                                    </div>
+                                </nav>
+                            
 
-                                <!-- panneau blueprint -->
-                                <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel"
-                                    aria-labelledby="nav-blueprint-tab">
-                                    <div id="content-created-blueprint"
-                                        class="content-panel border border-top-0 rounded-bottom p-4">
+                                <!-- panneaux -->
+                                <div class="tab-content" id="nav-tabContent" role="section">
+                                    
+                                    <!-- Code en brut (non formatté) -->
+                                    <textarea type="text" name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea> 
+
+                                    <!-- panneau blueprint -->
+                                    <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel"
+                                        aria-labelledby="nav-blueprint-tab">
+                                        <div id="content-created-blueprint"
+                                            class="content-panel border border-top-0 rounded-bottom p-4">
+                                        </div>
+                                    </div>
+
+                                    <!-- panneau code -->
+                                    <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                                        <h3>Liens CSS à mettre dans la balise &lt;head&gt; </h3>
+                                        <a href="aide#use">Besoin d'aide !</a>
+                                        <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link">Copier</button></div>
+                                        <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
+                                        <h3>Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !</h3>
+                                        <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code">Copier</button></div>
+                                        <pre class="prettyprint content-panel" id="formatted-code"></pre> <!-- Code formatté -->
                                     </div>
                                 </div>
-
-                                <!-- panneau code -->
-                                <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3>Liens CSS à mettre dans la balise &lt;head&gt; </h3>
-                                    <a href="aide#use">Besoin d'aide !</a>
-                                    <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link">Copier</button></div>
-                                    <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
-                                    <h3>Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !</h3>
-                                    <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code">Copier</button></div>
-                                    <pre class="prettyprint content-panel" id="formatted-code"></pre> <!-- Code formatté -->
-                                </div>
                             </div>
-                        
+
+                            <div class="side-tool" style="display: none">
+                                <button id="tool-delete" title="Supprimer l'élement">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
                     
                     
                         <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section" >
@@ -313,7 +334,7 @@
                     <!-- Actions importantes sur le projet -->
                     <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region"
                         aria-labelledby="form_actions">
-                        <button type="button" class="btn btn-danger" id="btn-cancel-project" aria-label="Annuler les modifications">{{ __('Annuler les
+                        <button type="button" class="btn btn-danger" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
                             modifications') }}</button>
                         <button type="submit" class="btn btn-success" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
                     </div>
@@ -327,7 +348,7 @@
 @endsection
 
 @section('pagespecificscripts')
-<script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
+    <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
     {{-- Script PRETTIFY + skin --}}
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection

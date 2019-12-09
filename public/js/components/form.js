@@ -1,17 +1,15 @@
-// Contenu initial du formulaire 
-let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" contenteditable="false" action="#" method="get" name="emailform">\n&nbsp;&nbsp;<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n&nbsp;&nbsp;</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
-$('#content-created-blueprint').html(initial_content);
 
-// Données initiales (user id et type id)
+// ANCHOR Données initiales
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
+let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" contenteditable="false" action="#" method="get" name="emailform">\n&nbsp;&nbsp;<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n&nbsp;&nbsp;</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
 
-// Caractères restants Description du projet
+// ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
         tlength = tval.length,
-        set = 200,
+        set = $('#desc-input').attr('maxlength'),
         remain = parseInt(set - tlength);
     $('#chara-desc-remains').text(remain + " caractères restants");
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
@@ -19,11 +17,11 @@ $('#desc-input').keypress(function (e) {
     }
 })
 
-// Titre du projet
+// ANCHOR Caractères restants Titre du projet
 $('#title-input').keypress(function (e) {
     var tval = $('#title-input').val(),
         tlength = tval.length,
-        set = 30,
+        set = $('#title-input').attr('maxlength'),
         remain = parseInt(set - tlength);
     $('#chara-title-remains').text(remain + " caractères restants");
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
@@ -31,12 +29,42 @@ $('#title-input').keypress(function (e) {
     }
 })
 
-// Liste de tous les tags possibles dans un formulaire
+// ANCHOR Liste de tous les tags possibles dans un formulaire
 const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5",
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
 
-// Traitement du code vers la prévisualisation
+// ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+// \t = tabulation,  \n = saut de ligne
+var element_types = {
+    "type-question": {
+        "insert-short_answer"  : "\t<label for='answer' contenteditable='true' data-tag='label'>Exemple de question</label>\n\t\t<input type='text' name='answer' class='form-control' placeholder='Exemple de réponse' contenteditable='true' data-tag='input-text'/>\n",
+        "insert-long_answer"   : "\t<label for='answer' contenteditable='true' data-tag='label'>Exemple de question</label>\n\t\t<textarea type='text' name='answer' class='form-control' placeholder='Exemple de réponse' contenteditable='true' data-tag='input-text'/></textarea>\n",
+        "insert-binary_answer" : "\t<fieldset>\n\t\t\t<legend contenteditable='true'>Légende</legend>\n\t\t\t<input type='checkbox' name='answer' checked>\n\t\t\t<label for='answer' contenteditable='true'>Affirmation</label>\n\t\t</fieldset>\n",
+        "insert-one_answer"    : "\t<fieldset>\n\t\t\t<legend contenteditable='true' data-tag='text'>Légende</legend>\n\t</fieldset>\n",
+        "insert-many_answer"   : "\t<fieldset>\n\t\t\t<legend contenteditable='true' data-tag='text'>Légende</legend>\n\t</fieldset>\n",
+        "insert-list_answer"   : "\t<fieldset>\n\t\t\t<legend contenteditable='true' data-tag='text'>Légende</legend>\n\t</fieldset>\n"
+    },
+    "type-answer-option": {
+        "insert-one_answer" : "<div><input type='radio' id='answer-option' name='answer-option' value='answer-value'><label for='answer-option' data-tag='option' contenteditable='true'>Option 1</label></div>",
+        "insert-many_answer": "<div><input type='checkbox' id='answer-option' name='answer-option' value='answer-value'><label for='answer-option' data-tag='option' contenteditable='true'>Option 1</label></div>",
+        "insert-list_answer": "<div><input type='checkbox' id='answer-option' name='answer-option' value='answer-value'><label for='answer-option' data-tag='option' contenteditable='true'>Option 1</label></div>"
+    },
+    "type-layout": {
+        "insert-title"            : "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
+        "insert-paragraph"        : "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
+        "insert-link"             : "<a href='#' contenteditable='true' data-tag='link'>Nom du lien</a>",
+        "insert-ordered_list"     : "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
+        "insert-unordered_list"   : "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
+        "insert-horizontal_rule"  : "<hr>",
+    },
+    "type-special": {
+        "make-required" : "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+        "reset-button"  : "\n\t<input contenteditable='true' type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+    }
+};
+
+// ANCHOR Fonction de sauvegarde
 function updatecontent() {
 
     console.log('Mise a jour du contenu');
@@ -58,12 +86,13 @@ function updatecontent() {
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
-// Mise à jour du code initial
+// ANCHOR Initialisation
+$('#content-created-blueprint').html(initial_content);
 if ($('#content-created-blueprint').html()) {
     updatecontent();
 }
 
-// mise à jour du code quand on change d'onglet (pour être sûr et + efficace sur IE)
+// ANCHOR Déclenchement sauvegarde (onglets)
 $('#nav-code-tab').on('click', function () {
     $('#form-title').text($('#form-creator-title').val());
     $('#generated-form').attr("action", $('#form-creator-link').val());
@@ -71,63 +100,33 @@ $('#nav-code-tab').on('click', function () {
     updatecontent();
 });
 
-// Mise à jour du titre
+// ANCHOR Déclenchement sauvegarde (titre inside)
 $('#form-title').on('keyup', function () {
     $('#form-creator-title').val($('#form-title').text());
     $('#elem-title').val($(this).text());
     updatecontent();
 });
 
+// ANCHOR Déclenchement sauvegarde (titre outside)
 $('#form-creator-title').on('keyup', function () {
     $('#form-title').text($('#form-creator-title').val());
     $('#elem-title').val($(this).val());
     updatecontent();
 });
 
-// Mise à jour du lien
+// ANCHOR Déclenchement sauvegarde (lien)
 $('#form-creator-link').on('keyup', function () {
     $('#generated-form').attr("action", $('#form-creator-link').val());
     updatecontent();
 });
 
-// Mise à jour de la méthode
+// ANCHOR Déclenchement sauvegarde (méthode)
 $('#form-creator-method').on('change', function () {
     $('#generated-form').attr("method", $('#form-creator-method').val());
     updatecontent();
 });
 
-
-// Actions WYSIWYG : liste de tous les éléments dynamiques ajoutables
-// \t = tabulation,  \n = saut de ligne
-var element_types = {
-    "type-question": {
-        "insert-short_answer": "\t<label for='answer' contenteditable='true' data-tag='text'>Exemple de question</label>\n\t\t<input type='text' name='answer' class='form-control' placeholder='Exemple de réponse' contenteditable='true' data-tag='input-text'/>\n",
-        "insert-long_answer": "\t<label for='answer' contenteditable='true' data-tag='text'>Exemple de question</label>\n\t\t<textarea type='text' name='answer' class='form-control' placeholder='Exemple de réponse' contenteditable='true' data-tag='input-text'/></textarea>\n",
-        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend contenteditable='true'>Légende</legend>\n\t\t\t<input type='checkbox' name='answer' checked>\n\t\t\t<label for='answer' contenteditable='true'>Affirmation</label>\n\t\t</fieldset>\n",
-        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend contenteditable='true' data-tag='text'>Légende</legend>\n\t</fieldset>\n",
-        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend contenteditable='true' data-tag='text'>Légende</legend>\n\t</fieldset>\n",
-        "insert-list_answer": "\t<fieldset>\n\t\t\t<legend contenteditable='true' data-tag='text'>Légende</legend>\n\t</fieldset>\n"
-    },
-    "type-answer-option": {
-        "insert-one_answer": "<div><input type='radio' id='answer-option' name='answer-option' value='answer-value' data-tag='option'><label for='answer-option' contenteditable='true'>Option 1</label></div>",
-        "insert-many_answer": "<div><input type='checkbox' id='answer-option' name='answer-option' value='answer-value' data-tag='option'><label for='answer-option' contenteditable='true'>Option 1</label></div>",
-        "insert-list_answer": "<div><input type='checkbox' id='answer-option' name='answer-option' value='answer-value' data-tag='option' ><label for='answer-option' contenteditable='true'>Option 1</label></div>"
-    },
-    "type-layout": {
-        "insert-title": "<h2 contenteditable='true' data-tag='title'>Titre</h2>",
-        "insert-paragraph": "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
-        "insert-link": "<a href='#' contenteditable='true' data-tag='link'>Nom du lien</a>",
-        "insert-ordered_list": "<ol contenteditable='true' data-tag='list'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
-        "insert-unordered_list": "<ul contenteditable='true' data-tag='list'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
-        "insert-horizontal_rule": "<hr>",
-    },
-    "type-special": {
-        "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-        "reset-button": "\n\t<input contenteditable='true' type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
-    }
-};
-
-// Quand on ajoute un élément
+// ANCHOR Déclenchement sauvegarde (élément)
 $('.add-element').on('click', function () {
 
     // permettra d'identifier l'élément (lui donne un ID aléatoire)
@@ -184,18 +183,9 @@ $('.add-element').on('click', function () {
 
 });
 
-
-// Annuler les modifications et redirection
-$('#btn-cancel-project').on('click', function () {
-    console.log("Annulation");
-    let answer = window.confirm("Voulez vous vraiment fermer ce projet sans sauvegarder ?")
-    if (answer) {
-        window.location.href = "profile/" + user_id + "/view";
-    }
-})
-
-// Sauvegarder les modifications
+// ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {
+    updatecontent();
     console.log("Sauvegarde");
     let post_url = $("#full-form-post").attr('action');
     $.ajax({
@@ -219,20 +209,27 @@ $('#btn-save-project').on('click', function () {
     });
 })
 
-// Find all editable content.
+// ANCHOR Action sur l'élement
 $(document.body)
     // When you click on item, record into data("initialText") content of this item.
     .on('focus', '[contenteditable=true]', function () {
+        
+        // Tools latéraux
+        console.log($(this).position().top); 
+        $('.side-tool').css("margin-top", $(this).position().top+"px");
+
         $(this).data("initialText", $(this).html());
         $(".content-editable-selected").removeClass('content-editable-selected'); // on déselectionne le reste
         console.log("Selection d'un élément");
         selectText($(this))
-        let tag = $(this).attr('data-tag'); 
-        if(tag != "form-title"){
-            $("#actions-interface").show(); // on affiche l'interface de modification
-            if(tag != "form-title"){
+        let tag = $(this).attr('data-tag');
+         
+        if(tag != "form-title"){ // si ce n'est pas le titre général du formulaire (locked)
 
-            }
+            $('.element_delete').attr('disabled', 'false');
+            $('.side-tool').show();
+            $("#actions-interface").show(); // on affiche l'interface de modification
+
             let label = $(this).parent().find('label');
             if(label){
                 label.on('keyup', function(){
@@ -241,9 +238,8 @@ $(document.body)
             }else{
                 console.log($(this).parent());
             }
-            
-            
-            
+        }else{
+            $('.element_delete').attr('disabled', 'true');
         }
         $(this).addClass("content-editable-selected");
         $('#elem-title').val($(this).text());
@@ -267,22 +263,7 @@ $(document.body)
         updatecontent();
 });
 
-// Bouton suppression élément
-$(".element_delete").on('click', function(){
-    deletecommand.execute();
-    console.log('Suppression de l\'élement');
-    $("#element_undo").on("click", function(){
-        deletecommand.undo();
-    })
-    
-    $("#element_redo").on("click", function(){
-        deletecommand.execute();
-    })
-})
-
-// ANCHOR Fonctions
-
-// Selection de tout le texte au clic
+// ANCHOR Selection de tout le texte au clic
 function selectText(element) { 
 	var sel, range;
 	var el = element[0];
@@ -306,7 +287,7 @@ function selectText(element) {
 	}
 };
 
-// Fonction Undo/Redo suppression
+// ANCHOR Fonction Undo/Redo suppression
 function command(instance) {    
     this.command = instance;
     this.done = [];
@@ -321,7 +302,7 @@ function command(instance) {
     };  
 }
 
-// Fonction Suppression
+// ANCHOR Fonction Suppression
 var deletecommand = new command({
     execute: function(){
         element = $(".content-editable-selected").detach();
@@ -333,28 +314,32 @@ var deletecommand = new command({
 
 // ANCHOR Commandes JQUERY
 
+$(".element_delete").on('click', function(){
+    deletecommand.execute();
+})
+
 $("#element_redo").on("click", function(){
-    document.execCommand('redo', false, null);
+    document.execCommand('redo', false, null); // annuler
 })
 
 $("#element_undo").on("click", function(){
-    document.execCommand('undo', false, null);
+    document.execCommand('undo', false, null); // rétablir
 })
 
 $('#element_bold').click(function() {
-    document.execCommand('bold', false, null);
+    document.execCommand('bold', false, null); // gras
 });
 
 $('#element_italic').click(function() {
-    document.execCommand('italic', false, null);
+    document.execCommand('italic', false, null); // italic
 });
 
 $('#element_underline').click(function() {
-    document.execCommand('underline', false, null);
+    document.execCommand('underline', false, null); // underline
 });
 
 $('#element_cut').click(function() {
-    document.execCommand('cut', false, null);
+    document.execCommand('cut', false, null); // couper
 });
 
 $('#element_copy').click(function() {
@@ -415,3 +400,6 @@ $("#copy-raw-code").on('click', function(){
 })
 new ClipboardJS('#copy-raw-code');
 
+$("#form-actions input").on('click', function(e){
+    e.preventdefault;
+})
