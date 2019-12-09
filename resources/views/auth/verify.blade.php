@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('titre') {{ __('Vérification de l'e-mail') }} - EasyToC @endsection
+@section('titre') {{ __('Vérification de l\'e-mail') }} - EasyToC @endsection
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@
                     @endif
 
                     {{ __('Avant de continuer, veuillez valider votre adresse e-mail.') }}
-                    {{ __('Si vous n'avez pas reçu d'adresse e-mail') }},
+                    {{ __('Si vous n\'avez pas reçu d\'adresse e-mail') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
                         <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('cliquez ici pour faire une nouvelle demande') }}</button>.

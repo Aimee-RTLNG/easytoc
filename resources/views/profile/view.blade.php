@@ -278,3 +278,7 @@
     </div>
 </div>
 @endsection
+
+@section('pagespecificscripts')
+    <script type="application/javascript" src="{{ URL::asset('js/components/profile/profile.js') }}"></script>
+@endsection
