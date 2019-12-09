@@ -74,6 +74,10 @@ window.addEventListener("DOMContentLoaded", function (event) {
 
   $('.next-section i').on('click', function () {
     scrollTo($('#tools'));
+  });
+  $('.link-ancre').on('click', function () {
+    var id = $(this).attr('href');
+    scrollTo($(id));
   }); // Slider Home
   // console.log($('.slider-tools'));
   // $('.slider-tools').slick({

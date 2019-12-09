@@ -22,10 +22,10 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" title="Retour à la page d'accueil">
                     <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="Menu">
                     <div class="bars" id="bars">
                         <div class="bars__line bars--first"></div>
                         <div class="bars__line bars--snd"></div>
@@ -91,11 +91,11 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page Aide</p>
+                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page <a href="{{ route('aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>
-                    <p  class="footer-txt">easytoc@outlook.com</p>
+                    <p  class="footer-txt"><a href="mailto:easytoc@outlook.com">easytoc@outlook.com</a></p>
                 </div>
                 <div class="col-12 menu-footer">
                     <ul class="nav navbar-dark ">

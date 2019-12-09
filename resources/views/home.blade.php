@@ -16,27 +16,23 @@
                             Easy to C peut vous aider dans cette démarche.
                         </p>
                         <div class="home-present__txt__btn">
-                            {{-- <div class="dropdown btn-primary btn-form-final"> --}}
-                                    {{-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-arrow-right"></i> Commencer un projet
-                                    </button> --}}
-                                <div class="nav-item dropdown select-home btn-form-final btn-primary">
-                                    <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Commencer un projet</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
-                                        <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
-                                        <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
-                                    </div>
+                            <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
+                                <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Commencer un projet</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
+                                    <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
+                                    <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
                                 </div>
+                            </div>
                             <a href="register" class="btn-primary btn-form-final">
                                 <i class="fas fa-arrow-right"></i>
                                 <p>S'inscrire</p>
                             </a>
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li><a clas href="#">Pourquoi rendre son site accessible ?</a></li>
-                            <li><a href="#">Comment Easy to C peut m’aider ?</a></li>
-                            <li><a href="#">Comment fonctionnent les outils Easy to C ?</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#reasons">Pourquoi rendre son site accessible ?</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#how">Comment Easy to C peut m’aider ?</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#tools">Comment fonctionnent les outils Easy to C ?</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,91 +60,50 @@
                 </div>
                 <div class="slider-tools">
                     <div class="col-lg-4 col-md-6">
-                            <div class="home-tools__item">
-                                <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.png');">
-        
-                                </div>
-                                <div class="home-tools__item__txt">
-                                    <h3 class="home-tools__item__name">Menu</h3>
-                                    <div class="home-tools__underline"></div>
-                                    <p class="home-tools__item__descr">
-                                        Un menu simple et design. Il permettra à vos utilisateur de naviguer paisiblement sur votre site web. Il suffit de quelques clics pour faire disparaître la complexité du code et faire apparaître le menu dont vous avez besoin.
-                                    </p>
-                                    <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
-                                </div>
+                        <div class="home-tools__item" tabindex="0">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.png');">
+    
                             </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6">
-                            <div class="home-tools__item">
-                                <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
-        
-                                </div>
-                                <div class="home-tools__item__txt">
-                                    <h3 class="home-tools__item__name">Tableau</h3>
-                                    <div class="home-tools__underline"></div>
-                                    <p class="home-tools__item__descr">
-                                        Facile à analyser, code optimisé et accessible. Ses fonctionnalités permettent la création de lignes et colonnes à l’infini ainsi que la composition de cases à fusionner et bien d’autres fonctions encore.
-                                    </p>
-                                    <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
-                                </div>
+                            <div class="home-tools__item__txt">
+                                <h3 class="home-tools__item__name">Menu</h3>
+                                <div class="home-tools__underline"></div>
+                                <p class="home-tools__item__descr">
+                                    Un menu simple et design. Il permettra à vos utilisateur de naviguer paisiblement sur votre site web. Il suffit de quelques clics pour faire disparaître la complexité du code et faire apparaître le menu dont vous avez besoin.
+                                </p>
+                                <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="home-tools__item">
-                                <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
-        
-                                </div>
-                                <div class="home-tools__item__txt">
-                                    <h3 class="home-tools__item__name">Formulaire</h3>
-                                    <div class="home-tools__underline"></div>
-                                    <p class="home-tools__item__descr">
-                                        Afin de recevoir des réponses favorables sur vos formulaires, il faut se poser la question : est-ce que tout le monde peut y répondre ? EasyToC vous permet de manipuler tous types de champs de formulaire pour créer celui dont vous avez besoin.                             </p>
-                                    <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
-                                </div>
-                            </div>
-                        </div>
-{{-- Aimée --}}
-                        {{-- <div class="home-tools__item__txt">
-                            <h3 class="home-tools__item__name">Menu</h3>
-                            <div class="home-tools__underline"></div>
-                            <p class="home-tools__item__descr">
-                                Nous vous proposons un outil de création de menu de navigation pour votre site. Vous pouvez le personnaliser et même ajouter plusieurs niveaux de profondeurs : il sera accessible par tous vos utilisateurs !
-                            </p>
-                            <a href="{{ route('menu') }}" class="btn-primary btn-form-final">Créer un menu</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="home-tools__item">
-                        <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
 
-                        </div>
-                        <div class="home-tools__item__txt">
-                            <h3 class="home-tools__item__name">Tableau</h3>
-                            <div class="home-tools__underline"></div>
-                            <p class="home-tools__item__descr">
-                                Il est parfois compliqué de rendre un tableau de données lisible et compréhensible par tous. C'est pourquoi vous pouvez créer un tableau via notre outil : il sera formatté pour être accessible, peu importe les données.
-                            </p>
-                            <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="home-tools__item" tabindex="0">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
+    
+                            </div>
+                            <div class="home-tools__item__txt">
+                                <h3 class="home-tools__item__name">Tableau</h3>
+                                <div class="home-tools__underline"></div>
+                                <p class="home-tools__item__descr">
+                                    Facile à analyser, code optimisé et accessible. Ses fonctionnalités permettent la création de lignes et colonnes à l’infini ainsi que la composition de cases à fusionner et bien d’autres fonctions encore.
+                                </p>
+                                <a href="{{ route('tableau') }}" class="btn-primary btn-form-final">Créer un tableau</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="home-tools__item">
-                        <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
-
+                    <div class="col-lg-4 col-md-6">
+                        <div class="home-tools__item" tabindex="0">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
+    
+                            </div>
+                            <div class="home-tools__item__txt">
+                                <h3 class="home-tools__item__name">Formulaire</h3>
+                                <div class="home-tools__underline"></div>
+                                <p class="home-tools__item__descr">
+                                    Afin de recevoir des réponses favorables sur vos formulaires, il faut se poser la question : est-ce que tout le monde peut y répondre ? EasyToC vous permet de manipuler tous types de champs de formulaire pour créer celui dont vous avez besoin.                             </p>
+                                <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
+                            </div>
                         </div>
-                        <div class="home-tools__item__txt">
-                            <h3 class="home-tools__item__name">Formulaire</h3>
-                            <div class="home-tools__underline"></div>
-                            <p class="home-tools__item__descr">
-                                Un formulaire de contact est très utile pour communiquer avec vos internautes : pour obtenir le plus de réponses possibles, il est important d'avoir un formulaire accessible. Notre outil vous aidera à faire cela.
-                            </p>
-                            <a href="{{ route('formulaire') }}" class="btn-primary btn-form-final">Créer un formulaire</a>
-                        </div>
-                    </div> --}}
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -162,7 +117,7 @@
                 </div>
                 <div class="slider-use-list">
                     <div class="col-lg-4 col-md-6">
-                        <div class="use-list__item">
+                        <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                             <h3 class="use-list__item__titre">Améliorer la visibilité</h3>
                             <p class="use-list__item__txt">
@@ -173,7 +128,7 @@
                         <div class="use-list__item__ombre"></div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <div class="use-list__item">
+                        <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                             <h3 class="use-list__item__titre">Rendre l'intéraction facile</h3>
                             <p class="use-list__item__txt">
@@ -184,7 +139,7 @@
                         <div class="use-list__item__ombre"></div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <div class="use-list__item">
+                        <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
                             <h3 class="use-list__item__titre">Etre compris par tous</h3>
                             <p class="use-list__item__txt">
@@ -200,7 +155,7 @@
     </section>
     <section class="section-home def" id="reasons">
         <div class="container">
-            <div class="row def__blocs">
+            <div class="row def__blocs" tabindex="0">
                 <div class="col-12 section-home__entete">
                     <h2 class="section-home__title">Améliorer l’accessibilité de mon site, à quoi ça sert ?</h2>
                     <div class="section-home__underline"></div>
