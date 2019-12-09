@@ -58,7 +58,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     
     // Scroll vers ancres
     function scrollTo( target ) {
-        console.log(target);
 	        if( target.length ) {
 	            $("html, body").stop().animate( { scrollTop: target.offset().top }, 500);
 	        }
