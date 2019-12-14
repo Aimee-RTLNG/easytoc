@@ -10672,7 +10672,8 @@ h2 {
   margin: 0px;
 }
 
-.link-ancre {
+.link-ancre,
+.dropdown-item {
   cursor: pointer;
 }
 
@@ -10712,6 +10713,10 @@ h2 {
 
 .hidden {
   display: none;
+}
+
+.form-control {
+  font-size: 1.4rem;
 }
 
 .flag {
@@ -11998,46 +12003,124 @@ easytoc:hover {
   border: 3px dotted rgba(0, 0, 0, 0) !important;
 }
 
+.compte-page {
+  background-color: #F4F2F0;
+}
+
 .full-list {
   overflow: hidden;
 }
 
 .profile_content {
-  margin-bottom: 30px;
+  padding-bottom: 30px;
+  margin-top: 30px;
 }
 
 .profile_content__list-crea {
   width: 250px;
+  max-width: 250px;
+}
+
+.profile_content__list-crea.show {
+  display: flex;
 }
 
 .profile_content__list-crea__link {
+  display: flex;
+  align-items: center;
   width: 100%;
+  padding: 0px 10px;
+}
+
+.profile_content__list-crea__link:before {
+  content: "\F055";
+  font-family: "Font Awesome 5 Free";
+  position: relative;
+  left: -10px;
+  font-size: 30px;
 }
 
 .profile_content__filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
-.profile_content__options,
-.profile_content__sort {
-  width: 48%;
+.profile_content__options {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
-.profile_content__options > div,
-.profile_content__sort > div {
+.profile_content__options > div {
   flex: 1 1;
+  height: 50px;
+}
+
+.profile_content__sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  height: 40px;
+}
+
+.profile_content__sort .btn {
+  height: 100%;
+  border-radius: 0px;
+  box-shadow: 0px 0px 18px -11px black;
+}
+
+.profile_content__sort .filter-name {
+  height: 100%;
+  width: 240px;
+  position: relative;
+}
+
+.profile_content__sort .filter-name i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 9px;
+  color: #CACACA;
+}
+
+.profile_content__sort input {
+  padding-left: 30px;
+  height: 100%;
+  width: 100%;
+  color: #333333;
+  border: none;
+  box-shadow: 0px 0px 18px -11px black;
+}
+
+.profile_content__sort input::-webkit-input-placeholder {
+  color: #CACACA;
+}
+
+.profile_content__sort input::-moz-placeholder {
+  color: #CACACA;
+}
+
+.profile_content__sort input:-ms-input-placeholder {
+  color: #CACACA;
+}
+
+.profile_content__sort input::-ms-input-placeholder {
+  color: #CACACA;
+}
+
+.profile_content__sort input::placeholder {
+  color: #CACACA;
 }
 
 .type-pin {
   display: inline-block;
   width: 10px;
   height: 10px;
-  margin-right: 10px;
   border-radius: 30px;
 }
 
@@ -12051,6 +12134,14 @@ easytoc:hover {
 
 .type-pin[data-type=Form] {
   background-color: #2b8bb1;
+}
+
+.all_types {
+  display: flex;
+}
+
+.all_types span:not(:last-child) {
+  margin-right: 5px;
 }
 
 .list-element {
@@ -12081,25 +12172,48 @@ easytoc:hover {
   display: block;
 }
 
-#list-filters .btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
+.list-filters {
+  margin-left: 10px;
+  display: flex;
 }
 
-#list-filters .btn:hover {
+.list-filters .btn {
+  min-width: 77px;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 18px -11px black;
+  box-shadow: inset 15px 0px 24px -22px rgba(0, 0, 0, 0.51);
+}
+
+.list-filters .btn span {
+  margin-top: 5px;
+}
+
+.list-filters .btn:hover {
   background-color: #ddd;
 }
 
-#list-filters .btn.active {
+.list-filters .btn.active {
   background-color: #666;
   color: white;
 }
 
+.btn-filter-date {
+  background-color: white;
+  font-size: 1.4rem;
+}
+
 .dashboard {
-  height: calc(100% - 120px);
+  min-height: 360px;
   box-shadow: 0px 0px 18px -11px black;
   background-color: #F4F2F0;
   padding: 35px 35px 20px 0px;
@@ -12111,6 +12225,7 @@ easytoc:hover {
 
 .dashboard__title {
   padding-left: 45px;
+  font-weight: 700;
 }
 
 .dashboard__crea {
@@ -12144,5 +12259,62 @@ easytoc:hover {
   box-shadow: 0px 0px 18px -11px black;
   border-radius: 12px;
   padding: 15px 10px;
+}
+
+.mon-compte label {
+  font-family: "Expletus Sans", cursive, sans-serif;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.mon-compte .form-control {
+  padding-left: 10px;
+  font-family: "Expletus Sans", cursive, sans-serif;
+  font-weight: 700;
+  color: #171819;
+  background-color: #F4F2F0;
+  box-shadow: 0px 0px 18px -11px black;
+  border: none;
+  height: 35px;
+}
+
+.mon-compte__entete {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mon-compte__entete__picto {
+  height: 40px;
+  background-color: #171819;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50px;
+  font-size: 25px;
+}
+
+.mon-compte__entete__title {
+  padding-left: 10px;
+  font-size: 1.4rem;
+  font-family: "Expletus Sans", cursive, sans-serif;
+  font-weight: bold;
+}
+
+.mon-compte__seepassword {
+  background-color: #171819;
+  color: white;
+}
+
+.mon-compte__btn-save {
+  margin-top: 30px;
+}
+
+.formInfoSend {
+  height: 3.5rem;
+  font-size: 1.4rem;
 }
 

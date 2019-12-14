@@ -10,6 +10,11 @@
     justify-content: space-between;
     align-items: center;
 }
+@mixin flex-row-around-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 @mixin flex-row-between-start{
     display: flex;
     justify-content: space-between;

@@ -1,30 +1,84 @@
+.compte-page {
+    background-color: $gris-clair;
+}
 .full-list {
     overflow: hidden;
 }
 .profile_content {
-    margin-bottom: 30px;
+    padding-bottom: 30px;
+    margin-top: 30px;
     &__list-crea {
         width: 250px;
+        max-width: 250px;
+        &.show {
+            display: flex;
+        }
         &__link {
+            display: flex;
+            align-items: center;
             width: 100%;
+            padding: 0px 10px;
+            &:before {
+                content: "\f055";
+                font-family: "Font Awesome 5 Free";
+                position: relative;
+                left: -10px;
+                font-size: 30px;
+            }
         }
     }
     &__filters {
         @include flex-row-between-center;
+        margin-bottom: 40px;
     }
-    &__options, &__sort {
-        width: 48%;
+    &__options {
         @include flex-row-start-center;
+        width: 100%;
         & > div {
             flex: 1 1;
+            height: 50px;
         }
+    }
+    &__sort {
+        @include flex-row-between-center;
+        width: 100%;
+        margin-top: 20px;
+        height: 40px;
+        .btn {
+            height: 100%;
+            border-radius: 0px;
+            @include shadow-box;
+        }
+        .filter-name {
+            height: 100%;
+            width: 240px;
+            position: relative;
+            i {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 9px;
+                color: #CACACA;
+            }
+        }
+        input {
+            padding-left: 30px;
+            height: 100%;
+            width: 100%;
+            color: $gris;
+            border: none;
+            @include shadow-box;
+            &::placeholder {
+                color: #CACACA;
+            }
+        }
+
     }
 }
 .type-pin {
     display: inline-block;
     width: 10px;
     height: 10px;
-    margin-right: 10px;
     border-radius: 30px;
     &[data-type="Menu"] {
         background-color: rgb(226, 95, 95);
@@ -34,6 +88,12 @@
     }
     &[data-type="Form"] {
         background-color: rgb(43, 139, 177);
+    }
+}
+.all_types {
+    display: flex;
+    span:not(:last-child) {
+        margin-right: 5px;
     }
 }
 .list-element {
@@ -59,13 +119,26 @@
     display: block;
 }
 
-#list-filters {
+.list-filters {
+    margin-left: 10px;
+    display: flex;
     .btn {
+        min-width: 77px;
         border: none;
         outline: none;
-        padding: 12px 16px;
-        background-color: #f1f1f1;
+        padding: 5px 10px;
+        background-color: white;
         cursor: pointer;
+        font-size: 1.5rem;
+        line-height: 1.2rem;
+        @include flex-col-center-center;
+        @include shadow-box;
+        -webkit-box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
+        -moz-box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
+        box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
+        span {
+            margin-top: 5px;
+        }
     }
     .btn:hover {
         background-color: #ddd;
@@ -75,8 +148,12 @@
         color: white;
     }
 }
+.btn-filter-date {
+    background-color: white;
+    font-size: 1.4rem;
+}
 .dashboard {
-    height: calc(100% - 120px);
+    min-height: 360px;
     @include shadow-box;
     background-color: $gris-clair;
     padding: 35px 35px 20px 0px;
@@ -86,6 +163,7 @@
     font-weight: bold;
     &__title {
         padding-left:45px;
+        font-weight: 700;
     }
     &__crea {
         @include flex-col-center-center;
@@ -112,4 +190,49 @@
     @include shadow-box;
     border-radius: 12px;
     padding: 15px 10px;
+    label {
+        @include expletus;
+        font-weight: 700;
+        margin-left: 10px;
+    }
+    .form-control {
+        padding-left: 10px;
+        @include expletus;
+        font-weight: 700;
+        color: $dark;
+        background-color: $gris-clair;
+        @include shadow-box;
+        border: none;
+        height: 35px;
+    }
+    &__entete {
+        @include flex-row-around-center;
+        margin-bottom: 20px;
+        &__picto {
+            height: 40px;
+            background-color: $dark;
+            width: 40px;
+            @include flex-row-center;
+            color: white;
+            border-radius: 50px;
+            font-size: 25px;
+        }
+        &__title {
+            padding-left: 10px;
+            font-size: 1.4rem;
+            @include expletus;
+            font-weight: bold;
+        }
+    }
+    &__seepassword {
+        background-color: $dark;
+        color: white;
+    }
+    &__btn-save {
+        margin-top: 30px;
+    }
+}
+.formInfoSend {
+    height: 3.5rem;
+    font-size: 1.4rem;
 }
