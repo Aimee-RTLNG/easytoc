@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-// require('./components/run_prettify.js');
+require('./components/run_prettify.js');
 
 /*
 import Vue from 'vue';

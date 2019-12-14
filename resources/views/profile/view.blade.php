@@ -79,9 +79,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="test">
+
+                    </div>
                     <div class="dashboard">
                         <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
-                        <div class="panel m-2 panel-default full-list">
+                        <div class="panel panel-default full-list">
                             @foreach ($user->contents as $content)
                                 <div class="justify-content-between list-element" data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}">
                                     <div class="d-flex element-info">
@@ -136,7 +139,7 @@
                             <div class="mon-compte__entete__picto"><i class="far fa-user"></i></div>
                             <h2 class="mon-compte__entete__title">{{ __('Modifier les paramètres de votre compte') }}</h2>
                         </div>
-                        <div class="panel m-2 panel-default">
+                        <div class="panel panel-default">
                             <div class="panel-body">
                                 <form id="formInfos" class="form-horizontal" method="POST" action="{{ route('profile.updateInfo', ['user' => $user]) }}">
                                     {{ csrf_field() }}

@@ -236,3 +236,9 @@
     height: 3.5rem;
     font-size: 1.4rem;
 }
+.test {
+    height: 50px;
+    width: 50px;
+    @include back-img;
+    background-image: url(http://localhost/ProjetApp/easytoc/easytoc/public/images/en.png);
+}
