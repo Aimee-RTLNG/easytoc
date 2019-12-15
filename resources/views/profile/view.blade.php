@@ -79,57 +79,63 @@
                             </div>
                         </div>
                     </div>
-                    <div class="test">
 
-                    </div>
                     <div class="dashboard">
                         <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
                         <div class="panel panel-default full-list">
-                            @foreach ($user->contents as $content)
-                                <div class="justify-content-between list-element" data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}">
-                                    <div class="d-flex element-info">
-                                        <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
-                                        <div>
-                                            <h3><a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a></h3>
-                                            <div class="content-description">
-                                                <p class="content-description-text">{{ $content->description }}</p>
-                                            </div>
-                                            <?php 
-                                                if (App::isLocale('en')) {
-                                            ?>
-                                                <span class="mr-2 type-name type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}">
-                                                    {{ $content->type->name_en }}
-                                                </span>
-                                                / 
-                                                <span class="ml-2 type-date">
-                                                    {{ $content->updated_at }}
-                                                </span>
-                                            <?php
-                                            }else if (App::isLocale('fr')) {
-                                            ?>
-                                                <span class="mr-2 type-name type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}">
-                                                    {{ $content->type->name_fr }}
-                                                </span>
-                                                / 
-                                                <span class="ml-2 type-date">
-                                                    {{ $content->updated_at }}
-                                                </span>
-                                            <?php
-                                                }
-                                            ?>
-                                        </div>
+                        @foreach ($user->contents as $content)
+                            <div class="crea-item row"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >
+                                <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
+                                <div class="col-9 crea-item__infos">
+                                    <div class="crea-item__entete">
+                                        <h3 class="crea-item__entete__title"><a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a></h3>
+                                        <div class="crea-item__entete__under"></div>
                                     </div>
-                                    <div class="d-flex flex-column element-actions">
-                                        <a class="btn btn-info view-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ __('Visualiser') }}</a>
-                                        <a class="btn btn-info edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">{{ __('Modifier') }}</a>
-                                        <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+                                    <p class="crea-item__descr">
+                                        {{ $content->description }}
+                                    </p>
+                                    <?php 
+                                    if (App::isLocale('en')) {
+                                    ?>
+                                        <p class="crea-item__type-date">
+                                            {{ $content->type->name_en }} / Dernière modification : {{ $content->updated_at }}
+                                        </p>
+                                    <?php
+                                    }else if (App::isLocale('fr')) {
+                                    ?>
+                                        <p class="crea-item__type-date">
+                                            {{ $content->type->name_fr }} / Last updated :  {{ $content->updated_at }}
+                                        </p>
+                                    <?php
+                                        }
+                                    ?>
+                                </div>
+                                <div class="col-3 crea-item__btns">
+                                    <div>
+                                        <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}">
+                                            <div  class="crea-item__btns__icon">
+                                                <i class="far fa-eye"></i>
+                                            </div>
+                                            <p>{{ __('Visualiser') }}</p>
+                                        </a>
+                                        <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}">
+                                            <div class="crea-item__btns__icon">
+                                                <i class="far fa-edit"></i>
+                                            </div>
+                                            <p>{{ __('Modifier') }}</p>
+                                        </a>
+                                        <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <input type="submit" value="{{ __('Supprimer') }}" class="btn btn-danger delete-content-button" onclick="return confirm('Are you sure to delete?')">       
+                                            <div class="crea-item__btns__icon btn--rouge">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </div>
+                                            <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('Are you sure to delete?')">       
                                         </form>
                                     </div>
-                                </div>    
-                            @endforeach        
+                                </div>
+                            </div>
+                        @endforeach             
                         </div>
                     </div>
                 </div>
@@ -295,6 +301,7 @@
                         </div>
                    </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

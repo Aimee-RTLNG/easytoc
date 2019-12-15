@@ -76,6 +76,8 @@
     }
 }
 .type-pin {
+    top: 20px;
+    left: 25px;
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -86,7 +88,7 @@
     &[data-type="Table"] {
         background-color: rgb(90, 180, 68);
     }
-    &[data-type="Form"] {
+    &[data-type="Form"], &[data-type="form"] {
         background-color: rgb(43, 139, 177);
     }
 }
@@ -164,6 +166,7 @@
     &__title {
         padding-left:45px;
         font-weight: 700;
+        margin-bottom: 30px;
     }
     &__crea {
         @include flex-col-center-center;
@@ -236,9 +239,88 @@
     height: 3.5rem;
     font-size: 1.4rem;
 }
-.test {
-    height: 50px;
-    width: 50px;
-    @include back-img;
-    background-image: url(http://localhost/ProjetApp/easytoc/easytoc/public/images/en.png);
+// Bloc de créations 
+.crea-item  {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px 20px 20px 40px;
+    margin-bottom: 30px;
+    &__entete {
+        @include flex-col-between-start;
+        &__title {
+            font-size: 2.5rem;
+            @include expletus;
+            font-weight: 700;
+        }
+        &__under {
+            height: 4px;
+            width: 100px;
+            background-color: $bleu;
+            margin: 8px 0 20px 0px;
+        }
+    }
+    &__descr {
+        font-size: 1.5rem;
+        line-height: 2.4rem;
+    }
+    &__type-date {
+        font-size: 1.4rem;
+        font-style: italic;
+        margin-top: 12px;
+        text-transform: capitalize;
+    }
+    &__btns {
+        @include flex-col-end-center;
+        a {
+            margin-bottom: 10px;
+        }
+        &__icon {
+            background-color: white;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            color: $bleu;
+            font-size: 15px;
+            @include flex-col-center-center;
+        }
+        .btn {
+            justify-content: flex-start;
+            width: 100%;
+            padding: 2px 6px;
+            min-width: 130px;
+            p {
+                margin-left: 6px;
+            }
+        }
+        .btn-gris{
+            background-color: $gris-clair;
+        }
+    }
+    &__btn-delete {
+        @include flex-row-between-center;
+        input {
+            background: transparent;
+            border: none;
+            color: $red;
+            @include expletus;
+            font-weight: bold;        
+        }
+    }
+    .type-pin  {
+        position: absolute;
+        position: absolute;
+        top: 38px;
+        left: 30px;    
+    }
+    &__infos {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        @include flex-col-between-start;
+    }
+}
+.btn--rouge {
+    color: white;
+    background-color: $red;
 }

@@ -11030,6 +11030,8 @@ easytoc, easytoc *:hover, easytoc:hover {
 }
 
 .type-pin {
+  top: 20px;
+  left: 25px;
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -11041,7 +11043,7 @@ easytoc, easytoc *:hover, easytoc:hover {
 .type-pin[data-type=Table] {
   background-color: #5ab444;
 }
-.type-pin[data-type=Form] {
+.type-pin[data-type=Form], .type-pin[data-type=form] {
   background-color: #2b8bb1;
 }
 
@@ -11125,6 +11127,7 @@ easytoc, easytoc *:hover, easytoc:hover {
 .dashboard__title {
   padding-left: 45px;
   font-weight: 700;
+  margin-bottom: 30px;
 }
 .dashboard__crea {
   display: flex;
@@ -11207,12 +11210,102 @@ easytoc, easytoc *:hover, easytoc:hover {
   font-size: 1.4rem;
 }
 
-.test {
-  height: 50px;
-  width: 50px;
-  background-color: black;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(http://localhost/ProjetApp/easytoc/easytoc/public/images/en.png);
+.crea-item {
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px 20px 20px 40px;
+  margin-bottom: 30px;
+}
+.crea-item__entete {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.crea-item__entete__title {
+  font-size: 2.5rem;
+  font-family: "Expletus Sans", cursive, sans-serif;
+  font-weight: 700;
+}
+.crea-item__entete__under {
+  height: 4px;
+  width: 100px;
+  background-color: #45B8FF;
+  margin: 8px 0 20px 0px;
+}
+.crea-item__descr {
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+.crea-item__type-date {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-top: 12px;
+  text-transform: capitalize;
+}
+.crea-item__btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.crea-item__btns a {
+  margin-bottom: 10px;
+}
+.crea-item__btns__icon {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: #45B8FF;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.crea-item__btns .btn {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 2px 6px;
+  min-width: 130px;
+}
+.crea-item__btns .btn p {
+  margin-left: 6px;
+}
+.crea-item__btns .btn-gris {
+  background-color: #F4F2F0;
+}
+.crea-item__btn-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.crea-item__btn-delete input {
+  background: transparent;
+  border: none;
+  color: #e3342f;
+  font-family: "Expletus Sans", cursive, sans-serif;
+  font-weight: bold;
+}
+.crea-item .type-pin {
+  position: absolute;
+  position: absolute;
+  top: 38px;
+  left: 30px;
+}
+.crea-item__infos {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.btn--rouge {
+  color: white;
+  background-color: #e3342f;
 }
