@@ -10654,7 +10654,7 @@ body {
 }
 
 .btn-primary {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
 }
 
 a {
@@ -10684,7 +10684,7 @@ h2 {
 }
 
 .entete__title {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-size: 3.4rem;
   font-weight: bold;
 }
@@ -10965,7 +10965,7 @@ h2 {
 }
 
 .register {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   position: relative;
   margin-top: 35px;
   margin-bottom: 35px;
@@ -11353,7 +11353,7 @@ h2 {
 
 .authen__content {
   padding: 30px;
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   position: relative;
   margin-top: 70px;
   margin-bottom: 70px;
@@ -11432,7 +11432,7 @@ h2 {
 }
 
 .section-home__title {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
   font-size: 4rem;
   width: 50%;
@@ -11540,7 +11540,7 @@ h2 {
 
 .home-tools__item__name {
   text-transform: uppercase;
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -11657,7 +11657,7 @@ h2 {
 
 .def__txt__citation {
   margin: 20px 5px 20px 35px;
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
   font-size: 2rem;
   line-height: 2.3rem;
@@ -11736,10 +11736,21 @@ pre.prettyprinted {
 
 /* style de l'interface actions */
 
+[contenteditable=true]:hover,
+#full-form input {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-tag=text]:hover,
+[data-tag=label]:hover,
+[data-tag=form-title]:hover {
+  cursor: text;
+}
+
 #content-created-blueprint form * {
   border: 3px dotted rgba(0, 0, 0, 0);
   padding: 5px;
-  cursor: text;
 }
 
 #content-created-blueprint form *:hover {
@@ -11751,7 +11762,8 @@ pre.prettyprinted {
 }
 
 .type-layout,
-.type-layout:hover {
+.type-layout:hover,
+label:hover {
   border: 0px dotted rgba(0, 0, 0, 0) !important;
 }
 

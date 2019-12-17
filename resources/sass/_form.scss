@@ -54,10 +54,18 @@ body {
 
 /* style de l'interface actions */
 
+[contenteditable="true"]:hover, #full-form input{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.02);
+}
+
+[data-tag="text"]:hover, [data-tag="label"]:hover, [data-tag="form-title"]:hover{
+    cursor: text;
+}
+
 #content-created-blueprint form *{
     border: 3px dotted rgba(0,0,0,0);
     padding: 5px;
-    cursor: text;
 }
 
 #content-created-blueprint form *:hover{
@@ -68,7 +76,7 @@ body {
     border: 3px dotted blue !important;
 }
 
-.type-layout, .type-layout:hover{
+.type-layout, .type-layout:hover, label:hover{
     border: 0px dotted rgba(0,0,0,0) !important;
 }
 

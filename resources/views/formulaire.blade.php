@@ -150,6 +150,7 @@
                             </div>
 
                                 <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
+                                    <!--
                                     <div role="section" class="col" aria-label="Actions sur l'élement">
                                         <h3 id="form_actions_element" class="mb-3 font-weight-bold">{{ __("Actions sur l'élement") }}</h3>
                                         <input class="btn btn-light" type="button" aria-label="Couper" value="Couper"
@@ -165,6 +166,7 @@
                                         <input class="btn btn-light" type="button" aria-label="Rétablir" value="Rétablir"
                                             id="element_redo" role="listitem">
                                     </div>
+                                    -->
                                     <div role="section" class="col" aria-labelledby="form_actions_text">
                                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
                                         <input class="btn btn-light" type="button" aria-label="Gras" value="Gras" id="element_bold"
@@ -221,10 +223,10 @@
 
                             <div class="side-tool" style="display: none">
                                 <button id="tool-move-up" class="mb-2" title="Déplacer vers le haut">
-                                    <i class="fas fa-caret-up"></i>
+                                    <i class="fas fa-caret-up"></i>🔺
                                 </button>
                                 <button id="tool-move-down" title="Déplacer vers le bas">
-                                    <i class="fas fa-sort-down"></i>
+                                    <i class="fas fa-sort-down"></i>🔻
                                 </button>
                             </div>
 
@@ -273,7 +275,7 @@
 
                             <div class="side-tool" style="display: none">
                                 <button id="tool-delete" title="Supprimer l'élement">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fas fa-trash-alt"></i>🗑
                                 </button>
                             </div>
                         </div>
@@ -282,14 +284,15 @@
                         <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section" >
                             <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
                                 <div class="d-flex" role="section">     
-                                    <div class="" role="section">
-                                        <label for="elem-title">{{ __("Intitulé de l'élément") }}</label>
-                                        <input id="elem-title" name="elem-title" placeholder="Quelle est la question ?" class="form-control"
-                                            size="25" />
+                                    <div role="section">
+                                        <label for="elem-title">{{ __("Intitulé de l'élément sélectionné") }}
+                                            <input id="elem-title" name="elem-title" placeholder="Texte" class="form-control"
+                                            size="50" />
+                                        </label>
                                     </div>
-                                    <div class="" role="section">
-                                        <label for="elem-type">{{ __('Type de réponse') }}</label>
-                                        <select name="elem-type" class="form-control">
+                                    <div role="section">
+                                        <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
+                                        <select name="elem-type" id="elem-type" class="form-control">
                                             <option selected disabled>{{ __('Type') }}</option>
                                             <option value="email">{{ __('Email') }}</option>
                                             <option value="number">{{ __('Nombre') }}</option>
@@ -297,34 +300,28 @@
                                             <option value="text">{{ __('Texte') }}</option>
                                         </select>
                                     </div>
-                                    <div class="" role="section">
-                                        <label for="elem-length">{{ __('Longueur max') }}</label>
-                                        <div class="d-flex justify-content-center align-items-center" role="section">
-                                            <input type="number" name="elem-length" placeholder="15" class="form-control"
-                                                size="2" />
-                                            <a class="ml-2">{{ __('caractères') }}</a>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-4" role="section">
-                                        <input type="checkbox" name="elem-required" class="mr-2" role="section">
+                                    <div class="d-flex align-items-center" role="section">
+                                        <input type="checkbox" name="elem-required" id="elem-required" class="mr-2" role="section">
                                         <label for="elem-required">{{ __('Réponse obligatoire') }}</label>
                                     </div>
-                                </div>
-                                <div class="d-flex" role="section">
-                                    <div class="" role="section">
-                                        <label for="elem-placeholder">{{ __('Exemple de réponse') }}</label>
-                                        <input name="elem-placeholder" placeholder="Ceci est le placeholder" class="form-control"
-                                            size="25" aria-label="Exemple de réponse" />
+                                    <div role="section">
+                                            <label for="elem-placeholder">{{ __('Exemple de réponse') }}
+                                            <input name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" class="form-control"
+                                                size="25" aria-label="Exemple de réponse" />
+                                            </label>
                                     </div>
-                                    <div class="" role="section">
-                                        <label for="elem-name">{{ __('Identifiant') }}</label>
-                                        <input name="elem-name" placeholder="couleur-ciel" class="form-control" size="25"
-                                            aria-label="Identifiant" />
+                                    <div role="section">
+                                        <label for="elem-length">
+                                            {{ __('Longueur de caractères maximum') }}
+                                            <input type="number" name="elem-length" id="elem-length" placeholder="Longueur" class="form-control"
+                                                size="2" />
+                                        </label>
                                     </div>
-                                    <div class="d-flex align-items-center mt-4" role="section">
+                                    <div role="section">
                                         <button aria-label="Supprimer" class="element_delete">{{ __('Supprimer') }}</button>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
