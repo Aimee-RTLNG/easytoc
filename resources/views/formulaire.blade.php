@@ -317,6 +317,11 @@
                                                 size="2" />
                                         </label>
                                     </div>
+                                    <!-- Si élément tag == select -->
+                                    <div class="d-flex align-items-center" role="section">
+                                        <input type="checkbox" name="elem-required" id="elem-required" class="mr-2" role="section">
+                                        <label for="elem-required">{{ __('Choix multiples') }}</label>
+                                    </div>
                                     <div role="section">
                                         <button aria-label="Supprimer" class="element_delete">{{ __('Supprimer') }}</button>
                                     </div>

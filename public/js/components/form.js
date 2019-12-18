@@ -46,9 +46,9 @@ var element_types = {
         "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='answer' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-text' data-tag='label-text'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value'></label>",
-        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><span class='label-text' data-tag='label-text'>Option 1</span><input type='checkbox' id='REPLACEID' name='answer-option' value='answer-value'></label>",
-        "insert-list_answer": "<option value='answer-value' data-tag='option'> Option 1 </option>"
+        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value'></label>",
+        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='checkbox' id='REPLACEID' name='answer-option' value='answer-value'></label>",
+        "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text'>Option 1</span></option>"
     },
     "type-layout": {
         "insert-title"            : "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
@@ -56,7 +56,7 @@ var element_types = {
         "insert-link"             : "<a href='#' contenteditable='true' data-tag='link'>Nom du lien</a>",
         "insert-ordered_list"     : "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
         "insert-unordered_list"   : "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
-        "insert-horizontal_rule"  : "<hr>",
+        "insert-horizontal_rule"  : "<hr contenteditable='false'>",
     },
     "type-special": {
         "make-required" : "\t<abbr title='required' aria-label='required'>*</abbr>\n", // plus ajout du "required sur le champ"

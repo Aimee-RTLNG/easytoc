@@ -11704,7 +11704,7 @@ body {
 #nav-code {
   padding: 2em;
   border: 1px solid rgba(0, 0, 0, 0.192);
-  border-top: 1px solid rgba(0, 0, 0, 0);
+  border-top: 0;
 }
 
 /* style du code généré */
@@ -11743,13 +11743,13 @@ pre.prettyprinted {
 }
 
 [data-tag=text]:hover,
-[data-tag=label]:hover,
+[data-tag=label-text]:hover,
 [data-tag=form-title]:hover {
   cursor: text;
 }
 
 #content-created-blueprint form * {
-  border: 3px dotted rgba(0, 0, 0, 0);
+  border: 0;
   padding: 5px;
 }
 
@@ -11757,14 +11757,21 @@ pre.prettyprinted {
   border: 3px dotted black;
 }
 
-.content-editable-selected {
-  border: 3px dotted blue !important;
+#content-created-blueprint form * hr {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+  padding: 0 !important;
 }
 
-.type-layout,
-.type-layout:hover,
-label:hover {
-  border: 0px dotted rgba(0, 0, 0, 0) !important;
+#content-created-blueprint form * hr:hover {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+#content-created-blueprint form * .type-layout *:hover {
+  border: 0 !important;
+}
+
+.content-editable-selected {
+  border: 3px dotted blue !important;
 }
 
 form {
