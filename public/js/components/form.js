@@ -214,11 +214,16 @@ $('#btn-save-project').on('click', function () {
 // ANCHOR Action sur l'élement
 let element_select;
 $(document.body)
+
+    // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
+
     .on('click', '[contenteditable=true] label', function (e){
         e.preventDefault();
     })
+
+    // Quand on sélectionne un élément éditable
+
     .on('focus', '[contenteditable=true]', function (e) {
-        
         let tag = $(this).attr('data-tag');
         
         // on récupère l'élément sélectionné dans une variable 
@@ -235,18 +240,53 @@ $(document.body)
         $(this).addClass("content-editable-selected");
         
         if(tag != "form-title"){ // si ce n'est pas le titre général du formulaire (position verouillée)
-            selectText($(this).find('.label-text')); // on sélectionne le texte interne
-            $('.side-tool').show();
-            $("#actions-interface").show(); // on affiche l'interface de modification
+            let element_type = $(this).attr('data-elementtype');
+            let element_name = $(this).attr('data-elementtypename');
+            console.log(element_name);
 
-            let label = $(this).parent().find('label').find('span');
-            if(label){
-                label.on('keyup', function(){
-                    $('#elem-title').val(label.text());
-                })
+            // Side tool : déplacemet haut bas et suppression 
+            $('.side-tool').show();
+
+            if(element_type != "type-layout"){
+
+                // on sélectionne le texte interne
+                if($(this).find('.legend-text')){
+                    selectText($(this).find('legend'));
+                }else{
+                    selectText($(this).find('.label-text'));
+                }
+
+                // on récupère le label
+                let label = $(this).parent().find('label').find('span');
+                if(label){
+                    label.on('keyup', function(){
+                        $('#elem-title').val(label.text());
+                    })
+                }else{
+                    console.log($(this).parent());
+                }
+
+                // on change les éléments modifiable dans l'es
+                if(element_name == "insert-short_answer"){
+                    console.log("Short answer");
+                }else if(element_name == "insert-long_answer"){
+                    console.log("Long answer");
+                }else if(element_name == "insert-binary_answer"){
+                    console.log("Cocher binary");
+                }else if(element_name == "insert-one_answer"){
+                    console.log("Cocher un seul");
+                }else if(element_name == "insert-many_answer"){
+                    console.log("Cocher plusieurs");
+                }else if(element_name == "insert-list_answer"){
+                    console.log("Liste");
+                }
+
+                $("#actions-interface").show(); // on affiche l'interface de modification spécifique
+
             }else{
-                console.log($(this).parent());
+                $("#actions-interface").hide(); // on masque l'interface de modification spécifique
             }
+        
         }else{
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
@@ -288,10 +328,31 @@ $(document.body)
     });
 
 
-// ANCHOR Masque des sidetools
+// ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function(){
     $("#actions-interface").hide();
     $('.side-tool').hide();
+})
+
+// ANCHOR Clique sur éléments de sidetools
+$(".form-element-action").on('click', function(){
+
+    switch ($(this).data("action")) {
+        case "change-text":
+            console.log("changmeent de text");
+            break;
+        case "move-up":
+            console.log("move up");
+            break;
+        case "move-down":
+            console.log("mpve down");
+            break;
+        case "delete":
+            deletecommand.execute();
+            $("#actions-interface").hide();
+            $(".side-tool").hide();
+            break;
+    }
 })
 
 // ANCHOR Selection de tout le texte au clic
@@ -344,10 +405,6 @@ var deletecommand = new command({
 });
 
 // ANCHOR Commandes JQUERY
-
-$(".element_delete").on('click', function(){
-    deletecommand.execute();
-})
 
 $("#element_redo").on("click", function(){
     document.execCommand('redo', false, null); // annuler
