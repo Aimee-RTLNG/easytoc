@@ -46,7 +46,7 @@ var element_types = {
         "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='answer' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value'></label>",
+        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value' checked></label>",
         "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='checkbox' id='REPLACEID' name='answer-option' value='answer-value'></label>",
         "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text'>Option 1</span></option>"
     },
@@ -266,19 +266,33 @@ $(document.body)
                     console.log($(this).parent());
                 }
 
+                $('.action-answer-type').hide();
+                $('.action-placeholder').hide();
+                $('.action-maxlength').hide();
+                $('.action-multiple-answer').hide();
+                $('.action-add-option').hide();
+                $('.action-required').show();
+
                 // on change les éléments modifiable dans l'es
                 if(element_name == "insert-short_answer"){
-                    console.log("Short answer");
+                    $('.action-answer-type').show();
+                    $('.action-placeholder').show();
+                    $('.action-maxlength').show();
                 }else if(element_name == "insert-long_answer"){
-                    console.log("Long answer");
+                    $('.action-placeholder').show();
+                    $('.action-maxlength').show();
                 }else if(element_name == "insert-binary_answer"){
                     console.log("Cocher binary");
                 }else if(element_name == "insert-one_answer"){
-                    console.log("Cocher un seul");
+                    $('.action-required').hide();
+                    $('.action-add-option').show();
                 }else if(element_name == "insert-many_answer"){
-                    console.log("Cocher plusieurs");
+                    $('.action-required').hide();
+                    $('.action-add-option').show();
                 }else if(element_name == "insert-list_answer"){
-                    console.log("Liste");
+                    $('.action-placeholder').show();
+                    $('.action-multiple-answer').show();
+                    $('.action-add-option').show();
                 }
 
                 $("#actions-interface").show(); // on affiche l'interface de modification spécifique
@@ -352,14 +366,28 @@ $(".form-element-action").on('click', function(){
             if(previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")){
                 previous_element.insertAfter(element_selected_container);
             }
+            // Déplacement des Tools latéraux
+            $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
             break;
         case "move-down":
-            next_element.insertBefore(element_selected_container);
+            if(next_element.attr("id") != "form-title" && next_element.hasClass("element-container")){
+                next_element.insertBefore(element_selected_container);
+            }
+            // Déplacement des Tools latéraux
+            $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
             break;
         case "delete":
             deletecommand.execute();
             $("#actions-interface").hide();
             $(".side-tool").hide();
+            break;
+        case "required":
+            element_selected_container.find("input").attr("required", "required");
+            element_selected_container.find("select").attr("required", "required");
+            element_selected_container.find("textarea").attr("required", "required");
+            element_selected_container.find("input[type='radio']").first().attr("required", "required");
+            // plus ajout de l'étoile
+            // plus fonction d'enlever le required
             break;
     }
 })

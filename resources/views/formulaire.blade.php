@@ -285,12 +285,13 @@
                             <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
                                 <div class="d-flex" role="section">     
                                     <div role="section" class="form-element-action action-question-text" data-action="question-text" >
-                                        <label for="elem-title">{{ __("Intitulé de l'élément sélectionné") }}
+                                        <label for="elem-title">
+                                            {{ __("Intitulé de l'élément sélectionné") }}
                                             <input id="elem-title" name="elem-title" placeholder="Texte" class="form-control"
-                                            size="50" />
+                                                size="50" />
                                         </label>
                                     </div>
-                                    <div role="section" class="form-element-action action-answer-type" data-action="answer-type">
+                                    <div role="section" class="form-element-action action-answer-type" data-action="answer-type" style="display:none">
                                         <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
                                         <select name="elem-type" id="elem-type" class="form-control">
                                             <option selected disabled>{{ __('Type') }}</option>
@@ -302,15 +303,18 @@
                                     </div>
                                     <div class="d-flex align-items-center form-element-action action-required" data-action="required" role="section">
                                         <input type="checkbox" name="elem-required" id="elem-required" class="mr-2" role="section">
-                                        <label for="elem-required">{{ __('Réponse obligatoire') }}</label>
+                                        <label for="elem-required">
+                                            {{ __('Réponse obligatoire') }}
+                                        </label>
                                     </div>
-                                    <div class="form-element-action action-placeholder" data-action="placeholder" role="section">
-                                            <label for="elem-placeholder">{{ __('Exemple de réponse') }}
-                                            <input name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" class="form-control"
-                                                size="25" aria-label="Exemple de réponse" />
+                                    <div class="form-element-action action-placeholder" data-action="placeholder" role="section" style="display:none">
+                                            <label for="elem-placeholder">
+                                                {{ __('Exemple de réponse') }}
+                                                <input name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" class="form-control"
+                                                    size="25" aria-label="Exemple de réponse" />
                                             </label>
                                     </div>
-                                    <div class="form-element-action action-maxlength" data-action="maxlength" role="section">
+                                    <div class="form-element-action action-maxlength" data-action="maxlength" role="section" style="display:none">
                                         <label for="elem-length">
                                             {{ __('Longueur de caractères maximum') }}
                                             <input type="number" name="elem-length" id="elem-length" placeholder="Longueur" class="form-control"
@@ -318,12 +322,19 @@
                                         </label>
                                     </div>
                                     <!-- Si élément tag == select -->
-                                    <div class="d-flex align-items-center form-element-action action-multiple-answer" data-action="multiple-answer" role="section">
+                                    <div class="align-items-center form-element-action action-multiple-answer" data-action="multiple-answer" role="section" style="display:none">
                                         <input type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" class="mr-2" role="section">
-                                        <label for="elem-multiple-choice">{{ __('Choix multiples') }}</label>
+                                        <label for="elem-multiple-choice">
+                                            {{ __('Choix multiples') }}
+                                        </label>
                                     </div>
                                     <div class="form-element-action action-delete" data-action="delete" role="section">
                                         <button aria-label="Supprimer" class="element_delete">{{ __('Supprimer') }}</button>
+                                    </div>
+                                    <div class="form-element-action action-add-option" data-action="add-option" role="section" style="display:none">
+                                        <input type="text" placeholder="Nom de l'option" />
+                                        <input type="text" placeholder="Valeur de l'option" />
+                                        <button aria-label="Ajouter une option" class="element_add-option">{{ __('Ajouter une option') }}</button>
                                     </div>
                                 </div>
                                 
