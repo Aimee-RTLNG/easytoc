@@ -134,7 +134,7 @@ $('.add-element').on('click', function () {
     var element_type_name = $(this).attr("id");
     if (element_type_name != "reset-button") {
         let added_content = element_types[element_type][element_type_name];
-        var element_content = "\t<div contenteditable='true' data-id=" + element_id + " data-elementType='" + element_type + "' data-elementTypeName='" + element_type_name + "' class='" + element_type + " " + element_type_name + "'>\n\t" + added_content + "\n\t</div>\n";
+        var element_content = "\t<div contenteditable='true' data-id=" + element_id + " data-elementType='" + element_type + "' data-elementTypeName='" + element_type_name + "' class='element-container " + element_type + " " + element_type_name + "'>\n\t" + added_content + "\n\t</div>\n";
         /* on attribue les id au contenu interne */
         let id_replace_regex = /REPLACEID/g;
         element_content = element_content.replace(id_replace_regex, element_id);
@@ -337,15 +337,24 @@ $("#nav-code-tab").on('click', function(){
 // ANCHOR Clique sur éléments de sidetools
 $(".form-element-action").on('click', function(){
 
+    let element_selected_container;
+    if($(element_select).hasClass('element-container')){
+        element_selected_container = element_select;
+    }else{
+        element_selected_container = $(element_select).closest(".element-container");
+    }
+    
+    let previous_element = element_selected_container.prev();
+    let next_element = element_selected_container.next();
+
     switch ($(this).data("action")) {
-        case "change-text":
-            console.log("changmeent de text");
-            break;
         case "move-up":
-            console.log("move up");
+            if(previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")){
+                previous_element.insertAfter(element_selected_container);
+            }
             break;
         case "move-down":
-            console.log("mpve down");
+            next_element.insertBefore(element_selected_container);
             break;
         case "delete":
             deletecommand.execute();
