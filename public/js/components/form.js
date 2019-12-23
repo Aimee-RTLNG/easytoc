@@ -3,7 +3,7 @@
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" contenteditable="false" action="#" method="get" name="generated-form">\n&nbsp;&nbsp;<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n&nbsp;&nbsp;</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n&nbsp;&nbsp;<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n&nbsp;&nbsp;</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -38,17 +38,17 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
 // \t = tabulation,  \n = saut de ligne
 var element_types = {
     "type-question": {
-        "insert-short_answer"  : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='answer' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-        "insert-long_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='answer' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer" : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='answer' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer"    : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-many_answer"   : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='answer' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
+        "insert-short_answer"  : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='answer' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+        "insert-long_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='answer' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+        "insert-binary_answer" : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='answer' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+        "insert-one_answer"    : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-many_answer"   : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='answer' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value' checked></label>",
-        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text'>Option 1</span><input type='checkbox' id='REPLACEID' name='answer-option' value='answer-value'></label>",
-        "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text'>Option 1</span></option>"
+        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value' checked></label>",
+        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span><input type='checkbox' id='REPLACEID' name='answer-option' value='answer-value'></label>",
+        "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span></option>"
     },
     "type-layout": {
         "insert-title"            : "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
@@ -59,7 +59,7 @@ var element_types = {
         "insert-horizontal_rule"  : "<hr contenteditable='false'>",
     },
     "type-special": {
-        "make-required" : "\t<abbr title='required' aria-label='required'>*</abbr>\n", // plus ajout du "required sur le champ"
+        "make-required" : "\t<abbr title='required' aria-label='required' contenteditable='false'>*</abbr>\n",
         "reset-button"  : "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
     }
 };
@@ -134,7 +134,7 @@ $('.add-element').on('click', function () {
     var element_type_name = $(this).attr("id");
     if (element_type_name != "reset-button") {
         let added_content = element_types[element_type][element_type_name];
-        var element_content = "\t<div contenteditable='true' data-id=" + element_id + " data-elementType='" + element_type + "' data-elementTypeName='" + element_type_name + "' class='element-container " + element_type + " " + element_type_name + "'>\n\t" + added_content + "\n\t</div>\n";
+        var element_content = "\t<div data-id=" + element_id + " data-elementType='" + element_type + "' data-elementTypeName='" + element_type_name + "' class='element-container " + element_type + " " + element_type_name + "'>\n\t" + added_content + "\n\t</div>\n";
         /* on attribue les id au contenu interne */
         let id_replace_regex = /REPLACEID/g;
         element_content = element_content.replace(id_replace_regex, element_id);
@@ -382,11 +382,21 @@ $(".form-element-action").on('click', function(){
             $(".side-tool").hide();
             break;
         case "required":
-            element_selected_container.find("input").attr("required", "required");
-            element_selected_container.find("select").attr("required", "required");
-            element_selected_container.find("textarea").attr("required", "required");
-            element_selected_container.find("input[type='radio']").first().attr("required", "required");
+
             // plus ajout de l'étoile
+            if(element_selected_container.hasClass('field-required')){
+                element_selected_container.addClass('field-required');
+                element_selected_container.find("input").removeAttr( "required" );
+                element_selected_container.find("select").removeAttr( "required" );
+                element_selected_container.find("textarea").removeAttr( "required" );
+                element_selected_container.find("input[type='radio']").first().removeAttr( "required" );
+            }else{
+                element_selected_container.removeClass('field-required');
+                element_selected_container.find("input").attr("required", "required");
+                element_selected_container.find("select").attr("required", "required");
+                element_selected_container.find("textarea").attr("required", "required");
+                element_selected_container.find("input[type='radio']").first().attr("required", "required");
+            }
             // plus fonction d'enlever le required
             break;
     }
@@ -443,49 +453,29 @@ var deletecommand = new command({
 
 // ANCHOR Commandes JQUERY
 
-$("#element_redo").on("click", function(){
-    document.execCommand('redo', false, null); // annuler
+$('.text-formatting').on("click", function(){
+    switch($(this).attr('id')) {
+        case 'element-bold': 
+            console.log('bold');
+            break;
+        case 'element-italic':
+            console.log('italic');
+            break;
+        case 'element-underline':
+            console.log('teunderlinest');
+            break;
+        case 'justify-left':
+            console.log('left');
+            break;
+        case 'justify-center':
+            console.log('center');
+            break;
+        case 'justify-full':
+            console.log('full');
+            break;
+    }
+    updatecontent();
 })
-
-$("#element_undo").on("click", function(){
-    document.execCommand('undo', false, null); // rétablir
-})
-
-$('#element_bold').click(function() {
-    document.execCommand('bold', false, null); // gras
-});
-
-$('#element_italic').click(function() {
-    document.execCommand('italic', false, null); // italic
-});
-
-$('#element_underline').click(function() {
-    document.execCommand('underline', false, null); // underline
-});
-
-$('#element_cut').click(function() {
-    document.execCommand('cut', false, null); // couper
-});
-
-$('#element_copy').click(function() {
-    document.execCommand('copy', false, null);
-});
-
-$('#element_paste').click(function() {
-    document.execCommand('paste', false, null);
-});
-
-$('#justify-left').click(function() {
-    document.execCommand('justifyLeft', false, null);
-});
-
-$('#justify-right').click(function() {
-    document.execCommand('justifyRight', false, null);
-});
-
-$('#justify-center').click(function() {
-    document.execCommand('justifyCenter', false, null);
-});
 
 $('#justify-full').click(function() {
     document.execCommand('justifyFull', false, null);

@@ -169,19 +169,17 @@
                                     -->
                                     <div role="section" class="col" aria-labelledby="form_actions_text">
                                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
-                                        <input class="btn btn-light" type="button" aria-label="Gras" value="Gras" id="element_bold"
+                                        <input class="btn btn-light text-formatting" type="button" aria-label="Gras" value="Gras" id="element-bold"
                                             role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Italique" value="Italique"
-                                            id="element_italic" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Souligné" value="Souligné"
-                                            id="element_underline" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Aligner à gauche"
+                                        <input class="btn btn-light text-formatting" type="button" aria-label="Italique" value="Italique"
+                                            id="element-italic" role="listitem">
+                                        <input class="btn btn-light text-formatting" type="button" aria-label="Souligné" value="Souligné"
+                                            id="element-underline" role="listitem">
+                                        <input class="btn btn-light text-formatting" type="button" aria-label="Aligner à gauche"
                                             value="Aligner à gauche" id="justify-left" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Aligner à droite"
-                                            value="Aligner à droite" id="justify-right" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Centrer" value="Centrer"
+                                        <input class="btn btn-light text-formatting" type="button" aria-label="Centrer" value="Centrer"
                                             id="justify-center" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Justifier" value="Justifier"
+                                        <input class="btn btn-light text-formatting" type="button" aria-label="Justifier" value="Justifier"
                                             id="justify-full" role="listitem">
                                     </div>
                                 </div>
