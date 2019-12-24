@@ -39,16 +39,16 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
 // \t = tabulation,  \n = saut de ligne
 var element_types = {
     "type-question": {
-        "insert-short_answer"  : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='answer' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-        "insert-long_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='answer' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer" : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='answer' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+        "insert-short_answer"  : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACEID' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+        "insert-long_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACEID' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+        "insert-binary_answer" : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
         "insert-one_answer"    : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
         "insert-many_answer"   : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='answer' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
+        "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span><input type='radio' id='REPLACEID' name='answer-option' value='answer-value' checked></label>",
-        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span><input type='checkbox' id='REPLACEID' name='answer-option' value='answer-value'></label>",
+        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value' checked><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
+        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><input type='checkbox' id='REPLACEID' name='REPLACEID' value='answer-value'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
         "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span></option>"
     },
     "type-layout": {
@@ -57,7 +57,7 @@ var element_types = {
         "insert-link"             : "<a href='#' contenteditable='true' data-tag='link'>Nom du lien</a>",
         "insert-ordered_list"     : "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
         "insert-unordered_list"   : "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
-        "insert-horizontal_rule"  : "<hr contenteditable='false'>",
+        "insert-horizontal_rule"  : "<hr contenteditable='true'>",
     },
     "type-special": {
         "make-required" : "\t<abbr title='required' aria-label='required' contenteditable='false'>*</abbr>\n",
@@ -87,7 +87,6 @@ function updatecontent() {
 
     // prettify
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
-    // TODO mettre le script et le style prettify en local
 };
 
 // ANCHOR Initialisation
@@ -219,20 +218,30 @@ let element_select;
 $(document.body)
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
-
-    .on('click', '[contenteditable=true] label', function (e){
+    .on('click', '.element-container label', function (e){
         e.preventDefault();
     })
 
-    // Quand on sélectionne un élément éditable
+    // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
+    .on('click', '.element-container legend', function (e){
+        e.preventDefault();
+    })
 
+    // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
+    .on('click', '.element-container', function (e){
+        if(e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET"){
+            $( this ).find('[contenteditable=true]').focus();
+        }
+    })
+
+    // Quand on sélectionne un élément éditable
     .on('focus', '[contenteditable=true]', function (e) {
         let tag = $(this).attr('data-tag');
         let element_selected_container;
-        
+
         // on récupère l'élément sélectionné dans une variable 
-        if( window.getSelection && window.getSelection() &&  window.getSelection().rangeCount > 0 ){
-            element_select = window.getSelection().getRangeAt(0).startContainer;
+        if( e.target ){
+            element_select = e.target;
             
             if($(element_select).hasClass('element-container')){
                 element_selected_container = element_select;
@@ -241,19 +250,15 @@ $(document.body)
             }
         }
         
-        // Tools latéraux
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
-
         // on déselectionne le reste
         $(".content-editable-selected").removeClass('content-editable-selected'); 
-        console.log("Selection d'un élément");
         $(element_selected_container).addClass("content-editable-selected");
         
         if(tag != "form-title"){ // si ce n'est pas le titre général du formulaire (position verouillée)
+            $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
+
             let element_type = $(element_selected_container).attr('data-elementtype');
             let element_name = $(element_selected_container).attr('data-elementtypename');
-
-            console.log(element_type);
 
             // Side tool : déplacemet haut bas et suppression 
             $('.side-tool').show();
@@ -261,11 +266,7 @@ $(document.body)
             if(element_type != "type-layout"){
 
                 // on sélectionne le texte interne
-                if($(element_selected_container).find('.legend-text')){
-                    selectText($(element_selected_container).find('legend'));
-                }else{
-                    selectText($(element_selected_container).find('.label-text'));
-                }
+                // selectText($(this));
 
                 // on récupère le label
                 let label = $(element_selected_container).find('label').find('span');
@@ -313,7 +314,7 @@ $(document.body)
         }else{
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
-            selectText($(this).find('span')); // on sélectionne le texte interne
+            selectText($(this)); // on sélectionne le texte interne
         }
         
         updatecontent();

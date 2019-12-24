@@ -1,3 +1,6 @@
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 body {
     background-color: #fafafa;
 }
@@ -39,8 +42,7 @@ body {
         padding: 1.5em !important;
         width: 100% !important;
         border-radius: 5px !important;
-        background-color: black;
-        color: white;
+        border: 1px solid #888;
     }
 
     pre.prettyprinted{
@@ -69,6 +71,22 @@ body {
 
     &:hover{
         border: 3px dotted black;
+    }
+
+    label:hover{
+        border: 0;
+    }
+
+    fieldset{
+        border: 2px solid black;
+
+        &:hover{
+            border: 2px solid black;
+        }
+    }
+
+    legend{
+        border: 3px solid black;
     }
 
     hr {

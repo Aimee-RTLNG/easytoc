@@ -233,13 +233,11 @@
                                 <a href="aide#use">Besoin d'aide !</a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link">Copier</button></div>
                                 <!-- Lien du style à utiliser -->
-                                <xmp class="code-display" id="css-link">
-                                    <link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet">
-                                </xmp>
+                                <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
                                 <h3>Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code">Copier</button></div>
                                 <!-- Code formatté -->
-                                <pre class="prettyprint linenums content-panel" id="formatted-code"></pre>
+                                <pre class="prettyprint linenums:4 content-panel" id="formatted-code"></pre>
                             </div>
                         </div>
                     </div>
@@ -328,6 +326,7 @@
 @endsection
 
 @section('pagespecificscripts')
+
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
-<!-- <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script> -->
+
 @endsection
