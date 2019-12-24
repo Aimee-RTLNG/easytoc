@@ -1,9 +1,10 @@
+// ANCHOR Ressources
 
 // ANCHOR Données initiales
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n&nbsp;&nbsp;<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n&nbsp;&nbsp;</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -69,22 +70,24 @@ function updatecontent() {
 
     console.log('Code updated');
 
+    // on récupère le contenu
     var blueprint_content = $('#content-created-blueprint').html();
-
     // on trie les éléments à ne pas inclure dans le code 
     blueprint_content = blueprint_content.replace(/<easytoc (.*?)\>/g, "");
     blueprint_content = blueprint_content.replace(/<\/easytoc>/g, "");
     blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
+    blueprint_content = blueprint_content.replace(/ disabled="(.*?)\"/g, "");
     blueprint_content = blueprint_content.replace(/ content-editable-selected/g, "");
     // on remplace les doubles sauts de lignes
     blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
 
     // on update le code par rapport au blueprint
     $('#raw-code').html(blueprint_content);
-    var code_content = $('<div>').text($('#raw-code').val()).html();
+    var code_content = $('<div>').text($('#raw-code').text()).html();
 
     // prettify
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
+    // TODO mettre le script et le style prettify en local
 };
 
 // ANCHOR Initialisation
@@ -388,24 +391,21 @@ $(".form-element-action").on('click', function(){
             $(".side-tool").hide();
             break;
         case "required":
-
-            // plus ajout de l'étoile
             if(element_selected_container.hasClass('field-required')){
                 element_selected_container.addClass('field-required');
                 element_selected_container.find("input:not([type='checkbox'])").removeAttr( "required" );
                 element_selected_container.find("select").removeAttr( "required" );
                 element_selected_container.find("textarea").removeAttr( "required" );
                 element_selected_container.find("input[type='radio']").first().removeAttr( "required" );
-
+                // TODO Ajouter l'étoile dans le label (après le span)
             }else{
                 element_selected_container.removeClass('field-required');
                 element_selected_container.find("input:not([type='checkbox'])").attr("required", "required");
                 element_selected_container.find("select").attr("required", "required");
                 element_selected_container.find("textarea").attr("required", "required");
                 element_selected_container.find("input[type='radio']").first().attr("required", "required");
-                
+                // TODO Retirer l'étoile dans le label
             }
-            // plus fonction d'enlever le required
             break;
     }
 })

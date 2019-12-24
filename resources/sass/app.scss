@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 // Mixin (Flexbox)
 @import 'mixin';
 @import '_global';
