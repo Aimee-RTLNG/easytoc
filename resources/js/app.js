@@ -4,6 +4,13 @@ require('./components/run_prettify.js');
 
 require('./components/clipboard.min.js');
 
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes);
+
+dom.watch();
+
 /*
 import Vue from 'vue';
 import VueRouter from 'vue-router';

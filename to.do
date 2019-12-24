@@ -1,8 +1,7 @@
-# [] Mettre une police de base accessible hors ligne (autre que comic sans ms)
-# [] Mettre des icones stockées en locales (fortawesome)
+# [x] Mettre une police de base accessible hors ligne (autre que comic sans ms)
+# [x] Mettre des icones stockées en locales (fortawesome)
 # [x] Content editable sur le parent et pas sur l'élement interne (pour pouvoir le déplacer)
-# [] Mettre le js sur un fichier uniquement (demander à Issler)
-# [] Mettre des ALT aux icones
+# [x] Mettre des ALT aux icones : TITLE
 # [x] Ajouter un cursor pointer sur les éléments contenteditable sauf texte
 # [x] Ne pas quitter le focus sur l'élément si sidetools ou actions content
 # [] Rendre possible les selections multiple sur les balises select (attribut multiple)

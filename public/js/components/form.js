@@ -225,24 +225,32 @@ $(document.body)
 
     .on('focus', '[contenteditable=true]', function (e) {
         let tag = $(this).attr('data-tag');
+        let element_selected_container;
         
         // on récupère l'élément sélectionné dans une variable 
         if( window.getSelection && window.getSelection() &&  window.getSelection().rangeCount > 0 ){
             element_select = window.getSelection().getRangeAt(0).startContainer;
+            
+            if($(element_select).hasClass('element-container')){
+                element_selected_container = element_select;
+            }else{
+                element_selected_container = $(element_select).closest(".element-container");
+            }
         }
         
         // Tools latéraux
-        $('.side-tool').css("margin-top", $(this).position().top+"px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
 
         // on déselectionne le reste
         $(".content-editable-selected").removeClass('content-editable-selected'); 
         console.log("Selection d'un élément");
-        $(this).addClass("content-editable-selected");
+        $(element_selected_container).addClass("content-editable-selected");
         
         if(tag != "form-title"){ // si ce n'est pas le titre général du formulaire (position verouillée)
-            let element_type = $(this).attr('data-elementtype');
-            let element_name = $(this).attr('data-elementtypename');
-            console.log(element_name);
+            let element_type = $(element_selected_container).attr('data-elementtype');
+            let element_name = $(element_selected_container).attr('data-elementtypename');
+
+            console.log(element_type);
 
             // Side tool : déplacemet haut bas et suppression 
             $('.side-tool').show();
@@ -250,20 +258,18 @@ $(document.body)
             if(element_type != "type-layout"){
 
                 // on sélectionne le texte interne
-                if($(this).find('.legend-text')){
-                    selectText($(this).find('legend'));
+                if($(element_selected_container).find('.legend-text')){
+                    selectText($(element_selected_container).find('legend'));
                 }else{
-                    selectText($(this).find('.label-text'));
+                    selectText($(element_selected_container).find('.label-text'));
                 }
 
                 // on récupère le label
-                let label = $(this).parent().find('label').find('span');
+                let label = $(element_selected_container).find('label').find('span');
                 if(label){
                     label.on('keyup', function(){
                         $('#elem-title').val(label.text());
                     })
-                }else{
-                    console.log($(this).parent());
                 }
 
                 $('.action-answer-type').hide();
@@ -304,7 +310,7 @@ $(document.body)
         }else{
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
-            selectText($(this)); // on sélectionne le texte interne
+            selectText($(this).find('span')); // on sélectionne le texte interne
         }
         
         updatecontent();
@@ -386,16 +392,18 @@ $(".form-element-action").on('click', function(){
             // plus ajout de l'étoile
             if(element_selected_container.hasClass('field-required')){
                 element_selected_container.addClass('field-required');
-                element_selected_container.find("input").removeAttr( "required" );
+                element_selected_container.find("input:not([type='checkbox'])").removeAttr( "required" );
                 element_selected_container.find("select").removeAttr( "required" );
                 element_selected_container.find("textarea").removeAttr( "required" );
                 element_selected_container.find("input[type='radio']").first().removeAttr( "required" );
+
             }else{
                 element_selected_container.removeClass('field-required');
-                element_selected_container.find("input").attr("required", "required");
+                element_selected_container.find("input:not([type='checkbox'])").attr("required", "required");
                 element_selected_container.find("select").attr("required", "required");
                 element_selected_container.find("textarea").attr("required", "required");
                 element_selected_container.find("input[type='radio']").first().attr("required", "required");
+                
             }
             // plus fonction d'enlever le required
             break;

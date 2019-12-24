@@ -221,10 +221,10 @@
 
                             <div class="side-tool" style="display: none">
                                 <button id="action-move-up" data-action="move-up" class="mb-2 form-element-action action-move-up" title="Déplacer vers le haut">
-                                    <i class="fas fa-caret-up"></i>🔺
+                                    <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                                 </button>
                                 <button id="action-move-down" data-action="move-down" class="form-element-action action-move-down" title="Déplacer vers le bas">
-                                    <i class="fas fa-sort-down"></i>🔻
+                                    <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                                 </button>
                             </div>
 
@@ -273,7 +273,7 @@
 
                             <div class="side-tool" style="display: none">
                                 <button class="form-element-action action-delete" id="action-delete" data-action="delete" title="Supprimer l'élement">
-                                    <i class="fas fa-trash-alt"></i>🗑
+                                    <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                                 </button>
                             </div>
                         </div>
