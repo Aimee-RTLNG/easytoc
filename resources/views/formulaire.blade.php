@@ -194,10 +194,10 @@
                 <div class="row d-flex m-0 mb-3">
 
                     <div class="side-tool" style="display: none">
-                        <button id="action-move-up" data-action="move-up" class="mb-2 form-element-action action-move-up" title="Déplacer vers le haut">
+                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 form-element-action action-move-up" title="Déplacer vers le haut">
                             <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                         </button>
-                        <button id="action-move-down" data-action="move-down" class="form-element-action action-move-down" title="Déplacer vers le bas">
+                        <button accesskey="d" id="action-move-down" data-action="move-down" class="form-element-action action-move-down" title="Déplacer vers le bas">
                             <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                         </button>
                     </div>
@@ -243,7 +243,7 @@
                     </div>
 
                     <div class="side-tool" style="display: none">
-                        <button class="form-element-action action-delete" id="action-delete" data-action="delete" title="Supprimer l'élement">
+                        <button accesskey="d" class="form-element-action action-delete" id="action-delete" data-action="delete" title="Supprimer l'élement">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
@@ -269,7 +269,7 @@
                                 <option value="text">{{ __('Texte') }}</option>
                             </select>
                         </div>
-                        <div class="d-flex align-items-center form-element-action action-required" data-action="required" role="section">
+                        <div class="form-element-action action-required" data-action="required" role="section">
                             <input type="checkbox" name="elem-required" id="elem-required" class="mr-2" role="section">
                             <label for="elem-required">
                                 {{ __('Réponse obligatoire') }}
@@ -287,11 +287,18 @@
                                 <input type="number" name="elem-length" id="elem-length" placeholder="Longueur" class="form-control" size="2" />
                             </label>
                         </div>
-                        <!-- Si élément tag == select -->
+                        <!-- Si élément == select -->
                         <div class="align-items-center form-element-action action-multiple-answer" data-action="multiple-answer" role="section" style="display:none">
                             <input type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" class="mr-2" role="section">
                             <label for="elem-multiple-choice">
                                 {{ __('Choix multiples') }}
+                            </label>
+                        </div>
+                        <!-- Si élément == lien -->
+                        <div class="align-items-center form-element-action action-url" data-action="url" role="section" style="display:none">
+                        <label for="elem-url">
+                                {{ __('Lien associé') }} (url)
+                                <input name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control" size="250" aria-label="{{ __('Lien associé') }}" />
                             </label>
                         </div>
                         <div class="form-element-action action-delete" data-action="delete" role="section">
@@ -312,9 +319,9 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button type="button" class="btn btn-danger" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
+            <button type="button" accesskey="c" class="btn btn-danger" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
                             modifications') }}</button>
-            <button type="submit" class="btn btn-success" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
+            <button type="submit" accesskey="s" class="btn btn-success" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
         </div>
 
         @endif

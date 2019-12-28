@@ -14,4 +14,7 @@
 # [x] Comment gérer les options (checkbox, radio et select) ? Les lister ou propriétés au clic ?
 # [x] Comment faire pour mettre un required sur des checkbox et radio sans js
     > radio : required sur le premier, checkbox on ne peut pas
-# [] 
+# [] Changer le nom et l'url d'un lien 
+# [] Ajout de l'étoile required
+# [] Suppression du required quand on décoche
+# [x] Access Keys up down, suppression et annuler les modif

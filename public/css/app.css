@@ -11736,9 +11736,9 @@ pre.prettyprinted {
 /* style de l'interface actions */
 
 [contenteditable=true]:hover,
-#full-form input {
+#full-form input,
+.element-container {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.02);
 }
 
 [data-tag=text]:hover,

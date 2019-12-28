@@ -115,7 +115,7 @@ $('#form-creator-link').on('keyup', function () {
     updatecontent();
 });
 
-// ANCHOR Déclenchement sauvegarde (méthode)
+// ANCHOR Déclenchement sauvegarde (méthode POST ou GET)
 $('#form-creator-method').on('change', function () {
     $('#generated-form').attr("method", $('#form-creator-method').val());
     updatecontent();
@@ -222,7 +222,7 @@ $(document.body)
         e.preventDefault();
     })
 
-    // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
+    // Empeche de passer le focus sur l'input quand on clique sur le legend (comportement de formulaire de base)
     .on('click', '.element-container legend', function (e){
         e.preventDefault();
     })
@@ -236,13 +236,11 @@ $(document.body)
 
     // Quand on sélectionne un élément éditable
     .on('focus', '[contenteditable=true]', function (e) {
-        let tag = $(this).attr('data-tag');
+        
+        // on récupère l'élément sélectionné et on focus sur l'élément parent
         let element_selected_container;
-
-        // on récupère l'élément sélectionné dans une variable 
         if( e.target ){
             element_select = e.target;
-            
             if($(element_select).hasClass('element-container')){
                 element_selected_container = element_select;
             }else{
@@ -250,10 +248,11 @@ $(document.body)
             }
         }
         
-        // on déselectionne le reste
+        // on vise uniquement l'élement sélectionné
         $(".content-editable-selected").removeClass('content-editable-selected'); 
         $(element_selected_container).addClass("content-editable-selected");
         
+        let tag = $(this).attr('data-tag');
         if(tag != "form-title"){ // si ce n'est pas le titre général du formulaire (position verouillée)
             $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
 
@@ -263,8 +262,7 @@ $(document.body)
             // Side tool : déplacemet haut bas et suppression 
             $('.side-tool').show();
 
-            if(element_type != "type-layout"){
-
+            if(element_type != "type-layout" || (element_type == "type-layout" && element_name == "insert-link") ){
                 // on sélectionne le texte interne
                 // selectText($(this));
 
@@ -276,14 +274,16 @@ $(document.body)
                     })
                 }
 
+                // on cache toutes les actions de bases pour les réafficher en fonction
                 $('.action-answer-type').hide();
                 $('.action-placeholder').hide();
                 $('.action-maxlength').hide();
                 $('.action-multiple-answer').hide();
                 $('.action-add-option').hide();
-                $('.action-required').show();
+                $('.action-url').hide();
+                $('.action-required').show(); // Requis possibles sur toutes les questions
 
-                // on change les éléments modifiable dans l'es
+                // on affiche les attributs modifiable en fonction de l'élém selectionné
                 if(element_name == "insert-short_answer"){
                     $('.action-answer-type').show();
                     $('.action-placeholder').show();
@@ -292,7 +292,7 @@ $(document.body)
                     $('.action-placeholder').show();
                     $('.action-maxlength').show();
                 }else if(element_name == "insert-binary_answer"){
-                    console.log("Cocher binary");
+                    $('.action-required').show();
                 }else if(element_name == "insert-one_answer"){
                     $('.action-required').hide();
                     $('.action-add-option').show();
@@ -303,6 +303,9 @@ $(document.body)
                     $('.action-placeholder').show();
                     $('.action-multiple-answer').show();
                     $('.action-add-option').show();
+                }else if(element_name == "insert-link"){
+                    $('.action-required').hide();
+                    $('.action-url').show();
                 }
 
                 $("#actions-interface").show(); // on affiche l'interface de modification spécifique
@@ -312,6 +315,7 @@ $(document.body)
             }
         
         }else{
+            // Si on a sélectionné le titre principal
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
             selectText($(this)); // on sélectionne le texte interne
