@@ -54,7 +54,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');
     })
-
     
     // Scroll vers ancres
     function scrollTo( target ) {
@@ -92,4 +91,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     //         }
     //         ]
     //     });
+    $(".fleche-plus").on('click', function(){
+        $('.mon-compte').toggleClass('open');
+        $(this).toggleClass('open');
+    })
+
+
 });

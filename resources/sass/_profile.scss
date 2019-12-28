@@ -215,6 +215,7 @@
             height: 40px;
             background-color: $dark;
             width: 40px;
+            min-width: 40px;
             @include flex-row-center;
             color: white;
             border-radius: 50px;
@@ -295,6 +296,9 @@
         }
         .btn-gris{
             background-color: $gris-clair;
+            &:hover {
+                background-color: $gris-clair-hover;
+            }
         }
     }
     &__btn-delete {
@@ -323,4 +327,131 @@
 .btn--rouge {
     color: white;
     background-color: $red;
+}
+.fleche-plus {
+    display: none;
+    position: absolute;
+    top: 18px;
+    right: 44px;
+    font-size: 34px;
+    cursor: pointer;
+    &.open {
+        transform: rotate(180deg);
+    }
+}
+
+@include media-breakpoint-down(md) { 
+    .dashboard__title {
+        font-size: 2.2rem;
+    }
+    .fleche-plus {
+        display: block;
+    }
+    .modif-compte {
+        order: -1;
+        margin-bottom: 50px;
+    }
+    .mon-compte {
+        font-size: 1.6rem;
+        overflow: hidden;
+        height: 66px;
+        transition: height 0.5s ease;
+        &.open {
+            height: 525px;
+        }
+        &__entete {
+            justify-content: flex-start;
+            padding: 0 20px;
+            &__title {
+                font-size: 1.8rem;
+                padding-left: 20px;
+            }
+        }
+    }
+
+}
+@include media-breakpoint-down(sm) {
+    .dashboard {
+        padding-right: 0px;
+    }
+    .modif-compte {
+        margin-bottom: 25px;
+        margin-top: 5px;
+    } 
+    .mon-compte {
+        &__entete {
+            padding: 0px;
+        }
+    }
+    .fleche-plus {
+        top: 22px;
+        right: 30px;
+        font-size: 30px;
+    }
+    .profile_content__options > div {
+        width: 100%;
+        min-width: 100%;
+    }
+    .profile_content__options {
+        flex-wrap: wrap;
+    }
+    .list-filters {
+        margin-left: 0px;
+        .btn {
+            flex: 1 1;
+        }
+    }
+    .profile_content__list-crea {
+        margin-bottom: 12px;
+        &__link:before {
+            padding-right: 10px;
+        }
+    }
+    .profile_content {
+        margin-top: 0;
+        &__sort {
+            margin-top: 12px;
+        }
+    }
+    .crea-item__btns {
+        margin-top: 15px;
+        align-items: flex-end;
+        & > div {
+            @include flex-row-between-center;
+        }
+        .btn:not(.btn-gris) {
+            justify-content: center;
+            min-width: 50px;
+            width: 50px;
+            margin-bottom: 0px;
+            margin-right: 6px;
+            p {
+                display: none;
+            }
+        }
+    }
+}
+@include media-breakpoint-down(xs) {
+    .mon-compte__entete {
+        padding-right: 32px;
+    }
+    .profile_content__sort {
+        flex-wrap: wrap;
+        height: 80px;
+        .btn, .filter-name {
+            width: 100%;
+            height: 50%;
+            margin-bottom: 5px;
+        }
+        .btn-filter-date {
+            @include flex-row-between-center;
+            padding: 0 14px;
+        }
+    }
+    .list-filters .btn {
+        min-width: 70px;
+    }
+    .dashboard__title {
+        padding-left: 20px;
+    }
 }

@@ -98,6 +98,11 @@ window.addEventListener("DOMContentLoaded", function (event) {
   //         }
   //         ]
   //     });
+
+  $(".fleche-plus").on('click', function () {
+    $('.mon-compte').toggleClass('open');
+    $(this).toggleClass('open');
+  });
 });
 
 /***/ }),

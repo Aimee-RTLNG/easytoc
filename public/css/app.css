@@ -11184,6 +11184,7 @@ easytoc, easytoc *:hover, easytoc:hover {
   height: 40px;
   background-color: #171819;
   width: 40px;
+  min-width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11277,6 +11278,9 @@ easytoc, easytoc *:hover, easytoc:hover {
 .crea-item__btns .btn-gris {
   background-color: #F4F2F0;
 }
+.crea-item__btns .btn-gris:hover {
+  background-color: #E7E7E7;
+}
 .crea-item__btn-delete {
   display: flex;
   justify-content: space-between;
@@ -11308,4 +11312,148 @@ easytoc, easytoc *:hover, easytoc:hover {
 .btn--rouge {
   color: white;
   background-color: #e3342f;
+}
+
+.fleche-plus {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 44px;
+  font-size: 34px;
+  cursor: pointer;
+}
+.fleche-plus.open {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 991.98px) {
+  .dashboard__title {
+    font-size: 2.2rem;
+  }
+
+  .fleche-plus {
+    display: block;
+  }
+
+  .modif-compte {
+    order: -1;
+    margin-bottom: 50px;
+  }
+
+  .mon-compte {
+    font-size: 1.6rem;
+    overflow: hidden;
+    height: 66px;
+    transition: height 0.5s ease;
+  }
+  .mon-compte.open {
+    height: 525px;
+  }
+  .mon-compte__entete {
+    justify-content: flex-start;
+    padding: 0 20px;
+  }
+  .mon-compte__entete__title {
+    font-size: 1.8rem;
+    padding-left: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  .dashboard {
+    padding-right: 0px;
+  }
+
+  .modif-compte {
+    margin-bottom: 25px;
+    margin-top: 5px;
+  }
+
+  .mon-compte__entete {
+    padding: 0px;
+  }
+
+  .fleche-plus {
+    top: 22px;
+    right: 30px;
+    font-size: 30px;
+  }
+
+  .profile_content__options > div {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .profile_content__options {
+    flex-wrap: wrap;
+  }
+
+  .list-filters {
+    margin-left: 0px;
+  }
+  .list-filters .btn {
+    flex: 1 1;
+  }
+
+  .profile_content__list-crea {
+    margin-bottom: 12px;
+  }
+  .profile_content__list-crea__link:before {
+    padding-right: 10px;
+  }
+
+  .profile_content {
+    margin-top: 0;
+  }
+  .profile_content__sort {
+    margin-top: 12px;
+  }
+
+  .crea-item__btns {
+    margin-top: 15px;
+    align-items: flex-end;
+  }
+  .crea-item__btns > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .crea-item__btns .btn:not(.btn-gris) {
+    justify-content: center;
+    min-width: 50px;
+    width: 50px;
+    margin-bottom: 0px;
+    margin-right: 6px;
+  }
+  .crea-item__btns .btn:not(.btn-gris) p {
+    display: none;
+  }
+}
+@media (max-width: 575.98px) {
+  .mon-compte__entete {
+    padding-right: 32px;
+  }
+
+  .profile_content__sort {
+    flex-wrap: wrap;
+    height: 80px;
+  }
+  .profile_content__sort .btn, .profile_content__sort .filter-name {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5px;
+  }
+  .profile_content__sort .btn-filter-date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px;
+  }
+
+  .list-filters .btn {
+    min-width: 70px;
+  }
+
+  .dashboard__title {
+    padding-left: 20px;
+  }
 }
