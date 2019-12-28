@@ -20,23 +20,23 @@ class CreateTypesTable extends Migration
         });
 
         // Insert some stuff
-        DB::table('types')->insert(
-            array(
+        DB::table('types')->insert([
+            [
                 'id' => '1',
                 'name_fr' => 'formulaire',
                 'name_en' => 'form',
-            ), 
-            array(
+            ], 
+            [
                 'id' => '2',
                 'name_fr' => 'tableau',
                 'name_en' => 'table',
-            ), 
-            array(
+            ], 
+            [
                 'id' => '3',
                 'name_fr' => 'menu',
                 'name_en' => 'menu',
-            )
-        );
+            ]
+        ]);
     }
 
     /**
