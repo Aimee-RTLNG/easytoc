@@ -68,8 +68,6 @@ var element_types = {
 // ANCHOR Fonction de sauvegarde
 function updatecontent() {
 
-    console.log('Code updated');
-
     // on récupère le contenu
     var blueprint_content = $('#content-created-blueprint').html();
     // on trie les éléments à ne pas inclure dans le code 
@@ -94,14 +92,6 @@ $('#content-created-blueprint').html(initial_content);
 if ($('#content-created-blueprint').html()) {
     updatecontent();
 }
-
-// ANCHOR Déclenchement sauvegarde (onglets)
-$('#nav-code-tab').on('click', function () {
-    $('#form-title').text($('#form-creator-title').val());
-    $('#generated-form').attr("action", $('#form-creator-link').val());
-    $('#generated-form').attr("method", $('#form-creator-method').val());
-    updatecontent();
-});
 
 // ANCHOR Déclenchement sauvegarde (titre outside)
 $('#form-creator-title').on('keyup', function () {
@@ -189,7 +179,6 @@ $('.add-element').on('click', function () {
 // ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {
     updatecontent();
-    console.log("Sauvegarde définitive");
     let post_url = $("#full-form-post").attr('action');
     $.ajax({
         method: "POST",
@@ -211,7 +200,6 @@ $('#btn-save-project').on('click', function () {
         console.log(error);
     });
 })
-
 
 // ANCHOR Action sur l'élement
 let element_select;
@@ -389,8 +377,11 @@ $(document.body)
 
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
+    $('#generated-form').attr("action", $('#form-creator-link').val());
+    $('#generated-form').attr("method", $('#form-creator-method').val());
     $("#actions-interface").hide();
     $('.side-tool').hide();
+    updatecontent();
 })
 
 // ANCHOR Clique sur éléments de sidetools
@@ -501,22 +492,34 @@ var deletecommand = new command({
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
         case 'element-bold':
-            console.log('bold');
+            document.execCommand('bold');
+            updatecontent();
             break;
         case 'element-italic':
-            console.log('italic');
+            document.execCommand('italic');
+            updatecontent();
             break;
         case 'element-underline':
-            console.log('teunderlinest');
+            document.execCommand('underline');
+            updatecontent();
             break;
         case 'justify-left':
-            console.log('left');
+            $(element_select).removeClass('text-justify');
+            $(element_select).removeClass('text-center');
+            $(element_select).addClass('text-left');
+            updatecontent();
             break;
         case 'justify-center':
-            console.log('center');
+            $(element_select).removeClass('text-justify');
+            $(element_select).removeClass('text-left');
+            $(element_select).addClass('text-center');
+            updatecontent();
             break;
         case 'justify-full':
-            console.log('full');
+            $(element_select).removeClass('text-left');
+            $(element_select).removeClass('text-center');
+            $(element_select).addClass('text-justify');
+            updatecontent();
             break;
     }
     updatecontent();
@@ -526,16 +529,13 @@ $('#justify-full').click(function () {
     document.execCommand('justifyFull', false, null);
 });
 
-// ANCHOR Themes 
-
+// ANCHOR Theme
 $('input[name="theme"]').on('change', function () {
-    console.log($(this).val());
     let theme = "theme-" + $(this).val();
     $('#generated-form').attr('class', theme);
 })
 
 // ANCHOR Copier le contenu code 
-
 $("#copy-css-link").on('click', function () {
     $(this).text("Copié !")
     $("#copy-raw-code").text("Copier");
@@ -548,6 +548,7 @@ $("#copy-raw-code").on('click', function () {
 })
 new ClipboardJS('#copy-raw-code');
 
+// NOTE Je ne sais plus à quoi ça sert
 $("#form-actions input").on('click', function (e) {
-    e.preventdefault;
+    // e.preventdefault;
 })
