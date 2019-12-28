@@ -16,7 +16,7 @@
     > radio : required sur le premier, checkbox on ne peut pas
 # [x] Changer le nom et l'url d'un lien 
 # [X] Changement de l'intitulé
-# [] Gestion du style bold/italic/etc, qui ne se met pas à jour
+# [x] Gestion du style bold/italic/etc, qui ne se met pas à jour
 # [] Ajout de l'étoile required
-# [] Suppression du required quand on décoche
+# [x] Suppression du required quand on décoche
 # [x] Access Keys up down, suppression et annuler les modif

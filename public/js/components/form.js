@@ -244,6 +244,9 @@ $(document.body)
 
         let tag = $(this).attr('data-tag');
         if (tag != "form-title") { // si ce n'est pas le titre général du formulaire (position verouillée)
+
+            $('.action-delete button').removeAttr('disabled');
+
             $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
 
             let element_type = $(element_selected_container).attr('data-elementtype');
@@ -277,6 +280,11 @@ $(document.body)
                 
                 // TODO on récupère le placeholder
                 // TODO on récupère le required
+                if($(element_selected_container).hasClass('field-required')){
+                    $('#elem-required').prop( "checked", true );
+                }else{
+                    $('#elem-required').prop( "checked", false );
+                }
                 // TODO on recupère AUTRE CHOSE
 
                 // on cache toutes les actions de bases pour les réafficher en fonction
@@ -299,7 +307,7 @@ $(document.body)
                 } else if (element_name == "insert-binary_answer") {
                     $('.action-required').show();
                 } else if (element_name == "insert-one_answer") {
-                    $('.action-required').hide();
+                    $('.action-required').hide(); // on ne peut pas mettre de requis là 
                     $('.action-add-option').show();
                 } else if (element_name == "insert-many_answer") {
                     $('.action-required').hide();
@@ -336,6 +344,7 @@ $(document.body)
 
         } else {
             // Si on a sélectionné le titre principal
+            $('.action-delete button').attr('disabled', 'true');
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
         }
@@ -344,7 +353,6 @@ $(document.body)
     })
     // quand on déselectionne un élement...
     .on('blur', '[contenteditable=true]', function (e) {
-
         e.preventDefault();
         let element_select_before = window.getSelection().getRangeAt(0).startContainer;
         updatecontent();
@@ -385,7 +393,7 @@ $("#nav-code-tab").on('click', function () {
 })
 
 // ANCHOR Clique sur éléments de sidetools
-$(".form-element-action").on('click', function () {
+$(".form-element-action").on('click', function (e) {
 
     let element_selected_container;
     if ($(element_select).hasClass('element-container')) {
@@ -396,6 +404,8 @@ $(".form-element-action").on('click', function () {
 
     let previous_element = element_selected_container.prev();
     let next_element = element_selected_container.next();
+
+    console.log("click");
 
     switch ($(this).data("action")) {
         case "move-up":
@@ -416,22 +426,36 @@ $(".form-element-action").on('click', function () {
             deletecommand.execute();
             $("#actions-interface").hide();
             $(".side-tool").hide();
+            $('.action-delete button').attr('disabled', 'true');
+            $('.action-undo button').removeAttr('disabled');
+            break;
+        case "undo":
+            deletecommand.undo();
+            $(this).attr('disabled', 'true');
             break;
         case "required":
             if (element_selected_container.hasClass('field-required')) {
-                element_selected_container.addClass('field-required');
-                element_selected_container.find("input:not([type='checkbox'])").removeAttr("required");
-                element_selected_container.find("select").removeAttr("required");
-                element_selected_container.find("textarea").removeAttr("required");
-                element_selected_container.find("input[type='radio']").first().removeAttr("required");
-                // TODO Ajouter l'étoile dans le label (après le span)
-            } else {
                 element_selected_container.removeClass('field-required');
-                element_selected_container.find("input:not([type='checkbox'])").attr("required", "required");
-                element_selected_container.find("select").attr("required", "required");
-                element_selected_container.find("textarea").attr("required", "required");
-                element_selected_container.find("input[type='radio']").first().attr("required", "required");
-                // TODO Retirer l'étoile dans le label
+                if($(element_selected_container).hasClass('insert-binary_answer')){
+                    element_selected_container.find("input").removeAttr("required");
+                }else{
+                    element_selected_container.find("input:not([type='checkbox'])").removeAttr("required");
+                    element_selected_container.find("select").removeAttr("required");
+                    element_selected_container.find("textarea").removeAttr("required");
+                    element_selected_container.find("input[type='radio']").first().removeAttr("required");
+                }
+                // TODO Retirer l'étoile dans le label (après le span)
+            } else {
+                element_selected_container.addClass('field-required');
+                if($(element_selected_container).hasClass('insert-binary_answer')){
+                    element_selected_container.find("input").attr("required", "required");
+                }else{
+                    element_selected_container.find("input:not([type='checkbox'])").attr("required", "required");
+                    element_selected_container.find("select").attr("required", "required");
+                    element_selected_container.find("textarea").attr("required", "required");
+                    element_selected_container.find("input[type='radio']").first().attr("required", "required");
+                }
+                // TODO Ajouter l'étoile dans le label
             }
             break;
     }
@@ -487,7 +511,7 @@ var deletecommand = new command({
     }
 });
 
-// ANCHOR Commandes JQUERY
+// ANCHOR Mise en forme du texte
 
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
@@ -525,10 +549,6 @@ $('.text-formatting').on("click", function () {
     updatecontent();
 })
 
-$('#justify-full').click(function () {
-    document.execCommand('justifyFull', false, null);
-});
-
 // ANCHOR Theme
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
@@ -550,5 +570,5 @@ new ClipboardJS('#copy-raw-code');
 
 // NOTE Je ne sais plus à quoi ça sert
 $("#form-actions input").on('click', function (e) {
-    // e.preventdefault;
+    e.preventdefault;
 })

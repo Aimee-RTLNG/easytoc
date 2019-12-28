@@ -69,8 +69,8 @@
                 </div>
                 <h3 id="form_help" class="mt-5 font-weight-bold">{{ __("Aide") }}</h3>
                 <div class="d-flex flex-column">
-                    <a href="aide#data">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#creator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="aide#formdata">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#formcreator">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
@@ -168,6 +168,15 @@
                         <input class="btn btn-light text-formatting" type="button" aria-label="Centrer" value="Centrer" id="justify-center" role="listitem">
                         <input class="btn btn-light text-formatting" type="button" aria-label="Justifier" value="Justifier" id="justify-full" role="listitem">
                     </div>
+                    <div role="section" class="col" aria-labelledby="form_actions_text">
+                        <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Actions sur l\'élément') }}</h3>
+                        <div class="action-delete" role="section">
+                            <button disabled="true" aria-label="Supprimer" class="element_delete form-element-action" data-action="delete">{{ __('Supprimer') }}</button>
+                        </div>
+                        <div class="action-undo" role="section">
+                            <button disabled="true" aria-label="Annuler la suppression" class="element_undo form-element-action" data-action="undo">{{ __('Annuler la suppression') }}</button>
+                        </div>
+                    </div>
                 </div>
                 <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
                     <div role="section" class="col" aria-labelledby="form_add_question">
@@ -194,10 +203,10 @@
                 <div class="row d-flex m-0 mb-3">
 
                     <div class="side-tool" style="display: none">
-                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 form-element-action action-move-up" title="Déplacer vers le haut">
+                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="Déplacer vers le haut">
                             <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                         </button>
-                        <button accesskey="d" id="action-move-down" data-action="move-down" class="form-element-action action-move-down" title="Déplacer vers le bas">
+                        <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="Déplacer vers le bas">
                             <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                         </button>
                     </div>
@@ -205,12 +214,8 @@
                     <div class="col p-0 m-0">
                         <nav class="mt-5">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true">{{ __('Blueprint') }}</a>
-                                <!--
-                                            <a class="nav-item nav-link" id="nav-preview-tab" data-toggle="tab" href="#nav-preview" role="tab"
-                                                aria-controls="nav-preview" aria-selected="false">Preview</a>
-                                            -->
-                                <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false">{{ __('Code') }}</a>
+                                <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true">{{ __('Formulaire') }}</a>
+                                <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false">{{ __('Code généré') }}</a>
                             </div>
                         </nav>
 
@@ -230,7 +235,7 @@
                             <!-- panneau code -->
                             <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
                                 <h3>Liens CSS à mettre dans la balise &lt;head&gt; </h3>
-                                <a href="aide#use">Besoin d'aide !</a>
+                                <a href="aide#formcode">Besoin d'aide !</a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link">Copier</button></div>
                                 <!-- Lien du style à utiliser -->
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
@@ -243,7 +248,7 @@
                     </div>
 
                     <div class="side-tool" style="display: none">
-                        <button accesskey="t" class="form-element-action action-delete" id="action-delete" data-action="delete" title="Supprimer l'élement">
+                        <button accesskey="t" class="form-element-action action-delete btn-danger" id="action-delete" data-action="delete" title="Supprimer l'élement">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
@@ -253,15 +258,15 @@
                 <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
                     <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
                     <div class="d-flex" role="section">
-                        <div role="section" class="form-element-action action-question-text" data-action="question-text">
+                        <div role="section" class="action-question-text" >
                             <label for="elem-title">
                                 {{ __("Intitulé de l'élément sélectionné") }}
-                                <input id="elem-title" name="elem-title" placeholder="Texte" class="form-control" size="50" />
+                                <input class="form-control form-element-action" data-action="question-text" id="elem-title" name="elem-title" placeholder="Texte" size="50" />
                             </label>
                         </div>
-                        <div role="section" class="form-element-action action-answer-type" data-action="answer-type" style="display:none">
+                        <div role="section" class="action-answer-type" style="display:none">
                             <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
-                            <select name="elem-type" id="elem-type" class="form-control">
+                            <select class="form-control form-element-action data-action="answer-type"  name="elem-type" id="elem-type">
                                 <option selected disabled>{{ __('Type') }}</option>
                                 <option value="email">{{ __('Email') }}</option>
                                 <option value="number">{{ __('Nombre') }}</option>
@@ -269,45 +274,42 @@
                                 <option value="text">{{ __('Texte') }}</option>
                             </select>
                         </div>
-                        <div class="form-element-action action-required" data-action="required" role="section">
-                            <input type="checkbox" name="elem-required" id="elem-required" class="mr-2" role="section">
+                        <div role="section" class="action-required">
                             <label for="elem-required">
+                                <input class="form-element-action mr-2" data-action="required" type="checkbox" name="elem-required" id="elem-required" role="section">
                                 {{ __('Réponse obligatoire') }}
                             </label>
                         </div>
-                        <div class="form-element-action action-placeholder" data-action="placeholder" role="section" style="display:none">
+                        <div role="section" class="action-placeholder" style="display:none">
                             <label for="elem-placeholder">
                                 {{ __('Exemple de réponse') }}
-                                <input name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" class="form-control" size="25" aria-label="Exemple de réponse" />
+                                <input class="form-control form-element-action" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" size="25" aria-label="Exemple de réponse" />
                             </label>
                         </div>
-                        <div class="form-element-action action-maxlength" data-action="maxlength" role="section" style="display:none">
+                        <div role="section" class="action-maxlength" style="display:none">
                             <label for="elem-length">
                                 {{ __('Longueur de caractères maximum') }}
-                                <input type="number" name="elem-length" id="elem-length" placeholder="Longueur" class="form-control" size="2" />
+                                <input class="form-control form-element-action" data-action="maxlength" type="number" name="elem-length" id="elem-length" placeholder="Longueur"/>
                             </label>
                         </div>
                         <!-- Si élément == select -->
-                        <div class="align-items-center form-element-action action-multiple-answer" data-action="multiple-answer" role="section" style="display:none">
-                            <input type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" class="mr-2" role="section">
+                        <div class="align-items-center action-multiple-answer" role="section" style="display:none">
+                            <input class="mr-2 form-element-action" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
                             <label for="elem-multiple-choice">
                                 {{ __('Choix multiples') }}
                             </label>
                         </div>
                         <!-- Si élément == lien -->
-                        <div class="align-items-center form-element-action action-url" data-action="url" role="section" style="display:none">
-                        <label for="elem-url">
+                        <div class="align-items-center action-url" role="section" style="display:none">
+                            <label for="elem-url">
                                 {{ __('Lien associé') }} (url)
-                                <input name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control" size="250" aria-label="{{ __('Lien associé') }}" />
+                                <input name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}" />
                             </label>
                         </div>
-                        <div class="form-element-action action-delete" data-action="delete" role="section">
-                            <button aria-label="Supprimer" class="element_delete">{{ __('Supprimer') }}</button>
-                        </div>
-                        <div class="form-element-action action-add-option" data-action="add-option" role="section" style="display:none">
+                        <div class="action-add-option" role="section" style="display:none">
                             <input type="text" placeholder="Nom de l'option" />
                             <input type="text" placeholder="Valeur de l'option" />
-                            <button aria-label="Ajouter une option" class="element_add-option">{{ __('Ajouter une option') }}</button>
+                            <button aria-label="Ajouter une option" data-action="add-option" class="form-element-action  element_add-option">{{ __('Ajouter une option') }}</button>
                         </div>
                     </div>
 
