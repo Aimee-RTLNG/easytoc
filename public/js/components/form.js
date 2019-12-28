@@ -41,9 +41,9 @@ var element_types = {
     "type-question": {
         "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACEID' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
         "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACEID' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend data-tag='label-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend data-tag='label-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend data-tag='label-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
         "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
@@ -54,9 +54,9 @@ var element_types = {
     "type-layout": {
         "insert-title": "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
         "insert-paragraph": "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
-        "insert-link": "<a href='' contenteditable='true' data-tag='link'>Nom du lien</a>",
-        "insert-ordered_list": "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
-        "insert-unordered_list": "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
+        "insert-link": "<a href='' contenteditable='true' data-tag='label-text'>Nom du lien</a>",
+        "insert-ordered_list": "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+        "insert-unordered_list": "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
         "insert-horizontal_rule": "<hr contenteditable='true'>",
     },
     "type-special": {
@@ -217,6 +217,8 @@ $('#btn-save-project').on('click', function () {
 let element_select;
 $(document.body)
 
+    .off('keyup') // ré-initialisation
+
     // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
     .on('click', '.element-container label', function (e) {
         e.preventDefault();
@@ -263,16 +265,31 @@ $(document.body)
             $('.side-tool').show();
 
             if (element_type != "type-layout" || (element_type == "type-layout" && element_name == "insert-link")) {
-                // on sélectionne le texte interne
-                // selectText($(this));
 
-                // on récupère le label
-                let label = $(element_selected_container).find('label').find('span');
-                if (label) {
-                    label.on('keyup', function () {
-                        $('#elem-title').val(label.text());
+                // on récupère le label ou le nom du lien
+                let intitule = $(element_selected_container).find('[data-tag=label-text]');
+
+                // si il y a un label (balise span dans label ou lien balise a)
+                if (intitule) {
+                    intitule.off('keyup'); // re-init
+                    $('#elem-title').val(intitule.text()); // récupère la valeur de l'elem
+                    intitule.on('keyup', function () { // traitement modif
+                        e.stopPropagation();
+                        $('#elem-title').val(intitule.text());
                     })
                 }
+
+                $('#elem-title').off('keyup');
+                $('#elem-title').on('keyup', function () {
+                    if (intitule) {
+                        intitule.text($(this).val());
+                    }
+                    updatecontent();
+                });
+                
+                // TODO on récupère le placeholder
+                // TODO on récupère le required
+                // TODO on recupère AUTRE CHOSE
 
                 // on cache toutes les actions de bases pour les réafficher en fonction
                 $('.action-answer-type').hide();
@@ -307,31 +324,17 @@ $(document.body)
                     $('.action-required').hide();
                     $('.action-url').show();
 
-                    // on récupère le nom du lien
-                    let link_name;
-                    link_name = $(element_selected_container).find('a');
-
-                    if (link_name) {
-
+                    if (intitule) {
                         // on désactive les events précedents
                         $('#elem-url').off('keyup');
-                        link_name.off('keyup');
-
                         // on récupère les attributs de l'élement sélectionné
-                        $('#elem-url').val($(link_name).attr('href'));
-                        $('#elem-title').val(link_name.text());
-
-                        link_name.on('keyup', function (e) {
-                            e.stopPropagation();
-                            $('#elem-title').val(link_name.text());
-                        })
-
+                        $('#elem-url').val($(intitule).attr('href'));
+                        // event de changement d'url
                         let link_url;
                         $('#elem-url').on('keyup', function (e) {
                             e.stopPropagation();
-                            console.log($(link_name).parent().attr('data-id'));
                             link_url = $('#elem-url').val();
-                            $(link_name).attr('href',link_url);
+                            $(intitule).attr('href', link_url);
                         })
                     }
 
@@ -347,7 +350,6 @@ $(document.body)
             // Si on a sélectionné le titre principal
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
-            selectText($(this)); // on sélectionne le texte interne
         }
 
         updatecontent();
@@ -445,6 +447,7 @@ $(".form-element-action").on('click', function () {
 })
 
 // ANCHOR Selection de tout le texte au clic
+// NOTE Non utilisé
 function selectText(element) {
     var sel, range;
     var el = element[0];
@@ -521,23 +524,6 @@ $('.text-formatting').on("click", function () {
 
 $('#justify-full').click(function () {
     document.execCommand('justifyFull', false, null);
-});
-
-// ANCHOR Panel droit 
-
-$('#elem-title').on('keyup', function () {
-    if ($('.content-editable-selected label span').length > 0) {
-        $('.content-editable-selected label span').text($(this).val());
-    } else if ($('.content-editable-selected a').length > 0) {
-        $('.content-editable-selected a').text($(this).val());
-    }
-
-    updatecontent();
-});
-
-$('.content-editable-selected label span').on('keyup', function () {
-    $('#elem-title').val($('.content-editable-selected label span').text());
-    updatecontent();
 });
 
 // ANCHOR Themes 
