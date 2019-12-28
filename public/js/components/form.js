@@ -39,29 +39,29 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
 // \t = tabulation,  \n = saut de ligne
 var element_types = {
     "type-question": {
-        "insert-short_answer"  : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACEID' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-        "insert-long_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACEID' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer" : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer"    : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-many_answer"   : "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-list_answer"   : "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
+        "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACEID' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+        "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACEID' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-text' data-tag='label-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend data-tag='legend-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer" : "<label for='REPLACEID' data-tag='option' ><input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value' checked><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
+        "insert-one_answer": "<label for='REPLACEID' data-tag='option' ><input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value' checked><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
         "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><input type='checkbox' id='REPLACEID' name='REPLACEID' value='answer-value'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
         "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span></option>"
     },
     "type-layout": {
-        "insert-title"            : "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
-        "insert-paragraph"        : "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
-        "insert-link"             : "<a href='#' contenteditable='true' data-tag='link'>Nom du lien</a>",
-        "insert-ordered_list"     : "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
-        "insert-unordered_list"   : "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
-        "insert-horizontal_rule"  : "<hr contenteditable='true'>",
+        "insert-title": "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
+        "insert-paragraph": "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
+        "insert-link": "<a href='' contenteditable='true' data-tag='link'>Nom du lien</a>",
+        "insert-ordered_list": "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ol>",
+        "insert-unordered_list": "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>a</li><li>b</li><li>c</li></ul>",
+        "insert-horizontal_rule": "<hr contenteditable='true'>",
     },
     "type-special": {
-        "make-required" : "\t<abbr title='required' aria-label='required' contenteditable='false'>*</abbr>\n",
-        "reset-button"  : "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+        "make-required": "\t<abbr title='required' aria-label='required' contenteditable='false'>*</abbr>\n",
+        "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
     }
 };
 
@@ -218,43 +218,43 @@ let element_select;
 $(document.body)
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
-    .on('click', '.element-container label', function (e){
+    .on('click', '.element-container label', function (e) {
         e.preventDefault();
     })
 
     // Empeche de passer le focus sur l'input quand on clique sur le legend (comportement de formulaire de base)
-    .on('click', '.element-container legend', function (e){
+    .on('click', '.element-container legend', function (e) {
         e.preventDefault();
     })
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
-    .on('click', '.element-container', function (e){
-        if(e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET"){
-            $( this ).find('[contenteditable=true]').focus();
+    .on('click', '.element-container', function (e) {
+        if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
+            $(this).find('[contenteditable=true]').focus();
         }
     })
 
     // Quand on sélectionne un élément éditable
     .on('focus', '[contenteditable=true]', function (e) {
-        
+
         // on récupère l'élément sélectionné et on focus sur l'élément parent
         let element_selected_container;
-        if( e.target ){
+        if (e.target) {
             element_select = e.target;
-            if($(element_select).hasClass('element-container')){
+            if ($(element_select).hasClass('element-container')) {
                 element_selected_container = element_select;
-            }else{
+            } else {
                 element_selected_container = $(element_select).closest(".element-container");
             }
         }
-        
+
         // on vise uniquement l'élement sélectionné
-        $(".content-editable-selected").removeClass('content-editable-selected'); 
+        $(".content-editable-selected").removeClass('content-editable-selected');
         $(element_selected_container).addClass("content-editable-selected");
-        
+
         let tag = $(this).attr('data-tag');
-        if(tag != "form-title"){ // si ce n'est pas le titre général du formulaire (position verouillée)
-            $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
+        if (tag != "form-title") { // si ce n'est pas le titre général du formulaire (position verouillée)
+            $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
 
             let element_type = $(element_selected_container).attr('data-elementtype');
             let element_name = $(element_selected_container).attr('data-elementtypename');
@@ -262,14 +262,14 @@ $(document.body)
             // Side tool : déplacemet haut bas et suppression 
             $('.side-tool').show();
 
-            if(element_type != "type-layout" || (element_type == "type-layout" && element_name == "insert-link") ){
+            if (element_type != "type-layout" || (element_type == "type-layout" && element_name == "insert-link")) {
                 // on sélectionne le texte interne
                 // selectText($(this));
 
                 // on récupère le label
                 let label = $(element_selected_container).find('label').find('span');
-                if(label){
-                    label.on('keyup', function(){
+                if (label) {
+                    label.on('keyup', function () {
                         $('#elem-title').val(label.text());
                     })
                 }
@@ -284,43 +284,72 @@ $(document.body)
                 $('.action-required').show(); // Requis possibles sur toutes les questions
 
                 // on affiche les attributs modifiable en fonction de l'élém selectionné
-                if(element_name == "insert-short_answer"){
+                if (element_name == "insert-short_answer") {
                     $('.action-answer-type').show();
                     $('.action-placeholder').show();
                     $('.action-maxlength').show();
-                }else if(element_name == "insert-long_answer"){
+                } else if (element_name == "insert-long_answer") {
                     $('.action-placeholder').show();
                     $('.action-maxlength').show();
-                }else if(element_name == "insert-binary_answer"){
+                } else if (element_name == "insert-binary_answer") {
                     $('.action-required').show();
-                }else if(element_name == "insert-one_answer"){
+                } else if (element_name == "insert-one_answer") {
                     $('.action-required').hide();
                     $('.action-add-option').show();
-                }else if(element_name == "insert-many_answer"){
+                } else if (element_name == "insert-many_answer") {
                     $('.action-required').hide();
                     $('.action-add-option').show();
-                }else if(element_name == "insert-list_answer"){
+                } else if (element_name == "insert-list_answer") {
                     $('.action-placeholder').show();
                     $('.action-multiple-answer').show();
                     $('.action-add-option').show();
-                }else if(element_name == "insert-link"){
+                } else if (element_name == "insert-link") {
                     $('.action-required').hide();
                     $('.action-url').show();
+
+                    // on récupère le nom du lien
+                    let link_name;
+                    link_name = $(element_selected_container).find('a');
+
+                    if (link_name) {
+
+                        // on désactive les events précedents
+                        $('#elem-url').off('keyup');
+                        link_name.off('keyup');
+
+                        // on récupère les attributs de l'élement sélectionné
+                        $('#elem-url').val($(link_name).attr('href'));
+                        $('#elem-title').val(link_name.text());
+
+                        link_name.on('keyup', function (e) {
+                            e.stopPropagation();
+                            $('#elem-title').val(link_name.text());
+                        })
+
+                        let link_url;
+                        $('#elem-url').on('keyup', function (e) {
+                            e.stopPropagation();
+                            console.log($(link_name).parent().attr('data-id'));
+                            link_url = $('#elem-url').val();
+                            $(link_name).attr('href',link_url);
+                        })
+                    }
+
                 }
 
                 $("#actions-interface").show(); // on affiche l'interface de modification spécifique
 
-            }else{
+            } else {
                 $("#actions-interface").hide(); // on masque l'interface de modification spécifique
             }
-        
-        }else{
+
+        } else {
             // Si on a sélectionné le titre principal
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
             selectText($(this)); // on sélectionne le texte interne
         }
-        
+
         updatecontent();
     })
     // quand on déselectionne un élement...
@@ -331,24 +360,24 @@ $(document.body)
         updatecontent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
-    .on('keyup', '[contenteditable=true]', function(){
+    .on('keyup', '[contenteditable=true]', function () {
 
         let selected_element_tag = $(this).attr('data-tag');
         let selected_element_type = $(this).attr('data-elementType');
         let elected_element_type_name = $(this).attr('data-elementTypeName');
 
-        if(selected_element_tag == "form-title"){ // si ce n'est pas le titre général du formulaire (position verouillée)
+        if (selected_element_tag == "form-title") { // si ce n'est pas le titre général du formulaire (position verouillée)
             $('#form-creator-title').val($('#form-title').text());
-        }else if(selected_element_type == "type-question"){
-            if( elected_element_type_name == "insert-binary_answer" || elected_element_type_name == "insert-one_answer" || elected_element_type_name == "insert-one_answer" ){
+        } else if (selected_element_type == "type-question") {
+            if (elected_element_type_name == "insert-binary_answer" || elected_element_type_name == "insert-one_answer" || elected_element_type_name == "insert-one_answer") {
                 // on cherche si il y a une légende ou un label 
                 console.log("Avec légende");
-            } else if( elected_element_type_name == "insert-short_answer" || elected_element_type_name == "insert-long_answer" || elected_element_type_name == "insert-list_answer" ){
+            } else if (elected_element_type_name == "insert-short_answer" || elected_element_type_name == "insert-long_answer" || elected_element_type_name == "insert-list_answer") {
                 console.log("Sans légende");
             } else {
                 console.log("autre");
             }
-        } else if(selected_element_type == "type-layout"){
+        } else if (selected_element_type == "type-layout") {
             console.log('Layout element');
         }
 
@@ -357,38 +386,38 @@ $(document.body)
 
 
 // ANCHOR Masquer les sidetools au changement d'onglet
-$("#nav-code-tab").on('click', function(){
+$("#nav-code-tab").on('click', function () {
     $("#actions-interface").hide();
     $('.side-tool').hide();
 })
 
 // ANCHOR Clique sur éléments de sidetools
-$(".form-element-action").on('click', function(){
+$(".form-element-action").on('click', function () {
 
     let element_selected_container;
-    if($(element_select).hasClass('element-container')){
+    if ($(element_select).hasClass('element-container')) {
         element_selected_container = element_select;
-    }else{
+    } else {
         element_selected_container = $(element_select).closest(".element-container");
     }
-    
+
     let previous_element = element_selected_container.prev();
     let next_element = element_selected_container.next();
 
     switch ($(this).data("action")) {
         case "move-up":
-            if(previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")){
+            if (previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")) {
                 previous_element.insertAfter(element_selected_container);
             }
             // Déplacement des Tools latéraux
-            $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
+            $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             break;
         case "move-down":
-            if(next_element.attr("id") != "form-title" && next_element.hasClass("element-container")){
+            if (next_element.attr("id") != "form-title" && next_element.hasClass("element-container")) {
                 next_element.insertBefore(element_selected_container);
             }
             // Déplacement des Tools latéraux
-            $('.side-tool').css("margin-top", $(element_selected_container).position().top+"px");
+            $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             break;
         case "delete":
             deletecommand.execute();
@@ -396,14 +425,14 @@ $(".form-element-action").on('click', function(){
             $(".side-tool").hide();
             break;
         case "required":
-            if(element_selected_container.hasClass('field-required')){
+            if (element_selected_container.hasClass('field-required')) {
                 element_selected_container.addClass('field-required');
-                element_selected_container.find("input:not([type='checkbox'])").removeAttr( "required" );
-                element_selected_container.find("select").removeAttr( "required" );
-                element_selected_container.find("textarea").removeAttr( "required" );
-                element_selected_container.find("input[type='radio']").first().removeAttr( "required" );
+                element_selected_container.find("input:not([type='checkbox'])").removeAttr("required");
+                element_selected_container.find("select").removeAttr("required");
+                element_selected_container.find("textarea").removeAttr("required");
+                element_selected_container.find("input[type='radio']").first().removeAttr("required");
                 // TODO Ajouter l'étoile dans le label (après le span)
-            }else{
+            } else {
                 element_selected_container.removeClass('field-required');
                 element_selected_container.find("input:not([type='checkbox'])").attr("required", "required");
                 element_selected_container.find("select").attr("required", "required");
@@ -416,59 +445,59 @@ $(".form-element-action").on('click', function(){
 })
 
 // ANCHOR Selection de tout le texte au clic
-function selectText(element) { 
-	var sel, range;
-	var el = element[0];
-	if (window.getSelection && document.createRange) { //Browser compatibility
-	  sel = window.getSelection();
-	  if(sel.toString() == ''){ //no text selection
-		 window.setTimeout(function(){
-			range = document.createRange(); //range object
-			range.selectNodeContents(el); //sets Range
-			sel.removeAllRanges(); //remove all ranges from selection
-			sel.addRange(range);//add Range to a Selection.
-		},1);
-	  }
-	}else if (document.selection) { //older ie
-		sel = document.selection.createRange();
-		if(sel.text == ''){ //no text selection
-			range = document.body.createTextRange();//Creates TextRange object
-			range.moveToElementText(el);//sets Range
-			range.select(); //make selection.
-		}
-	}
+function selectText(element) {
+    var sel, range;
+    var el = element[0];
+    if (window.getSelection && document.createRange) { //Browser compatibility
+        sel = window.getSelection();
+        if (sel.toString() == '') { //no text selection
+            window.setTimeout(function () {
+                range = document.createRange(); //range object
+                range.selectNodeContents(el); //sets Range
+                sel.removeAllRanges(); //remove all ranges from selection
+                sel.addRange(range);//add Range to a Selection.
+            }, 1);
+        }
+    } else if (document.selection) { //older ie
+        sel = document.selection.createRange();
+        if (sel.text == '') { //no text selection
+            range = document.body.createTextRange();//Creates TextRange object
+            range.moveToElementText(el);//sets Range
+            range.select(); //make selection.
+        }
+    }
 };
 
 // ANCHOR Fonction Undo/Redo suppression
-function command(instance) {    
+function command(instance) {
     this.command = instance;
     this.done = [];
-  
+
     this.execute = function execute() {
-      this.command.execute();
-      this.done.push(this.command);
-    };      
+        this.command.execute();
+        this.done.push(this.command);
+    };
     this.undo = function undo() {
-      var command = this.done.pop();
-      command.undo();    
-    };  
+        var command = this.done.pop();
+        command.undo();
+    };
 }
 
 // ANCHOR Fonction Suppression
 var deletecommand = new command({
-    execute: function(){
+    execute: function () {
         element = $(".content-editable-selected").detach();
     },
-    undo: function(){
-        element.appendTo( "#full-form" );
+    undo: function () {
+        element.appendTo("#full-form");
     }
 });
 
 // ANCHOR Commandes JQUERY
 
-$('.text-formatting').on("click", function(){
-    switch($(this).attr('id')) {
-        case 'element-bold': 
+$('.text-formatting').on("click", function () {
+    switch ($(this).attr('id')) {
+        case 'element-bold':
             console.log('bold');
             break;
         case 'element-italic':
@@ -490,14 +519,19 @@ $('.text-formatting').on("click", function(){
     updatecontent();
 })
 
-$('#justify-full').click(function() {
+$('#justify-full').click(function () {
     document.execCommand('justifyFull', false, null);
 });
 
 // ANCHOR Panel droit 
 
 $('#elem-title').on('keyup', function () {
-    $('.content-editable-selected label span').text($(this).val());
+    if ($('.content-editable-selected label span').length > 0) {
+        $('.content-editable-selected label span').text($(this).val());
+    } else if ($('.content-editable-selected a').length > 0) {
+        $('.content-editable-selected a').text($(this).val());
+    }
+
     updatecontent();
 });
 
@@ -508,26 +542,26 @@ $('.content-editable-selected label span').on('keyup', function () {
 
 // ANCHOR Themes 
 
-$('input[name="theme"]').on('change', function(){
+$('input[name="theme"]').on('change', function () {
     console.log($(this).val());
-    let theme = "theme-"+ $(this).val();
+    let theme = "theme-" + $(this).val();
     $('#generated-form').attr('class', theme);
 })
 
 // ANCHOR Copier le contenu code 
 
-$("#copy-css-link").on('click', function(){
+$("#copy-css-link").on('click', function () {
     $(this).text("Copié !")
     $("#copy-raw-code").text("Copier");
 })
 new ClipboardJS('#copy-css-link');
 
-$("#copy-raw-code").on('click', function(){
+$("#copy-raw-code").on('click', function () {
     $(this).text("Copié !")
     $("#copy-css-link").text("Copier");
 })
 new ClipboardJS('#copy-raw-code');
 
-$("#form-actions input").on('click', function(e){
+$("#form-actions input").on('click', function (e) {
     e.preventdefault;
 })
