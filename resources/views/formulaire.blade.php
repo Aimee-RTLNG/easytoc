@@ -243,7 +243,7 @@
                     </div>
 
                     <div class="side-tool" style="display: none">
-                        <button accesskey="d" class="form-element-action action-delete" id="action-delete" data-action="delete" title="Supprimer l'élement">
+                        <button accesskey="t" class="form-element-action action-delete" id="action-delete" data-action="delete" title="Supprimer l'élement">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
