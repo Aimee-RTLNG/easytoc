@@ -248,11 +248,13 @@
     padding: 30px 20px 20px 40px;
     margin-bottom: 30px;
     &__entete {
+        max-width: 100%;
         @include flex-col-between-start;
         &__title {
             font-size: 2.5rem;
             @include expletus;
             font-weight: 700;
+            max-width: 100%;
         }
         &__under {
             height: 4px;
@@ -264,12 +266,14 @@
     &__descr {
         font-size: 1.5rem;
         line-height: 2.4rem;
+        max-width: 100%;
     }
     &__type-date {
         font-size: 1.4rem;
         font-style: italic;
         margin-top: 12px;
         text-transform: capitalize;
+        max-width: 100%;
     }
     &__btns {
         @include flex-col-end-center;

@@ -10271,6 +10271,10 @@ p, h1, h2 {
 }
 
 @media (max-width: 992px) {
+  .connexion .btn-seepassword__icon {
+    right: 0px;
+  }
+
   .connect-network {
     margin-top: 15px;
   }
@@ -11237,6 +11241,7 @@ easytoc, easytoc *:hover, easytoc:hover {
   margin-bottom: 30px;
 }
 .crea-item__entete {
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11246,6 +11251,7 @@ easytoc, easytoc *:hover, easytoc:hover {
   font-size: 2.5rem;
   font-family: "Expletus Sans", cursive, sans-serif;
   font-weight: 700;
+  max-width: 100%;
 }
 .crea-item__entete__under {
   height: 4px;
@@ -11256,12 +11262,14 @@ easytoc, easytoc *:hover, easytoc:hover {
 .crea-item__descr {
   font-size: 1.5rem;
   line-height: 2.4rem;
+  max-width: 100%;
 }
 .crea-item__type-date {
   font-size: 1.4rem;
   font-style: italic;
   margin-top: 12px;
   text-transform: capitalize;
+  max-width: 100%;
 }
 .crea-item__btns {
   display: flex;
