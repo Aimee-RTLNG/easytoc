@@ -201,6 +201,11 @@
 }
 
 @media (max-width: 992px) {
+    .connexion {
+        .btn-seepassword__icon {
+            right: 0px;
+        }
+    }    
     .connect-network {
         margin-top: 15px;
         &--connexion {
