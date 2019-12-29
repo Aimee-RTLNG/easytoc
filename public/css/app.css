@@ -11347,7 +11347,7 @@ easytoc, easytoc *:hover, easytoc:hover {
     transition: height 0.5s ease;
   }
   .mon-compte.open {
-    height: 525px;
+    height: 610px;
   }
   .mon-compte__entete {
     justify-content: flex-start;
@@ -11455,5 +11455,22 @@ easytoc, easytoc *:hover, easytoc:hover {
 
   .dashboard__title {
     padding-left: 20px;
+  }
+}
+@media (max-width: 368px) {
+  .mon-compte.open {
+    height: 644px;
+  }
+
+  .mon-compte__entete {
+    padding-right: 20px;
+  }
+
+  .dashboard__title {
+    padding-right: 12px;
+  }
+
+  .mon-compte__entete__title {
+    padding-left: 6px;
   }
 }

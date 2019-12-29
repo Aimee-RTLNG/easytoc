@@ -357,7 +357,7 @@
         height: 66px;
         transition: height 0.5s ease;
         &.open {
-            height: 525px;
+            height: 610px;
         }
         &__entete {
             justify-content: flex-start;
@@ -453,5 +453,20 @@
     }
     .dashboard__title {
         padding-left: 20px;
+    }
+}
+
+@media (max-width: 368px) {
+    .mon-compte.open {
+        height: 644px;
+    }
+    .mon-compte__entete {
+        padding-right: 20px;
+    }
+    .dashboard__title {
+        padding-right: 12px;
+    }
+    .mon-compte__entete__title {
+        padding-left: 6px;
     }
 }
