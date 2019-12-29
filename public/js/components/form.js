@@ -209,24 +209,25 @@ $(document.body)
     .off('keyup') // ré-initialisation
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
-    .on('click', '.element-container label', function (e) {
-        e.preventDefault();
-    })
-
-    // Empeche de passer le focus sur l'input quand on clique sur le legend (comportement de formulaire de base)
-    .on('click', '.element-container legend', function (e) {
+    .on('click', '.element-container label, .element-container legend', function (e) {
         e.preventDefault();
     })
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (comportement de formulaire de base)
     .on('click', '.element-container', function (e) {
-        if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
+        if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET" ) {
             $(this).find('[contenteditable=true]').focus();
+        } else if ( e.target.nodeName == "LEGEND" ) {
+            $(this).find('legend span[contenteditable=true]').focus();
+        } else if ( e.target.nodeName == "INPUT" || e.target.nodeName == "TEXTAREA" || e.target.nodeName == "SELECT" ) {
+            console.log("input, textarea ou select");
+        } else {
+            console.log("Nodename inconnu : " + e.target.nodeName);
         }
     })
 
     // Quand on sélectionne un élément éditable
-    .on('focus', '[contenteditable=true]', function (e) {
+    .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea', function (e) {
 
         // on récupère l'élément sélectionné et on focus sur l'élément parent
         let element_selected_container;
@@ -279,7 +280,18 @@ $(document.body)
                     updatecontent();
                 });
                 
-                // TODO on récupère le placeholder
+                // TODO on récupère le placeholder 
+                let input;
+                if($(element_selected_container).find('input')){
+                    input = $(element_selected_container).find('input');
+                }else if($(element_selected_container).find('textarea')){
+                    input = $(element_selected_container).find('textarea');
+                }else if($(element_selected_container).find('textarea')){
+                    input = $(element_selected_container).find('textarea');
+                }
+                let placeholder = input.attr('placeholder');
+                $("#elem-placeholder").val(placeholder);
+
                 // TODO on récupère le required
                 if($(element_selected_container).hasClass('field-required')){
                     $('#elem-required').prop( "checked", true );
@@ -406,8 +418,6 @@ $(".form-element-action").on('click', function (e) {
     let previous_element = element_selected_container.prev();
     let next_element = element_selected_container.next();
 
-    console.log("click");
-
     switch ($(this).data("action")) {
         case "move-up":
             if (previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")) {
@@ -438,10 +448,8 @@ $(".form-element-action").on('click', function (e) {
             // bla
             if (element_selected_container.find('select').attr('multiple')) {
                 element_selected_container.find('select').removeAttr('multiple');
-                console.log("multiple");
             }else{
                 element_selected_container.find('select').attr('multiple', 'true');
-                console.log('not multiple');
             }
             break;
         case "required":
@@ -483,7 +491,28 @@ $(".form-element-action").on('click', function (e) {
             }
             break;
     }
-})
+}).on('change', function(e){
+
+    switch ($(this).data("action")) {
+        case "answer-type":
+            console.log('change answer-type');
+            break;
+    }
+
+}).on('keyup', function(e){
+
+    switch ($(this).data("action")) {
+        case "maxlength":
+            console.log('keyup maxlength');
+            break;
+        case "placeholder":
+            console.log('keyup placeholder');
+            input.attr('placeholder',$(this).val());
+            updatecontent();
+            break;
+    }
+
+});
 
 // ANCHOR Selection de tout le texte au clic
 // NOTE Non utilisé

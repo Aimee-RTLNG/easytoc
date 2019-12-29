@@ -249,7 +249,7 @@
                         </div>
                         <div role="section" class="action-answer-type" style="display:none">
                             <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
-                            <select class="form-control form-element-action data-action="answer-type"  name="elem-type" id="elem-type">
+                            <select class="form-control form-element-action" data-action="answer-type"  name="elem-type" id="elem-type">
                                 <option selected disabled>{{ __('Type') }}</option>
                                 <option value="email">{{ __('Email') }}</option>
                                 <option value="number">{{ __('Nombre') }}</option>

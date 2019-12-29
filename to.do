@@ -24,10 +24,11 @@
 # [x] Suppression de l'étoile required
 # [x] Rendre possible les selections multiple sur les balises select (attribut multiple=true)
 
+
 # [] Changement de type de réponse attendue
-# [] Changement de placeholder
+# [X] Changement de placeholder
 # [] Changement de longueur max
 # [] Ajout d'option
 # [] Suppression d'option
 # [] Script d'importation du CSV ou JSON
-# [] Selection impossible au clic éloigné sur légende ou sur input ou sur select
+# [x] Selection impossible au clic éloigné sur légende ou sur input ou sur select
