@@ -72,7 +72,8 @@ body {
         border: 3px dotted black;
     }
 
-    label:hover{
+    // tous les contenus non modifiables en soit
+    label:hover, abbr:hover, .indicator-required:hover{
         border: 0;
     }
 

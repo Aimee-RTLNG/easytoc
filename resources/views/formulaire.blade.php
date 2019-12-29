@@ -142,23 +142,6 @@
                 </div>
 
                 <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
-                    <!--
-                                    <div role="section" class="col" aria-label="Actions sur l'élement">
-                                        <h3 id="form_actions_element" class="mb-3 font-weight-bold">{{ __("Actions sur l'élement") }}</h3>
-                                        <input class="btn btn-light" type="button" aria-label="Couper" value="Couper"
-                                            id="element_cut" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Copier" value="Copier"
-                                            id="element_copy" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Coller" value="Coller"
-                                            id="element_paste" role="listitem">
-                                        <input class="btn btn-light element_delete" type="button" aria-label="Supprimer l'élement"
-                                            value="Supprimer l'élement" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Annuler" value="Annuler"
-                                            id="element_undo" role="listitem">
-                                        <input class="btn btn-light" type="button" aria-label="Rétablir" value="Rétablir"
-                                            id="element_redo" role="listitem">
-                                    </div>
-                                    -->
                     <div role="section" class="col" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
                         <input class="btn btn-light text-formatting" type="button" aria-label="Gras" value="Gras" id="element-bold" role="listitem">

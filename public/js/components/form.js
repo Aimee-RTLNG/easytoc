@@ -41,9 +41,9 @@ var element_types = {
     "type-question": {
         "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACEID' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
         "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACEID' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend data-tag='label-text' contenteditable='true'>Légende</legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend data-tag='label-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend data-tag='label-text' contenteditable='true'>Légende</legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
         "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
@@ -60,7 +60,8 @@ var element_types = {
         "insert-horizontal_rule": "<hr contenteditable='true'>",
     },
     "type-special": {
-        "make-required": "\t<abbr title='required' aria-label='required' contenteditable='false'>*</abbr>\n",
+        "indicator-required":"\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+        "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
         "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
     }
 };
@@ -433,6 +434,16 @@ $(".form-element-action").on('click', function (e) {
             deletecommand.undo();
             $(this).attr('disabled', 'true');
             break;
+        case "multiple-answer":
+            // bla
+            if (element_selected_container.find('select').attr('multiple')) {
+                element_selected_container.find('select').removeAttr('multiple');
+                console.log("multiple");
+            }else{
+                element_selected_container.find('select').attr('multiple', 'true');
+                console.log('not multiple');
+            }
+            break;
         case "required":
             if (element_selected_container.hasClass('field-required')) {
                 element_selected_container.removeClass('field-required');
@@ -445,6 +456,11 @@ $(".form-element-action").on('click', function (e) {
                     element_selected_container.find("input[type='radio']").first().removeAttr("required");
                 }
                 // TODO Retirer l'étoile dans le label (après le span)
+                element_selected_container.find("abbr").remove();
+                if($("#full-form abbr").length == 0){
+                    $(".indicator-required").remove();
+                }
+
             } else {
                 element_selected_container.addClass('field-required');
                 if($(element_selected_container).hasClass('insert-binary_answer')){
@@ -455,7 +471,15 @@ $(".form-element-action").on('click', function (e) {
                     element_selected_container.find("textarea").attr("required", "required");
                     element_selected_container.find("input[type='radio']").first().attr("required", "required");
                 }
-                // TODO Ajouter l'étoile dans le label
+                // Ajouter l'étoile dans le label
+                var required_star = element_types["type-special"]["make-required"];
+                var required_indicator = element_types["type-special"]["indicator-required"];
+                if(element_selected_container.find("abbr").length == 0){
+                    $(required_star).insertAfter(element_selected_container.find(".label-text"));
+                }
+                if($("#full-form .indicator-required").length == 0){
+                    $(required_indicator).insertAfter($("#form-title"));
+                }
             }
             break;
     }

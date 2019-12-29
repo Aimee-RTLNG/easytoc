@@ -11756,7 +11756,9 @@ pre.prettyprinted {
   border: 3px dotted black;
 }
 
-#content-created-blueprint form * label:hover {
+#content-created-blueprint form * label:hover,
+#content-created-blueprint form * abbr:hover,
+#content-created-blueprint form * .indicator-required:hover {
   border: 0;
 }
 
