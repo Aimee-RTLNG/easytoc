@@ -3,6 +3,8 @@
 let element_selected_container;
 let input;
 let intitule;
+let previous_element;
+let next_element;
 
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
@@ -91,31 +93,31 @@ function updatecontent() {
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
-// ANCHOR Initialisation
+// ANCHOR Initialisation du formulaire
 $('#content-created-blueprint').html(initial_content);
 if ($('#content-created-blueprint').html()) {
     updatecontent();
 }
 
-// ANCHOR Déclenchement sauvegarde (titre outside)
+// ANCHOR Changement de titre
 $('#form-creator-title').on('keyup', function () {
     $('#form-title').text($('#form-creator-title').val());
     updatecontent();
 });
 
-// ANCHOR Déclenchement sauvegarde (lien)
+// ANCHOR Changement de lien
 $('#form-creator-link').on('keyup', function () {
     $('#generated-form').attr("action", $('#form-creator-link').val());
     updatecontent();
 });
 
-// ANCHOR Déclenchement sauvegarde (méthode POST ou GET)
+// ANCHOR Changement de méthode
 $('#form-creator-method').on('change', function () {
     $('#generated-form').attr("method", $('#form-creator-method').val());
     updatecontent();
 });
 
-// ANCHOR Déclenchement sauvegarde (élément)
+// ANCHOR Ajout d'un élément
 $('.add-element').on('click', function () {
 
     // permettra d'identifier l'élément (lui donne un ID aléatoire)
@@ -175,7 +177,9 @@ $('.add-element').on('click', function () {
         $('#content-created-blueprint #full-form').html(previous_content + element_content);
     }
 
-    // mise à jour du code
+    let new_element = $('.element-container').last();
+    $(new_element).find('[contenteditable=true]').first().focus();
+
     updatecontent();
 
 });
@@ -240,6 +244,9 @@ $(document.body)
             } else {
                 element_selected_container = $(element_select).closest(".element-container");
             }
+            previous_element = element_selected_container.prev();
+            next_element = element_selected_container.next();
+            refreshMoveButtons(previous_element, next_element);
         }
 
         // on vise uniquement l'élement sélectionné
@@ -295,7 +302,7 @@ $(document.body)
 
                 // TODO on recupère la longueur max
                 let maxlength = input.attr('maxlength');
-                $("#elem-maxlength").val(maxlength);
+                $("#elem-length").val(maxlength);
 
                 // TODO on recupère le type de réponse
                 let answer_type = input.attr('type');
@@ -415,8 +422,8 @@ $(".form-element-action").on('click', function (e) {
         element_selected_container = $(element_select).closest(".element-container");
     }
 
-    let previous_element = element_selected_container.prev();
-    let next_element = element_selected_container.next();
+    previous_element = element_selected_container.prev();
+    next_element = element_selected_container.next();
 
     switch ($(this).data("action")) {
         // Déplacement vers le haut
@@ -424,6 +431,9 @@ $(".form-element-action").on('click', function (e) {
             if (previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")) {
                 previous_element.insertAfter(element_selected_container);
             }
+            previous_element = element_selected_container.prev();
+            next_element = element_selected_container.next();
+            refreshMoveButtons(previous_element, next_element);
             // Déplacement des Tools latéraux
             $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             break;
@@ -432,6 +442,9 @@ $(".form-element-action").on('click', function (e) {
             if (next_element.attr("id") != "form-title" && next_element.hasClass("element-container")) {
                 next_element.insertBefore(element_selected_container);
             }
+            previous_element = element_selected_container.prev();
+            next_element = element_selected_container.next();
+            refreshMoveButtons(previous_element, next_element);
             // Déplacement des Tools latéraux
             $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             break;
@@ -448,6 +461,7 @@ $(".form-element-action").on('click', function (e) {
             deletecommand.undo();
             $(this).attr('disabled', 'true');
             $('.alert-success').slideUp();
+            $('.element-container').last().find('[contenteditable=true]').first().focus();
             break;
         // Changement de l'attr multiple   
         case "multiple-answer":
@@ -498,6 +512,9 @@ $(".form-element-action").on('click', function (e) {
             }
             break;
     }
+
+    updatecontent();
+
 }).on('change', function(e){
 
     // Changement de type
@@ -506,6 +523,8 @@ $(".form-element-action").on('click', function (e) {
             input.attr('type',$(this).val());
             break;
     }
+
+    updatecontent();
 
 }).on('keyup', function(e){
 
@@ -526,9 +545,10 @@ $(".form-element-action").on('click', function (e) {
         case "placeholder":
             console.log(input);
             input.attr('placeholder',$(this).val());
-            updatecontent();
             break;
     }
+
+    updatecontent();
 
 });
 
@@ -629,6 +649,20 @@ $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-form').attr('class', theme);
 })
+
+// ANCHOR Activer / désactiver les boutons de déplacement
+function refreshMoveButtons(previous_element, next_element){
+    if(previous_element.attr("id") == "form-title" && !$(previous_element).hasClass("element-container")){
+        $('#action-move-up').attr('disabled',true);
+    }else{
+        $('#action-move-up').removeAttr('disabled');
+    }
+    if(!$(next_element).hasClass("element-container")){
+        $('#action-move-down').attr('disabled',true);
+    }else{
+        $('#action-move-down').removeAttr('disabled');
+    }
+}
 
 // ANCHOR Copier le contenu code 
 $("#copy-raw-code, #copy-css-link").on('click', function () {

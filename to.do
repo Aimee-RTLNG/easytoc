@@ -25,13 +25,14 @@
 # [x] Selection impossible au clic éloigné sur légende ou sur input ou sur select
 # [X] Icones d'actions
 # [X] Messages d'alerte (copier, suppression, annulation)
-
-// Commit
 # [X] Changement de placeholder
 # [X] Changement de type de réponse attendue (type)
 # [X] Changement de longueur max
 
-// A faire
+// Commit
+# [X] Problème de focus et de déplacement (flèches)
+
+// Prochain commit
 # [] Ajout d'option
 # [] Suppression d'option
 
