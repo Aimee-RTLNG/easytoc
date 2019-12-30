@@ -28,12 +28,12 @@
 # [X] Changement de placeholder
 # [X] Changement de type de réponse attendue (type)
 # [X] Changement de longueur max
-
-// Commit
 # [X] Problème de focus et de déplacement (flèches)
 
-// Prochain commit
-# [] Ajout d'option
+// Commit
+# [X] Ajout d'option
+
+// A venir
 # [] Suppression d'option
 
 // on le fait plus tard ça (louise peut intégrer avant, pierre peut gérer sans)

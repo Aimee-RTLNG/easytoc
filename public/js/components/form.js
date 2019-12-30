@@ -47,14 +47,14 @@ var element_types = {
         "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACEID' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
         "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACEID' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
         "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
-        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\tFIRST_OPTION\n\t</fieldset>\n",
+        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
         "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer": "<label for='REPLACEID' data-tag='option' ><input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value' checked><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
+        "insert-one_answer": "<label for='REPLACEID' data-tag='option' ><input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
         "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><input type='checkbox' id='REPLACEID' name='REPLACEID' value='answer-value'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
-        "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option 1</span></option>"
+        "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>"
     },
     "type-layout": {
         "insert-title": "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
@@ -155,23 +155,6 @@ $('.add-element').on('click', function () {
             $('#form-actions').html(element_content + actions_content);
         }
         actions_content = $('#form-actions').html();
-    } else if (element_type == "type-question" && (element_type_name == "insert-one_answer" || element_type_name == "insert-many_answer" || element_type_name == "insert-list_answer")) {
-        // on ajoute l'element mais aussi plusieurs réponses exemple
-        let option_replace_regex = /FIRST_OPTION/g;
-        let element_option = element_types["type-answer-option"][element_type_name];
-        element_content = element_content.replace(option_replace_regex, element_option);
-        /*switch (element_type_name) {
-            case "insert-one_answer":
-                // code block
-                break;
-            case "insert-many_answer":
-                // code block
-                break;
-            case "insert-list_answer":
-                // code block
-                break;
-        }*/
-        $('#content-created-blueprint #full-form').html(previous_content + element_content);
     } else {
         // et on y ajoute l'élément voulu
         $('#content-created-blueprint #full-form').html(previous_content + element_content);
@@ -179,6 +162,11 @@ $('.add-element').on('click', function () {
 
     let new_element = $('.element-container').last();
     $(new_element).find('[contenteditable=true]').first().focus();
+
+    if (element_type == "type-question" && (element_type_name == "insert-one_answer" || element_type_name == "insert-many_answer" || element_type_name == "insert-list_answer")) {
+        // on ajoute une option exemple
+        addOption();
+    }
 
     updatecontent();
 
@@ -465,7 +453,6 @@ $(".form-element-action").on('click', function (e) {
             break;
         // Changement de l'attr multiple   
         case "multiple-answer":
-            // bla
             if (element_selected_container.find('select').attr('multiple')) {
                 element_selected_container.find('select').removeAttr('multiple');
             }else{
@@ -510,6 +497,10 @@ $(".form-element-action").on('click', function (e) {
                     $(required_indicator).insertAfter($("#form-title"));
                 }
             }
+            break;
+        // Ajout d'action
+        case "add-option":
+            addOption();
             break;
     }
 
@@ -576,6 +567,28 @@ function selectText(element) {
         }
     }
 };
+
+// ANCHOR Fonction d'ajout d'option
+function addOption(){
+    var option_parent_element = $(".content-editable-selected");
+    var option_type = $(option_parent_element).attr("data-elementtypename");
+    
+    let option_group = $(option_parent_element).find('fieldset');
+    if(option_group.length == 0){
+        option_group = $(option_parent_element).find('select');
+    }
+    console.log(option_group);
+    var option_id = Math.random().toString(36).substr(2, 9);
+    var option = element_types["type-answer-option"][option_type];
+    let option_id_replace_regex = /REPLACEID/g;
+    option = option.replace(option_id_replace_regex, option_id);
+    $(option_group).append(option);
+
+    // let option_replace_regex = /FIRST_OPTION/g;
+    // let element_option = element_types["type-answer-option"][element_type_name];
+    // element_content = element_content.replace(option_replace_regex, element_option);
+    
+}
 
 // ANCHOR Fonction Undo/Redo suppression
 function command(instance) {
