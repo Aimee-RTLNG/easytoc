@@ -128,21 +128,51 @@
                         <label for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
                         <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire" class="form-control" size="30" />
                     </div>
-                    <div class="col-2 d-flex align-items-center justify-content-center" role="region">
-                        <input type="checkbox" class="add-element type-special" value="" id="reset-button" name="reset-button">
-                        <label for="reset-button" class="ml-3">{{ __('Option de réinitialisation') }}</label>
-                    </div>
-                    <div class="col-2 d-flex flex-column align-items-center justify-content-center" role="region">
+                    <div class="col-2" role="region">
                         <label for="form-creator-method" class="mr-3">{{ __('Méthode') }}</label>
-                        <select name="form-creator-method" id="form-creator-method">
+                        <select class="form-control" name="form-creator-method" id="form-creator-method">
                             <option value="get">GET</option>
                             <option value="post">POST</option>
                         </select>
                     </div>
+                    <div class="col-3" role="region">
+                        <label>Option du formulaire</label>
+                        <label for="reset-button" class="d-block">
+                            <input type="checkbox" class="add-element type-special" value="" id="reset-button" name="reset-button">
+                            <span class="ml-2">{{ __('Bouton de réinitialisation') }}</span>
+                        </label>
+                    </div>
                 </div>
 
                 <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
-                    <div role="section" class="col" aria-labelledby="form_actions_text">
+                <div role="section" class="col" aria-labelledby="form_add_static">
+                        <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un élément statique') }}</h3>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                            <i class="fa fa-grip-lines"></i>
+                            {{ __('Nouvelle section') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem">
+                            <i class="fa fa-heading"></i>
+                            {{ __('Titre') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem">
+                            <i class="fa fa-paragraph"></i>
+                            {{ __('Paragraphe') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem">
+                            <i class="fa fa-link"></i>
+                            {{ __('Lien') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem">
+                            <i class="fa fa-list-ol"></i>
+                            {{ __('Liste numérotée') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem">
+                            <i class="fa fa-list-ul"></i>
+                            {{ __('Liste à puces') }}
+                        </button>
+                    </div>
+                    <div role="section" class="col-5" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
                         <button class="btn btn-light text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
                             <i class="fa fa-bold"></i>
@@ -167,17 +197,6 @@
                         <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem">
                             <i class="fa fa-align-justify"></i>
                             {{ __('Justifier') }}
-                        </button>
-                    </div>
-                    <div role="section" class="col" aria-labelledby="form_actions_text">
-                        <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Actions sur l\'élément') }}</h3>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-light element_delete form-element-action action-delete" data-action="delete">
-                            <i class="fa fa-trash"></i>
-                            {{ __('Supprimer') }}
-                        </button>
-                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-light element_undo form-element-action action-undo" data-action="undo">
-                            <i class="fa fa-undo"></i>
-                            {{ __('Annuler la suppression') }}
                         </button>
                     </div>
                 </div>
@@ -209,31 +228,15 @@
                             {{ __('Choix en liste') }}
                         </button>
                     </div>
-                    <div role="section" class="col" aria-labelledby="form_add_static">
-                        <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un élément statique') }}</h3>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
-                            <i class="fa fa-grip-lines"></i>
-                            {{ __('Nouvelle section') }}
+                    <div role="section" class="col-5" aria-labelledby="form_actions_text">
+                        <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Actions sur l\'élément') }}</h3>
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-light element_delete form-element-action action-delete" data-action="delete">
+                            <i class="fa fa-trash"></i>
+                            {{ __('Supprimer') }}
                         </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem">
-                            <i class="fa fa-heading"></i>
-                            {{ __('Titre') }}
-                        </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem">
-                            <i class="fa fa-paragraph"></i>
-                            {{ __('Paragraphe') }}
-                        </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem">
-                            <i class="fa fa-link"></i>
-                            {{ __('Lien') }}
-                        </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem">
-                            <i class="fa fa-list-ol"></i>
-                            {{ __('Liste numérotée') }}
-                        </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem">
-                            <i class="fa fa-list-ul"></i>
-                            {{ __('Liste à puces') }}
+                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-light element_undo form-element-action action-undo" data-action="undo">
+                            <i class="fa fa-undo"></i>
+                            {{ __('Annuler la suppression') }}
                         </button>
                     </div>
                 </div>

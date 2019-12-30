@@ -49,12 +49,12 @@ var element_types = {
         "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='label'>\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
         "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
         "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-        "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t\tFIRST_OPTION\n\t\t</select>\n</label>"
+        "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACEID' class='form-control' data-tag='input-text' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
     },
     "type-answer-option": {
-        "insert-one_answer": "<label for='REPLACEID' data-tag='option' ><input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
-        "insert-many_answer": "<label for='REPLACEID' data-tag='option' ><input type='checkbox' id='REPLACEID' name='REPLACEID' value='answer-value'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></label>",
-        "insert-list_answer": "<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>"
+        "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input type='radio' id='REPLACEID' name='REPLACEID' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+        "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input type='checkbox' id='REPLACEID' name='REPLACEID' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+        "insert-list_answer": "\t<option value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
     },
     "type-layout": {
         "insert-title": "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
@@ -215,7 +215,15 @@ $(document.body)
         } else if ( e.target.nodeName == "LEGEND" ) {
             $(this).find('legend span[contenteditable=true]').focus();
         } else if ( e.target.nodeName == "INPUT" || e.target.nodeName == "TEXTAREA" || e.target.nodeName == "SELECT" ) {
-            console.log("input, textarea ou select");
+            // Input, textarea ou select
+            console.log($(e.target).attr('type'));
+            if($(e.target).attr('type') == 'checkbox' || $(e.target).attr('type') == 'radio'){
+                if($(e.target).attr('checked')){
+                    $(e.target).removeAttr('checked');
+                }else{
+                    $(e.target).attr('checked', 'true');
+                }
+            }
         } else {
             console.log("Nodename inconnu : " + e.target.nodeName);
         }
@@ -283,9 +291,9 @@ $(document.body)
 
                 // TODO on récupère le required
                 if($(element_selected_container).hasClass('field-required')){
-                    $('#elem-required').prop( "checked", true );
+                    $('#elem-required').prop( "checked", "true" );
                 }else{
-                    $('#elem-required').prop( "checked", false );
+                    $('#elem-required').removeAttr( "checked" );
                 }
 
                 // TODO on recupère la longueur max

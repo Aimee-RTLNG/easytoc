@@ -29,11 +29,12 @@
 # [X] Changement de type de réponse attendue (type)
 # [X] Changement de longueur max
 # [X] Problème de focus et de déplacement (flèches)
-
-// Commit
 # [X] Ajout d'option
 
-// A venir
+// Commit
+# [] Can't check radio and checkbox inputs
+# [] Selection d'option
+# [] Modification d'option
 # [] Suppression d'option
 
 // on le fait plus tard ça (louise peut intégrer avant, pierre peut gérer sans)
