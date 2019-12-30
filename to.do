@@ -18,17 +18,22 @@
 # [x] Gestion du style bold/italic/etc, qui ne se met pas à jour
 # [x] Suppression du required quand on décoche
 # [x] Access Keys up down, suppression et annuler les modif
-
-// Commit
 # [x] Ajout de l'étoile required
 # [x] Suppression de l'étoile required
 # [x] Rendre possible les selections multiple sur les balises select (attribut multiple=true)
-
-
-# [] Changement de type de réponse attendue
 # [X] Changement de placeholder
+# [x] Selection impossible au clic éloigné sur légende ou sur input ou sur select
+
+// Commit
+# [X] Icones d'actions
+# [X] Messages d'alerte (copier, suppression, annulation)
+
+// A faire
+# [] Changement de type de réponse attendue
 # [] Changement de longueur max
 # [] Ajout d'option
 # [] Suppression d'option
+
+// on le fait plus tard ça (louise peut intégrer avant, pierre peut gérer sans)
 # [] Script d'importation du CSV ou JSON
-# [x] Selection impossible au clic éloigné sur légende ou sur input ou sur select
+# [] Messages d'alerte importation des données

@@ -11758,7 +11758,9 @@ pre.prettyprinted {
 
 #content-created-blueprint form * label:hover,
 #content-created-blueprint form * abbr:hover,
-#content-created-blueprint form * .indicator-required:hover {
+#content-created-blueprint form * .indicator-required:hover,
+#content-created-blueprint form * legend span:hover,
+#content-created-blueprint form * fieldset label span:hover {
   border: 0;
 }
 
@@ -11768,6 +11770,10 @@ pre.prettyprinted {
 
 #content-created-blueprint form * fieldset:hover {
   border: 2px solid black;
+}
+
+#content-created-blueprint form * fieldset label:hover {
+  border: 3px dotted black;
 }
 
 #content-created-blueprint form * legend {
@@ -11810,7 +11816,6 @@ textarea {
   position: relative;
   bottom: -10px;
   right: 100px;
-  background-color: white;
 }
 
 .copy-container {
@@ -11924,5 +11929,13 @@ textarea {
 #list-filters .btn.active {
   background-color: #666;
   color: white;
+}
+
+.alert-success {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  z-index: 5000;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 }
 

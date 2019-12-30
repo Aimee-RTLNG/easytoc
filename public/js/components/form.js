@@ -1,4 +1,3 @@
-// ANCHOR Ressources
 
 // ANCHOR Données initiales
 let user_id = $('input[name=user_id]').val();
@@ -247,7 +246,7 @@ $(document.body)
         let tag = $(this).attr('data-tag');
         if (tag != "form-title") { // si ce n'est pas le titre général du formulaire (position verouillée)
 
-            $('.action-delete button').removeAttr('disabled');
+            $('.action-delete').removeAttr('disabled');
 
             $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
 
@@ -259,10 +258,10 @@ $(document.body)
 
             if (element_type != "type-layout" || (element_type == "type-layout" && element_name == "insert-link")) {
 
-                // on récupère le label ou le nom du lien
+                // on récupère l'élément contenant l'intitulé
                 let intitule = $(element_selected_container).find('[data-tag=label-text]');
 
-                // si il y a un label (balise span dans label ou lien balise a)
+                // TODO on récupère l'intitule
                 if (intitule) {
                     intitule.off('keyup'); // re-init
                     $('#elem-title').val(intitule.text()); // récupère la valeur de l'elem
@@ -298,6 +297,7 @@ $(document.body)
                 }else{
                     $('#elem-required').prop( "checked", false );
                 }
+
                 // TODO on recupère AUTRE CHOSE
 
                 // on cache toutes les actions de bases pour les réafficher en fonction
@@ -357,7 +357,7 @@ $(document.body)
 
         } else {
             // Si on a sélectionné le titre principal
-            $('.action-delete button').attr('disabled', 'true');
+            $('.action-delete').attr('disabled', 'true');
             $('.side-tool').hide();
             $("#actions-interface").hide(); // on affiche l'interface de modification
         }
@@ -437,12 +437,13 @@ $(".form-element-action").on('click', function (e) {
             deletecommand.execute();
             $("#actions-interface").hide();
             $(".side-tool").hide();
-            $('.action-delete button').attr('disabled', 'true');
-            $('.action-undo button').removeAttr('disabled');
+            $('.action-delete').attr('disabled', 'true');
+            $('.action-undo').removeAttr('disabled');
             break;
         case "undo":
             deletecommand.undo();
             $(this).attr('disabled', 'true');
+            $('.alert-success').slideUp();
             break;
         case "multiple-answer":
             // bla
@@ -557,15 +558,37 @@ function command(instance) {
 // ANCHOR Fonction Suppression
 var deletecommand = new command({
     execute: function () {
-        element = $(".content-editable-selected").detach();
+        element = $(".content-editable-selected").removeClass('content-editable-selected');
+        element = element.detach();
+        let message = "Element supprimé";
+        alertMsg(message);
     },
     undo: function () {
         element.appendTo("#full-form");
+        let message = "Suppression annulée (fin du formulaire)";
+        alertMsg(message);
     }
 });
 
-// ANCHOR Mise en forme du texte
+// ANCHOR Message d'alerte
+var alert_timeout;
+function alertMsg(message){
+    clearTimeout(alert_timeout);
+    if($('.alert-success').is(":hidden")){
+        $('.alert-success .alert-content').text(message);
+        $('.alert-success').slideDown();
+    }else{
+        $('.alert-success').slideUp("fast", function(){
+            $('.alert-success .alert-content').text(message);
+            $('.alert-success').slideDown();
+        });
+    }
+    alert_timeout = setTimeout(function(){
+        $('.alert-success').slideUp();
+    }, 7000);
+}
 
+// ANCHOR Mise en forme du texte (gras, italic, underline...)
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
         case 'element-bold':
@@ -609,16 +632,13 @@ $('input[name="theme"]').on('change', function () {
 })
 
 // ANCHOR Copier le contenu code 
-$("#copy-css-link").on('click', function () {
-    $(this).text("Copié !")
-    $("#copy-raw-code").text("Copier");
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+    let message="Code copié !";
+    $(".copy-container button").text("Copier");
+    $(this).text(message);
+    alertMsg(message);
 })
 new ClipboardJS('#copy-css-link');
-
-$("#copy-raw-code").on('click', function () {
-    $(this).text("Copié !")
-    $("#copy-css-link").text("Copier");
-})
 new ClipboardJS('#copy-raw-code');
 
 // NOTE Je ne sais plus à quoi ça sert

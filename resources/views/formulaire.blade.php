@@ -144,41 +144,97 @@
                 <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
                     <div role="section" class="col" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
-                        <input class="btn btn-light text-formatting" type="button" aria-label="Gras" value="Gras" id="element-bold" role="listitem">
-                        <input class="btn btn-light text-formatting" type="button" aria-label="Italique" value="Italique" id="element-italic" role="listitem">
-                        <input class="btn btn-light text-formatting" type="button" aria-label="Souligné" value="Souligné" id="element-underline" role="listitem">
-                        <input class="btn btn-light text-formatting" type="button" aria-label="Aligner à gauche" value="Aligner à gauche" id="justify-left" role="listitem">
-                        <input class="btn btn-light text-formatting" type="button" aria-label="Centrer" value="Centrer" id="justify-center" role="listitem">
-                        <input class="btn btn-light text-formatting" type="button" aria-label="Justifier" value="Justifier" id="justify-full" role="listitem">
+                        <button class="btn btn-light text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
+                            <i class="fa fa-bold"></i>
+                            {{ __('Gras') }}
+                        </button>
+                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem">
+                            <i class="fa fa-italic"></i>
+                            {{ __('Italique') }}
+                        </button>
+                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem">
+                            <i class="fa fa-underline"></i>
+                            {{ __('Souligné') }}
+                        </button>
+                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem">
+                            <i class="fa fa-align-left"></i>
+                            {{ __('Aligner à gauche') }}
+                        </button>
+                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem">
+                            <i class="fa fa-align-center"></i>
+                            {{ __('Centrer') }}
+                        </button>
+                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem">
+                            <i class="fa fa-align-justify"></i>
+                            {{ __('Justifier') }}
+                        </button>
                     </div>
                     <div role="section" class="col" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Actions sur l\'élément') }}</h3>
-                        <div class="action-delete" role="section">
-                            <button disabled="true" aria-label="Supprimer" class="element_delete form-element-action" data-action="delete">{{ __('Supprimer') }}</button>
-                        </div>
-                        <div class="action-undo" role="section">
-                            <button disabled="true" aria-label="Annuler la suppression" class="element_undo form-element-action" data-action="undo">{{ __('Annuler la suppression') }}</button>
-                        </div>
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-light element_delete form-element-action action-delete" data-action="delete">
+                            <i class="fa fa-trash"></i>
+                            {{ __('Supprimer') }}
+                        </button>
+                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-light element_undo form-element-action action-undo" data-action="undo">
+                            <i class="fa fa-undo"></i>
+                            {{ __('Annuler la suppression') }}
+                        </button>
                     </div>
                 </div>
                 <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
                     <div role="section" class="col" aria-labelledby="form_add_question">
                         <h3 id="form_add_question" class="mb-3 font-weight-bold">{{ __('Ajouter une question') }}</h3>
-                        <input class="btn btn-light add-element type-question" type="button" aria-label="Réponse libre courte" value="Réponse libre courte" id="insert-short_answer">
-                        <input class="btn btn-light add-element type-question" type="button" aria-label="Réponse libre longue" value="Réponse libre longue" id="insert-long_answer">
-                        <input class="btn btn-light add-element type-question" type="button" aria-label="Réponse Oui/Non" value="Réponse Oui/Non" id="insert-binary_answer">
-                        <input class="btn btn-light add-element type-question" type="button" aria-label="Choix unique" value="Choix unique" id="insert-one_answer">
-                        <input class="btn btn-light add-element type-question" type="button" aria-label="Choix multiple" value="Choix multiple" id="insert-many_answer">
-                        <input class="btn btn-light add-element type-question" type="button" aria-label="Choix en liste" value="Choix en liste" id="insert-list_answer">
+                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Réponse libre courte') }}" id="insert-short_answer">
+                            <i class="fa fa-comment"></i>
+                            {{ __('Réponse libre courte') }}
+                        </button>
+                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Réponse libre longue') }}" id="insert-long_answer">
+                            <i class="fa fa-comment-alt"></i>
+                            {{ __('Réponse libre longue') }}
+                        </button>
+                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Réponse Oui/Non') }}" id="insert-binary_answer">
+                            <i class="fa fa-check-square"></i>
+                            {{ __('Réponse Oui/Non') }}
+                        </button>
+                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Choix unique') }}"  id="insert-one_answer">
+                            <i class="fa fa-check-circle"></i>
+                            {{ __('Choix unique') }}
+                        </button>
+                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Choix multiple') }}" id="insert-many_answer">
+                            <i class="fa fa-tasks"></i>
+                            {{ __('Choix multiple') }}
+                        </button>
+                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer">
+                            <i class="fa fa-caret-down"></i>
+                            {{ __('Choix en liste') }}
+                        </button>
                     </div>
                     <div role="section" class="col" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un élément statique') }}</h3>
-                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Nouvelle section" value="Nouvelle section" id="insert-horizontal_rule" role="listitem">
-                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Titre" value="Titre" id="insert-title" role="listitem">
-                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Paragraphe" value="Paragraphe" id="insert-paragraph" role="listitem">
-                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Lien" value="Lien" id="insert-link" role="listitem">
-                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste numérotée" value="Liste numérotée" id="insert-ordered_list" role="listitem">
-                        <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste à puces" value="Liste à puces" id="insert-unordered_list" role="listitem">
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                            <i class="fa fa-grip-lines"></i>
+                            {{ __('Nouvelle section') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem">
+                            <i class="fa fa-heading"></i>
+                            {{ __('Titre') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem">
+                            <i class="fa fa-paragraph"></i>
+                            {{ __('Paragraphe') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem">
+                            <i class="fa fa-link"></i>
+                            {{ __('Lien') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem">
+                            <i class="fa fa-list-ol"></i>
+                            {{ __('Liste numérotée') }}
+                        </button>
+                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem">
+                            <i class="fa fa-list-ul"></i>
+                            {{ __('Liste à puces') }}
+                        </button>
                     </div>
                 </div>
 
@@ -217,13 +273,24 @@
 
                             <!-- panneau code -->
                             <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                <h3>Liens CSS à mettre dans la balise &lt;head&gt; </h3>
-                                <a href="aide#formcode">Besoin d'aide !</a>
-                                <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link">Copier</button></div>
+                                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                <a href="aide#formcode" class="btn btn-light">
+                                    <i class="fa fa-question-circle"></i>
+                                    {{ __("Besoin d'aide !") }}
+                                </a>
+                                <div class="copy-container w-100 d-flex flex-row-reverse">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-dark">
+                                        {{ __("Copier") }}
+                                    </button>
+                                </div>
                                 <!-- Lien du style à utiliser -->
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
-                                <h3>Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !</h3>
-                                <div class="copy-container w-100 d-flex flex-row-reverse"><button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code">Copier</button></div>
+                                <h3 class="mt-3">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
+                                <div class="copy-container w-100 d-flex flex-row-reverse">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-dark">
+                                        {{ __("Copier") }}
+                                    </button>
+                                </div>
                                 <!-- Code formatté -->
                                 <pre class="prettyprint linenums:4 content-panel" id="formatted-code"></pre>
                             </div>
@@ -241,7 +308,7 @@
                 <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
                     <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
                     <div class="d-flex" role="section">
-                        <div role="section" class="action-question-text" >
+                        <div role="section" class="action-question-text">
                             <label for="elem-title">
                                 {{ __("Intitulé de l'élément sélectionné") }}
                                 <input class="form-control form-element-action" data-action="question-text" id="elem-title" name="elem-title" placeholder="Texte" size="50" />
@@ -249,7 +316,7 @@
                         </div>
                         <div role="section" class="action-answer-type" style="display:none">
                             <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
-                            <select class="form-control form-element-action" data-action="answer-type"  name="elem-type" id="elem-type">
+                            <select class="form-control form-element-action" data-action="answer-type" name="elem-type" id="elem-type">
                                 <option selected disabled>{{ __('Type') }}</option>
                                 <option value="email">{{ __('Email') }}</option>
                                 <option value="number">{{ __('Nombre') }}</option>
@@ -272,7 +339,7 @@
                         <div role="section" class="action-maxlength" style="display:none">
                             <label for="elem-length">
                                 {{ __('Longueur de caractères maximum') }}
-                                <input class="form-control form-element-action" data-action="maxlength" type="number" name="elem-length" id="elem-length" placeholder="Longueur"/>
+                                <input class="form-control form-element-action" data-action="maxlength" type="number" name="elem-length" id="elem-length" placeholder="Longueur" />
                             </label>
                         </div>
                         <!-- Si élément == select -->
@@ -313,7 +380,16 @@
     </div>
 </div>
 
-
+<div class="alert alert-success" role="alert" style="display: none">
+    <span class="alert-content">
+        Contenu de l'alerte
+    </span>
+    <button type="button" class="close ml-3" data-dismiss="alert" aria-label="{{ __('Fermer') }}">
+        <span aria-hidden="true">
+            <i class="fa fa-times"></i>
+        </span>
+    </button>
+</div>
 
 @endsection
 
