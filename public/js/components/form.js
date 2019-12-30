@@ -1,5 +1,9 @@
 
 // ANCHOR Données initiales
+let element_selected_container;
+let input;
+let intitule;
+
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -229,7 +233,6 @@ $(document.body)
     .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea', function (e) {
 
         // on récupère l'élément sélectionné et on focus sur l'élément parent
-        let element_selected_container;
         if (e.target) {
             element_select = e.target;
             if ($(element_select).hasClass('element-container')) {
@@ -259,9 +262,9 @@ $(document.body)
             if (element_type != "type-layout" || (element_type == "type-layout" && element_name == "insert-link")) {
 
                 // on récupère l'élément contenant l'intitulé
-                let intitule = $(element_selected_container).find('[data-tag=label-text]');
+                intitule = $(element_selected_container).find('[data-tag=label-text]');
 
-                // TODO on récupère l'intitule
+                // on récupère l'intitule
                 if (intitule) {
                     intitule.off('keyup'); // re-init
                     $('#elem-title').val(intitule.text()); // récupère la valeur de l'elem
@@ -271,17 +274,9 @@ $(document.body)
                     })
                 }
 
-                $('#elem-title').off('keyup');
-                $('#elem-title').on('keyup', function () {
-                    if (intitule) {
-                        intitule.text($(this).val());
-                    }
-                    updatecontent();
-                });
-                
-                // TODO on récupère le placeholder 
-                let input;
-                if($(element_selected_container).find('input')){
+                // on récupère le placeholder 
+                input = $(element_selected_container).find('input');
+                if(input.length > 0){
                     input = $(element_selected_container).find('input');
                 }else if($(element_selected_container).find('textarea')){
                     input = $(element_selected_container).find('textarea');
@@ -298,7 +293,13 @@ $(document.body)
                     $('#elem-required').prop( "checked", false );
                 }
 
-                // TODO on recupère AUTRE CHOSE
+                // TODO on recupère la longueur max
+                let maxlength = input.attr('maxlength');
+                $("#elem-maxlength").val(maxlength);
+
+                // TODO on recupère le type de réponse
+                let answer_type = input.attr('type');
+                $('#elem-type option[value='+answer_type+']').prop('selected', true);
 
                 // on cache toutes les actions de bases pour les réafficher en fonction
                 $('.action-answer-type').hide();
@@ -405,10 +406,9 @@ $("#nav-code-tab").on('click', function () {
     updatecontent();
 })
 
-// ANCHOR Clique sur éléments de sidetools
+// ANCHOR Actions sur l'élément ciblé
 $(".form-element-action").on('click', function (e) {
 
-    let element_selected_container;
     if ($(element_select).hasClass('element-container')) {
         element_selected_container = element_select;
     } else {
@@ -419,6 +419,7 @@ $(".form-element-action").on('click', function (e) {
     let next_element = element_selected_container.next();
 
     switch ($(this).data("action")) {
+        // Déplacement vers le haut
         case "move-up":
             if (previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")) {
                 previous_element.insertAfter(element_selected_container);
@@ -426,6 +427,7 @@ $(".form-element-action").on('click', function (e) {
             // Déplacement des Tools latéraux
             $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             break;
+        // Déplacement vers le bas
         case "move-down":
             if (next_element.attr("id") != "form-title" && next_element.hasClass("element-container")) {
                 next_element.insertBefore(element_selected_container);
@@ -433,6 +435,7 @@ $(".form-element-action").on('click', function (e) {
             // Déplacement des Tools latéraux
             $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             break;
+        // Suppression
         case "delete":
             deletecommand.execute();
             $("#actions-interface").hide();
@@ -440,11 +443,13 @@ $(".form-element-action").on('click', function (e) {
             $('.action-delete').attr('disabled', 'true');
             $('.action-undo').removeAttr('disabled');
             break;
+        // Annuler la suppression
         case "undo":
             deletecommand.undo();
             $(this).attr('disabled', 'true');
             $('.alert-success').slideUp();
             break;
+        // Changement de l'attr multiple   
         case "multiple-answer":
             // bla
             if (element_selected_container.find('select').attr('multiple')) {
@@ -453,6 +458,7 @@ $(".form-element-action").on('click', function (e) {
                 element_selected_container.find('select').attr('multiple', 'true');
             }
             break;
+        // Changement de l'attr required
         case "required":
             if (element_selected_container.hasClass('field-required')) {
                 element_selected_container.removeClass('field-required');
@@ -494,20 +500,31 @@ $(".form-element-action").on('click', function (e) {
     }
 }).on('change', function(e){
 
+    // Changement de type
     switch ($(this).data("action")) {
         case "answer-type":
-            console.log('change answer-type');
+            input.attr('type',$(this).val());
             break;
     }
 
 }).on('keyup', function(e){
 
     switch ($(this).data("action")) {
-        case "maxlength":
-            console.log('keyup maxlength');
+        // Changement d'intitulé
+        case "question-text":
+            intitule.text($(this).val());
             break;
+        // Changement de longueur max
+        case "maxlength":
+            if($(this).val() == 0){
+                input.removeAttr('maxlength');
+            }else if($.isNumeric($(this).val()) && $(this).val() > 0){
+                input.attr('maxlength',$(this).val());
+            }
+            break;
+        // Changement de placeholder
         case "placeholder":
-            console.log('keyup placeholder');
+            console.log(input);
             input.attr('placeholder',$(this).val());
             updatecontent();
             break;
@@ -570,24 +587,6 @@ var deletecommand = new command({
     }
 });
 
-// ANCHOR Message d'alerte
-var alert_timeout;
-function alertMsg(message){
-    clearTimeout(alert_timeout);
-    if($('.alert-success').is(":hidden")){
-        $('.alert-success .alert-content').text(message);
-        $('.alert-success').slideDown();
-    }else{
-        $('.alert-success').slideUp("fast", function(){
-            $('.alert-success .alert-content').text(message);
-            $('.alert-success').slideDown();
-        });
-    }
-    alert_timeout = setTimeout(function(){
-        $('.alert-success').slideUp();
-    }, 7000);
-}
-
 // ANCHOR Mise en forme du texte (gras, italic, underline...)
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
@@ -645,3 +644,21 @@ new ClipboardJS('#copy-raw-code');
 $("#form-actions input").on('click', function (e) {
     e.preventdefault;
 })
+
+// ANCHOR Message d'alerte
+var alert_timeout;
+function alertMsg(message){
+    clearTimeout(alert_timeout);
+    if($('.alert-success').is(":hidden")){
+        $('.alert-success .alert-content').text(message);
+        $('.alert-success').slideDown();
+    }else{
+        $('.alert-success').slideUp("fast", function(){
+            $('.alert-success .alert-content').text(message);
+            $('.alert-success').slideDown();
+        });
+    }
+    alert_timeout = setTimeout(function(){
+        $('.alert-success').slideUp();
+    }, 7000);
+}

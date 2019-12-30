@@ -23,14 +23,15 @@
 # [x] Rendre possible les selections multiple sur les balises select (attribut multiple=true)
 # [X] Changement de placeholder
 # [x] Selection impossible au clic éloigné sur légende ou sur input ou sur select
-
-// Commit
 # [X] Icones d'actions
 # [X] Messages d'alerte (copier, suppression, annulation)
 
+// Commit
+# [X] Changement de placeholder
+# [X] Changement de type de réponse attendue (type)
+# [X] Changement de longueur max
+
 // A faire
-# [] Changement de type de réponse attendue
-# [] Changement de longueur max
 # [] Ajout d'option
 # [] Suppression d'option
 

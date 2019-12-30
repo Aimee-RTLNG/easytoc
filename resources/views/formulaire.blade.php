@@ -313,6 +313,12 @@
                                 {{ __("Intitulé de l'élément sélectionné") }}
                                 <input class="form-control form-element-action" data-action="question-text" id="elem-title" name="elem-title" placeholder="Texte" size="50" />
                             </label>
+                        </div>                        
+                        <div role="section" class="action-placeholder" style="display:none">
+                            <label for="elem-placeholder">
+                                {{ __('Exemple de réponse') }}
+                                <input class="form-control form-element-action" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" size="25" aria-label="Exemple de réponse" />
+                            </label>
                         </div>
                         <div role="section" class="action-answer-type" style="display:none">
                             <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
@@ -330,17 +336,12 @@
                                 {{ __('Réponse obligatoire') }}
                             </label>
                         </div>
-                        <div role="section" class="action-placeholder" style="display:none">
-                            <label for="elem-placeholder">
-                                {{ __('Exemple de réponse') }}
-                                <input class="form-control form-element-action" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" size="25" aria-label="Exemple de réponse" />
-                            </label>
-                        </div>
                         <div role="section" class="action-maxlength" style="display:none">
                             <label for="elem-length">
                                 {{ __('Longueur de caractères maximum') }}
-                                <input class="form-control form-element-action" data-action="maxlength" type="number" name="elem-length" id="elem-length" placeholder="Longueur" />
+                                <input class="form-control form-element-action" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
                             </label>
+                            <i class="d-block">{{ __('Une valeur de 0 équivaut à un nombre illimité de caractères') }}</i>
                         </div>
                         <!-- Si élément == select -->
                         <div class="align-items-center action-multiple-answer" role="section" style="display:none">
