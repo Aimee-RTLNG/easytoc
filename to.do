@@ -43,3 +43,4 @@
 # [] Générer un formulaire exemple (via JSON peut etre ?)
 # [] Compléter la page d'aide
 # [] Messages d'alerte importation des données
+# [] Filtrer les valeur rentrées dans les input (par exemple, retirer les guillements pour les attributs)

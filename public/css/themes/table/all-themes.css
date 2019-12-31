@@ -1,0 +1,30 @@
+.theme-white #full-table {
+  color: black;
+  background-color: #fff;
+}
+
+.theme-black #full-table {
+  color: white;
+  background-color: #222;
+}
+
+.theme-green #full-table {
+  color: white;
+  background-color: green;
+}
+
+.theme-red #full-table {
+  color: white;
+  background-color: red;
+}
+
+.theme-blue #full-table {
+  color: white;
+  background-color: blue;
+}
+
+.theme-grey #full-table {
+  color: black;
+  background-color: grey;
+}
+/*# sourceMappingURL=all-themes.css.map */
