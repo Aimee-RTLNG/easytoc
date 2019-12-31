@@ -20,4 +20,47 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');
     })
+    
+    // Scroll vers ancres
+    function scrollTo( target ) {
+	        if( target.length ) {
+	            $("html, body").stop().animate( { scrollTop: target.offset().top }, 500);
+	        }
+	    }
+	$('.next-section i').on('click', function() {
+		scrollTo($('#tools'));
+    })
+    $('.link-ancre').on('click', function() {
+        var id = $(this).attr('href');
+		scrollTo($(id));
+	})
+
+    // Slider Home
+
+    // console.log($('.slider-tools'));
+    // $('.slider-tools').slick({
+    //     infinite: true,
+    //     slidesToShow: 2,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     dots: true,
+    //     responsive: [
+    //         {
+    //             breakpoint: 3500,
+    //             settings: "unslick"
+    //         },
+    //         {
+    //             breakpoint: 767,
+    //             slidesToShow: 2,
+    //             settings: "slick",
+    //             dots: true,
+    //         }
+    //         ]
+    //     });
+    $(".fleche-plus").on('click', function(){
+        $('.mon-compte').toggleClass('open');
+        $(this).toggleClass('open');
+    })
+
+
 });

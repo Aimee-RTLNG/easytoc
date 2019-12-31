@@ -12,11 +12,12 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
         {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
-        
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+         
         <!-- page specific style -->
         @yield('pagespecificstyles')
 
@@ -24,10 +25,10 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" title="Retour à la page d'accueil">
                     <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="Menu">
                     <div class="bars" id="bars">
                         <div class="bars__line bars--first"></div>
                         <div class="bars__line bars--snd"></div>
@@ -44,7 +45,7 @@
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a></li>
                     <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}">{{ __('Aide') }}</a></li>
                 </ul>
-                    <ul class="navbar-nav mr-auto text-light menu-lang">
+                    <ul class="navbar-nav mr-xl-auto text-light menu-lang">
                         <a class="text-light link-flag" href="{{ route('setlang', 'en') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.png') }})"></div> {{ __('EN') }}</a>
                         <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                     </ul>
@@ -93,11 +94,11 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page Aide</p>
+                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page <a href="{{ route('aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>
-                    <p  class="footer-txt">easytoc@outlook.com</p>
+                    <p  class="footer-txt"><a href="mailto:easytoc@outlook.com">easytoc@outlook.com</a></p>
                 </div>
                 <div class="col-12 menu-footer">
                     <ul class="nav navbar-dark ">
@@ -110,10 +111,10 @@
             </div>
        </div>
     </footer>
-
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
         <!-- page specific scripts -->
         @yield('pagespecificscripts')
