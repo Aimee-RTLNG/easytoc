@@ -11766,10 +11766,16 @@ pre.prettyprinted {
 
 #content-created-blueprint form * fieldset {
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 #content-created-blueprint form * fieldset:hover {
   border: 2px solid black;
+}
+
+#content-created-blueprint form * fieldset label {
+  margin: 5px 15px;
 }
 
 #content-created-blueprint form * fieldset label:hover {
@@ -11777,7 +11783,7 @@ pre.prettyprinted {
 }
 
 #content-created-blueprint form * legend {
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 #content-created-blueprint form * hr {
@@ -11793,7 +11799,14 @@ pre.prettyprinted {
   border: 0 !important;
 }
 
-.content-editable-selected {
+.element-container {
+  margin: 10px 5px;
+  padding: 5px;
+}
+
+.content-editable-selected,
+.option-selected,
+#full-form select:focus {
   border: 3px dotted blue !important;
 }
 
@@ -11837,17 +11850,8 @@ textarea {
   border: none;
 }
 
-.side-tool #tool-delete {
-  background-color: #f13e3e;
-  width: 100%;
-}
-
-.side-tool #tool-move-up {
-  background-color: #3c65eb;
-}
-
-.side-tool #tool-move-down {
-  background-color: #3c65eb;
+.side-tool .btn-info:disabled {
+  background-color: #818181;
 }
 
 .full-list {

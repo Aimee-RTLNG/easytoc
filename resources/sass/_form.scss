@@ -79,12 +79,17 @@ body {
 
     fieldset{
         border: 2px solid black;
+        display: flex;
+        flex-direction: column;
 
         &:hover{
             border: 2px solid black;
         }
 
         label{
+
+            margin: 5px 15px;
+
             &:hover{
                 border: 3px dotted black;
             }
@@ -92,7 +97,7 @@ body {
     }
 
     legend{
-        border: 3px solid black;
+        border: 2px solid black;
     }
 
     hr {
@@ -110,9 +115,12 @@ body {
 
 }
 
+.element-container{
+    margin: 10px 5px; 
+    padding: 5px;
+}
 
-
-.content-editable-selected{
+.content-editable-selected, .option-selected, #full-form select:focus{
     border: 3px dotted blue !important;
 }
 
@@ -156,17 +164,8 @@ input[type="text"], textarea{
         border: none;
     }
 
-    #tool-delete {
-        background-color: rgb(241, 62, 62);
-        width: 100%;
-    }
-
-    #tool-move-up {
-        background-color: rgb(60, 101, 235);
-    }
-
-    #tool-move-down {
-        background-color: rgb(60, 101, 235);
+    .btn-info:disabled{
+        background-color: rgb(129, 129, 129);
     }
 
 }

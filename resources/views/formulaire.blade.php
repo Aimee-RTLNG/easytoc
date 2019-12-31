@@ -238,6 +238,11 @@
                             <i class="fa fa-undo"></i>
                             {{ __('Annuler la suppression') }}
                         </button>
+                        <!-- Ajout d'option -->
+                        <button type="button" aria-label="{{ __('Ajouter une option') }}" disabled="true" data-action="add-option" class="btn btn-light form-element-action element_add-option">
+                            <i class="fa fa-check-square"></i>
+                            {{ __('Ajouter une option') }}
+                        </button>
                     </div>
                 </div>
 
@@ -301,7 +306,7 @@
                     </div>
 
                     <div class="side-tool" style="display: none">
-                        <button accesskey="t" class="form-element-action action-delete btn-danger" id="action-delete" data-action="delete" title="Supprimer l'élement">
+                        <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="Supprimer l'élement">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
@@ -310,19 +315,44 @@
 
                 <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
                     <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
+                    <a href="aide#formcode" class="btn btn-light">
+                        <i class="fa fa-question-circle"></i>
+                        {{ __("Besoin d'aide !") }}
+                    </a>
                     <div class="d-flex" role="section">
                         <!-- Intitulé -->
                         <div role="section" class="col action-question-text">
                             <label for="elem-title">
                                 {{ __("Intitulé") }}
-                                <input class="form-control form-element-action" data-action="question-text" id="elem-title" name="elem-title" placeholder="Texte" size="50" />
+                                <input class="form-control form-element-action" data-action="question-text" id="elem-title" name="elem-title" placeholder="{{ __('Texte') }}" size="50" />
                             </label>
                         </div>  
                         <!-- Placeholder -->                      
                         <div role="section" class="col action-placeholder" style="display:none">
                             <label for="elem-placeholder">
                                 {{ __('Exemple de réponse') }}
-                                <input class="form-control form-element-action" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="Ceci est le placeholder" size="25" aria-label="Exemple de réponse" />
+                                <input class="form-control form-element-action" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="{{ __('Exemple de réponse') }}" size="25" aria-label="{{ __('Exemple de réponse') }}" />
+                            </label>
+                        </div>
+                        <!-- Référence des options -->                      
+                        <div role="section" class="col action-options-name" style="display:none">
+                            <label for="elem-options-name">
+                                {{ __('Référence de la question') }}
+                                <input class="form-control form-element-action" data-action="options-name" name="elem-options-name" id="elem-options-name" placeholder="{{ __('Référence') }}" aria-label="{{ __('Référence') }}" />
+                            </label>
+                        </div>
+                        <!-- Nom des options -->                      
+                        <div role="section" class="col action-option-label" style="display:none">
+                            <label for="elem-option-label">
+                                {{ __('Nom de la réponse') }}
+                                <input class="form-control form-element-action" data-action="option-label" name="elem-option-label" id="elem-option-label" placeholder="{{ __('Label') }}" aria-label="{{ __('Label') }}" />
+                            </label>
+                        </div>
+                        <!-- Valeur des options -->                      
+                        <div role="section" class="col action-option-value" style="display:none">
+                            <label for="elem-option-value">
+                                {{ __('Valeur de la réponse') }}
+                                <input class="form-control form-element-action" data-action="option-value" name="elem-option-value" id="elem-option-value" placeholder="{{ __('Valeur') }}" aria-label="{{ __('Valeur') }}" />
                             </label>
                         </div>
                         <!-- Type de réponse-->
@@ -338,6 +368,7 @@
                         </div>
                         <!-- Required-->
                         <div role="section" class="col action-required">
+                            <span>{{ __('Option de réponse') }}</span>
                             <label for="elem-required">
                                 <input class="form-element-action mr-2" data-action="required" type="checkbox" name="elem-required" id="elem-required" role="section">
                                 {{ __('Réponse obligatoire') }}
@@ -349,11 +380,12 @@
                                 {{ __('Longueur de caractères maximum') }}
                                 <input class="form-control form-element-action" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
                             </label>
-                            <i class="d-block">{{ __('Une valeur de 0 équivaut à un nombre illimité de caractères') }}</i>
+                            <i class="d-block">0 = {{ __('sans limite') }}</i>
                         </div>
                         <!-- Ajout d'option -->
                         <div role="section" class="col action-add-option" style="display:none">
                             <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-light form-element-action element_add-option">
+                                <i class="fa fa-check-square"></i>
                                 {{ __('Ajouter une option') }}
                             </button>
                         </div>
