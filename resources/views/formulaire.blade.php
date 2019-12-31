@@ -3,7 +3,7 @@
 @section('titre') {{ __('Formulaire - EasyToC') }} @endsection
 
 @section('pagespecificstyles')
-<link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -292,7 +292,7 @@
                                     </button>
                                 </div>
                                 <!-- Lien du style à utiliser -->
-                                <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/all-themes.css') }}" rel="stylesheet"></xmp>
+                                <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
                                 <h3 class="mt-3">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
                                     <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-dark">
