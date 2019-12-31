@@ -35,11 +35,11 @@
 # [X] Gestion des name
 # [X] Déplacement d'option
 # [X] Suppression d'option
-
-// COMMIT
 # [x] Modification d'option
 # [x] Suppression d'option SELECT
 
 // on le fait plus tard ça (louise peut intégrer avant, pierre peut gérer sans)
 # [] Script d'importation du CSV ou JSON
+# [] Générer un formulaire exemple (via JSON peut etre ?)
+# [] Compléter la page d'aide
 # [] Messages d'alerte importation des données
