@@ -15,9 +15,12 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
         {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">        <!-- Style -->
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+         
+        <!-- page specific style -->
+        @yield('pagespecificstyles')
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -64,7 +67,7 @@
 
                         {{-- {{ Auth::user()->name }} --}}
                             <li class="nav-item btn-connect">
-                                <div class="btn-connect__icon"><i class="far fa-user"></i></div>
+                                <div class="btn-connect__icon"><i class="fas fa-user-circle"></i></div>
                                 <a class=" btn-connect__link" href="{{ route('profile.view', auth()->user()) }}">{{ __('Mon compte') }}</a>
                             </li>
                             <li class="nav-item btn-connect btn-connect--two">
