@@ -30,8 +30,6 @@
 # [X] Changement de longueur max
 # [X] Problème de focus et de déplacement (flèches)
 # [X] Ajout d'option
-
-// COMMIT
 # [X] Can't check radio and checkbox inputs while editing
 # [X] Selection d'option
 # [X] Gestion des name
@@ -39,9 +37,8 @@
 # [X] Suppression d'option
 
 // COMMIT
-# [] Modification d'option
-# [] Déplacement d'option SELECT
-# [] Suppression d'option SELECT
+# [x] Modification d'option
+# [x] Suppression d'option SELECT
 
 // on le fait plus tard ça (louise peut intégrer avant, pierre peut gérer sans)
 # [] Script d'importation du CSV ou JSON

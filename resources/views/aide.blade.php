@@ -9,6 +9,34 @@
             <h2 class="entete__title">{{ __('Aide') }}</h2>
             <div class="entete__under"></div>
 
+            <p>Voici la page d'aide bla bla Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet consectetur unde modi beatae officia mollitia dolore provident voluptate doloremque quaerat asperiores non, omnis velit laudantium impedit? Dolore ea debitis eius. </p>
+            <h3>
+                {{ __('Sommaire') }}
+            </h3>
+            <ul>
+                <li><a href="#tablecreator" title="{{ __('Guide d\'utilisation du générateur de tableau') }}">{{ __('Générateur de tableau') }}</a></li>
+                <li><a href="#menucreator" title="{{ __('Guide d\'utilisation du générateur de menu') }}">{{ __('Générateur de menu') }}</a></li>
+                <li><a href="#formcreator" title="{{ __('Guide d\'utilisation du générateur de formulaire') }}">{{ __('Générateur de formulaire') }}</a></li>
+            </ul>
+
+            <hr>    
+
+            <div id="tablecreator">
+                <h3>
+                    {{ __('Générateur de tableau') }}
+                </h3>
+            </div>
+
+            <hr>            
+            
+            <div id="menucreator">
+                <h3>
+                    {{ __('Générateur de menu') }}
+                </h3>
+            </div>
+
+            <hr>
+
             <div id="formcreator">
 
                 <h3>
@@ -52,13 +80,21 @@
                         {{ __('Raccourcis clavier') }}
                     </h4>
                         <p>Lorsque vous avez sélectionné un élément, vous avez la possibilité d'effectuer plusieurs actions via des raccourcis claviers :</p>
+                        <p>Vous devez d'abord utiliser une des combinaisons de touches suivantes (différentes en fonction du navigateur) :</p>
                         <ul>
-                            <li>Supprimer l'élément avec la touche T (trash)</li>
-                            <li>Déplacer l'élément vers le haut avec la touche U (up)</li>
-                            <li>Déplacer l'élément vers le bas avec la touche D (down)</li>
+                            <li><b>CTRL + ALT + </b><i>[touche spécifique]</i></li>
+                            <li><b>ALT + </b><i>[touche spécifique]</i> (Chrome)</li>
+                            <li><b>ALT + SHIFT + </b><i>[touche spécifique]</i> (Firefox)</li>
                         </ul>
-                        <p>Vous pouvez également annuler les modifications ou sauvegarder votre travail avec les touches C (cancel) et S (save).</p>
+                        <p>Puis, en fonction de l'action souhaitée, remplacer la [touche spécifique] </p>
+                        <ul>
+                            <li>Supprimer l'élément avec la <b>touche spécifique T (trash)</b></li>
+                            <li>Déplacer l'élément vers le haut avec la <b>touche spécifique U (up)</b></li>
+                            <li>Déplacer l'élément vers le bas avec la <b>touche spécifique D (down)</b></li>
+                        </ul>
+                        <p>Vous pouvez également annuler les modifications ou sauvegarder votre travail avec les <b>touches C (cancel)</b> et <b>S (save)</b>.</p>
                         <p>Si vous utilisez le raccourci clavier pour annuler les modifications, un message de confirmation apparaitra pour éviter toute mauvaise manipulation.</p>
+                        <img class="m-auto" src="{{ URL::asset('images/keyboard.png') }}" alt="{{ __('Les touches CTRL, ALT et SHIFT sont sur les extrémités de votre clavier') }}.">
                 </div>
 
                 <div id="formdata">

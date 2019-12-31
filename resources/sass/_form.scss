@@ -77,6 +77,10 @@ body {
         border: 0;
     }
 
+    select{
+        min-height: 30px;
+    }
+
     fieldset{
         border: 2px solid black;
         display: flex;
@@ -120,9 +124,11 @@ body {
     padding: 5px;
 }
 
-.content-editable-selected, .option-selected, #full-form select:focus{
+.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
     border: 3px dotted blue !important;
 }
+
+
 
 form {
     border: 0 !important;

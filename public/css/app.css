@@ -11764,6 +11764,10 @@ pre.prettyprinted {
   border: 0;
 }
 
+#content-created-blueprint form * select {
+  min-height: 30px;
+}
+
 #content-created-blueprint form * fieldset {
   border: 2px solid black;
   display: flex;
@@ -11806,7 +11810,8 @@ pre.prettyprinted {
 
 .content-editable-selected,
 .option-selected,
-#full-form select:focus {
+#full-form select:focus,
+.content-editable-selected select {
   border: 3px dotted blue !important;
 }
 

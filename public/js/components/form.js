@@ -4,6 +4,7 @@ let input;
 let intitule;
 let previous_element;
 let next_element;
+let message;
 
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
@@ -172,7 +173,7 @@ $('.add-element').on('click', function () {
         addOption();
     }
 
-    let message = "Element ajouté";
+    message = "Element ajouté";
     alertMsg(message);
     updatecontent();
 
@@ -211,12 +212,11 @@ $(document.body)
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (pour contrer comportement de formulaire de base)
     .on('click', '.element-container label, .element-container legend', function (e) {
-        if($(e.target).prop('tagName') != "SELECT"){
+        if ($(e.target).prop('tagName') != "SELECT") {
             $(this).find('[contenteditable=true]').focus();
-        }else{
+        } else {
             $(this).closest('label').focus();
         }
-        // to do problème focus select
     })
 
     // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
@@ -307,6 +307,7 @@ $(document.body)
                     intitule.on('keyup', function () { // traitement modif
                         e.stopPropagation();
                         $('#elem-title').val(intitule.text());
+                        updatecontent();
                     })
                 }
 
@@ -344,15 +345,32 @@ $(document.body)
                 let answer_name = input.attr('name');
                 $('#elem-options-name').val(answer_name);
 
+                if (selected_option) {
+                    // on recupère le nom de l'option
+                    let option_label = $('.content-editable-selected .label-option-text');
+                    $("#elem-option-label").val(option_label.text());
+                    option_label.off('keyup'); // re-init
+                    option_label.on('keyup', function () { // traitement modif
+                        e.stopPropagation();
+                        $("#elem-option-label").val(option_label.text());
+                        updatecontent();
+                    })
+
+                    // on recupère la valeur de l'option
+                    let option_value = $('.content-editable-selected input').attr('value');
+                    $("#elem-option-value").val(option_value);
+                }
+
                 // on cache toutes les actions de bases pour les réafficher en fonction
                 $('.action-answer-type').hide();
                 $('.action-placeholder').hide();
                 $('.action-maxlength').hide();
                 $('.action-multiple-answer').hide();
-                $('.action-add-option').hide();
                 $('.action-url').hide();
                 $('.action-option-label').hide();
                 $('.action-option-value').hide();
+                $('.action-add-option').hide();
+                $('.action-delete-option').hide();
                 $('.action-required').show(); // Requis possibles sur toutes les questions
 
                 // on affiche les attributs modifiable en fonction de l'élém selectionné
@@ -395,10 +413,19 @@ $(document.body)
                     $('.action-add-option').show();
                     $('.action-options-name').show();
                     $('.element_add-option').removeAttr('disabled');
-                    if (selected_option) {
+
+                    let option_label = $('.content-editable-selected select option:selected');
+                    if ($(option_label).is(':enabled')) {
                         $('.action-option-label').show();
                         $('.action-option-value').show();
+                        $('.action-delete-option').show();
                     }
+                    $("#elem-option-label").val(option_label.text());
+
+                    // on recupère la valeur de l'option
+                    let option_value = $('.content-editable-selected select option:selected:enabled').attr('value');
+                    $("#elem-option-value").val(option_value);
+
                 } else if (element_name == "insert-link") {
                     $('.action-required').hide();
                     $('.action-url').show();
@@ -415,6 +442,7 @@ $(document.body)
                             e.stopPropagation();
                             link_url = $('#elem-url').val();
                             $(intitule).attr('href', link_url);
+                            updatecontent();
                         })
                     }
 
@@ -526,6 +554,8 @@ $(".form-element-action").on('click', function (e) {
             $(".side-tool").hide();
             $('.action-delete').attr('disabled', 'true');
             $('.action-undo').removeAttr('disabled');
+            message = "Élément supprimé";
+            alertMsg(message);
             break;
             // Annuler la suppression
         case "undo":
@@ -533,6 +563,8 @@ $(".form-element-action").on('click', function (e) {
             $(this).attr('disabled', 'true');
             $('.alert-success').slideUp();
             $('.element-container').last().find('[contenteditable=true]').first().focus();
+            message = "Élément rétabli";
+            alertMsg(message);
             break;
             // Changement de l'attr multiple   
         case "multiple-answer":
@@ -584,12 +616,17 @@ $(".form-element-action").on('click', function (e) {
             // Ajout d'action
         case "add-option":
             addOption();
-            if(selected_option){
+            if (selected_option) {
                 previous_option = selected_option.prev();
                 next_option = selected_option.next();
                 refreshMoveButtons(previous_option, next_option, true);
             }
-            let message = "Option ajoutée";
+            message = "Option ajoutée";
+            alertMsg(message);
+            break;
+        case "delete-option":
+            deleteOption();
+            message = "Option supprimée";
             alertMsg(message);
             break;
     }
@@ -632,14 +669,18 @@ $(".form-element-action").on('click', function (e) {
             break;
             // Changement de nom de l'option
         case "option-label":
-            if ($(this).val() != 0) {
-                input.attr('value', $(this).val());
+            if ($(this).val() != 0 && $('.content-editable-selected input').length > 0) {
+                $('.content-editable-selected .label-option-text').text($(this).val());
+            } else if ($(this).val() != 0 && $('.content-editable-selected select').length > 0) {
+                $('.content-editable-selected select option:selected').text($(this).val());
             }
             break;
-            // Changement de nom de l'option
+            // Changement de valeur de l'option
         case "option-value":
-            if ($(this).val() != 0) {
+            if ($(this).val() != 0 && $('.content-editable-selected input').length > 0) {
                 input.attr('value', $(this).val());
+            } else if ($(this).val() != 0 && $('.content-editable-selected select').length > 0) {
+                $('.content-editable-selected select option:selected').attr('value', $(this).val());
             }
             break;
             // Changement de placeholder
@@ -708,10 +749,14 @@ function addOption() {
     option = option.replace(option_name_replace_regex, option_name);
     $(option_group).append(option);
 
-    // let option_replace_regex = /FIRST_OPTION/g;
-    // let element_option = element_types["type-answer-option"][element_type_name];
-    // element_content = element_content.replace(option_replace_regex, element_option);
+}
 
+// ANCHOR Fonction de suppression d'option (select)
+function deleteOption() {
+    let select_option_selected= $(".content-editable-selected select option:selected");
+    select_option_selected.remove();
+    $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
+    $('.action-delete-option').hide();
 }
 
 // ANCHOR Fonction Undo/Redo suppression
@@ -734,13 +779,9 @@ var deletecommand = new command({
     execute: function () {
         element = $(".content-editable-selected").removeClass('content-editable-selected');
         element = element.detach();
-        let message = "Element supprimé";
-        alertMsg(message);
     },
     undo: function () {
         element.appendTo("#full-form");
-        let message = "Suppression annulée (fin du formulaire)";
-        alertMsg(message);
     }
 });
 
@@ -789,7 +830,7 @@ $('input[name="theme"]').on('change', function () {
 
 // ANCHOR Activer / désactiver les boutons de déplacement
 function refreshMoveButtons(previous_element, next_element, option) {
-    if(option){
+    if (option) {
         if (previous_element) {
 
             if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "option") {
@@ -827,7 +868,7 @@ function refreshMoveButtons(previous_element, next_element, option) {
 
 // ANCHOR Copier le contenu code 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-    let message = "Code copié !";
+    message = "Code copié !";
     $(".copy-container button").text("Copier");
     $(this).text(message);
     alertMsg(message);

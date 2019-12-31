@@ -315,7 +315,7 @@
 
                 <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
                     <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
-                    <a href="aide#formcode" class="btn btn-light">
+                    <a href="aide#formuse" class="btn btn-light">
                         <i class="fa fa-question-circle"></i>
                         {{ __("Besoin d'aide !") }}
                     </a>
@@ -344,14 +344,14 @@
                         <!-- Nom des options -->                      
                         <div role="section" class="col action-option-label" style="display:none">
                             <label for="elem-option-label">
-                                {{ __('Nom de la réponse') }}
+                                {{ __("Nom de l'option") }}
                                 <input class="form-control form-element-action" data-action="option-label" name="elem-option-label" id="elem-option-label" placeholder="{{ __('Label') }}" aria-label="{{ __('Label') }}" />
                             </label>
                         </div>
                         <!-- Valeur des options -->                      
                         <div role="section" class="col action-option-value" style="display:none">
                             <label for="elem-option-value">
-                                {{ __('Valeur de la réponse') }}
+                                {{ __("Valeur de l'option") }}
                                 <input class="form-control form-element-action" data-action="option-value" name="elem-option-value" id="elem-option-value" placeholder="{{ __('Valeur') }}" aria-label="{{ __('Valeur') }}" />
                             </label>
                         </div>
@@ -368,7 +368,6 @@
                         </div>
                         <!-- Required-->
                         <div role="section" class="col action-required">
-                            <span>{{ __('Option de réponse') }}</span>
                             <label for="elem-required">
                                 <input class="form-element-action mr-2" data-action="required" type="checkbox" name="elem-required" id="elem-required" role="section">
                                 {{ __('Réponse obligatoire') }}
@@ -381,13 +380,6 @@
                                 <input class="form-control form-element-action" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
                             </label>
                             <i class="d-block">0 = {{ __('sans limite') }}</i>
-                        </div>
-                        <!-- Ajout d'option -->
-                        <div role="section" class="col action-add-option" style="display:none">
-                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-light form-element-action element_add-option">
-                                <i class="fa fa-check-square"></i>
-                                {{ __('Ajouter une option') }}
-                            </button>
                         </div>
                        <!-- Si élément == select -->
                         <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
@@ -403,6 +395,20 @@
                                 <input name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}" />
                             </label>
                         </div>
+                        <!-- Ajout d'option -->
+                         <div role="section" class="col action-add-option" style="display:none">
+                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-light form-element-action element_add-option">
+                                <i class="fa fa-check-square"></i>
+                                {{ __('Ajouter une option') }}
+                            </button>
+                        </div>
+                        <!-- Ajout d'option -->
+                        <div role="section" class="col action-delete-option" style="display:none">
+                           <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-light form-element-action element_delete-option">
+                            <i class="fas fa-trash"></i>
+                               {{ __("Supprimer l'option") }}
+                           </button>
+                       </div>
                     </div>
                 </div>
             </div>
