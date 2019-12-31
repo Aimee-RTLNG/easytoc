@@ -10,6 +10,11 @@
     justify-content: space-between;
     align-items: center;
 }
+@mixin flex-row-around-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 @mixin flex-row-between-start{
     display: flex;
     justify-content: space-between;
@@ -17,8 +22,13 @@
 }
 @mixin flex-row-start-between {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
+}
+@mixin flex-row-start-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
@@ -33,6 +43,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; 
+}
+@mixin flex-col-end-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center; 
 }
 @mixin flex-col-arround-start {
