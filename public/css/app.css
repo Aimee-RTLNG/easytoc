@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(/node_modules/code-prettify/styles/suburst.css);@charset "UTF-8";
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -9728,7 +9729,7 @@ body {
 }
 
 .btn-primary {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
 }
 
 a {
@@ -9763,7 +9764,7 @@ p, h1, h2 {
   margin-bottom: 20px;
 }
 .entete__title {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-size: 3.4rem;
   font-weight: bold;
 }
@@ -10048,7 +10049,7 @@ p, h1, h2 {
 }
 
 .register {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   position: relative;
   margin-top: 35px;
   margin-bottom: 35px;
@@ -10271,10 +10272,6 @@ p, h1, h2 {
 }
 
 @media (max-width: 992px) {
-  .connexion .btn-seepassword__icon {
-    right: 0px;
-  }
-
   .connect-network {
     margin-top: 15px;
   }
@@ -10389,7 +10386,7 @@ p, h1, h2 {
 }
 .authen__content {
   padding: 30px;
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   position: relative;
   margin-top: 70px;
   margin-bottom: 70px;
@@ -10461,7 +10458,7 @@ p, h1, h2 {
   max-height: 1200px;
 }
 .section-home__title {
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
   font-size: 4rem;
   width: 50%;
@@ -10514,7 +10511,6 @@ p, h1, h2 {
   font-size: 1.6rem;
   margin: 30px 0px;
   font-weight: 500;
-  max-width: 100%;
 }
 .home-present__txt__tips {
   font-size: 1.8rem;
@@ -10574,7 +10570,6 @@ p, h1, h2 {
 .next-section {
   position: absolute;
   bottom: 20px;
-  left: 0px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -10588,7 +10583,6 @@ p, h1, h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
 }
 
 .home-tools__item {
@@ -10604,7 +10598,7 @@ p, h1, h2 {
 }
 .home-tools__item__name {
   text-transform: uppercase;
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -10618,7 +10612,6 @@ p, h1, h2 {
   border-radius: 10px;
 }
 .home-tools__item__txt {
-  max-width: 100%;
   height: calc(100% - 180px);
   padding-top: 15px;
   text-align: center;
@@ -10636,9 +10629,6 @@ p, h1, h2 {
 .home-tools__item__txt a:focus {
   border: 3px solid white;
 }
-.home-tools__item__descr {
-  max-width: 100%;
-}
 .home-tools__underline {
   height: 4px;
   width: 70px;
@@ -10646,8 +10636,7 @@ p, h1, h2 {
   margin: 0 auto;
 }
 .home-tools__blocs {
-  width: 100%;
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
 }
 
@@ -10655,14 +10644,9 @@ p, h1, h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
-}
-.slider-use-list > div {
-  height: 295px;
 }
 
 .use-list__item {
-  max-width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10689,7 +10673,6 @@ p, h1, h2 {
   background-color: #171819;
 }
 .use-list__item__txt {
-  max-width: 100%;
   font-weight: normal;
 }
 .use-list__item__titre {
@@ -10710,13 +10693,13 @@ p, h1, h2 {
   z-index: 1;
 }
 .use-list__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
   padding-bottom: 100px;
 }
 
 .def__blocs {
-  align-content: space-around;
+  align-content: space-evenly;
   height: 100%;
 }
 .def__illu {
@@ -10729,7 +10712,7 @@ p, h1, h2 {
 }
 .def__txt__citation {
   margin: 20px 5px 20px 35px;
-  font-family: "Expletus Sans", cursive, sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
   font-size: 2rem;
   line-height: 2.3rem;
@@ -10808,10 +10791,6 @@ p, h1, h2 {
 
   .section-home__entete {
     margin-bottom: 20px;
-  }
-
-  .slider-use-list > div {
-    height: auto;
   }
 
   .use-list__blocs {
@@ -10908,9 +10887,10 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
 }
 
-/* style du preview */
-#content-created-preview {
+#nav-code, #content-created-preview {
   padding: 2em;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  border-top: 0;
 }
 
 /* style du code généré */
@@ -10921,37 +10901,147 @@ xmp {
   display: inherit;
 }
 
+.code-display {
+  font-size: 100% !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-radius: 5px !important;
+  border: 1px solid #888;
+}
+
 pre.prettyprinted {
   font-size: 100% !important;
   margin: 0 !important;
   padding: 1.5em !important;
   width: 100% !important;
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-  border-bottom-left-radius: 5px !important;
-  border-bottom-right-radius: 5px !important;
-  background-color: #212529;
+  border-radius: 5px !important;
 }
 
 /* style de l'interface actions */
-#content-created-blueprint form * {
-  border: 3px dotted rgba(0, 0, 0, 0);
-  padding: 5px;
+
+[contenteditable=true]:hover,
+#full-form input,
+.element-container {
+  cursor: pointer;
+}
+
+[data-tag=text]:hover,
+[data-tag=label-text]:hover,
+[data-tag=form-title]:hover {
   cursor: text;
+}
+
+#content-created-blueprint form * {
+  border: 0;
+  padding: 5px;
 }
 
 #content-created-blueprint form *:hover {
   border: 3px dotted black;
 }
 
-form {
+#content-created-blueprint form * label:hover,
+#content-created-blueprint form * abbr:hover,
+#content-created-blueprint form * .indicator-required:hover,
+#content-created-blueprint form * legend span:hover,
+#content-created-blueprint form * fieldset label span:hover {
+  border: 0;
+}
+
+#content-created-blueprint form * select {
+  min-height: 30px;
+}
+
+#content-created-blueprint form * fieldset {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+#content-created-blueprint form * fieldset:hover {
+  border: 2px solid black;
+}
+
+#content-created-blueprint form * fieldset label {
+  margin: 5px 15px;
+}
+
+#content-created-blueprint form * fieldset label:hover {
+  border: 3px dotted black;
+}
+
+#content-created-blueprint form * legend {
+  border: 2px solid black;
+}
+
+#content-created-blueprint form * hr {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+  padding: 0 !important;
+}
+
+#content-created-blueprint form * hr:hover {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+#content-created-blueprint form * .type-layout *:hover {
   border: 0 !important;
 }
 
-easytoc, easytoc *:hover, easytoc:hover {
+.element-container {
+  margin: 10px 5px;
+  padding: 5px;
+}
+
+.content-editable-selected,
+.option-selected,
+#full-form select:focus,
+.content-editable-selected select {
+  border: 3px dotted blue !important;
+}
+
+form {
+  border: 0 !important;
+}
+  
+input[type=checkbox],
+input[type=radio] {
   cursor: pointer !important;
-  padding: 0px !important;
-  border: 3px dotted rgba(0, 0, 0, 0) !important;
+}
+
+input[type=text],
+textarea {
+  border: 1px solid black !important;
+}
+
+#copy-css-link,
+#copy-raw-code {
+  position: relative;
+  bottom: -10px;
+  right: 100px;
+}
+
+.copy-container {
+  position: absolute;
+}
+
+.side-tool {
+  width: 20px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-tool button {
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  color: white;
+  border: none;
+}
+
+.side-tool .btn-info:disabled {
+  background-color: #818181;
 }
 
 .compte-page {
@@ -11131,6 +11221,14 @@ easytoc, easytoc *:hover, easytoc:hover {
   color: white;
 }
 
+.alert-success {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  z-index: 5000;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
 .btn-filter-date {
   background-color: white;
   font-size: 1.4rem;
@@ -11241,7 +11339,6 @@ easytoc, easytoc *:hover, easytoc:hover {
   margin-bottom: 30px;
 }
 .crea-item__entete {
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11251,7 +11348,6 @@ easytoc, easytoc *:hover, easytoc:hover {
   font-size: 2.5rem;
   font-family: "Expletus Sans", cursive, sans-serif;
   font-weight: 700;
-  max-width: 100%;
 }
 .crea-item__entete__under {
   height: 4px;
@@ -11262,14 +11358,12 @@ easytoc, easytoc *:hover, easytoc:hover {
 .crea-item__descr {
   font-size: 1.5rem;
   line-height: 2.4rem;
-  max-width: 100%;
 }
 .crea-item__type-date {
   font-size: 1.4rem;
   font-style: italic;
   margin-top: 12px;
   text-transform: capitalize;
-  max-width: 100%;
 }
 .crea-item__btns {
   display: flex;

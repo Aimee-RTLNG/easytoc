@@ -45,7 +45,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="far fa-eye"></i>
+                                        <i class="far fa-eye" title="{{ __('Voir le mot de passe en clair') }}"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -65,7 +65,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="far fa-eye"></i>
+                                        <i class="far fa-eye" title="{{ __('Voir le mot de passe en clair') }}"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->

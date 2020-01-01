@@ -1,3 +1,6 @@
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 body {
     background-color: #fafafa;
 }
@@ -16,11 +19,12 @@ body {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
     }
 
-/* style du preview */
+/* style du code */
 
-
-    #content-created-preview {
+    #nav-code {
         padding: 2em;
+        border: 1px solid rgba(0, 0, 0, 0.192);
+        border-top: 0;
     }
 
 /* style du code généré */
@@ -32,37 +36,142 @@ body {
         display: inherit;
     }
 
+    .code-display{
+        font-size: 100% !important;
+        margin: 0 !important;
+        padding: 1.5em !important;
+        width: 100% !important;
+        border-radius: 5px !important;
+        border: 1px solid #888;
+    }
+
     pre.prettyprinted{
         font-size: 100% !important;
         margin: 0 !important;
         padding: 1.5em !important;
         width: 100% !important;
-        border-top-left-radius: 0px !important;
-        border-top-right-radius: 0px !important;
-        border-bottom-left-radius: 5px !important;
-        border-bottom-right-radius: 5px !important;
-        background-color: #212529;
+        border-radius: 5px !important;
     }
 
 
 /* style de l'interface actions */
 
-#content-created-blueprint form *{
-    border: 3px dotted rgba(0,0,0,0);
-    padding: 5px;
+[contenteditable="true"]:hover, #full-form input, .element-container{
+    cursor: pointer;
+}
+
+[data-tag="text"]:hover, [data-tag="label-text"]:hover, [data-tag="form-title"]:hover{
     cursor: text;
 }
 
-#content-created-blueprint form *:hover{
-    border: 3px dotted black;
+#content-created-blueprint form *{
+    border: 0;
+    padding: 5px;
+
+    &:hover{
+        border: 3px dotted black;
+    }
+
+    // tous les contenus non modifiables en soit
+    label:hover, abbr:hover, .indicator-required:hover, legend span:hover, fieldset label span:hover{
+        border: 0;
+    }
+
+    select{
+        min-height: 30px;
+    }
+
+    fieldset{
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+
+        &:hover{
+            border: 2px solid black;
+        }
+
+        label{
+
+            margin: 5px 15px;
+
+            &:hover{
+                border: 3px dotted black;
+            }
+        }
+    }
+
+    legend{
+        border: 2px solid black;
+    }
+
+    hr {
+        border: 2px solid rgba(0,0,0,0.5) !important;
+        padding: 0 !important;
+    
+        &:hover {
+            border: 2px solid rgba(0,0,0,0.5) !important;
+        }
+    }
+
+    .type-layout *:hover{
+        border: 0 !important;
+    }
+
 }
+
+.element-container{
+    margin: 10px 5px; 
+    padding: 5px;
+}
+
+.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
+    border: 3px dotted blue !important;
+}
+
+
 
 form {
     border: 0 !important;
 }
 
-easytoc, easytoc *:hover, easytoc:hover {
+input[type="checkbox"], input[type="radio"]{
     cursor: pointer !important;
-    padding: 0px !important;
-    border: 3px dotted rgba(0,0,0,0) !important;
+}
+
+input[type="text"], textarea{
+    border: 1px solid black !important;
+}
+
+// Boutons copier le contenu
+
+#copy-css-link, #copy-raw-code {
+    position: relative;
+    bottom: -10px;
+    right: 100px;
+}
+
+.copy-container{
+    position: absolute;
+}
+
+// Side tools (déplacer supprimer)
+
+.side-tool {
+    width: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    button{
+        margin: 0;
+        padding: 0;
+        border-radius: 2px;
+        color: white;
+        border: none;
+    }
+
+    .btn-info:disabled{
+        background-color: rgb(129, 129, 129);
+    }
+
 }

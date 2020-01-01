@@ -15,14 +15,17 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
         {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">        <!-- Style -->
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+         
+        <!-- page specific style -->
+        @yield('pagespecificstyles')
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" title="{{__("Retour à la page d'accueil")}}">
+                <a class="navbar-brand" href="{{ url('/') }}" title="Retour à la page d'accueil">
                     <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="Menu">
@@ -64,7 +67,7 @@
 
                         {{-- {{ Auth::user()->name }} --}}
                             <li class="nav-item btn-connect">
-                                <div class="btn-connect__icon"><i class="far fa-user"></i></div>
+                                <div class="btn-connect__icon"><i class="fas fa-user-circle"></i></div>
                                 <a class=" btn-connect__link" href="{{ route('profile.view', auth()->user()) }}">{{ __('Mon compte') }}</a>
                             </li>
                             <li class="nav-item btn-connect btn-connect--two">
@@ -91,7 +94,7 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">{{__('Vous pouvez retrouver nos tutoriels sur la page')}} <a href="{{ route('aide') }}">{{ __('Aide') }}</a></p>
+                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page <a href="{{ route('aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>

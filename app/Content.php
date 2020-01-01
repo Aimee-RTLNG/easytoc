@@ -15,4 +15,8 @@ class Content extends Model
     function user(){
         return $this->belongsTo('App\User');
     }
+
+    function lastid(){
+        return Content::max('id');
+    }
 }
