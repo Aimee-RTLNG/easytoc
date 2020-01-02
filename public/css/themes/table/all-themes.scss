@@ -1,0 +1,67 @@
+// Themes
+
+$themes: (
+    white: (
+        backgroundColor: #fff,
+        aHoverColor: red,
+        textColor : black
+    ),
+    black: (
+        backgroundColor: #222,
+        aHoverColor: red,
+        textColor : white
+    ),
+    green: (
+        backgroundColor: green,
+        aHoverColor: red,
+        textColor : white
+    ),
+    red: (
+        backgroundColor: red,
+        aHoverColor: blue,
+        textColor : white
+    ),
+    blue: (
+        backgroundColor: blue,
+        aHoverColor: red,
+        textColor : white
+    ),
+    grey: (
+        backgroundColor: grey,
+        aHoverColor: red,
+        textColor : black
+    )
+);
+
+
+// Implementation des themes
+
+@mixin themify($themes) {
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+
+// Styles
+
+#full-table {
+    @include themify($themes) {
+      color: themed('textColor');  
+      background-color: themed('backgroundColor');  
+    }
+}

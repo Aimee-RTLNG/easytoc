@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 // Mixin (Flexbox)
 @import 'mixin';
 @import '_global';
@@ -20,5 +23,7 @@
 @import '_form'; // pas en sass
 
 @import '_profile';
+@import '_alert';
 
-
+// Pour les thèmes : voir dans public/css/themes
+// et activer WatchSass 

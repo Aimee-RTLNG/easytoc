@@ -1,4 +1,3 @@
-
 @extends('layouts/app')
 
 @section('titre') {{ __('Accueil') }}  - EasyToC @endsection

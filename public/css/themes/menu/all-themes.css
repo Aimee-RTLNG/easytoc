@@ -1,0 +1,30 @@
+.theme-white #full-menu {
+  color: black;
+  background-color: #fff;
+}
+
+.theme-black #full-menu {
+  color: white;
+  background-color: #222;
+}
+
+.theme-green #full-menu {
+  color: white;
+  background-color: green;
+}
+
+.theme-red #full-menu {
+  color: white;
+  background-color: red;
+}
+
+.theme-blue #full-menu {
+  color: white;
+  background-color: blue;
+}
+
+.theme-grey #full-menu {
+  color: black;
+  background-color: grey;
+}
+/*# sourceMappingURL=all-themes.css.map */
