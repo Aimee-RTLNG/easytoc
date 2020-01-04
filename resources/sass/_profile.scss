@@ -18,12 +18,12 @@
             align-items: center;
             width: 100%;
             padding: 0px 10px;
-            &:before {
-                content: "\f055";
-                font-family: "Font Awesome 5 Free";
-                position: relative;
-                left: -10px;
-                font-size: 30px;
+            svg {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                font-size: 25px;
+                transform: translateY(-50%);
             }
         }
     }
@@ -53,7 +53,7 @@
             height: 100%;
             width: 240px;
             position: relative;
-            i {
+            svg {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -331,7 +331,7 @@
 .fleche-plus {
     display: none;
     position: absolute;
-    top: 18px;
+    top: 10px;
     right: 44px;
     font-size: 34px;
     cursor: pointer;
@@ -384,7 +384,7 @@
         }
     }
     .fleche-plus {
-        top: 22px;
+        top: 12px;
         right: 30px;
         font-size: 30px;
     }

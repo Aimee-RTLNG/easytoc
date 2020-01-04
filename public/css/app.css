@@ -10881,10 +10881,6 @@ input[type="checkbox"], input[type="radio"] {
   cursor: pointer !important;
 }
 
-input[type="text"], textarea {
-  border: 1px solid black !important;
-}
-
 #copy-css-link, #copy-raw-code {
   position: relative;
   bottom: -10px;
@@ -10943,12 +10939,12 @@ input[type="text"], textarea {
   padding: 0px 10px;
 }
 
-.profile_content__list-crea__link:before {
-  content: "\F055";
-  font-family: "Font Awesome 5 Free";
-  position: relative;
-  left: -10px;
-  font-size: 30px;
+.profile_content__list-crea__link svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  font-size: 25px;
+  transform: translateY(-50%);
 }
 
 .profile_content__filters {
@@ -10991,7 +10987,7 @@ input[type="text"], textarea {
   position: relative;
 }
 
-.profile_content__sort .filter-name i {
+.profile_content__sort .filter-name svg {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -11355,7 +11351,7 @@ input[type="text"], textarea {
 .fleche-plus {
   display: none;
   position: absolute;
-  top: 18px;
+  top: 10px;
   right: 44px;
   font-size: 34px;
   cursor: pointer;
@@ -11407,7 +11403,7 @@ input[type="text"], textarea {
     padding: 0px;
   }
   .fleche-plus {
-    top: 22px;
+    top: 12px;
     right: 30px;
     font-size: 30px;
   }
