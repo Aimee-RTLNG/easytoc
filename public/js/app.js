@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 
-  $('.next-section i').on('click', function () {
+  $('.next-section div').on('click', function () {
     scrollTo($('#tools'));
   });
   $('.link-ancre').on('click', function () {

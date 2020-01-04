@@ -37,7 +37,10 @@
                 <div class="row profile_content__filters">
                     <div class="profile_content__options col-12">
                         <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
-                            <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Commencer un projet</a>
+                            <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-arrow-right"></i>
+                                <p>Commencer un projet</p>
+                            </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
                                 <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
@@ -141,9 +144,11 @@
             <div class="col-lg-4 modif-compte">
                 <div class="mon-compte">
                     <div class="mon-compte__entete">
-                        <div class="mon-compte__entete__picto"><i class="far fa-user"></i></div>
+                        <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
                         <h2 class="mon-compte__entete__title">{{ __('Modifier les paramètres de votre compte') }}</h2>
-                        <i class="fas fa-chevron-down fleche-plus" tabindex="0"></i>
+                        <div class="fleche-plus">
+                            <i class="fas fa-chevron-down " tabindex="0"></i>
+                        </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -209,7 +214,7 @@
                                             <div class="password-input d-flex">
                                                 <input id="password" type="password" class="form-control" name="password">
                                                 <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                        <i class="far fa-eye"></i>
+                                                        <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>
                                             <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -234,7 +239,7 @@
                                             <div class="password-input d-flex">
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                                 <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                    <i class="far fa-eye"></i>
+                                                    <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>  
                                             <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -262,7 +267,7 @@
                                                 <div class="password-input d-flex">
                                                     <input id="current-password" type="password" class="form-control" name="current_password">
                                                     <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                        <i class="far fa-eye"></i>
+                                                        <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>  
                                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
