@@ -57,3 +57,23 @@ p, h1, h2{
 .form-control {
     font-size: 1.4rem;
 }
+.border-12 {
+    border-radius: 12px;
+}
+.shadow-box {
+    @include shadow-box;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 8px;
+}
+input{
+    &.shadow-box { 
+        min-height: 35px;
+    }
+}
+textarea {
+    &.shadow-box { 
+        min-height: 35px;
+    }
+}
