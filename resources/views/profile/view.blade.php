@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('titre') {{ __('Mon compte - EasyToC') }} @endsection
+@section('titre') {{ __('Mon compte') }} - EasyToC @endsection
 
 @section('content')
 <main class="compte-page">

@@ -1,7 +1,7 @@
 
 @extends('layouts/app')
 
-@section('titre') {{ __('Aide - EasyToC') }} @endsection
+@section('titre') {{ __('Aide') }} - EasyToC @endsection
 
 @section('content')
     <div class="container">

@@ -95,7 +95,12 @@ function updatecontent() {
 };
 
 // ANCHOR Initialisation du formulaire
-$('#content-created-blueprint').html(initial_content);
+if( $('#raw-code').val().length <= 0 ){
+    $('#content-created-blueprint').html(initial_content);
+    console.log("ee");
+}else{
+    console.log($('#raw-code').val().length);
+}
 if ($('#content-created-blueprint').html()) {
     updatecontent();
 }
@@ -833,7 +838,7 @@ function refreshMoveButtons(previous_element, next_element, option) {
     if (option) {
         if (previous_element) {
 
-            if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "option") {
+            if (previous_element.attr("disabled") != "true" && previous_element.class("class") == "indicator-required" && previous_element.attr('data-tag') == "option") {
                 $('#action-move-up').removeAttr('disabled');
             } else {
                 $('#action-move-up').attr('disabled', true);

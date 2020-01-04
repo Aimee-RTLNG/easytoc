@@ -14,6 +14,14 @@ library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp,
 
 dom.watch();
 
+
+// ANCHOR Visualisation des contenus générés (form, table, menu)
+
+// Empêcher l'envoi du formulaire 
+$( document ).ready(function() {
+    $('.content-html-preview input[type=submit]').attr('disabled', true);
+});
+
 // ANCHOR Burger menu
 window.addEventListener("DOMContentLoaded", (event) => {
     var btn_burger = document.getElementById('bars');

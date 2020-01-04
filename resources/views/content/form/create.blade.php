@@ -1,9 +1,9 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
-@section('titre') {{ __('Formulaire - EasyToC') }} @endsection
+@section('titre') {{ __('Formulaire') }} - EasyToC @endsection
 
 @section('pagespecificstyles')
-<link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

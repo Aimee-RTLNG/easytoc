@@ -1,7 +1,7 @@
 
 @extends('layouts/app')
 
-@section('titre') {{ __('Accueil - EasyToC') }} @endsection
+@section('titre') {{ __('Accueil') }} - EasyToC @endsection
 
 @section('content')
     <section class="home-present section-home">

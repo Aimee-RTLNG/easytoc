@@ -1,6 +1,6 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
-@section('titre') {{ __('Tableau - EasyToC') }} @endsection
+@section('titre') {{ __('Tableau') }} - EasyToC @endsection
 
 @section('pagespecificstyles')
 <link href="{{ URL::asset('css/themes/table/all-themes.css') }}" rel="stylesheet">

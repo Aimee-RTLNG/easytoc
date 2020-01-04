@@ -39,7 +39,11 @@ class ContentController extends Controller
      */
     public function show(\App\Content $content)
     {
-        return view('content.show', ['content'=>$content]);
+        if (Auth::id() == $content->user['id']){
+            return view('content.show', ['content'=>$content]);
+        } else {
+            return view('home');
+        }
     }
 
     /**
