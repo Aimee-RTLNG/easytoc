@@ -24,11 +24,14 @@
 }
 .select-home {
     background-color: $bleu;
-    &__link:before {
-        content: "\f061";
-        font-family: "Font Awesome 5 Free";
-        position: relative;
-        left: -10px;
+    &__link {
+        padding-left: 12px;
+        svg {
+            position: absolute;
+            left: 8px;
+            top: 11px;
+            font-size: 2.2rem;
+        }
     }
     .dropdown-menu.show {
         font-size: 1.4rem;
@@ -37,8 +40,7 @@
     }
 }
 .show .select-home__link {
-    top: 2px;
-    position: relative;
+    padding-top: 8px;
 }
 .home-present {
     position: relative;
@@ -62,19 +64,6 @@
             line-height: 3.0rem;
             padding-left: 48px;
             list-style-type: none;
-            li:before {
-                content :'\f061';
-                font-size: 18px;
-                color: $bleu;
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-                padding-right: 20px;
-            }
-            li:hover:before{
-                position: relative;
-                left: 10px;
-                transition: left 0.5s;
-            }
         }
         &__btn {
             @include flex-row-between-center;
@@ -110,7 +99,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    i {
+    svg {
         cursor: pointer;
         font-size: 2.5rem;
     }
@@ -347,9 +336,9 @@
         min-width: 100%;
         font-size: 3rem;
     }
-    .home-present__txt__tips li:before{
-        padding-right: 14px;
-    }
+    // .home-present__txt__tips li:before{
+    //     padding-right: 14px;
+    // }
     .video-yt {
         height: 200px;
     }

@@ -92,6 +92,13 @@
                 .form-control {
                     width: 100%;
                 }
+                .form-label {
+                    min-height: 36px;
+                    line-height: 1.8rem;
+                    display: flex;
+                    align-items: flex-end;
+                    padding-bottom: 2px;
+                }
             }
         }
     }
@@ -206,6 +213,9 @@
         &--connexion {
             margin-bottom: 15px;
         }
+    }
+    .connexion .btn-seepassword__icon {
+        right: 0px;
     }
     .register {
         flex-direction: column;
