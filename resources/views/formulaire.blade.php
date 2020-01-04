@@ -40,7 +40,7 @@
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel col-4" role="region" aria-labelledby="form_infos">
+            <div class="info-panel col-lg-4" role="region" aria-labelledby="form_infos">
                 {{-- <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le formulaire') }}</h3> --}}
                 <form id="full-form-post" action="{{ route('content.store') }}" method="post">
                     @csrf
@@ -61,7 +61,7 @@
             @endif
 
             <!-- actions d'initialisation -->
-            <div class="actions-panel @if (Auth::check()) col-4 @else col-5 @endif" role="region" aria-labelledby="form_tools">
+            <div class="actions-panel @if (Auth::check()) col-lg-4 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
                 <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea">
@@ -86,7 +86,7 @@
             </div>
 
             <!-- templates -->
-            <div class="template-panel @if (Auth::check()) col-3 @else col-4 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
+            <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
                 <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thèmes du formulaire') }}</h3>
                 <div class="template-panel__choice shadow-box border-12" role="complementary">
                     <div>

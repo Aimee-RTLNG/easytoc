@@ -10386,8 +10386,7 @@ textarea.shadow-box {
 .select-home__link svg {
   position: absolute;
   left: 8px;
-  top: 11px;
-  font-size: 2.2rem;
+  top: 13px;
 }
 
 .select-home .dropdown-menu.show {
@@ -11082,6 +11081,18 @@ input[type="checkbox"], input[type="radio"] {
 
 .help-panel a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 1199.98px) {
+  .info-panel {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .actions-panel {
+    margin-bottom: 20px;
+  }
 }
 
 .compte-page {

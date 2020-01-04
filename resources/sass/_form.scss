@@ -294,3 +294,14 @@ input[type="checkbox"], input[type="radio"]{
         text-decoration: underline;
     }
 }
+
+@include media-breakpoint-down(lg) { 
+    .info-panel {
+        margin-bottom: 20px;
+    }
+}
+@include media-breakpoint-down(lg) { 
+    .actions-panel  {
+        margin-bottom: 20px;
+    }
+}
