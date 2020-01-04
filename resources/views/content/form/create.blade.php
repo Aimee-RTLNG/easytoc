@@ -69,8 +69,8 @@
                 </div>
                 <h3 id="form_help" class="mt-5 font-weight-bold">{{ __("Aide") }}</h3>
                 <div class="d-flex flex-column">
-                    <a href="aide#formdata">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#formcreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a target="_blank" href="aide#formdata">{{ __("Guide d'importation des données") }}</a>
+                    <a target="_blank" href="aide#formcreator">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
@@ -282,12 +282,12 @@
                             <!-- panneau code -->
                             <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
                                 <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                <a href="aide#formcode" class="btn btn-light">
+                                <a target="_blank" href="aide#formcode" class="btn btn-light">
                                     <i class="fa fa-question-circle"></i>
                                     {{ __("Besoin d'aide !") }}
                                 </a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-dark">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info">
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -295,7 +295,7 @@
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
                                 <h3 class="mt-3">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-dark">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info">
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -315,7 +315,7 @@
 
                 <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
                     <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
-                    <a href="aide#formuse" class="btn btn-light">
+                    <a target="_blank" href="aide#formuse" class="btn btn-light">
                         <i class="fa fa-question-circle"></i>
                         {{ __("Besoin d'aide !") }}
                     </a>
@@ -443,5 +443,7 @@
 @section('pagespecificscripts')
 
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
+{{-- Script PRETTIFY + skin --}}
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 
 @endsection
