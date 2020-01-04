@@ -328,9 +328,9 @@ $(document.body)
 
                 // on récupère le required
                 if ($(element_selected_container).hasClass('field-required')) {
-                    $('#elem-required').prop("checked", "true");
+                    $('#elem-required').prop("checked", true);
                 } else {
-                    $('#elem-required').removeAttr("checked");
+                    $('#elem-required').prop("checked", false);
                 }
 
                 // on recupère la longueur max
