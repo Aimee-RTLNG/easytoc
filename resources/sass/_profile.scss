@@ -74,6 +74,9 @@
         }
 
     }
+    .select-home .dropdown-menu.show {
+        top: 10px !important;
+    }
 }
 .type-pin {
     top: 20px;
@@ -432,6 +435,9 @@
     }
 }
 @include media-breakpoint-down(xs) {
+    .profile_content .select-home .dropdown-menu.show {
+        left: -10px !important;
+    }
     .mon-compte__entete {
         padding-right: 32px;
     }

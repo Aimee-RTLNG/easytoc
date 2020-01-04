@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	            $("html, body").stop().animate( { scrollTop: target.offset().top }, 500);
 	        }
 	    }
-	$('.next-section i').on('click', function() {
+	$('.next-section div').on('click', function() {
 		scrollTo($('#tools'));
     })
     $('.link-ancre').on('click', function() {

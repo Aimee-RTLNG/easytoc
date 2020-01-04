@@ -10359,11 +10359,15 @@ p, h1, h2 {
   background-color: #45B8FF;
 }
 
-.select-home__link:before {
-  content: "\F061";
-  font-family: "Font Awesome 5 Free";
-  position: relative;
-  left: -10px;
+.select-home__link {
+  padding-left: 12px;
+}
+
+.select-home__link svg {
+  position: absolute;
+  left: 8px;
+  top: 11px;
+  font-size: 2.2rem;
 }
 
 .select-home .dropdown-menu.show {
@@ -10373,8 +10377,7 @@ p, h1, h2 {
 }
 
 .show .select-home__link {
-  top: 2px;
-  position: relative;
+  padding-top: 8px;
 }
 
 .home-present {
@@ -10404,12 +10407,6 @@ p, h1, h2 {
   line-height: 3.0rem;
   padding-left: 48px;
   list-style-type: none;
-}
-
-.home-present__txt__tips li:hover:before {
-  position: relative;
-  left: 10px;
-  transition: left 0.5s;
 }
 
 .home-present__txt__btn {
@@ -10459,7 +10456,7 @@ p, h1, h2 {
   justify-content: center;
 }
 
-.next-section i {
+.next-section svg {
   cursor: pointer;
   font-size: 2.5rem;
 }
@@ -11024,6 +11021,10 @@ input[type="checkbox"], input[type="radio"] {
   color: #CACACA;
 }
 
+.profile_content .select-home .dropdown-menu.show {
+  top: 10px !important;
+}
+
 .type-pin {
   top: 20px;
   left: 25px;
@@ -11454,6 +11455,9 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 @media (max-width: 575.98px) {
+  .profile_content .select-home .dropdown-menu.show {
+    left: -10px !important;
+  }
   .mon-compte__entete {
     padding-right: 32px;
   }
