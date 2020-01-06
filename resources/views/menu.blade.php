@@ -28,31 +28,225 @@
             <h2 class="entete__title">{{ __('Créer un menu') }}</h2>
             <div class="entete__under"></div>
         </div>
-        <div class="panel-body">
-                <!-- Display Validation Errors -->
-                @include('common.errors')
-        
-                @guest
-                    <form action="{{ route('content.store') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="type_id" value="3">
-                        <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
-                        <textarea type="text" name="description" placeholder="description">{{ old('description') }}</textarea>
-                        <textarea type="text" name="html" placeholder="html">{{ old('html') }}</textarea>
-                    </form>
 
-                @else 
-                    <form action="{{ route('content.store') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="type_id" value="3">
-                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                        <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
-                        <textarea type="text" name="description" placeholder="description">{{ old('description') }}</textarea>
-                        <textarea type="text" name="html" placeholder="html">{{ old('html') }}</textarea>
-                        <button type="submit">{{ __('Sauvegarder ce menu') }}</button>
-                    </form>
-                @endguest
+        <div class="panel-body mb-3">
+            <!-- Display Validation Errors -->
+            @include('common.errors')
+
+            <!-- interface d'initialisation du projet -->
+                <div class="row creator-panel justify-content-between d-flex" role="region" aria-labelledby="interface-heading">
+
+                    @if (Auth::check())
+                    <!-- infos du projet -->
+                    <div class="info-panel" role="region" aria-labelledby="form_infos">
+                        <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le menu') }}</h3>
+                        <form id="full-form-post" action="{{ route('content.store') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="type_id" value="1">
+                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                            <div class="form-group" role="region">
+                                <label for="title">{{ __('Titre du projet') }}</label>
+                                <input type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="30"  value="{{ old('title') }}">
+                                <p id="chara-title-remains"></p>
+                            </div>
+                            <div class="form-group" role="region">
+                                <label for="desc-input">{{ __('Description du projet') }}</label>
+                                <textarea type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="2"
+                                    maxlength="200"></textarea>
+                                <p id="chara-desc-remains"></p>
+                            </div>
+                        </form>
+                    </div>
+                    @endif
+
+                     <!-- actions d'initialisation -->
+                     <div class="actions-panel col-3 flex-column justify-content-around align-items-center"
+                     role="region" aria-labelledby="form_tools">
+                        <h3 id="form_tools" class="mb-3 font-weight-bold">{{ __("Outils d'aide à la création") }}</h3>
+                        <div class="d-flex justify-content-around align-items-center" role="complementary">
+                            <button type="button" class="btn btn-dark">{{ __('Importer des données') }}</button>
+                            <button type="button" class="btn btn-dark">{{ __('Générer un exemple') }}</button>
+                        </div>
+                        <h3 id="form_help" class="mt-5 font-weight-bold">{{ __("Aide") }}</h3>
+                        <div class="d-flex flex-column">
+                            <a href="aide#data">{{ __("Guide d'importation des données") }}</a>
+                            <a href="aide#creator">{{ __("Guide d'utilisation du créateur") }}</a>
+                        </div>
+                    </div>
+
+                    <!-- templates -->
+                    <div class="template-panel col-3 justify-content-center align-items-center" role="region"
+                    aria-labelledby="form_themes">
+                    <h3 id="form_themes" class="mb-3 font-weight-bold">{{ __('Modèles de menu') }}</h3>
+                    <div class="d-flex justify-content-around align-items-center" role="complementary">
+                        <div>
+                            <div>
+                                <input type="radio" value="blue" id="radio01" name="theme">
+                                <label for="radio01">{{ __('Bleu') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="white" id="radio02" name="theme">
+                                <label for="radio02">{{ __('Blanc') }}</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="radio" value="green" id="radio03" name="theme">
+                                <label for="radio03">{{ __('Vert') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="red" id="radio04" name="theme">
+                                <label for="radio04">{{ __('Rouge') }}</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="radio" value="black" id="radio05" name="theme">
+                                <label for="radio05">{{ __('Noir') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="grey" id="radio06" name="theme">
+                                <label for="radio06">{{ __('Gris') }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- interface d'interaction avec le projet -->
+        <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="Actions sur l'élement">
+
+            <div id="content-interface" class="col border bg-white rounded p-3" role="section" aria-label="Actions sur l'élement">
+                <!-- navigation entre les panneaux -->
+                
+                <div class="d-flex justify-content-around mb-2" role="region">
+                    <div class="col-4" role="region">
+                        <label for="form-creator-title">{{ __('Titre du menu') }}</label>
+                        <input name="form-creator-title" id="form-creator-title" placeholder="Titre du menu"
+                            class="form-control" size="30" value="Titre du menu" />
+                    </div>
+                    <div class="col-4" role="region">
+                        <label for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
+                        <input name="form-creator-link" id="form-creator-link" placeholder="Lien du menu"
+                            class="form-control" size="30" />
+                    </div>
+                    <div class="col-2 d-flex align-items-center justify-content-center" role="region">
+                        <input type="checkbox" class="add-element type-special" value="" id="reset-button"
+                            name="reset-button">
+                        <label for="reset-button" class="ml-3">{{ __('Option de réinitialisation') }}</label>
+                    </div>
+                </div>
+                <div role="section" aria-labelledby="form_actions_element">
+                    <h3 id="form_actions_element" class="mb-3 font-weight-bold">{{ __("Actions sur l'élement") }}</h3>
+                    <div role="section" aria-label="Actions sur l'élement">
+                        <input class="btn btn-light" type="button" aria-label="Couper" value="Couper"
+                            id="element_cut" role="listitem">
+                        <input class="btn btn-light" type="button" aria-label="Copier" value="Copier"
+                            id="element_copy" role="listitem">
+                        <input class="btn btn-light" type="button" aria-label="Coller" value="Coller"
+                            id="element_paste" role="listitem">
+                        <input class="btn btn-light" type="button" aria-label="Supprimer l'élement"
+                            value="Supprimer l'élement" id="element_delete" role="listitem">
+                        <input class="btn btn-light" type="button" aria-label="Annuler" value="Annuler"
+                            id="element_undo" role="listitem">
+                        <input class="btn btn-light" type="button" aria-label="Rétablir" value="Rétablir"
+                            id="element_redo" role="listitem">
+                    </div>
+                </div>
+
+                <div role="section" aria-labelledby="form_add_static">
+                    <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un item') }}</h3>
+                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Nouvelle section"
+                        value="Nouvelle section" id="insert-horizontal_rule" role="listitem">
+                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Titre"
+                        value="Titre" id="insert-title" role="listitem">
+                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Paragraphe"
+                        value="Paragraphe" id="insert-paragraph" role="listitem">
+                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Lien"
+                        value="Lien" id="insert-link" role="listitem">
+                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste numérotée"
+                        value="Liste numérotée" id="insert-ordered_list" role="listitem">
+                    <input class="btn btn-light add-element type-layout" type="button" aria-label="Liste à puces"
+                        value="Liste à puces" id="insert-unordered_list" role="listitem">
+                </div>
+                <div role="section" aria-labelledby="form_add_question">
+                    <h3 id="form_add_question" class="mb-3 font-weight-bold">{{ __('Ajouter une liste déroulante') }}</h3>
+                    <input class="btn btn-light add-element type-question" type="button"
+                        aria-label="Réponse libre courte" value="Réponse libre courte" id="insert-short_answer">
+                    <input class="btn btn-light add-element type-question" type="button"
+                        aria-label="Réponse libre longue" value="Réponse libre longue" id="insert-long_answer">
+                    <input class="btn btn-light add-element type-question" type="button"
+                        aria-label="Réponse Oui/Non" value="Réponse Oui/Non" id="insert-binary_answer">
+                    <input class="btn btn-light add-element type-question" type="button" aria-label="Choix unique"
+                        value="Choix unique" id="insert-one_answer">
+                    <input class="btn btn-light add-element type-question" type="button" aria-label="Choix multiple"
+                        value="Choix multiple" id="insert-many_answer">
+                    <input class="btn btn-light add-element type-question" type="button" aria-label="Choix en liste"
+                        value="Choix en liste" id="insert-list_answer">
+                </div>
+
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab"
+                            href="#nav-blueprint" role="tab" aria-controls="nav-blueprint"
+                            aria-selected="true">{{ __('Blueprint') }}</a>
+                        <!--
+                            <a class="nav-item nav-link" id="nav-preview-tab" data-toggle="tab" href="#nav-preview" role="tab"
+                                aria-controls="nav-preview" aria-selected="false">Preview</a>
+                            -->
+                        <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab"
+                            aria-controls="nav-code" aria-selected="false">{{ __('Code') }}</a>
+                    </div>
+                </nav>
+
+                <!-- panneaux -->
+                <div class="tab-content" id="nav-tabContent" role="section">
+
+                    <!-- Code en brut (non formatté) -->
+                    <textarea type="text" name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea> 
+
+                    <!-- panneau blueprint -->
+                    <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel"
+                        aria-labelledby="nav-blueprint-tab">
+                        <div id="content-created-blueprint"
+                            class="content-panel border border-top-0 rounded-bottom p-4">
+                        </div>
+                    </div>
+
+                    <!-- panneau code -->
+                    <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                        <pre class="prettyprint content-panel" id="formatted-code"></pre> <!-- Code formatté -->
+                    </div>
+                </div>
+
+
+
+
+                @if (Auth::check())
+
+                    <!-- Actions importantes sur le projet -->
+                    <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region"
+                        aria-labelledby="form_actions">
+                        <button type="button" class="btn btn-danger" id="btn-cancel-project" aria-label="Annuler les modifications">{{ __('Annuler les
+                            modifications') }}</button>
+                        <button type="submit" class="btn btn-success" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
+                    </div>
+               
+                    @endif
 
             </div>
+        </div>
+
+
    </div>
+@endsection
+
+@section('pagespecificscripts')
+<script type="application/javascript" src="{{ URL::asset('js/components/menu.js') }}"></script>
+    {{-- Script PRETTIFY + skin --}}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection
