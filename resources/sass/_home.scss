@@ -63,6 +63,9 @@
             line-height: 3.0rem;
             padding-left: 48px;
             list-style-type: none;
+            a:hover {
+                color: $bleu-fonce;
+            }
         }
         &__btn {
             @include flex-row-between-center;

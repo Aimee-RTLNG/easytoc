@@ -25,9 +25,11 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" title="Retour à la page d'accueil">
-                    <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
-                </a>
+                <h1>
+                    <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
+                        <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
+                    </a>
+                </h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="Menu">
                     <div class="bars" id="bars">
                         <div class="bars__line bars--first"></div>

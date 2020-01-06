@@ -212,7 +212,7 @@ input[type="checkbox"], input[type="radio"]{
         min-height: 30px;
         min-width: 30px;
         border-radius: 50%;
-        color: #45B8FF;
+        color: $bleu;
         font-size: 15px;
         @include flex-row-center;
     }
@@ -292,7 +292,33 @@ input[type="checkbox"], input[type="radio"]{
     color: $bleu;
     a:hover {
         text-decoration: underline;
+        color: $bleu-fonce;
     }
+}
+.main-info-form {
+    @include flex-row-around-center;
+    margin-bottom: 30px;
+    input, select {
+        background-color: $gris-crea;
+        color: black;
+        font-weight: bold;
+        &::placeholder {
+            color: black;
+            font-weight: bold;
+        }
+        &:focus {
+            background-color: $gris-clair;
+            border: 1px $gris-crea solid;
+            color: black;
+            font-weight: bold;
+        }
+    }
+    .reset-button {
+        @include flex-row-start-center;
+    }
+}
+.btn-save-project {
+    font-size: 1.6rem;
 }
 
 @include media-breakpoint-down(lg) { 

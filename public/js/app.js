@@ -45,31 +45,37 @@ window.addEventListener("DOMContentLoaded", function (event) {
   $('.link-ancre').on('click', function () {
     var id = $(this).attr('href');
     scrollTo($(id));
-  }); // Slider Home
-  // console.log($('.slider-tools'));
-  // $('.slider-tools').slick({
-  //     infinite: true,
-  //     slidesToShow: 2,
-  //     slidesToScroll: 1,
-  //     arrows: false,
-  //     dots: true,
-  //     responsive: [
-  //         {
-  //             breakpoint: 3500,
-  //             settings: "unslick"
-  //         },
-  //         {
-  //             breakpoint: 767,
-  //             slidesToShow: 2,
-  //             settings: "slick",
-  //             dots: true,
-  //         }
-  //         ]
-  //     });
+  }); // Profile Mobile
 
   $(".fleche-plus").on('click', function () {
     $('.mon-compte').toggleClass('open');
     $(this).toggleClass('open');
+  }); // Voir les mots de passes
+
+  $('input[type="password"').on('keyup', function (event) {
+    var text = $(this).parent().parent().find("span.warning-block")[0];
+
+    if (event.originalEvent.getModifierState("CapsLock")) {
+      text.style.display = "block";
+    } else {
+      text.style.display = "none";
+    }
+  });
+  $('input[type="password"').on('focusout', function () {
+    var text = $(this).parent().parent().find("span.warning-block")[0];
+    text.style.display = "none";
+  });
+  $(".btn-seepassword__icon").on('click', function () {
+    var password_input = $(this).parent().find('input')[0];
+    var vision_button_icon = $(this).find('i')[0];
+
+    if (password_input.type === "password") {
+      password_input.type = "text";
+      vision_button_icon.className = "far fa-eye-slash";
+    } else {
+      password_input.type = "password";
+      vision_button_icon.className = "far fa-eye";
+    }
   });
 });
 
@@ -121,28 +127,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/***/ 1:
+/*!***********************************!*\
+  !*** multi ./resources/js/app.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })
 
-},[[0,"/js/manifest","/js/vendor"]]]);
+},[[1,"/js/manifest","/js/vendor"]]]);

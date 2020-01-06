@@ -211,6 +211,9 @@
         border: none;
         height: 35px;
     }
+    input.form-control {
+        font-family: 'Roboto','Arial', sans-serif;
+    }
     &__entete {
         @include flex-row-around-center;
         margin-bottom: 20px;
