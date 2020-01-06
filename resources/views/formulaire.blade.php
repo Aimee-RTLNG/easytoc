@@ -64,13 +64,13 @@
             <div class="actions-panel @if (Auth::check()) col-lg-4 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
                 <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn_crea">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
                         <div class="btn-crea__icon">
                             <i class="fas fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
-                    <button type="button" class="btn btn-form-final btn-primary btn_crea">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
                         <div class="btn-crea__icon">
                             <i class="fas fa-sync"></i>
                             {{-- <i class="fas fa-file-code"></i> --}}

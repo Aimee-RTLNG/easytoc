@@ -10184,10 +10184,24 @@ textarea.shadow-box {
 
 .invalid-feedback {
   position: absolute;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  line-height: 1rem;
+  max-width: 100%;
+  padding-top: 4px;
+}
+
+.warning-block {
+  font-family: "Roboto", sans-serif;
+  line-height: 1rem;
 }
 
 .form-control.is-invalid {
   border-width: 3px;
+}
+
+.form-control.is-invalid ~ .btn-seepassword__icon {
+  background-color: #e3342f;
 }
 
 .me-forever {
