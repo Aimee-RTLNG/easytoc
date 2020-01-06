@@ -10883,11 +10883,11 @@ pre.prettyprinted {
 }
 
 /* style de l'interface actions */
-[contenteditable="true"]:hover, #full-form input, .element-container {
+[contenteditable=true]:hover, #full-form input, .element-container {
   cursor: pointer;
 }
 
-[data-tag="text"]:hover, [data-tag="label-text"]:hover, [data-tag="form-title"]:hover {
+[data-tag=text]:hover, [data-tag=label-text]:hover, [data-tag=form-title]:hover {
   cursor: text;
 }
 
@@ -10895,50 +10895,39 @@ pre.prettyprinted {
   border: 0;
   padding: 5px;
 }
-
 #content-created-blueprint form *:hover {
   border: 3px dotted black;
 }
-
 #content-created-blueprint form * label:hover, #content-created-blueprint form * abbr:hover, #content-created-blueprint form * .indicator-required:hover, #content-created-blueprint form * legend span:hover, #content-created-blueprint form * fieldset label span:hover {
   border: 0;
 }
-
 #content-created-blueprint form * select {
   min-height: 30px;
 }
-
 #content-created-blueprint form * fieldset {
   border: 2px solid black;
   display: flex;
   flex-direction: column;
 }
-
 #content-created-blueprint form * fieldset:hover {
   border: 2px solid black;
 }
-
 #content-created-blueprint form * fieldset label {
   margin: 5px 15px;
 }
-
 #content-created-blueprint form * fieldset label:hover {
   border: 3px dotted black;
 }
-
 #content-created-blueprint form * legend {
   border: 2px solid black;
 }
-
 #content-created-blueprint form * hr {
   border: 2px solid rgba(0, 0, 0, 0.5) !important;
   padding: 0 !important;
 }
-
 #content-created-blueprint form * hr:hover {
   border: 2px solid rgba(0, 0, 0, 0.5) !important;
 }
-
 #content-created-blueprint form * .type-layout *:hover {
   border: 0 !important;
 }
@@ -10956,8 +10945,12 @@ form {
   border: 0 !important;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type=checkbox], input[type=radio] {
   cursor: pointer !important;
+}
+
+input[type=text], textarea {
+  border: 1px solid black !important;
 }
 
 #copy-css-link, #copy-raw-code {
@@ -10976,7 +10969,6 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   flex-direction: column;
 }
-
 .side-tool button {
   margin: 0;
   padding: 0;
@@ -10984,7 +10976,153 @@ input[type="checkbox"], input[type="radio"] {
   color: white;
   border: none;
 }
+.side-tool .btn-info:disabled {
+  background-color: #818181;
+}
 
+body {
+  background-color: #fafafa;
+}
+
+/* utile */
+.hidden {
+  /* attention : en utilisant cette classe, il faut ajouter aria-hidden="true" à l'élement */
+  display: none;
+}
+
+/* style du blueprint */
+#content-created-blueprint {
+  background-color: #f2f2f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* style du code */
+#nav-code {
+  padding: 2em;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  border-top: 0;
+}
+
+/* style du code généré */
+xmp {
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+  display: inherit;
+}
+
+.code-display {
+  font-size: 100% !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-radius: 5px !important;
+  border: 1px solid #888;
+}
+
+pre.prettyprinted {
+  font-size: 100% !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-radius: 5px !important;
+}
+
+/* style de l'interface actions */
+[contenteditable=true]:hover, #full-form input, .element-container {
+  cursor: pointer;
+}
+
+[data-tag=text]:hover, [data-tag=label-text]:hover, [data-tag=form-title]:hover {
+  cursor: text;
+}
+
+#content-created-blueprint form * {
+  border: 0;
+  padding: 5px;
+}
+#content-created-blueprint form *:hover {
+  border: 3px dotted black;
+}
+
+#content-created-blueprint form * label:hover, #content-created-blueprint form * abbr:hover, #content-created-blueprint form * .indicator-required:hover, #content-created-blueprint form * legend span:hover, #content-created-blueprint form * fieldset label span:hover {
+  border: 0;
+}
+#content-created-blueprint form * select {
+  min-height: 30px;
+}
+#content-created-blueprint form * fieldset {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+#content-created-blueprint form * fieldset:hover {
+  border: 2px solid black;
+}
+#content-created-blueprint form * fieldset label {
+  margin: 5px 15px;
+}
+#content-created-blueprint form * fieldset label:hover {
+  border: 3px dotted black;
+}
+#content-created-blueprint form * legend {
+  border: 2px solid black;
+}
+#content-created-blueprint form * hr {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+  padding: 0 !important;
+}
+#content-created-blueprint form * hr:hover {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+#content-created-blueprint form * .type-layout *:hover {
+  border: 0 !important;
+}
+
+.element-container {
+  margin: 10px 5px;
+  padding: 5px;
+}
+
+.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select {
+  border: 3px dotted blue !important;
+}
+
+form {
+  border: 0 !important;
+}
+
+input[type=checkbox], input[type=radio] {
+  cursor: pointer !important;
+}
+
+input[type=text], textarea {
+  border: 1px solid black !important;
+}
+
+#copy-css-link, #copy-raw-code {
+  position: relative;
+  bottom: -10px;
+  right: 100px;
+}
+
+.copy-container {
+  position: absolute;
+}
+
+.side-tool {
+  width: 20px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.side-tool button {
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  color: white;
+  border: none;
+}
 .side-tool .btn-info:disabled {
   background-color: #818181;
 }
@@ -11435,8 +11573,8 @@ input[type="checkbox"], input[type="radio"] {
   background-color: #F4F2F0;
   padding: 35px 35px 20px 0px;
   border-radius: 12px;
-  font-size: 2.0rem;
-  font-family: 'Expletus Sans', sans-serif;
+  font-size: 2rem;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
 }
 
@@ -11480,14 +11618,14 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .mon-compte label {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: 700;
   margin-left: 10px;
 }
 
 .mon-compte .form-control {
   padding-left: 10px;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: 700;
   color: #171819;
   background-color: #F4F2F0;
@@ -11523,7 +11661,7 @@ input[type="checkbox"], input[type="radio"] {
 .mon-compte__entete__title {
   padding-left: 10px;
   font-size: 1.4rem;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
 }
 
@@ -11558,7 +11696,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .crea-item__entete__title {
   font-size: 2.5rem;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: 700;
 }
 
@@ -11634,7 +11772,7 @@ input[type="checkbox"], input[type="radio"] {
   background: transparent;
   border: none;
   color: #e3342f;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: "Expletus Sans", sans-serif;
   font-weight: bold;
 }
 

@@ -1,11 +1,13 @@
 @extends('layouts/app')
 
-@section('titre') Mentions légales - EasyToC @endsection
+@section('titre') {{ __('Mentions légales') }} - EasyToC @endsection
 
 @section('content')
 <div class="container">
     <div class="entete">
-        <h2 class="entete__title">Mentions légales</h2>
+        <h2 class="entete__title">
+            {{ __('Mentions légales') }}
+        </h2>
         <div class="entete__under"></div>
     </div>
 
@@ -18,7 +20,7 @@
 
     <p>Statut du propriétaire : <strong>particulier</strong><br />
         Le Propriétaire est : <strong>Aimée RITLENG</strong><br />
-        Adresse postale du propriétaire : <strong>Whatever 67000 Strasbourg</strong><br />
+        Adresse postale du propriétaire : <strong>30 Rue du Maire André Traband, 67500 Haguenau</strong><br />
         <br />
         Le Créateur du site est : <strong>easytoc.ritleng.mmi-unistra.fr</strong><br />
         Le Responsable de la publication est : <strong>RITLENG Aimée</strong><br />
@@ -28,9 +30,7 @@
         Le Webmaster est : <strong>Aimee RITLENG</strong><br />
         Contacter le Webmaster : <strong><a href="mailto:aimeeritleng@outlook.com?subject=Contact a partir des mentions lÃ©gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong><br />
         L’hebergeur du site est : <strong>OVH 2 rue Kellermann 59100 Roubaix </strong><br />
-        <strong><u>CREDIT :</u> </strong> Les mentions légales ont étés générées par<strong> <a
-                href="https://www.generer-mentions-legales.com/generateur-mentions-legales.html"
-                target="_blank">générateur de mentions legales</a></strong><br /></p>
+    </p>
 
     <br />
 
@@ -110,7 +110,7 @@
         l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de
         suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à
         <strong>easytoc.ritleng.mmi-unistra.fr</strong> par email : <strong><a
-                href="mailto:aimeeritleng@outlook.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong>
+                href="mailto:aimeeritleng@outlook.com?subject=Contact à partir des mentions légales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong>
         ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce,
         en précisant l’adresse à laquelle la réponse doit être envoyée.</p>
     <br />

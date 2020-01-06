@@ -119,4 +119,4 @@ module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\e
 
 /***/ })
 
-},[[0,"/js/manifest"]]]);
+},[[0,"/js/manifest","/js/vendor"]]]);

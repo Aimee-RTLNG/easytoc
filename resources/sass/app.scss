@@ -20,7 +20,8 @@
 @import '_auth.scss';
 @import '_home';
 
-@import '_form.scss'; // pas en sass
+@import '_form'; // pas en sass
+@import '_table';
 
 @import '_profile.scss';
 @import '_alert.scss';

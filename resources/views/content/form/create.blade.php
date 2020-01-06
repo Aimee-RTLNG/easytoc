@@ -1,9 +1,9 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
-@section('titre') {{ __('Formulaire - EasyToC') }} @endsection
+@section('titre') {{ __('Formulaire') }} - EasyToC @endsection
 
 @section('pagespecificstyles')
-<link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -296,7 +296,7 @@
                                     {{ __("Besoin d'aide !") }}
                                 </a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-dark">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info">
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -304,7 +304,7 @@
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
                                 <h3 class="mt-3">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-dark">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info">
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -452,5 +452,7 @@
 @section('pagespecificscripts')
 
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
+{{-- Script PRETTIFY + skin --}}
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 
 @endsection

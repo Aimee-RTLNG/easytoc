@@ -8,11 +8,20 @@ require('clipboard/dist/clipboard.min.js');
 
 // ANCHOR Font awesome
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode);
+import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode,faVectorSquare,faGripLinesVertical} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode,faVectorSquare,faGripLinesVertical);
 
 dom.watch();
+
+
+// ANCHOR Visualisation des contenus générés (form, table, menu)
+
+// Empêcher l'envoi du formulaire 
+$( document ).ready(function() {
+    $('.content-html-preview input[type=submit]').attr('disabled', true);
+});
 
 // ANCHOR Burger menu
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -41,7 +50,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     })
 
     // Voir les mots de passes
-    
+
     $('input[type="password"').on('keyup', function (event) {
         var text = $(this).parent().parent().find("span.warning-block")[0];
         if (event.originalEvent.getModifierState("CapsLock")) {

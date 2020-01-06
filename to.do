@@ -38,6 +38,17 @@
 # [x] Modification d'option
 # [x] Suppression d'option SELECT
 
+// Pages générales
+# [] FIXME Icones mauvaises
+
+// Page visualisation 
+# [] TODO Ajouter bouton copier 
+# [] FIXME Validation suppression ne marche pas
+
+// Page d'édition
+# [] TODO Ajouter bouton copier 
+# [] FIXME Validation suppression ne marche pas
+
 // on le fait plus tard ça (louise peut intégrer avant, pierre peut gérer sans)
 # [] Script d'importation du CSV ou JSON
 # [] Générer un formulaire exemple (via JSON peut etre ?)

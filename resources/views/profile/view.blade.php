@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('titre') {{ __('Mon compte - EasyToC') }} @endsection
+@section('titre') {{ __('Mon compte') }} - EasyToC @endsection
 
 @section('content')
 <main class="compte-page">
@@ -104,13 +104,13 @@
                                 if (App::isLocale('en')) {
                                 ?>
                                     <p class="crea-item__type-date">
-                                        {{ $content->type->name_en }} / Dernière modification : {{ $content->updated_at }}
+                                        {{ $content->type->name_en }} / {{ __('Dernière modification') }} : {{ $content->updated_at }}
                                     </p>
                                 <?php
                                 }else if (App::isLocale('fr')) {
                                 ?>
                                     <p class="crea-item__type-date">
-                                        {{ $content->type->name_fr }} / Last updated :  {{ $content->updated_at }}
+                                        {{ $content->type->name_fr }} / {{ __('Dernière modification') }} :  {{ $content->updated_at }}
                                     </p>
                                 <?php
                                     }
@@ -120,13 +120,13 @@
                                 <div>
                                     <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="Visualiser">
                                         <div  class="crea-item__btns__icon">
-                                            <i class="fas fa-eye"></i>
+                                            <i class="fa fa-eye"></i>
                                         </div>
                                         <p>{{ __('Visualiser') }}</p>
                                     </a>
                                     <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="Modifier">
                                         <div class="crea-item__btns__icon">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fa fa-edit"></i>
                                         </div>
                                         <p>{{ __('Modifier') }}</p>
                                     </a>
@@ -134,7 +134,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <div class="crea-item__btns__icon btn--rouge">
-                                            <i class="fas fa-trash-alt"></i>
+                                            <i class="fa fa-times"></i>
                                         </div>
                                         <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" title="Supprimer">       
                                     </form>
