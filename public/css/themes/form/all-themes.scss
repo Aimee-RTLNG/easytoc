@@ -64,11 +64,9 @@ $themes: (
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
     }
-  
     hr{
         background-color: themed('separatorColor');
         height: 2px;
-        
     }
 
     h1 {

@@ -97,7 +97,6 @@ function updatecontent() {
 // ANCHOR Initialisation du formulaire
 if( $('#raw-code').val().length <= 0 ){
     $('#content-created-blueprint').html(initial_content);
-    console.log("ee");
 }else{
     console.log($('#raw-code').val().length);
 }

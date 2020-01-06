@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container visualisation">
 
     @if (session('info'))
     <div class="row">
@@ -31,21 +31,17 @@
 
     <div class="entete">
         <h2 class="entete__title">
-            {{ $content->type["name_fr"] }}
+            Visualiser mon {{ $content->type["name_fr"] }}
         </h2>
         <div class="entete__under"></div>
     </div>
-
-    <div class="panel-body">
-
         {{-- Infos prrojet et actions --}}
-        <h3 class="display-4">Projet</h3>
-        <div class="row">
+        <div class="row visualisation__infos">
             <div class="col-8">
                 <div class="content-title">
-                    <h4>
+                    <h3 class="visu__title">
                         {{ $content->title }}
-                    </h4>
+                    </h3>
                 </div>
                 <div class="content-description">
                     <p>
@@ -53,16 +49,20 @@
                     </p>
                 </div>
             </div>
-            <div class="element-actions">
-                <a class="btn btn-info edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">
-                    <i class="fa fa-edit"></i>
+            <div class="col element-actions">
+                <a class="btn btn-form-final btn-primary edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">
+                    <div class="rond-i">
+                        <i class="fa fa-edit"></i>
+                    </div>
                     {{ __('Modifier') }}
                 </a>
                 <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST" onsubmit="if(confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')){ this.submit(); }">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" value="" class="btn btn-danger delete-content-button">
-                        <i class="fa fa-times"></i>
+                    <button type="submit" value="" class="btn btn-form-final btn-danger delete-content-button">
+                        <div class="rond-i">
+                            <i class="fa fa-times"></i>
+                        </div>
                         {{ __('Supprimer') }}
                     </button>
                 </form>
@@ -70,17 +70,17 @@
         </div>
 
         {{-- Visualisation --}}
-        <h3 class="display-4">Visualisation</h3>
+        <h3 class="visu__title">Visualisation</h3>
         <div class="row">
 
-            <div class="content-html-preview">
+            <div class="content-html-preview col-12">
                 {!! $content->html !!}
             </div>
 
         </div>
 
         {{-- Code généré --}}
-        <h3 class="display-4">Code généré</h3>
+        <h3 class="visu__title">Code généré</h3>
         <div class="row">
 
             <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
@@ -116,8 +116,6 @@
             </div>
 
         </div>
-
-    </div>
 </div>
 @endsection
 

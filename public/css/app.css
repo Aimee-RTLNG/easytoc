@@ -9682,6 +9682,19 @@ textarea.shadow-box {
   margin-right: 10px;
 }
 
+.rond-i {
+  height: 30px;
+  width: 30px;
+  min-height: 30px;
+  min-width: 30px;
+  background-color: white;
+  color: #1B6EC2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flag {
   background-color: black;
   background-size: cover;
@@ -10193,7 +10206,8 @@ textarea.shadow-box {
 
 .warning-block {
   font-family: "Roboto", sans-serif;
-  line-height: 1rem;
+  line-height: 1.1rem;
+  margin-top: 5px;
 }
 
 .form-control.is-invalid {
@@ -11971,4 +11985,44 @@ input[type="checkbox"], input[type="radio"] {
   right: 15px;
   z-index: 5000;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.edit-content-button, .delete-content-button {
+  padding: 2px 10px;
+  min-width: 138px;
+}
+
+.element-actions {
+  display: flex;
+}
+
+.edit-content-button {
+  margin-right: 10px;
+}
+
+.delete-content-button {
+  color: #e3342f;
+  background-color: #F4F2F0;
+  border: none;
+}
+
+.delete-content-button .rond-i {
+  color: white;
+  background-color: #e3342f;
+}
+
+.delete-content-button:hover {
+  background-color: #E7E7E7;
+  color: #e3342f;
+}
+
+.visu__title {
+  font-family: 'Expletus Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.visualisation__infos {
+  margin-bottom: 20px;
 }

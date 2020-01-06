@@ -115,3 +115,13 @@ textarea {
           margin-right: 10px;
       }
   }
+  .rond-i {
+      height: 30px;
+      width: 30px;
+      min-height: 30px;
+      min-width: 30px;
+      background-color: white;
+      color: $bleu;
+      border-radius: 50%;
+      @include flex-row-center;
+  }
