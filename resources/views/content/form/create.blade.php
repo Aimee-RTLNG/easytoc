@@ -36,24 +36,24 @@
         @include('common.errors')
 
         <!-- interface d'initialisation du projet -->
-        <div class="row creator-panel justify-content-between d-flex" role="region" aria-labelledby="interface-heading">
+        <div class="row creator-panel" role="region" aria-labelledby="interface-heading">
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel" role="region" aria-labelledby="form_infos">
-                <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le formulaire') }}</h3>
+            <div class="info-panel col-lg-4" role="region" aria-labelledby="form_infos">
+                {{-- <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le formulaire') }}</h3> --}}
                 <form id="full-form-post" action="{{ route('content.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="type_id" value="1">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label for="title">{{ __('Titre du projet') }}</label>
-                        <input type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="150" value="{{ old('title') }}">
+                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
+                        <input class="shadow-box  border-12" type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="150" value="{{ old('title') }}">
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
-                        <label for="desc-input">{{ __('Description du projet') }}</label>
-                        <textarea type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="2" maxlength="300"></textarea>
+                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                 </form>
@@ -61,51 +61,62 @@
             @endif
 
             <!-- actions d'initialisation -->
-            <div class="actions-panel col-3 flex-column justify-content-around align-items-center" role="region" aria-labelledby="form_tools">
-                <h3 id="form_tools" class="mb-3 font-weight-bold">{{ __("Outils d'aide à la création") }}</h3>
-                <div class="d-flex justify-content-around align-items-center" role="complementary">
-                    <button type="button" class="btn btn-dark">{{ __('Importer des données') }}</button>
-                    <button type="button" class="btn btn-dark">{{ __('Générer un exemple') }}</button>
+            <div class="actions-panel @if (Auth::check()) col-lg-4 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
+                <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
+                <div class="actions-panel__btn" role="complementary">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
+                        <div class="btn-crea__icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <p>{{ __('Importer des données') }}</p>
+                    </button>
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
+                        <div class="btn-crea__icon">
+                            <i class="fas fa-sync"></i>
+                            {{-- <i class="fas fa-file-code"></i> --}}
+                        </div>
+                        <p>{{ __('Générer un exemple') }}</p>
+                    </button>
                 </div>
-                <h3 id="form_help" class="mt-5 font-weight-bold">{{ __("Aide") }}</h3>
-                <div class="d-flex flex-column">
-                    <a target="_blank" href="aide#formdata">{{ __("Guide d'importation des données") }}</a>
-                    <a target="_blank" href="aide#formcreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
+                <div class="help-panel">
+                    <a href="aide#formdata">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#formcreator">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
             <!-- templates -->
-            <div class="template-panel col-3 justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="form_themes" class="mb-3 font-weight-bold">{{ __('Modèles de formulaire') }}</h3>
-                <div class="d-flex justify-content-around align-items-center" role="complementary">
+            <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
+                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thèmes du formulaire') }}</h3>
+                <div class="template-panel__choice shadow-box border-12" role="complementary">
                     <div>
                         <div>
                             <input type="radio" value="blue" id="radio01" name="theme">
-                            <label for="radio01">{{ __('Bleu') }}</label>
+                            <label tabindex="0" for="radio01">{{ __('Bleu') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="white" id="radio02" name="theme" checked>
-                            <label for="radio02">{{ __('Blanc') }}</label>
+                            <label tabindex="0" for="radio02">{{ __('Blanc') }}</label>
                         </div>
                     </div>
                     <div>
                         <div>
                             <input type="radio" value="green" id="radio03" name="theme">
-                            <label for="radio03">{{ __('Vert') }}</label>
+                            <label tabindex="0" for="radio03">{{ __('Vert') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="red" id="radio04" name="theme">
-                            <label for="radio04">{{ __('Rouge') }}</label>
+                            <label tabindex="0" for="radio04">{{ __('Rouge') }}</label>
                         </div>
                     </div>
                     <div>
                         <div>
                             <input type="radio" value="black" id="radio05" name="theme">
-                            <label for="radio05">{{ __('Noir') }}</label>
+                            <label tabindex="0" for="radio05">{{ __('Noir') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="grey" id="radio06" name="theme">
-                            <label for="radio06">{{ __('Gris') }}</label>
+                            <label tabindex="0" for="radio06">{{ __('Gris') }}</label>
                         </div>
                     </div>
                 </div>
@@ -116,139 +127,137 @@
         <!-- interface d'interaction avec le projet -->
         <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="Actions sur l'élement">
 
-            <div id="content-interface" class="col border bg-white rounded p-3" role="section" aria-label="Actions sur l'élement">
+            <div id="content-interface" class="col shadow-box border-12 bg-white p-3" role="section" aria-label="Actions sur l'élement">
                 <!-- navigation entre les panneaux -->
 
-                <div class="d-flex justify-content-around mb-2" role="region">
+                <div class="main-info-form" role="region">
                     <div class="col p-0" role="region">
-                        <label for="form-creator-title">{{ __('Titre du formulaire') }}</label>
+                        <label class="creator-panel__title" for="form-creator-title">{{ __('Titre du formulaire') }}</label>
                         <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire" class="form-control" size="30" value="Titre du formulaire" />
                     </div>
                     <div class="col p-0 ml-2" role="region">
-                        <label for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
+                        <label class="creator-panel__title" for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
                         <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire" class="form-control" size="30" />
                     </div>
                     <div class="col-2" role="region">
-                        <label for="form-creator-method" class="mr-3">{{ __('Méthode') }}</label>
+                        <label class="creator-panel__title" for="form-creator-method" class="mr-3">{{ __('Méthode') }}</label>
                         <select class="form-control" name="form-creator-method" id="form-creator-method">
                             <option value="get">GET</option>
                             <option value="post">POST</option>
                         </select>
                     </div>
                     <div class="col-3" role="region">
-                        <label>Option du formulaire</label>
-                        <label for="reset-button" class="d-block">
-                            <input type="checkbox" class="add-element type-special" value="" id="reset-button" name="reset-button">
-                            <span class="ml-2">{{ __('Bouton de réinitialisation') }}</span>
+                        <label class="creator-panel__title">Option du formulaire</label>
+                        <label class="reset-button" for="reset-button" class="d-block">
+                            <input type="checkbox" class="add-element type-special check-box" value="" id="reset-button" name="reset-button">
+                            <span class="ml-3">{{ __('Bouton de réinitialisation') }}</span>
                         </label>
                     </div>
                 </div>
 
-                <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
+                <div role="section" class="row" aria-labelledby="form_actions_element">
                 <div role="section" class="col" aria-labelledby="form_add_static">
-                        <h3 id="form_add_static" class="mb-3 font-weight-bold">{{ __('Ajouter un élément statique') }}</h3>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                        <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément statique') }}</h3>
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
                             <i class="fa fa-grip-lines"></i>
                             {{ __('Nouvelle section') }}
                         </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem">
                             <i class="fa fa-heading"></i>
                             {{ __('Titre') }}
                         </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem">
                             <i class="fa fa-paragraph"></i>
                             {{ __('Paragraphe') }}
                         </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem">
                             <i class="fa fa-link"></i>
                             {{ __('Lien') }}
                         </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem">
                             <i class="fa fa-list-ol"></i>
                             {{ __('Liste numérotée') }}
                         </button>
-                        <button class="btn btn-light add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem">
                             <i class="fa fa-list-ul"></i>
                             {{ __('Liste à puces') }}
                         </button>
                     </div>
                     <div role="section" class="col-5" aria-labelledby="form_actions_text">
-                        <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Mise en forme du texte') }}</h3>
-                        <button class="btn btn-light text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
+                        <h3 id="form_actions_text" class="mb-3 creator-panel__title">{{ __('Mise en forme du texte') }}</h3>
+                        <button class="btn btn-primary btn_crea" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
                             <i class="fa fa-bold"></i>
                             {{ __('Gras') }}
                         </button>
-                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem">
+                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem">
                             <i class="fa fa-italic"></i>
                             {{ __('Italique') }}
                         </button>
-                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem">
+                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem">
                             <i class="fa fa-underline"></i>
                             {{ __('Souligné') }}
                         </button>
-                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem">
+                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem">
                             <i class="fa fa-align-left"></i>
                             {{ __('Aligner à gauche') }}
                         </button>
-                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem">
+                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem">
                             <i class="fa fa-align-center"></i>
                             {{ __('Centrer') }}
                         </button>
-                        <button class="btn btn-light text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem">
+                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem">
                             <i class="fa fa-align-justify"></i>
                             {{ __('Justifier') }}
                         </button>
                     </div>
                 </div>
-                <div role="section" class="row px-4 mt-5" aria-labelledby="form_actions_element">
+                <div role="section" class="row mt-4" aria-labelledby="form_actions_element">
                     <div role="section" class="col" aria-labelledby="form_add_question">
-                        <h3 id="form_add_question" class="mb-3 font-weight-bold">{{ __('Ajouter une question') }}</h3>
-                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Réponse libre courte') }}" id="insert-short_answer">
+                        <h3 id="form_add_question" class="mb-3 creator-panel__title">{{ __('Ajouter une question') }}</h3>
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Réponse libre courte') }}" id="insert-short_answer">
                             <i class="fa fa-comment"></i>
                             {{ __('Réponse libre courte') }}
                         </button>
-                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Réponse libre longue') }}" id="insert-long_answer">
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Réponse libre longue') }}" id="insert-long_answer">
                             <i class="fa fa-comment-alt"></i>
                             {{ __('Réponse libre longue') }}
                         </button>
-                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Réponse Oui/Non') }}" id="insert-binary_answer">
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Réponse Oui/Non') }}" id="insert-binary_answer">
                             <i class="fa fa-check-square"></i>
                             {{ __('Réponse Oui/Non') }}
                         </button>
-                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Choix unique') }}"  id="insert-one_answer">
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Choix unique') }}"  id="insert-one_answer">
                             <i class="fa fa-check-circle"></i>
                             {{ __('Choix unique') }}
                         </button>
-                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Choix multiple') }}" id="insert-many_answer">
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Choix multiple') }}" id="insert-many_answer">
                             <i class="fa fa-tasks"></i>
                             {{ __('Choix multiple') }}
                         </button>
-                        <button class="btn btn-light add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer">
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer">
                             <i class="fa fa-caret-down"></i>
                             {{ __('Choix en liste') }}
                         </button>
                     </div>
-                    <div role="section" class="col-5" aria-labelledby="form_actions_text">
-                        <h3 id="form_actions_text" class="mb-3 font-weight-bold">{{ __('Actions sur l\'élément') }}</h3>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-light element_delete form-element-action action-delete" data-action="delete">
+                    <div role="section" class="col-5" aria-labelledby="form_actions_crud">
+                        <h3 id="form_actions_crud" class="mb-3 creator-panel__title">{{ __('Actions sur l\'élément') }}</h3>
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
                             <i class="fa fa-trash"></i>
                             {{ __('Supprimer') }}
                         </button>
-                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-light element_undo form-element-action action-undo" data-action="undo">
+                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-primary btn_crea element_undo form-element-action action-undo" data-action="undo">
                             <i class="fa fa-undo"></i>
                             {{ __('Annuler la suppression') }}
                         </button>
                         <!-- Ajout d'option -->
-                        <button type="button" aria-label="{{ __('Ajouter une option') }}" disabled="true" data-action="add-option" class="btn btn-light form-element-action element_add-option">
+                        <button type="button" aria-label="{{ __('Ajouter une option') }}" disabled="true" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option">
                             <i class="fa fa-check-square"></i>
                             {{ __('Ajouter une option') }}
                         </button>
                     </div>
                 </div>
 
-
                 <div class="row d-flex m-0 mb-3">
-
                     <div class="side-tool" style="display: none">
                         <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="Déplacer vers le haut">
                             <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
@@ -282,7 +291,7 @@
                             <!-- panneau code -->
                             <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
                                 <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                <a target="_blank" href="aide#formcode" class="btn btn-light">
+                                <a href="aide#formcode" class="btn btn-primary btn_crea">
                                     <i class="fa fa-question-circle"></i>
                                     {{ __("Besoin d'aide !") }}
                                 </a>
@@ -314,8 +323,8 @@
 
 
                 <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
-                    <h3 id="form_edit_element" class="mb-3 font-weight-bold">{{ __('Élément sélectionné') }}</h3>
-                    <a target="_blank" href="aide#formuse" class="btn btn-light">
+                    <h3 id="form_edit_element" class="mb-3 creator-panel__title">{{ __('Élément sélectionné') }}</h3>
+                    <a href="aide#formuse" class="btn btn-primary btn_crea">
                         <i class="fa fa-question-circle"></i>
                         {{ __("Besoin d'aide !") }}
                     </a>
@@ -418,9 +427,9 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button type="button" accesskey="c" class="btn btn-danger" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
+            <button type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
                             modifications') }}</button>
-            <button type="submit" accesskey="s" class="btn btn-success" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
+            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
         </div>
 
         @endif

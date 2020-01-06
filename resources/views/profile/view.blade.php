@@ -83,7 +83,11 @@
                 </div>
 
                 <div class="dashboard">
-                    <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
+                    @if($user->contents->isEmpty())
+                        <h2 class="dashboard__title">{{ __('Vous n\'avez aucun projet sauvegardé') }}</h2>
+                    @else 
+                        <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
+                    @endif
                     <div class="panel panel-default full-list">
                     @foreach ($user->contents as $content)
                         <div class="crea-item row"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >

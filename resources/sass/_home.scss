@@ -29,8 +29,7 @@
         svg {
             position: absolute;
             left: 8px;
-            top: 11px;
-            font-size: 2.2rem;
+            top: 13px;
         }
     }
     .dropdown-menu.show {
@@ -64,6 +63,9 @@
             line-height: 3.0rem;
             padding-left: 48px;
             list-style-type: none;
+            a:hover {
+                color: $bleu-fonce;
+            }
         }
         &__btn {
             @include flex-row-between-center;

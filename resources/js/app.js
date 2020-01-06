@@ -8,9 +8,10 @@ require('clipboard/dist/clipboard.min.js');
 
 // ANCHOR Font awesome
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faCaretLeft, faCaretRight, faAlignRight, faSquare, faTrashAlt, faGripLinesVertical, faAngleDown, faVectorSquare, faEdit, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faCaretLeft, faCaretRight, faAlignRight, faSquare, faTrashAlt, faAngleDown, faGripLinesVertical, faVectorSquare, faEdit, faChevronDown);
+import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode,faVectorSquare,faGripLinesVertical} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode,faVectorSquare,faGripLinesVertical);
 
 dom.watch();
 
@@ -41,34 +42,41 @@ window.addEventListener("DOMContentLoaded", (event) => {
     $('.link-ancre').on('click', function() {
         var id = $(this).attr('href');
 		scrollTo($(id));
-	})
-
-    // Slider Home
-
-    // console.log($('.slider-tools'));
-    // $('.slider-tools').slick({
-    //     infinite: true,
-    //     slidesToShow: 2,
-    //     slidesToScroll: 1,
-    //     arrows: false,
-    //     dots: true,
-    //     responsive: [
-    //         {
-    //             breakpoint: 3500,
-    //             settings: "unslick"
-    //         },
-    //         {
-    //             breakpoint: 767,
-    //             slidesToShow: 2,
-    //             settings: "slick",
-    //             dots: true,
-    //         }
-    //         ]
-    //     });
+    })
+    // Profile Mobile
     $(".fleche-plus").on('click', function(){
         $('.mon-compte').toggleClass('open');
         $(this).toggleClass('open');
     })
+
+    // Voir les mots de passes
+
+    $('input[type="password"').on('keyup', function (event) {
+        var text = $(this).parent().parent().find("span.warning-block")[0];
+        if (event.originalEvent.getModifierState("CapsLock")) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none"
+        }
+    });
+    
+    $('input[type="password"').on('focusout', function () {
+        var text = $(this).parent().parent().find("span.warning-block")[0];
+        text.style.display = "none";
+    });
+
+    $(".btn-seepassword__icon").on('click', function () {
+        var password_input = $(this).parent().find('input')[0];
+        var vision_button_icon = $(this).find('i')[0];
+        if (password_input.type === "password") {
+            password_input.type = "text";
+            vision_button_icon.className = "far fa-eye-slash";
+        } else {
+            password_input.type = "password";
+            vision_button_icon.className = "far fa-eye";
+        }
+    })
+
 
 
 });

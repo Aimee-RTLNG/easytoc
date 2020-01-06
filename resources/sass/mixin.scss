@@ -51,11 +51,17 @@
     justify-content: flex-end;
     align-items: center; 
 }
-@mixin flex-col-arround-start {
+@mixin flex-col-around-start {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start; 
+}
+@mixin flex-col-around-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
 }
 @mixin flex-col-between-start {
     display: flex;

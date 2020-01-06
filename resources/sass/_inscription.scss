@@ -184,9 +184,21 @@
 }
 .invalid-feedback {
     position: absolute;
+    display: block;
+    @include acumin;
+    line-height: 1rem;
+    max-width: 100%;
+    padding-top: 4px;
+}
+.warning-block {
+    @include acumin;
+    line-height: 1rem;
 }
 .form-control.is-invalid {
     border-width: 3px;
+    & ~ .btn-seepassword__icon {
+        background-color: $red;
+    }
 }
 .me-forever {
     @include flex-col-between-start;
