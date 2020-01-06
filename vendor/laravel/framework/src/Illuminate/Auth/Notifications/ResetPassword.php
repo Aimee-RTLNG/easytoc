@@ -61,8 +61,8 @@ class ResetPassword extends Notification
         
 
             //->view('reset.mail')
-            ->subject(Lang::get('Reinitialisation du mot de passe'))
             ->from('info@easytoc.com')
+            ->subject(Lang::get('Reinitialisation du mot de passe'))
             ->line(Lang::get('Vous recevez ce courriel parce que nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.'))
             ->action(Lang::get('Reinitialiser Mot de Passe'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line(Lang::get('Ce lien de réinitialisation de mot de passe expirera en :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
