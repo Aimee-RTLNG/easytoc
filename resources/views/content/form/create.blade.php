@@ -48,7 +48,7 @@
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
-                        <input class="shadow-box  border-12" type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="150" value="{{ old('title') }}">
+                        <input class="shadow-box  border-12" type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="150" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
@@ -88,7 +88,7 @@
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
                 <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thèmes du formulaire') }}</h3>
-                <div class="template-panel__choice shadow-box border-12" role="complementary">
+                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary">
                     <div>
                         <div>
                             <input type="radio" value="blue" id="radio01" name="theme">
@@ -185,27 +185,27 @@
                     </div>
                     <div role="section" class="col-5" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 creator-panel__title">{{ __('Mise en forme du texte') }}</h3>
-                        <button class="btn btn-primary btn_crea" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
                             <i class="fa fa-bold"></i>
                             {{ __('Gras') }}
                         </button>
-                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem">
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem">
                             <i class="fa fa-italic"></i>
                             {{ __('Italique') }}
                         </button>
-                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem">
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem">
                             <i class="fa fa-underline"></i>
                             {{ __('Souligné') }}
                         </button>
-                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem">
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem">
                             <i class="fa fa-align-left"></i>
                             {{ __('Aligner à gauche') }}
                         </button>
-                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem">
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem">
                             <i class="fa fa-align-center"></i>
                             {{ __('Centrer') }}
                         </button>
-                        <button class="btn btn-primary btn_crea" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem">
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem">
                             <i class="fa fa-align-justify"></i>
                             {{ __('Justifier') }}
                         </button>
@@ -436,6 +436,11 @@
     </div>
 </div>
 
+<div class="import-data">
+    <input type="file" name="imported_data" id="imported_data"/>
+    <button type="submit" id="import-data" form="import_data">Envoyer</button>
+</div>
+
 <div class="alert alert-success" role="alert" style="display: none">
     <span class="alert-content">
         Contenu de l'alerte
@@ -452,6 +457,7 @@
 @section('pagespecificscripts')
 
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
+<script type="application/javascript" src="{{ URL::asset('js/components/import_data.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 
