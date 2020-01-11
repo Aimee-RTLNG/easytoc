@@ -441,7 +441,7 @@
     <button type="submit" id="import-data" form="import_data">Envoyer</button>
 </div>
 
-<div class="alert alert-success" role="alert" style="display: none">
+<div class="alert alert-success" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
         Contenu de l'alerte
     </span>
@@ -457,7 +457,7 @@
 @section('pagespecificscripts')
 
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
-<script type="application/javascript" src="{{ URL::asset('js/components/import_data.js') }}"></script>
+<script type="application/javascript" src="{{ URL::asset('js/components/import_data_form.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 

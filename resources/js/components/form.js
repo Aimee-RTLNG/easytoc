@@ -5,11 +5,15 @@ let intitule;
 let previous_element;
 let next_element;
 let message;
+let selected_option;
 
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
 let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+
+// Imports
+import { alertMsg } from "../../js/app";
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -71,6 +75,38 @@ var element_types = {
     }
 };
 
+export function getOldContent() {
+    // On rend l'ancien contenu modifiable
+    $('#full-form .label-text').attr('contenteditable', true);
+    $('#full-form .label-option-text').attr('contenteditable', true);
+    $('#full-form #form-title, #full-form h2,#full-form p,#full-form a,#full-form ol,#full-form ul,#full-form hr').attr('contenteditable', true);
+    // On récupère les paramètres
+
+    // Theme
+    let actual_theme = $("#generated-form").attr('class');
+    actual_theme = actual_theme.replace('theme-', '');
+    let selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
+    selected_theme.prop('checked', true);
+
+    // Titre
+    let actual_title = $("#full-form #form-title").text();
+    $("#form-creator-title").val(actual_title);
+
+    // Methode
+    let actual_method = $("#generated-form").attr('method');
+    $("#form-creator-method").val(actual_method);
+
+    // Lien
+    let actual_link = $("#generated-form").attr('action');
+    $("#form-creator-link").val(actual_link);
+
+    // Option de réinitialisation
+    let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
+    if (actual_reset.length > 0) {
+        $('#reset-button').prop('checked', true);
+    }
+}
+
 // ANCHOR Fonction de sauvegarde
 function updatecontent() {
 
@@ -93,45 +129,13 @@ function updatecontent() {
 };
 
 // ANCHOR Initialisation du formulaire
-if( $('#raw-code').val().length <= 0 ){
+if ($('#raw-code').val().length <= 0) {
     console.log("Création");
     $('#content-created-blueprint').html(initial_content);
     updatecontent();
-}else{
+} else {
     console.log("Modification");
-    // On rend l'ancien contenu modifiable
-    $('#full-form .label-text').attr('contenteditable', true);
-    $('#full-form .label-option-text').attr('contenteditable', true);
-    $('#full-form #form-title, #full-form h2,#full-form p,#full-form a,#full-form ol,#full-form ul,#full-form hr').attr('contenteditable', true);
-    // On récupère les paramètres
-
-    // Theme
-    let actual_theme = $("#generated-form").attr('class');
-    actual_theme = actual_theme.replace('theme-', '');
-    let selected_theme = $('.theme-switch').find('input[value='+actual_theme+']');
-    selected_theme.prop('checked', true);
-
-    // Titre
-    let actual_title = $("#full-form #form-title").text();
-    $("#form-creator-title").val(actual_title);
-
-    // Methode
-    let actual_method = $("#generated-form").attr('method');
-    $("#form-creator-method").val(actual_method);
-
-    // Lien
-    let actual_link = $("#generated-form").attr('action');
-    $("#form-creator-link").val(actual_link);
-
-    // Option de réinitialisation
-    let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
-    if(actual_reset.length > 0){
-        $('#reset-button').prop('checked', true);
-    }
-
-    updatecontent();
-}
-if ($('#content-created-blueprint').html()) {
+    getOldContent();
     updatecontent();
 }
 
@@ -153,20 +157,17 @@ $('#form-creator-method').on('change', function () {
     updatecontent();
 });
 
-// ANCHOR Ajout d'un élément
-$('.add-element').on('click', function () {
-
+export function addElement(element_type, element_type_name) {
     // permettra d'identifier l'élément (lui donne un ID aléatoire)
     let element_id = Math.random().toString(36).substr(2, 9);
     let element_name = Math.random().toString(36).substr(2, 9);
 
     // on différencie les éléments questions, layout, special etc 
-    let element_type = $(this).attr("class");
     element_type = element_type.match(/type-([^ ]+)/gi);
     element_type = element_type[0];
 
     // on récupère le type de l'élément
-    let element_type_name = $(this).attr("id");
+
     let element_content;
     if (element_type_name != "reset-button") {
         let added_content = element_types[element_type][element_type_name];
@@ -209,9 +210,15 @@ $('.add-element').on('click', function () {
     }
 
     message = "Element ajouté";
-    alertMsg(message);
+    alertMsg(message, "success");
     updatecontent();
+}
 
+// ANCHOR Ajout d'un élément
+$('.add-element').on('click', function () {
+    let element_type = $(this).attr("class");
+    let element_type_name = $(this).attr("id");
+    addElement(element_type, element_type_name);
 });
 
 // ANCHOR Sauvegarde définitive
@@ -560,7 +567,7 @@ $(".form-element-action").on('click', function (e) {
                 $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             }
             break;
-            // Déplacement vers le bas
+        // Déplacement vers le bas
         case "move-down":
             if (selected_option) {
                 // to do , ne compte pas le seelect
@@ -582,7 +589,7 @@ $(".form-element-action").on('click', function (e) {
                 $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
             }
             break;
-            // Suppression
+        // Suppression
         case "delete":
             deletecommand.execute();
             $("#actions-interface").hide();
@@ -590,18 +597,18 @@ $(".form-element-action").on('click', function (e) {
             $('.action-delete').attr('disabled', 'true');
             $('.action-undo').removeAttr('disabled');
             message = "Élément supprimé";
-            alertMsg(message);
+            alertMsg(message, "success");
             break;
-            // Annuler la suppression
+        // Annuler la suppression
         case "undo":
             deletecommand.undo();
             $(this).attr('disabled', 'true');
             $('.alert-success').slideUp();
             $('.element-container').last().find('[contenteditable=true]').first().focus();
             message = "Élément rétabli";
-            alertMsg(message);
+            alertMsg(message, "success");
             break;
-            // Changement de l'attr multiple   
+        // Changement de l'attr multiple   
         case "multiple-answer":
             if (element_selected_container.find('select').attr('multiple')) {
                 element_selected_container.find('select').removeAttr('multiple');
@@ -609,7 +616,7 @@ $(".form-element-action").on('click', function (e) {
                 element_selected_container.find('select').attr('multiple', 'true');
             }
             break;
-            // Changement de l'attr required
+        // Changement de l'attr required
         case "required":
             if (element_selected_container.hasClass('field-required')) {
                 element_selected_container.removeClass('field-required');
@@ -648,7 +655,7 @@ $(".form-element-action").on('click', function (e) {
                 }
             }
             break;
-            // Ajout d'action
+        // Ajout d'action
         case "add-option":
             addOption();
             if (selected_option) {
@@ -657,12 +664,12 @@ $(".form-element-action").on('click', function (e) {
                 refreshMoveButtons(previous_option, next_option, true);
             }
             message = "Option ajoutée";
-            alertMsg(message);
+            alertMsg(message, "success");
             break;
         case "delete-option":
             deleteOption();
             message = "Option supprimée";
-            alertMsg(message);
+            alertMsg(message, "success");
             break;
     }
 
@@ -686,7 +693,7 @@ $(".form-element-action").on('click', function (e) {
         case "question-text":
             intitule.text($(this).val());
             break;
-            // Changement de longueur max
+        // Changement de longueur max
         case "maxlength":
             if ($(this).val() == 0) {
                 input.removeAttr('maxlength');
@@ -694,7 +701,7 @@ $(".form-element-action").on('click', function (e) {
                 input.attr('maxlength', $(this).val());
             }
             break;
-            // Changement de longueur max
+        // Changement de longueur max
         case "options-name":
             if ($(this).val() != 0) {
                 $(element_selected_container).find('input').attr('name', $(this).val());
@@ -702,7 +709,7 @@ $(".form-element-action").on('click', function (e) {
                 $(element_selected_container).find('textarea').attr('name', $(this).val());
             }
             break;
-            // Changement de nom de l'option
+        // Changement de nom de l'option
         case "option-label":
             if ($(this).val() != 0 && $('.content-editable-selected input').length > 0) {
                 $('.content-editable-selected .label-option-text').text($(this).val());
@@ -710,7 +717,7 @@ $(".form-element-action").on('click', function (e) {
                 $('.content-editable-selected select option:selected').text($(this).val());
             }
             break;
-            // Changement de valeur de l'option
+        // Changement de valeur de l'option
         case "option-value":
             if ($(this).val() != 0 && $('.content-editable-selected input').length > 0) {
                 input.attr('value', $(this).val());
@@ -718,7 +725,7 @@ $(".form-element-action").on('click', function (e) {
                 $('.content-editable-selected select option:selected').attr('value', $(this).val());
             }
             break;
-            // Changement de placeholder
+        // Changement de placeholder
         case "placeholder":
             input.attr('placeholder', $(this).val());
             if ($(input).prop("tagName") == "SELECT") {
@@ -788,7 +795,7 @@ function addOption() {
 
 // ANCHOR Fonction de suppression d'option (select)
 function deleteOption() {
-    let select_option_selected= $(".content-editable-selected select option:selected");
+    let select_option_selected = $(".content-editable-selected select option:selected");
     select_option_selected.remove();
     $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
     $('.action-delete-option').hide();
@@ -869,7 +876,7 @@ function refreshMoveButtons(previous_element, next_element, option) {
     if (option) {
         if (previous_element) {
 
-            if (previous_element.attr("disabled") != "true" && previous_element.class("class") == "indicator-required" && previous_element.attr('data-tag') == "option") {
+            if (previous_element.attr("disabled") != "true" && previous_element.hasClass("indicator-required") && previous_element.attr('data-tag') == "option") {
                 $('#action-move-up').removeAttr('disabled');
             } else {
                 $('#action-move-up').attr('disabled', true);
@@ -907,26 +914,8 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
     message = "Code copié !";
     $(".copy-container button").text("Copier");
     $(this).text(message);
-    alertMsg(message);
+    alertMsg(message, "success");
 })
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');
 
-// ANCHOR Message d'alerte
-var alert_timeout;
-
-function alertMsg(message) {
-    clearTimeout(alert_timeout);
-    if ($('.alert-success').is(":hidden")) {
-        $('.alert-success .alert-content').text(message);
-        $('.alert-success').slideDown();
-    } else {
-        $('.alert-success').slideUp("fast", function () {
-            $('.alert-success .alert-content').text(message);
-            $('.alert-success').slideDown();
-        });
-    }
-    alert_timeout = setTimeout(function () {
-        $('.alert-success').slideUp();
-    }, 7000);
-}

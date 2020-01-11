@@ -11965,7 +11965,7 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
-.alert-success {
+.alert-success, .alert-danger {
   position: fixed;
   bottom: 10px;
   right: 15px;

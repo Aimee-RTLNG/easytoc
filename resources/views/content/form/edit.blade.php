@@ -468,7 +468,7 @@
 @section('pagespecificscripts')
 
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
-<script type="application/javascript" src="{{ URL::asset('js/components/import_data.js') }}"></script>
+<script type="application/javascript" src="{{ URL::asset('js/components/import_data_form.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 

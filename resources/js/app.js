@@ -77,6 +77,46 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     })
 
-
-
 });
+
+// ANCHOR Message d'alerte
+let alert_timeout;
+let alert_type;
+let alert_container;
+export function alertMsg(message, state) {
+    alert_container = $('#alert-message');
+    if(state == "success"){
+        alert_type = "success";
+    }else if (state == "error"){
+        alert_type = "danger";
+    }
+
+    clearTimeout(alert_timeout);
+        if (alert_container.is(":hidden")) {
+            if(alert_type == "danger"){
+                alert_container.removeClass("alert-success");
+                alert_container.addClass("alert-danger");
+            }else{
+                alert_container.removeClass("alert-danger");
+                alert_container.addClass("alert-success");
+            }
+            alert_container.find(".alert-content").text(message);
+            alert_container.slideDown();
+        } else {
+            alert_container.slideUp("fast", function () {
+                alert_container.find(".alert-content").text(message);
+                if(alert_type == "danger"){
+                    alert_container.removeClass("alert-success");
+                    alert_container.addClass("alert-danger");
+                }else{
+                    alert_container.removeClass("alert-danger");
+                    alert_container.addClass("alert-success");
+                }
+                alert_container.slideDown();
+            });
+        }
+        alert_timeout = setTimeout(function () {
+            alert_container.slideUp();
+        }, 7000);
+    
+}
