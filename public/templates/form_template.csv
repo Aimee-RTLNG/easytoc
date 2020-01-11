@@ -1,6 +1,6 @@
 ﻿Type;Element's text;Name;Link;Options;Style;Placeholder;Max Length;Item 1;Value Item 1;Item 2;Value Item 2;Item 3;Value Item 3;Item 4;Value Item 4;Item 5;Value Item 5;Item 52;Value Item 53;Item 53;Value Item 54;Value Item 55;Value Item 56
 form;Exemple de formulaire Easy to C;;/form.php;post, reset;green;;;;;;;;;;;;;;;;;;
-text;Ceci est un formulaire test, il a été généré par un fichier en format JSON. Pour en savoir plus, vous pouvez aller consulter le guide d'utilisation / d'importation des données du générateur de formulaire.;;;;justify-full, bold;;;;;;;;;;;;;;;;;;
+paragraph;Ceci est un formulaire test, il a été généré par un fichier en format JSON. Pour en savoir plus, vous pouvez aller consulter le guide d'utilisation / d'importation des données du générateur de formulaire.;;;;justify-full, bold;;;;;;;;;;;;;;;;;;
 link;Page d'aide à l'utilisation et à l'importation des données pour le générateur de formulaire.;;https://easytoc.ritleng.mmi-unistra.fr/aide#creator;;bold, italic;;;;;;;;;;;;;;;;;;
 unordered-list;En remplissant ce formulaire fictif, des questions sur les sujets suivants vous seront posées :;;;;;;;Votre identité (seulement votre prénom);;Vos goûts personnels concernant les couleurs;;Vos chaussettes;;;;;;;;;;;
 short-answer;Quelle est votre prénom ?;firstname;;required;bold;Entrez votre prénom…;50;;;;;;;;;;;;;;;;

@@ -56,18 +56,20 @@ $('#import-data').on('click', function () {
           } else if (i > 1) {
             var items = [];
 
-            for (var y = 8; y < row.length; y = y + 2) {
-              var item = {
-                value: row[y + 1],
-                name: row[y]
-              };
-              items.push(item);
+            if (row[8]) {
+              for (var y = 8; y < row.length; y = y + 2) {
+                var item = {
+                  value: row[y + 1],
+                  name: row[y]
+                };
+                items.push(item);
+              }
             }
 
             formatted_csv.items.push({
               type: row[0],
               content: row[1],
-              link: row[2],
+              name: row[2],
               url: row[3],
               options: row[4].split(","),
               style: row[5].split(","),
@@ -131,8 +133,45 @@ function importData(form) {
   Object.keys(items_list).forEach(function (key) {
     var element_type_name = items_list[key].type;
     element_type_name = element_type_name.replace(/-/g, "_");
-    element_type_name = "insert-" + element_type_name;
-    Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-question", element_type_name);
+    element_type_name = "insert-" + element_type_name; // Si ce n'est pas un élément question
+
+    if (element_type_name == "insert-title" || element_type_name == "insert-paragraph" || element_type_name == "insert-link" || element_type_name == "insert-ordered_list" || element_type_name == "insert-unordered_list" || element_type_name == "insert-horizontal_rule") {
+      Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-layout", element_type_name); // Si l'élément contient du texte
+
+      if (items_list[key].content) {
+        $('.content-editable-selected .layout-text').text(items_list[key].content);
+        $('.content-editable-selected a').attr('href', items_list[key].url);
+      }
+
+      if (items_list[key].items) {
+        var item_options_list = items_list[key].items;
+
+        for (var i = 0; i < item_options_list.length; i++) {
+          if (item_options_list[i].name) {
+            var base_item = $('.content-editable-selected ul, .content-editable-selected ol').html();
+            $('.content-editable-selected ul, .content-editable-selected ol').append("<li>" + item_options_list[i].name + "</li>");
+          }
+        }
+      }
+    } else {
+      Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-question", element_type_name);
+
+      if (items_list[key].content) {
+        $('.content-editable-selected .label-text').text(items_list[key].content);
+        $('.content-editable-selected input, .content-editable-selected textarea').attr('placeholder', items_list[key].placeholder);
+        $('.content-editable-selected input, .content-editable-selected textarea').attr('name', items_list[key].name);
+        console.log(items_list[key]); // placeholder, options, etc...
+      }
+
+      if (items_list[key].items) {
+        var _item_options_list = items_list[key].items;
+
+        for (var i = 0; i < _item_options_list.length; i++) {
+          Object(_form__WEBPACK_IMPORTED_MODULE_1__["addOption"])(element_type_name);
+          $('.content-editable-selected .label-option-text').last().text(_item_options_list[i].name);
+        }
+      }
+    }
   }); // On rend le contenu modifiable 
 
   Object(_form__WEBPACK_IMPORTED_MODULE_1__["getOldContent"])();

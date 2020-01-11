@@ -51238,15 +51238,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!*****************************************!*\
   !*** ./resources/js/components/form.js ***!
   \*****************************************/
-/*! exports provided: getOldContent, addElement */
+/*! exports provided: getOldContent, addElement, addOption */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addOption", function() { return addOption; });
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
 // ANCHOR Données initiales
+var element;
 var element_selected_container;
 var input;
 var intitule;
@@ -51303,11 +51305,11 @@ var element_types = {
     "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
   },
   "type-layout": {
-    "insert-title": "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
-    "insert-paragraph": "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
-    "insert-link": "<a href='' contenteditable='true' data-tag='label-text'>Nom du lien</a>",
-    "insert-ordered_list": "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-    "insert-unordered_list": "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+    "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+    "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+    "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+    "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+    "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
     "insert-horizontal_rule": "<hr contenteditable='true'>"
   },
   "type-special": {
@@ -52012,9 +52014,9 @@ function selectText(element) {
 
 ; // ANCHOR Fonction d'ajout d'option
 
-function addOption() {
+function addOption(option_type_parameter) {
   var option_parent_element = $(".content-editable-selected");
-  var option_type = $(option_parent_element).attr("data-elementtypename");
+  var option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
 
   if (!option_type) {
     option_parent_element = $(".content-editable-selected").closest(".element-container");
@@ -52042,7 +52044,6 @@ function addOption() {
   option = option.replace(option_name_replace_regex, option_name);
   $(option_group).append(option);
 } // ANCHOR Fonction de suppression d'option (select)
-
 
 function deleteOption() {
   var select_option_selected = $(".content-editable-selected select option:selected");

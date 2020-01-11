@@ -1,6 +1,6 @@
 // Imports
 import { alertMsg } from "../app";
-import { getOldContent, addElement } from "./form";
+import { getOldContent, addElement, addOption } from "./form";
 
 // Variables
 let message;
@@ -31,11 +31,13 @@ $('#import-data').on('click', function () {
                         formatted_csv.style = row[5];
                     }else if ( i > 1 ){
                         let items = [];
-                        for (var y = 8; y < row.length; y=y+2) {
-                            let item = {value : row[y+1], name:  row[y]};
-                            items.push(item);
+                        if(row[8]){
+                            for (var y = 8; y < row.length; y=y+2) {
+                                let item = {value : row[y+1], name:  row[y]};
+                                items.push(item);
+                            }
                         }
-                        formatted_csv.items.push({type: row[0], content: row[1], link: row[2], url: row[3], options: row[4].split(","), style: row[5].split(","), placeholder: row[6], maxlength: row[7], items: items}); 
+                        formatted_csv.items.push({type: row[0], content: row[1], name: row[2], url: row[3], options: row[4].split(","), style: row[5].split(","), placeholder: row[6], maxlength: row[7], items: items}); 
                     }
                 }
                 importData(formatted_csv);
@@ -91,7 +93,40 @@ function importData(form) {
         let element_type_name = items_list[key].type;
         element_type_name = element_type_name.replace(/-/g, "_");
         element_type_name = "insert-"+element_type_name;
-        addElement("type-question", element_type_name);
+        // Si ce n'est pas un élément question
+        if(element_type_name == "insert-title" || element_type_name == "insert-paragraph" || element_type_name == "insert-link" || element_type_name == "insert-ordered_list" || element_type_name == "insert-unordered_list" || element_type_name == "insert-horizontal_rule"){
+            addElement("type-layout", element_type_name);
+            // Si l'élément contient du texte
+            if(items_list[key].content){
+                $('.content-editable-selected .layout-text').text(items_list[key].content);
+                $('.content-editable-selected a').attr('href', items_list[key].url);
+            }
+            if(items_list[key].items){
+                let item_options_list = items_list[key].items;
+                for(var i = 0; i < item_options_list.length; i++){
+                    if(item_options_list[i].name){
+                        let base_item = $('.content-editable-selected ul, .content-editable-selected ol').html();
+                        $('.content-editable-selected ul, .content-editable-selected ol').append("<li>"+item_options_list[i].name+"</li>");
+                    }
+                }
+            }
+        }else{
+            addElement("type-question", element_type_name);
+            if(items_list[key].content){
+                $('.content-editable-selected .label-text').text(items_list[key].content);
+                $('.content-editable-selected input, .content-editable-selected textarea').attr('placeholder', items_list[key].placeholder);
+                $('.content-editable-selected input, .content-editable-selected textarea').attr('name', items_list[key].name);
+                console.log(items_list[key]);
+                // placeholder, options, etc...
+            }
+            if(items_list[key].items){
+                let item_options_list = items_list[key].items;
+                for(var i = 0; i < item_options_list.length; i++){
+                    addOption(element_type_name);
+                    $('.content-editable-selected .label-option-text').last().text(item_options_list[i].name);
+                }
+            }
+        }
     });
 
     // On rend le contenu modifiable 

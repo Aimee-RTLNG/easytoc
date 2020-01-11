@@ -1,4 +1,5 @@
 // ANCHOR Données initiales
+let element;
 let element_selected_container;
 let input;
 let intitule;
@@ -61,11 +62,11 @@ var element_types = {
         "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
     },
     "type-layout": {
-        "insert-title": "<h2 contenteditable='true' data-tag='text'>Titre</h2>",
-        "insert-paragraph": "<p contenteditable='true' data-tag='text'>Paragraphe</p>",
-        "insert-link": "<a href='' contenteditable='true' data-tag='label-text'>Nom du lien</a>",
-        "insert-ordered_list": "<ol contenteditable='true' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-        "insert-unordered_list": "<ul contenteditable='true' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+        "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+        "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+        "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+        "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+        "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
         "insert-horizontal_rule": "<hr contenteditable='true'>",
     },
     "type-special": {
@@ -764,9 +765,9 @@ function selectText(element) {
 };
 
 // ANCHOR Fonction d'ajout d'option
-function addOption() {
+export function addOption(option_type_parameter) {
     let option_parent_element = $(".content-editable-selected");
-    let option_type = $(option_parent_element).attr("data-elementtypename");
+    let option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
     if (!option_type) {
         option_parent_element = $(".content-editable-selected").closest(".element-container");
         option_type = $(".content-editable-selected").closest(".element-container").attr("data-elementtypename");
