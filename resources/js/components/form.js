@@ -6,7 +6,9 @@ let intitule;
 let previous_element;
 let next_element;
 let message;
+let previous_option;
 let selected_option;
+let next_option;
 
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
@@ -47,7 +49,7 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
-var element_types = {
+export let element_types = {
     "type-question": {
         "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
         "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
@@ -279,9 +281,9 @@ $(document.body)
         // $(this).closest('.element-container').addClass('content-editable-selected');
         $(this).addClass('option-selected').addClass('content-editable-selected');
 
-        let selected_option = $('.option-selected');
-        let previous_option = selected_option.prev();
-        let next_option = selected_option.next();
+        selected_option = $('.option-selected');
+        previous_option = selected_option.prev();
+        next_option = selected_option.next();
         refreshMoveButtons(previous_option, next_option, true);
 
         updatecontent();

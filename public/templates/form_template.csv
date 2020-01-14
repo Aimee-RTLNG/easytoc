@@ -1,11 +1,12 @@
-﻿Type;Element's text;Name;Link;Options;Style;Placeholder;Max Length;Item 1;Value Item 1;Item 2;Value Item 2;Item 3;Value Item 3;Item 4;Value Item 4;Item 5;Value Item 5;Item 52;Value Item 53;Item 53;Value Item 54;Value Item 55;Value Item 56
-form;Exemple de formulaire Easy to C;;/form.php;post, reset;green;;;;;;;;;;;;;;;;;;
-paragraph;Ceci est un formulaire test, il a été généré par un fichier en format JSON. Pour en savoir plus, vous pouvez aller consulter le guide d'utilisation / d'importation des données du générateur de formulaire.;;;;justify-full, bold;;;;;;;;;;;;;;;;;;
-link;Page d'aide à l'utilisation et à l'importation des données pour le générateur de formulaire.;;https://easytoc.ritleng.mmi-unistra.fr/aide#creator;;bold, italic;;;;;;;;;;;;;;;;;;
-unordered-list;En remplissant ce formulaire fictif, des questions sur les sujets suivants vous seront posées :;;;;;;;Votre identité (seulement votre prénom);;Vos goûts personnels concernant les couleurs;;Vos chaussettes;;;;;;;;;;;
-short-answer;Quelle est votre prénom ?;firstname;;required;bold;Entrez votre prénom…;50;;;;;;;;;;;;;;;;
-one-answer;Quelle est votre couleur préférée ?;favorite-color;;required;;Choisissez une réponse…;;Bleu;blue;Brun;brown;Vert;green;Noir;black;Autre;other;;;;;;
-long-answer;Quelles sont les raisons de ce choix ?;favorite-color-reasons;;;;Expliquez votre choix…;150;;;;;;;;;;;;;;;;
-many-answer;De quelles couleurs sont vos chaussettes ?;sock-colors;;;;Choisissez une ou plusieurs réponses…;;Bleues;blue;Brunes;brown;Vertes;green;Blanches;white;Noires;black;Rouges;red;Roses;pink;Autres;other
-list-answer;Choisissez vos types de chaussettes préférés;sock-type;;required, multiple;;Sélectionner une option dans la liste…;;Invisibles;invisible;Socquettes;liner;Normales;anklets;Longues;crew;Je n'aime pas les chaussettes !;none;;;;;;
-binary-answer;J'accepte de partager les informations confidentielles données, me concernant moi et mes chaussettes, avec Easy to C.;approval;;required;italic;;;;;;;;;;;;;;;;;;
+﻿Type;Element's text;Name;Link;Options;Style;Placeholder;Max Length;Answer Type; Item 1;Value Item 1;Item 2;Value Item 2;Item 3;Value Item 3;Item 4;Value Item 4;Item 5;Value Item 5;Item 52;Value Item 53;Item 53;Value Item 54;Value Item 55;Value Item 56
+form;Exemple de formulaire Easy to C;;/form.php;post, reset;green;;;;;;;;;;;;;;;;;;;
+paragraph;Ceci est un formulaire test, il a été généré par un fichier en format JSON. Pour en savoir plus, vous pouvez aller consulter le guide d'utilisation / d'importation des données du générateur de formulaire.;;;;justify-full, bold;;;;;;;;;;;;;;;;;;;
+link;Page d'aide à l'utilisation et à l'importation des données pour le générateur de formulaire.;;https://easytoc.ritleng.mmi-unistra.fr/aide#creator;;bold, italic;;;;;;;;;;;;;;;;;;;
+unordered-list;En remplissant ce formulaire fictif, des questions sur les sujets suivants vous seront posées :;;;;;;;;Votre identité (seulement votre prénom);;Vos goûts personnels concernant les couleurs;;Vos chaussettes;;;;;;;;;;;
+short-answer;Quelle est votre prénom ?;firstname;;required;bold;Entrez votre prénom…;50;text;;;;;;;;;;;;;;;;
+short-answer;Quelle est votre prénom ?;email;;required;bold;Entrez votre email;50;email;;;;;;;;;;;;;;;;
+one-answer;Quelle est votre couleur préférée ?;favorite-color;;required;;Choisissez une réponse…;;;Bleu;blue;Brun;brown;Vert;green;Noir;black;Autre;other;;;;;;
+long-answer;Quelles sont les raisons de ce choix ?;favorite-color-reasons;;;;Expliquez votre choix…;150;;;;;;;;;;;;;;;;;
+many-answer;De quelles couleurs sont vos chaussettes ?;sock-colors;;;;Choisissez une ou plusieurs réponses…;;;Bleues;blue;Brunes;brown;Vertes;green;Blanches;white;Noires;black;Rouges;red;Roses;pink;Autres;other
+list-answer;Choisissez vos types de chaussettes préférés;sock-type;;required, multiple;;Sélectionner une option dans la liste…;;;Invisibles;invisible;Socquettes;liner;Normales;anklets;Longues;crew;Je n'aime pas les chaussettes !;none;;;;;;
+binary-answer;J'accepte de partager les informations confidentielles données, me concernant moi et mes chaussettes, avec Easy to C.;approval;;required;italic;;;;J'accepte ces conditions abusives;agree;;;;;;;;;;;;;;

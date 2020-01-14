@@ -64,12 +64,13 @@
             <div class="actions-panel @if (Auth::check()) col-lg-4 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
                 <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData">
                         <div class="btn-crea__icon">
                             <i class="fas fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
+                    
                     <button type="button" class="btn btn-form-final btn-primary btn-crea">
                         <div class="btn-crea__icon">
                             <i class="fas fa-sync"></i>
@@ -436,10 +437,6 @@
     </div>
 </div>
 
-<div class="import-data">
-    <input type="file" name="imported_data" id="imported_data"/>
-    <button type="submit" id="import-data" form="import_data">Envoyer</button>
-</div>
 
 <div class="alert alert-success" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
@@ -450,6 +447,26 @@
             <i class="fa fa-times"></i>
         </span>
     </button>
+</div>
+
+<div class="modal fade import-data" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="importDataTitle">{{ __('Importer des données') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="file" name="imported_data" id="imported_data"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal">{{ __('Importer mes données') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Annuler') }}</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

@@ -15,17 +15,17 @@ __webpack_require__.r(__webpack_exports__);
 
  // Variables
 
-var message; // ORDRE DES VALEURS
+var message;
+var success = true; // ORDRE DES VALEURS
 // Type, Texte du label, Nom/Name, Lien, Options (reset/post), Theme/Style, Placeholder, Maxlength 
 // Après ça : liste d'items si item présent dans l'élément (option) :  Item 1 Value 1 Item 2 Value 2...
 
 $('#import-data').on('click', function () {
   var regex_csv = /^([a-zA-Z0-9\s_\\.\-:])+(.csv)$/;
-  var regex_json = /^([a-zA-Z0-9\s_\\.\-:])+(.json)$/;
+  var regex_json = /^([a-zA-Z0-9\s_\\.\-:])+(.json)$/; // FORMAT CSV
 
   if (regex_csv.test($("#imported_data").val().toLowerCase())) {
     if (typeof FileReader != "undefined") {
-      console.log('Format CSV');
       var formatted_csv = {
         type: "",
         title: "",
@@ -54,17 +54,24 @@ $('#import-data').on('click', function () {
             };
             formatted_csv.style = row[5];
           } else if (i > 1) {
+            // On récupère les items si présents
             var items = [];
 
-            if (row[8]) {
-              for (var y = 8; y < row.length; y = y + 2) {
-                var item = {
+            if (row[9] && (row[0] == "unordered-list" || row[0] == "ordered-list")) {
+              for (var y = 9; y < row.length; y = y + 1) {
+                var item = row[y];
+                items.push(item);
+              }
+            } else if (row[9]) {
+              for (var y = 9; y < row.length; y = y + 2) {
+                var _item = {
                   value: row[y + 1],
                   name: row[y]
                 };
-                items.push(item);
+                items.push(_item);
               }
-            }
+            } // On ajoute l'élément au tableau
+
 
             formatted_csv.items.push({
               type: row[0],
@@ -75,6 +82,7 @@ $('#import-data').on('click', function () {
               style: row[5].split(","),
               placeholder: row[6],
               maxlength: row[7],
+              answertype: row[8],
               items: items
             });
           }
@@ -84,26 +92,28 @@ $('#import-data').on('click', function () {
       };
 
       reader.readAsText($("#imported_data")[0].files[0]);
-    } else {
-      alert("This browser does not support HTML5.");
-    }
+    } // FORMAT JSON
+
   } else if (regex_json.test($("#imported_data").val().toLowerCase())) {
     if (typeof FileReader != "undefined") {
-      console.log('Format JSON');
       var reader = new FileReader();
 
       reader.onload = function (e) {
         var formatted_json = e.target.result; // On formatte en mode JSON
 
-        formatted_json = JSON.parse(formatted_json); // On importe les données dans le générateur
+        try {
+          formatted_json = JSON.parse(formatted_json); // On importe les données dans le générateur
 
-        importData(formatted_json);
+          importData(formatted_json);
+          success = true;
+        } catch (e) {
+          success = false;
+          message = "Votre fichier est invalide. Merci de réessayer.";
+          Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        }
       };
 
       reader.readAsText($("#imported_data")[0].files[0]);
-    } else {
-      message = "Votre fichier est invalide. Merci de réessayer.";
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     }
   } else {
     message = "Format de fichier incorrect";
@@ -112,8 +122,7 @@ $('#import-data').on('click', function () {
 });
 
 function importData(form) {
-  console.log(form);
-  message = "Données récupérées"; // On modifie les informations de base du formulaire
+  console.log(form); // On modifie les informations de base du formulaire
 
   $("#generated-form").attr('class', 'theme-' + form.style);
   $("#generated-form").attr('action', form.url);
@@ -135,7 +144,7 @@ function importData(form) {
     element_type_name = element_type_name.replace(/-/g, "_");
     element_type_name = "insert-" + element_type_name; // Si ce n'est pas un élément question
 
-    if (element_type_name == "insert-title" || element_type_name == "insert-paragraph" || element_type_name == "insert-link" || element_type_name == "insert-ordered_list" || element_type_name == "insert-unordered_list" || element_type_name == "insert-horizontal_rule") {
+    if (_form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-layout"][element_type_name]) {
       Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-layout", element_type_name); // Si l'élément contient du texte
 
       if (items_list[key].content) {
@@ -147,35 +156,80 @@ function importData(form) {
         var item_options_list = items_list[key].items;
 
         for (var i = 0; i < item_options_list.length; i++) {
-          if (item_options_list[i].name) {
+          if (item_options_list[i]) {
             var base_item = $('.content-editable-selected ul, .content-editable-selected ol').html();
-            $('.content-editable-selected ul, .content-editable-selected ol').append("<li>" + item_options_list[i].name + "</li>");
+            $('.content-editable-selected ul, .content-editable-selected ol').append("<li>" + item_options_list[i] + "</li>");
+          }
+        }
+      }
+    } else if (_form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-question"][element_type_name]) {
+      Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-question", element_type_name);
+
+      if (items_list[key].content) {
+        $('.content-editable-selected .label-text').text(items_list[key].content); // Placeholder
+
+        $('.content-editable-selected input, .content-editable-selected textarea').attr('placeholder', items_list[key].placeholder);
+        $('.content-editable-selected select option').first().text(items_list[key].placeholder); // Name
+
+        $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('name', items_list[key].name); // Maxlength
+
+        $('.content-editable-selected input, .content-editable-selected textarea').attr('maxlength', items_list[key].maxlength); // Options
+
+        if (items_list[key].options) {
+          if (items_list[key].options.includes("required")) {
+            $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required');
+          }
+
+          if (items_list[key].options.includes("multiple-choice")) {
+            $('.content-editable-selected select').attr('multiple', 'multiple');
+          }
+        } // Type de réponse input text (email, nombre...)
+
+
+        if (items_list[key].answertype) {
+          $('.content-editable-selected input').attr('type', items_list[key].answertype);
+        } // On retire les options initiales ajoutées automatiquement 
+
+
+        $('.content-editable-selected option').last().remove();
+
+        if (element_type_name != "insert-binary_answer") {
+          $('.content-editable-selected fieldset label').last().remove();
+        } else {
+          $('.content-editable-selected fieldset .label-option-text').text(items_list[key].items[0].name);
+          $('.content-editable-selected fieldset input').attr('name', items_list[key].items[0].value);
+        }
+      } else {
+        success = false;
+      }
+
+      if (items_list[key].items && element_type_name != "insert-binary_answer") {
+        var _item_options_list = items_list[key].items;
+
+        for (var i = 0; i < _item_options_list.length; i++) {
+          if (_item_options_list[i].name) {
+            Object(_form__WEBPACK_IMPORTED_MODULE_1__["addOption"])(element_type_name);
+            $('.content-editable-selected .label-option-text').last().text(_item_options_list[i].name);
+            $('.content-editable-selected option').last().text(_item_options_list[i].name);
+            $('.content-editable-selected input, .content-editable-selected option').last().attr('value', _item_options_list[i].value);
+            $('.content-editable-selected input').attr('name', items_list[key].name);
           }
         }
       }
     } else {
-      Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-question", element_type_name);
-
-      if (items_list[key].content) {
-        $('.content-editable-selected .label-text').text(items_list[key].content);
-        $('.content-editable-selected input, .content-editable-selected textarea').attr('placeholder', items_list[key].placeholder);
-        $('.content-editable-selected input, .content-editable-selected textarea').attr('name', items_list[key].name);
-        console.log(items_list[key]); // placeholder, options, etc...
-      }
-
-      if (items_list[key].items) {
-        var _item_options_list = items_list[key].items;
-
-        for (var i = 0; i < _item_options_list.length; i++) {
-          Object(_form__WEBPACK_IMPORTED_MODULE_1__["addOption"])(element_type_name);
-          $('.content-editable-selected .label-option-text').last().text(_item_options_list[i].name);
-        }
-      }
+      success = false;
     }
   }); // On rend le contenu modifiable 
 
   Object(_form__WEBPACK_IMPORTED_MODULE_1__["getOldContent"])();
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+  if (success) {
+    message = "Données récupérées";
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+  } else {
+    message = "Erreur dans l'importation des données";
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+  }
 }
 
 /***/ }),

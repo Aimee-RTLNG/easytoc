@@ -51238,11 +51238,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!*****************************************!*\
   !*** ./resources/js/components/form.js ***!
   \*****************************************/
-/*! exports provided: getOldContent, addElement, addOption */
+/*! exports provided: element_types, getOldContent, addElement, addOption */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addOption", function() { return addOption; });
@@ -51255,7 +51256,9 @@ var intitule;
 var previous_element;
 var next_element;
 var message;
+var previous_option;
 var selected_option;
+var next_option;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
 var csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -51498,9 +51501,9 @@ $(document.body).off('keyup') // ré-initialisation
   $('.option-selected').removeClass('option-selected'); // $(this).closest('.element-container').addClass('content-editable-selected');
 
   $(this).addClass('option-selected').addClass('content-editable-selected');
-  var selected_option = $('.option-selected');
-  var previous_option = selected_option.prev();
-  var next_option = selected_option.next();
+  selected_option = $('.option-selected');
+  previous_option = selected_option.prev();
+  next_option = selected_option.next();
   refreshMoveButtons(previous_option, next_option, true);
   updatecontent();
 }) // Quand on sélectionne un élément éditable

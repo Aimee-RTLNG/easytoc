@@ -42,6 +42,13 @@
 			"maxlength": 50
 		},
 		{
+			"type": "short-answer",
+			"content": "Quelle est votre adresse e-mail ?",
+			"name": "email",
+			"answertype": "email",
+			"placeholder": "Entrez votre adresse e-mail..."
+		},
+		{
 			"type": "one-answer",
 			"content": "Quelle est votre couleur préférée ?",
 			"name": "favorite-color",
@@ -80,7 +87,7 @@
 		},
 		{
 			"type": "many-answer",
-			"content": "De quelles couleures sont vos chaussettes ?",
+			"content": "De quelles couleurs sont vos chaussettes ?",
 			"name": "sock-colors",
 			"placeholder": "Choisissez une ou plusieurs réponses...",
 			"items": [
@@ -155,10 +162,12 @@
 			"style": [
 				"italic"
 			],
-			"items": {
-				"value": "invisible",
-				"name": "Invisible"
-			}
+			"items": [
+				{
+					"value": "agree",
+					"name": "J'accepte ces conditions abusives"
+				}
+			]
 		}
 	]
 }
