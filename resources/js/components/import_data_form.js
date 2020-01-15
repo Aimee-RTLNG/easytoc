@@ -66,6 +66,7 @@ $('#import-data').on('click', function () {
                     success = true;
                 } catch(e) {
                     success = false;
+                    console.log(e);
                     message = "Votre fichier est invalide. Merci de réessayer.";
                     alertMsg(message, "error");
                 }
@@ -77,10 +78,24 @@ $('#import-data').on('click', function () {
         message = "Format de fichier incorrect";
         alertMsg(message, "error");
     }
-})
+});
+
+// ANCHOR Générer un exemple
+$('#generate-example').on('click', function () {
+    console.log(templateUrl);
+    let formatted_json = $.getJSON(templateUrl+'/form_template.json')
+    .done(function(json){
+        importData(json);
+    })
+    .fail(function( jqxhr, textStatus, error ){
+        console.log(textStatus);
+        console.log(error);
+        message = "Erreur dans le chargement de l'exemple";
+        alertMsg(message, "error");
+    })
+});
 
 function importData(form) {
-    console.log(form);
 
     // On modifie les informations de base du formulaire
     $("#generated-form").attr('class', 'theme-'+form.style);
@@ -147,7 +162,7 @@ function importData(form) {
                 $('.content-editable-selected option').last().remove();
                 if( element_type_name != "insert-binary_answer"){
                     $('.content-editable-selected fieldset label').last().remove();
-                }else{
+                }else if(items_list[key].items[0]) {
                     $('.content-editable-selected fieldset .label-option-text').text(items_list[key].items[0].name);
                     $('.content-editable-selected fieldset input').attr('name', items_list[key].items[0].value);
                 }

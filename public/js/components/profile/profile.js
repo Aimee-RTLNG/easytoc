@@ -7,8 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log('bllblbbl'); // Ajout de la classe Active sur le bouton filtre
-
+// Ajout de la classe Active sur le bouton filtre
 var btnContainer = document.getElementById("list-filters");
 var btns = btnContainer.getElementsByClassName("btn-filter-type");
 

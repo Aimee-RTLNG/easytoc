@@ -51472,10 +51472,20 @@ $('#btn-save-project').on('click', function () {
   }).done(function (msg) {
     console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
+    $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
     console.log(xhr.responseText);
     console.log(status);
-    console.log(error);
+    console.log(error); // TODO Erreur
+
+    if (!$('#title-input').val()) {
+      console.log('titre');
+      $("#title-input").addClass('required-failed');
+      $("#title-input").focus();
+    }
+
+    message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
 

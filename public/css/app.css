@@ -9682,6 +9682,11 @@ textarea.shadow-box {
   margin-right: 10px;
 }
 
+.required-failed {
+  border: 3px solid #dd1313;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
 .flag {
   background-color: black;
   background-size: cover;

@@ -98,8 +98,8 @@
     "Supprimer":"Delete",
     "Voici votre espace": "Welcome to your dashboard",
     "Vos créations": "Your creations",
-    "Voulez vous vraiment annuler toutes les modifications ?":"Are you sure to cancel every changes ?",
-    "Voulez vous vraiment supprimer cet élément ?":"Are you sure to delete this content ?",
+    "Voulez vous vraiment annuler toutes les modifications ?":"Do you really want to cancel every changes ?",
+    "Voulez vous vraiment supprimer cet élément ?":"Do you really want to delete this project ?",
     "Tout voir": "Show all",
 
     "###____PAGE_____CREATION_____###":"########################################################",
@@ -118,5 +118,4 @@
     "Réinitialiser mon mot de passe": "Reset Password",
     "Envoyer un lien de réinitialisation": "Send Password Reset Link",
     "Mettre à jour mon mot de passe": "Reset my password"
-
 }

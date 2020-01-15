@@ -58,13 +58,13 @@
                     <i class="fa fa-edit"></i>
                     {{ __('Modifier') }}
                 </a>
-                <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST" onsubmit="if(confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')){ this.submit(); }">
+                <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" value="" class="btn btn-danger delete-content-button">
+                    <div class="crea-item__btns__icon btn--rouge">
                         <i class="fa fa-times"></i>
-                        {{ __('Supprimer') }}
-                    </button>
+                    </div>
+                    <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
                 </form>
             </div>
         </div>

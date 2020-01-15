@@ -71,7 +71,7 @@
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example">
                         <div class="btn-crea__icon">
                             <i class="fas fa-sync"></i>
                             {{-- <i class="fas fa-file-code"></i> --}}
@@ -473,6 +473,9 @@
 
 @section('pagespecificscripts')
 
+<script>
+    var templateUrl = "{{ URL::asset('templates/') }}";
+</script>
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
 <script type="application/javascript" src="{{ URL::asset('js/components/import_data_form.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}

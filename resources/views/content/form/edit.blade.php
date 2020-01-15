@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Créer un formulaire') }}</h2>
+        <h2 class="entete__title">{{ __('Modifier le formulaire') }}</h2>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3">
@@ -67,13 +67,14 @@
             <div class="actions-panel @if (Auth::check()) col-lg-4 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
                 <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData">
                         <div class="btn-crea__icon">
                             <i class="fas fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea">
+                    
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example">
                         <div class="btn-crea__icon">
                             <i class="fas fa-sync"></i>
                             {{-- <i class="fas fa-file-code"></i> --}}
@@ -436,10 +437,13 @@
             <button type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">{{ __('Annuler les
                             modifications') }}</button>
             <button type="submit" form="edit-form" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-update-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
-            <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+            <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <input type="submit" value="{{ __('Supprimer') }}" class="btn btn-danger delete-content-button" onclick="return confirm({{ __('Voulez vous vraiment supprimer cet élément ?') }})">       
+                <div class="crea-item__btns__icon btn--rouge">
+                    <i class="fa fa-times"></i>
+                </div>
+                <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
             </form>
         </div>
 
@@ -447,12 +451,7 @@
     </div>
 </div>
 
-<div class="import-data">
-    <input type="file" name="imported_data" id="imported_data"/>
-    <button type="submit" id="import-data" form="import_data">Envoyer</button>
-</div>
-
-<div class="alert alert-success" role="alert" style="display: none">
+<div class="alert alert-success" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
         Contenu de l'alerte
     </span>
@@ -463,10 +462,33 @@
     </button>
 </div>
 
+<div class="modal fade import-data" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="importDataTitle">{{ __('Importer des données') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="file" name="imported_data" id="imported_data"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal">{{ __('Importer mes données') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Annuler') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('pagespecificscripts')
 
+<script>
+    var templateUrl = "{{ URL::asset('templates/') }}";
+</script>
 <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
 <script type="application/javascript" src="{{ URL::asset('js/components/import_data_form.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
