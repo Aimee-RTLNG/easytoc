@@ -48,12 +48,12 @@
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
-                        <input class="shadow-box  border-12" type="text" name="title" placeholder="Titre du projet" class="form-control" id="title-input" maxlength="150" required>
+                        <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                 </form>
@@ -88,7 +88,7 @@
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thèmes du formulaire') }}</h3>
+                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h3>
                 <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary">
                     <div>
                         <div>
@@ -134,11 +134,11 @@
                 <div class="main-info-form" role="region">
                     <div class="col p-0" role="region">
                         <label class="creator-panel__title" for="form-creator-title">{{ __('Titre du formulaire') }}</label>
-                        <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire" class="form-control" size="30" value="Titre du formulaire" />
+                        <input name="form-creator-title" id="form-creator-title" placeholder="{{ __('Titre') }}" class="form-control" size="30" value="Titre du formulaire" />
                     </div>
                     <div class="col p-0 ml-2" role="region">
                         <label class="creator-panel__title" for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
-                        <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire" class="form-control" size="30" />
+                        <input name="form-creator-link" id="form-creator-link" placeholder="{{ __('URL') }}" class="form-control" size="30" />
                     </div>
                     <div class="col-2" role="region">
                         <label class="creator-panel__title" for="form-creator-method" class="mr-3">{{ __('Méthode') }}</label>
@@ -148,7 +148,7 @@
                         </select>
                     </div>
                     <div class="col-3" role="region">
-                        <label class="creator-panel__title">Option du formulaire</label>
+                        <label class="creator-panel__title">{{ __('Option du formulaire') }}</label>
                         <label class="reset-button" for="reset-button" class="d-block">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="reset-button" name="reset-button">
                             <span class="ml-3">{{ __('Bouton de réinitialisation') }}</span>
@@ -260,10 +260,10 @@
 
                 <div class="row d-flex m-0 mb-3">
                     <div class="side-tool" style="display: none">
-                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="Déplacer vers le haut">
+                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                             <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                         </button>
-                        <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="Déplacer vers le bas">
+                        <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer verse le bas') }}">
                             <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                         </button>
                     </div>
@@ -316,7 +316,7 @@
                     </div>
 
                     <div class="side-tool" style="display: none">
-                        <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="Supprimer l'élement">
+                        <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
@@ -387,7 +387,7 @@
                         <div role="section" class="col action-maxlength" style="display:none">
                             <label for="elem-length">
                                 {{ __('Longueur de caractères maximum') }}
-                                <input class="form-control form-element-action" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
+                                <input class="form-control form-element-action" data-action="maxlength" name="elem-length" id="elem-length" placeholder="{{ __('Longueur') }}" />
                             </label>
                             <i class="d-block">0 = {{ __('sans limite') }}</i>
                         </div>
@@ -428,9 +428,9 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
+            <button type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
                             modifications') }}</button>
-            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
+            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}">{{ __('Sauvegarder ce projet') }}</button>
         </div>
 
         @endif
