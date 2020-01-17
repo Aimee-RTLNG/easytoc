@@ -120,3 +120,29 @@ export function alertMsg(message, state) {
         }, 7000);
     
 }
+
+// Traduction en JS
+export let translation = $.getJSON(baseUrl + 'lang/en.json', function(data){
+    return data;
+})
+.done(function (json) {
+    imported_traduction = true;
+    console.log("Traduction importée");
+})
+.fail(function (jqxhr, textStatus, error) {
+    console.log(textStatus);
+    console.log(error);
+    console.log ("Erreur dans le chargement de la traduction");
+    return [];
+})
+
+export function getTranslation(text, lang){
+    console.log(translation);
+    if(lang == "en"){
+        console.log("Français vers Anglais");
+    }else if(lang=="fr"){
+        console.log("Anglais vers français")
+    }
+    return text + " = test";
+}
+

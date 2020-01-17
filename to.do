@@ -1,11 +1,17 @@
 // COMMIT
-# [X] Formulaire exemple
-# [X] FIXME Validation suppression ne marche pas (supprime meme en disant non)
-# [X] TODO Message d'erreur si ajax fail
-# [] TODO Traduire la page formulaire
+# [X] FIXME Erreur de déplacement des options lors de l'importation (haut et actualisation position)
+# [X] FIXME Problème attribut required non récupéré sur les éléments required importés
+# [X] FIXME Non actualisation du Choix multiple pour les select
+# [X] FIXME Problème d'attribut requis sur des éléments ou ce n'est pas possible
 
+// PRIORITE HAUTE
+# [] Générateur de tableau
+# [] Récupérer la traduction en JS (en cours)
+
+
+// PROPRITE BASSE
+# [] TODO Traduire la page formulaire
 # [] TODO Page d'aide avec présentation de l'utilisation du script d'importation des données : fichier excel, exemple et page aide
-# [] FIXME Erreur de déplacement des options lors de l'importation (haut et actualisation position)
 
 // Page visualisation et édition
 # [] TODO Ajouter bouton copier 

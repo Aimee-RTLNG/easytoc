@@ -51059,12 +51059,14 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg */
+/*! exports provided: alertMsg, translation, getTranslation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "translation", function() { return translation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTranslation", function() { return getTranslation; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51184,6 +51186,29 @@ function alertMsg(message, state) {
   alert_timeout = setTimeout(function () {
     alert_container.slideUp();
   }, 7000);
+} // Traduction en JS
+
+var translation = $.getJSON(baseUrl + 'lang/en.json', function (data) {
+  return data;
+}).done(function (json) {
+  imported_traduction = true;
+  console.log("Traduction importée");
+}).fail(function (jqxhr, textStatus, error) {
+  console.log(textStatus);
+  console.log(error);
+  console.log("Erreur dans le chargement de la traduction");
+  return [];
+});
+function getTranslation(text, lang) {
+  console.log(translation);
+
+  if (lang == "en") {
+    console.log("Français vers Anglais");
+  } else if (lang == "fr") {
+    console.log("Anglais vers français");
+  }
+
+  return text + " = test";
 }
 
 /***/ }),
@@ -51238,7 +51263,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!*****************************************!*\
   !*** ./resources/js/components/form.js ***!
   \*****************************************/
-/*! exports provided: element_types, getOldContent, addElement, addOption */
+/*! exports provided: element_types, getOldContent, addElement, addOption, refreshMoveButtons */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51247,6 +51272,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addOption", function() { return addOption; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "refreshMoveButtons", function() { return refreshMoveButtons; });
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
 // ANCHOR Données initiales
 var element;
@@ -51290,7 +51316,9 @@ $('#title-input').keypress(function (e) {
   }
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
+var translation_test = Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["getTranslation"])("Thème du formulaire", "en");
+console.log(translation_test); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 
 var element_types = {
@@ -51479,7 +51507,6 @@ $('#btn-save-project').on('click', function () {
     console.log(error); // TODO Erreur
 
     if (!$('#title-input').val()) {
-      console.log('titre');
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
     }
@@ -51594,6 +51621,12 @@ $(document.body).off('keyup') // ré-initialisation
       if ($(element_selected_container).find('select').length > 0) {
         input = $(element_selected_container).find('select');
         placeholder = input.find('option').first().text();
+
+        if ($(element_selected_container).find('select').attr('multiple')) {
+          $('#elem-multiple-choice').prop('checked', true);
+        } else {
+          $('#elem-multiple-choice').prop('checked', false);
+        }
       }
 
       $("#elem-placeholder").val(placeholder); // on récupère le required
@@ -51658,6 +51691,8 @@ $(document.body).off('keyup') // ré-initialisation
         $('.action-options-name').show();
 
         if (selected_option) {
+          $('.action-required').hide(); // on ne peut pas mettre de requis là 
+
           refreshMoveButtons(false); // on empêche l'utilisateur de bouger la réposne
         }
       } else if (element_name == "insert-one_answer") {
@@ -52143,7 +52178,7 @@ $('input[name="theme"]').on('change', function () {
 function refreshMoveButtons(previous_element, next_element, option) {
   if (option) {
     if (previous_element) {
-      if (previous_element.attr("disabled") != "true" && previous_element.hasClass("indicator-required") && previous_element.attr('data-tag') == "option") {
+      if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "option") {
         $('#action-move-up').removeAttr('disabled');
       } else {
         $('#action-move-up').attr('disabled', true);
@@ -52160,7 +52195,7 @@ function refreshMoveButtons(previous_element, next_element, option) {
     }
   } else {
     if (previous_element) {
-      if (previous_element.attr("id") == "form-title" && !$(previous_element).hasClass("element-container")) {
+      if (previous_element.attr("id") == "form-title" || previous_element.hasClass("indicator-required") || !$(previous_element).hasClass("element-container")) {
         $('#action-move-up').attr('disabled', true);
       } else {
         $('#action-move-up').removeAttr('disabled');
@@ -52177,7 +52212,6 @@ function refreshMoveButtons(previous_element, next_element, option) {
     }
   }
 } // ANCHOR Copier le contenu code 
-
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
   message = "Code copié !";

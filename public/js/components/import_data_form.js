@@ -16,7 +16,11 @@ __webpack_require__.r(__webpack_exports__);
  // Variables
 
 var message;
-var success = true; // ORDRE DES VALEURS
+var success = true;
+var element_selected_container;
+var previous_element;
+var next_element;
+var required_count = 0; // ORDRE DES VALEURS
 // Type, Texte du label, Nom/Name, Lien, Options (reset/post), Theme/Style, Placeholder, Maxlength 
 // Après ça : liste d'items si item présent dans l'élément (option) :  Item 1 Value 1 Item 2 Value 2...
 
@@ -123,8 +127,7 @@ $('#import-data').on('click', function () {
 }); // ANCHOR Générer un exemple
 
 $('#generate-example').on('click', function () {
-  console.log(templateUrl);
-  var formatted_json = $.getJSON(templateUrl + '/form_template.json').done(function (json) {
+  var formatted_json = $.getJSON(baseUrl + '/templates/form_template.json').done(function (json) {
     importData(json);
   }).fail(function (jqxhr, textStatus, error) {
     console.log(textStatus);
@@ -188,8 +191,13 @@ function importData(form) {
         $('.content-editable-selected input, .content-editable-selected textarea').attr('maxlength', items_list[key].maxlength); // Options
 
         if (items_list[key].options) {
-          if (items_list[key].options.includes("required")) {
-            $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required');
+          if (items_list[key].options.includes("required") && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
+            $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required'); // Attribut required : petite étoile à côté du label
+
+            var required_star = _form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-special"]["make-required"];
+            $(required_star).insertAfter($('.content-editable-selected').find(".label-text"));
+            $('.content-editable-selected').addClass('field-required');
+            required_count += 1;
           }
 
           if (items_list[key].options.includes("multiple-choice")) {
@@ -225,13 +233,23 @@ function importData(form) {
             $('.content-editable-selected option').last().text(_item_options_list[i].name);
             $('.content-editable-selected input, .content-editable-selected option').last().attr('value', _item_options_list[i].value);
             $('.content-editable-selected input').attr('name', items_list[key].name);
+            element_selected_container = $('.content-editable-selected').last();
+            previous_element = element_selected_container.prev();
+            next_element = element_selected_container.next();
+            Object(_form__WEBPACK_IMPORTED_MODULE_1__["refreshMoveButtons"])(previous_element, next_element, true);
           }
         }
       }
     } else {
       success = false;
     }
-  }); // On rend le contenu modifiable 
+  }); // On ajoute le message d'information sur les champs requis s'il y en a 
+
+  if (required_count > 0 && $(".indicator-required").length() == 0) {
+    var required_indicator = _form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-special"]["indicator-required"];
+    $(required_indicator).insertAfter($("#form-title"));
+  } // On rend le contenu modifiable 
+
 
   Object(_form__WEBPACK_IMPORTED_MODULE_1__["getOldContent"])();
 
@@ -241,6 +259,10 @@ function importData(form) {
   } else {
     message = "Erreur dans l'importation des données";
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+  }
+
+  if ($('.content-editable-selected').last()) {
+    $('.content-editable-selected').last().click();
   }
 }
 

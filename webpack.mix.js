@@ -19,6 +19,7 @@ mix .js('resources/js/components/profile/profile.js', 'public/js/components/prof
     .extract()
     .sass('resources/sass/app.scss', 'public/css')
     .copy('node_modules/font-awesome/fonts', 'public/fonts')
+    .copy('resources/lang', 'public/lang')
     .options({
         processCssUrls : false
     });

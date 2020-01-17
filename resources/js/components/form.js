@@ -16,7 +16,7 @@ let csrf_token = $('meta[name="csrf-token"]').attr('content');
 let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
 
 // Imports
-import { alertMsg } from "../../js/app";
+import { alertMsg, getTranslation } from "../../js/app";
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -46,6 +46,9 @@ $('#title-input').keypress(function (e) {
 const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5",
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
+
+let translation_test = getTranslation("Thème du formulaire", "en");
+console.log(translation_test);
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
@@ -249,7 +252,6 @@ $('#btn-save-project').on('click', function () {
         console.log(error);
         // TODO Erreur
         if(!$('#title-input').val()){
-            console.log('titre');
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
         }
@@ -376,6 +378,11 @@ $(document.body)
                 if ($(element_selected_container).find('select').length > 0) {
                     input = $(element_selected_container).find('select');
                     placeholder = input.find('option').first().text();
+                    if($(element_selected_container).find('select').attr('multiple')){
+                        $('#elem-multiple-choice').prop('checked', true);
+                    }else{
+                        $('#elem-multiple-choice').prop('checked', false);
+                    }
                 }
 
                 $("#elem-placeholder").val(placeholder);
@@ -441,6 +448,7 @@ $(document.body)
                     $('.action-required').show();
                     $('.action-options-name').show();
                     if (selected_option) {
+                        $('.action-required').hide(); // on ne peut pas mettre de requis là 
                         refreshMoveButtons(false); // on empêche l'utilisateur de bouger la réposne
                     }
                 } else if (element_name == "insert-one_answer") {
@@ -884,11 +892,10 @@ $('input[name="theme"]').on('change', function () {
 })
 
 // ANCHOR Activer / désactiver les boutons de déplacement
-function refreshMoveButtons(previous_element, next_element, option) {
+export function refreshMoveButtons(previous_element, next_element, option) {
     if (option) {
         if (previous_element) {
-
-            if (previous_element.attr("disabled") != "true" && previous_element.hasClass("indicator-required") && previous_element.attr('data-tag') == "option") {
+            if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "option") {
                 $('#action-move-up').removeAttr('disabled');
             } else {
                 $('#action-move-up').attr('disabled', true);
@@ -904,7 +911,7 @@ function refreshMoveButtons(previous_element, next_element, option) {
         }
     } else {
         if (previous_element) {
-            if (previous_element.attr("id") == "form-title" && !$(previous_element).hasClass("element-container")) {
+            if ((previous_element.attr("id") == "form-title" || previous_element.hasClass("indicator-required")) || !$(previous_element).hasClass("element-container")) {
                 $('#action-move-up').attr('disabled', true);
             } else {
                 $('#action-move-up').removeAttr('disabled');
@@ -930,3 +937,4 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');
+
