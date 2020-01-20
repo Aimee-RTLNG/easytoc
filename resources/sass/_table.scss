@@ -60,63 +60,19 @@ body {
     cursor: pointer;
 }
 
-[data-tag="text"]:hover, [data-tag="label-text"]:hover, [data-tag="form-title"]:hover{
-    cursor: text;
-}
-
-#content-created-blueprint form *{
+#content-created-blueprint table *{
     border: 0;
     padding: 5px;
 
     &:hover{
         border: 3px dotted black;
     }
+}
 
-    // tous les contenus non modifiables en soit
-    label:hover, abbr:hover, .indicator-required:hover, legend span:hover, fieldset label span:hover{
-        border: 0;
-    }
-
-    select{
-        min-height: 30px;
-    }
-
-    fieldset{
-        border: 2px solid black;
-        display: flex;
-        flex-direction: column;
-
-        &:hover{
-            border: 2px solid black;
-        }
-
-        label{
-
-            margin: 5px 15px;
-
-            &:hover{
-                border: 3px dotted black;
-            }
-        }
-    }
-
-    legend{
-        border: 2px solid black;
-    }
-
-    hr {
-        border: 2px solid rgba(0,0,0,0.5) !important;
-        padding: 0 !important;
-    
-        &:hover {
-            border: 2px solid rgba(0,0,0,0.5) !important;
-        }
-    }
-
-    .type-layout *:hover{
+#content-created-blueprint caption{
+    &:hover{
         border: 0 !important;
     }
-
 }
 
 .element-container{
@@ -124,21 +80,9 @@ body {
     padding: 5px;
 }
 
-.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
+.content-editable-selected {
     border: 3px dotted blue !important;
 }
-
-
-
-form {
-    border: 0 !important;
-}
-
-input[type="checkbox"], input[type="radio"]{
-    cursor: pointer !important;
-}
-
-
 
 // Boutons copier le contenu
 
@@ -160,12 +104,17 @@ input[type="checkbox"], input[type="radio"]{
     display: flex;
     flex-direction: column;
 
+    &.horizontal-tools{
+        display: flex;
+    }
+
     button{
         margin: 0;
         padding: 0;
         border-radius: 2px;
         color: white;
         border: none;
+        min-width: 25px;
     }
 
     .btn-info:disabled{

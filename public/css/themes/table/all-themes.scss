@@ -3,33 +3,33 @@
 $themes: (
     white: (
         backgroundColor: #fff,
-        aHoverColor: red,
-        textColor : black
+        textColor : black,
+        borderColor : grey
     ),
     black: (
         backgroundColor: #222,
-        aHoverColor: red,
-        textColor : white
+        textColor : white,
+        borderColor : white
     ),
     green: (
         backgroundColor: green,
-        aHoverColor: red,
-        textColor : white
+        textColor : white,
+        borderColor : rgb(1, 88, 1)
     ),
     red: (
         backgroundColor: red,
-        aHoverColor: blue,
-        textColor : white
+        textColor : white,
+        borderColor : rgb(151, 0, 0)
     ),
     blue: (
-        backgroundColor: blue,
-        aHoverColor: red,
-        textColor : white
+        backgroundColor: rgb(59, 59, 252),
+        textColor : white,
+        borderColor : rgb(0, 0, 177)
     ),
     grey: (
         backgroundColor: grey,
-        aHoverColor: red,
-        textColor : black
+        textColor : black,
+        borderColor : rgb(71, 71, 71)
     )
 );
 
@@ -63,5 +63,12 @@ $themes: (
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
+      
+      border-collapse: collapse;
+
+        td, th{
+            border: 1px solid themed('borderColor');
+        }
+
     }
 }

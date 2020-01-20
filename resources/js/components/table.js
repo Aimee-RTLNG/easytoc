@@ -1,27 +1,80 @@
 // ANCHOR Données initiales
+let element;
 let element_selected_container;
 let input;
 let intitule;
-let previous_element;
-let next_element;
+let previous_col;
+let next_col;
+let previous_row;
+let next_row;
 let message;
+let previous_case;
+let selected_case;
+let next_case;
 
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<table data-tag="table" class="theme-white" id="generated-table">\n\t<caption>Dinosaurs in the Jurassic period</caption>\n\t<thead>\n\t\t<tr>\n\t\t\t<th>Ceci est un test</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>Ceci est un test\n\t\t\t</td></tr>\n\t</tbody>\n\t</table>';
+let initial_content = '<div id="generated-table" class="theme-white">\n\t<p>Titre du tableau</p>\n\t<table data-tag="table" id="full-table">\n\t\t<caption><span contenteditable="true">Dinosaurs in the Jurassic period</span></caption>\n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
 
-// ANCHOR Liste de tous les tags possibles dans un formulaire
-const tags_list = ["table", "tr", "th", "td", "a", "abbr"];
+// Imports
+import { alertMsg, getTranslation } from "../../js/app";
+
+// ANCHOR Caractères restants Description du projet
+$('#desc-input').keypress(function (e) {
+    var tval = $('#desc-input').val(),
+        tlength = tval.length,
+        set = $('#desc-input').attr('maxlength'),
+        remain = parseInt(set - tlength);
+    $('#chara-desc-remains').text(remain + " caractères restants");
+    if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+        $('#desc-input').val((tval).substring(0, tlength - 1))
+    }
+})
+
+// ANCHOR Caractères restants Titre du projet
+$('#title-input').keypress(function (e) {
+    var tval = $('#title-input').val(),
+        tlength = tval.length,
+        set = $('#title-input').attr('maxlength'),
+        remain = parseInt(set - tlength);
+    $('#chara-title-remains').text(remain + " caractères restants");
+    if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+        $('#title-input').val((tval).substring(0, tlength - 1))
+    }
+})
+
+// ANCHOR Liste de tous les tags possibles dans un tableau
+const tags_list = ["table", "tr", "th", "td", "abbr"];
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 var element_types = {
     // TODO Remplir
 };
+export function getOldContent() {
+    // On rend l'ancien contenu modifiable
+    $('#full-table .label-text').attr('contenteditable', true);
+    $('#full-table .label-option-text').attr('contenteditable', true);
+    // TODO Remettre le content editable sur chaque element du tableau
+    $('#full-table #table-title').attr('contenteditable', true);
+    // On récupère les paramètres
+
+    // Theme
+    let actual_theme = $("#full-table").attr('class');
+    actual_theme = actual_theme.replace('theme-', '');
+    let selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
+    selected_theme.prop('checked', true);
+
+    // Titre
+    let actual_title = $("#full-table #table-title").text();
+    $("#table-creator-title").val(actual_title);
+
+}
 
 // ANCHOR Fonction de sauvegarde
 function updatecontent() {
+
     // on récupère le contenu
     var blueprint_content = $('#content-created-blueprint').html();
     // on trie les éléments à ne pas inclure dans le code 
@@ -40,9 +93,14 @@ function updatecontent() {
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
-// ANCHOR Initialisation du formulaire
-$('#content-created-blueprint').html(initial_content);
-if ($('#content-created-blueprint').html()) {
+// ANCHOR Initialisation du tableau
+if ($('#raw-code').val().length <= 0) {
+    console.log("Création");
+    $('#content-created-blueprint').html(initial_content);
+    updatecontent();
+} else {
+    console.log("Modification");
+    getOldContent();
     updatecontent();
 }
 
@@ -92,7 +150,7 @@ var deletecommand = new command({
         // element = element.detach();
     },
     undo: function () {
-        element.appendTo("#full-");
+        element.appendTo("#full-table");
     }
 });
 
@@ -139,44 +197,6 @@ $('input[name="theme"]').on('change', function () {
     $('#generated-table').attr('class', theme);
 })
 
-// ANCHOR Activer / désactiver les boutons de déplacement
-function refreshMoveButtons(previous_element, next_element, option) {
-    if (option) {
-        if (previous_element) {
-
-            if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "option") {
-                $('#action-move-up').removeAttr('disabled');
-            } else {
-                $('#action-move-up').attr('disabled', true);
-            }
-            if (next_element.attr("disabled") != "true" && next_element.attr('data-tag') == "option") {
-                $('#action-move-down').removeAttr('disabled');
-            } else {
-                $('#action-move-down').attr('disabled', true);
-            }
-        } else {
-            $('#action-move-up').attr('disabled', true);
-            $('#action-move-down').attr('disabled', true);
-        }
-    } else {
-        if (previous_element) {
-            if (previous_element.attr("id") == "table-title" && !$(previous_element).hasClass("element-container")) {
-                $('#action-move-up').attr('disabled', true);
-            } else {
-                $('#action-move-up').removeAttr('disabled');
-            }
-            if (!$(next_element).hasClass("element-container")) {
-                $('#action-move-down').attr('disabled', true);
-            } else {
-                $('#action-move-down').removeAttr('disabled');
-            }
-        } else {
-            $('#action-move-up').attr('disabled', true);
-            $('#action-move-down').attr('disabled', true);
-        }
-    }
-}
-
 // ANCHOR Copier le contenu code 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
     message = "Code copié !";
@@ -186,22 +206,3 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');
-
-// ANCHOR Message d'alerte
-var alert_timeout;
-
-function alertMsg(message) {
-    clearTimeout(alert_timeout);
-    if ($('.alert-success').is(":hidden")) {
-        $('.alert-success .alert-content').text(message);
-        $('.alert-success').slideDown();
-    } else {
-        $('.alert-success').slideUp("fast", function () {
-            $('.alert-success .alert-content').text(message);
-            $('.alert-success').slideDown();
-        });
-    }
-    alert_timeout = setTimeout(function () {
-        $('.alert-success').slideUp();
-    }, 7000);
-}

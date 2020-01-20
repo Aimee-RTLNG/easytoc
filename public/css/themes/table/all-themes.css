@@ -1,30 +1,60 @@
 .theme-white #full-table {
   color: black;
   background-color: #fff;
+  border-collapse: collapse;
+}
+
+.theme-white #full-table td, .theme-white #full-table th {
+  border: 1px solid grey;
 }
 
 .theme-black #full-table {
   color: white;
   background-color: #222;
+  border-collapse: collapse;
+}
+
+.theme-black #full-table td, .theme-black #full-table th {
+  border: 1px solid white;
 }
 
 .theme-green #full-table {
   color: white;
   background-color: green;
+  border-collapse: collapse;
+}
+
+.theme-green #full-table td, .theme-green #full-table th {
+  border: 1px solid #015801;
 }
 
 .theme-red #full-table {
   color: white;
   background-color: red;
+  border-collapse: collapse;
+}
+
+.theme-red #full-table td, .theme-red #full-table th {
+  border: 1px solid #970000;
 }
 
 .theme-blue #full-table {
   color: white;
-  background-color: blue;
+  background-color: #3b3bfc;
+  border-collapse: collapse;
+}
+
+.theme-blue #full-table td, .theme-blue #full-table th {
+  border: 1px solid #0000b1;
 }
 
 .theme-grey #full-table {
   color: black;
   background-color: grey;
+  border-collapse: collapse;
+}
+
+.theme-grey #full-table td, .theme-grey #full-table th {
+  border: 1px solid #474747;
 }
 /*# sourceMappingURL=all-themes.css.map */
