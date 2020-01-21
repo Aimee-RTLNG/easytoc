@@ -121,7 +121,10 @@ export function alertMsg(message, state) {
     
 }
 
+/* 
+
 // Traduction en JS
+let imported_traduction;
 export let translation = $.getJSON(baseUrl + 'lang/en.json', function(data){
     return data;
 })
@@ -146,3 +149,4 @@ export function getTranslation(text, lang){
     return text + " = test";
 }
 
+*/

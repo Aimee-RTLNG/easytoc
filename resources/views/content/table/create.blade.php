@@ -137,27 +137,45 @@
                         <input name="table-creator-title" id="table-creator-title" placeholder="{{ __('Titre') }}" class="form-control" size="30"/>
                     </div>
                     <div class="col p-0" role="region">
-                        <label class="creator-panel__title" for="table-creator-title">{{ __('Légende du tableau') }}</label>
-                        <input name="table-creator-title" id="table-creator-title" placeholder="{{ __('Légende') }}" class="form-control" size="30"/>
+                        <label class="creator-panel__caption" for="table-creator-caption">{{ __('Légende du tableau') }}</label>
+                        <input name="table-creator-caption" id="table-creator-caption" placeholder="{{ __('Légende') }}" class="form-control" size="30"/>
+                    </div>
+                </div>
+
+                <div class="main-info-form" role="region">
+                    <div class="col p-0 mr-3" role="region">
+                        <label class="creator-panel__col_nb" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
+                        <input type="number" name="table-col-nb" id="table-col-nb" class="form-control" size="3"/>
+                    </div>
+                    <div class="col p-0 mr-3" role="region">
+                        <label class="creator-panel__row_nb" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
+                        <input type="number" name="table-row-nb" id="table-row-nb" class="form-control" size="3"/>
+                    </div>
+                    <div class="col-2 p-0" role="region">
+                        <label class="creator-panel__footer d-block" for="table-footer">{{ __('Options du tableau') }}</label>
+                        <label class="footer-button d-flex align-items-center justify-content-center" for="footer-button">
+                            <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
+                            <span class="ml-3">{{ __('Pied de tableau') }}</span>
+                        </label>
                     </div>
                 </div>
 
                 <div role="section" class="row" aria-labelledby="form_actions_element">
                     <div role="section" class="col" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément') }}</h3>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à droite') }}" id="insert-col_right" role="listitem">
                             <i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Nouvelle colonne à droite') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à gauche') }}" id="insert-col_left" role="listitem">
                             <i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Nouvelle colonne à gauche') }}
                         </button>                        
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle ligne en haut') }}" id="insert-row_up" role="listitem">
                             <i class="fa fa-grip-lines"></i>
                             {{ __('Nouvelle ligne en haut') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle ligne en bas') }}" id="insert-row_down" role="listitem">
                             <i class="fa fa-grip-lines"></i>
                             {{ __('Nouvelle ligne en bas') }}
                         </button>
@@ -192,53 +210,53 @@
                 </div>
                 <div role="section" class="row d-block p-0 m-0" aria-labelledby="form_actions_crud">
                     <h3 id="table_actions_crud" class="mb-3 creator-panel__title">{{ __('Actions sur l\'élément') }}</h3>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="{{ __('Supprimer la ligne') }}" class="btn btn-primary btn_crea cell-action element_delete form-element-action action-delete-row" data-action="delete-row">
                             <i class="fa fa-grip-lines"></i><i class="fa fa-trash"></i>
                             {{ __('Supprimer la ligne') }}
                         </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="{{ __('Supprimer la colonne') }}" class="btn btn-primary btn_crea cell-action element_delete form-element-action action-delete-col" data-action="delete-col">
                             <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-trash"></i>
                             {{ __('Supprimer la colonne') }}
                         </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="{{ __('Vider la case') }}" class="btn btn-primary btn_crea cell-action element_empty form-element-action action-delete" data-action="empty-cell">
                             <i class="fa fa-vector-square"></i><i class="fa fa-trash"></i>
                             {{ __('Vider la case') }}
                         </button>
-                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-primary btn_crea element_undo form-element-action action-undo" data-action="undo">
+                        <button disabled="true" aria-label="{{ __('Annuler la suppression') }}" class="btn btn-primary btn_crea element_undo form-element-action action-undo" data-action="undo">
                             <i class="fa fa-undo"></i>
                             {{ __('Annuler la suppression') }}
                         </button>
                         <br>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
-                            <i class="fa fa-vector-square"></i><i class="fa fa-arrow-right"></i>
-                            {{ __('Déplacer la case à droite') }}
-                        </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-left" data-action="move-cell-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-vector-square"></i>
                             {{ __('Déplacer la case à gauche') }}
                         </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-right" data-action="move-cell-right">
+                            <i class="fa fa-vector-square"></i><i class="fa fa-arrow-right"></i>
+                            {{ __('Déplacer la case à droite') }}
+                        </button>
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-up" data-action="move-cell-up">
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer la case en haut') }}
                         </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-down" data-action="move-cell-down">
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-down"></i>
                             {{ __('Déplacer la case en bas') }}
                         </button>
                         <br>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
-                            <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-arrow-right"></i>
-                            {{ __('Déplacer la colonne à droite') }}
-                        </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="{{ __('Déplacer la colonne à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-left" data-action="col-move-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Déplacer la colonne à gauche') }}
                         </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="{{ __('Déplacer la colonne à droite') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-right" data-action="col-move-right">
+                            <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-arrow-right"></i>
+                            {{ __('Déplacer la colonne à droite') }}
+                        </button>
+                        <button disabled="true" aria-label="{{ __('Déplacer la ligne en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-row-up" data-action="row-move-up">
                             <i class="fa fa-grip-lines"></i><i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer la ligne en haut') }}
                         </button>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
+                        <button disabled="true" aria-label="{{ __('Déplacer la ligne en bas') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-row-down" data-action="row-move-down">
                             <i class="fa fa-grip-lines"></i><i class="fa fa-arrow-down"></i>
                             {{ __('Déplacer la ligne en bas') }}
                         </button>
@@ -295,7 +313,7 @@
                         </div>
                     </div>
 
-                    <div class="side-tool" style="display: none">
+                    <div class="side-tool vertical-tools" style="display: none">
                         <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                             <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                         </button>

@@ -16,7 +16,7 @@ let csrf_token = $('meta[name="csrf-token"]').attr('content');
 let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
 
 // Imports
-import { alertMsg, getTranslation } from "../../js/app";
+import { alertMsg } from "../../js/app";
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -47,8 +47,10 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
 
+/*
 let translation_test = getTranslation("Thème du formulaire", "en");
 console.log(translation_test);
+*/
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne

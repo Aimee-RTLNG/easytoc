@@ -51059,14 +51059,12 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg, translation, getTranslation */
+/*! exports provided: alertMsg */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "translation", function() { return translation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTranslation", function() { return getTranslation; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51186,30 +51184,36 @@ function alertMsg(message, state) {
   alert_timeout = setTimeout(function () {
     alert_container.slideUp();
   }, 7000);
-} // Traduction en JS
-
-var translation = $.getJSON(baseUrl + 'lang/en.json', function (data) {
-  return data;
-}).done(function (json) {
-  imported_traduction = true;
-  console.log("Traduction importée");
-}).fail(function (jqxhr, textStatus, error) {
-  console.log(textStatus);
-  console.log(error);
-  console.log("Erreur dans le chargement de la traduction");
-  return [];
-});
-function getTranslation(text, lang) {
-  console.log(translation);
-
-  if (lang == "en") {
-    console.log("Français vers Anglais");
-  } else if (lang == "fr") {
-    console.log("Anglais vers français");
-  }
-
-  return text + " = test";
 }
+/* 
+
+// Traduction en JS
+let imported_traduction;
+export let translation = $.getJSON(baseUrl + 'lang/en.json', function(data){
+    return data;
+})
+.done(function (json) {
+    imported_traduction = true;
+    console.log("Traduction importée");
+})
+.fail(function (jqxhr, textStatus, error) {
+    console.log(textStatus);
+    console.log(error);
+    console.log ("Erreur dans le chargement de la traduction");
+    return [];
+})
+
+export function getTranslation(text, lang){
+    console.log(translation);
+    if(lang == "en"){
+        console.log("Français vers Anglais");
+    }else if(lang=="fr"){
+        console.log("Anglais vers français")
+    }
+    return text + " = test";
+}
+
+*/
 
 /***/ }),
 
@@ -51317,8 +51321,11 @@ $('#title-input').keypress(function (e) {
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
 
 var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
-var translation_test = Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["getTranslation"])("Thème du formulaire", "en");
-console.log(translation_test); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+/*
+let translation_test = getTranslation("Thème du formulaire", "en");
+console.log(translation_test);
+*/
+// ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 
 var element_types = {

@@ -3,31 +3,37 @@
 $themes: (
     white: (
         backgroundColor: #fff,
+        backgroundTheadColor: rgb(189, 189, 189),
         textColor : black,
         borderColor : grey
     ),
     black: (
-        backgroundColor: #222,
+        backgroundColor: rgb(51, 51, 51),
+        backgroundTheadColor: rgb(15, 15, 15),
         textColor : white,
         borderColor : white
     ),
     green: (
         backgroundColor: green,
+        backgroundTheadColor: rgb(1, 88, 1),
         textColor : white,
         borderColor : rgb(1, 88, 1)
     ),
     red: (
         backgroundColor: red,
+        backgroundTheadColor: rgb(151, 0, 0),
         textColor : white,
         borderColor : rgb(151, 0, 0)
     ),
     blue: (
-        backgroundColor: rgb(59, 59, 252),
+        backgroundColor: rgb(106, 106, 255),
+        backgroundTheadColor: rgb(64, 64, 233),
         textColor : white,
-        borderColor : rgb(0, 0, 177)
+        borderColor : rgb(64, 64, 233),
     ),
     grey: (
         backgroundColor: grey,
+        backgroundTheadColor: rgb(71, 71, 71),
         textColor : black,
         borderColor : rgb(71, 71, 71)
     )
@@ -63,10 +69,21 @@ $themes: (
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
-      
       border-collapse: collapse;
 
-        td, th{
+        .table-caption{
+            font-size: 15px;
+            color: black;
+            font-style: italic;
+        }
+
+        th{
+            background-color: themed('backgroundTheadColor');  
+            font-weight: bold;
+            border: 2px solid themed('borderColor');
+        }
+
+        td{
             border: 1px solid themed('borderColor');
         }
 

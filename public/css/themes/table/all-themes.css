@@ -4,17 +4,41 @@
   border-collapse: collapse;
 }
 
-.theme-white #full-table td, .theme-white #full-table th {
+.theme-white #full-table .table-caption {
+  font-size: 15px;
+  color: black;
+  font-style: italic;
+}
+
+.theme-white #full-table th {
+  background-color: #bdbdbd;
+  font-weight: bold;
+  border: 2px solid grey;
+}
+
+.theme-white #full-table td {
   border: 1px solid grey;
 }
 
 .theme-black #full-table {
   color: white;
-  background-color: #222;
+  background-color: #333333;
   border-collapse: collapse;
 }
 
-.theme-black #full-table td, .theme-black #full-table th {
+.theme-black #full-table .table-caption {
+  font-size: 15px;
+  color: black;
+  font-style: italic;
+}
+
+.theme-black #full-table th {
+  background-color: #0f0f0f;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+.theme-black #full-table td {
   border: 1px solid white;
 }
 
@@ -24,7 +48,19 @@
   border-collapse: collapse;
 }
 
-.theme-green #full-table td, .theme-green #full-table th {
+.theme-green #full-table .table-caption {
+  font-size: 15px;
+  color: black;
+  font-style: italic;
+}
+
+.theme-green #full-table th {
+  background-color: #015801;
+  font-weight: bold;
+  border: 2px solid #015801;
+}
+
+.theme-green #full-table td {
   border: 1px solid #015801;
 }
 
@@ -34,18 +70,42 @@
   border-collapse: collapse;
 }
 
-.theme-red #full-table td, .theme-red #full-table th {
+.theme-red #full-table .table-caption {
+  font-size: 15px;
+  color: black;
+  font-style: italic;
+}
+
+.theme-red #full-table th {
+  background-color: #970000;
+  font-weight: bold;
+  border: 2px solid #970000;
+}
+
+.theme-red #full-table td {
   border: 1px solid #970000;
 }
 
 .theme-blue #full-table {
   color: white;
-  background-color: #3b3bfc;
+  background-color: #6a6aff;
   border-collapse: collapse;
 }
 
-.theme-blue #full-table td, .theme-blue #full-table th {
-  border: 1px solid #0000b1;
+.theme-blue #full-table .table-caption {
+  font-size: 15px;
+  color: black;
+  font-style: italic;
+}
+
+.theme-blue #full-table th {
+  background-color: #4040e9;
+  font-weight: bold;
+  border: 2px solid #4040e9;
+}
+
+.theme-blue #full-table td {
+  border: 1px solid #4040e9;
 }
 
 .theme-grey #full-table {
@@ -54,7 +114,19 @@
   border-collapse: collapse;
 }
 
-.theme-grey #full-table td, .theme-grey #full-table th {
+.theme-grey #full-table .table-caption {
+  font-size: 15px;
+  color: black;
+  font-style: italic;
+}
+
+.theme-grey #full-table th {
+  background-color: #474747;
+  font-weight: bold;
+  border: 2px solid #474747;
+}
+
+.theme-grey #full-table td {
   border: 1px solid #474747;
 }
 /*# sourceMappingURL=all-themes.css.map */

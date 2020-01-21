@@ -1,5 +1,5 @@
 // Imports
-import { alertMsg, getTranslation } from "../app";
+import { alertMsg } from "../app";
 import { getOldContent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
 
 // Variables
