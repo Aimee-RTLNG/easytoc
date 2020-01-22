@@ -14,10 +14,12 @@
   background-color: #bdbdbd;
   font-weight: bold;
   border: 2px solid grey;
+  min-height: 15px;
 }
 
 .theme-white #full-table td {
   border: 1px solid grey;
+  min-height: 15px;
 }
 
 .theme-black #full-table {
@@ -36,10 +38,12 @@
   background-color: #0f0f0f;
   font-weight: bold;
   border: 2px solid white;
+  min-height: 15px;
 }
 
 .theme-black #full-table td {
   border: 1px solid white;
+  min-height: 15px;
 }
 
 .theme-green #full-table {
@@ -58,10 +62,12 @@
   background-color: #015801;
   font-weight: bold;
   border: 2px solid #015801;
+  min-height: 15px;
 }
 
 .theme-green #full-table td {
   border: 1px solid #015801;
+  min-height: 15px;
 }
 
 .theme-red #full-table {
@@ -80,10 +86,12 @@
   background-color: #970000;
   font-weight: bold;
   border: 2px solid #970000;
+  min-height: 15px;
 }
 
 .theme-red #full-table td {
   border: 1px solid #970000;
+  min-height: 15px;
 }
 
 .theme-blue #full-table {
@@ -102,10 +110,12 @@
   background-color: #4040e9;
   font-weight: bold;
   border: 2px solid #4040e9;
+  min-height: 15px;
 }
 
 .theme-blue #full-table td {
   border: 1px solid #4040e9;
+  min-height: 15px;
 }
 
 .theme-grey #full-table {
@@ -124,9 +134,11 @@
   background-color: #474747;
   font-weight: bold;
   border: 2px solid #474747;
+  min-height: 15px;
 }
 
 .theme-grey #full-table td {
   border: 1px solid #474747;
+  min-height: 15px;
 }
 /*# sourceMappingURL=all-themes.css.map */

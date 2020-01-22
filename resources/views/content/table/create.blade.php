@@ -145,11 +145,11 @@
                 <div class="main-info-form" role="region">
                     <div class="col p-0 mr-3" role="region">
                         <label class="creator-panel__col_nb" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
-                        <input type="number" name="table-col-nb" id="table-col-nb" class="form-control" size="3"/>
+                        <input type="number" name="table-col-nb" id="table-col-nb" class="form-control" size="3" value="2" min="2"/>
                     </div>
                     <div class="col p-0 mr-3" role="region">
                         <label class="creator-panel__row_nb" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
-                        <input type="number" name="table-row-nb" id="table-row-nb" class="form-control" size="3"/>
+                        <input type="number" name="table-row-nb" id="table-row-nb" class="form-control" size="3" value="2" min="2"/>
                     </div>
                     <div class="col-2 p-0" role="region">
                         <label class="creator-panel__footer d-block" for="table-footer">{{ __('Options du tableau') }}</label>

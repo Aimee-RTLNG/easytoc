@@ -4,12 +4,14 @@
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: getOldContent, addElement */
+/*! exports provided: getOldContent, addCol, addRow, addElement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
 // ANCHOR Données initiales
@@ -28,7 +30,7 @@ var next_case;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
 var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre du tableau</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Dinosaurs in the Jurassic period</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
+var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
 
  // ANCHOR Caractères restants Description du projet
 
@@ -61,13 +63,13 @@ var tags_list = ["table", "tr", "th", "td", "abbr"]; // ANCHOR Liste WYSIWYG : l
 
 var element_types = {
   "type-container": {
-    "insert-header": "<thead class='table-head'></thead>",
-    "insert-row": "<tr class='table-row'></tr>",
-    "insert-footer": "<tfoot class='table-footer'></tfoot>"
+    "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
+    "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
+    "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
   },
   "type-unique": {
-    "insert-header": "<th class='table-header-cell cell-text'></th>",
-    "insert-cell": "<td class='table-cell cell-text'></td>"
+    "insert-header": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header'>&#160</th>",
+    "insert-cell": "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
   }
 };
 function getOldContent() {
@@ -123,7 +125,149 @@ $('#table-creator-title').on('keyup', function () {
 $('#table-creator-caption').on('keyup', function () {
   $('#table-caption span').text($('#table-creator-caption').val());
   updatecontent();
+}); // ANCHOR Changement du nombre de lignes
+
+$('#table-row-nb').on('change', function () {
+  var new_nb_row = $(this).val();
+  var actual_nb_row = $("#full-table").find('tr').length;
+
+  if (new_nb_row > actual_nb_row) {
+    var nb_new_row = new_nb_row - actual_nb_row;
+
+    for (var i = 0; i < nb_new_row; i++) {
+      addRow("down");
+    }
+  } else if (new_nb_row < actual_nb_row) {
+    var _nb_new_row = actual_nb_row - new_nb_row;
+
+    for (var _i = 0; _i < _nb_new_row; _i++) {
+      var is_removed = removeRow($("#full-table").find('tr').last());
+
+      if (!is_removed) {
+        break;
+      } else {// TODO On active le bouton : annuler
+      }
+    }
+  }
+
+  updatecontent();
+}); // ANCHOR Changement du nombre de colonnes
+
+$('#table-col-nb').on('change', function () {
+  var new_nb_col = $(this).val();
+  var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+
+  if (new_nb_col > actual_nb_col) {
+    var nb_new_col = new_nb_col - actual_nb_col;
+
+    for (var i = 0; i < nb_new_col; i++) {
+      addCol("right");
+    }
+  } else if (new_nb_col < actual_nb_col) {
+    var _nb_new_col = actual_nb_col - new_nb_col;
+
+    var actual_nb_row = $("#full-table").find('tr').length;
+
+    for (var _i2 = 0; _i2 < actual_nb_row; _i2++) {
+      var actual_row = $("#full-table tr")[_i2];
+
+      for (var y = 0; y < _nb_new_col; y++) {
+        var is_removed = removeCol($(actual_row).find('td').last());
+
+        if (!is_removed) {
+          break;
+        } else {// TODO On active le bouton : annuler
+        }
+      }
+    }
+  }
+
+  updatecontent();
 });
+function addCol(side) {
+  if (side == "left") {} else if (side == "right") {}
+}
+function addRow(side) {
+  var inserted_row;
+  var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+  var row_html = element_types["type-container"]["insert-row"]; // Ligne au dessus
+
+  if (side == "up") {
+    $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tr').first());
+    inserted_row = $("#full-table").find('tr').first();
+  } // Ligne en dessous
+  else if (side == "down") {
+      $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
+      inserted_row = $("#full-table").find('tr').last();
+    } // On ajoute les colonnes
+
+
+  for (var i = 0; i < actual_nb_col; i++) {
+    var cell_html = element_types["type-unique"]["insert-cell"];
+    inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
+  }
+}
+
+function removeRow(row) {
+  // On vérifie que la ligne soit vide
+  var is_filled = false;
+  var actual_nb_col = row.find('td').length;
+
+  for (var i = 0; i < actual_nb_col; i++) {
+    var actual_cell = row.find('td')[i];
+
+    if ($(actual_cell).text().trim()) {
+      is_filled = true;
+    }
+  } // Si la ligne est remplie : on demande confirmation
+
+
+  if (is_filled) {
+    if (confirm('Attention : il y a du contenu sur la ligne en question. Voulez-vous vraiment supprimer ?')) {
+      row.remove();
+      return true;
+    } // Si on annule la suppression
+    else {
+        $("#table-row-nb").val($("#full-table").find('tr').length);
+        return false;
+      }
+  } // Si il n'y a rien : on supprime
+  else {
+      row.remove();
+      return true;
+    }
+}
+
+function removeCol(col) {
+  // On vérifie que la ligne soit vide
+  var is_filled = false;
+  var actual_nb_col = row.find('td').length;
+
+  for (var i = 0; i < actual_nb_col; i++) {
+    var actual_cell = row.find('td')[i];
+
+    if ($(actual_cell).text().trim()) {
+      is_filled = true;
+    }
+  } // Si la ligne est remplie : on demande confirmation
+
+
+  if (is_filled) {
+    if (confirm('Attention : il y a du contenu sur la ligne en question. Voulez-vous vraiment supprimer ?')) {
+      row.remove();
+      return true;
+    } // Si on annule la suppression
+    else {
+        $("#table-row-nb").val($("#full-table").find('tr').length);
+        return false;
+      }
+  } // Si il n'y a rien : on supprime
+  else {
+      row.remove();
+      return true;
+    }
+}
+
 function addElement(element_type) {
   // TODO
   console.log(element_type);

@@ -15,7 +15,7 @@ let next_case;
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre du tableau</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Dinosaurs in the Jurassic period</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
+let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
 
 // Imports
 import { alertMsg } from "../../js/app";
@@ -51,13 +51,13 @@ const tags_list = ["table", "tr", "th", "td", "abbr"];
 // \t = tabulation,  \n = saut de ligne
 var element_types = {
     "type-container": {
-        "insert-header": "<thead class='table-head'></thead>",
-        "insert-row": "<tr class='table-row'></tr>",
-        "insert-footer": "<tfoot class='table-footer'></tfoot>"
+        "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
+        "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
+        "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
     },
     "type-unique" : {
-        "insert-header" : "<th class='table-header-cell cell-text'></th>",
-        "insert-cell" : "<td class='table-cell cell-text'></td>"
+        "insert-header" : "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header'>&#160</th>",
+        "insert-cell" : "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
     }
 };
 
@@ -123,6 +123,143 @@ $('#table-creator-caption').on('keyup', function () {
     updatecontent();
 });
 
+// ANCHOR Changement du nombre de lignes
+$('#table-row-nb').on('change', function () {
+    let new_nb_row = $(this).val();
+    let actual_nb_row = $("#full-table").find('tr').length;
+    if(new_nb_row > actual_nb_row){
+        let nb_new_row = new_nb_row - actual_nb_row;
+        for(let i = 0; i < nb_new_row; i++){
+            addRow("down");
+        }
+    } else if (new_nb_row < actual_nb_row) {
+        let nb_new_row = actual_nb_row - new_nb_row;
+        for(let i = 0; i < nb_new_row; i++){
+            let is_removed = removeRow($("#full-table").find('tr').last());
+            if(!is_removed){
+                break;
+            }else{
+                // TODO On active le bouton : annuler
+            }
+        }
+    }
+    updatecontent();
+});
+
+// ANCHOR Changement du nombre de colonnes
+$('#table-col-nb').on('change', function () {
+    let new_nb_col = $(this).val();
+    let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+    if(new_nb_col > actual_nb_col){
+        let nb_new_col = new_nb_col - actual_nb_col;
+        for(let i = 0; i < nb_new_col; i++){
+            addCol("right");
+        }
+    } else if (new_nb_col < actual_nb_col) {
+        let nb_new_col = actual_nb_col - new_nb_col;
+        let actual_nb_row = $("#full-table").find('tr').length;
+        for(let i = 0; i < actual_nb_row; i++){
+            let actual_row = $("#full-table tr")[i];
+            for(let y = 0; y < nb_new_col; y++){
+                let is_removed = removeCol($(actual_row).find('td').last());
+                if(!is_removed){
+                    break;
+                }else{
+                    // TODO On active le bouton : annuler
+                }
+            }
+        }
+    }
+    updatecontent();
+});
+
+export function addCol(side){
+    if(side == "left"){
+
+    }else if(side == "right"){
+
+    }
+}
+
+export function addRow(side){
+    let inserted_row;
+    let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+    let row_html = element_types["type-container"]["insert-row"];
+    // Ligne au dessus
+    if(side == "up"){
+        $(row_html+"\n\t\t\t").insertBefore($("#full-table").find('tr').first());
+        inserted_row = $("#full-table").find('tr').first();
+    }
+    // Ligne en dessous
+    else if(side == "down"){
+        $(row_html+"\n\t\t\t").insertAfter($("#full-table").find('tr').last());
+        inserted_row = $("#full-table").find('tr').last();
+    }
+    // On ajoute les colonnes
+    for(let i = 0; i < actual_nb_col; i++){
+        let cell_html = element_types["type-unique"]["insert-cell"];
+        inserted_row.append("\n\t\t\t\t"+cell_html+"\n\t\t\t");
+    }
+}
+
+function removeRow(row){
+    // On vérifie que la ligne soit vide
+    let is_filled = false;
+    let actual_nb_col = row.find('td').length;
+    for( let i = 0; i < actual_nb_col; i++){
+        let actual_cell = row.find('td')[i];
+        if($(actual_cell).text().trim()){
+            is_filled = true;
+        }
+    }
+    // Si la ligne est remplie : on demande confirmation
+    if(is_filled){
+        if(confirm('Attention : il y a du contenu sur la ligne en question. Voulez-vous vraiment supprimer ?')){
+            row.remove();
+            return true;
+        }
+        // Si on annule la suppression
+        else{
+            $("#table-row-nb").val($("#full-table").find('tr').length);
+            return false;
+        }
+    }
+    // Si il n'y a rien : on supprime
+    else{
+        row.remove();
+        return true;
+    }
+}
+
+function removeCol(col){
+    // On vérifie que la ligne soit vide
+    let is_filled = false;
+    let actual_nb_col = row.find('td').length;
+    for( let i = 0; i < actual_nb_col; i++){
+        let actual_cell = row.find('td')[i];
+        if($(actual_cell).text().trim()){
+            is_filled = true;
+        }
+    }
+    // Si la ligne est remplie : on demande confirmation
+    if(is_filled){
+        if(confirm('Attention : il y a du contenu sur la ligne en question. Voulez-vous vraiment supprimer ?')){
+            row.remove();
+            return true;
+        }
+        // Si on annule la suppression
+        else{
+            $("#table-row-nb").val($("#full-table").find('tr').length);
+            return false;
+        }
+    }
+    // Si il n'y a rien : on supprime
+    else{
+        row.remove();
+        return true;
+    }
+}
+
 export function addElement(element_type) {
     
     // TODO
@@ -136,7 +273,6 @@ $('.add-element').on('click', function () {
     let element_type = $(this).attr("id");
     addElement(element_type);
 });
-
 
 // ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {

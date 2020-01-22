@@ -81,10 +81,12 @@ $themes: (
             background-color: themed('backgroundTheadColor');  
             font-weight: bold;
             border: 2px solid themed('borderColor');
+            min-height: 15px;
         }
 
         td{
             border: 1px solid themed('borderColor');
+            min-height: 15px;
         }
 
     }
