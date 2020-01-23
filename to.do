@@ -5,12 +5,11 @@
 # [X] FIXME Problème d'attribut requis sur des éléments ou ce n'est pas possible
 
 // PRIORITE HAUTE
-# [X] Gestion du titre et de la caption
-# [X] Gestion d'ajout de ligne par les input nombre
-# [X] Gestion de suppression de ligne par les input nombre
-# [X] On ne déplace pas la caption
 # [] Gestion d'ajout de colonne par les input nombre
 # [] Gestion de suppression de colonne par les input nombre
+# [] Ajouter des titles aux titres et aux buttons
+# [] Problème de bouton copier Visualisation
+# [X] Overflow si tableau trop long : osef
 
 
 // PROPRITE BASSE

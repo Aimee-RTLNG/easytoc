@@ -185,7 +185,24 @@ $('#table-col-nb').on('change', function () {
   updatecontent();
 });
 function addCol(side) {
-  if (side == "left") {} else if (side == "right") {}
+  var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+  var row_html = element_types["type-container"]["insert-row"];
+  var cell_header_html = element_types["type-unique"]["insert-header"];
+  var cell_html = element_types["type-unique"]["insert-cell"];
+  cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
+  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
+
+  if (side == "left") {
+    $("#full-table > tr").each(function (index, tr) {
+      $(cell_html).insertBefore($(tr).find("td").first());
+      $(cell_header_html).insertBefore($(tr).find("th").first());
+    });
+  } else if (side == "right") {
+    $("#full-table tr").each(function (index, tr) {
+      $(cell_html).insertAfter($(tr).find("td").last());
+      $(cell_header_html).insertAfter($(tr).find("th").last());
+    });
+  }
 }
 function addRow(side) {
   var inserted_row;

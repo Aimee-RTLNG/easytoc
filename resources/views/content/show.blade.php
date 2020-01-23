@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" title="{{ __('Fermer') }}">×</button>
                 {{ session('info') }}
             </div>
         </div>
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" title="{{ __('Fermer') }}">×</button>
                 {{ session('error') }}
             </div>
         </div>
@@ -39,7 +39,7 @@
     <div class="panel-body">
 
         {{-- Infos prrojet et actions --}}
-        <h3 class="display-4">Projet</h3>
+        <h3 class="display-4">{{ __('Projet') }}</h3>
         <div class="row">
             <div class="col-8">
                 <div class="content-title">
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="element-actions">
-                <a class="btn btn-info edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">
+                <a class="btn btn-info edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}" title="{{ __('Modifier le projet') }}">
                     <i class="fa fa-edit"></i>
                     {{ __('Modifier') }}
                 </a>
@@ -70,7 +70,7 @@
         </div>
 
         {{-- Visualisation --}}
-        <h3 class="display-4">Visualisation</h3>
+        <h3 class="display-4">{{ __('Visualisation') }}</h3>
         <div class="row">
 
             <div class="content-html-preview">
@@ -80,16 +80,16 @@
         </div>
 
         {{-- Code généré --}}
-        <h3 class="display-4">Code généré</h3>
+        <h3 class="display-4">{{ __('Code généré') }}</h3>
         <div class="row">
 
             <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-            <a target="_blank" href="aide#formcode" class="btn btn-light">
+            <a target="_blank" href="aide#formcode" class="btn btn-light" title="{{ __('Accéder à la page d\'aide') }}">
                 <i class="fa fa-question-circle"></i>
                 {{ __("Besoin d'aide !") }}
             </a>
             <div class="copy-container w-100 d-flex flex-row-reverse">
-                <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info">
+                <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info" title="{{ __('Copier') }}"> 
                     {{ __("Copier") }}
                 </button>
             </div>
@@ -106,7 +106,7 @@
                 {{ __("Voici le code brut généré: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}
             </h3>
             <div class="copy-container w-100 d-flex flex-row-reverse">
-                <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info">
+                <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}">
                     {{ __("Copier") }}
                 </button>
             </div>

@@ -174,10 +174,22 @@ $('#table-col-nb').on('change', function () {
 });
 
 export function addCol(side){
+    let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+    let row_html = element_types["type-container"]["insert-row"];
+    let cell_header_html = element_types["type-unique"]["insert-header"];
+    let cell_html = element_types["type-unique"]["insert-cell"];
+    cell_html = "\n\t\t\t\t"+cell_html+"\n\t\t\t";
+    cell_header_html = "\n\t\t\t\t"+cell_header_html+"\n\t\t\t";
     if(side == "left"){
-
+        $("#full-table > tr").each( function(index, tr){
+            $(cell_html).insertBefore($(tr).find("td").first());
+            $(cell_header_html).insertBefore($(tr).find("th").first());
+        })
     }else if(side == "right"){
-
+        $("#full-table tr").each( function(index, tr){
+            $(cell_html).insertAfter($(tr).find("td").last());
+            $(cell_header_html).insertAfter($(tr).find("th").last());
+        })
     }
 }
 

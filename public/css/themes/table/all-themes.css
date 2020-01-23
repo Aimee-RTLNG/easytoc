@@ -2,6 +2,8 @@
   color: black;
   background-color: #fff;
   border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
 }
 
 .theme-white #full-table .table-caption {
@@ -14,18 +16,20 @@
   background-color: #bdbdbd;
   font-weight: bold;
   border: 2px solid grey;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-white #full-table td {
   border: 1px solid grey;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-black #full-table {
   color: white;
   background-color: #333333;
   border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
 }
 
 .theme-black #full-table .table-caption {
@@ -38,18 +42,20 @@
   background-color: #0f0f0f;
   font-weight: bold;
   border: 2px solid white;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-black #full-table td {
   border: 1px solid white;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-green #full-table {
   color: white;
   background-color: green;
   border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
 }
 
 .theme-green #full-table .table-caption {
@@ -62,18 +68,20 @@
   background-color: #015801;
   font-weight: bold;
   border: 2px solid #015801;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-green #full-table td {
   border: 1px solid #015801;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-red #full-table {
   color: white;
   background-color: red;
   border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
 }
 
 .theme-red #full-table .table-caption {
@@ -86,18 +94,20 @@
   background-color: #970000;
   font-weight: bold;
   border: 2px solid #970000;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-red #full-table td {
   border: 1px solid #970000;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-blue #full-table {
   color: white;
   background-color: #6a6aff;
   border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
 }
 
 .theme-blue #full-table .table-caption {
@@ -110,18 +120,20 @@
   background-color: #4040e9;
   font-weight: bold;
   border: 2px solid #4040e9;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-blue #full-table td {
   border: 1px solid #4040e9;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-grey #full-table {
   color: black;
   background-color: grey;
   border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
 }
 
 .theme-grey #full-table .table-caption {
@@ -134,11 +146,11 @@
   background-color: #474747;
   font-weight: bold;
   border: 2px solid #474747;
-  min-height: 15px;
+  min-width: 40px;
 }
 
 .theme-grey #full-table td {
   border: 1px solid #474747;
-  min-height: 15px;
+  min-width: 40px;
 }
 /*# sourceMappingURL=all-themes.css.map */

@@ -70,6 +70,8 @@ $themes: (
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
       border-collapse: collapse;
+      width: 100%;
+      overflow: auto;
 
         .table-caption{
             font-size: 15px;
@@ -81,12 +83,12 @@ $themes: (
             background-color: themed('backgroundTheadColor');  
             font-weight: bold;
             border: 2px solid themed('borderColor');
-            min-height: 15px;
+            min-width: 40px;
         }
 
         td{
             border: 1px solid themed('borderColor');
-            min-height: 15px;
+            min-width: 40px;
         }
 
     }
