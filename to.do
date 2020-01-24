@@ -7,7 +7,7 @@
 // PRIORITE HAUTE
 # [] Gestion d'ajout de colonne par les input nombre
 # [] Gestion de suppression de colonne par les input nombre
-# [] Ajouter des titles aux titres et aux buttons
+# [X] Ajouter des titles aux titres et aux buttons
 # [] Problème de bouton copier Visualisation
 # [X] Overflow si tableau trop long : osef
 

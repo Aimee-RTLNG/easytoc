@@ -136,6 +136,8 @@ $('#table-row-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_row; i++) {
       addRow("down");
+      message = "Ligne ajoutée";
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_row < actual_nb_row) {
     var _nb_new_row = actual_nb_row - new_nb_row;
@@ -145,7 +147,9 @@ $('#table-row-nb').on('change', function () {
 
       if (!is_removed) {
         break;
-      } else {// TODO On active le bouton : annuler
+      } else {
+        message = "Ligne supprimée";
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       }
     }
   }
@@ -162,23 +166,26 @@ $('#table-col-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_col; i++) {
       addCol("right");
+      message = "Colonne ajoutée";
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_col < actual_nb_col) {
     var _nb_new_col = actual_nb_col - new_nb_col;
 
     var actual_nb_row = $("#full-table").find('tr').length;
+    var col_cells = [];
 
     for (var _i2 = 0; _i2 < actual_nb_row; _i2++) {
       var actual_row = $("#full-table tr")[_i2];
 
-      for (var y = 0; y < _nb_new_col; y++) {
-        var is_removed = removeCol($(actual_row).find('td').last());
+      col_cells[_i2] = $(actual_row).find('th, td').last();
+    }
 
-        if (!is_removed) {
-          break;
-        } else {// TODO On active le bouton : annuler
-        }
-      }
+    var col_removed = removeCol(col_cells);
+
+    if (col_removed) {
+      message = "Colonne supprimée";
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   }
 
@@ -228,10 +235,10 @@ function addRow(side) {
 function removeRow(row) {
   // On vérifie que la ligne soit vide
   var is_filled = false;
-  var actual_nb_col = row.find('td').length;
+  var actual_nb_col = row.find('td, th').length;
 
   for (var i = 0; i < actual_nb_col; i++) {
-    var actual_cell = row.find('td')[i];
+    var actual_cell = row.find('td, th')[i];
 
     if ($(actual_cell).text().trim()) {
       is_filled = true;
@@ -240,7 +247,7 @@ function removeRow(row) {
 
 
   if (is_filled) {
-    if (confirm('Attention : il y a du contenu sur la ligne en question. Voulez-vous vraiment supprimer ?')) {
+    if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
       row.remove();
       return true;
     } // Si on annule la suppression
@@ -255,34 +262,43 @@ function removeRow(row) {
     }
 }
 
-function removeCol(col) {
-  // On vérifie que la ligne soit vide
-  var is_filled = false;
-  var actual_nb_col = row.find('td').length;
+function removeCol(cells) {
+  // ATTENTION : cells doit être un array d'item
+  if (Array.isArray(cells)) {
+    // On vérifie que la ligne soit vide
+    var is_filled = false;
+    cells.forEach(function (item, index) {
+      var actual_cell = item;
 
-  for (var i = 0; i < actual_nb_col; i++) {
-    var actual_cell = row.find('td')[i];
-
-    if ($(actual_cell).text().trim()) {
-      is_filled = true;
-    }
-  } // Si la ligne est remplie : on demande confirmation
-
-
-  if (is_filled) {
-    if (confirm('Attention : il y a du contenu sur la ligne en question. Voulez-vous vraiment supprimer ?')) {
-      row.remove();
-      return true;
-    } // Si on annule la suppression
-    else {
-        $("#table-row-nb").val($("#full-table").find('tr').length);
-        return false;
+      if ($(actual_cell).text().trim()) {
+        is_filled = true;
       }
-  } // Si il n'y a rien : on supprime
-  else {
-      row.remove();
-      return true;
-    }
+    }); // Si la ligne est remplie : on demande confirmation
+
+    if (is_filled) {
+      if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
+        cells.forEach(function (item, index) {
+          var actual_cell = item;
+          actual_cell.remove();
+        });
+        return true;
+      } // Si on annule la suppression
+      else {
+          $("#table-col-nb").val($("#full-table").find('tr').first().find('th').length);
+          return false;
+        }
+    } // Si il n'y a rien : on supprime
+    else {
+        cells.forEach(function (item, index) {
+          var actual_cell = item;
+          actual_cell.remove();
+        });
+        return true;
+      }
+  } else {
+    console.warn('Erreur dans la suppression de colonne : not an array.');
+    return false;
+  }
 }
 
 function addElement(element_type) {
