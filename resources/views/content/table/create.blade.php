@@ -153,9 +153,13 @@
                     </div>
                     <div class="col-2 p-0" role="region">
                         <label class="creator-panel__footer d-block" for="table-footer">{{ __('Options du tableau') }}</label>
-                        <label class="footer-button d-flex align-items-center justify-content-center" for="footer-button">
+                        <label class="footer-button d-flex align-items-center" for="footer-button">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
                             <span class="ml-3">{{ __('Pied de tableau') }}</span>
+                        </label>
+                        <label class="lateral-header-button d-flex align-items-center" for="lateral-header-button">
+                            <input type="checkbox" class="add-element type-special check-box" value="" id="lateral-header-button" name="lateral-header-button">
+                            <span class="ml-3">{{ __('Entêtes vertical ??') }}</span>
                         </label>
                     </div>
                 </div>
@@ -170,7 +174,8 @@
                         <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à gauche') }}" title="{{ __('Nouvelle colonne à gauche') }}" id="insert-col_left" role="listitem">
                             <i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Nouvelle colonne à gauche') }}
-                        </button>                        
+                        </button>              
+                        <br>          
                         <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle ligne en haut') }}" title="{{ __('Nouvelle ligne en haut') }}" id="insert-row_up" role="listitem">
                             <i class="fa fa-grip-lines"></i>
                             {{ __('Nouvelle ligne en haut') }}
@@ -194,6 +199,7 @@
                             <i class="fa fa-underline"></i>
                             {{ __('Souligné') }}
                         </button>
+                        <br>
                         <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" title="{{ __('Mettre le texte à gauche') }}" id="justify-left" role="listitem">
                             <i class="fa fa-align-left"></i>
                             {{ __('Aligner à gauche') }}

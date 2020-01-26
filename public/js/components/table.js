@@ -4,7 +4,7 @@
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: getOldContent, addCol, addRow, addElement */
+/*! exports provided: getOldContent, addCol, addRow */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,7 +12,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
 // ANCHOR Données initiales
 var element;
@@ -125,7 +124,7 @@ $('#table-creator-title').on('keyup', function () {
 $('#table-creator-caption').on('keyup', function () {
   $('#table-caption span').text($('#table-creator-caption').val());
   updatecontent();
-}); // ANCHOR Changement du nombre de lignes
+}); // ANCHOR Changement du nombre de lignes via INPUT
 
 $('#table-row-nb').on('change', function () {
   var new_nb_row = $(this).val();
@@ -155,7 +154,7 @@ $('#table-row-nb').on('change', function () {
   }
 
   updatecontent();
-}); // ANCHOR Changement du nombre de colonnes
+}); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
   var new_nb_col = $(this).val();
@@ -190,7 +189,8 @@ $('#table-col-nb').on('change', function () {
   }
 
   updatecontent();
-});
+}); // Ajout de colonne
+
 function addCol(side) {
   var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
   var row_html = element_types["type-container"]["insert-row"];
@@ -210,19 +210,30 @@ function addCol(side) {
       $(cell_header_html).insertAfter($(tr).find("th").last());
     });
   }
-}
+} // Ajout de ligne
+
 function addRow(side) {
   var inserted_row;
   var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
   var row_html = element_types["type-container"]["insert-row"]; // Ligne au dessus
 
   if (side == "up") {
-    $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tr').first());
-    inserted_row = $("#full-table").find('tr').first();
+    if ($('.content-editable-selected').length) {
+      $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr')); // selectionner la lgne qu'on vient d'ajouter
+    } else {
+      $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      inserted_row = $("#full-table").find('tdoby tr').first();
+      console.log(inserted_row);
+    }
   } // Ligne en dessous
   else if (side == "down") {
-      $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
-      inserted_row = $("#full-table").find('tr').last();
+      if ($('.content-editable-selected').length) {
+        $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr')); // selectionner la lgne qu'on vient d'ajouter
+      } else {
+        $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
+        inserted_row = $("#full-table").find('tr').last();
+        console.log(inserted_row);
+      }
     } // On ajoute les colonnes
 
 
@@ -230,7 +241,7 @@ function addRow(side) {
     var cell_html = element_types["type-unique"]["insert-cell"];
     inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
   }
-}
+} // Suppression de ligne
 
 function removeRow(row) {
   // On vérifie que la ligne soit vide
@@ -260,7 +271,8 @@ function removeRow(row) {
       row.remove();
       return true;
     }
-}
+} // Suppression de colonne
+
 
 function removeCol(cells) {
   // ATTENTION : cells doit être un array d'item
@@ -299,16 +311,18 @@ function removeCol(cells) {
     console.warn('Erreur dans la suppression de colonne : not an array.');
     return false;
   }
-}
-
-function addElement(element_type) {
-  // TODO
-  console.log(element_type);
 } // ANCHOR Ajout d'un élément
+
 
 $('.add-element').on('click', function () {
   var element_type = $(this).attr("id");
-  addElement(element_type);
+  console.log(element_type);
+
+  if (element_type == "insert-row_up") {
+    addRow("up");
+  } else if (element_type == "insert-row_down") {
+    addRow("down");
+  }
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {

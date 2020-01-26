@@ -5,10 +5,15 @@
 # [X] FIXME Problème d'attribut requis sur des éléments ou ce n'est pas possible
 
 // PRIORITE HAUTE
-# [] Gestion d'ajout de colonne par les input nombre
-# [] Gestion de suppression de colonne par les input nombre
-# [X] Ajouter des titles aux titres et aux buttons
-# [] Problème de bouton copier Visualisation
+# [] Déplacement de ligne
+# [] Déplacement de colonne
+# [] Gestion des headers latéraux
+# [] Gestion du footer de tableau
+# [] Ajout de colonne via buttons
+# [] Ajout de ligne via buttons
+# [] Alignement du texte dans les cases
+# [] 
+# [] Problème de bouton "Copier" sur page Visualisation
 # [X] Overflow si tableau trop long : osef
 
 

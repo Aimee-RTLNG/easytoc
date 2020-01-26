@@ -123,7 +123,7 @@ $('#table-creator-caption').on('keyup', function () {
     updatecontent();
 });
 
-// ANCHOR Changement du nombre de lignes
+// ANCHOR Changement du nombre de lignes via INPUT
 $('#table-row-nb').on('change', function () {
     let new_nb_row = $(this).val();
     let actual_nb_row = $("#full-table").find('tr').length;
@@ -149,7 +149,7 @@ $('#table-row-nb').on('change', function () {
     updatecontent();
 });
 
-// ANCHOR Changement du nombre de colonnes
+// ANCHOR Changement du nombre de colonnes via INPUT
 $('#table-col-nb').on('change', function () {
     let new_nb_col = $(this).val();
     let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
@@ -177,6 +177,7 @@ $('#table-col-nb').on('change', function () {
     updatecontent();
 });
 
+// Ajout de colonne
 export function addCol(side){
     let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
     let row_html = element_types["type-container"]["insert-row"];
@@ -197,19 +198,32 @@ export function addCol(side){
     }
 }
 
+// Ajout de ligne
 export function addRow(side){
     let inserted_row;
     let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
     let row_html = element_types["type-container"]["insert-row"];
     // Ligne au dessus
     if(side == "up"){
-        $(row_html+"\n\t\t\t").insertBefore($("#full-table").find('tr').first());
-        inserted_row = $("#full-table").find('tr').first();
+        if($('.content-editable-selected').length){
+            $(row_html+"\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+            // selectionner la lgne qu'on vient d'ajouter
+        }else{
+            $(row_html+"\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+            inserted_row = $("#full-table").find('tdoby tr').first();
+            console.log(inserted_row);
+        }
     }
     // Ligne en dessous
     else if(side == "down"){
-        $(row_html+"\n\t\t\t").insertAfter($("#full-table").find('tr').last());
-        inserted_row = $("#full-table").find('tr').last();
+        if($('.content-editable-selected').length){
+            $(row_html+"\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+            // selectionner la lgne qu'on vient d'ajouter
+        }else{
+            $(row_html+"\n\t\t\t").insertAfter($("#full-table").find('tr').last());
+            inserted_row = $("#full-table").find('tr').last();
+            console.log(inserted_row);
+        }
     }
     // On ajoute les colonnes
     for(let i = 0; i < actual_nb_col; i++){
@@ -218,6 +232,7 @@ export function addRow(side){
     }
 }
 
+// Suppression de ligne
 function removeRow(row){
     // On vérifie que la ligne soit vide
     let is_filled = false;
@@ -247,6 +262,7 @@ function removeRow(row){
     }
 }
 
+// Suppression de colonne
 function removeCol(cells){
     // ATTENTION : cells doit être un array d'item
     if(Array.isArray(cells)){
@@ -287,18 +303,16 @@ function removeCol(cells){
     }
 }
 
-export function addElement(element_type) {
-    
-    // TODO
-
-    console.log(element_type);
-
-}
-
 // ANCHOR Ajout d'un élément
 $('.add-element').on('click', function () {
     let element_type = $(this).attr("id");
-    addElement(element_type);
+    console.log(element_type);
+    if(element_type == "insert-row_up"){
+        addRow("up");
+    }else if(element_type == "insert-row_down"){
+        addRow("down");
+    }
+
 });
 
 // ANCHOR Sauvegarde définitive
