@@ -15,7 +15,7 @@ let next_case;
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
+let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
 
 // Imports
 import { alertMsg } from "../../js/app";
@@ -56,7 +56,8 @@ var element_types = {
         "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
     },
     "type-unique" : {
-        "insert-header" : "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header'>&#160</th>",
+        "insert-header-col" : "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
+        "insert-header-row" : "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
         "insert-cell" : "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
     }
 };
@@ -181,19 +182,24 @@ $('#table-col-nb').on('change', function () {
 export function addCol(side){
     let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
     let row_html = element_types["type-container"]["insert-row"];
-    let cell_header_html = element_types["type-unique"]["insert-header"];
+    let cell_header_html = element_types["type-unique"]["insert-header-col"];
     let cell_html = element_types["type-unique"]["insert-cell"];
     cell_html = "\n\t\t\t\t"+cell_html+"\n\t\t\t";
     cell_header_html = "\n\t\t\t\t"+cell_header_html+"\n\t\t\t";
     if(side == "left"){
-        $("#full-table > tr").each( function(index, tr){
+        $("#full-table tr").each( function(index, tr){
             $(cell_html).insertBefore($(tr).find("td").first());
-            $(cell_header_html).insertBefore($(tr).find("th").first());
+            if(index == 0){
+                $(cell_header_html).insertBefore($(tr).find("th").first());
+            }
         })
     }else if(side == "right"){
         $("#full-table tr").each( function(index, tr){
+            console.log(index);
             $(cell_html).insertAfter($(tr).find("td").last());
-            $(cell_header_html).insertAfter($(tr).find("th").last());
+            if(index == 0){
+                $(cell_header_html).insertAfter($(tr).find("th").last());
+            }
         })
     }
 }
@@ -203,6 +209,7 @@ export function addRow(side){
     let inserted_row;
     let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
     let row_html = element_types["type-container"]["insert-row"];
+    let col_header = $('#lateral-header-button').prop('checked');
     // Ligne au dessus
     if(side == "up"){
         if($('.content-editable-selected').length){
@@ -211,7 +218,6 @@ export function addRow(side){
         }else{
             $(row_html+"\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
             inserted_row = $("#full-table").find('tdoby tr').first();
-            console.log(inserted_row);
         }
     }
     // Ligne en dessous
@@ -222,12 +228,16 @@ export function addRow(side){
         }else{
             $(row_html+"\n\t\t\t").insertAfter($("#full-table").find('tr').last());
             inserted_row = $("#full-table").find('tr').last();
-            console.log(inserted_row);
         }
     }
     // On ajoute les colonnes
     for(let i = 0; i < actual_nb_col; i++){
-        let cell_html = element_types["type-unique"]["insert-cell"];
+        let cell_html;
+        if(col_header && i == 0){
+            cell_html = element_types["type-unique"]["insert-header-row"];
+        } else {
+            cell_html = element_types["type-unique"]["insert-cell"];
+        }
         inserted_row.append("\n\t\t\t\t"+cell_html+"\n\t\t\t");
     }
 }
@@ -306,11 +316,49 @@ function removeCol(cells){
 // ANCHOR Ajout d'un élément
 $('.add-element').on('click', function () {
     let element_type = $(this).attr("id");
+    let nb_col = $('#table-col-nb').val();
+    let nb_row = $('#table-row-nb').val();
     console.log(element_type);
+
+    // AJOUT DE LIGNE EN HAUT
     if(element_type == "insert-row_up"){
         addRow("up");
+        $('#table-row-nb').val( parseInt(nb_row) + 1 );
+
+    // AJOUT DE LIGNE EN BAS
     }else if(element_type == "insert-row_down"){
         addRow("down");
+        $('#table-row-nb').val( parseInt(nb_row) + 1 );
+
+    // AJOUT DE COL A DROITE
+    }else if(element_type == "insert-col_right"){
+        addCol("right");    
+        $('#table-col-nb').val( parseInt(nb_col) + 1 );
+
+    // AJOUT DE COL A DROITE
+    }else if(element_type == "insert-col_left"){
+        addCol("left");  
+        $('#table-col-nb').val( parseInt(nb_col) + 1 );
+        
+    // PREMIERE COLONNE EN HEADER
+    }else if(element_type == "lateral-header-button"){
+        let rows = $('#full-table').find('tr');
+        if($( this ).prop('checked')){
+            rows.each(function( index ) {
+                if(index != 0){
+                    let new_header = $( this ).find('th, td').first();
+                    $(new_header).replaceWith("<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>" + $(new_header).text() + "</th>");
+                }
+            });
+        }else{
+            rows.each(function( index ) {
+                if(index != 0){
+                    let new_cell = $( this ).find('th, td').first();
+                    $(new_cell).replaceWith("<td class='table-cell cell-text' contenteditable=true data-tag='cell'>" + $(new_cell).text() + "</td>");
+                }
+            });
+        }
+        
     }
 
 });

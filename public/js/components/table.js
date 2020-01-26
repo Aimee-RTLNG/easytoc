@@ -29,7 +29,7 @@ var next_case;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
 var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t\t<th contenteditable="true" data-tag="cell-header">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
+var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
 
  // ANCHOR Caractères restants Description du projet
 
@@ -67,7 +67,8 @@ var element_types = {
     "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
   },
   "type-unique": {
-    "insert-header": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header'>&#160</th>",
+    "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
+    "insert-header-row": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
     "insert-cell": "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
   }
 };
@@ -194,20 +195,27 @@ $('#table-col-nb').on('change', function () {
 function addCol(side) {
   var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
   var row_html = element_types["type-container"]["insert-row"];
-  var cell_header_html = element_types["type-unique"]["insert-header"];
+  var cell_header_html = element_types["type-unique"]["insert-header-col"];
   var cell_html = element_types["type-unique"]["insert-cell"];
   cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
   cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
 
   if (side == "left") {
-    $("#full-table > tr").each(function (index, tr) {
+    $("#full-table tr").each(function (index, tr) {
       $(cell_html).insertBefore($(tr).find("td").first());
-      $(cell_header_html).insertBefore($(tr).find("th").first());
+
+      if (index == 0) {
+        $(cell_header_html).insertBefore($(tr).find("th").first());
+      }
     });
   } else if (side == "right") {
     $("#full-table tr").each(function (index, tr) {
+      console.log(index);
       $(cell_html).insertAfter($(tr).find("td").last());
-      $(cell_header_html).insertAfter($(tr).find("th").last());
+
+      if (index == 0) {
+        $(cell_header_html).insertAfter($(tr).find("th").last());
+      }
     });
   }
 } // Ajout de ligne
@@ -215,7 +223,8 @@ function addCol(side) {
 function addRow(side) {
   var inserted_row;
   var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
-  var row_html = element_types["type-container"]["insert-row"]; // Ligne au dessus
+  var row_html = element_types["type-container"]["insert-row"];
+  var col_header = $('#lateral-header-button').prop('checked'); // Ligne au dessus
 
   if (side == "up") {
     if ($('.content-editable-selected').length) {
@@ -223,7 +232,6 @@ function addRow(side) {
     } else {
       $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
       inserted_row = $("#full-table").find('tdoby tr').first();
-      console.log(inserted_row);
     }
   } // Ligne en dessous
   else if (side == "down") {
@@ -232,13 +240,21 @@ function addRow(side) {
       } else {
         $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
         inserted_row = $("#full-table").find('tr').last();
-        console.log(inserted_row);
       }
     } // On ajoute les colonnes
 
 
   for (var i = 0; i < actual_nb_col; i++) {
-    var cell_html = element_types["type-unique"]["insert-cell"];
+    var cell_html = void 0;
+
+    if (col_header && i == 0) {
+      console.log('header');
+      cell_html = element_types["type-unique"]["insert-header-row"];
+    } else {
+      console.log('header no');
+      cell_html = element_types["type-unique"]["insert-cell"];
+    }
+
     inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
   }
 } // Suppression de ligne
@@ -316,12 +332,40 @@ function removeCol(cells) {
 
 $('.add-element').on('click', function () {
   var element_type = $(this).attr("id");
-  console.log(element_type);
+  var nb_col = $('#table-col-nb').val();
+  var nb_row = $('#table-row-nb').val();
+  console.log(element_type); // AJOUT DE LIGNE EN HAUT
 
   if (element_type == "insert-row_up") {
     addRow("up");
+    $('#table-row-nb').val(parseInt(nb_row) + 1); // AJOUT DE LIGNE EN BAS
   } else if (element_type == "insert-row_down") {
     addRow("down");
+    $('#table-row-nb').val(parseInt(nb_row) + 1); // AJOUT DE COL A DROITE
+  } else if (element_type == "insert-col_right") {
+    addCol("right");
+    $('#table-col-nb').val(parseInt(nb_col) + 1); // AJOUT DE COL A DROITE
+  } else if (element_type == "insert-col_left") {
+    addCol("left");
+    $('#table-col-nb').val(parseInt(nb_col) + 1); // PREMIERE COLONNE EN HEADER
+  } else if (element_type == "lateral-header-button") {
+    var rows = $('#full-table').find('tr');
+
+    if ($(this).prop('checked')) {
+      rows.each(function (index) {
+        if (index != 0) {
+          var new_header = $(this).find('th, td').first();
+          $(new_header).replaceWith("<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>" + $(new_header).text() + "</th>");
+        }
+      });
+    } else {
+      rows.each(function (index) {
+        if (index != 0) {
+          var new_cell = $(this).find('th, td').first();
+          $(new_cell).replaceWith("<td class='table-cell cell-text' contenteditable=true data-tag='cell'>" + $(new_cell).text() + "</td>");
+        }
+      });
+    }
   }
 }); // ANCHOR Sauvegarde définitive
 
@@ -496,7 +540,7 @@ new ClipboardJS('#copy-raw-code');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\table.js */"./resources/js/components/table.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\table.js */"./resources/js/components/table.js");
 
 
 /***/ })
