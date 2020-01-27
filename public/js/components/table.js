@@ -23,9 +23,13 @@ var next_col;
 var previous_row;
 var next_row;
 var message;
-var previous_case;
-var selected_case;
-var next_case;
+var previous_cell;
+var selected_cell;
+var next_cell;
+var cell_index;
+var selected_cell_index;
+var selected_col;
+var selected_row;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
 var csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -175,17 +179,21 @@ $('#table-col-nb').on('change', function () {
     var actual_nb_row = $("#full-table").find('tr').length;
     var col_cells = [];
 
-    for (var _i2 = 0; _i2 < actual_nb_row; _i2++) {
-      var actual_row = $("#full-table tr")[_i2];
+    for (var x = 0; x < _nb_new_col; x++) {
+      for (var _i2 = 0; _i2 < actual_nb_row; _i2++) {
+        var actual_row = $("#full-table tr")[_i2];
 
-      col_cells[_i2] = $(actual_row).find('th, td').last();
-    }
+        col_cells[_i2] = $(actual_row).find('th, td').last();
+      }
 
-    var col_removed = removeCol(col_cells);
+      var col_removed = removeCol(col_cells);
 
-    if (col_removed) {
-      message = "Colonne supprimée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      if (col_removed) {
+        message = "Colonne supprimée";
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      } else {
+        break;
+      }
     }
   }
 
@@ -201,22 +209,44 @@ function addCol(side) {
   cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
 
   if (side == "left") {
-    $("#full-table tr").each(function (index, tr) {
-      $(cell_html).insertBefore($(tr).find("td").first());
+    if ($(".content-editable-selected").length) {
+      cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
+      $("#full-table tr").each(function (index, tr) {
+        $(cell_html).insertBefore($(tr).find("td")[cell_index]);
 
-      if (index == 0) {
-        $(cell_header_html).insertBefore($(tr).find("th").first());
-      }
-    });
+        if (index == 0) {
+          $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+        }
+      });
+    } else {
+      $("#full-table tr").each(function (index, tr) {
+        $(cell_html).insertBefore($(tr).find("td").first());
+
+        if (index == 0) {
+          $(cell_header_html).insertBefore($(tr).find("th").first());
+        }
+      });
+    }
   } else if (side == "right") {
-    $("#full-table tr").each(function (index, tr) {
-      console.log(index);
-      $(cell_html).insertAfter($(tr).find("td").last());
+    if ($(".content-editable-selected").length) {
+      cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
+      $("#full-table tr").each(function (index, tr) {
+        $(cell_html).insertAfter($(tr).find("td")[cell_index]);
 
-      if (index == 0) {
-        $(cell_header_html).insertAfter($(tr).find("th").last());
-      }
-    });
+        if (index == 0) {
+          $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+        }
+      });
+    } else {
+      $("#full-table tr").each(function (index, tr) {
+        console.log(index);
+        $(cell_html).insertAfter($(tr).find("td").last());
+
+        if (index == 0) {
+          $(cell_header_html).insertAfter($(tr).find("th").last());
+        }
+      });
+    }
   }
 } // Ajout de ligne
 
@@ -228,18 +258,20 @@ function addRow(side) {
 
   if (side == "up") {
     if ($('.content-editable-selected').length) {
-      $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr')); // selectionner la lgne qu'on vient d'ajouter
+      $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      inserted_row = $(".content-editable-selected").closest('tr').prev();
     } else {
       $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
-      inserted_row = $("#full-table").find('tdoby tr').first();
+      inserted_row = $("#full-table").find('tbody tr').first();
     }
   } // Ligne en dessous
   else if (side == "down") {
       if ($('.content-editable-selected').length) {
-        $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr')); // selectionner la lgne qu'on vient d'ajouter
+        $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        inserted_row = $(".content-editable-selected").closest('tr').next();
       } else {
         $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
-        inserted_row = $("#full-table").find('tr').last();
+        inserted_row = $("#full-table").find('tbody tr').last();
       }
     } // On ajoute les colonnes
 
@@ -248,10 +280,8 @@ function addRow(side) {
     var cell_html = void 0;
 
     if (col_header && i == 0) {
-      console.log('header');
       cell_html = element_types["type-unique"]["insert-header-row"];
     } else {
-      console.log('header no');
       cell_html = element_types["type-unique"]["insert-cell"];
     }
 
@@ -327,14 +357,44 @@ function removeCol(cells) {
     console.warn('Erreur dans la suppression de colonne : not an array.');
     return false;
   }
-} // ANCHOR Ajout d'un élément
+}
 
+$('.cell-action').on('click', function () {
+  var element_action = $(this).attr("data-action");
+  var nb_col = $('#table-col-nb').val();
+  var nb_row = $('#table-row-nb').val(); // Vider la case
+
+  if (element_action == "empty-cell") {
+    $('.content-editable-selected').text("");
+  } // Supprimer la colonne
+  else if (element_action == "delete-col") {
+      if (selected_col) {
+        var col_removed = removeCol(selected_col);
+
+        if (col_removed) {
+          $('#table-col-nb').val(parseInt(nb_col) - 1);
+          message = "Colonne supprimée";
+          Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+        }
+      }
+    } // Supprimer la ligne
+    else if (element_action == "delete-row") {
+        if (selected_row) {
+          var row_removed = removeRow(selected_row);
+
+          if (row_removed) {
+            $('#table-row-nb').val(parseInt(nb_row) - 1);
+            message = "Colonne supprimée";
+            Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+          }
+        }
+      }
+}); // ANCHOR Ajout d'un élément
 
 $('.add-element').on('click', function () {
   var element_type = $(this).attr("id");
   var nb_col = $('#table-col-nb').val();
-  var nb_row = $('#table-row-nb').val();
-  console.log(element_type); // AJOUT DE LIGNE EN HAUT
+  var nb_row = $('#table-row-nb').val(); // AJOUT DE LIGNE EN HAUT
 
   if (element_type == "insert-row_up") {
     addRow("up");
@@ -419,22 +479,94 @@ $(document.body).off('keyup') // ré-initialisation
   if (tag != "title" && tag != "caption") {
     // si ce n'est pas le titre ou la caption
     $('.cell-action').removeAttr('disabled');
-    var position_left = $('.content-editable-selected').position().right - $('.content-editable-selected').position().left;
-    $('.side-tool.vertical-tools').css("margin-top", $('.content-editable-selected').position().top + "px");
-    $('.side-tool.horizontal-tools').css("margin-left", position_left + "px"); // Side tool : déplacemet haut bas et suppression 
+    var cell_width = parseInt($('.content-editable-selected').css("width").replace("px", ""));
+    var position_left = parseInt($('.content-editable-selected').position().left) + 15;
+    var position_top = $('.content-editable-selected').position().top + 100 + "px";
+    $('.side-tool.vertical-tools').css("margin-top", position_top);
+    $('.side-tool.horizontal-tools').css("margin-left", position_left);
+    $('.side-tool.horizontal-tools').css("width", cell_width); // Side tool : déplacemet haut bas et suppression 
 
-    $('.side-tool').show();
+    $('.side-tool').show(); // Si l'élément est dans le header
+
+    if ($('.content-editable-selected').parent().parent().prop("tagName") == "THEAD") {
+      $('#insert-row_up').attr('disabled', true);
+      $('#insert-row_down').attr('disabled', true);
+      $('.side-tool.vertical-tools').hide();
+      $('.action-delete-row').attr('disabled', true);
+    } // Si l'élément est un header latéral
+    else if ($('.content-editable-selected').hasClass('table-header-cell')) {
+        $('#insert-col_left').attr('disabled', true);
+      } // Si l'élément n'est ni un header horizontal ni vertical
+      else {
+          $('#insert-col_left').removeAttr('disabled');
+          $('#insert-row_up').removeAttr('disabled');
+          $('#insert-row_down').removeAttr('disabled');
+        } // Gestion des lignes
+
+
+    selected_row = $(".content-editable-selected").parent();
+    previous_row = $(".content-editable-selected").parent().prev("tr");
+    next_row = $(".content-editable-selected").parent().next("tr"); // Si il n'y a pas de ligne au dessus, on ne peut pas le déplacer vers le haut
+
+    if (previous_row.length == 0) {
+      $('#action-move-up').hide();
+    } else {
+      $('#action-move-up').show();
+    } // Si il n'y a pas de ligne en dessous, on ne peut pas le déplacer vers le bas
+
+
+    if (next_row.length == 0) {
+      $('#action-move-down').hide();
+    } else {
+      $('#action-move-down').show();
+    } // Gestion des cases
+
+
+    next_cell = $(".content-editable-selected").next();
+    previous_cell = $(".content-editable-selected").prev();
+    selected_cell = $(".content-editable-selected");
+    selected_cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index(); // Gestion des colonnes 
+
+    selected_col = [];
+    previous_col = [];
+    next_col = [];
+    $("#full-table tr").each(function (i, element) {
+      var actual_row = $("#full-table tr")[i];
+
+      if (selected_cell_index - 1 >= 0) {
+        previous_col[i] = $(actual_row).find('th, td')[selected_cell_index - 1];
+      }
+
+      selected_col[i] = $(actual_row).find('th, td')[selected_cell_index];
+
+      if (selected_cell_index + 1 < $(actual_row).find('th, td').length) {
+        next_col[i] = $(actual_row).find('th, td')[selected_cell_index + 1];
+      }
+    }); // Si il n'y a pas de colonne à gauche , on ne peut pas le déplacer vers la gauche
+
+    console.log(previous_col);
+
+    if (previous_col.length == 0) {
+      $('#action-move-left').hide();
+    } else {
+      $('#action-move-left').show();
+    } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
+
+
+    console.log(next_col);
+
+    if (next_col.length == 0) {
+      $('#action-move-right').hide();
+    } else {
+      $('#action-move-right').show();
+    }
   } else {
     // Si on a sélectionné le titre principal
     $('.cell-action').attr('disabled', 'true');
+    $('.add-element').attr('disabled', 'true');
     $('.side-tool').hide();
   }
 
-  updatecontent();
-}) // quand on déselectionne un élement...
-.on('blur', '[contenteditable=true]', function (e) {
-  // e.preventDefault();
-  var element_select_before = window.getSelection().getRangeAt(0).startContainer;
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
@@ -476,6 +608,7 @@ var deletecommand = new command({
 }); // ANCHOR Mise en tablee du texte (gras, italic, underline...)
 
 $('.text-formatting').on("click", function () {
+  // TODO NS_ERROR_FAILURE
   switch ($(this).attr('id')) {
     case 'element-bold':
       document.execCommand('bold');
@@ -540,7 +673,7 @@ new ClipboardJS('#copy-raw-code');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\table.js */"./resources/js/components/table.js");
+module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\table.js */"./resources/js/components/table.js");
 
 
 /***/ })

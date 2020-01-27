@@ -167,14 +167,14 @@
                 <div role="section" class="row" aria-labelledby="form_actions_element">
                     <div role="section" class="col" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément') }}</h3>
-                        <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à droite') }}" title="{{ __('Nouvelle colonne à droite') }}" id="insert-col_right" role="listitem">
-                            <i class="fa fa-grip-lines-vertical"></i>
-                            {{ __('Nouvelle colonne à droite') }}
-                        </button>
                         <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à gauche') }}" title="{{ __('Nouvelle colonne à gauche') }}" id="insert-col_left" role="listitem">
                             <i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Nouvelle colonne à gauche') }}
-                        </button>              
+                        </button>  
+                        <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à droite') }}" title="{{ __('Nouvelle colonne à droite') }}" id="insert-col_right" role="listitem">
+                            <i class="fa fa-grip-lines-vertical"></i>
+                            {{ __('Nouvelle colonne à droite') }}
+                        </button>            
                         <br>          
                         <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle ligne en haut') }}" title="{{ __('Nouvelle ligne en haut') }}" id="insert-row_up" role="listitem">
                             <i class="fa fa-grip-lines"></i>
@@ -326,7 +326,7 @@
 
                 </div>
 
-                <div class="side-tool horizontal-tools w-100 flex-row" style="display: none">
+                <div class="side-tool horizontal-tools flex-row justify-content-around" style="display: none">
                     <button accesskey="l" id="action-move-left" data-action="move-left" class="btn-info table-element-action action-move-left" title="{{ __('Déplacer vers la gauche') }}">
                         <i class="fas fa-caret-left" title="{{ __('Déplacer vers la gauche') }}"></i>
                     </button>
