@@ -208,9 +208,9 @@
                             <i class="fa fa-align-center"></i>
                             {{ __('Centrer') }}
                         </button>
-                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Justifier') }}" title="{{ __('Justifier le texte') }}" id="justify-full" role="listitem">
-                            <i class="fa fa-align-justify"></i>
-                            {{ __('Justifier') }}
+                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Aligner à droite') }}" title="{{ __('Mettre le texte à droite') }}" id="justify-right" role="listitem">
+                            <i class="fa fa-align-right"></i>
+                            {{ __('Aligner à droite') }}
                         </button>
                     </div>
                 </div>
@@ -229,6 +229,22 @@
                             {{ __('Vider la case') }}
                         </button>
                         <br>
+                        {{-- MERGE --}}
+                        <button disabled="true" aria-label="{{ __('Diviser la case') }}" title="{{ __('Diviser la case') }}" class="btn btn-primary btn_crea cell-action element_split form-element-action action-split" data-action="split-cell">
+                            <i class="fa fa-cut"></i>
+                            {{-- Si précédemment merged --}}
+                            {{ __('Diviser la case') }} 
+                        </button>
+                        <button disabled="true" aria-label="{{ __('Fusionner vers la droite') }}" title="{{ __('Fusionner vers la droite') }}" class="btn btn-primary btn_crea cell-action element_merge-right form-element-action action-merge-right" data-action="merge-right">
+                            <i class="fa fa-object-group"></i><i class="fa fa-arrow-right"></i>
+                            {{ __('Fusionner la case vers la droite') }}
+                        </button>
+                        <button disabled="true" aria-label="{{ __('Fusionner vers le bas') }}" title="{{ __('Fusionner vers le bas') }}" class="btn btn-primary btn_crea cell-action element_merge-down form-element-action action-merge-down" data-action="merge-down">
+                            <i class="fa fa-object-group"></i><i class="fa fa-arrow-down"></i>
+                            {{ __('Fusionner la case vers le bas') }}
+                        </button>
+                        {{-- FIN MERGE --}}
+                        <br>
                         <button disabled="true" aria-label="{{ __('Déplacer la case à gauche') }}" title="{{ __('Déplacer la case à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-left" data-action="move-cell-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-vector-square"></i>
                             {{ __('Déplacer la case à gauche') }}
@@ -246,19 +262,19 @@
                             {{ __('Déplacer la case en bas') }}
                         </button>
                         <br>
-                        <button disabled="true" aria-label="{{ __('Déplacer la colonne à gauche') }}" title="{{ __('Déplacer la colonne à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-left" data-action="col-move-left">
+                        <button disabled="true" aria-label="{{ __('Déplacer la colonne à gauche') }}" title="{{ __('Déplacer la colonne à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-left" data-action="move-col-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Déplacer la colonne à gauche') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer la colonne à droite') }}" title="{{ __('Déplacer la colonne à droite') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-right" data-action="col-move-right">
+                        <button disabled="true" aria-label="{{ __('Déplacer la colonne à droite') }}" title="{{ __('Déplacer la colonne à droite') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-right" data-action="move-col-right">
                             <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-arrow-right"></i>
                             {{ __('Déplacer la colonne à droite') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer la ligne en haut') }}" title="{{ __('Déplacer la ligne en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-row-up" data-action="row-move-up">
+                        <button disabled="true" aria-label="{{ __('Déplacer la ligne en haut') }}" title="{{ __('Déplacer la ligne en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-row-up" data-action="move-row-up">
                             <i class="fa fa-grip-lines"></i><i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer la ligne en haut') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer la ligne en bas') }}" title="{{ __('Déplacer la ligne en bas') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-row-down" data-action="row-move-down">
+                        <button disabled="true" aria-label="{{ __('Déplacer la ligne en bas') }}" title="{{ __('Déplacer la ligne en bas') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-row-down" data-action="move-row-down">
                             <i class="fa fa-grip-lines"></i><i class="fa fa-arrow-down"></i>
                             {{ __('Déplacer la ligne en bas') }}
                         </button>

@@ -24,6 +24,10 @@
   min-width: 40px;
 }
 
+.theme-white #full-table tfoot td {
+  background-color: #8b8a8a;
+}
+
 .theme-black #full-table {
   color: white;
   background-color: #333333;
@@ -48,6 +52,10 @@
 .theme-black #full-table td {
   border: 1px solid white;
   min-width: 40px;
+}
+
+.theme-black #full-table tfoot td {
+  background-color: #1f1f1f;
 }
 
 .theme-green #full-table {
@@ -76,6 +84,10 @@
   min-width: 40px;
 }
 
+.theme-green #full-table tfoot td {
+  background-color: #013a01;
+}
+
 .theme-red #full-table {
   color: white;
   background-color: red;
@@ -100,6 +112,10 @@
 .theme-red #full-table td {
   border: 1px solid #970000;
   min-width: 40px;
+}
+
+.theme-red #full-table tfoot td {
+  background-color: #740101;
 }
 
 .theme-blue #full-table {
@@ -128,6 +144,10 @@
   min-width: 40px;
 }
 
+.theme-blue #full-table tfoot td {
+  background-color: #4848e4;
+}
+
 .theme-grey #full-table {
   color: black;
   background-color: grey;
@@ -152,5 +172,9 @@
 .theme-grey #full-table td {
   border: 1px solid #474747;
   min-width: 40px;
+}
+
+.theme-grey #full-table tfoot td {
+  background-color: #5f5f5f;
 }
 /*# sourceMappingURL=all-themes.css.map */

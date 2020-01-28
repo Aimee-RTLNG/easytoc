@@ -1,20 +1,21 @@
 // COMMIT
-# [X] FIXME Erreur de déplacement des options lors de l'importation (haut et actualisation position)
-# [X] FIXME Problème attribut required non récupéré sur les éléments required importés
-# [X] FIXME Non actualisation du Choix multiple pour les select
-# [X] FIXME Problème d'attribut requis sur des éléments ou ce n'est pas possible
+# [X] Gestion des headers latéraux
+# [X] Ajout de colonne via buttons
+# [X] Ajout de ligne via buttons
+# [X] Suppression de ligne via buttons
+# [X] Suppression de colonne via buttons
+# [X] Alignement du texte dans les cases
+# [X] Gestion du footer de tableau
 
 // PRIORITE HAUTE
-# [] Déplacement de ligne
-# [] Déplacement de colonne
-# [] Gestion des headers latéraux
-# [] Gestion du footer de tableau
-# [] Ajout de colonne via buttons
-# [] Ajout de ligne via buttons
-# [] Alignement du texte dans les cases
-# [] 
+# [X] Déplacement de ligne (no header no footer)
+# [X] Déplacement de colonne (no header no footer)
+# [X] Déplacement de cellule (contenu)
+# [] Fusion de cellule à droite
+# [] Fusion de cellule en bas
+# [] Division de cellule (si merged !!!)
+# [] Problème d'indentation dans le code généré
 # [] Problème de bouton "Copier" sur page Visualisation
-# [X] Overflow si tableau trop long : osef
 
 
 // PROPRITE BASSE
