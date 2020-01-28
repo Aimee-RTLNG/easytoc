@@ -82,7 +82,6 @@ function getOldContent() {
   $('#full-table .table-text').attr('contenteditable', true); // Theme
 
   var actual_theme = $("#generated-table").attr('class');
-  console.log(actual_theme);
   actual_theme = actual_theme.replace('theme-', '');
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre
@@ -133,6 +132,14 @@ $('#table-creator-caption').on('keyup', function () {
 
 $('#table-row-nb').on('change', function () {
   var new_nb_row = $(this).val();
+
+  if (new_nb_row < 2) {
+    message = "A quoi sert un tableau sans lignes ?";
+    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    this.val("2");
+    return;
+  }
+
   var actual_nb_row = $("#full-table").find('tr').length;
 
   if (new_nb_row > actual_nb_row) {
@@ -158,11 +165,20 @@ $('#table-row-nb').on('change', function () {
     }
   }
 
+  $('.content-editable-selected').focus();
   updatecontent();
 }); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
   var new_nb_col = $(this).val();
+
+  if (new_nb_col < 2) {
+    message = "A quoi sert un tableau sans colonnes ?";
+    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    $(this).val("2");
+    return;
+  }
+
   var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
 
   if (new_nb_col > actual_nb_col) {
@@ -240,7 +256,6 @@ function addCol(side) {
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        console.log(index);
         $(cell_html).insertAfter($(tr).find("td").last());
 
         if (index == 0) {
@@ -367,11 +382,45 @@ function moveCell(side) {
     text_other = $(other_cell).text();
   }
 
-  console.log(other_cell);
-  console.log(text_other);
   $(".content-editable-selected").text(text_other);
   $(other_cell).text(text_cell);
   $(other_cell).focus();
+}
+
+function mergeCell(side, cell, other_cell) {
+  if (side == "row") {
+    var previous_colspan;
+
+    if ($(cell).attr('colspan')) {
+      previous_colspan = $(cell).attr('colspan');
+    } else {
+      previous_colspan = 1;
+    }
+
+    $(cell).attr('colspan', previous_colspan + 1);
+    $(other_cell).detach();
+  } else if (side == "col") {
+    var previous_rowspan;
+
+    if ($(cell).attr('rowspan')) {
+      previous_rowspan = $(cell).attr('rowspan');
+    } else {
+      previous_rowspan = 1;
+    }
+
+    $(cell).attr('rowspan', previous_rowspan + 1);
+    $(other_cell).detach();
+  }
+}
+
+function splitCell(cell) {
+  if ($(cell).attr('rowspan')) {// TODO Enlever cet attribut
+    // Ajouter une case à droite
+  }
+
+  if ($(cell).attr('colspan')) {// TODO Enlever cet attribut
+    // Ajouter une case en bas
+  }
 } // Suppression de colonne
 
 
@@ -436,7 +485,25 @@ $('.cell-action').on('click', function () {
   } else if (element_action == "move-cell-right") {
     moveCell("right"); // DEPLACER CASE VERS LA GAUCHE
   } else if (element_action == "move-cell-left") {
-    moveCell("left"); // Supprimer la colonne
+    moveCell("left");
+  } else if (element_action == "merge-right") {
+    if ($('.content-editable-selected').next().length) {
+      mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
+    } else {
+      message = "Fusion impossible : pas de case à droite";
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    }
+  } else if (element_action == "merge-down") {
+    var other_cell = next_row.find('td, th')[selected_cell_index];
+
+    if (next_row.length) {
+      mergeCell("col", $('.content-editable-selected'), other_cell);
+    } else {
+      message = "Fusion impossible : pas de case en bas";
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    } // TODO ATTENTION à la fusion avec des cellules déjà fusionnées !!
+    // Supprimer la colonne
+
   } else if (element_action == "delete-col") {
     if (selected_col && nb_col > 2) {
       var col_removed = removeCol(selected_col);
@@ -463,7 +530,8 @@ $('.cell-action').on('click', function () {
       } else {
         message = "A quoi sert un tableau sans lignes ?";
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
-      }
+      } // TODO unfocus total;
+
     }
 
   $('.content-editable-selected').focus();
@@ -568,7 +636,7 @@ $('#btn-save-project').on('click', function () {
   }).fail(function (xhr, status, error) {
     console.log(xhr.responseText);
     console.log(status);
-    console.log(error); // TODO Erreur
+    console.log(error); // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');

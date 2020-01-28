@@ -73,7 +73,6 @@ export function getOldContent() {
 
     // Theme
     let actual_theme = $("#generated-table").attr('class');
-    console.log(actual_theme);
     actual_theme = actual_theme.replace('theme-', '');
     let selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
     selected_theme.prop('checked', true);
@@ -131,6 +130,12 @@ $('#table-creator-caption').on('keyup', function () {
 // ANCHOR Changement du nombre de lignes via INPUT
 $('#table-row-nb').on('change', function () {
     let new_nb_row = $(this).val();
+    if(new_nb_row < 2){
+        message = "A quoi sert un tableau sans lignes ?";
+        alertMsg(message, "error");
+        (this).val("2");
+        return;
+    }
     let actual_nb_row = $("#full-table").find('tr').length;
     if (new_nb_row > actual_nb_row) {
         let nb_new_row = new_nb_row - actual_nb_row;
@@ -151,12 +156,19 @@ $('#table-row-nb').on('change', function () {
             }
         }
     }
+    $('.content-editable-selected').focus();
     updatecontent();
 });
 
 // ANCHOR Changement du nombre de colonnes via INPUT
 $('#table-col-nb').on('change', function () {
     let new_nb_col = $(this).val();
+    if(new_nb_col < 2){
+        message = "A quoi sert un tableau sans colonnes ?";
+        alertMsg(message, "error");
+        $(this).val("2");
+        return;
+    }
     let actual_nb_col = $("#full-table").find('tr').first().find('th').length;
     if (new_nb_col > actual_nb_col) {
         let nb_new_col = new_nb_col - actual_nb_col;
@@ -223,7 +235,6 @@ export function addCol(side) {
             })
         } else {
             $("#full-table tr").each(function (index, tr) {
-                console.log(index);
                 $(cell_html).insertAfter($(tr).find("td").last());
                 if (index == 0) {
                     $(cell_header_html).insertAfter($(tr).find("th").last());
@@ -351,12 +362,43 @@ function moveCell(side){
         text_other = $(other_cell).text();
     }
 
-    console.log(other_cell);
-    console.log(text_other);
-
     $(".content-editable-selected").text(text_other);
     $(other_cell).text(text_cell);
     $(other_cell).focus();
+}
+
+function mergeCell(side, cell, other_cell){
+    if(side == "row"){
+        let previous_colspan;
+        if($(cell).attr('colspan')){
+            previous_colspan = $(cell).attr('colspan')
+        }else{
+            previous_colspan = 1;
+        }
+        $(cell).attr('colspan', previous_colspan+1);
+        $(other_cell).detach();
+    }else if(side == "col"){
+        let previous_rowspan;
+        if($(cell).attr('rowspan')){
+            previous_rowspan = $(cell).attr('rowspan');
+        }else{
+            previous_rowspan = 1;
+        }
+        $(cell).attr('rowspan', previous_rowspan+1);
+        $(other_cell).detach();
+    }
+
+}
+
+function splitCell(cell){
+    if($(cell).attr('rowspan')){
+        // TODO Enlever cet attribut
+        // Ajouter une case à droite
+    }
+    if($(cell).attr('colspan')){
+        // TODO Enlever cet attribut
+        // Ajouter une case en bas
+    }
 }
 
 // Suppression de colonne
@@ -441,6 +483,25 @@ $('.cell-action').on('click', function () {
     } else if (element_action == "move-cell-left") {
         moveCell("left");
 
+    } else if (element_action == "merge-right") {
+        if($('.content-editable-selected').next().length){
+            mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
+        }else{
+            message = "Fusion impossible : pas de case à droite";
+            alertMsg(message, "error");
+        }
+
+    } else if (element_action == "merge-down") {
+        let other_cell = next_row.find('td, th')[selected_cell_index];
+        if(next_row.length){
+            mergeCell("col", $('.content-editable-selected'), other_cell);
+        }else{
+            message = "Fusion impossible : pas de case en bas";
+            alertMsg(message, "error");
+        }
+
+    // TODO ATTENTION à la fusion avec des cellules déjà fusionnées !!
+
     // Supprimer la colonne
     }else if (element_action == "delete-col") {
         if (selected_col && nb_col > 2) {
@@ -468,6 +529,7 @@ $('.cell-action').on('click', function () {
             message = "A quoi sert un tableau sans lignes ?";
             alertMsg(message, "error");
         }
+        // TODO unfocus total;
     }
 
     $('.content-editable-selected').focus();
@@ -585,7 +647,7 @@ $('#btn-save-project').on('click', function () {
         console.log(xhr.responseText);
         console.log(status);
         console.log(error);
-        // TODO Erreur
+        // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
