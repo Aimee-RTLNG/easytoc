@@ -30,6 +30,7 @@ var cell_index;
 var selected_cell_index;
 var selected_col;
 var selected_row;
+var parent_tag;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
 var csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -131,6 +132,8 @@ $('#table-creator-caption').on('keyup', function () {
 }); // ANCHOR Changement du nombre de lignes via INPUT
 
 $('#table-row-nb').on('change', function () {
+  $('.content-editable-selected').blur();
+  $('.content-editable-selected').removeClass('content-editable-selected');
   var new_nb_row = $(this).val();
 
   if (new_nb_row < 2) {
@@ -154,7 +157,7 @@ $('#table-row-nb').on('change', function () {
     var _nb_new_row = actual_nb_row - new_nb_row;
 
     for (var _i = 0; _i < _nb_new_row; _i++) {
-      var is_removed = removeRow($("#full-table").find('tr').last());
+      var is_removed = removeRow($("#full-table tbody").find('tr').last());
 
       if (!is_removed) {
         break;
@@ -165,11 +168,12 @@ $('#table-row-nb').on('change', function () {
     }
   }
 
-  $('.content-editable-selected').focus();
   updatecontent();
 }); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
+  $('.content-editable-selected').blur();
+  $('.content-editable-selected').removeClass('.content-editable-selected');
   var new_nb_col = $(this).val();
 
   if (new_nb_col < 2) {
@@ -213,7 +217,6 @@ $('#table-col-nb').on('change', function () {
     }
   }
 
-  $('.content-editable-selected').focus();
   updatecontent();
 }); // Ajout de colonne
 
@@ -222,8 +225,14 @@ function addCol(side) {
   var row_html = element_types["type-container"]["insert-row"];
   var cell_header_html = element_types["type-unique"]["insert-header-col"];
   var cell_html = element_types["type-unique"]["insert-cell"];
+  var rows_header = $("#full-table").find('thead tr').length;
   cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
   cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
+  var is_header;
+
+  if ($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY") {
+    is_header = true;
+  }
 
   if (side == "left") {
     if ($(".content-editable-selected").length) {
@@ -231,7 +240,7 @@ function addCol(side) {
       $("#full-table tr").each(function (index, tr) {
         $(cell_html).insertBefore($(tr).find("td")[cell_index]);
 
-        if (index == 0) {
+        if (index < rows_header) {
           $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
         }
       });
@@ -239,7 +248,7 @@ function addCol(side) {
       $("#full-table tr").each(function (index, tr) {
         $(cell_html).insertBefore($(tr).find("td").first());
 
-        if (index == 0) {
+        if (index < rows_header) {
           $(cell_header_html).insertBefore($(tr).find("th").first());
         }
       });
@@ -250,7 +259,7 @@ function addCol(side) {
       $("#full-table tr").each(function (index, tr) {
         $(cell_html).insertAfter($(tr).find("td")[cell_index]);
 
-        if (index == 0) {
+        if (index < rows_header) {
           $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
         }
       });
@@ -258,7 +267,7 @@ function addCol(side) {
       $("#full-table tr").each(function (index, tr) {
         $(cell_html).insertAfter($(tr).find("td").last());
 
-        if (index == 0) {
+        if (index < rows_header) {
           $(cell_header_html).insertAfter($(tr).find("th").last());
         }
       });
@@ -268,9 +277,15 @@ function addCol(side) {
 
 function addRow(side) {
   var inserted_row;
-  var actual_nb_col = $("#full-table").find('tr').first().find('th').length;
+  var actual_nb_col = $("#full-table").find('tbody tr').first().find('th, td').length;
   var row_html = element_types["type-container"]["insert-row"];
-  var col_header = $('#lateral-header-button').prop('checked'); // Ligne au dessus
+  var col_header = $('#lateral-header-button').prop('checked');
+  var is_header;
+
+  if ($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "THEAD") {
+    is_header = true;
+  } // Ligne au dessus
+
 
   if (side == "up") {
     if ($('.content-editable-selected').length) {
@@ -298,7 +313,11 @@ function addRow(side) {
     if (col_header && i == 0) {
       cell_html = element_types["type-unique"]["insert-header-row"];
     } else {
-      cell_html = element_types["type-unique"]["insert-cell"];
+      if (is_header) {
+        cell_html = element_types["type-unique"]["insert-header-col"];
+      } else {
+        cell_html = element_types["type-unique"]["insert-cell"];
+      }
     }
 
     inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
@@ -316,10 +335,17 @@ function removeRow(row) {
     if ($(actual_cell).text().trim()) {
       is_filled = true;
     }
+  }
+
+  var row_length = $('#full-table tbody').find('tr').length;
+  console.log(row_length);
+
+  if (row_length <= 1) {
+    return false;
   } // Si la ligne est remplie : on demande confirmation
 
 
-  if (is_filled) {
+  if (row_length > 1 && is_filled) {
     if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
       row.remove();
       return true;
@@ -397,7 +423,7 @@ function mergeCell(side, cell, other_cell) {
       previous_colspan = 1;
     }
 
-    $(cell).attr('colspan', previous_colspan + 1);
+    $(cell).attr('colspan', parseInt(previous_colspan) + 1);
     $(other_cell).detach();
   } else if (side == "col") {
     var previous_rowspan;
@@ -408,19 +434,26 @@ function mergeCell(side, cell, other_cell) {
       previous_rowspan = 1;
     }
 
-    $(cell).attr('rowspan', previous_rowspan + 1);
+    $(cell).attr('rowspan', parseInt(previous_rowspan) + 1);
     $(other_cell).detach();
   }
+
+  $('.content-editable-selected').focus();
+  updatecontent();
 }
 
-function splitCell(cell) {
-  if ($(cell).attr('rowspan')) {// TODO Enlever cet attribut
-    // Ajouter une case à droite
-  }
+function splitCell() {
+  var colspan_len = $('.content-editable-selected').attr('colspan');
+  var rowspan_let = $('.content-editable-selected').attr('rowspan');
 
-  if ($(cell).attr('colspan')) {// TODO Enlever cet attribut
-    // Ajouter une case en bas
-  }
+  if (colspan_len) {
+    $('.content-editable-selected').removeAttr('colspan');
+    var new_cell_html = element_types["type-unique"]["insert-header-col"];
+
+    for (var i = 1; i < colspan_len; i++) {
+      $(new_cell_html).insertAfter('.content-editable-selected');
+    }
+  } else if (rowspan_len) {}
 } // Suppression de colonne
 
 
@@ -485,14 +518,15 @@ $('.cell-action').on('click', function () {
   } else if (element_action == "move-cell-right") {
     moveCell("right"); // DEPLACER CASE VERS LA GAUCHE
   } else if (element_action == "move-cell-left") {
-    moveCell("left");
+    moveCell("left"); // MERGE RIGHT
   } else if (element_action == "merge-right") {
     if ($('.content-editable-selected').next().length) {
       mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
     } else {
       message = "Fusion impossible : pas de case à droite";
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
-    }
+    } // MERGE DOWN
+
   } else if (element_action == "merge-down") {
     var other_cell = next_row.find('td, th')[selected_cell_index];
 
@@ -502,8 +536,10 @@ $('.cell-action').on('click', function () {
       message = "Fusion impossible : pas de case en bas";
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // TODO ATTENTION à la fusion avec des cellules déjà fusionnées !!
-    // Supprimer la colonne
+    // SPLIT
 
+  } else if (element_action == "split-cell") {
+    splitCell(); // Supprimer la colonne
   } else if (element_action == "delete-col") {
     if (selected_col && nb_col > 2) {
       var col_removed = removeCol(selected_col);
@@ -582,14 +618,38 @@ $('.add-element').on('click', function () {
         message = "Pied de tableau supprimée";
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       }
+    } // HEADER HORIZONTAL : central header
+
+  } else if (element_type == "central-header-button") {
+    var rows = $('#full-table thead').find('tr');
+
+    if ($(this).prop('checked')) {
+      $('#full-table thead').append(element_types["type-container"]["insert-row"]);
+      $('#full-table thead tr').append(element_types["type-unique"]["insert-header-col"]);
+      $('#full-table thead th').first().addClass("content-editable-selected");
+      $(".content-editable-selected").focus();
+      addRow("down");
+      $('#full-table thead tr').first().remove();
+    } else {
+      if ($('#full-table tbody').find('th').length) {
+        rows.each(function (index) {
+          removeRow($(this));
+        });
+      } else {
+        message = "Veuillez d'abord ajouter des en-têtes verticales.";
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        $(this).prop('checked', 'true');
+      }
     } // PREMIERE COLONNE EN HEADER
 
   } else if (element_type == "lateral-header-button") {
-    var rows = $('#full-table').find('tr');
+    var _rows = $('#full-table').find('tr');
+
+    var rows_header = $('#full-table thead').find('tr').length;
 
     if ($(this).prop('checked')) {
-      rows.each(function (index) {
-        if (index != 0) {
+      _rows.each(function (index) {
+        if (index >= rows_header) {
           var new_header = $(this).find('th, td').first();
           var old_text = $(new_header).text();
           var new_cell_html = element_types["type-unique"]["insert-header-row"];
@@ -599,15 +659,21 @@ $('.add-element').on('click', function () {
         }
       });
     } else {
-      rows.each(function (index) {
-        if (index != 0) {
-          var new_cell = $(this).find('th, td').first();
-          var old_text = $(new_cell).text();
-          var new_cell_html = element_types["type-unique"]["insert-cell"];
-          $(new_cell).replaceWith(new_cell_html);
-          $(this).find('td').first().text(old_text);
-        }
-      });
+      if ($('#full-table thead').find('th').length) {
+        _rows.each(function (index) {
+          if (index >= rows_header) {
+            var new_cell = $(this).find('th, td').first();
+            var old_text = $(new_cell).text();
+            var new_cell_html = element_types["type-unique"]["insert-cell"];
+            $(new_cell).replaceWith(new_cell_html);
+            $(this).find('td').first().text(old_text);
+          }
+        });
+      } else {
+        message = "Veuillez d'abord ajouter des en-têtes horizontales.";
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        $(this).prop('checked', 'true');
+      }
     }
   }
 
@@ -673,22 +739,35 @@ $(document.body).off('keyup') // ré-initialisation
 
     $('.side-tool').show(); // Si l'élément est dans le header
 
-    var parent_tag = $('.content-editable-selected').parent().parent().prop("tagName");
+    parent_tag = $('.content-editable-selected').parent().parent().prop("tagName");
 
-    if (parent_tag == "THEAD" || parent_tag == "TFOOT") {
-      $('#insert-row_up').attr('disabled', true);
-      $('#insert-row_down').attr('disabled', true);
+    if (parent_tag == "THEAD") {
       $('.side-tool.vertical-tools').hide();
-      $('.action-delete-row').attr('disabled', true);
-    } // Si l'élément est un header latéral
-    else if ($('.content-editable-selected').hasClass('table-header-cell')) {
-        $('#insert-col_left').attr('disabled', true);
-      } // Si l'élément n'est ni un header horizontal ni vertical
-      else {
-          $('#insert-col_left').removeAttr('disabled');
-          $('#insert-row_up').removeAttr('disabled');
-          $('#insert-row_down').removeAttr('disabled');
-        } // Gestion des lignes
+      $('.action-merge-right').attr('disabled', false);
+      $('.action-merge-down').attr('disabled', true);
+
+      if ($("#full-table thead tr").length < 2) {
+        $('.action-delete-row').attr('disabled', true);
+      }
+    } // Si l'élément est dans le footer
+    else if (parent_tag == "TFOOT") {
+        $('#insert-row_up').attr('disabled', true);
+        $('#insert-row_down').attr('disabled', true);
+        $('.side-tool.vertical-tools').hide();
+        $('.action-delete-row').attr('disabled', true);
+        $('.action-merge-right, .action-merge-down').attr('disabled', true);
+      } // Si l'élément est un header latéral
+      else if ($('.content-editable-selected').hasClass('table-header-cell')) {
+          $('#insert-col_left').attr('disabled', true);
+          $('.action-merge-right').attr('disabled', true);
+          $('.action-merge-down').attr('disabled', false);
+        } // Si l'élément n'est ni un header horizontal ni vertical
+        else {
+            $('#insert-col_left').removeAttr('disabled');
+            $('#insert-row_up').removeAttr('disabled');
+            $('#insert-row_down').removeAttr('disabled');
+            $('.action-merge-right, .action-merge-down').attr('disabled', true);
+          } // Gestion des lignes
 
 
     selected_row = $(".content-editable-selected").parent();
@@ -710,6 +789,7 @@ $(document.body).off('keyup') // ré-initialisation
       $('#action-move-down').hide();
       $('.action-move-cell-down').attr('disabled', true);
       $('.action-move-row-down').attr('disabled', true);
+      $('.action-merge-down').attr('disabled', true);
     } else {
       $('.action-move-cell-down').attr('disabled', false);
       $('.action-move-row-down').attr('disabled', false);
@@ -770,10 +850,16 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-right').attr('disabled', true);
       $('.action-move-col-right').attr('disabled', true);
       $('#action-move-right').hide();
+      $('.action-merge-right').attr('disabled', true);
     } else {
       $('.action-move-cell-right').attr('disabled', false);
       $('.action-move-col-right').attr('disabled', false);
       $('#action-move-right').show();
+    } // Si il n'y a pas de cellule adjacente ; pas de merge
+
+
+    if (next_cell.length == 0) {
+      $('.action-merge-right').attr('disabled', true);
     } // Si la case a été merged
 
 
@@ -831,19 +917,54 @@ var deletecommand = new command({
 
 $('.text-formatting').on("click", function () {
   // TODO NS_ERROR_FAILURE
+  var is_text_selected;
+
+  if (window.getSelection().toString().length) {
+    is_text_selected = true;
+  }
+
+  ;
+
   switch ($(this).attr('id')) {
     case 'element-bold':
-      document.execCommand('bold');
+      if (is_text_selected) {
+        document.execCommand('bold');
+      } else {
+        if (!$('.content-editable-selected').hasClass('font-weight-bold')) {
+          $('.content-editable-selected').addClass('font-weight-bold');
+        } else {
+          $('.content-editable-selected').removeClass('font-weight-bold');
+        }
+      }
+
       updatecontent();
       break;
 
     case 'element-italic':
-      document.execCommand('italic');
+      if (is_text_selected) {
+        document.execCommand('italic');
+      } else {
+        if (!$('.content-editable-selected').hasClass('font-style-italic')) {
+          $('.content-editable-selected').addClass('font-style-italic');
+        } else {
+          $('.content-editable-selected').removeClass('font-style-italic');
+        }
+      }
+
       updatecontent();
       break;
 
     case 'element-underline':
-      document.execCommand('underline');
+      if (is_text_selected) {
+        document.execCommand('underline');
+      } else {
+        if (!$('.content-editable-selected').hasClass('font-underline')) {
+          $('.content-editable-selected').addClass('font-underline');
+        } else {
+          $('.content-editable-selected').removeClass('font-underline');
+        }
+      }
+
       updatecontent();
       break;
 

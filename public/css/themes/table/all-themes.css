@@ -177,4 +177,16 @@
 .theme-grey #full-table tfoot td {
   background-color: #5f5f5f;
 }
+
+.font-style-italic {
+  font-style: italic;
+}
+
+.font-underline {
+  text-decoration: underline;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
 /*# sourceMappingURL=all-themes.css.map */

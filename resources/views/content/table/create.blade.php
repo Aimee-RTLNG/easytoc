@@ -144,22 +144,29 @@
 
                 <div class="main-info-form" role="region">
                     <div class="col p-0 mr-3" role="region">
-                        <label class="creator-panel__col_nb" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
-                        <input type="number" name="table-col-nb" id="table-col-nb" class="form-control" size="3" value="2" min="2"/>
-                    </div>
-                    <div class="col p-0 mr-3" role="region">
+                        {{-- NB LIGNES --}}
                         <label class="creator-panel__row_nb" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
                         <input type="number" name="table-row-nb" id="table-row-nb" class="form-control" size="3" value="2" min="2"/>
                     </div>
+                    <div class="col p-0 mr-3" role="region">
+                        {{-- NB COLONNES --}}
+                        <label class="creator-panel__col_nb" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
+                        <input type="number" name="table-col-nb" id="table-col-nb" class="form-control" size="3" value="2" min="2"/>
+                    </div>
                     <div class="col-2 p-0" role="region">
                         <label class="creator-panel__footer d-block" for="table-footer">{{ __('Options du tableau') }}</label>
-                        <label class="footer-button d-flex align-items-center" for="footer-button">
-                            <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
-                            <span class="ml-3">{{ __('Pied de tableau') }}</span>
+                        {{-- OPTIONS DU TABLEAU --}}
+                        <label class="central-header-button d-flex align-items-center" for="central-header-button">
+                            <input type="checkbox" class="add-element type-special check-box" value="" id="central-header-button" name="central-header-button" checked>
+                            <span class="ml-3">{{ __('En-têtes horizontales') }}</span>
                         </label>
                         <label class="lateral-header-button d-flex align-items-center" for="lateral-header-button">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="lateral-header-button" name="lateral-header-button">
-                            <span class="ml-3">{{ __('Entêtes vertical ??') }}</span>
+                            <span class="ml-3">{{ __('En-têtes verticales') }}</span>
+                        </label>
+                        <label class="footer-button d-flex align-items-center" for="footer-button">
+                            <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
+                            <span class="ml-3">{{ __('Pied de tableau') }}</span>
                         </label>
                     </div>
                 </div>
@@ -331,25 +338,26 @@
                         </div>
                     </div>
 
-                    <div class="side-tool vertical-tools" style="display: none">
+
+                    {{-- <div class="side-tool vertical-tools" style="display: none">
                         <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                             <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                         </button>
                         <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer verse le bas') }}">
                             <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                         </button>
-                    </div>
+                    </div> --}}
 
                 </div>
 
-                <div class="side-tool horizontal-tools flex-row justify-content-around" style="display: none">
+                {{-- <div class="side-tool horizontal-tools flex-row justify-content-around" style="display: none">
                     <button accesskey="l" id="action-move-left" data-action="move-left" class="btn-info table-element-action action-move-left" title="{{ __('Déplacer vers la gauche') }}">
                         <i class="fas fa-caret-left" title="{{ __('Déplacer vers la gauche') }}"></i>
                     </button>
                     <button accesskey="r" id="action-move-right" data-action="move-right" class="btn-info table-element-action action-move-right" title="{{ __('Déplacer vers la droite') }}">
                         <i class="fas fa-caret-right" title="{{ __('Déplacer vers la droite') }}"></i>
                     </button>
-                </div>
+                </div> --}}
 
             </div>
         </div>
