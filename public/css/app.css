@@ -9703,6 +9703,10 @@ textarea.shadow-box {
   align-items: center;
 }
 
+.code-display {
+  overflow-wrap: break-word;
+}
+
 .flag {
   background-color: black;
   background-size: cover;
@@ -10985,7 +10989,7 @@ input[type="checkbox"], input[type="radio"] {
 #copy-css-link, #copy-raw-code {
   position: relative;
   bottom: -10px;
-  right: 100px;
+  right: 70px;
 }
 
 .copy-container {
@@ -11300,6 +11304,18 @@ input[type="checkbox"], input[type="radio"] {
     margin-bottom: 20px;
   }
   .form_actions_element > div:first-child {
+    margin-bottom: 10px;
+  }
+  #nav-code {
+    padding: 1em;
+  }
+  .blueprint__titre {
+    margin-bottom: 8px;
+  }
+  .blueprint__btn {
+    position: relative;
+    top: 0;
+    left: 0px;
     margin-bottom: 10px;
   }
 }

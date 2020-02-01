@@ -147,7 +147,7 @@ input[type="checkbox"], input[type="radio"]{
 #copy-css-link, #copy-raw-code {
     position: relative;
     bottom: -10px;
-    right: 100px;
+    right: 70px;
 }
 
 .copy-container{
@@ -383,6 +383,20 @@ input[type="checkbox"], input[type="radio"]{
     }
     .form_actions_element {
         & > div:first-child {
+            margin-bottom: 10px;
+        }
+    }
+    #nav-code {
+        padding: 1em;
+    }
+    .blueprint {
+        &__titre {
+            margin-bottom: 8px;
+        }
+        &__btn {
+            position: relative;
+            top: 0;
+            left: 0px;
             margin-bottom: 10px;
         }
     }

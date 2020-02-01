@@ -135,3 +135,6 @@ textarea {
       border-radius: 50%;
       @include flex-row-center;
   }
+  .code-display {
+    overflow-wrap: break-word;
+  }
