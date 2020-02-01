@@ -9,7 +9,7 @@
 # [X] Option de header left seulement
 # [X] Empêcher les grosses fusions de cellules 
 # [] FIXME Ajout de colonnes header latéral
-# [] Division de cellule (si merged !!!)
+# [X] Division de cellule (si merged !!!)
 # [] Problème d'indentation dans le code généré
 # [] Problème de bouton "Copier" sur page Visualisation
 

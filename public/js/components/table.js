@@ -301,7 +301,7 @@ function addRow(side) {
         $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
         inserted_row = $(".content-editable-selected").closest('tr').next();
       } else {
-        $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
+        $(row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
         inserted_row = $("#full-table").find('tbody tr').last();
       }
     } // On ajoute les colonnes
@@ -414,27 +414,35 @@ function moveCell(side) {
 }
 
 function mergeCell(side, cell, other_cell) {
+  console.log(other_cell);
+
   if (side == "row") {
-    var previous_colspan;
+    var previous_colspan = 1;
+    var next_colspan = 1;
 
     if ($(cell).attr('colspan')) {
       previous_colspan = $(cell).attr('colspan');
-    } else {
-      previous_colspan = 1;
     }
 
-    $(cell).attr('colspan', parseInt(previous_colspan) + 1);
+    if ($(other_cell).attr('colspan')) {
+      next_colspan = $(other_cell).attr('colspan');
+    }
+
+    $(cell).attr('colspan', parseInt(previous_colspan) + parseInt(next_colspan));
     $(other_cell).detach();
   } else if (side == "col") {
-    var previous_rowspan;
+    var previous_rowspan = 1;
+    var next_rowspan = 1;
 
     if ($(cell).attr('rowspan')) {
       previous_rowspan = $(cell).attr('rowspan');
-    } else {
-      previous_rowspan = 1;
     }
 
-    $(cell).attr('rowspan', parseInt(previous_rowspan) + 1);
+    if ($(other_cell).attr('rowspan')) {
+      next_rowspan = $(other_cell).attr('rowspan');
+    }
+
+    $(cell).attr('rowspan', parseInt(previous_rowspan) + parseInt(next_rowspan));
     $(other_cell).detach();
   }
 
@@ -444,7 +452,7 @@ function mergeCell(side, cell, other_cell) {
 
 function splitCell() {
   var colspan_len = $('.content-editable-selected').attr('colspan');
-  var rowspan_let = $('.content-editable-selected').attr('rowspan');
+  var rowspan_len = $('.content-editable-selected').attr('rowspan');
 
   if (colspan_len) {
     $('.content-editable-selected').removeAttr('colspan');
@@ -453,7 +461,14 @@ function splitCell() {
     for (var i = 1; i < colspan_len; i++) {
       $(new_cell_html).insertAfter('.content-editable-selected');
     }
-  } else if (rowspan_len) {}
+  } else if (rowspan_len) {
+    $('.content-editable-selected').removeAttr('rowspan');
+    var _new_cell_html = element_types["type-unique"]["insert-header-row"];
+
+    for (var _i3 = 1; _i3 < rowspan_len; _i3++) {
+      $(_new_cell_html).insertAfter('.content-editable-selected');
+    }
+  }
 } // Suppression de colonne
 
 
@@ -528,10 +543,11 @@ $('.cell-action').on('click', function () {
     } // MERGE DOWN
 
   } else if (element_action == "merge-down") {
-    var other_cell = next_row.find('td, th')[selected_cell_index];
+    var other_cell = selected_row.nextAll().find('th');
+    console.log(other_cell);
 
-    if (next_row.length) {
-      mergeCell("col", $('.content-editable-selected'), other_cell);
+    if (other_cell.length) {
+      mergeCell("col", $('.content-editable-selected'), other_cell[0]);
     } else {
       message = "Fusion impossible : pas de case en bas";
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
@@ -611,13 +627,7 @@ $('.add-element').on('click', function () {
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     } else {
       // On enlève le footer (déjà activé)
-      var is_removed = removeRow($("#full-table tfoot tr").last());
-
-      if (is_removed) {
-        $("#full-table tfoot").remove();
-        message = "Pied de tableau supprimée";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
-      }
+      $("#full-table tfoot").remove();
     } // HEADER HORIZONTAL : central header
 
   } else if (element_type == "central-header-button") {

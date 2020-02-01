@@ -278,9 +278,8 @@ export function addRow(side) {
         if ($('.content-editable-selected').length) {
             $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
             inserted_row = $(".content-editable-selected").closest('tr').next();
-
         } else {
-            $(row_html + "\n\t\t\t").insertAfter($("#full-table").find('tr').last());
+            $(row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
             inserted_row = $("#full-table").find('tbody tr').last();
         }
     }
@@ -389,23 +388,28 @@ function moveCell(side){
 }
 
 function mergeCell(side, cell, other_cell){
+    console.log(other_cell);
     if(side == "row"){
-        let previous_colspan;
+        let previous_colspan = 1;
+        let next_colspan = 1;
         if($(cell).attr('colspan')){
-            previous_colspan = $(cell).attr('colspan')
-        }else{
-            previous_colspan = 1;
+            previous_colspan = $(cell).attr('colspan');
         }
-        $(cell).attr('colspan', parseInt(previous_colspan)+1);
+        if($(other_cell).attr('colspan')){
+            next_colspan = $(other_cell).attr('colspan');
+        }
+        $(cell).attr('colspan', parseInt(previous_colspan)+parseInt(next_colspan));
         $(other_cell).detach();
     }else if(side == "col"){
-        let previous_rowspan;
+        let previous_rowspan = 1;
+        let next_rowspan = 1;
         if($(cell).attr('rowspan')){
             previous_rowspan = $(cell).attr('rowspan');
-        }else{
-            previous_rowspan = 1;
         }
-        $(cell).attr('rowspan', parseInt(previous_rowspan)+1);
+        if($(other_cell).attr('rowspan')){
+            next_rowspan = $(other_cell).attr('rowspan');
+        }
+        $(cell).attr('rowspan', parseInt(previous_rowspan)+parseInt(next_rowspan));
         $(other_cell).detach();
     }
 
@@ -415,7 +419,7 @@ function mergeCell(side, cell, other_cell){
 
 function splitCell(){
     let colspan_len = $('.content-editable-selected').attr('colspan');
-    let rowspan_let = $('.content-editable-selected').attr('rowspan');
+    let rowspan_len = $('.content-editable-selected').attr('rowspan');
     if(colspan_len){
         $('.content-editable-selected').removeAttr('colspan');
         let new_cell_html = element_types["type-unique"]["insert-header-col"];
@@ -423,7 +427,12 @@ function splitCell(){
             $(new_cell_html).insertAfter('.content-editable-selected');
         }
     }else if(rowspan_len){
+        $('.content-editable-selected').removeAttr('rowspan');
+        let new_cell_html = element_types["type-unique"]["insert-header-row"];
+        for(let i = 1; i < rowspan_len; i ++){
 
+            $(new_cell_html).insertAfter('.content-editable-selected');
+        }
     }
 }
 
@@ -520,9 +529,11 @@ $('.cell-action').on('click', function () {
 
     // MERGE DOWN
     } else if (element_action == "merge-down") {
-        let other_cell = next_row.find('td, th')[selected_cell_index];
-        if(next_row.length){
-            mergeCell("col", $('.content-editable-selected'), other_cell);
+        let other_cell = selected_row.nextAll().find('th');
+        console.log(other_cell);
+        if(other_cell.length){
+            mergeCell("col", $('.content-editable-selected'), other_cell[0]);
+            
         }else{
             message = "Fusion impossible : pas de case en bas";
             alertMsg(message, "error");
@@ -616,12 +627,7 @@ $('.add-element').on('click', function () {
             alertMsg(message, "success");
         }else{
             // On enlève le footer (déjà activé)
-            let is_removed = removeRow($("#full-table tfoot tr").last());
-            if (is_removed) {
-                $("#full-table tfoot").remove();
-                message = "Pied de tableau supprimée";
-                alertMsg(message, "success");
-            }
+            $("#full-table tfoot").remove();
         }
 
     // HEADER HORIZONTAL : central header
