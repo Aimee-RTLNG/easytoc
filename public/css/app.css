@@ -9682,6 +9682,14 @@ textarea.shadow-box {
   margin-right: 10px;
 }
 
+.btn-success .btn-crea__icon {
+  color: #38c172;
+}
+
+.btn-danger .btn-crea__icon {
+  color: #e3342f;
+}
+
 .rond-i {
   height: 30px;
   width: 30px;
@@ -11014,6 +11022,8 @@ input[type="checkbox"], input[type="radio"] {
   font-size: 1.8rem;
   font-weight: bold;
   margin: 0px;
+  line-height: 2.3rem;
+  margin-bottom: 7px;
 }
 
 #chara-desc-remains {
@@ -11161,49 +11171,23 @@ input[type="checkbox"], input[type="radio"] {
   color: #155595;
 }
 
+.project-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-action__btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .main-info-form {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.main-info-form input, .main-info-form select {
-  background-color: #E7E7E7;
-  color: black;
-  font-weight: bold;
-}
-
-.main-info-form input::-webkit-input-placeholder, .main-info-form select::-webkit-input-placeholder {
-  color: black;
-  font-weight: bold;
-}
-
-.main-info-form input::-moz-placeholder, .main-info-form select::-moz-placeholder {
-  color: black;
-  font-weight: bold;
-}
-
-.main-info-form input:-ms-input-placeholder, .main-info-form select:-ms-input-placeholder {
-  color: black;
-  font-weight: bold;
-}
-
-.main-info-form input::-ms-input-placeholder, .main-info-form select::-ms-input-placeholder {
-  color: black;
-  font-weight: bold;
-}
-
-.main-info-form input::placeholder, .main-info-form select::placeholder {
-  color: black;
-  font-weight: bold;
-}
-
-.main-info-form input:focus, .main-info-form select:focus {
-  background-color: #F4F2F0;
-  border: 1px #E7E7E7 solid;
-  color: black;
-  font-weight: bold;
+  align-items: flex-end;
+  margin-bottom: 16px;
 }
 
 .main-info-form .reset-button {
@@ -11212,19 +11196,111 @@ input[type="checkbox"], input[type="radio"] {
   align-items: center;
 }
 
+.main-info-form > * {
+  margin-bottom: 10px;
+}
+
+.input-creator {
+  background-color: #E7E7E7;
+  color: black;
+  font-weight: bold;
+}
+
+.input-creator::-webkit-input-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.input-creator::-moz-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.input-creator:-ms-input-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.input-creator::-ms-input-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.input-creator::placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.input-creator:focus {
+  background-color: #F4F2F0;
+  border: 1px #E7E7E7 solid;
+  color: black;
+  font-weight: bold;
+}
+
+.content-interface {
+  padding: 20px;
+}
+
+.action-required-cont, .action-multiple__cont {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.action-required, .action-multiple-answer {
+  min-height: 50px;
+}
+
+.action-supp-titre {
+  margin-bottom: 25px;
+  margin-top: 5px;
+}
+
+.action-supp {
+  position: relative;
+}
+
+.action-supp__aide {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.action-supp .element_add-option {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.action-supp-crea > * {
+  margin-bottom: 20px;
+}
+
 .btn-save-project {
   font-size: 1.6rem;
+}
+
+.blueprint {
+  position: relative;
+}
+
+.blueprint__titre {
+  margin-bottom: 20px;
+}
+
+.blueprint__btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 @media (max-width: 1199.98px) {
   .info-panel {
     margin-bottom: 20px;
   }
-}
-
-@media (max-width: 1199.98px) {
-  .actions-panel {
-    margin-bottom: 20px;
+  .form_actions_element > div:first-child {
+    margin-bottom: 10px;
   }
 }
 

@@ -115,6 +115,16 @@ textarea {
           margin-right: 10px;
       }
   }
+  .btn-success {
+        .btn-crea__icon {
+            color: $success;
+        }
+    }
+    .btn-danger {
+        .btn-crea__icon {
+            color: $danger;
+        }
+    }
   .rond-i {
       height: 30px;
       width: 30px;

@@ -127,26 +127,26 @@
         <!-- interface d'interaction avec le projet -->
         <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="Actions sur l'élement">
 
-            <div id="content-interface" class="col shadow-box border-12 bg-white p-3" role="section" aria-label="Actions sur l'élement">
+            <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="Actions sur l'élement">
                 <!-- navigation entre les panneaux -->
 
-                <div class="main-info-form" role="region">
-                    <div class="col p-0" role="region">
+                <div class="main-info-form row" role="region">
+                    <div class="col-lg-3 col-md-6" role="region">
                         <label class="creator-panel__title" for="form-creator-title">{{ __('Titre du formulaire') }}</label>
-                        <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire" class="form-control" size="30" value="Titre du formulaire" />
+                        <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire" class="form-control input-creator" size="30" value="Titre du formulaire" />
                     </div>
-                    <div class="col p-0 ml-2" role="region">
+                    <div class="col-lg-4 col-md-6" role="region">
                         <label class="creator-panel__title" for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
-                        <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire" class="form-control" size="30" />
+                        <input name="form-creator-link" id="form-creator-link" placeholder="Lien du formulaire" class="form-control input-creator" size="30" />
                     </div>
-                    <div class="col-2" role="region">
+                    <div class="col-lg-2 col-md-6" role="region">
                         <label class="creator-panel__title" for="form-creator-method" class="mr-3">{{ __('Méthode') }}</label>
-                        <select class="form-control" name="form-creator-method" id="form-creator-method">
+                        <select class="form-control input-creator" name="form-creator-method" id="form-creator-method">
                             <option value="get">GET</option>
                             <option value="post">POST</option>
                         </select>
                     </div>
-                    <div class="col-3" role="region">
+                    <div class="col-lg-3 col-md-6" role="region">
                         <label class="creator-panel__title">Option du formulaire</label>
                         <label class="reset-button" for="reset-button" class="d-block">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="reset-button" name="reset-button">
@@ -155,8 +155,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row" aria-labelledby="form_actions_element">
-                <div role="section" class="col" aria-labelledby="form_add_static">
+                <div role="section" class="row form_actions_element" aria-labelledby="form_actions_element">
+                <div role="section" class="col-md-7" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément statique') }}</h3>
                         <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem">
                             <i class="fa fa-grip-lines"></i>
@@ -183,7 +183,7 @@
                             {{ __('Liste à puces') }}
                         </button>
                     </div>
-                    <div role="section" class="col-5" aria-labelledby="form_actions_text">
+                    <div role="section" class="col-md-5" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 creator-panel__title">{{ __('Mise en forme du texte') }}</h3>
                         <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem">
                             <i class="fa fa-bold"></i>
@@ -211,8 +211,8 @@
                         </button>
                     </div>
                 </div>
-                <div role="section" class="row mt-4" aria-labelledby="form_actions_element">
-                    <div role="section" class="col" aria-labelledby="form_add_question">
+                <div role="section" class="row mt-4 form_actions_element" aria-labelledby="form_actions_element">
+                    <div role="section" class="col-md-7" aria-labelledby="form_add_question">
                         <h3 id="form_add_question" class="mb-3 creator-panel__title">{{ __('Ajouter une question') }}</h3>
                         <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Réponse libre courte') }}" id="insert-short_answer">
                             <i class="fa fa-comment"></i>
@@ -239,7 +239,7 @@
                             {{ __('Choix en liste') }}
                         </button>
                     </div>
-                    <div role="section" class="col-5" aria-labelledby="form_actions_crud">
+                    <div role="section" class="col-md-5" aria-labelledby="form_actions_crud">
                         <h3 id="form_actions_crud" class="mb-3 creator-panel__title">{{ __('Actions sur l\'élément') }}</h3>
                         <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete">
                             <i class="fa fa-trash"></i>
@@ -289,22 +289,22 @@
                             </div>
 
                             <!-- panneau code -->
-                            <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                <a href="aide#formcode" class="btn btn-primary btn_crea">
+                            <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                                <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                <a href="aide#formcode" class="btn btn-primary btn_crea blueprint__btn">
                                     <i class="fa fa-question-circle"></i>
                                     {{ __("Besoin d'aide !") }}
                                 </a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea">
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
                                 <!-- Lien du style à utiliser -->
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
-                                <h3 class="mt-3">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
+                                <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea">
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -322,52 +322,52 @@
                 </div>
 
 
-                <div id="actions-interface" class="border bg-white rounded p-3" style="display: none" role="section">
-                    <h3 id="form_edit_element" class="mb-3 creator-panel__title">{{ __('Élément sélectionné') }}</h3>
-                    <a href="aide#formuse" class="btn btn-primary btn_crea">
+                <div id="actions-interface" class="border bg-white rounded p-3 action-supp" style="display: none" role="section">
+                    <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
+                    <a href="aide#formuse" class="btn btn-primary btn_crea action-supp__aide">
                         <i class="fa fa-question-circle"></i>
                         {{ __("Besoin d'aide !") }}
                     </a>
-                    <div class="d-flex" role="section">
+                    <div class="row action-supp-crea" role="section">
                         <!-- Intitulé -->
-                        <div role="section" class="col action-question-text">
-                            <label for="elem-title">
+                        <div role="section" class="col-lg-3 col-md-6 action-question-text">
+                            <label for="elem-title" class="creator-panel__title">
                                 {{ __("Intitulé") }}
-                                <input class="form-control form-element-action" data-action="question-text" id="elem-title" name="elem-title" placeholder="{{ __('Texte') }}" size="50" />
                             </label>
+                            <input class="form-control form-element-action input-creator" data-action="question-text" id="elem-title" name="elem-title" placeholder="{{ __('Texte') }}" size="50" />
                         </div>  
                         <!-- Placeholder -->                      
-                        <div role="section" class="col action-placeholder" style="display:none">
-                            <label for="elem-placeholder">
+                        <div role="section" class="col-lg-3 col-md-6 action-placeholder" style="display:none">
+                            <label for="elem-placeholder" class="creator-panel__title">
                                 {{ __('Exemple de réponse') }}
-                                <input class="form-control form-element-action" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="{{ __('Exemple de réponse') }}" size="25" aria-label="{{ __('Exemple de réponse') }}" />
                             </label>
+                            <input class="form-control form-element-action input-creator" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="{{ __('Exemple de réponse') }}" size="25" aria-label="{{ __('Exemple de réponse') }}" />
                         </div>
                         <!-- Référence des options -->                      
-                        <div role="section" class="col action-options-name" style="display:none">
-                            <label for="elem-options-name">
+                        <div role="section" class="col-lg-3 col-md-6 action-options-name" style="display:none">
+                            <label for="elem-options-name" class="creator-panel__title">
                                 {{ __('Référence de la question') }}
-                                <input class="form-control form-element-action" data-action="options-name" name="elem-options-name" id="elem-options-name" placeholder="{{ __('Référence') }}" aria-label="{{ __('Référence') }}" />
                             </label>
+                            <input class="form-control form-element-action input-creator" data-action="options-name" name="elem-options-name" id="elem-options-name" placeholder="{{ __('Référence') }}" aria-label="{{ __('Référence') }}" />
                         </div>
                         <!-- Nom des options -->                      
-                        <div role="section" class="col action-option-label" style="display:none">
-                            <label for="elem-option-label">
+                        <div role="section" class="col-lg-3 col-md-6 action-option-label" style="display:none">
+                            <label for="elem-option-label" class="creator-panel__title">
                                 {{ __("Nom de l'option") }}
-                                <input class="form-control form-element-action" data-action="option-label" name="elem-option-label" id="elem-option-label" placeholder="{{ __('Label') }}" aria-label="{{ __('Label') }}" />
                             </label>
+                            <input class="form-control form-element-action input-creator" data-action="option-label" name="elem-option-label" id="elem-option-label" placeholder="{{ __('Label') }}" aria-label="{{ __('Label') }}" />
                         </div>
                         <!-- Valeur des options -->                      
-                        <div role="section" class="col action-option-value" style="display:none">
-                            <label for="elem-option-value">
+                        <div role="section" class="col-lg-3 col-md-6 action-option-value" style="display:none">
+                            <label for="elem-option-value" class="creator-panel__title">
                                 {{ __("Valeur de l'option") }}
-                                <input class="form-control form-element-action" data-action="option-value" name="elem-option-value" id="elem-option-value" placeholder="{{ __('Valeur') }}" aria-label="{{ __('Valeur') }}" />
                             </label>
+                            <input class="form-control form-element-action input-creator" data-action="option-value" name="elem-option-value" id="elem-option-value" placeholder="{{ __('Valeur') }}" aria-label="{{ __('Valeur') }}" />
                         </div>
                         <!-- Type de réponse-->
-                        <div role="section" class="col action-answer-type" style="display:none">
-                            <label for="elem-type">{{ __('Type de réponse attendue') }}</label>
-                            <select class="form-control form-element-action" data-action="answer-type" name="elem-type" id="elem-type">
+                        <div role="section" class="col-lg-3 col-md-6 action-answer-type" style="display:none">
+                            <label for="elem-type" class="creator-panel__title">{{ __('Type de réponse attendue') }}</label>
+                            <select class="form-control form-element-action input-creator" data-action="answer-type" name="elem-type" id="elem-type">
                                 <option selected disabled>{{ __('Type') }}</option>
                                 <option value="email">{{ __('Email') }}</option>
                                 <option value="number">{{ __('Nombre') }}</option>
@@ -376,44 +376,48 @@
                             </select>
                         </div>
                         <!-- Required-->
-                        <div role="section" class="col action-required">
-                            <label for="elem-required">
+                        <div role="section" class="col-lg-3 col-sm-6 action-required">
+                            <div class="action-required-cont">
                                 <input class="form-element-action mr-2" data-action="required" type="checkbox" name="elem-required" id="elem-required" role="section">
-                                {{ __('Réponse obligatoire') }}
-                            </label>
+                                <label for="elem-required" class="creator-panel__title">
+                                    {{ __('Réponse obligatoire') }}
+                                </label>
+                            </div>
                         </div>
                         <!-- Longueur max-->
-                        <div role="section" class="col action-maxlength" style="display:none">
-                            <label for="elem-length">
+                        <div role="section" class="col-lg-3 col-md-6 action-maxlength" style="display:none">
+                            <label for="elem-length" class="creator-panel__title">
                                 {{ __('Longueur de caractères maximum') }}
-                                <input class="form-control form-element-action" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
                             </label>
+                            <input class="form-control form-element-action input-creator" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
                             <i class="d-block">0 = {{ __('sans limite') }}</i>
                         </div>
                        <!-- Si élément == select -->
-                        <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
-                            <input class="mr-2 form-element-action" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
-                            <label for="elem-multiple-choice">
-                                {{ __('Choix multiples') }}
-                            </label>
+                        <div role="section" class="col-lg-3 col-sm-6 align-items-center action-multiple-answer"style="display:none">
+                           <div class="action-multiple__cont">
+                                <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
+                                <label for="elem-multiple-choice" class="creator-panel__title">
+                                    {{ __('Choix multiples') }}
+                                </label>
+                           </div>
                         </div>
                         <!-- Si élément == lien -->
-                        <div role="section" class="col align-items-center action-url" style="display:none">
+                        <div role="section" class="col-lg-3 col-md-6 align-items-center action-url" style="display:none">
                             <label for="elem-url">
                                 {{ __('Lien associé') }} (url)
-                                <input name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}" />
+                                <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}" />
                             </label>
                         </div>
                         <!-- Ajout d'option -->
-                         <div role="section" class="col action-add-option" style="display:none">
-                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-light form-element-action element_add-option">
+                         <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
+                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option">
                                 <i class="fa fa-check-square"></i>
                                 {{ __('Ajouter une option') }}
                             </button>
                         </div>
                         <!-- Ajout d'option -->
-                        <div role="section" class="col action-delete-option" style="display:none">
-                           <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-light form-element-action element_delete-option">
+                        <div role="section" class="col-lg-3 col-sm-6 action-delete-option" style="display:none">
+                           <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
                             <i class="fas fa-trash"></i>
                                {{ __("Supprimer l'option") }}
                            </button>
@@ -426,10 +430,19 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
-                            modifications') }}</button>
-            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-save-project" aria-label="Sauvegarder ce projet">{{ __('Sauvegarder ce projet') }}</button>
+        <div class="project-action row" role="region" aria-labelledby="form_actions">
+           <div class="col-lg-8 mt-4 mb-4 project-action__btn">
+                <button type="button" accesskey="c" class="btn btn-form-final btn-danger btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+                    <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                    <p>{{ __('Annuler les modifications') }}</p>
+                </button>
+                <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" aria-label="Sauvegarder ce projet">
+                    <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                    <p>
+                        {{ __('Sauvegarder ce projet') }}
+                    </p>
+                </button>
+           </div>
         </div>
 
         @endif
