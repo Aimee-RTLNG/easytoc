@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('titre') {{ __('Mon compte - EasyToC') }} @endsection
+@section('titre') {{ __('Mon compte') }} - EasyToC @endsection
 
 @section('content')
 <main class="compte-page">
@@ -37,7 +37,10 @@
                 <div class="row profile_content__filters">
                     <div class="profile_content__options col-12">
                         <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
-                            <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Commencer un projet</a>
+                            <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-arrow-right"></i>
+                                <p>Commencer un projet</p>
+                            </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
                                 <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
@@ -53,15 +56,15 @@
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </div>
                             </button>
-                            <button class="btn btn-filter-type" data-type="Menu">
+                            <button class="btn btn-filter-type" data-type="menu">
                                 {{ __('Menu') }}
                                 <span class="type-pin type-Menu" data-type="Menu"></span>
                             </button>
-                            <button class="btn btn-filter-type" data-type="Form">
+                            <button class="btn btn-filter-type" data-type="form">
                                 {{ __('Formulaire') }}
                                 <span class="type-pin type-Form" data-type="Form"></span>
                             </button>
-                            <button class="btn btn-filter-type" data-type="Table">
+                            <button class="btn btn-filter-type" data-type="table">
                                 {{ __('Tableau') }}
                                 <span class="type-pin type-Table" data-type="Table"></span>
                             </button>
@@ -80,10 +83,14 @@
                 </div>
 
                 <div class="dashboard">
-                    <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
+                    @if($user->contents->isEmpty())
+                        <h2 class="dashboard__title">{{ __('Vous n\'avez aucun projet sauvegardé') }}</h2>
+                    @else 
+                        <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
+                    @endif
                     <div class="panel panel-default full-list">
                     @foreach ($user->contents as $content)
-                        <div class="crea-item row"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >
+                        <div class="crea-item row list-element"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >
                             <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
                             <div class="col-md-9 crea-item__infos">
                                 <div class="crea-item__entete">
@@ -97,13 +104,13 @@
                                 if (App::isLocale('en')) {
                                 ?>
                                     <p class="crea-item__type-date">
-                                        {{ $content->type->name_en }} / Dernière modification : {{ $content->updated_at }}
+                                        {{ $content->type->name_en }} / {{ __('Dernière modification') }} : {{ $content->updated_at }}
                                     </p>
                                 <?php
                                 }else if (App::isLocale('fr')) {
                                 ?>
                                     <p class="crea-item__type-date">
-                                        {{ $content->type->name_fr }} / Last updated :  {{ $content->updated_at }}
+                                        {{ $content->type->name_fr }} / {{ __('Dernière modification') }} :  {{ $content->updated_at }}
                                     </p>
                                 <?php
                                     }
@@ -113,13 +120,13 @@
                                 <div>
                                     <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="Visualiser">
                                         <div  class="crea-item__btns__icon">
-                                            <i class="far fa-eye"></i>
+                                            <i class="fa fa-eye"></i>
                                         </div>
                                         <p>{{ __('Visualiser') }}</p>
                                     </a>
                                     <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="Modifier">
                                         <div class="crea-item__btns__icon">
-                                            <i class="far fa-edit"></i>
+                                            <i class="fa fa-edit"></i>
                                         </div>
                                         <p>{{ __('Modifier') }}</p>
                                     </a>
@@ -127,9 +134,9 @@
                                         @csrf
                                         @method('DELETE')
                                         <div class="crea-item__btns__icon btn--rouge">
-                                            <i class="fas fa-trash-alt"></i>
+                                            <i class="fa fa-times"></i>
                                         </div>
-                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" title="Supprimer">       
+                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
                                     </form>
                                 </div>
                             </div>
@@ -141,9 +148,11 @@
             <div class="col-lg-4 modif-compte">
                 <div class="mon-compte">
                     <div class="mon-compte__entete">
-                        <div class="mon-compte__entete__picto"><i class="far fa-user"></i></div>
+                        <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
                         <h2 class="mon-compte__entete__title">{{ __('Modifier les paramètres de votre compte') }}</h2>
-                        <i class="fas fa-chevron-down fleche-plus" tabindex="0"></i>
+                        <div class="fleche-plus">
+                            <i class="fas fa-chevron-down " tabindex="0"></i>
+                        </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -209,7 +218,7 @@
                                             <div class="password-input d-flex">
                                                 <input id="password" type="password" class="form-control" name="password">
                                                 <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                        <i class="far fa-eye"></i>
+                                                        <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>
                                             <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -234,7 +243,7 @@
                                             <div class="password-input d-flex">
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                                 <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                    <i class="far fa-eye"></i>
+                                                    <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>  
                                             <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -262,7 +271,7 @@
                                                 <div class="password-input d-flex">
                                                     <input id="current-password" type="password" class="form-control" name="current_password">
                                                     <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                        <i class="far fa-eye"></i>
+                                                        <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>  
                                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->

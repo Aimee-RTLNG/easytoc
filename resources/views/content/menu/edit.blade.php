@@ -8,7 +8,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                
+                <h2>{{ __('Édition de menu') }}</h2>
             </div>
 
             <div class="panel-body">
@@ -50,7 +50,7 @@
 @endsection
 
 @section('pagespecificscripts')
-    <script type="application/javascript" src="{{ URL::asset('js/components/form.js') }}"></script>
+    <script type="application/javascript" src="{{ URL::asset('js/components/menu.js') }}"></script>
     {{-- Script PRETTIFY + skin --}}
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection
