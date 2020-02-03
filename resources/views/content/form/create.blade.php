@@ -403,11 +403,11 @@
                            </div>
                         </div>
                         <!-- Si élément == lien -->
-                        <div role="section" class="col-lg-3 col-md-6 align-items-center action-url" style="display:none">
-                            <label for="elem-url">
+                        <div role="section" class="col-lg-9 col-md-12 align-items-center action-url" style="display:none">
+                            <label for="elem-url creator-panel__title ">
                                 {{ __('Lien associé') }} (url)
-                                <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}" />
                             </label>
+                            <input class="input-creator form-control" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
                         </div>
                         <!-- Ajout d'option -->
                          <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">

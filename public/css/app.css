@@ -11835,6 +11835,7 @@ pre.prettyprinted {
   width: 100%;
   padding: 2px 6px;
   min-width: 130px;
+  margin-bottom: 5px;
 }
 
 .crea-item__btns .btn p {
@@ -11979,10 +11980,10 @@ pre.prettyprinted {
     align-items: center;
   }
   .crea-item__btns .btn:not(.btn-gris) {
+    margin-bottom: 5px;
     justify-content: center;
     min-width: 50px;
     width: 50px;
-    margin-bottom: 0px;
     margin-right: 6px;
   }
   .crea-item__btns .btn:not(.btn-gris) p {

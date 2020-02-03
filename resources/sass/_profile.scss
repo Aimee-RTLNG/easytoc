@@ -296,6 +296,7 @@
             width: 100%;
             padding: 2px 6px;
             min-width: 130px;
+            margin-bottom: 5px;
             p {
                 margin-left: 6px;
             }
@@ -426,10 +427,10 @@
             @include flex-row-between-center;
         }
         .btn:not(.btn-gris) {
+            margin-bottom: 5px;
             justify-content: center;
             min-width: 50px;
             width: 50px;
-            margin-bottom: 0px;
             margin-right: 6px;
             p {
                 display: none;
