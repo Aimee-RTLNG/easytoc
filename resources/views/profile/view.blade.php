@@ -56,15 +56,15 @@
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </div>
                             </button>
-                            <button class="btn btn-filter-type" data-type="Menu">
+                            <button class="btn btn-filter-type" data-type="menu">
                                 {{ __('Menu') }}
                                 <span class="type-pin type-Menu" data-type="Menu"></span>
                             </button>
-                            <button class="btn btn-filter-type" data-type="Form">
+                            <button class="btn btn-filter-type" data-type="form">
                                 {{ __('Formulaire') }}
                                 <span class="type-pin type-Form" data-type="Form"></span>
                             </button>
-                            <button class="btn btn-filter-type" data-type="Table">
+                            <button class="btn btn-filter-type" data-type="table">
                                 {{ __('Tableau') }}
                                 <span class="type-pin type-Table" data-type="Table"></span>
                             </button>
@@ -90,7 +90,7 @@
                     @endif
                     <div class="panel panel-default full-list">
                     @foreach ($user->contents as $content)
-                        <div class="crea-item row"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >
+                        <div class="crea-item row list-element"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >
                             <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
                             <div class="col-md-9 crea-item__infos">
                                 <div class="crea-item__entete">
@@ -136,7 +136,7 @@
                                         <div class="crea-item__btns__icon btn--rouge">
                                             <i class="fa fa-times"></i>
                                         </div>
-                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" title="Supprimer">       
+                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
                                     </form>
                                 </div>
                             </div>

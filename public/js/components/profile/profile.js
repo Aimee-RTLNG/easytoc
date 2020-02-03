@@ -7,8 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log('bllblbbl'); // Ajout de la classe Active sur le bouton filtre
-
+// Ajout de la classe Active sur le bouton filtre
 var btnContainer = document.getElementById("list-filters");
 var btns = btnContainer.getElementsByClassName("btn-filter-type");
 
@@ -119,4 +118,4 @@ module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\e
 
 /***/ })
 
-},[[0,"/js/manifest"]]]);
+},[[0,"/js/manifest","/js/vendor"]]]);
