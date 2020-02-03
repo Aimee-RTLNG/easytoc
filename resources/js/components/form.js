@@ -433,6 +433,7 @@ $(document.body)
                 $('.action-option-label').hide();
                 $('.action-option-value').hide();
                 $('.action-add-option').hide();
+                $('.action-title').hide();
                 $('.action-delete-option').hide();
                 $('.action-required').show(); // Requis possibles sur toutes les questions
 
@@ -493,6 +494,7 @@ $(document.body)
                 } else if (element_name == "insert-link") {
                     $('.action-required').hide();
                     $('.action-url').show();
+                    $('.action-title').show();
                     $('.action-options-name').hide();
 
                     if (intitule) {
@@ -506,6 +508,20 @@ $(document.body)
                             e.stopPropagation();
                             link_url = $('#elem-url').val();
                             $(intitule).attr('href', link_url);
+                            updatecontent();
+                        })
+
+                        // on désactive les events précedents
+                        $('#elem-url-title').off('keyup');
+                        // on récupère les attributs de l'élement sélectionné
+                        $('#elem-url-title').val($(intitule).attr('title'));
+                        // event de changement d'url
+                        let link_title;
+                        $('#elem-url-title').on('keyup', function (e) {
+                            console.log($('#elem-url-title').val());
+                            e.stopPropagation();
+                            link_title = $('#elem-url-title').val();
+                            $(intitule).attr('title', link_title);
                             updatecontent();
                         })
                     }

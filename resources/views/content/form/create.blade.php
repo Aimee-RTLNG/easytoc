@@ -406,8 +406,14 @@
                         <div role="section" class="col-lg-3 col-md-6 align-items-center action-url" style="display:none">
                             <label for="elem-url">
                                 {{ __('Lien associé') }} (url)
-                                <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}" />
                             </label>
+                            <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
+                        </div>
+                        <div role="section" class="col-lg-3 col-md-6 align-items-center action-title" style="display:none">
+                            <label for="elem-url-title">
+                                {{ __('Indication de navigation') }}
+                            </label>
+                            <input class="input-creator" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
                         </div>
                         <!-- Ajout d'option -->
                          <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
