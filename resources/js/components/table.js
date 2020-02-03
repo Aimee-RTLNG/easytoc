@@ -696,7 +696,6 @@ $('.add-element').on('click', function () {
 $('#btn-save-project').on('click', function () {
     updatecontent();
     let post_url = $("#full-table-post").attr('action');
-    console.log(post_url);
     $.ajax({
         method: "POST",
         url: post_url,
