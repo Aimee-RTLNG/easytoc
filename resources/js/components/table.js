@@ -695,7 +695,8 @@ $('.add-element').on('click', function () {
 // ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {
     updatecontent();
-    let post_url = $("#full-form-post").attr('action');
+    let post_url = $("#full-table-post").attr('action');
+    console.log(post_url);
     $.ajax({
         method: "POST",
         url: post_url,
