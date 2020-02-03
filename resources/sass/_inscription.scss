@@ -192,7 +192,8 @@
 }
 .warning-block {
     @include acumin;
-    line-height: 1rem;
+    line-height: 1.1rem;
+    margin-top: 5px;
 }
 .form-control.is-invalid {
     border-width: 3px;

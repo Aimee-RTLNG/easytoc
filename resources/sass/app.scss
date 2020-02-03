@@ -20,11 +20,14 @@
 @import 'auth';
 @import 'home';
 
-@import 'form'; // pas en sass
+@import '_form'; // pas en sass
 @import 'table';
 
 @import 'profile';
 @import 'alert';
+
+@import 'visualiser';
+
 
 // Pour les thèmes : voir dans public/css/themes
 // et activer WatchSass 
