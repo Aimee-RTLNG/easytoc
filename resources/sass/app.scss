@@ -20,10 +20,10 @@
 @import 'auth';
 @import 'home';
 
-@import '_form'; // pas en sass
+@import 'form'; // pas en sass
 @import 'table';
 
-@import '_profile';
+@import 'profile';
 @import 'alert';
 
 @import 'visualiser';
