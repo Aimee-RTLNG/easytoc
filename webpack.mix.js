@@ -12,10 +12,15 @@ const mix = require('laravel-mix');
  */
 
 mix .js('resources/js/components/profile/profile.js', 'public/js/components/profile')
+    .js('resources/js/components/form.js', 'public/js/components/')
+    .js('resources/js/components/table.js', 'public/js/components/')
+    .js('resources/js/components/import_data_form.js', 'public/js/components/')
+    .js('resources/js/components/import_data_table.js', 'public/js/components/')
     .js('resources/js/app.js', 'public/js')
     .extract()
     .sass('resources/sass/app.scss', 'public/css')
     .copy('node_modules/font-awesome/fonts', 'public/fonts')
+    .copy('resources/lang', 'public/lang')
     .options({
         processCssUrls : false
     });

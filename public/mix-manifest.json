@@ -1,7 +1,11 @@
 {
-    "/js/app.js": "/js/app.js?id=a3923fde4e9c69e7e5f3",
-    "/js/components/profile/profile.js": "/js/components/profile/profile.js?id=1274456228de97ff7cc9",
-    "/css/app.css": "/css/app.css?id=418bd4d2f895637fa60a",
+    "/js/app.js": "/js/app.js?id=55975b1cafdbe162c4c2",
+    "/js/components/form.js": "/js/components/form.js?id=be8cb947c8cc062e5cf0",
+    "/js/components/import_data_form.js": "/js/components/import_data_form.js?id=79640b63d3f2abf7550f",
+    "/js/components/import_data_table.js": "/js/components/import_data_table.js?id=1790fac28a1a482b903d",
+    "/js/components/profile/profile.js": "/js/components/profile/profile.js?id=0af866297ecf55f597a7",
+    "/css/app.css": "/css/app.css?id=a816b0baf29bde5af56b",
+    "/js/components/table.js": "/js/components/table.js?id=7172ecb01e56a95175b4",
     "/js/manifest.js": "/js/manifest.js?id=41f053ba9a94d81b39f8",
-    "/js/vendor.js": "/js/vendor.js?id=eafbc21349e83141e81d"
+    "/js/vendor.js": "/js/vendor.js?id=8cd346c6a5d598708a5d"
 }

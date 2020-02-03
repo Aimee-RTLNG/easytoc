@@ -115,3 +115,13 @@ textarea {
           margin-right: 10px;
       }
   }
+
+  .required-failed{
+      border: 3px solid rgb(221, 19, 19);
+      box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+  }
+
+  #content-created-blueprint{
+      width: 100%;
+      overflow: auto;
+  }

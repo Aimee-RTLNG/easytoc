@@ -2,10 +2,11 @@
 	"type": "form",
 	"title": "Exemple de formulaire Easy to C",
 	"url": "/form.php",
-	"options": "post, reset",
+	"options": {"method" : "post", "reset" : "reset"},
+	"style": "green",
 	"items": [
 		{
-			"type": "text",
+			"type": "paragraph",
 			"content": "Ceci est un formulaire test, il a été généré par un fichier en format JSON. Pour en savoir plus, vous pouvez aller consulter le guide d'utilisation / d'importation des données du générateur de formulaire.",
 			"style": [
 				"justify-full",
@@ -39,6 +40,13 @@
 			],
 			"placeholder": "Entrez votre prénom...",
 			"maxlength": 50
+		},
+		{
+			"type": "short-answer",
+			"content": "Quelle est votre adresse e-mail ?",
+			"name": "email",
+			"answertype": "email",
+			"placeholder": "Entrez votre adresse e-mail..."
 		},
 		{
 			"type": "one-answer",
@@ -79,7 +87,7 @@
 		},
 		{
 			"type": "many-answer",
-			"content": "De quelles couleures sont vos chaussettes ?",
+			"content": "De quelles couleurs sont vos chaussettes ?",
 			"name": "sock-colors",
 			"placeholder": "Choisissez une ou plusieurs réponses...",
 			"items": [
@@ -153,6 +161,12 @@
 			"options": "required",
 			"style": [
 				"italic"
+			],
+			"items": [
+				{
+					"value": "agree",
+					"name": "J'accepte ces conditions abusives"
+				}
 			]
 		}
 	]

@@ -3,33 +3,45 @@
 $themes: (
     white: (
         backgroundColor: #fff,
-        aHoverColor: red,
-        textColor : black
+        backgroundTheadColor: rgb(189, 189, 189),
+        backgroundTfootColor: rgb(139, 138, 138),
+        textColor : black,
+        borderColor : grey
     ),
     black: (
-        backgroundColor: #222,
-        aHoverColor: red,
-        textColor : white
+        backgroundColor: rgb(51, 51, 51),
+        backgroundTheadColor: rgb(15, 15, 15),
+        backgroundTfootColor: rgb(31, 31, 31),
+        textColor : white,
+        borderColor : white
     ),
     green: (
         backgroundColor: green,
-        aHoverColor: red,
-        textColor : white
+        backgroundTheadColor: rgb(1, 88, 1),
+        backgroundTfootColor: rgb(1, 58, 1),
+        textColor : white,
+        borderColor : rgb(1, 88, 1)
     ),
     red: (
         backgroundColor: red,
-        aHoverColor: blue,
-        textColor : white
+        backgroundTheadColor: rgb(151, 0, 0),
+        backgroundTfootColor: rgb(116, 1, 1),
+        textColor : white,
+        borderColor : rgb(151, 0, 0)
     ),
     blue: (
-        backgroundColor: blue,
-        aHoverColor: red,
-        textColor : white
+        backgroundColor: rgb(106, 106, 255),
+        backgroundTheadColor: rgb(64, 64, 233),
+        backgroundTfootColor: rgb(72, 72, 228),
+        textColor : white,
+        borderColor : rgb(64, 64, 233),
     ),
     grey: (
         backgroundColor: grey,
-        aHoverColor: red,
-        textColor : black
+        backgroundTheadColor: rgb(71, 71, 71),
+        backgroundTfootColor: rgb(95, 95, 95),
+        textColor : black,
+        borderColor : rgb(71, 71, 71)
     )
 );
 
@@ -63,5 +75,43 @@ $themes: (
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
+      border-collapse: collapse;
+      width: 100%;
+      overflow: auto;
+
+        .table-caption{
+            font-size: 15px;
+            color: black;
+            font-style: italic;
+        }
+
+        th{
+            background-color: themed('backgroundTheadColor');  
+            font-weight: bold;
+            border: 2px solid themed('borderColor');
+            min-width: 40px;
+        }
+
+        td{
+            border: 1px solid themed('borderColor');
+            min-width: 40px;
+        }
+
+        tfoot td{
+            background-color: themed('backgroundTfootColor');  
+        }
+
     }
+}
+
+.font-style-italic{
+    font-style: italic;
+}
+
+.font-underline{
+    text-decoration: underline;
+}
+
+.font-weight-bold{
+    font-weight: bold;
 }

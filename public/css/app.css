@@ -9682,6 +9682,16 @@ textarea.shadow-box {
   margin-right: 10px;
 }
 
+.required-failed {
+  border: 3px solid #dd1313;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#content-created-blueprint {
+  width: 100%;
+  overflow: auto;
+}
+
 .flag {
   background-color: black;
   background-size: cover;
@@ -11267,59 +11277,16 @@ pre.prettyprinted {
   cursor: pointer;
 }
 
-[data-tag="text"]:hover, [data-tag="label-text"]:hover, [data-tag="form-title"]:hover {
-  cursor: text;
-}
-
-#content-created-blueprint form * {
+#content-created-blueprint table * {
   border: 0;
   padding: 5px;
 }
 
-#content-created-blueprint form *:hover {
+#content-created-blueprint table *:hover {
   border: 3px dotted black;
 }
 
-#content-created-blueprint form * label:hover, #content-created-blueprint form * abbr:hover, #content-created-blueprint form * .indicator-required:hover, #content-created-blueprint form * legend span:hover, #content-created-blueprint form * fieldset label span:hover {
-  border: 0;
-}
-
-#content-created-blueprint form * select {
-  min-height: 30px;
-}
-
-#content-created-blueprint form * fieldset {
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-}
-
-#content-created-blueprint form * fieldset:hover {
-  border: 2px solid black;
-}
-
-#content-created-blueprint form * fieldset label {
-  margin: 5px 15px;
-}
-
-#content-created-blueprint form * fieldset label:hover {
-  border: 3px dotted black;
-}
-
-#content-created-blueprint form * legend {
-  border: 2px solid black;
-}
-
-#content-created-blueprint form * hr {
-  border: 2px solid rgba(0, 0, 0, 0.5) !important;
-  padding: 0 !important;
-}
-
-#content-created-blueprint form * hr:hover {
-  border: 2px solid rgba(0, 0, 0, 0.5) !important;
-}
-
-#content-created-blueprint form * .type-layout *:hover {
+#content-created-blueprint caption:hover {
   border: 0 !important;
 }
 
@@ -11328,16 +11295,8 @@ pre.prettyprinted {
   padding: 5px;
 }
 
-.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select {
+.content-editable-selected {
   border: 3px dotted blue !important;
-}
-
-form {
-  border: 0 !important;
-}
-
-input[type="checkbox"], input[type="radio"] {
-  cursor: pointer !important;
 }
 
 #copy-css-link, #copy-raw-code {
@@ -11357,12 +11316,17 @@ input[type="checkbox"], input[type="radio"] {
   flex-direction: column;
 }
 
+.side-tool.horizontal-tools {
+  display: flex;
+}
+
 .side-tool button {
   margin: 0;
   padding: 0;
   border-radius: 2px;
   color: white;
   border: none;
+  min-width: 25px;
 }
 
 .side-tool .btn-info:disabled {
@@ -11965,7 +11929,7 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
-.alert-success {
+.alert-success, .alert-danger {
   position: fixed;
   bottom: 10px;
   right: 15px;
