@@ -115,6 +115,29 @@ textarea {
           margin-right: 10px;
       }
   }
+  .btn-success {
+        .btn-crea__icon {
+            color: $success;
+        }
+    }
+    .btn-danger {
+        .btn-crea__icon {
+            color: $danger;
+        }
+    }
+  .rond-i {
+      height: 30px;
+      width: 30px;
+      min-height: 30px;
+      min-width: 30px;
+      background-color: white;
+      color: $bleu;
+      border-radius: 50%;
+      @include flex-row-center;
+  }
+  .code-display {
+    overflow-wrap: break-word;
+  }
 
   .required-failed{
       border: 3px solid rgb(221, 19, 19);

@@ -58,17 +58,23 @@ $themes: (
 
 
 // Styles
-
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-justify {
+    text-align: justify;
+}
 #full-form {
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
     }
-  
     hr{
         background-color: themed('separatorColor');
         height: 2px;
-        
     }
 
     h1 {
