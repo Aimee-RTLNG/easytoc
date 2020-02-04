@@ -79,8 +79,10 @@ var element_types = {
 };
 function getOldContent() {
   // On rend l'ancien contenu modifiable
-  $('#full-table .cell-text').attr('contenteditable', true);
-  $('#full-table .table-text').attr('contenteditable', true); // Theme
+  $('#full-table th').attr('contenteditable', true);
+  $('#full-table td').attr('contenteditable', true);
+  $('#table-title').attr('contenteditable', true);
+  $('#table-caption').attr('contenteditable', true); // Theme
 
   var actual_theme = $("#generated-table").attr('class');
   actual_theme = actual_theme.replace('theme-', '');
@@ -88,7 +90,10 @@ function getOldContent() {
   selected_theme.prop('checked', true); // Titre
 
   var actual_title = $("#table-title").text();
-  $("#table-creator-title").val(actual_title);
+  $("#table-creator-title").val(actual_title); // Légende
+
+  var actual_caption = $("#table-caption span").text();
+  $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
 function updatecontent() {
@@ -108,7 +113,10 @@ function updatecontent() {
   $("#formatted-code").html(PR.prettyPrintOne(code_content));
 }
 
-; // ANCHOR Initialisation du tableau
+;
+$('#edit-table').on('click', function () {
+  updatecontent();
+}); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
   console.log("Création");
@@ -338,7 +346,6 @@ function removeRow(row) {
   }
 
   var row_length = $('#full-table tbody').find('tr').length;
-  console.log(row_length);
 
   if (row_length <= 1) {
     return false;
@@ -414,8 +421,6 @@ function moveCell(side) {
 }
 
 function mergeCell(side, cell, other_cell) {
-  console.log(other_cell);
-
   if (side == "row") {
     var previous_colspan = 1;
     var next_colspan = 1;
@@ -464,9 +469,13 @@ function splitCell() {
   } else if (rowspan_len) {
     $('.content-editable-selected').removeAttr('rowspan');
     var _new_cell_html = element_types["type-unique"]["insert-header-row"];
+    var next_merged_index = $('.content-editable-selected').parent().parent().find(selected_row).index();
 
     for (var _i3 = 1; _i3 < rowspan_len; _i3++) {
-      $(_new_cell_html).insertAfter('.content-editable-selected');
+      var next_row_cell_id = parseInt(next_merged_index) + _i3;
+
+      var next_row_cell = $('#full-table tbody tr')[next_row_cell_id];
+      $(next_row_cell).prepend(_new_cell_html);
     }
   }
 } // Suppression de colonne
@@ -544,7 +553,6 @@ $('.cell-action').on('click', function () {
 
   } else if (element_action == "merge-down") {
     var other_cell = selected_row.nextAll().find('th');
-    console.log(other_cell);
 
     if (other_cell.length) {
       mergeCell("col", $('.content-editable-selected'), other_cell[0]);

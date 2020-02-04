@@ -69,8 +69,10 @@ var element_types = {
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-table .cell-text').attr('contenteditable', true);
-    $('#full-table .table-text').attr('contenteditable', true);
+    $('#full-table th').attr('contenteditable', true);
+    $('#full-table td').attr('contenteditable', true);
+    $('#table-title').attr('contenteditable', true);
+    $('#table-caption').attr('contenteditable', true);
 
     // Theme
     let actual_theme = $("#generated-table").attr('class');
@@ -81,6 +83,10 @@ export function getOldContent() {
     // Titre
     let actual_title = $("#table-title").text();
     $("#table-creator-title").val(actual_title);
+
+    // Légende
+    let actual_caption = $("#table-caption span").text();
+    $("#table-creator-caption").val(actual_caption);
 
 }
 
@@ -104,6 +110,10 @@ function updatecontent() {
     // prettify
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
+
+$('#edit-table').on('click', function(){
+    updatecontent();
+})
 
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
@@ -311,7 +321,6 @@ function removeRow(row) {
         }
     }
     let row_length = $('#full-table tbody').find('tr').length;
-    console.log(row_length);
     if(row_length <= 1){
         return false;
     }
@@ -388,7 +397,6 @@ function moveCell(side){
 }
 
 function mergeCell(side, cell, other_cell){
-    console.log(other_cell);
     if(side == "row"){
         let previous_colspan = 1;
         let next_colspan = 1;
@@ -429,9 +437,11 @@ function splitCell(){
     }else if(rowspan_len){
         $('.content-editable-selected').removeAttr('rowspan');
         let new_cell_html = element_types["type-unique"]["insert-header-row"];
+        let next_merged_index = $('.content-editable-selected').parent().parent().find(selected_row).index();
         for(let i = 1; i < rowspan_len; i ++){
-
-            $(new_cell_html).insertAfter('.content-editable-selected');
+            let next_row_cell_id = parseInt(next_merged_index) + i;
+            let next_row_cell = $('#full-table tbody tr')[next_row_cell_id];
+            $(next_row_cell).prepend(new_cell_html);
         }
     }
 }
@@ -530,7 +540,6 @@ $('.cell-action').on('click', function () {
     // MERGE DOWN
     } else if (element_action == "merge-down") {
         let other_cell = selected_row.nextAll().find('th');
-        console.log(other_cell);
         if(other_cell.length){
             mergeCell("col", $('.content-editable-selected'), other_cell[0]);
             
