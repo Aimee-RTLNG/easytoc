@@ -1020,7 +1020,7 @@ new ClipboardJS('#copy-raw-code');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\table.js */"./resources/js/components/table.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\table.js */"./resources/js/components/table.js");
 
 
 /***/ })
