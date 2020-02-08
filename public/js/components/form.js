@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\form.js */"./resources/js/components/form.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\form.js */"./resources/js/components/form.js");
 
 
 /***/ })
