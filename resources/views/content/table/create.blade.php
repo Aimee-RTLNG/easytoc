@@ -44,7 +44,7 @@
                 {{-- <h3 id="table_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le tableau') }}</h3> --}}
                 <form id="full-table-post" action="{{ route('content.store') }}" method="post">
                     @csrf
-                    <input type="hidden" name="type_id" value="1">
+                    <input type="hidden" name="type_id" value="2">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
