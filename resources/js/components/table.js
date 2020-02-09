@@ -63,7 +63,7 @@ const tags_list = ["table", "tr", "th", "td", "abbr"];
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
-var element_types = {
+export var element_types = {
     "type-container": {
         "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
         "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
