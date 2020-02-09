@@ -4,7 +4,7 @@
 # [] Trier par date de modification
 # [] Importation JSON
 # [X] Importation CSV
-# [] Importation CSV : dernière ligne non prise en compte
+# [X] Importation CSV : dernière ligne non prise en compte
 # [X] Importation CSV : caption
 
 // PROPRITE BASSE

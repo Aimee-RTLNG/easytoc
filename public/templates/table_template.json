@@ -4,7 +4,7 @@
 	"caption": "Scores par équipes et par activités",
 	"options": {"header top" : "true", "header left" : "true"},
 	"style": "red",
-	"rows": [
+	"items": [
 		{
 			"type": "header",
 			"items": [["Equipes", 1], ["Activités", 3], ["Scores par équipe", 1]]
