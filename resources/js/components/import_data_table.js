@@ -120,8 +120,6 @@ $('#generate-example').on('click', function () {
 
 function importData(table) {
 
-    console.log(table);
-
     $("#generated-table #full-table").empty();
     $("#generated-table #table-title").text(table.title);
     $("#generated-table #table-caption").text(table.caption);
@@ -184,7 +182,6 @@ function importData(table) {
         });
         let empty_col = false;
         selected_col.forEach(function(element){
-            console.log(element);
             if(!$(element).text()){
                 empty_col = true;
             }else{

@@ -52325,7 +52325,8 @@ var element_types = {
   "type-container": {
     "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
     "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
-    "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
+    "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
+    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
   },
   "type-unique": {
     "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
