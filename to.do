@@ -1,10 +1,11 @@
-// COMMIT
-# [X] Page d'édition de tableau
 
 // PRIORITE HAUTE
 # [] Problème de bouton "Copier" sur page Visualisation
-# [] Trier par date de modificationZZ
-
+# [] Trier par date de modification
+# [] Importation JSON
+# [X] Importation CSV
+# [] Importation CSV : dernière ligne non prise en compte
+# [X] Importation CSV : caption
 
 // PROPRITE BASSE
 # [] TODO Traduire la page formulaire

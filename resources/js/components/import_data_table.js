@@ -58,10 +58,10 @@ $('#import-data').on('click', function () {
                         };
                     } else if (i > 1) {
                         let row_type;
-                        if(formatted_csv.options.header_top && i <= parseInt(formatted_csv.size.header_row) + 1){  // On ajoute + 1 à cause de la ligne skippée 
+                        if(formatted_csv.options.header_top == 'true' && i <= parseInt(formatted_csv.size.header_row) + 1){  // On ajoute + 1 à cause de la ligne skippée 
                             row_type = "thead";
                             formatted_csv.items.thead.push(row);
-                        }else if( i == filtered_rows.length - 1 && formatted_csv.options.footer){
+                        }else if( i == filtered_rows.length - 1 && formatted_csv.options.footer == 'true'){
                             row_type = "tfoot";
                             formatted_csv.items.tfoot.push(row);
                         }else{
@@ -122,6 +122,7 @@ function importData(table) {
 
     $("#generated-table #full-table").empty();
     $("#generated-table #table-title").text(table.title);
+    $("#generated-table #full-table").append(element_types["type-container"]["insert-caption"]);
     $("#generated-table #table-caption").text(table.caption);
 
         // HEADER
