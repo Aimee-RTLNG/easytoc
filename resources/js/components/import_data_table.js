@@ -22,7 +22,7 @@ $('#import-data').on('click', function () {
     // FORMAT CSV
     if (regex_csv.test($("#imported_data").val().toLowerCase())) {
         if (typeof (FileReader) != "undefined") {
-            let formatted_csv = { type: "", title: "", caption: "", options: "", items: { thead : [], tbody : [], tfoot : [] }, size: [] };
+            let formatted_csv = { type: "", title: "", caption: "", options: "", theme : "", items: { thead : [], tbody : [], tfoot : [] }, size: [] };
             var reader = new FileReader();
             reader.onload = function (e) {
                 var data = e.target.result;
@@ -120,13 +120,21 @@ $('#generate-example').on('click', function () {
 
 function importData(table) {
 
+    console.log(table);
+
     $("#generated-table #full-table").empty();
     $("#generated-table #table-title").text(table.title);
     $("#generated-table #full-table").append(element_types["type-container"]["insert-caption"]);
-    $("#generated-table #table-caption").text(table.caption);
+    
+    // Caption
+    $("#generated-table #table-caption span").text(table.caption);
+    
+    // Theme
+    $("#generated-table").attr('class', 'theme-' + table.theme);
 
         // HEADER
         if(table.options.header_top == "true"){
+            $('#central-header-button').prop('checked', true);
             $("#full-table").append(element_types["type-container"]["insert-header"]);
             table.items.thead.forEach(function(header_row, index){
                 $("#full-table thead").append(element_types["type-container"]["insert-row"]);
@@ -135,6 +143,8 @@ function importData(table) {
                     $("#full-table thead tr th").last().text(element);
                 });
             });
+        }else{
+            $('#central-header-button').prop('checked', false);
         }
 
         // BODY
@@ -145,6 +155,7 @@ function importData(table) {
                     if( index == 0 && table.options.header_left == "true"){
                         $("#full-table tbody tr").last().append(element_types["type-unique"]["insert-header-row"]);
                         $("#full-table tbody tr th").last().text(element);
+                        $('#lateral-header-button').prop('checked', true);
                     }else{
                         $("#full-table tbody tr").last().append(element_types["type-unique"]["insert-cell"]);
                         $("#full-table tbody tr td").last().text(element);
@@ -154,6 +165,7 @@ function importData(table) {
 
         // FOOTER
         if(table.options.footer == "true" ){
+            $('#footer-button').prop('checked', true);
             $("#full-table").append(element_types["type-container"]["insert-footer"]);
             $("#full-table tfoot").append(element_types["type-container"]["insert-row"]);
             let footer_row = table.items.tfoot[0];
@@ -193,6 +205,14 @@ function importData(table) {
             removeCol(selected_col);
         }
     });
+
+    // Nb colonnes
+    let nb_col = $("#full-table tbody tr").first().find('th, td').length;
+    $('#table-col-nb').val(nb_col);
+
+    // Nb lignes
+    let nb_row = $("#full-table tr").length;
+    $('#table-row-nb').val(nb_row);
 
     if (success) {
         message = "Données récupérées";

@@ -3,7 +3,7 @@
 	"title": "Tableau des scores",
 	"caption": "Scores par équipes et par activités",
 	"options": {"header top" : "true", "header left" : "true"},
-	"style": "red",
+	"theme": "red",
 	"items": [
 		{
 			"type": "header",

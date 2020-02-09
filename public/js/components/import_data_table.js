@@ -36,6 +36,7 @@ $('#import-data').on('click', function () {
         title: "",
         caption: "",
         options: "",
+        theme: "",
         items: {
           thead: [],
           tbody: [],
@@ -143,12 +144,17 @@ $('#generate-example').on('click', function () {
 });
 
 function importData(table) {
+  console.log(table);
   $("#generated-table #full-table").empty();
   $("#generated-table #table-title").text(table.title);
-  $("#generated-table #full-table").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-caption"]);
-  $("#generated-table #table-caption").text(table.caption); // HEADER
+  $("#generated-table #full-table").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-caption"]); // Caption
+
+  $("#generated-table #table-caption span").text(table.caption); // Theme
+
+  $("#generated-table").attr('class', 'theme-' + table.theme); // HEADER
 
   if (table.options.header_top == "true") {
+    $('#central-header-button').prop('checked', true);
     $("#full-table").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-header"]);
     table.items.thead.forEach(function (header_row, index) {
       $("#full-table thead").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-row"]);
@@ -157,6 +163,8 @@ function importData(table) {
         $("#full-table thead tr th").last().text(element);
       });
     });
+  } else {
+    $('#central-header-button').prop('checked', false);
   } // BODY
 
 
@@ -167,6 +175,7 @@ function importData(table) {
       if (index == 0 && table.options.header_left == "true") {
         $("#full-table tbody tr").last().append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-unique"]["insert-header-row"]);
         $("#full-table tbody tr th").last().text(element);
+        $('#lateral-header-button').prop('checked', true);
       } else {
         $("#full-table tbody tr").last().append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-unique"]["insert-cell"]);
         $("#full-table tbody tr td").last().text(element);
@@ -175,6 +184,7 @@ function importData(table) {
   }); // FOOTER
 
   if (table.options.footer == "true") {
+    $('#footer-button').prop('checked', true);
     $("#full-table").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-footer"]);
     $("#full-table tfoot").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-row"]);
     var footer_row = table.items.tfoot[0];
@@ -212,7 +222,13 @@ function importData(table) {
     if (empty_col) {
       Object(_table__WEBPACK_IMPORTED_MODULE_1__["removeCol"])(selected_col);
     }
-  });
+  }); // Nb colonnes
+
+  var nb_col = $("#full-table tbody tr").first().find('th, td').length;
+  $('#table-col-nb').val(nb_col); // Nb lignes
+
+  var nb_row = $("#full-table tr").length;
+  $('#table-row-nb').val(nb_row);
 
   if (success) {
     message = "Données récupérées";

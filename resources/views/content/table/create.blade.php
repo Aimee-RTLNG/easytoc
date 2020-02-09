@@ -138,7 +138,7 @@
                     </div>
                     <div class="col p-0" role="region">
                         <label class="creator-panel__caption" for="table-creator-caption">{{ __('Légende du tableau') }}</label>
-                        <input name="table-creator-caption" id="table-creator-caption" placeholder="{{ __('Légende') }}" class="form-control" size="30"/>
+                        <input type="text" name="table-creator-caption" id="table-creator-caption" placeholder="{{ __('Légende') }}" class="form-control" size="250"/>
                     </div>
                 </div>
 
