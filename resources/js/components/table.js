@@ -25,6 +25,15 @@ let initial_content = '<div id="generated-table" class="theme-white">\n\t<span c
 // Imports
 import { alertMsg } from "../../js/app";
 
+// Reset des boutons d'options
+$('#lateral-header-button').prop('checked', false);
+$('#footer-button').prop('checked', false);
+$('#central-header-button').prop('checked', true);
+$('#radio02').prop('checked', true);
+$('#radio02').prop('checked', true);
+$('#table-row-nb').val('2');
+$('#table-col-nb').val('2');
+
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
@@ -547,8 +556,6 @@ $('.cell-action').on('click', function () {
             message = "Fusion impossible : pas de case en bas";
             alertMsg(message, "error");
         }
-
-    // TODO ATTENTION à la fusion avec des cellules déjà fusionnées !!
     
     // SPLIT
     } else if (element_action == "split-cell") {
@@ -557,11 +564,20 @@ $('.cell-action').on('click', function () {
     // Supprimer la colonne
     }else if (element_action == "delete-col") {
         if (selected_col && nb_col > 2) {
+            // On récupère le prochain élément pour le focus
+            let next_element_select = previous_col;
+            if(!previous_col.length){
+                next_element_select = next_col;
+            }
+            next_element_select = next_element_select[0];
+            // On supprime la colonne
             let col_removed = removeCol(selected_col);
             if (col_removed) {
                 $('#table-col-nb').val(parseInt(nb_col) - 1);
                 message = "Colonne supprimée";
                 alertMsg(message, "success");
+                // Quand elle est supprimée, on focus 
+                next_element_select.focus();
             }
         }else{
             message = "A quoi sert un tableau sans colonnes ?";
@@ -571,19 +587,29 @@ $('.cell-action').on('click', function () {
     // Supprimer la ligne
     else if (element_action == "delete-row") {
         if (selected_row && nb_row > 2) {
+            // On récupère le prochain élément pour le focus
+            let next_element_select = previous_row;
+            if(!previous_row.length){
+                next_element_select = next_row;
+            }
+            next_element_select = next_element_select.find('tr,td').first();
+            // On supprime la ligne
             let row_removed = removeRow(selected_row);
             if (row_removed) {
                 $('#table-row-nb').val(parseInt(nb_row) - 1);
                 message = "Colonne supprimée";
                 alertMsg(message, "success");
+                // Quand elle est supprimée, on focus 
+                next_element_select.focus();
             }
         }else{
             message = "A quoi sert un tableau sans lignes ?";
             alertMsg(message, "error");
         }
-        // TODO unfocus total;
+
     }
 
+    console.log($('.content-editable-selected'));
     $('.content-editable-selected').focus();
     updatecontent();
 });
@@ -789,6 +815,7 @@ $(document.body)
                 $('#insert-col_left').attr('disabled', true);
                 $('.action-merge-right').attr('disabled', true);
                 $('.action-merge-down').attr('disabled', false);
+                $('.action-move-col-right').attr('disabled', true);
             }
             // Si l'élément n'est ni un header horizontal ni vertical
             else {
@@ -882,8 +909,10 @@ $(document.body)
                 $('.action-merge-right').attr('disabled', true);
             } else {
                 $('.action-move-cell-right').attr('disabled', false);
-                $('.action-move-col-right').attr('disabled', false);
                 $('#action-move-right').show();
+                if(!$('.content-editable-selected').hasClass('table-header-cell')){
+                    $('.action-move-col-right').attr('disabled', false);
+                }
             }
 
             // Si il n'y a pas de cellule adjacente ; pas de merge

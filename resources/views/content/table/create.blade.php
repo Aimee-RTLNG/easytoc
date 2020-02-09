@@ -42,7 +42,7 @@
             <!-- infos du projet -->
             <div class="info-panel col-lg-4" role="region" aria-labelledby="table_infos">
                 {{-- <h3 id="table_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le tableau') }}</h3> --}}
-                <form id="full-table-post" action="{{ route('content.store') }}" method="post">
+                <form id="full-table-post" action="{{ route('content.store') }}" method="post" autocomplete="off">
                     @csrf
                     <input type="hidden" name="type_id" value="2">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -240,7 +240,7 @@
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-down"></i>
                             {{ __('Bas') }}
                         </button>
-                        <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Déplacer une ligne') }}</h3>
+                        <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Déplacer une ligne / colonne') }}</h3>
                         <button disabled="true" aria-label="{{ __('Déplacer la colonne à gauche') }}" title="{{ __('Déplacer la colonne à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-left" data-action="move-col-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Gauche') }}
