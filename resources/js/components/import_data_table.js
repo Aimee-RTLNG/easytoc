@@ -1,6 +1,6 @@
 // Imports
 import { alertMsg } from "../app";
-import { getOldContent, addElement, element_types } from "./table";
+import { getOldContent, removeCol, element_types } from "./table";
 
 // Variables
 let message;
@@ -127,7 +127,7 @@ function importData(table) {
     $("#generated-table #table-caption").text(table.caption);
 
         // HEADER
-        if(table.options.header_top){
+        if(table.options.header_top == "true"){
             $("#full-table").append(element_types["type-container"]["insert-header"]);
             table.items.thead.forEach(function(header_row, index){
                 $("#full-table thead").append(element_types["type-container"]["insert-row"]);
@@ -141,41 +141,59 @@ function importData(table) {
         // BODY
         $("#full-table").append("<tbody></tbody>");
             table.items.tbody.forEach(function(body_row){
-                $("#full-table tbody").append("<tr></tr>");
+                $("#full-table tbody").append(element_types["type-container"]["insert-row"]);
                 body_row.forEach(function(element, index){
-                    if( index == 0 && table.options.header_left){
-                        $("#full-table tbody tr").last().append("<th>"+element+"</th>");
+                    if( index == 0 && table.options.header_left == "true"){
+                        $("#full-table tbody tr").last().append(element_types["type-unique"]["insert-header-row"]);
+                        $("#full-table tbody tr th").last().text(element);
                     }else{
-                        $("#full-table tbody tr").last().append("<td>"+element+"</td>");
+                        $("#full-table tbody tr").last().append(element_types["type-unique"]["insert-cell"]);
+                        $("#full-table tbody tr td").last().text(element);
                     }
                 });
         });
 
         // FOOTER
-        if(table.options.footer){
-            $("#full-table").append("<tfoot><tr></tr></tfoot>");
+        if(table.options.footer == "true" ){
+            $("#full-table").append(element_types["type-container"]["insert-footer"]);
+            $("#full-table tfoot").append(element_types["type-container"]["insert-row"]);
             let footer_row = table.items.tfoot[0];
             footer_row.forEach(function(element, index){
-                $("#full-table tfoot tr").append("<td>"+element+"</td>");
+                $("#full-table tfoot tr").last().append(element_types["type-unique"]["insert-cell"]);
+                $("#full-table tfoot tr td").last().text(element);
             });
         }
 
     // On rend le contenu modifiable 
     getOldContent();
 
-    // On supprime les lignes et colonnes vides si existantes
+    // On supprime les lignes vides
     $('#full-table tbody tr').each(function() {
-        console.log( $( this ).text() );
         if(!$(this).text()){
             $(this).remove();
         }
     });
 
-    $("#full-table tr").each(function (i, element) {
-        let selected_col;
-        let actual_row = $("#full-table tr")[i];
-        selected_col[i] = $(actual_row).find('th, td')[i];
-        console.log(selected_col);
+    // On supprime les lignes vides
+    $("#full-table tbody tr td, #full-table tbody tr th").each(function (i, element) {
+        let selected_cell_index = $(element).parent().find("td, th").last().index();
+        let selected_col = [];
+        $("#full-table tr").each(function (i, element) {
+            let actual_row = $("#full-table tr")[i];
+            selected_col[i] = $(actual_row).find('th, td')[selected_cell_index];
+        });
+        let empty_col = false;
+        selected_col.forEach(function(element){
+            console.log(element);
+            if(!$(element).text()){
+                empty_col = true;
+            }else{
+                empty_col = false;
+            }
+        });
+        if(empty_col){
+            removeCol(selected_col);
+        }
     });
 
     if (success) {
@@ -186,9 +204,7 @@ function importData(table) {
         alertMsg(message, "error");
     }
 
-    if($('.content-editable-selected').last()){
-        $('.content-editable-selected').last().focus();
-    }
+    $('#full-table tr td').last().focus();
 }
 
 

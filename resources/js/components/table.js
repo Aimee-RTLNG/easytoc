@@ -456,7 +456,7 @@ function splitCell(){
 }
 
 // Suppression de colonne
-function removeCol(cells) {
+export function removeCol(cells) {
     // ATTENTION : cells doit être un array d'item
     if (Array.isArray(cells)) {
         // On vérifie que la ligne soit vide
@@ -472,7 +472,9 @@ function removeCol(cells) {
             if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
                 cells.forEach(function (item, index) {
                     let actual_cell = item;
-                    actual_cell.remove();
+                    if(actual_cell){
+                        actual_cell.remove();
+                    }
                 });
                 return true;
             }
@@ -486,7 +488,9 @@ function removeCol(cells) {
         else {
             cells.forEach(function (item, index) {
                 let actual_cell = item;
-                actual_cell.remove();
+                if(actual_cell){
+                    actual_cell.remove();
+                }
             });
             return true;
         }

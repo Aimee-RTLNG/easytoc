@@ -1,12 +1,12 @@
 Type;Title;Caption;Theme;Header top;Header left;Footer;Headers row
-table;Tableau des scores;Scores par équipes et par activités;red;true;true;true;2
-Equipes;Activit�;;;Score par �quipe;;;
-;Tir � l'arc;Tennis;Handball;;;;
-Equipe rouge;;3;3;6;;;
-Equipe bleu;1;0;4;5;;;
-Equipe jaune;2;1;;3;;;
-Equipe verte;3;2;;5;;;
-Equipe gagnante;Equipe verte;Equipe rouge;Equipe bleu;;;;
+table;Tableau des scores;Scores par équipes et par activités;red;true;true;false;2
+Équipes;Activité;;;Score par équipe;;;
+;Tir à l'arc;Tennis;Handball;;;;
+Équipe rouge;;3;3;6;;;
+Équipe bleu;1;0;4;5;;;
+Équipe jaune;2;1;;3;;;
+Équipe verte;3;2;;5;;;
+Équipe gagnante;Équipe verte;Équipe rouge;Équipe bleu;;;;
 ;;;;;;;
 ;;;;;;;
 ;;;;;;;

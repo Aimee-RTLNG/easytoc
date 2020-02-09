@@ -52250,7 +52250,7 @@ new ClipboardJS('#copy-raw-code');
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: element_types, getOldContent, addCol, addRow */
+/*! exports provided: element_types, getOldContent, addCol, addRow, removeCol */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52259,6 +52259,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
 // ANCHOR Données initiales
 var element;
@@ -52753,7 +52754,10 @@ function removeCol(cells) {
       if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
         cells.forEach(function (item, index) {
           var actual_cell = item;
-          actual_cell.remove();
+
+          if (actual_cell) {
+            actual_cell.remove();
+          }
         });
         return true;
       } // Si on annule la suppression
@@ -52765,7 +52769,10 @@ function removeCol(cells) {
     else {
         cells.forEach(function (item, index) {
           var actual_cell = item;
-          actual_cell.remove();
+
+          if (actual_cell) {
+            actual_cell.remove();
+          }
         });
         return true;
       }
@@ -52774,7 +52781,6 @@ function removeCol(cells) {
     return false;
   }
 }
-
 $('.cell-action').on('click', function () {
   var element_action = $(this).attr("data-action");
   var nb_col = $('#table-col-nb').val();
