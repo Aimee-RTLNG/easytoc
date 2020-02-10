@@ -25,6 +25,15 @@ let initial_content = '<div id="generated-table" class="theme-white">\n\t<span c
 // Imports
 import { alertMsg } from "../../js/app";
 
+// Reset des boutons d'options
+$('#lateral-header-button').prop('checked', false);
+$('#footer-button').prop('checked', false);
+$('#central-header-button').prop('checked', true);
+$('#radio02').prop('checked', true);
+$('#radio02').prop('checked', true);
+$('#table-row-nb').val('2');
+$('#table-col-nb').val('2');
+
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
@@ -54,11 +63,12 @@ const tags_list = ["table", "tr", "th", "td", "abbr"];
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
-var element_types = {
+export var element_types = {
     "type-container": {
         "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
         "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
-        "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
+        "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
+        "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
     },
     "type-unique": {
         "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
@@ -69,8 +79,10 @@ var element_types = {
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-table .cell-text').attr('contenteditable', true);
-    $('#full-table .table-text').attr('contenteditable', true);
+    $('#full-table th').attr('contenteditable', true);
+    $('#full-table td').attr('contenteditable', true);
+    $('#table-title').attr('contenteditable', true);
+    $('#table-caption').attr('contenteditable', true);
 
     // Theme
     let actual_theme = $("#generated-table").attr('class');
@@ -81,6 +93,10 @@ export function getOldContent() {
     // Titre
     let actual_title = $("#table-title").text();
     $("#table-creator-title").val(actual_title);
+
+    // Légende
+    let actual_caption = $("#table-caption span").text();
+    $("#table-creator-caption").val(actual_caption);
 
 }
 
@@ -104,6 +120,10 @@ function updatecontent() {
     // prettify
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
+
+$('#edit-table').on('click', function(){
+    updatecontent();
+})
 
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
@@ -311,7 +331,6 @@ function removeRow(row) {
         }
     }
     let row_length = $('#full-table tbody').find('tr').length;
-    console.log(row_length);
     if(row_length <= 1){
         return false;
     }
@@ -388,7 +407,6 @@ function moveCell(side){
 }
 
 function mergeCell(side, cell, other_cell){
-    console.log(other_cell);
     if(side == "row"){
         let previous_colspan = 1;
         let next_colspan = 1;
@@ -429,15 +447,17 @@ function splitCell(){
     }else if(rowspan_len){
         $('.content-editable-selected').removeAttr('rowspan');
         let new_cell_html = element_types["type-unique"]["insert-header-row"];
+        let next_merged_index = $('.content-editable-selected').parent().parent().find(selected_row).index();
         for(let i = 1; i < rowspan_len; i ++){
-
-            $(new_cell_html).insertAfter('.content-editable-selected');
+            let next_row_cell_id = parseInt(next_merged_index) + i;
+            let next_row_cell = $('#full-table tbody tr')[next_row_cell_id];
+            $(next_row_cell).prepend(new_cell_html);
         }
     }
 }
 
 // Suppression de colonne
-function removeCol(cells) {
+export function removeCol(cells) {
     // ATTENTION : cells doit être un array d'item
     if (Array.isArray(cells)) {
         // On vérifie que la ligne soit vide
@@ -453,7 +473,9 @@ function removeCol(cells) {
             if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
                 cells.forEach(function (item, index) {
                     let actual_cell = item;
-                    actual_cell.remove();
+                    if(actual_cell){
+                        actual_cell.remove();
+                    }
                 });
                 return true;
             }
@@ -467,7 +489,9 @@ function removeCol(cells) {
         else {
             cells.forEach(function (item, index) {
                 let actual_cell = item;
-                actual_cell.remove();
+                if(actual_cell){
+                    actual_cell.remove();
+                }
             });
             return true;
         }
@@ -530,7 +554,6 @@ $('.cell-action').on('click', function () {
     // MERGE DOWN
     } else if (element_action == "merge-down") {
         let other_cell = selected_row.nextAll().find('th');
-        console.log(other_cell);
         if(other_cell.length){
             mergeCell("col", $('.content-editable-selected'), other_cell[0]);
             
@@ -538,8 +561,6 @@ $('.cell-action').on('click', function () {
             message = "Fusion impossible : pas de case en bas";
             alertMsg(message, "error");
         }
-
-    // TODO ATTENTION à la fusion avec des cellules déjà fusionnées !!
     
     // SPLIT
     } else if (element_action == "split-cell") {
@@ -548,11 +569,20 @@ $('.cell-action').on('click', function () {
     // Supprimer la colonne
     }else if (element_action == "delete-col") {
         if (selected_col && nb_col > 2) {
+            // On récupère le prochain élément pour le focus
+            let next_element_select = previous_col;
+            if(!previous_col.length){
+                next_element_select = next_col;
+            }
+            next_element_select = next_element_select[0];
+            // On supprime la colonne
             let col_removed = removeCol(selected_col);
             if (col_removed) {
                 $('#table-col-nb').val(parseInt(nb_col) - 1);
                 message = "Colonne supprimée";
                 alertMsg(message, "success");
+                // Quand elle est supprimée, on focus 
+                next_element_select.focus();
             }
         }else{
             message = "A quoi sert un tableau sans colonnes ?";
@@ -562,19 +592,29 @@ $('.cell-action').on('click', function () {
     // Supprimer la ligne
     else if (element_action == "delete-row") {
         if (selected_row && nb_row > 2) {
+            // On récupère le prochain élément pour le focus
+            let next_element_select = previous_row;
+            if(!previous_row.length){
+                next_element_select = next_row;
+            }
+            next_element_select = next_element_select.find('tr,td').first();
+            // On supprime la ligne
             let row_removed = removeRow(selected_row);
             if (row_removed) {
                 $('#table-row-nb').val(parseInt(nb_row) - 1);
                 message = "Colonne supprimée";
                 alertMsg(message, "success");
+                // Quand elle est supprimée, on focus 
+                next_element_select.focus();
             }
         }else{
             message = "A quoi sert un tableau sans lignes ?";
             alertMsg(message, "error");
         }
-        // TODO unfocus total;
+
     }
 
+    console.log($('.content-editable-selected'));
     $('.content-editable-selected').focus();
     updatecontent();
 });
@@ -780,6 +820,7 @@ $(document.body)
                 $('#insert-col_left').attr('disabled', true);
                 $('.action-merge-right').attr('disabled', true);
                 $('.action-merge-down').attr('disabled', false);
+                $('.action-move-col-right').attr('disabled', true);
             }
             // Si l'élément n'est ni un header horizontal ni vertical
             else {
@@ -873,8 +914,10 @@ $(document.body)
                 $('.action-merge-right').attr('disabled', true);
             } else {
                 $('.action-move-cell-right').attr('disabled', false);
-                $('.action-move-col-right').attr('disabled', false);
                 $('#action-move-right').show();
+                if(!$('.content-editable-selected').hasClass('table-header-cell')){
+                    $('.action-move-col-right').attr('disabled', false);
+                }
             }
 
             // Si il n'y a pas de cellule adjacente ; pas de merge
