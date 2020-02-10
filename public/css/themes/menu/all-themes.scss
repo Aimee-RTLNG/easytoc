@@ -59,25 +59,9 @@ $themes: (
 
 // Styles
 
-#full-form {
+#full-menu {
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
     }
-  
-    h1 {
-      font-family: sans-serif;
-      font-weight: lighter;
-    }
-  
-    a {
-      cursor: pointer;
-      @include themify($themes) {
-        &:hover {
-          color: themed('aHoverColor'); 
-          font-weight: bold;
-        }
-      }
-  
-    } 
   }

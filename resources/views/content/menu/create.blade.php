@@ -1,7 +1,10 @@
+@extends('layouts.app')
 
-@extends('layouts/app')
+@section('titre') {{ __('Menu') }} - EasyToC @endsection
 
-@section('titre') {{ __('Menu - EasyToC') }}  @endsection
+@section('pagespecificstyles')
+    <link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container">

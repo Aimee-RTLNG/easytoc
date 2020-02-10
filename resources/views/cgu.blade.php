@@ -1,6 +1,6 @@
 @extends('layouts/app')
 
-@section('titre') {{ __('Condition d\'Utilisations - EasyToC') }} @endsection
+@section('titre') {{ __('Condition d\'Utilisations') }} - EasyToC @endsection
 
 @section('content')
 <div class="container">

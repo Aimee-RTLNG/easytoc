@@ -8,18 +8,26 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 // Mixin (Flexbox)
 @import 'mixin';
-@import '_global';
-@import '_header';
-@import '_footer';
-@import '_inscription';
-@import '_auth';
-@import '_home';
+@import 'global';
+@import 'header';
+@import 'footer';
+@import 'inscription';
+@import 'auth';
+@import 'home';
 
-// Ajouts Aimee 
 @import '_form'; // pas en sass
-@import '_profile';
+@import 'table';
+
+@import 'profile';
+@import 'alert';
+
+@import 'visualiser';
+
 
 // Pour les thèmes : voir dans public/css/themes
 // et activer WatchSass 
