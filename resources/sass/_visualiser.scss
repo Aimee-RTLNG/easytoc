@@ -34,6 +34,37 @@
     }
 }
 // Formulaire généré 
-.content-html-preview {
-    // Preview
+.visu-copy-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    #copy-css-link, #copy-raw-code {
+        top: 50px;
+        bottom: 0px;
+        right: 15px;
+    }
+}
+.visualisation {
+    &__infos {
+        .element-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            @include media-breakpoint-down(lg) {
+                justify-content: flex-start;
+            }
+        }
+    }
+    .visu_info {
+        margin-bottom: -8px;
+        .btn {
+            margin-top: 10px;
+        }
+    }
+    .prettyprint {
+        margin-bottom: 20px !important;
+    }
+    .btn-code {
+        margin-top: -20px;
+    }
 }

@@ -222,7 +222,7 @@ $themes: (
             color: themed('textColor') ;
         }
         label span {
-            color: black;
+            color: black !important;
             font-weight: normal;
         }
         label {

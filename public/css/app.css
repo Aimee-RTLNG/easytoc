@@ -11196,6 +11196,11 @@ input[type="checkbox"], input[type="radio"] {
   align-items: center;
 }
 
+.edit-project-action {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .main-info-form {
   display: flex;
   justify-content: space-around;
@@ -11338,12 +11343,38 @@ input[type="checkbox"], input[type="radio"] {
   width: 100%;
 }
 
+#nav-blueprint #full-form {
+  max-width: 100%;
+  width: 100%;
+}
+
 #nav-blueprint #full-form .form-control {
   margin-bottom: 0px;
 }
 
+#nav-blueprint #form-actions {
+  max-width: 100%;
+  width: 100%;
+}
+
 .content-html-preview #full-form .form-control {
   margin-bottom: 0px;
+}
+
+.crea-item__btn-delete {
+  width: auto;
+}
+
+@media (max-width: 991.98px) {
+  .edit-project-action > * {
+    margin-bottom: 20px;
+  }
+  .edit-project-action .btn-danger {
+    order: 2;
+  }
+  .edit-project-action .btn-success {
+    width: 100%;
+  }
 }
 
 body {
@@ -12098,4 +12129,44 @@ pre.prettyprinted {
 
 .visualisation__infos {
   margin-bottom: 20px;
+}
+
+.visu-copy-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.visu-copy-container #copy-css-link, .visu-copy-container #copy-raw-code {
+  top: 50px;
+  bottom: 0px;
+  right: 15px;
+}
+
+.visualisation__infos .element-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1199.98px) {
+  .visualisation__infos .element-actions {
+    justify-content: flex-start;
+  }
+}
+
+.visualisation .visu_info {
+  margin-bottom: -8px;
+}
+
+.visualisation .visu_info .btn {
+  margin-top: 10px;
+}
+
+.visualisation .prettyprint {
+  margin-bottom: 20px !important;
+}
+
+.visualisation .btn-code {
+  margin-top: -20px;
 }

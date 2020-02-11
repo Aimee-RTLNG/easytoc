@@ -381,7 +381,7 @@
 }
 
 #full-form fieldset label span {
-  color: black;
+  color: black !important;
   font-weight: normal;
 }
 

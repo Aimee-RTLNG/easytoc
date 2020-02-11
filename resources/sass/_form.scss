@@ -301,6 +301,10 @@ input[type="checkbox"], input[type="radio"]{
         @include flex-row-between-center;
     }
 }
+.edit-project-action {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .main-info-form {
     @include flex-row-around-end;
     margin-bottom: 16px;
@@ -406,8 +410,16 @@ input[type="checkbox"], input[type="radio"]{
         font-size: 14px;
         width: 100%;
     }
-    #full-form .form-control {
-        margin-bottom: 0px;
+    #full-form {
+        max-width: 100%;
+        width: 100%;
+        .form-control {
+            margin-bottom: 0px;
+        }
+    }
+    #form-actions {
+        max-width: 100%;
+        width: 100%;
     }
 }
 
@@ -415,4 +427,23 @@ input[type="checkbox"], input[type="radio"]{
     #full-form .form-control {
         margin-bottom: 0px;
     }
+}
+.crea-item__btn-delete {
+    width: auto;
+}
+
+
+@include media-breakpoint-down(md) {
+    .edit-project-action > * {
+        margin-bottom: 20px;
+    } 
+    .edit-project-action {
+        .btn-danger {
+            order: 2;
+        }
+        .btn-success {
+            width: 100%;
+        }
+    }
+
 }
