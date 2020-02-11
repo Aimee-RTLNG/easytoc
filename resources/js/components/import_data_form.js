@@ -1,5 +1,5 @@
 // Imports
-import { alertMsg } from "../app";
+import { alertMsg, lang } from "../app";
 import { getOldContent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
 
 // Variables
@@ -71,7 +71,11 @@ $('#import-data').on('click', function () {
                 } catch (e) {
                     success = false;
                     // console.log(e);
-                    message = "Votre fichier est invalide. Merci de réessayer.";
+                    if( lang == "en"){
+                        message = "Your file has an error : please try again.";
+                    } else {
+                        message = "Votre fichier contient une erreur. Merci de réessayer.";
+                    }
                     alertMsg(message, "error");
                 }
             }
@@ -79,7 +83,11 @@ $('#import-data').on('click', function () {
         }
     }
     else {
-        message = "Format de fichier incorrect";
+        if( lang == "en"){
+            message = "Incorrect file format : only JSON and CSV allowed;";
+        } else {
+            message = "Format de fichier invalide : fichiers JSON et CSVQ seulement.";
+        }
         alertMsg(message, "error");
     }
 });
@@ -93,7 +101,11 @@ $('#generate-example').on('click', function () {
         .fail(function (jqxhr, textStatus, error) {
             console.log(textStatus);
             console.log(error);
-            message = "Erreur dans le chargement de l'exemple";
+            if( lang == "en"){
+                message = "Error while loading : the example could not be generated";
+            } else {
+                message = "Erreur dans le chargement de l'exemple";
+            }
             alertMsg(message, "error");
         })
 });
@@ -210,10 +222,18 @@ function importData(form) {
     getOldContent();
 
     if (success) {
-        message = "Données récupérées";
+        if(lang == "en"){
+            message = "Data imported";
+        } else {
+            message = "Données récupérées";
+        }
         alertMsg(message, "success");
     } else {
-        message = "Erreur dans l'importation des données";
+        if(lang == "en"){
+            message = "Error while loading data";
+        } else {
+            message = "Erreur dans l'importation des données";
+        }
         alertMsg(message, "error");
     }
 

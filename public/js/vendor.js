@@ -51313,7 +51313,7 @@ console.log(translation_test);
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 
-var element_types; // TODO Traductions
+var element_types; // Traductions
 
 if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
   element_types = {
@@ -51535,7 +51535,7 @@ $('#btn-save-project').on('click', function () {
   }).fail(function (xhr, status, error) {
     console.log(xhr.responseText);
     console.log(status);
-    console.log(error); // TODO Erreur
+    console.log(error); // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
@@ -51959,7 +51959,7 @@ $(".form-element-action").on('click', function (e) {
           element_selected_container.find("select").removeAttr("required");
           element_selected_container.find("textarea").removeAttr("required");
           element_selected_container.find("input[type='radio']").first().removeAttr("required");
-        } // TODO Retirer l'étoile dans le label (après le span)
+        } // Retirer l'étoile dans le label (après le span)
 
 
         element_selected_container.find("abbr").remove();
@@ -52364,7 +52364,12 @@ $('#desc-input').keypress(function (e) {
       tlength = tval.length,
       set = $('#desc-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-desc-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#desc-input').val(tval.substring(0, tlength - 1));
@@ -52376,7 +52381,12 @@ $('#title-input').keypress(function (e) {
       tlength = tval.length,
       set = $('#title-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-title-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#title-input').val(tval.substring(0, tlength - 1));
@@ -52391,7 +52401,7 @@ var element_types = {
     "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
     "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
     "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
-    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
+    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
   },
   "type-unique": {
     "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
@@ -52423,7 +52433,7 @@ function updateContent() {
   $('#full-table tr th').each(function (index, element) {
     var element_id = Math.random().toString(36).substr(2, 9);
     $(element).attr('id', element_id);
-  }); // TODO On associe les id à toutes les cellules TD 
+  }); // On associe les id à toutes les cellules TD 
 
   var headers_id = [];
   $('#full-table thead tr').each(function (index, element) {
@@ -52518,7 +52528,12 @@ $('#table-row-nb').on('change', function () {
   var new_nb_row = $(this).val();
 
   if (new_nb_row < 2) {
-    message = "A quoi sert un tableau sans lignes ?";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Why would you want a table without rows ?";
+    } else {
+      message = "Pourquoi un tableau sans lignes ?";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     this.val("2");
     return;
@@ -52531,7 +52546,13 @@ $('#table-row-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_row; i++) {
       addRow("down");
-      message = "Ligne ajoutée";
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Row added";
+      } else {
+        message = "Ligne ajoutée";
+      }
+
       Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_row < actual_nb_row) {
@@ -52543,7 +52564,12 @@ $('#table-row-nb').on('change', function () {
       if (!is_removed) {
         break;
       } else {
-        message = "Ligne supprimée";
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Row deleted";
+        } else {
+          message = "Ligne supprimée";
+        }
+
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       }
     }
@@ -52558,7 +52584,12 @@ $('#table-col-nb').on('change', function () {
   var new_nb_col = $(this).val();
 
   if (new_nb_col < 2) {
-    message = "A quoi sert un tableau sans colonnes ?";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Why would you want a table without columns ?";
+    } else {
+      message = "Pourquoi un tableau sans colonnes ?";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     $(this).val("2");
     return;
@@ -52571,7 +52602,13 @@ $('#table-col-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_col; i++) {
       addCol("right");
-      message = "Colonne ajoutée";
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Column added";
+      } else {
+        message = "Colonne ajoutée";
+      }
+
       Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_col < actual_nb_col) {
@@ -52590,7 +52627,12 @@ $('#table-col-nb').on('change', function () {
       var col_removed = removeCol(col_cells);
 
       if (col_removed) {
-        message = "Colonne supprimée";
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Column removed";
+        } else {
+          message = "Colonne retirée";
+        }
+
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       } else {
         break;
@@ -52740,7 +52782,13 @@ function removeRow(row) {
 
 
   if (row_length > 1 && is_filled) {
-    if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+    } else {
+      message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+    }
+
+    if (confirm(message)) {
       row.remove();
       return true;
     } // Si on annule la suppression
@@ -52904,7 +52952,13 @@ function removeCol(cells) {
     }); // Si la ligne est remplie : on demande confirmation
 
     if (is_filled) {
-      if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+      } else {
+        message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+      }
+
+      if (confirm(message)) {
         cells.forEach(function (item, index) {
           var actual_cell = item;
 
@@ -52961,7 +53015,12 @@ $('.cell-action').on('click', function () {
     if ($('.content-editable-selected').next().length) {
       mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
     } else {
-      message = "Fusion impossible : pas de case à droite";
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Can't merge : no cell next to this one";
+      } else {
+        message = "Fusion impossible : pas de case à droite";
+      }
+
       Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // MERGE DOWN
 
@@ -52971,7 +53030,12 @@ $('.cell-action').on('click', function () {
     if (other_cell.length) {
       mergeCell("col", $('.content-editable-selected'), other_cell[0]);
     } else {
-      message = "Fusion impossible : pas de case en bas";
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Can't merge : no cell under to this one";
+      } else {
+        message = "Fusion impossible : pas de case en bas";
+      }
+
       Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // SPLIT
 
@@ -52992,13 +53056,24 @@ $('.cell-action').on('click', function () {
 
       if (col_removed) {
         $('#table-col-nb').val(parseInt(nb_col) - 1);
-        message = "Colonne supprimée";
+
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Deleted column";
+        } else {
+          message = "Colonne supprimée";
+        }
+
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
         next_element_select.focus();
       }
     } else {
-      message = "A quoi sert un tableau sans colonnes ?";
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+      } else {
+        message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+      }
+
       Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     }
   } // Supprimer la ligne
@@ -53017,13 +53092,24 @@ $('.cell-action').on('click', function () {
 
         if (row_removed) {
           $('#table-row-nb').val(parseInt(nb_row) - 1);
-          message = "Colonne supprimée";
+
+          if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+            message = "Deleted row";
+          } else {
+            message = "Ligne supprimée";
+          }
+
           Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
           _next_element_select.focus();
         }
       } else {
-        message = "A quoi sert un tableau sans lignes ?";
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Why would you want a table without rows ?";
+        } else {
+          message = "Pourquoi un tableau sans lignes ?";
+        }
+
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
       }
     }
@@ -53065,7 +53151,12 @@ $('.add-element').on('click', function () {
         $('#full-table tfoot tr').append(cell_html);
       }
 
-      message = "Pied de tableau ajouté";
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Pied de tableau ajouté";
+      } else {
+        message = "Table footer added";
+      }
+
       Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     } else {
       // On enlève le footer (déjà activé)
@@ -53088,7 +53179,12 @@ $('.add-element').on('click', function () {
           removeRow($(this));
         });
       } else {
-        message = "Veuillez d'abord ajouter des en-têtes verticales.";
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Please add the lateral headers first";
+        } else {
+          message = "Veuillez d'abord ajouter des en-têtes verticales";
+        }
+
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
@@ -53122,7 +53218,12 @@ $('.add-element').on('click', function () {
           }
         });
       } else {
-        message = "Veuillez d'abord ajouter des en-têtes horizontales.";
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Please add the horizontal headers first";
+        } else {
+          message = "Veuillez d'abord ajouter des en-têtes horizontales";
+        }
+
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
@@ -53161,7 +53262,12 @@ $('#btn-save-project').on('click', function () {
       $("#title-input").focus();
     }
 
-    message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
@@ -53389,7 +53495,7 @@ var deletecommand = new command({
 }); // ANCHOR Mise en tablee du texte (gras, italic, underline...)
 
 $('.text-formatting').on("click", function () {
-  // TODO NS_ERROR_FAILURE
+  // NS_ERROR_FAILURE
   var is_text_selected;
 
   if (window.getSelection().toString().length) {
@@ -53466,8 +53572,14 @@ $('input[name="theme"]').on('change', function () {
 }); // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-  message = "Code copié !";
-  $(".copy-container button").text("Copier");
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
   $(this).text(message);
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message);
 });

@@ -48,7 +48,11 @@ $('#desc-input').keypress(function (e) {
         tlength = tval.length,
         set = $('#desc-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-desc-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+            $('#chara-desc-remains').text(remain + " characters left");
+    } else {
+            $('#chara-desc-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#desc-input').val((tval).substring(0, tlength - 1))
     }
@@ -60,7 +64,11 @@ $('#title-input').keypress(function (e) {
         tlength = tval.length,
         set = $('#title-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-title-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+            $('#chara-title-remains').text(remain + " characters left");
+    } else {
+            $('#chara-title-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#title-input').val((tval).substring(0, tlength - 1))
     }
@@ -76,7 +84,7 @@ export var element_types = {
         "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
         "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
         "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
-        "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
+        "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
     },
     "type-unique": {
         "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
@@ -117,7 +125,7 @@ export function updateContent() {
         $(element).attr('id', element_id);
     });
 
-    // TODO On associe les id à toutes les cellules TD 
+    // On associe les id à toutes les cellules TD 
     let headers_id = [];
     $('#full-table thead tr').each(function (index, element) {
         let headers = $(this).find('th');
@@ -215,7 +223,11 @@ $('#table-row-nb').on('change', function () {
     $('.content-editable-selected').removeClass('content-editable-selected');
     let new_nb_row = $(this).val();
     if(new_nb_row < 2){
-        message = "A quoi sert un tableau sans lignes ?";
+        if( lang == "en"){
+            message = "Why would you want a table without rows ?";
+        } else {
+            message = "Pourquoi un tableau sans lignes ?";
+        }
         alertMsg(message, "error");
         (this).val("2");
         return;
@@ -225,7 +237,11 @@ $('#table-row-nb').on('change', function () {
         let nb_new_row = new_nb_row - actual_nb_row;
         for (let i = 0; i < nb_new_row; i++) {
             addRow("down");
-            message = "Ligne ajoutée";
+            if( lang == "en"){
+                message = "Row added";
+            } else {
+                message = "Ligne ajoutée";
+            }
             alertMsg(message, "success");
         }
     } else if (new_nb_row < actual_nb_row) {
@@ -235,7 +251,11 @@ $('#table-row-nb').on('change', function () {
             if (!is_removed) {
                 break;
             } else {
-                message = "Ligne supprimée";
+                if( lang == "en"){
+                    message = "Row deleted";
+                } else {
+                    message = "Ligne supprimée";
+                }
                 alertMsg(message, "success");
             }
         }
@@ -249,7 +269,11 @@ $('#table-col-nb').on('change', function () {
     $('.content-editable-selected').removeClass('.content-editable-selected');
     let new_nb_col = $(this).val();
     if(new_nb_col < 2){
-        message = "A quoi sert un tableau sans colonnes ?";
+        if( lang == "en"){
+            message = "Why would you want a table without columns ?";
+        } else {
+            message = "Pourquoi un tableau sans colonnes ?";
+        }
         alertMsg(message, "error");
         $(this).val("2");
         return;
@@ -259,7 +283,11 @@ $('#table-col-nb').on('change', function () {
         let nb_new_col = new_nb_col - actual_nb_col;
         for (let i = 0; i < nb_new_col; i++) {
             addCol("right");
-            message = "Colonne ajoutée";
+            if( lang == "en"){
+                message = "Column added";
+            } else {
+                message = "Colonne ajoutée";
+            }
             alertMsg(message, "success");
         }
     } else if (new_nb_col < actual_nb_col) {
@@ -273,7 +301,11 @@ $('#table-col-nb').on('change', function () {
             }
             let col_removed = removeCol(col_cells);
             if (col_removed) {
-                message = "Colonne supprimée";
+                if( lang == "en"){
+                    message = "Column removed";
+                } else {
+                    message = "Colonne retirée";
+                }
                 alertMsg(message, "success");
             } else {
                 break;
@@ -412,7 +444,12 @@ function removeRow(row) {
     }
     // Si la ligne est remplie : on demande confirmation
     if (row_length > 1 && is_filled) {
-        if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
+        if( lang == "en"){
+            message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+        } else {
+            message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+        }
+        if (confirm(message)) {
             row.remove();
             return true;
         }
@@ -571,7 +608,12 @@ export function removeCol(cells) {
         });
         // Si la ligne est remplie : on demande confirmation
         if (is_filled) {
-            if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
+            if( lang == "en"){
+                message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+            } else {
+                message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+            }
+            if (confirm(message)) {
                 cells.forEach(function (item, index) {
                     let actual_cell = item;
                     if(actual_cell){
@@ -648,7 +690,11 @@ $('.cell-action').on('click', function () {
         if($('.content-editable-selected').next().length){
             mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
         }else{
-            message = "Fusion impossible : pas de case à droite";
+            if( lang == "en" ){
+                message = "Can't merge : no cell next to this one";
+            } else {
+                message = "Fusion impossible : pas de case à droite";
+            }            
             alertMsg(message, "error");
         }
 
@@ -659,7 +705,11 @@ $('.cell-action').on('click', function () {
             mergeCell("col", $('.content-editable-selected'), other_cell[0]);
             
         }else{
-            message = "Fusion impossible : pas de case en bas";
+            if( lang == "en" ){
+                message = "Can't merge : no cell under to this one";
+            } else {
+                message = "Fusion impossible : pas de case en bas";
+            }  
             alertMsg(message, "error");
         }
     
@@ -680,13 +730,21 @@ $('.cell-action').on('click', function () {
             let col_removed = removeCol(selected_col);
             if (col_removed) {
                 $('#table-col-nb').val(parseInt(nb_col) - 1);
-                message = "Colonne supprimée";
+                if( lang == "en" ){
+                    message = "Deleted column";
+                } else {
+                    message = "Colonne supprimée";
+                }  
                 alertMsg(message, "success");
                 // Quand elle est supprimée, on focus 
                 next_element_select.focus();
             }
         }else{
-            message = "A quoi sert un tableau sans colonnes ?";
+            if( lang == "en"){
+                message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+            } else {
+                message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+            }
             alertMsg(message, "error");
         }
     }
@@ -703,13 +761,21 @@ $('.cell-action').on('click', function () {
             let row_removed = removeRow(selected_row);
             if (row_removed) {
                 $('#table-row-nb').val(parseInt(nb_row) - 1);
-                message = "Colonne supprimée";
+                if( lang == "en" ){
+                    message = "Deleted row";
+                } else {
+                    message = "Ligne supprimée";
+                }  
                 alertMsg(message, "success");
                 // Quand elle est supprimée, on focus 
                 next_element_select.focus();
             }
         }else{
-            message = "A quoi sert un tableau sans lignes ?";
+            if( lang == "en"){
+                message = "Why would you want a table without rows ?";
+            } else {
+                message = "Pourquoi un tableau sans lignes ?";
+            }
             alertMsg(message, "error");
         }
 
@@ -763,7 +829,12 @@ $('.add-element').on('click', function () {
             for(let x = 0; x < cols; x++){
                 $('#full-table tfoot tr').append(cell_html);
             }
-            message = "Pied de tableau ajouté";
+            if( lang == "en") {
+                message = "Pied de tableau ajouté";
+            } else {
+                message = "Table footer added";
+            }
+            
             alertMsg(message, "success");
         }else{
             // On enlève le footer (déjà activé)
@@ -787,7 +858,11 @@ $('.add-element').on('click', function () {
                     removeRow($(this));
                 });
             } else {
-                message = "Veuillez d'abord ajouter des en-têtes verticales.";
+                if( lang == "en"){
+                    message = "Please add the lateral headers first";
+                } else {
+                    message = "Veuillez d'abord ajouter des en-têtes verticales";
+                }
                 alertMsg(message, "error");
                 $(this).prop('checked', 'true');
             }
@@ -820,7 +895,11 @@ $('.add-element').on('click', function () {
                     }
                 });
             } else {
-                message = "Veuillez d'abord ajouter des en-têtes horizontales.";
+                if( lang == "en"){
+                    message = "Please add the horizontal headers first";
+                } else {
+                    message = "Veuillez d'abord ajouter des en-têtes horizontales";
+                }
                 alertMsg(message, "error");
                 $(this).prop('checked', 'true');
             }
@@ -860,7 +939,11 @@ $('#btn-save-project').on('click', function () {
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
         }
-        message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+        if( lang == "en" ){
+            message = "Some informations are missing : please fill the empty fields.";
+        } else {
+            message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+        }
         alertMsg(message, "error");
     });
 })
@@ -1104,7 +1187,7 @@ var deletecommand = new command({
 
 // ANCHOR Mise en tablee du texte (gras, italic, underline...)
 $('.text-formatting').on("click", function () {
-    // TODO NS_ERROR_FAILURE
+    // NS_ERROR_FAILURE
     let is_text_selected;
     if( window.getSelection().toString().length ){
         is_text_selected = true;
@@ -1170,8 +1253,15 @@ $('input[name="theme"]').on('change', function () {
 
 // ANCHOR Copier le contenu code 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-    message = "Code copié !";
-    $(".copy-container button").text("Copier");
+    
+    if( lang == "en" ){
+        message = "Code copied !";
+        $(".copy-container button").text("Copy");
+    } else {
+        message = "Code copié !";
+        $(".copy-container button").text("Copier");
+    }
+    
     $(this).text(message);
     alertMsg(message);
 })

@@ -66,7 +66,7 @@ console.log(translation_test);
 // \t = tabulation,  \n = saut de ligne
 export let element_types;
 
-// TODO Traductions
+// Traductions
 if( lang == "en" ){
     element_types = {
         "type-question": {
@@ -300,7 +300,7 @@ $('#btn-save-project').on('click', function () {
         console.log(xhr.responseText);
         console.log(status);
         console.log(error);
-        // TODO Erreur
+        // Erreur
         if(!$('#title-input').val()){
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
@@ -726,7 +726,7 @@ $(".form-element-action").on('click', function (e) {
                     element_selected_container.find("textarea").removeAttr("required");
                     element_selected_container.find("input[type='radio']").first().removeAttr("required");
                 }
-                // TODO Retirer l'étoile dans le label (après le span)
+                // Retirer l'étoile dans le label (après le span)
                 element_selected_container.find("abbr").remove();
                 if ($("#full-form abbr").length == 0) {
                     $(".indicator-required").remove();
