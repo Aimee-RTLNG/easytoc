@@ -51323,7 +51323,7 @@ $('#title-input').keypress(function (e) {
 var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
 /*
 let translation_test = getTranslation("Thème du formulaire", "en");
-console.log(translation_test);
+// console.log(translation_test);
 */
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
@@ -51404,11 +51404,11 @@ function updatecontent() {
 ; // ANCHOR Initialisation du formulaire
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
-
+  // console.log("Création");
+  // $('#content-created-blueprint').html(initial_content);
   updatecontent();
 } else {
-  console.log("Modification");
+  // console.log("Modification");
   getOldContent();
   updatecontent();
 } // ANCHOR Changement de titre
@@ -51505,14 +51505,14 @@ $('#btn-save-project').on('click', function () {
       "html": $('#raw-code').val()
     }
   }).done(function (msg) {
-    console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // TODO Erreur
-
+    // console.log(xhr.responseText);
+    // console.log(status);
+    // console.log(error);
+    // TODO Erreur
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -51770,7 +51770,7 @@ $(document.body).off('keyup') // ré-initialisation
 
           var link_title;
           $('#elem-url-title').on('keyup', function (e) {
-            console.log($('#elem-url-title').val());
+            // console.log($('#elem-url-title').val());
             e.stopPropagation();
             link_title = $('#elem-url-title').val();
             $(intitule).attr('title', link_title);
@@ -52428,11 +52428,11 @@ $('#edit-table').on('click', function () {
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
-
+  // // console.log("Création");
+  // $('#content-created-blueprint').html(initial_content);
   updateContent();
 } else {
-  console.log("Modification");
+  // // console.log("Modification");
   getOldContent();
   updateContent();
 } // ANCHOR Changement de titre
@@ -52693,13 +52693,11 @@ function removeRow(row) {
 function moveRow(side) {
   if (side == "up") {
     // $(selected_row).insertBefore(previous_row);
-    $(selected_row).each(function () {
-      console.log($(this));
+    $(selected_row).each(function () {// console.log($(this));
     });
   } else if (side == "down") {
     // $(selected_row).insertAfter(next_row);
-    $(selected_row).each(function () {
-      console.log($(this));
+    $(selected_row).each(function () {// console.log($(this));
     });
   }
 } // Déplacement de colonne
@@ -53074,14 +53072,14 @@ $('#btn-save-project').on('click', function () {
       "html": $('#raw-code').val()
     }
   }).done(function (msg) {
-    console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // Erreur
-
+    // console.log(xhr.responseText);
+    // console.log(status);
+    // console.log(error);
+    // Erreur
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -53209,7 +53207,7 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-delete-col').attr('disabled', false);
     } // Si il n'y a pas de colonne à gauche , on ne peut pas le déplacer vers la gauche
-    // console.log(previous_col);
+    // // console.log(previous_col);
 
 
     if (previous_col.length == 0) {
@@ -53221,7 +53219,7 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-left').attr('disabled', false);
       $('#action-move-left').show();
     } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
-    // console.log(next_col);
+    // // console.log(next_col);
 
 
     if (next_col.length == 0) {

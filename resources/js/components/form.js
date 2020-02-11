@@ -49,7 +49,7 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
 
 /*
 let translation_test = getTranslation("Thème du formulaire", "en");
-console.log(translation_test);
+// console.log(translation_test);
 */
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
@@ -138,11 +138,11 @@ function updatecontent() {
 
 // ANCHOR Initialisation du formulaire
 if ($('#raw-code').val().length <= 0) {
-    console.log("Création");
+    // console.log("Création");
     // $('#content-created-blueprint').html(initial_content);
     updatecontent();
 } else {
-    console.log("Modification");
+    // console.log("Modification");
     getOldContent();
     updatecontent();
 }
@@ -245,13 +245,13 @@ $('#btn-save-project').on('click', function () {
             "html": $('#raw-code').val()
         }
     }).done(function (msg) {
-        console.log(msg);
+        // console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
-        console.log(xhr.responseText);
-        console.log(status);
-        console.log(error);
+        // console.log(xhr.responseText);
+        // console.log(status);
+        // console.log(error);
         // TODO Erreur
         if(!$('#title-input').val()){
             $("#title-input").addClass('required-failed');
@@ -518,7 +518,7 @@ $(document.body)
                         // event de changement d'url
                         let link_title;
                         $('#elem-url-title').on('keyup', function (e) {
-                            console.log($('#elem-url-title').val());
+                            // console.log($('#elem-url-title').val());
                             e.stopPropagation();
                             link_title = $('#elem-url-title').val();
                             $(intitule).attr('title', link_title);

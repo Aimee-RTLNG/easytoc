@@ -70,7 +70,7 @@ $('#import-data').on('click', function () {
                     success = true;
                 } catch (e) {
                     success = false;
-                    console.log(e);
+                    // console.log(e);
                     message = "Votre fichier est invalide. Merci de réessayer.";
                     alertMsg(message, "error");
                 }
@@ -91,8 +91,8 @@ $('#generate-example').on('click', function () {
             importData(json);
         })
         .fail(function (jqxhr, textStatus, error) {
-            console.log(textStatus);
-            console.log(error);
+            // console.log(textStatus);
+            // console.log(error);
             message = "Erreur dans le chargement de l'exemple";
             alertMsg(message, "error");
         })

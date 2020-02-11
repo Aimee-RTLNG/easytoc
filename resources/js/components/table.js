@@ -180,11 +180,11 @@ $('#edit-table').on('click', function(){
 
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
-    console.log("Création");
+    // // console.log("Création");
     // $('#content-created-blueprint').html(initial_content);
     updateContent();
 } else {
-    console.log("Modification");
+    // // console.log("Modification");
     getOldContent();
     updateContent();
 }
@@ -422,12 +422,12 @@ function moveRow(side){
     if(side == "up"){
         // $(selected_row).insertBefore(previous_row);
         $(selected_row).each(function(){
-            console.log($(this));
+            // console.log($(this));
         })
     }else if(side == "down"){
         // $(selected_row).insertAfter(next_row);
         $(selected_row).each(function(){
-            console.log($(this));
+            // console.log($(this));
         })
     }
 }
@@ -826,13 +826,13 @@ $('#btn-save-project').on('click', function () {
             "html": $('#raw-code').val()
         }
     }).done(function (msg) {
-        console.log(msg);
+        // console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
-        console.log(xhr.responseText);
-        console.log(status);
-        console.log(error);
+        // console.log(xhr.responseText);
+        // console.log(status);
+        // console.log(error);
         // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');
@@ -971,7 +971,7 @@ $(document.body)
             }
 
             // Si il n'y a pas de colonne à gauche , on ne peut pas le déplacer vers la gauche
-            // console.log(previous_col);
+            // // console.log(previous_col);
             if (previous_col.length == 0) {
                 $('#action-move-left').hide();
                 $('.action-move-cell-left').attr('disabled', true);
@@ -984,7 +984,7 @@ $(document.body)
             }
 
             // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
-            // console.log(next_col);
+            // // console.log(next_col);
             if (next_col.length == 0) {
                 $('.action-move-cell-right').attr('disabled', true);
                 $('#action-move-right').hide();
