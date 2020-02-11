@@ -1,4 +1,3 @@
-console.log(salut);
 // ANCHOR Données initiales
 let element;
 let input;
@@ -16,11 +15,26 @@ let initial_content = '<nav class="navbar" id="generated-menu" contenteditable a
 // Imports
 import { alertMsg } from "../../js/app"
 
+// ANCHOR Caractères restants Description du projet
+$('#desc-input').keypress(function (e) {
+    var tval = $('#desc-input').val(),
+        tlength = tval.length,
+        set = $('#desc-input').attr('maxlength'),
+        remain = parseInt(set - tlength);
+    $('#chara-desc-remains').text(remain + " caractères restants");
+    if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+        $('#desc-input').val((tval).substring(0, tlength - 1))
+    }
+})
+
+// ANCHOR Liste de tous les tags possibles dans un formulaire
+const tags_list = ["ul", "li", "a"];
+
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 export let element_types = {
-    "type-container": {
+    "type-menu": {
         "insert-menu": "\n\t\t<ul data-tag='menu' contenteditable='true'></ul>",
         "insert-sous-menu": "\n\t\t\t<ul data-tag='sous-menu'><li></li></ul>",
     }, 
@@ -29,7 +43,7 @@ export let element_types = {
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-menu #menu-title, #full-menu h2,#full-menu p,#full-menu a,#full-menu ol,#full-menu ul').attr('contenteditable', true);
+    $('#full-menu #menu-title, #full-menu, #full-menu a, #full-menu ul, #full-menu ul li, #full-menu li').attr('contenteditable', true);
     // On récupère les paramètres
 
     // Theme
@@ -96,11 +110,11 @@ $('#menu-creator-title').on('keyup', function () {
     updatecontent();
 });
 
-$('#menu-creator-caption').on('keyup', function () {
-    $('#menu-caption span').text($('#menu-creator-caption').val());
+// ANCHOR Changement de lien
+$('#menu-creator-link').on('keyup', function () {
+    $('#generated-menu').attr("action", $('#menu-creator-link').val());
     updatecontent();
 });
-
 
 
 
@@ -118,17 +132,77 @@ $('#insert-sous_menu').on('click',  function () {
 
 // Ajout de menu
 export function addMenu() {
-    let add_menu = element_types["type-container"]["insert-menu"];
+    let ul = element_types["type-menu"]["insert-menu"];
+    let li = element_types["type-menu"]["insert-sous-menu"];
     menu_html = "\n\t\t\t\t" + menu_html + "\n\t\t\t";
     menu_header_html = "\n\t\t\t\t" + menu_header_html + "\n\t\t\t";
+
+
+
+    // on récupère l'ancien contenu 
+    let previous_content = $('#content-created-blueprint #full-menu').html();
+    
+    // en fonction du type , différentes actions 
+    let actions_content = $('#form-actions').html();
+
+    // on ajoute le contenu sauf si c'est lié au bouton RESET (doit être ajouté ou enlevé)
+    if (element_type_name == "reset-button") {
+        if (actions_content.indexOf('type="reset"') > -1 || actions_content.indexOf("type='reset'") > -1) {
+            $('#form-actions input[type="reset"]').remove();
+        } else {
+            let previous_content = $('#form-actions').html();
+            $('#form-actions').html(element_content + actions_content);
+        }
+        actions_content = $('#form-actions').html();
+    } else {
+        // et on y ajoute l'élément voulu
+        $('#content-created-blueprint #full-menu').html(previous_content + element_content);
+    }
+    let new_element = $('.element-container').last();
+    $(new_element).find('[contenteditable=true]').first().focus();
+
+    message = "Element ajouté";
+    alertMsg(message, "success");
+    updatecontent();
+
 }
+
+// ANCHOR Ajout d'un élément
+$('.add-element').on('click', function () {
+    let element_type = $(this).attr("class");
+    let element_type_name = $(this).attr("id");
+    addElement(element_type, element_type_name);
+});
+
+
+
 
 
 // Ajout de sous-menu
+/*
 export function addSousMenu() {
     let add_sous_menu = element_types["type-container"]["insert-sous-menu"];
     sousMenu_html = "\n\t\t\t\t" + sous-menu_html + "\n\t\t\t";
     sousMenu_header_html = "\n\t\t\t\t" + sous-menu_header_html + "\n\t\t\t";
+}
+*/
+
+
+
+
+// ANCHOR Fonction Undo/Redo suppression
+function command(instance) {
+    this.command = instance;
+    this.done = [];
+
+    this.execute = function execute() {
+        this.command.execute();
+        this.done.push(this.command);
+    };
+    this.undo = function undo() {
+        var command = this.done.pop();
+        command.undo();
+    };
 }
 
 // ANCHOR Fonction Suppression
@@ -174,7 +248,7 @@ $('#btn-save-project').on('click', function () {
         message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
         alertMsg(message, "error");
     });
-})
+}) 
 
 // ANCHOR Mise en forme du texte (gras, italic, underline...)
 $('.text-formatting').on("click", function () {
@@ -250,8 +324,6 @@ export function refreshMoveButtons(previous_element, next_element, option) {
         }
     }
 }
-
-
 
 
 // ANCHOR Theme

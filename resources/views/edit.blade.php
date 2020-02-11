@@ -168,28 +168,28 @@
                 
                 <div role="section" class="row d-block p-0 m-0" aria-labelledby="menu_actions_crud">
                     <h3 id="menu_actions_crud" class="mb-3 creator-panel__title">{{ __('Actions sur l\'élément') }}</h3>
-                        <button disabled="true" aria-label="{{ __('Supprimer le menu') }}" title="{{ __('Supprimer le menu') }}" class="btn btn-primary btn_crea cell-action element_delete menu-element-action action-delete-ul" data-action="delete-ul">
+                        <button disabled="true" aria-label="{{ __('Supprimer le menu') }}" title="{{ __('Supprimer le menu') }}" class="btn btn-primary btn_crea element_delete menu-element-action action-delete-ul" data-action="delete-ul">
                             <i class="fa fa-grip-lines"></i><i class="fa fa-trash"></i>
                             {{ __('Supprimer le menu') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Supprimer le sous-menu') }}" title="{{ __('Supprimer le sous-menu') }}" class="btn btn-primary btn_crea cell-action element_delete menu-element-action action-delete-li" data-action="delete-li">
+                        <button disabled="true" aria-label="{{ __('Supprimer le sous-menu') }}" title="{{ __('Supprimer le sous-menu') }}" class="btn btn-primary btn_crea element_delete menu-element-action action-delete-li" data-action="delete-li">
                             <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-trash"></i>
                             {{ __('Supprimer le sous-menu') }}
                         </button>
                         <br>
-                        <button disabled="true" aria-label="{{ __('Déplacer le menu à gauche') }}" title="{{ __('Déplacer le menu à gauche') }}" class="btn btn-primary btn_crea cell-action element_move menu-element-action action-move-ul-left" data-action="move-ul-left">
+                        <button disabled="true" aria-label="{{ __('Déplacer le menu à gauche') }}" title="{{ __('Déplacer le menu à gauche') }}" class="btn btn-primary btn_crea element_move menu-element-action action-move-ul-left" data-action="move-ul-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-vector-square"></i>
                             {{ __('Déplacer le menu à gauche') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer le menu à droite') }}" title="{{ __('Déplacer le menu à droite') }}" class="btn btn-primary btn_crea cell-action element_move menu-element-action action-move-ul-right" data-action="move-ul-right">
+                        <button disabled="true" aria-label="{{ __('Déplacer le menu à droite') }}" title="{{ __('Déplacer le menu à droite') }}" class="btn btn-primary btn_crea element_move menu-element-action action-move-ul-right" data-action="move-ul-right">
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-right"></i>
                             {{ __('Déplacer le menu à droite') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer le sous-menu en haut') }}" title="{{ __('Déplacer le sous-menu en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-li-cell-up" data-action="move-li-up">
+                        <button disabled="true" aria-label="{{ __('Déplacer le sous-menu en haut') }}" title="{{ __('Déplacer le sous-menu en haut') }}" class="btn btn-primary btn_crea element_move table-element-action action-li-cell-up" data-action="move-li-up">
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer le sous-menu en haut') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer le sous-menu en bas') }}" title="{{ __('Déplacer le sous-menu en bas') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-li-down" data-action="move-li-down">
+                        <button disabled="true" aria-label="{{ __('Déplacer le sous-menu en bas') }}" title="{{ __('Déplacer le sous-menu en bas') }}" class="btn btn-primary btn_crea element_move table-element-action action-move-li-down" data-action="move-li-down">
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-down"></i>
                             {{ __('Déplacer le sous-menu en bas') }}
                         </button>

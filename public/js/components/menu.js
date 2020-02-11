@@ -1,3 +1,4 @@
+console.log("test");
 // Contenu initial du formulaire 
 let initial_content = '<nav class="navbar" id="generated-menu" contenteditable action="#" name="emailmenu">\n\t<h1 id="form-title">Titre du menu</h1>\n</nav>\n<div class="mt-4" id="menu-actions" contenteditable="false">\n\t<input form="generated-menu" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
 $('#content-created-blueprint').html(initial_content);
@@ -27,7 +28,7 @@ function updatecontent() {
     var code_content = $('<div>').text($('#raw-code').val()).html();
 
     // prettify
-    //$("#formatted-code").html(PR.prettyPrintOne(code_content));
+    $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
 // Mise à jour du code initial

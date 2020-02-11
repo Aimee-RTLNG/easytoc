@@ -154,71 +154,13 @@ function importData(form) {
 
         for (var i = 0; i < item_options_list.length; i++) {
           if (item_options_list[i]) {
-            var base_item = $('.content-editable-selected ul, .content-editable-selected ol').html();
-            $('.content-editable-selected ul, .content-editable-selected ol').append("<li>" + item_options_list[i] + "</li>");
+            var base_item = $('.content-editable-selected ul').html();
+            $('.content-editable-selected ul').append("<li>" + item_options_list[i] + "</li>");
           }
         }
       }
-    } else if (_form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-question"][element_type_name]) {
-      Object(_form__WEBPACK_IMPORTED_MODULE_1__["addElement"])("type-question", element_type_name);
-
-      if (items_list[key].content) {
-        $('.content-editable-selected .label-text').text(items_list[key].content); // Placeholder
-
-        $('.content-editable-selected input, .content-editable-selected textarea').attr('placeholder', items_list[key].placeholder);
-        $('.content-editable-selected select option').first().text(items_list[key].placeholder); // Name
-
-        $('.content-editable-selected ul, .content-editable-selected li').attr('name', items_list[key].name); // Maxlength
-
-        $('.content-editable-selected ul, .content-editable-selected li').attr('maxlength', items_list[key].maxlength); // Options
-
-        if (items_list[key].options) {
-          if (items_list[key].options.includes("required") && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
-            $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required'); // Attribut required : petite étoile à côté du label
-
-            var required_star = _form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-special"]["make-required"];
-            $(required_star).insertAfter($('.content-editable-selected').find(".label-text"));
-            $('.content-editable-selected').addClass('field-required');
-            required_count += 1;
-          }
-
-          if (items_list[key].options.includes("multiple-choice")) {
-            $('.content-editable-selected select').attr('multiple', 'multiple');
-          }
-        } 
- 
-
-
-        $('.content-editable-selected option').last().remove();
-
-        if (element_type_name != "insert-binary_answer") {
-          $('.content-editable-selected fieldset label').last().remove();
-        } else if (items_list[key].items[0]) {
-          $('.content-editable-selected fieldset .label-option-text').text(items_list[key].items[0].name);
-          $('.content-editable-selected fieldset input').attr('name', items_list[key].items[0].value);
-        }
-      } else {
-        success = false;
-      }
-
-      if (items_list[key].items && element_type_name != "insert-binary_answer") {
-        var _item_options_list = items_list[key].items;
-
-        for (var i = 0; i < _item_options_list.length; i++) {
-          if (_item_options_list[i].name) {
-            Object(_form__WEBPACK_IMPORTED_MODULE_1__["addOption"])(element_type_name);
-            $('.content-editable-selected .label-option-text').last().text(_item_options_list[i].name);
-            $('.content-editable-selected option').last().text(_item_options_list[i].name);
-            $('.content-editable-selected input, .content-editable-selected option').last().attr('value', _item_options_list[i].value);
-            $('.content-editable-selected input').attr('name', items_list[key].name);
-            element_selected_container = $('.content-editable-selected').last();
-            previous_element = element_selected_container.prev();
-            next_element = element_selected_container.next();
-            Object(_form__WEBPACK_IMPORTED_MODULE_1__["refreshMoveButtons"])(previous_element, next_element, true);
-          }
-        }
-      }
-    } else {
+    } 
+    else {
       success = false;
     }
   }); // On ajoute le message d'information sur les champs requis s'il y en a 
