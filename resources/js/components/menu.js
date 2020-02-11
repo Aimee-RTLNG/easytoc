@@ -1,0 +1,271 @@
+console.log(salut);
+// ANCHOR Données initiales
+let element;
+let input;
+let intitule;
+let message;
+let previous_element;
+let next_element;
+
+
+let user_id = $('input[name=user_id]').val();
+let type_id = $('input[name=type_id]').val();
+let csrf_token = $('meta[name="csrf-token"]').attr('content');
+let initial_content = '<nav class="navbar" id="generated-menu" contenteditable action="#" name="emailmenu">\n\t<h1 id="menu-title">Titre du menu</h1>\n</nav>\n<div class="mt-4" id="menu-actions" contenteditable="false">\n\t<input form="generated-menu" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
+
+// Imports
+import { alertMsg } from "../../js/app"
+
+
+// ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+// \t = tabulation,  \n = saut de ligne
+export let element_types = {
+    "type-container": {
+        "insert-menu": "\n\t\t<ul data-tag='menu' contenteditable='true'></ul>",
+        "insert-sous-menu": "\n\t\t\t<ul data-tag='sous-menu'><li></li></ul>",
+    }, 
+};
+
+
+export function getOldContent() {
+    // On rend l'ancien contenu modifiable
+    $('#full-menu #menu-title, #full-menu h2,#full-menu p,#full-menu a,#full-menu ol,#full-menu ul').attr('contenteditable', true);
+    // On récupère les paramètres
+
+    // Theme
+    let actual_theme = $("#generated-menu").attr('class');
+    actual_theme = actual_theme.replace('theme-', '');
+    let selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
+    selected_theme.prop('checked', true);
+
+    // Titre
+    let actual_title = $("#menu-title").text();
+    $("#menu-creator-title").val(actual_title);
+
+    // Methode
+    let actual_method = $("#generated-menu").attr('method');
+    $("#menu-creator-method").val(actual_method);
+
+    // Lien
+    let actual_link = $("#generated-menu").attr('action');
+    $("#menu-creator-link").val(actual_link);
+
+    // Option de réinitialisation
+    let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
+    if (actual_reset.length > 0) {
+        $('#reset-button').prop('checked', true);
+    }
+}
+
+// ANCHOR Fonction de sauvegarde
+function updatecontent() {
+
+    // on récupère le contenu
+    var blueprint_content = $('#content-created-blueprint').html();
+    // on trie les éléments à ne pas inclure dans le code 
+    blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
+    blueprint_content = blueprint_content.replace(/ disabled="(.*?)\"/g, "");
+    blueprint_content = blueprint_content.replace(/ option-selected /g, "");
+    blueprint_content = blueprint_content.replace(/ content-editable-selected/g, "");
+    // on remplace les doubles sauts de lignes
+    blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
+
+    // on update le code par rapport au blueprint
+    $('#raw-code').html(blueprint_content);
+    var code_content = $('<div>').text($('#raw-code').text()).html();
+
+    // prettify
+    $("#formatted-code").html(PR.prettyPrintOne(code_content));
+};
+
+
+// ANCHOR Initialisation du meu
+if ($('#raw-code').val().length <= 0) {
+    console.log("Création");
+    $('#content-created-blueprint').html(initial_content);
+    updatecontent();
+} else {
+    console.log("Modification");
+    getOldContent();
+    updatecontent();
+}
+
+// ANCHOR Changement de titre
+$('#menu-creator-title').on('keyup', function () {
+    $('#menu-title').text($('#menu-creator-title').val());
+    updatecontent();
+});
+
+$('#menu-creator-caption').on('keyup', function () {
+    $('#menu-caption span').text($('#menu-creator-caption').val());
+    updatecontent();
+});
+
+
+
+
+// APPEND d'une liste pour le menu
+$('#insert-menu').on('click', function () {
+    $("insert-menu").append("<ul contenteditable='true'>Test</ul>");
+});
+
+
+$('#insert-sous_menu').on('click',  function () {
+    $("insert-menu").appendChild("<ul><li contenteditable='true'> </li></ul>");
+});
+
+
+
+// Ajout de menu
+export function addMenu() {
+    let add_menu = element_types["type-container"]["insert-menu"];
+    menu_html = "\n\t\t\t\t" + menu_html + "\n\t\t\t";
+    menu_header_html = "\n\t\t\t\t" + menu_header_html + "\n\t\t\t";
+}
+
+
+// Ajout de sous-menu
+export function addSousMenu() {
+    let add_sous_menu = element_types["type-container"]["insert-sous-menu"];
+    sousMenu_html = "\n\t\t\t\t" + sous-menu_html + "\n\t\t\t";
+    sousMenu_header_html = "\n\t\t\t\t" + sous-menu_header_html + "\n\t\t\t";
+}
+
+// ANCHOR Fonction Suppression
+var deletecommand = new command({
+    execute: function () {
+        // element = $(".content-editable-selected").removeClass('content-editable-selected');
+        // element = element.detach();
+    },
+    undo: function () {
+        element.appendTo("#full-menu");
+    }
+});
+
+// ANCHOR Sauvegarde définitive
+$('#btn-save-project').on('click', function () {
+    updatecontent();
+    let post_url = $("#full-menu-post").attr('action');
+    console.log(post_url);
+    $.ajax({
+        method: "POST",
+        url: post_url,
+        data: {
+            "_token": csrf_token,
+            "type_id": type_id,
+            "user_id": user_id,
+            "title": $('#title-input').val(),
+            "description": $('#desc-input').val(),
+            "html": $('#raw-code').val()
+        }
+    }).done(function (msg) {
+        console.log(msg);
+        window.location.href = "profile/" + user_id + "/view";
+        $("#title-input").removeClass('required-failed');
+    }).fail(function (xhr, status, error) {
+        console.log(xhr.responseText);
+        console.log(status);
+        console.log(error);
+        // Erreur
+        if (!$('#title-input').val()) {
+            $("#title-input").addClass('required-failed');
+            $("#title-input").focus();
+        }
+        message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+        alertMsg(message, "error");
+    });
+})
+
+// ANCHOR Mise en forme du texte (gras, italic, underline...)
+$('.text-formatting').on("click", function () {
+    switch ($(this).attr('id')) {
+        case 'element-bold':
+            document.execCommand('bold');
+            updatecontent();
+            break;
+        case 'element-italic':
+            document.execCommand('italic');
+            updatecontent();
+            break;
+        case 'element-underline':
+            document.execCommand('underline');
+            updatecontent();
+            break;
+        case 'justify-left':
+            $(element_select).removeClass('text-justify');
+            $(element_select).removeClass('text-center');
+            $(element_select).addClass('text-left');
+            updatecontent();
+            break;
+        case 'justify-center':
+            $(element_select).removeClass('text-justify');
+            $(element_select).removeClass('text-left');
+            $(element_select).addClass('text-center');
+            updatecontent();
+            break;
+        case 'justify-full':
+            $(element_select).removeClass('text-left');
+            $(element_select).removeClass('text-center');
+            $(element_select).addClass('text-justify');
+            updatecontent();
+            break;
+    }
+    updatecontent();
+})
+
+
+// ANCHOR Activer / désactiver les boutons de déplacement
+export function refreshMoveButtons(previous_element, next_element, option) {
+    if (option) {
+        if (previous_element) {
+            if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "option") {
+                $('#action-move-ul-right').removeAttr('disabled');
+            } else {
+                $('#action-move-ul-right').attr('disabled', true);
+            }
+            if (next_element.attr("disabled") != "true" && next_element.attr('data-tag') == "option") {
+                $('#action-move-ul-left').removeAttr('disabled');
+            } else {
+                $('#action-move-ul-left').attr('disabled', true);
+            }
+        } else {
+            $('#action-move-ul-right').attr('disabled', true);
+            $('#action-move-ul-left').attr('disabled', true);
+        }
+    } else {
+        if (previous_element) {
+            if ((previous_element.attr("id") == "menu-title" || previous_element.hasClass("indicator-required")) || !$(previous_element).hasClass("element-container")) {
+                $('#action-move--ul-up').attr('disabled', true);
+            } else {
+                $('#action-move-ul-up').removeAttr('disabled');
+            }
+            if (!$(next_element).hasClass("element-container")) {
+                $('#action-move-ul-left').attr('disabled', true);
+            } else {
+                $('#action-move-ul-left').removeAttr('disabled');
+            }
+        } else {
+            $('#action-move-ul-up').attr('disabled', true);
+            $('#action-move-ul-left').attr('disabled', true);
+        }
+    }
+}
+
+
+
+
+// ANCHOR Theme
+$('input[name="theme"]').on('change', function () {
+    let theme = "theme-" + $(this).val();
+    $('#generated-menu').attr('class', theme);
+})
+
+// ANCHOR Copier le contenu code 
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+    $(this).text(message);
+    alertMsg(message);
+})
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code');

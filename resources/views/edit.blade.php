@@ -185,7 +185,7 @@
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-right"></i>
                             {{ __('Déplacer le menu à droite') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer le sous-menu en haut') }}" title="{{ __('Déplacer le sous-menu en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-li-up" data-action="move-li-up">
+                        <button disabled="true" aria-label="{{ __('Déplacer le sous-menu en haut') }}" title="{{ __('Déplacer le sous-menu en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-li-cell-up" data-action="move-li-up">
                             <i class="fa fa-vector-square"></i><i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer le sous-menu en haut') }}
                         </button>
