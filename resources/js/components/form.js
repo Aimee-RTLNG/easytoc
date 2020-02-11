@@ -1,4 +1,6 @@
 // ANCHOR Données initiales
+import { lang } from "../app";
+
 let element;
 let element_selected_container;
 let input;
@@ -24,7 +26,11 @@ $('#desc-input').keypress(function (e) {
         tlength = tval.length,
         set = $('#desc-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-desc-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+        $('#chara-desc-remains').text(remain + " characters left");
+    } else {
+        $('#chara-desc-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#desc-input').val((tval).substring(0, tlength - 1))
     }
@@ -36,7 +42,11 @@ $('#title-input').keypress(function (e) {
         tlength = tval.length,
         set = $('#title-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-title-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+        $('#chara-title-remains').text(remain + " characters left");
+    } else {
+        $('#chara-title-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#title-input').val((tval).substring(0, tlength - 1))
     }
@@ -54,34 +64,68 @@ console.log(translation_test);
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
-export let element_types = {
-    "type-question": {
-        "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-        "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-        "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
-    },
-    "type-answer-option": {
-        "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-        "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-        "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
-    },
-    "type-layout": {
-        "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-        "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-        "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-        "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-        "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
-        "insert-horizontal_rule": "<hr contenteditable='true'>",
-    },
-    "type-special": {
-        "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
-        "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-        "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
-    }
-};
+export let element_types;
+
+// TODO Traductions
+if( lang == "en" ){
+    element_types = {
+        "type-question": {
+            "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
+            "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
+            "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+            "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+            "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+            "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choose an option </option>\n\t\t</select>\n</label>"
+        },
+        "type-answer-option": {
+            "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+        },
+        "type-layout": {
+            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+            "insert-horizontal_rule": "<hr contenteditable='true'>",
+        },
+        "type-special": {
+            "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+            "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+            "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+        }
+    };
+} else {
+    element_types = {
+        "type-question": {
+            "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+            "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+            "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+            "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+            "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+            "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
+        },
+        "type-answer-option": {
+            "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+        },
+        "type-layout": {
+            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+            "insert-horizontal_rule": "<hr contenteditable='true'>",
+        },
+        "type-special": {
+            "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+            "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+            "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+        }
+    };
+}
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
@@ -138,11 +182,11 @@ function updatecontent() {
 
 // ANCHOR Initialisation du formulaire
 if ($('#raw-code').val().length <= 0) {
-    console.log("Création");
+    // console.log("Création");
     // $('#content-created-blueprint').html(initial_content);
     updatecontent();
 } else {
-    console.log("Modification");
+    // console.log("Modification");
     getOldContent();
     updatecontent();
 }
@@ -217,7 +261,11 @@ export function addElement(element_type, element_type_name) {
         addOption();
     }
 
-    message = "Element ajouté";
+    if( lang == "en" ){
+        message = "Element added";
+    } else {
+        message = "Element ajouté";
+    }
     alertMsg(message, "success");
     updatecontent();
 }
@@ -245,7 +293,7 @@ $('#btn-save-project').on('click', function () {
             "html": $('#raw-code').val()
         }
     }).done(function (msg) {
-        console.log(msg);
+        // console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
@@ -257,7 +305,11 @@ $('#btn-save-project').on('click', function () {
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
         }
-        message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+        if( lang == "en" ){
+            message = "Some informations are missing : please fill the empty fields.";
+        } else {
+            message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+        }
         alertMsg(message, "error");
     });
 })
@@ -518,7 +570,7 @@ $(document.body)
                         // event de changement d'url
                         let link_title;
                         $('#elem-url-title').on('keyup', function (e) {
-                            console.log($('#elem-url-title').val());
+                            // console.log($('#elem-url-title').val());
                             e.stopPropagation();
                             link_title = $('#elem-url-title').val();
                             $(intitule).attr('title', link_title);
@@ -634,7 +686,11 @@ $(".form-element-action").on('click', function (e) {
             $(".side-tool").hide();
             $('.action-delete').attr('disabled', 'true');
             $('.action-undo').removeAttr('disabled');
-            message = "Élément supprimé";
+            if( lang == "en" ){
+                message = "Deleted element";
+            } else {
+                message = "Élément supprimé";
+            }
             alertMsg(message, "success");
             break;
         // Annuler la suppression
@@ -643,7 +699,11 @@ $(".form-element-action").on('click', function (e) {
             $(this).attr('disabled', 'true');
             $('.alert-success').slideUp();
             $('.element-container').last().find('[contenteditable=true]').first().focus();
-            message = "Élément rétabli";
+            if( lang == "en" ){
+                message = "Element recovered";
+            } else {
+                message = "Élément rétabli";
+            }
             alertMsg(message, "success");
             break;
         // Changement de l'attr multiple   
@@ -701,12 +761,20 @@ $(".form-element-action").on('click', function (e) {
                 next_option = selected_option.next();
                 refreshMoveButtons(previous_option, next_option, true);
             }
-            message = "Option ajoutée";
+            if( lang == "en" ){
+                message = "Option added";
+            } else {
+                message = "Option ajoutée";
+            }
             alertMsg(message, "success");
             break;
         case "delete-option":
             deleteOption();
-            message = "Option supprimée";
+            if( lang == "en" ){
+                message = "Deleted option";
+            } else {
+                message = "Option supprimée";
+            }
             alertMsg(message, "success");
             break;
     }
@@ -948,8 +1016,14 @@ export function refreshMoveButtons(previous_element, next_element, option) {
 
 // ANCHOR Copier le contenu code 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-    message = "Code copié !";
-    $(".copy-container button").text("Copier");
+    if( lang == "en" ){
+        message = "Code copied !";
+        $(".copy-container button").text("Copy");
+
+    } else {
+        message = "Code copié !";
+        $(".copy-container button").text("Copier");
+    }
     $(this).text(message);
     alertMsg(message, "success");
 })

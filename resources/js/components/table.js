@@ -1,4 +1,6 @@
 // ANCHOR Données initiales
+import { lang } from "../app";
+
 let element;
 let element_selected_container;
 let input;
@@ -846,7 +848,7 @@ $('#btn-save-project').on('click', function () {
             "html": $('#raw-code').val()
         }
     }).done(function (msg) {
-        console.log(msg);
+        //  console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
