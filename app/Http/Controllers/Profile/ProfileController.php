@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateProfile;
 use App\User;
-
+use App\Content;
 
 class ProfileController extends Controller
 {
@@ -79,5 +79,13 @@ class ProfileController extends Controller
         $user->update($data);
         return redirect(route('profile.view', ['user' => $user]))
                     ->with('info', __('Votre mot de passe a été mis à jour'));
+    }
+
+    public function destroy(UpdateProfile $request, User $user)
+    {
+        Content::where('user_id', $user->id)->delete();
+        $user->delete();
+        return redirect(route('home'))
+                    ->with('info', "Votre profil a bien été supprimé");
     }
 }
