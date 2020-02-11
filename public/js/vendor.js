@@ -52293,7 +52293,12 @@ $('#central-header-button').prop('checked', true);
 $('#radio02').prop('checked', true);
 $('#radio02').prop('checked', true);
 $('#table-row-nb').val('2');
-$('#table-col-nb').val('2'); // ANCHOR Caractères restants Description du projet
+$('#table-col-nb').val('2'); // On désactive les boutons qui ne s'activent qu'au clic sur un élément
+
+$('.text-formatting').prop('disabled', true);
+$('.element_move').prop('disabled', true);
+$('.action-delete').prop('disabled', true);
+$('.element_merge-right').prop('disabled', true); // ANCHOR Caractères restants Description du projet
 
 $('#desc-input').keypress(function (e) {
   var tval = $('#desc-input').val(),
@@ -52428,11 +52433,11 @@ $('#edit-table').on('click', function () {
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
-
+  // console.log("Création");
+  // $('#content-created-blueprint').html(initial_content);
   updateContent();
 } else {
-  console.log("Modification");
+  // console.log("Modification");
   getOldContent();
   updateContent();
 } // ANCHOR Changement de titre
@@ -52544,22 +52549,23 @@ function addCol(side) {
   var cell_html = element_types["type-unique"]["insert-cell"];
   var rows_header = $("#full-table").find('thead tr').length;
   cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
-  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
-  var is_header;
-
-  if ($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY") {
-    is_header = true;
-  }
+  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t"; // let is_header;
+  // if($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY"){
+  //     is_header = true;
+  // }
 
   if (side == "left") {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        // $(cell_html).insertBefore($(tr).find("td")[cell_index]);
-        console.log($(tr).find("td")[cell_index]); //$(tr).find("td")[cell_index].before(cell_html);
+        if ($(tr).find("td").length) {
+          var tbody_insert_before = $(tr).find("td")[cell_index];
+          $(tbody_insert_before).before(cell_html);
+        }
 
-        if (index < rows_header) {// $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
-          //$(tr).find("th")[cell_index].before(cell_header_html);
+        if (index < rows_header) {
+          var thead_insert_before = $(tr).find("th")[cell_index];
+          $(thead_insert_before).before(cell_header_html);
         }
       });
     } else {
@@ -52577,11 +52583,14 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        // $(cell_html).insertAfter($(tr).find("td")[cell_index]);
-        console.log($(tr).find("td")[cell_index]); // $(tr).find("td")[cell_index].after(cell_html);
+        if ($(tr).find("td").length) {
+          var tbody_insert_after = $(tr).find("td")[cell_index];
+          $(tbody_insert_after).after(cell_html);
+        }
 
-        if (index < rows_header) {// $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
-          //$(tr).find("th")[cell_index].after(cell_header_html);
+        if (index < rows_header) {
+          var thead_insert_after = $(tr).find("th")[cell_index];
+          $(thead_insert_after).after(cell_header_html);
         }
       });
     } else {
@@ -53106,6 +53115,7 @@ $(document.body).off('keyup') // ré-initialisation
   if (e.target) {
     $(".content-editable-selected").removeClass("content-editable-selected");
     element_selected_container = e.target;
+    $('.text-formatting').prop('disabled', false);
   }
 
   $(element_selected_container).addClass("content-editable-selected");
