@@ -85,10 +85,10 @@
     width: 10px;
     height: 10px;
     border-radius: 30px;
-    &[data-type="Menu"] {
+    &[data-type="Menu"], &[data-type="menu"] {
         background-color: rgb(226, 95, 95);
     }
-    &[data-type="Table"] {
+    &[data-type="Table"], &[data-type="table"] {
         background-color: rgb(90, 180, 68);
     }
     &[data-type="Form"], &[data-type="form"] {

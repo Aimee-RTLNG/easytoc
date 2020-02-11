@@ -11614,11 +11614,11 @@ pre.prettyprinted {
   border-radius: 30px;
 }
 
-.type-pin[data-type="Menu"] {
+.type-pin[data-type="Menu"], .type-pin[data-type="menu"] {
   background-color: #e25f5f;
 }
 
-.type-pin[data-type="Table"] {
+.type-pin[data-type="Table"], .type-pin[data-type="table"] {
   background-color: #5ab444;
 }
 
