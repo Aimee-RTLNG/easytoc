@@ -165,13 +165,13 @@
 
     "###____PAGE_____CREATION_____FORM____###":"########################################################",
     "Thème du formulaire": "Form's theme",
-    "Titre du formulaire": "Form title",
-    "Lien de traitement des données": "Form's data process URL (à vérifier)",
+    "Titre du formulaire": "Form's title",
+    "Lien de traitement des données": "Form's data process URL",
     "Méthode": "Method",
     "Option du formulaire": "Form's option",
     "Bouton de réinitialisation": "Reset possibility",
     "Ajouter une question": "Add a question",
-    "Nouvelle section": "New section (à vérifier)",
+    "Nouvelle section": "New section",
     "Paragraphe": "Paragraph",
     "Lien": "Link",
     "Liste numérotée": "Ordered list",
@@ -186,6 +186,10 @@
     "Exemple de question" : "Example of question",
     "Exemple de réponse courte" : "Short answer",
     "Exemple de réponse longue" : "Long answer",
-    "Type de réponse attendue" : "Excepted answer type"
+    "Type de réponse attendue" : "Excepted answer type",
+    "En-tête" : "Header",
+    "Cellule" : "Cell",
 
+    "###____GLOBAL____PAGE____CREATION____###":"########################################################",
+    "Titre du projet" : "Project's title"
 }

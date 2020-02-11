@@ -1,6 +1,6 @@
 // Imports
 import { alertMsg } from "../app";
-import { getOldContent, removeCol, element_types } from "./table";
+import { getOldContent, updateContent, removeCol, element_types } from "./table";
 
 // Variables
 let message;
@@ -90,7 +90,7 @@ $('#import-data').on('click', function () {
                     success = true;
                 } catch (e) {
                     success = false;
-                    console.log(e);
+                    // console.log(e);
                     message = "Votre fichier est invalide. Merci de réessayer.";
                     alertMsg(message, "error");
                 }
@@ -111,8 +111,8 @@ $('#generate-example').on('click', function () {
             importData(json);
         })
         .fail(function (jqxhr, textStatus, error) {
-            console.log(textStatus);
-            console.log(error);
+            // console.log(textStatus);
+            // console.log(error);
             message = "Erreur dans le chargement de l'exemple";
             alertMsg(message, "error");
         })
@@ -120,7 +120,7 @@ $('#generate-example').on('click', function () {
 
 function importData(table) {
 
-    console.log(table);
+    // console.log(table);
 
     $("#generated-table #full-table").empty();
     $("#generated-table #table-title").text(table.title);
@@ -222,6 +222,7 @@ function importData(table) {
         alertMsg(message, "error");
     }
 
+    updateContent();
     $('#full-table tr td').last().focus();
 }
 

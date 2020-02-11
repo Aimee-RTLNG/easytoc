@@ -118,13 +118,13 @@
                             </div>
                             <div class="col-md-3 crea-item__btns">
                                 <div>
-                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="Visualiser">
+                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Visualiser')}}">
                                         <div  class="crea-item__btns__icon">
                                             <i class="fa fa-eye"></i>
                                         </div>
                                         <p>{{ __('Visualiser') }}</p>
                                     </a>
-                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="Modifier">
+                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Modifier')}}">
                                         <div class="crea-item__btns__icon">
                                             <i class="fa fa-edit"></i>
                                         </div>
@@ -136,7 +136,7 @@
                                         <div class="crea-item__btns__icon btn--rouge">
                                             <i class="fa fa-times"></i>
                                         </div>
-                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
+                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">       
                                     </form>
                                 </div>
                             </div>
@@ -305,6 +305,25 @@
                                     </div>
                                 </div>
 
+                            </form>
+                            <hr>
+                            <form id="formDeleteUser" class="form-horizontal" method="POST" action="{{ route('profile.destroy', ['user' => $user]) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+
+                                <div>
+                                    <h3 class="panel-heading">{{ __('Supprimer mon compte') }}</h3>
+                                    <p>{{ __('Attention, en supprimant votre compte, tout le contenu sera également supprimé.') }}</p>
+                                    <!-- Bouton d'envoi -->
+                                    <div class="form-group mon-compte__btn-save">
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" form="formDeleteUser" class="formDeleteUser btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer votre compte ?') }}')" >
+                                                {{ __('Supprimer mon compte') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             </form>
                         </div>
                     </div>

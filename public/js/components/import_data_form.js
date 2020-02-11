@@ -111,8 +111,8 @@ $('#import-data').on('click', function () {
           importData(formatted_json);
           success = true;
         } catch (e) {
-          success = false;
-          console.log(e);
+          success = false; // console.log(e);
+
           message = "Votre fichier est invalide. Merci de réessayer.";
           Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         }
@@ -130,8 +130,8 @@ $('#generate-example').on('click', function () {
   var formatted_json = $.getJSON(baseUrl + '/templates/form_template.json').done(function (json) {
     importData(json);
   }).fail(function (jqxhr, textStatus, error) {
-    console.log(textStatus);
-    console.log(error);
+    // console.log(textStatus);
+    // console.log(error);
     message = "Erreur dans le chargement de l'exemple";
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });

@@ -117,8 +117,8 @@ $('#import-data').on('click', function () {
           importData(formatted_json);
           success = true;
         } catch (e) {
-          success = false;
-          console.log(e);
+          success = false; // console.log(e);
+
           message = "Votre fichier est invalide. Merci de réessayer.";
           Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         }
@@ -136,15 +136,15 @@ $('#generate-example').on('click', function () {
   var formatted_json = $.getJSON(baseUrl + '/templates/table_template.json').done(function (json) {
     importData(json);
   }).fail(function (jqxhr, textStatus, error) {
-    console.log(textStatus);
-    console.log(error);
+    // console.log(textStatus);
+    // console.log(error);
     message = "Erreur dans le chargement de l'exemple";
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 });
 
 function importData(table) {
-  console.log(table);
+  // console.log(table);
   $("#generated-table #full-table").empty();
   $("#generated-table #table-title").text(table.title);
   $("#generated-table #full-table").append(_table__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-container"]["insert-caption"]); // Caption
@@ -238,6 +238,7 @@ function importData(table) {
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 
+  Object(_table__WEBPACK_IMPORTED_MODULE_1__["updateContent"])();
   $('#full-table tr td').last().focus();
 }
 
