@@ -7,62 +7,239 @@
   cursor: pointer;
 }
 
-.theme-green #full-form {
-  color: black;
-  background-color: white;
-}
-
-.theme-green #full-form a:hover {
-  font-weight: normal;
-  color: black;
-}
-
 #generated-form {
   margin: 20px 0px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 #form-title {
-  background-color: green;
-  color: white;
   padding: 25px;
   margin: 0 -21px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
+.theme-white #form-title {
+  background-color: #fff;
+  color: black;
+}
+
+.theme-black #form-title {
+  background-color: #222;
+  color: white;
+}
+
+.theme-green #form-title {
+  background-color: green;
+  color: white;
+}
+
+.theme-red #form-title {
+  background-color: red;
+  color: white;
+}
+
+.theme-blue #form-title {
+  background-color: blue;
+  color: white;
+}
+
+.theme-grey #form-title {
+  background-color: grey;
+  color: black;
+}
+
+.theme-white #form-title hr {
+  border-top: 2px solid black;
+}
+
+.theme-black #form-title hr {
+  border-top: 2px solid black;
+}
+
+.theme-green #form-title hr {
+  border-top: 2px solid green;
+}
+
+.theme-red #form-title hr {
+  border-top: 2px solid red;
+}
+
+.theme-blue #form-title hr {
+  border-top: 2px solid blue;
+}
+
+.theme-grey #form-title hr {
+  border-top: 2px solid grey;
+}
+
 #full-form {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  border: 1px solid green;
-  padding: 0 20px;
   color: black;
   width: 90vw;
   max-width: 600px;
   margin: 0 auto;
 }
 
+.theme-white #full-form {
+  border: 2px solid #fff;
+}
+
+.theme-black #full-form {
+  border: 2px solid #222;
+}
+
+.theme-green #full-form {
+  border: 2px solid green;
+}
+
+.theme-red #full-form {
+  border: 2px solid red;
+}
+
+.theme-blue #full-form {
+  border: 2px solid blue;
+}
+
+.theme-grey #full-form {
+  border: 2px solid grey;
+}
+
 #full-form h1 {
   margin: auto;
+  padding: 20px 18px;
 }
 
 #full-form > * {
   max-width: 100%;
+  padding: 0px 20px;
 }
 
-#full-form p, #full-form li {
-  line-height: 1.4rem;
+#full-form > * label {
+  width: 100%;
+}
+
+#full-form p {
+  line-height: 20px;
+  font-size: 14px;
+}
+
+#full-form li {
+  line-height: 25px;
+  font-size: 14px;
+}
+
+#full-form select option {
+  padding: 5px 4px;
+}
+
+.theme-white #full-form select[multiple]:focus option:checked {
+  background: #fff -webkit-gradient(linear, left bottom, left top, from(#fff), to(#fff));
+  background: #fff linear-gradient(0deg, #fff 0%, #fff 100%);
+  color: black;
+}
+
+.theme-black #full-form select[multiple]:focus option:checked {
+  background: #222 -webkit-gradient(linear, left bottom, left top, from(#222), to(#222));
+  background: #222 linear-gradient(0deg, #222 0%, #222 100%);
+  color: black;
+}
+
+.theme-green #full-form select[multiple]:focus option:checked {
+  background: green -webkit-gradient(linear, left bottom, left top, from(green), to(green));
+  background: green linear-gradient(0deg, green 0%, green 100%);
+  color: green;
+}
+
+.theme-red #full-form select[multiple]:focus option:checked {
+  background: red -webkit-gradient(linear, left bottom, left top, from(red), to(red));
+  background: red linear-gradient(0deg, red 0%, red 100%);
+  color: red;
+}
+
+.theme-blue #full-form select[multiple]:focus option:checked {
+  background: blue -webkit-gradient(linear, left bottom, left top, from(blue), to(blue));
+  background: blue linear-gradient(0deg, blue 0%, blue 100%);
+  color: blue;
+}
+
+.theme-grey #full-form select[multiple]:focus option:checked {
+  background: grey -webkit-gradient(linear, left bottom, left top, from(grey), to(grey));
+  background: grey linear-gradient(0deg, grey 0%, grey 100%);
+  color: grey;
+}
+
+#full-form label[data-tag="option"] {
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#full-form label[data-tag="option"] span {
+  margin: 0px;
+  margin-left: 10px;
 }
 
 #full-form a {
-  color: black;
   text-decoration: none;
 }
 
-#full-form a:hover {
-  text-decoration: none;
+.theme-white #full-form a {
   color: black;
+}
+
+.theme-black #full-form a {
+  color: black;
+}
+
+.theme-green #full-form a {
+  color: black;
+}
+
+.theme-red #full-form a {
+  color: black;
+}
+
+.theme-blue #full-form a {
+  color: black;
+}
+
+.theme-grey #full-form a {
+  color: black;
+}
+
+#full-form a:hover {
+  text-decoration: underline;
   font-size: inherit;
+}
+
+.theme-white #full-form a:hover {
+  color: black;
+}
+
+.theme-black #full-form a:hover {
+  color: black;
+}
+
+.theme-green #full-form a:hover {
+  color: black;
+}
+
+.theme-red #full-form a:hover {
+  color: black;
+}
+
+.theme-blue #full-form a:hover {
+  color: black;
+}
+
+.theme-grey #full-form a:hover {
+  color: black;
 }
 
 #full-form ul, #full-form ol {
@@ -93,7 +270,7 @@
   width: 95%;
   margin-bottom: 20px;
   padding: .375rem .75rem;
-  font-size: 1rem;
+  font-size: 13px;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -115,14 +292,57 @@
   width: 100%;
 }
 
-#full-form abbr[aria-label='required'] {
+.theme-white #full-form abbr[aria-label='required'] {
+  color: orange;
+}
+
+.theme-black #full-form abbr[aria-label='required'] {
+  color: orange;
+}
+
+.theme-green #full-form abbr[aria-label='required'] {
+  color: orange;
+}
+
+.theme-red #full-form abbr[aria-label='required'] {
+  color: orange;
+}
+
+.theme-blue #full-form abbr[aria-label='required'] {
+  color: orange;
+}
+
+.theme-grey #full-form abbr[aria-label='required'] {
   color: orange;
 }
 
 #full-form label > span {
   margin-bottom: 20px;
-  color: green;
   font-weight: bold;
+}
+
+.theme-white #full-form label > span {
+  color: black;
+}
+
+.theme-black #full-form label > span {
+  color: black;
+}
+
+.theme-green #full-form label > span {
+  color: green;
+}
+
+.theme-red #full-form label > span {
+  color: red;
+}
+
+.theme-blue #full-form label > span {
+  color: blue;
+}
+
+.theme-grey #full-form label > span {
+  color: grey;
 }
 
 #full-form fieldset {
@@ -131,11 +351,33 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border: green solid 1.5px;
-  padding: 10px 0px 15px 10px;
-  border-radius: 5px;
+  padding: 10px 0px 15px 0px;
+  border: none;
   font-weight: bold;
+}
+
+.theme-white #full-form fieldset {
+  color: black;
+}
+
+.theme-black #full-form fieldset {
+  color: black;
+}
+
+.theme-green #full-form fieldset {
   color: green;
+}
+
+.theme-red #full-form fieldset {
+  color: red;
+}
+
+.theme-blue #full-form fieldset {
+  color: blue;
+}
+
+.theme-grey #full-form fieldset {
+  color: grey;
 }
 
 #full-form fieldset label span {
@@ -199,7 +441,7 @@
 }
 
 #form-actions input[type="submit"]:hover {
-  background-color: green;
+  background-color: #63CF72;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }

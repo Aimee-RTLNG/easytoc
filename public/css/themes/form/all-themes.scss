@@ -3,33 +3,45 @@
 $themes: (
     white: (
         backgroundColor: #fff,
-        aHoverColor: red,
-        textColor : black
+        textBackgroundColor: black,
+        textColor : black,
+        required : orange,
+        aColor : black,
     ),
     black: (
         backgroundColor: #222,
-        aHoverColor: red,
-        textColor : white
+        textBackgroundColor: white,
+        textColor : black,
+        required : orange,
+        aColor : black,
     ),
     green: (
         backgroundColor: green,
-        aHoverColor: red,
-        textColor : white
+        textBackgroundColor: white,
+        textColor : green,
+        required : orange,
+        aColor : black,
     ),
     red: (
         backgroundColor: red,
-        aHoverColor: blue,
-        textColor : white
+        textBackgroundColor: white,
+        textColor : red,
+        required : orange,
+        aColor : black,
     ),
     blue: (
         backgroundColor: blue,
-        aHoverColor: red,
-        textColor : white
+        textBackgroundColor: white,
+        textColor : blue,
+        required : orange,
+        aColor : black,
     ),
     grey: (
         backgroundColor: grey,
-        aHoverColor: red,
-        textColor : black
+        textBackgroundColor: black,
+        textColor : grey,
+        required : orange,
+        aColor : black,
     )
 );
 
@@ -59,42 +71,29 @@ $themes: (
 // Styles
 
 #full-form {
-    // @include themify($themes) {
-    //   color: themed('textColor');  
-    //   background-color: themed('backgroundColor');  
-    // }
     h1 {
       font-family: sans-serif;
       font-weight: lighter;
     }
     a {
       cursor: pointer;
-      @include themify($themes) {
-        // &:hover {
-        //   color: themed('aHoverColor'); 
-        //   font-weight: bold;
-        // }
-      }
     } 
   }
-  // ---- A enlever initial 
-
-.theme-green #full-form {
-    color: black;
-    background-color: white;
-}
-.theme-green #full-form a:hover {
-    font-weight: normal;
-    color: black;
-}
 // ----
 #generated-form {
     margin: 20px 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
 #form-title {
-    background-color: green;
-    color: white;
+    @include themify($themes) {
+        background-color: themed('backgroundColor'); 
+        color: themed('textBackgroundColor');
+    }
+    hr {
+        @include themify($themes) {
+            border-top: 2px solid themed('textColor'); 
+        }
+    }
     padding: 25px;
     margin: 0 -21px;
     border-top-left-radius: 12px;
@@ -103,27 +102,60 @@ $themes: (
 #full-form {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    border: 1px solid green;
-    padding: 0 20px;
+    @include themify($themes) {
+        border: 2px solid themed('backgroundColor');
+    }
     color: black;
     width: 90vw;
     max-width: 600px;
     margin: 0 auto;
     h1 {
         margin: auto;
+        padding: 20px 18px;
     }
     & > * {
         max-width: 100%;
+        padding: 0px 20px;
+        label {
+            width: 100%;
+        }
     }
-    p, li {
-        line-height: 1.4rem;
+    p {
+        line-height: 20px;
+        font-size: 14px;
+    }
+    li {
+        line-height: 25px;
+        font-size: 14px;  
+    }
+    select option {
+        padding: 5px 4px;
+    }
+    select[multiple]:focus option:checked {
+        @include themify($themes) {
+            background: themed('backgroundColor') linear-gradient(0deg, themed('backgroundColor') 0%, themed('backgroundColor') 100%);
+            color: themed('textColor') ;
+        }
+      }
+    label[data-tag="option"] {
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        span {
+            margin: 0px;
+            margin-left: 10px;
+        }
     }
     a {
-        color: black;
+        @include themify($themes) {
+            color: themed('aColor') ;
+        }
         text-decoration: none;
         &:hover{
-            text-decoration: none;
-            color: black;
+            @include themify($themes) {
+                color: themed('aColor') ;
+            }
+            text-decoration: underline;
             font-size: inherit;
         }
     }
@@ -152,7 +184,7 @@ $themes: (
         width: 95%;
         margin-bottom: 20px;
         padding: .375rem .75rem;
-        font-size: 1rem;
+        font-size: 13px;
         line-height: 1.5;
         color: #495057;
         background-color: #fff;
@@ -169,21 +201,26 @@ $themes: (
         width: 100%;
     }
     abbr[aria-label='required'] {
-        color: orange;
+        @include themify($themes) {
+            color: themed('required') ;
+        }
     }
     label > span {
         margin-bottom: 20px;
-        color: green;
+        @include themify($themes) {
+            color: themed('textColor') ;
+        }
         font-weight: bold;
     }
     fieldset {
         display: flex;
         flex-wrap: wrap;
-        border: green solid 1.5px;
-        padding: 10px 0px 15px 10px;
-        border-radius: 5px;
+        padding: 10px 0px 15px 0px;
+        border: none;
         font-weight: bold;
-        color: green;
+        @include themify($themes) {
+            color: themed('textColor') ;
+        }
         label span {
             color: black;
             font-weight: normal;
@@ -229,7 +266,7 @@ $themes: (
         border-radius: 12px;
         min-width: 40%;
         &:hover {
-            background-color: green;
+            background-color: #63CF72;
             transition: all 0.25s ease;
         }
     }

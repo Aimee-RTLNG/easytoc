@@ -10929,7 +10929,6 @@ pre.prettyprinted {
 
 #content-created-blueprint form * {
   border: 0;
-  padding: 5px;
 }
 
 #content-created-blueprint form *:hover {
@@ -10945,13 +10944,13 @@ pre.prettyprinted {
 }
 
 #content-created-blueprint form * fieldset {
-  border: 2px solid black;
+  border: none;
   display: flex;
   flex-direction: column;
 }
 
 #content-created-blueprint form * fieldset:hover {
-  border: 2px solid black;
+  border: none;
 }
 
 #content-created-blueprint form * fieldset label {
@@ -10959,11 +10958,11 @@ pre.prettyprinted {
 }
 
 #content-created-blueprint form * fieldset label:hover {
-  border: 3px dotted black;
+  border: none;
 }
 
 #content-created-blueprint form * legend {
-  border: 2px solid black;
+  border: none;
 }
 
 #content-created-blueprint form * hr {
@@ -11337,6 +11336,14 @@ input[type="checkbox"], input[type="radio"] {
 #nav-blueprint label {
   font-size: 14px;
   width: 100%;
+}
+
+#nav-blueprint #full-form .form-control {
+  margin-bottom: 0px;
+}
+
+.content-html-preview #full-form .form-control {
+  margin-bottom: 0px;
 }
 
 body {
