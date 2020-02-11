@@ -51291,8 +51291,8 @@ var selected_option;
 var next_option;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n'; // Imports
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+// Imports
 
  // ANCHOR Caractères restants Description du projet
 
@@ -51404,8 +51404,8 @@ function updatecontent() {
 ; // ANCHOR Initialisation du formulaire
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création");
-  $('#content-created-blueprint').html(initial_content);
+  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
+
   updatecontent();
 } else {
   console.log("Modification");
@@ -52282,8 +52282,8 @@ var selected_row;
 var parent_tag;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
+// Imports
 
  // Reset des boutons d'options
 
@@ -52324,15 +52324,15 @@ var tags_list = ["table", "tr", "th", "td", "abbr"]; // ANCHOR Liste WYSIWYG : l
 
 var element_types = {
   "type-container": {
-    "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
-    "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
-    "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
+    "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
+    "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
+    "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
     "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
   },
   "type-unique": {
-    "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
-    "insert-header-row": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
-    "insert-cell": "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
+    "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
+    "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
+    "insert-cell": "\n\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
   }
 };
 function getOldContent() {
@@ -52428,8 +52428,8 @@ $('#edit-table').on('click', function () {
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création");
-  $('#content-created-blueprint').html(initial_content);
+  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
+
   updateContent();
 } else {
   console.log("Modification");
@@ -52555,18 +52555,22 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+        // $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+        $(tr).find("td")[cell_index].before(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+          // $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+          $(tr).find("th")[cell_index].before(cell_header_html);
         }
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertBefore($(tr).find("td").first());
+        // $(cell_html).insertBefore($(tr).find("td").first());
+        $(tr).find("td").first().before(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertBefore($(tr).find("th").first());
+          // $(cell_header_html).insertBefore($(tr).find("th").first());
+          $(tr).find("th").first().before(cell_header_html);
         }
       });
     }
@@ -52574,18 +52578,22 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+        // $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+        $(tr).find("td")[cell_index].after(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+          // $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+          $(tr).find("th")[cell_index].after(cell_header_html);
         }
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertAfter($(tr).find("td").last());
+        // $(cell_html).insertAfter($(tr).find("td").last());
+        $(tr).find("td").last().after(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertAfter($(tr).find("th").last());
+          //  $(cell_header_html).insertAfter($(tr).find("th").last());
+          $(tr).find("th").last().after(cell_header_html);
         }
       });
     }
@@ -52606,19 +52614,23 @@ function addRow(side) {
 
   if (side == "up") {
     if ($('.content-editable-selected').length) {
-      $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      // $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      $(".content-editable-selected").closest('tr').before(row_html + "\n\t\t");
       inserted_row = $(".content-editable-selected").closest('tr').prev();
     } else {
-      $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      // $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      $("#full-table").find('tbody tr').first().before(row_html + "\n\t\t");
       inserted_row = $("#full-table").find('tbody tr').first();
     }
   } // Ligne en dessous
   else if (side == "down") {
       if ($('.content-editable-selected').length) {
-        $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        $(".content-editable-selected").closest('tr').after(row_html + "\n\t\t");
         inserted_row = $(".content-editable-selected").closest('tr').next();
       } else {
-        $(row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+        // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+        $("#full-table tbody").find('tr').last().after(row_html + "\n\t\t");
         inserted_row = $("#full-table").find('tbody tr').last();
       }
     } // On ajoute les colonnes
@@ -52637,7 +52649,7 @@ function addRow(side) {
       }
     }
 
-    inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
+    inserted_row.append(cell_html + "\n\t\t");
   }
 } // Suppression de ligne
 
