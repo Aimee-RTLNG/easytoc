@@ -13,7 +13,7 @@ let next_option;
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+// let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
 
 // Imports
 import { alertMsg } from "../../js/app";
@@ -139,7 +139,7 @@ function updatecontent() {
 // ANCHOR Initialisation du formulaire
 if ($('#raw-code').val().length <= 0) {
     console.log("Création");
-    $('#content-created-blueprint').html(initial_content);
+    // $('#content-created-blueprint').html(initial_content);
     updatecontent();
 } else {
     console.log("Modification");

@@ -11027,6 +11027,7 @@ pre.prettyprinted {
   padding: 1.5em !important;
   width: 100% !important;
   border-radius: 5px !important;
+  white-space: pre !important;
 }
 
 /* style de l'interface actions */

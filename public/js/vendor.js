@@ -51291,8 +51291,8 @@ var selected_option;
 var next_option;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n'; // Imports
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+// Imports
 
  // ANCHOR Caractères restants Description du projet
 
@@ -51404,8 +51404,8 @@ function updatecontent() {
 ; // ANCHOR Initialisation du formulaire
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création");
-  $('#content-created-blueprint').html(initial_content);
+  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
+
   updatecontent();
 } else {
   console.log("Modification");
@@ -52250,13 +52250,14 @@ new ClipboardJS('#copy-raw-code');
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: element_types, getOldContent, addCol, addRow, removeCol */
+/*! exports provided: element_types, getOldContent, updateContent, addCol, addRow, removeCol */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateContent", function() { return updateContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
@@ -52281,8 +52282,8 @@ var selected_row;
 var parent_tag;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
+// Imports
 
  // Reset des boutons d'options
 
@@ -52323,15 +52324,15 @@ var tags_list = ["table", "tr", "th", "td", "abbr"]; // ANCHOR Liste WYSIWYG : l
 
 var element_types = {
   "type-container": {
-    "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
-    "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
-    "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
+    "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
+    "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
+    "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
     "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
   },
   "type-unique": {
-    "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
-    "insert-header-row": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
-    "insert-cell": "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
+    "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
+    "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
+    "insert-cell": "\n\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
   }
 };
 function getOldContent() {
@@ -52353,8 +52354,60 @@ function getOldContent() {
   $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
-function updatecontent() {
-  // on récupère le contenu
+function updateContent() {
+  // On ajoute des ID sur chaque headers
+  $('#full-table tr th').each(function (index, element) {
+    var element_id = Math.random().toString(36).substr(2, 9);
+    $(element).attr('id', element_id);
+  }); // TODO On associe les id à toutes les cellules TD 
+
+  var headers_id = [];
+  $('#full-table thead tr').each(function (index, element) {
+    var headers = $(this).find('th');
+    var headers_id_row = [];
+    headers.each(function (index, element) {
+      headers_id_row.push($(element).attr('id'));
+
+      if ($(element).attr('colspan') > 1) {
+        var nb_colspan = $(element).attr('colspan');
+
+        for (var i = 1; i < nb_colspan; i++) {
+          headers_id_row.push($(element).attr('id'));
+        }
+      }
+    });
+    headers_id.push(headers_id_row);
+  }); // On associe les ID aux cellules de colonnes
+
+  $('#full-table tbody tr, #full-table tfoot tr').each(function (index, element) {
+    var row_index = index;
+    var row_header_id;
+
+    if ($(this).find('th').length) {
+      row_header_id = $(this).find('th').first().attr('id');
+    }
+
+    var normal_cells = $(this).find('td');
+    normal_cells.each(function (index, element) {
+      var cell_index = index;
+      var cell_headers = ""; // On ajoute l'id du header latéral si existe 
+
+      if (row_header_id) {
+        cell_headers = row_header_id;
+      }
+
+      headers_id.forEach(function (item, index) {
+        // Si les header latéraux sont présents, les headers du THEAD sont décalés de 1 (une colonne en trop)
+        if (row_header_id) {
+          cell_headers = cell_headers + " " + item[cell_index + 1];
+        } else {
+          cell_headers = cell_headers + " " + item[cell_index];
+        }
+      });
+      $(element).attr('headers', cell_headers);
+    });
+  }); // on récupère le contenu
+
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
 
   blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
@@ -52369,31 +52422,30 @@ function updatecontent() {
 
   $("#formatted-code").html(PR.prettyPrintOne(code_content));
 }
-
 ;
 $('#edit-table').on('click', function () {
-  updatecontent();
+  updateContent();
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création");
-  $('#content-created-blueprint').html(initial_content);
-  updatecontent();
+  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
+
+  updateContent();
 } else {
   console.log("Modification");
   getOldContent();
-  updatecontent();
+  updateContent();
 } // ANCHOR Changement de titre
 
 
 $('#table-creator-title').on('keyup', function () {
   $('#table-title').text($('#table-creator-title').val());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement de caption
 
 $('#table-creator-caption').on('keyup', function () {
   $('#table-caption span').text($('#table-creator-caption').val());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement du nombre de lignes via INPUT
 
 $('#table-row-nb').on('change', function () {
@@ -52433,7 +52485,7 @@ $('#table-row-nb').on('change', function () {
     }
   }
 
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
@@ -52482,7 +52534,7 @@ $('#table-col-nb').on('change', function () {
     }
   }
 
-  updatecontent();
+  updateContent();
 }); // Ajout de colonne
 
 function addCol(side) {
@@ -52503,18 +52555,22 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+        // $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+        $(tr).find("td")[cell_index].before(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+          // $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+          $(tr).find("th")[cell_index].before(cell_header_html);
         }
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertBefore($(tr).find("td").first());
+        // $(cell_html).insertBefore($(tr).find("td").first());
+        $(tr).find("td").first().before(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertBefore($(tr).find("th").first());
+          // $(cell_header_html).insertBefore($(tr).find("th").first());
+          $(tr).find("th").first().before(cell_header_html);
         }
       });
     }
@@ -52522,18 +52578,22 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+        // $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+        $(tr).find("td")[cell_index].after(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+          // $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+          $(tr).find("th")[cell_index].after(cell_header_html);
         }
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertAfter($(tr).find("td").last());
+        // $(cell_html).insertAfter($(tr).find("td").last());
+        $(tr).find("td").last().after(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertAfter($(tr).find("th").last());
+          //  $(cell_header_html).insertAfter($(tr).find("th").last());
+          $(tr).find("th").last().after(cell_header_html);
         }
       });
     }
@@ -52554,19 +52614,23 @@ function addRow(side) {
 
   if (side == "up") {
     if ($('.content-editable-selected').length) {
-      $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      // $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      $(".content-editable-selected").closest('tr').before(row_html + "\n\t\t");
       inserted_row = $(".content-editable-selected").closest('tr').prev();
     } else {
-      $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      // $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      $("#full-table").find('tbody tr').first().before(row_html + "\n\t\t");
       inserted_row = $("#full-table").find('tbody tr').first();
     }
   } // Ligne en dessous
   else if (side == "down") {
       if ($('.content-editable-selected').length) {
-        $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        $(".content-editable-selected").closest('tr').after(row_html + "\n\t\t");
         inserted_row = $(".content-editable-selected").closest('tr').next();
       } else {
-        $(row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+        // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+        $("#full-table tbody").find('tr').last().after(row_html + "\n\t\t");
         inserted_row = $("#full-table").find('tbody tr').last();
       }
     } // On ajoute les colonnes
@@ -52585,7 +52649,7 @@ function addRow(side) {
       }
     }
 
-    inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
+    inserted_row.append(cell_html + "\n\t\t");
   }
 } // Suppression de ligne
 
@@ -52628,9 +52692,15 @@ function removeRow(row) {
 
 function moveRow(side) {
   if (side == "up") {
-    $(selected_row).insertBefore(previous_row);
+    // $(selected_row).insertBefore(previous_row);
+    $(selected_row).each(function () {
+      console.log($(this));
+    });
   } else if (side == "down") {
-    $(selected_row).insertAfter(next_row);
+    // $(selected_row).insertAfter(next_row);
+    $(selected_row).each(function () {
+      console.log($(this));
+    });
   }
 } // Déplacement de colonne
 
@@ -52642,14 +52712,22 @@ function moveCol(side) {
 
   if (side == "left") {
     rows.each(function () {
-      cols = $(this).children('th, td');
-      cols.eq(col_id).detach().insertBefore(cols.eq(col_id - 1));
+      cols = $(this).children('td, th');
+      var other_text = cols.eq(col_id - 1).text();
+      var actual_text = cols.eq(col_id).text();
+      cols.eq(col_id).text(other_text);
+      cols.eq(col_id - 1).text(actual_text);
     });
+    previous_cell.focus();
   } else if (side == "right") {
     rows.each(function () {
-      cols = $(this).children('th, td');
-      cols.eq(col_id).detach().insertAfter(cols.eq(col_id + 1));
+      cols = $(this).children('td, th');
+      var other_text = cols.eq(col_id + 1).text();
+      var actual_text = cols.eq(col_id).text();
+      cols.eq(col_id).text(other_text);
+      cols.eq(col_id + 1).text(actual_text);
     });
+    next_cell.focus();
   }
 }
 
@@ -52709,7 +52787,7 @@ function mergeCell(side, cell, other_cell) {
   }
 
   $('.content-editable-selected').focus();
-  updatecontent();
+  updateContent();
 }
 
 function splitCell() {
@@ -52876,9 +52954,8 @@ $('.cell-action').on('click', function () {
       }
     }
 
-  console.log($('.content-editable-selected'));
   $('.content-editable-selected').focus();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Ajout d'un élément
 
 $('.add-element').on('click', function () {
@@ -52979,11 +53056,11 @@ $('.add-element').on('click', function () {
   }
 
   $('.content-editable-selected').focus();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {
-  updatecontent();
+  updateContent();
   var post_url = $("#full-table-post").attr('action');
   $.ajax({
     method: "POST",
@@ -53062,7 +53139,6 @@ $(document.body).off('keyup') // ré-initialisation
           $('#insert-col_left').attr('disabled', true);
           $('.action-merge-right').attr('disabled', true);
           $('.action-merge-down').attr('disabled', false);
-          $('.action-move-col-right').attr('disabled', true);
         } // Si l'élément n'est ni un header horizontal ni vertical
         else {
             $('#insert-col_left').removeAttr('disabled');
@@ -53141,8 +53217,8 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-left').attr('disabled', true);
       $('.action-move-col-left').attr('disabled', true);
     } else {
-      $('.action-move-cell-left').attr('disabled', false);
       $('.action-move-col-left').attr('disabled', false);
+      $('.action-move-cell-left').attr('disabled', false);
       $('#action-move-left').show();
     } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
     // console.log(next_col);
@@ -53150,15 +53226,20 @@ $(document.body).off('keyup') // ré-initialisation
 
     if (next_col.length == 0) {
       $('.action-move-cell-right').attr('disabled', true);
-      $('.action-move-col-right').attr('disabled', true);
       $('#action-move-right').hide();
       $('.action-merge-right').attr('disabled', true);
+      $('.action-move-col-right').attr('disabled', true);
     } else {
       $('.action-move-cell-right').attr('disabled', false);
       $('#action-move-right').show();
 
       if (!$('.content-editable-selected').hasClass('table-header-cell')) {
         $('.action-move-col-right').attr('disabled', false);
+      }
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-col-right').attr('disabled', true);
+        $('.action-move-col-left').attr('disabled', true);
       }
     } // Si il n'y a pas de cellule adjacente ; pas de merge
 
@@ -53180,19 +53261,19 @@ $(document.body).off('keyup') // ré-initialisation
     $('.side-tool').hide();
   }
 
-  updatecontent();
+  updateContent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
   $('#table-creator-title').val($('#table-title').text());
-  updatecontent();
+  updateContent();
 }).on('keyup', '#table-caption', function () {
   $('#table-creator-caption').val($('#table-caption span').text());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
   $('.side-tool').hide();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Fonction Undo/Redo suppression
 
 function command(instance) {
@@ -53242,7 +53323,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'element-italic':
@@ -53256,7 +53337,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'element-underline':
@@ -53270,26 +53351,26 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-left':
       $('.content-editable-selected').attr('style', 'text-align: left');
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-center':
       $('.content-editable-selected').attr('style', 'text-align: center');
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-right':
       $('.content-editable-selected').attr('style', 'text-align: right');
-      updatecontent();
+      updateContent();
       break;
   }
 
-  updatecontent();
+  updateContent();
 }); // ANCHOR Theme
 
 $('input[name="theme"]').on('change', function () {

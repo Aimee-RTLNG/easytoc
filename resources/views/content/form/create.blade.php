@@ -284,9 +284,9 @@
                             <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                             <!-- panneau blueprint -->
+                            {{ __('Titre du formulaire') }}
                             <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel" aria-labelledby="nav-blueprint-tab">
-                                <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">
-                                </div>
+                                <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">@include('content.form.template')</div>
                             </div>
 
                             <!-- panneau code -->
