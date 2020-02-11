@@ -128,7 +128,7 @@
                             <i class="fa fa-grip-lines-vertical"></i>
                             {{ __('Nouveau menu') }}
                         </button> 
-                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Nouveau sous-menu') }}" title="{{ __('Nouveau sous-menu') }}" id="insert-sous-menu" role="listitem">
+                        <button class="btn btn-primary btn_crea add-element type-sous-menu" type="button" aria-label="{{ __('Nouveau sous-menu') }}" title="{{ __('Nouveau sous-menu') }}" id="insert-sous-menu" role="listitem">
                             <i class="fa fa-grip-lines"></i>
                             {{ __('Nouveau sous-menu') }}
                         </button>
@@ -234,7 +234,7 @@
                                 </div>
                                 <!-- Lien du style à utiliser -->
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/table/all-themes.css') }}" rel="stylesheet"></xmp>
-                                <h3 class="mt-3">{{ __("Voici le code brut pour votre tableau: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
+                                <h3 class="mt-3">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
                                     <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}" > 
                                         {{ __("Copier") }}

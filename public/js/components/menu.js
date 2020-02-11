@@ -66,7 +66,7 @@ $('#menu-creator-method').on('change', function () {
 var element_types = {
     "type-container": {
         "insert-menu": "\n\t\t<ul data-tag='menu' contenteditable='true'></ul>",
-        "insert-sous-menu": "\n\t\t\t<ul data-tag='sous-menu'><li></li></ul>",
+        "insert-sous-menu": "\n\t\t\t<ul data-tag='sous-menu' contenteditable='true'><li></li></ul>",
     },
 };
 

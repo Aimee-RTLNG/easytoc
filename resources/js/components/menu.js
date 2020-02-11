@@ -13,7 +13,7 @@ let csrf_token = $('meta[name="csrf-token"]').attr('content');
 let initial_content = '<nav class="navbar" id="generated-menu" contenteditable action="#" name="emailmenu">\n\t<h1 id="menu-title">Titre du menu</h1>\n</nav>\n<div class="mt-4" id="menu-actions" contenteditable="false">\n\t<input form="generated-menu" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
 
 // Imports
-import { alertMsg } from "../../js/app"
+import { alertMsg } from "../../js/app";
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
