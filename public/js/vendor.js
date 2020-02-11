@@ -52354,7 +52354,25 @@ function getOldContent() {
 } // ANCHOR Fonction de sauvegarde
 
 function updatecontent() {
-  // on récupère le contenu
+  // On ajoute des ID sur chaque headers
+  $('#full-table tr th').each(function (index, element) {
+    var element_id = Math.random().toString(36).substr(2, 9);
+    $(element).attr('id', element_id);
+
+    if ($(element).attr('colspan') > 1) {
+      console.log('colspan');
+    }
+  }); // TODO On associe les id à toutes les cellules TD 
+
+  $('#full-table tr').each(function (index, element) {
+    var headers_id = "";
+    var headers = $(this).find('th');
+    headers.each(function (index, element) {
+      headers_id = headers_id + " " + $(element).attr('id');
+    });
+    console.log(headers_id); // $(element).attr('headers', headers_id);
+  }); // on récupère le contenu
+
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
 
   blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
@@ -52642,14 +52660,22 @@ function moveCol(side) {
 
   if (side == "left") {
     rows.each(function () {
-      cols = $(this).children('th, td');
-      cols.eq(col_id).detach().insertBefore(cols.eq(col_id - 1));
+      cols = $(this).children('td, th');
+      var other_text = cols.eq(col_id - 1).text();
+      var actual_text = cols.eq(col_id).text();
+      cols.eq(col_id).text(other_text);
+      cols.eq(col_id - 1).text(actual_text);
     });
+    previous_cell.focus();
   } else if (side == "right") {
     rows.each(function () {
-      cols = $(this).children('th, td');
-      cols.eq(col_id).detach().insertAfter(cols.eq(col_id + 1));
+      cols = $(this).children('td, th');
+      var other_text = cols.eq(col_id + 1).text();
+      var actual_text = cols.eq(col_id).text();
+      cols.eq(col_id).text(other_text);
+      cols.eq(col_id + 1).text(actual_text);
     });
+    next_cell.focus();
   }
 }
 
@@ -52876,7 +52902,6 @@ $('.cell-action').on('click', function () {
       }
     }
 
-  console.log($('.content-editable-selected'));
   $('.content-editable-selected').focus();
   updatecontent();
 }); // ANCHOR Ajout d'un élément
@@ -53062,7 +53087,6 @@ $(document.body).off('keyup') // ré-initialisation
           $('#insert-col_left').attr('disabled', true);
           $('.action-merge-right').attr('disabled', true);
           $('.action-merge-down').attr('disabled', false);
-          $('.action-move-col-right').attr('disabled', true);
         } // Si l'élément n'est ni un header horizontal ni vertical
         else {
             $('#insert-col_left').removeAttr('disabled');
@@ -53141,8 +53165,8 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-left').attr('disabled', true);
       $('.action-move-col-left').attr('disabled', true);
     } else {
-      $('.action-move-cell-left').attr('disabled', false);
       $('.action-move-col-left').attr('disabled', false);
+      $('.action-move-cell-left').attr('disabled', false);
       $('#action-move-left').show();
     } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
     // console.log(next_col);
@@ -53150,15 +53174,20 @@ $(document.body).off('keyup') // ré-initialisation
 
     if (next_col.length == 0) {
       $('.action-move-cell-right').attr('disabled', true);
-      $('.action-move-col-right').attr('disabled', true);
       $('#action-move-right').hide();
       $('.action-merge-right').attr('disabled', true);
+      $('.action-move-col-right').attr('disabled', true);
     } else {
       $('.action-move-cell-right').attr('disabled', false);
       $('#action-move-right').show();
 
       if (!$('.content-editable-selected').hasClass('table-header-cell')) {
         $('.action-move-col-right').attr('disabled', false);
+      }
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-col-right').attr('disabled', true);
+        $('.action-move-col-left').attr('disabled', true);
       }
     } // Si il n'y a pas de cellule adjacente ; pas de merge
 
