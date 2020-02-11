@@ -20,10 +20,19 @@ let parent_tag;
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
+// let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
 
 // Imports
 import { alertMsg } from "../../js/app";
+
+// Reset des boutons d'options
+$('#lateral-header-button').prop('checked', false);
+$('#footer-button').prop('checked', false);
+$('#central-header-button').prop('checked', true);
+$('#radio02').prop('checked', true);
+$('#radio02').prop('checked', true);
+$('#table-row-nb').val('2');
+$('#table-col-nb').val('2');
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -54,23 +63,26 @@ const tags_list = ["table", "tr", "th", "td", "abbr"];
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
-var element_types = {
+export var element_types = {
     "type-container": {
-        "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
-        "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
-        "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>"
+        "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
+        "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
+        "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
+        "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
     },
     "type-unique": {
-        "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
-        "insert-header-row": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
-        "insert-cell": "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
+        "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
+        "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
+        "insert-cell": "\n\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
     }
 };
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-table .cell-text').attr('contenteditable', true);
-    $('#full-table .table-text').attr('contenteditable', true);
+    $('#full-table th').attr('contenteditable', true);
+    $('#full-table td').attr('contenteditable', true);
+    $('#table-title').attr('contenteditable', true);
+    $('#table-caption').attr('contenteditable', true);
 
     // Theme
     let actual_theme = $("#generated-table").attr('class');
@@ -82,10 +94,67 @@ export function getOldContent() {
     let actual_title = $("#table-title").text();
     $("#table-creator-title").val(actual_title);
 
+    // Légende
+    let actual_caption = $("#table-caption span").text();
+    $("#table-creator-caption").val(actual_caption);
+
 }
 
 // ANCHOR Fonction de sauvegarde
-function updatecontent() {
+export function updateContent() {
+
+    // On ajoute des ID sur chaque headers
+    $('#full-table tr th').each(function (index, element) {
+        let element_id = Math.random().toString(36).substr(2, 9);
+        $(element).attr('id', element_id);
+    });
+
+    // TODO On associe les id à toutes les cellules TD 
+    let headers_id = [];
+    $('#full-table thead tr').each(function (index, element) {
+        let headers = $(this).find('th');
+        let headers_id_row = [];
+        headers.each(function (index, element) {
+            headers_id_row.push($(element).attr('id'));
+            if( $(element).attr('colspan') > 1 ){
+                let nb_colspan = $(element).attr('colspan');
+                for(let i = 1; i < nb_colspan; i ++){
+                    headers_id_row.push($(element).attr('id'));
+                }
+            }
+        });
+        headers_id.push(headers_id_row); 
+    });
+
+    // On associe les ID aux cellules de colonnes
+    $('#full-table tbody tr, #full-table tfoot tr').each(function (index, element) {
+        let row_index = index;
+
+        let row_header_id;
+        if($(this).find('th').length){
+            row_header_id = $(this).find('th').first().attr('id');
+        }
+
+        let normal_cells = $(this).find('td');
+        normal_cells.each(function (index, element) {
+            let cell_index = index;
+            let cell_headers = "";
+            // On ajoute l'id du header latéral si existe 
+            if(row_header_id){
+                cell_headers = row_header_id;
+            }
+            headers_id.forEach(function (item, index) {
+                // Si les header latéraux sont présents, les headers du THEAD sont décalés de 1 (une colonne en trop)
+                if(row_header_id){
+                    cell_headers = cell_headers + " " + item[cell_index + 1];
+                } else {
+                    cell_headers = cell_headers + " " + item[cell_index];
+                }
+            });
+            $(element).attr('headers', cell_headers);
+        });
+
+    });
 
     // on récupère le contenu
     var blueprint_content = $('#content-created-blueprint').html();
@@ -105,27 +174,31 @@ function updatecontent() {
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
+$('#edit-table').on('click', function(){
+    updateContent();
+})
+
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
     console.log("Création");
-    $('#content-created-blueprint').html(initial_content);
-    updatecontent();
+    // $('#content-created-blueprint').html(initial_content);
+    updateContent();
 } else {
     console.log("Modification");
     getOldContent();
-    updatecontent();
+    updateContent();
 }
 
 // ANCHOR Changement de titre
 $('#table-creator-title').on('keyup', function () {
     $('#table-title').text($('#table-creator-title').val());
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Changement de caption
 $('#table-creator-caption').on('keyup', function () {
     $('#table-caption span').text($('#table-creator-caption').val());
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Changement du nombre de lignes via INPUT
@@ -159,7 +232,7 @@ $('#table-row-nb').on('change', function () {
             }
         }
     }
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Changement du nombre de colonnes via INPUT
@@ -199,7 +272,7 @@ $('#table-col-nb').on('change', function () {
             }
         }
     }
-    updatecontent();
+    updateContent();
 });
 
 // Ajout de colonne
@@ -219,16 +292,20 @@ export function addCol(side) {
         if ($(".content-editable-selected").length) {
             cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
             $("#full-table tr").each(function (index, tr) {
-                $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+                // $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+                $(tr).find("td")[cell_index].before(cell_html);
                 if (index < rows_header) {
-                    $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+                    // $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+                    $(tr).find("th")[cell_index].before(cell_header_html);
                 }
             })
         } else {
             $("#full-table tr").each(function (index, tr) {
-                $(cell_html).insertBefore($(tr).find("td").first());
+                // $(cell_html).insertBefore($(tr).find("td").first());
+                $(tr).find("td").first().before(cell_html);
                 if (index < rows_header) {
-                    $(cell_header_html).insertBefore($(tr).find("th").first());
+                    // $(cell_header_html).insertBefore($(tr).find("th").first());
+                    $(tr).find("th").first().before(cell_header_html);
                 }
             })
         }
@@ -236,16 +313,20 @@ export function addCol(side) {
         if ($(".content-editable-selected").length) {
             cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
             $("#full-table tr").each(function (index, tr) {
-                $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+                // $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+                $(tr).find("td")[cell_index].after(cell_html);
                 if (index < rows_header) {
-                    $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+                    // $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+                    $(tr).find("th")[cell_index].after(cell_header_html);
                 }
             })
         } else {
             $("#full-table tr").each(function (index, tr) {
-                $(cell_html).insertAfter($(tr).find("td").last());
+                // $(cell_html).insertAfter($(tr).find("td").last());
+                $(tr).find("td").last().after(cell_html);
                 if (index < rows_header) {
-                    $(cell_header_html).insertAfter($(tr).find("th").last());
+                   //  $(cell_header_html).insertAfter($(tr).find("th").last());
+                   $(tr).find("th").last().after(cell_header_html);
                 }
             })
         }
@@ -265,21 +346,24 @@ export function addRow(side) {
     // Ligne au dessus
     if (side == "up") {
         if ($('.content-editable-selected').length) {
-            $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+            // $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+            $(".content-editable-selected").closest('tr').before( row_html + "\n\t\t" );
             inserted_row = $(".content-editable-selected").closest('tr').prev();
-
         } else {
-            $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+            // $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+            $("#full-table").find('tbody tr').first().before( row_html + "\n\t\t" );
             inserted_row = $("#full-table").find('tbody tr').first();
         }
     }
     // Ligne en dessous
     else if (side == "down") {
         if ($('.content-editable-selected').length) {
-            $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+            // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+            $(".content-editable-selected").closest('tr').after( row_html + "\n\t\t" );
             inserted_row = $(".content-editable-selected").closest('tr').next();
         } else {
-            $(row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+            // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+            $("#full-table tbody").find('tr').last().after( row_html + "\n\t\t" );
             inserted_row = $("#full-table").find('tbody tr').last();
         }
     }
@@ -295,7 +379,7 @@ export function addRow(side) {
                 cell_html = element_types["type-unique"]["insert-cell"];
             }
         }
-        inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
+        inserted_row.append( cell_html + "\n\t\t" );
     }
 }
 
@@ -311,7 +395,6 @@ function removeRow(row) {
         }
     }
     let row_length = $('#full-table tbody').find('tr').length;
-    console.log(row_length);
     if(row_length <= 1){
         return false;
     }
@@ -337,9 +420,15 @@ function removeRow(row) {
 // Déplacement de ligne
 function moveRow(side){
     if(side == "up"){
-        $(selected_row).insertBefore(previous_row);
+        // $(selected_row).insertBefore(previous_row);
+        $(selected_row).each(function(){
+            console.log($(this));
+        })
     }else if(side == "down"){
-        $(selected_row).insertAfter(next_row);
+        // $(selected_row).insertAfter(next_row);
+        $(selected_row).each(function(){
+            console.log($(this));
+        })
     }
 }
 
@@ -351,15 +440,24 @@ function moveCol(side){
 
     if(side == "left"){
         rows.each(function(){
-            cols = $(this).children('th, td');
-            cols.eq(col_id).detach().insertBefore(cols.eq(col_id-1));
+            cols = $(this).children('td, th');
+            let other_text = cols.eq(col_id-1).text();
+            let actual_text = cols.eq(col_id).text();
+            cols.eq(col_id).text(other_text);
+            cols.eq(col_id-1).text(actual_text);
         });
+        previous_cell.focus();
 
     }else if(side == "right"){
         rows.each(function(){
-            cols = $(this).children('th, td');
-            cols.eq(col_id).detach().insertAfter(cols.eq(col_id+1));
+            cols = $(this).children('td, th');
+            let other_text = cols.eq(col_id+1).text();
+            let actual_text = cols.eq(col_id).text();
+            cols.eq(col_id).text(other_text);
+            cols.eq(col_id+1).text(actual_text);
+            
         });
+        next_cell.focus();
     }
 }
 
@@ -388,7 +486,6 @@ function moveCell(side){
 }
 
 function mergeCell(side, cell, other_cell){
-    console.log(other_cell);
     if(side == "row"){
         let previous_colspan = 1;
         let next_colspan = 1;
@@ -414,7 +511,7 @@ function mergeCell(side, cell, other_cell){
     }
 
     $('.content-editable-selected').focus();
-    updatecontent();
+    updateContent();
 }
 
 function splitCell(){
@@ -429,15 +526,17 @@ function splitCell(){
     }else if(rowspan_len){
         $('.content-editable-selected').removeAttr('rowspan');
         let new_cell_html = element_types["type-unique"]["insert-header-row"];
+        let next_merged_index = $('.content-editable-selected').parent().parent().find(selected_row).index();
         for(let i = 1; i < rowspan_len; i ++){
-
-            $(new_cell_html).insertAfter('.content-editable-selected');
+            let next_row_cell_id = parseInt(next_merged_index) + i;
+            let next_row_cell = $('#full-table tbody tr')[next_row_cell_id];
+            $(next_row_cell).prepend(new_cell_html);
         }
     }
 }
 
 // Suppression de colonne
-function removeCol(cells) {
+export function removeCol(cells) {
     // ATTENTION : cells doit être un array d'item
     if (Array.isArray(cells)) {
         // On vérifie que la ligne soit vide
@@ -453,7 +552,9 @@ function removeCol(cells) {
             if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
                 cells.forEach(function (item, index) {
                     let actual_cell = item;
-                    actual_cell.remove();
+                    if(actual_cell){
+                        actual_cell.remove();
+                    }
                 });
                 return true;
             }
@@ -467,7 +568,9 @@ function removeCol(cells) {
         else {
             cells.forEach(function (item, index) {
                 let actual_cell = item;
-                actual_cell.remove();
+                if(actual_cell){
+                    actual_cell.remove();
+                }
             });
             return true;
         }
@@ -530,7 +633,6 @@ $('.cell-action').on('click', function () {
     // MERGE DOWN
     } else if (element_action == "merge-down") {
         let other_cell = selected_row.nextAll().find('th');
-        console.log(other_cell);
         if(other_cell.length){
             mergeCell("col", $('.content-editable-selected'), other_cell[0]);
             
@@ -538,8 +640,6 @@ $('.cell-action').on('click', function () {
             message = "Fusion impossible : pas de case en bas";
             alertMsg(message, "error");
         }
-
-    // TODO ATTENTION à la fusion avec des cellules déjà fusionnées !!
     
     // SPLIT
     } else if (element_action == "split-cell") {
@@ -548,11 +648,20 @@ $('.cell-action').on('click', function () {
     // Supprimer la colonne
     }else if (element_action == "delete-col") {
         if (selected_col && nb_col > 2) {
+            // On récupère le prochain élément pour le focus
+            let next_element_select = previous_col;
+            if(!previous_col.length){
+                next_element_select = next_col;
+            }
+            next_element_select = next_element_select[0];
+            // On supprime la colonne
             let col_removed = removeCol(selected_col);
             if (col_removed) {
                 $('#table-col-nb').val(parseInt(nb_col) - 1);
                 message = "Colonne supprimée";
                 alertMsg(message, "success");
+                // Quand elle est supprimée, on focus 
+                next_element_select.focus();
             }
         }else{
             message = "A quoi sert un tableau sans colonnes ?";
@@ -562,21 +671,30 @@ $('.cell-action').on('click', function () {
     // Supprimer la ligne
     else if (element_action == "delete-row") {
         if (selected_row && nb_row > 2) {
+            // On récupère le prochain élément pour le focus
+            let next_element_select = previous_row;
+            if(!previous_row.length){
+                next_element_select = next_row;
+            }
+            next_element_select = next_element_select.find('tr,td').first();
+            // On supprime la ligne
             let row_removed = removeRow(selected_row);
             if (row_removed) {
                 $('#table-row-nb').val(parseInt(nb_row) - 1);
                 message = "Colonne supprimée";
                 alertMsg(message, "success");
+                // Quand elle est supprimée, on focus 
+                next_element_select.focus();
             }
         }else{
             message = "A quoi sert un tableau sans lignes ?";
             alertMsg(message, "error");
         }
-        // TODO unfocus total;
+
     }
 
     $('.content-editable-selected').focus();
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Ajout d'un élément
@@ -688,13 +806,13 @@ $('.add-element').on('click', function () {
     }
 
     $('.content-editable-selected').focus();
-    updatecontent();
+    updateContent();
 
 });
 
 // ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {
-    updatecontent();
+    updateContent();
     let post_url = $("#full-table-post").attr('action');
     $.ajax({
         method: "POST",
@@ -859,22 +977,29 @@ $(document.body)
                 $('.action-move-cell-left').attr('disabled', true);
                 $('.action-move-col-left').attr('disabled', true);
             } else {
-                $('.action-move-cell-left').attr('disabled', false);
                 $('.action-move-col-left').attr('disabled', false);
+                $('.action-move-cell-left').attr('disabled', false);
                 $('#action-move-left').show();
+                
             }
 
             // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
             // console.log(next_col);
             if (next_col.length == 0) {
                 $('.action-move-cell-right').attr('disabled', true);
-                $('.action-move-col-right').attr('disabled', true);
                 $('#action-move-right').hide();
                 $('.action-merge-right').attr('disabled', true);
+                $('.action-move-col-right').attr('disabled', true);
             } else {
                 $('.action-move-cell-right').attr('disabled', false);
-                $('.action-move-col-right').attr('disabled', false);
                 $('#action-move-right').show();
+                if(!$('.content-editable-selected').hasClass('table-header-cell')){
+                    $('.action-move-col-right').attr('disabled', false);
+                }
+                if( parent_tag == "THEAD" ){
+                    $('.action-move-col-right').attr('disabled', true);
+                    $('.action-move-col-left').attr('disabled', true);
+                }
             }
 
             // Si il n'y a pas de cellule adjacente ; pas de merge
@@ -896,20 +1021,20 @@ $(document.body)
             $('.side-tool').hide();
         }
 
-        updatecontent();
+        updateContent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
     .on('keyup', '#table-title', function () {
 
         $('#table-creator-title').val($('#table-title').text());
-        updatecontent();
+        updateContent();
 
     })
 
     .on('keyup', '#table-caption', function () {
 
         $('#table-creator-caption').val($('#table-caption span').text());
-        updatecontent();
+        updateContent();
 
     });
 
@@ -917,7 +1042,7 @@ $(document.body)
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
     $('.side-tool').hide();
-    updatecontent();
+    updateContent();
 })
 
 // ANCHOR Fonction Undo/Redo suppression
@@ -964,7 +1089,7 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-weight-bold');
                 }
             }
-            updatecontent();
+            updateContent();
             break;
         case 'element-italic':
             if(is_text_selected){
@@ -976,7 +1101,7 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-style-italic');
                 }
             }
-            updatecontent();
+            updateContent();
             break;
         case 'element-underline':
             if(is_text_selected){
@@ -988,22 +1113,22 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-underline');
                 }
             }
-            updatecontent();
+            updateContent();
             break;
         case 'justify-left':
             $('.content-editable-selected').attr('style', 'text-align: left');
-            updatecontent();
+            updateContent();
             break;
         case 'justify-center':
             $('.content-editable-selected').attr('style', 'text-align: center');
-            updatecontent();
+            updateContent();
             break;
         case 'justify-right':
             $('.content-editable-selected').attr('style', 'text-align: right');
-            updatecontent();
+            updateContent();
             break;
     }
-    updatecontent();
+    updateContent();
 })
 
 // ANCHOR Theme

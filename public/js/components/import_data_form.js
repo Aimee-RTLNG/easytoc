@@ -275,7 +275,7 @@ function importData(form) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\components\import_data_form.js */"./resources/js/components/import_data_form.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\import_data_form.js */"./resources/js/components/import_data_form.js");
 
 
 /***/ })

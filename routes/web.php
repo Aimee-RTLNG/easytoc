@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{user}/view', 'Profile\ProfileController@edit')->name('profile.view');
     Route::put('/profile/{user}/info', 'Profile\ProfileController@updateInfo')->name('profile.updateInfo');
     Route::put('/profile/{user}/password', 'Profile\ProfileController@updatePass')->name('profile.updatePass');
+    Route::post('/profile/{user}/destroy', 'Profile\ProfileController@destroy')->name('profile.destroy');
 });
 
 // Content

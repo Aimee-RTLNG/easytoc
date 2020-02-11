@@ -1,18 +1,11 @@
-// COMMIT
-# [X] Déplacement de ligne (no header no footer)
-# [X] Déplacement de colonne (no header no footer)
-# [X] Déplacement de cellule (contenu)
-# [X] Fusion de cellule à droite
-# [x] Fusion de cellule en bas
 
 // PRIORITE HAUTE
-# [X] Option de header left seulement
-# [X] Empêcher les grosses fusions de cellules 
-# [] FIXME Ajout de colonnes header latéral
-# [X] Division de cellule (si merged !!!)
-# [] Problème d'indentation dans le code généré
 # [] Problème de bouton "Copier" sur page Visualisation
-
+# [] Trier par date de modification
+# [] Importation JSON
+# [X] Importation CSV
+# [X] Importation CSV : dernière ligne non prise en compte
+# [X] Importation CSV : caption
 
 // PROPRITE BASSE
 # [] TODO Traduire la page formulaire

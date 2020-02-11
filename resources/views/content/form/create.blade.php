@@ -284,9 +284,9 @@
                             <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                             <!-- panneau blueprint -->
+                            {{ __('Titre du formulaire') }}
                             <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel" aria-labelledby="nav-blueprint-tab">
-                                <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">
-                                </div>
+                                <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">@include('content.form.template')</div>
                             </div>
 
                             <!-- panneau code -->
@@ -407,7 +407,13 @@
                             <label for="elem-url creator-panel__title ">
                                 {{ __('Lien associé') }} (url)
                             </label>
-                            <input class="input-creator form-control" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
+                            <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
+                        </div>
+                        <div role="section" class="col-lg-3 col-md-6 align-items-center action-title" style="display:none">
+                            <label for="elem-url-title">
+                                {{ __('Indication de navigation') }}
+                            </label>
+                            <input class="input-creator" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
                         </div>
                         <!-- Ajout d'option -->
                          <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">

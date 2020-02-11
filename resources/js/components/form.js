@@ -13,7 +13,7 @@ let next_option;
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+// let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
 
 // Imports
 import { alertMsg } from "../../js/app";
@@ -139,7 +139,7 @@ function updatecontent() {
 // ANCHOR Initialisation du formulaire
 if ($('#raw-code').val().length <= 0) {
     console.log("Création");
-    $('#content-created-blueprint').html(initial_content);
+    // $('#content-created-blueprint').html(initial_content);
     updatecontent();
 } else {
     console.log("Modification");
@@ -433,6 +433,7 @@ $(document.body)
                 $('.action-option-label').hide();
                 $('.action-option-value').hide();
                 $('.action-add-option').hide();
+                $('.action-title').hide();
                 $('.action-delete-option').hide();
                 $('.action-required').show(); // Requis possibles sur toutes les questions
 
@@ -493,6 +494,7 @@ $(document.body)
                 } else if (element_name == "insert-link") {
                     $('.action-required').hide();
                     $('.action-url').show();
+                    $('.action-title').show();
                     $('.action-options-name').hide();
 
                     if (intitule) {
@@ -506,6 +508,20 @@ $(document.body)
                             e.stopPropagation();
                             link_url = $('#elem-url').val();
                             $(intitule).attr('href', link_url);
+                            updatecontent();
+                        })
+
+                        // on désactive les events précedents
+                        $('#elem-url-title').off('keyup');
+                        // on récupère les attributs de l'élement sélectionné
+                        $('#elem-url-title').val($(intitule).attr('title'));
+                        // event de changement d'url
+                        let link_title;
+                        $('#elem-url-title').on('keyup', function (e) {
+                            console.log($('#elem-url-title').val());
+                            e.stopPropagation();
+                            link_title = $('#elem-url-title').val();
+                            $(intitule).attr('title', link_title);
                             updatecontent();
                         })
                     }
