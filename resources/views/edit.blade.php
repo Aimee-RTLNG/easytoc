@@ -113,11 +113,7 @@
                 <div class="main-info-form" role="region">
                     <div class="col p-0 mr-3" role="region">
                         <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre du menu') }}</label>
-                        <input name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre') }}" class="form-control" size="30"/>
-                    </div>
-                    <div class="col p-0" role="region">
-                        <label class="creator-panel__caption" for="menu-creator-caption">{{ __('Légende du menu') }}</label>
-                        <input name="menu-creator-caption" id="menu-creator-caption" placeholder="{{ __('Légende') }}" class="form-control" size="30"/>
+                        <input name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre du menu') }}" class="form-control" size="30"/>
                     </div>
                 </div>
 
