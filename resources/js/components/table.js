@@ -101,26 +101,59 @@ export function getOldContent() {
 }
 
 // ANCHOR Fonction de sauvegarde
-function updatecontent() {
+export function updateContent() {
 
     // On ajoute des ID sur chaque headers
     $('#full-table tr th').each(function (index, element) {
         let element_id = Math.random().toString(36).substr(2, 9);
         $(element).attr('id', element_id);
-        if( $(element).attr('colspan') > 1 ){
-            console.log('colspan');
-        }
     });
 
     // TODO On associe les id à toutes les cellules TD 
-    $('#full-table tr').each(function (index, element) {
-        let headers_id = "";
+    let headers_id = [];
+    $('#full-table thead tr').each(function (index, element) {
         let headers = $(this).find('th');
+        let headers_id_row = [];
         headers.each(function (index, element) {
-            headers_id = headers_id + " " + $(element).attr('id');
+            headers_id_row.push($(element).attr('id'));
+            if( $(element).attr('colspan') > 1 ){
+                let nb_colspan = $(element).attr('colspan');
+                for(let i = 1; i < nb_colspan; i ++){
+                    headers_id_row.push($(element).attr('id'));
+                }
+            }
         });
-        console.log(headers_id);
-        // $(element).attr('headers', headers_id);
+        headers_id.push(headers_id_row); 
+    });
+
+    // On associe les ID aux cellules de colonnes
+    $('#full-table tbody tr, #full-table tfoot tr').each(function (index, element) {
+        let row_index = index;
+
+        let row_header_id;
+        if($(this).find('th').length){
+            row_header_id = $(this).find('th').first().attr('id');
+        }
+
+        let normal_cells = $(this).find('td');
+        normal_cells.each(function (index, element) {
+            let cell_index = index;
+            let cell_headers = "";
+            // On ajoute l'id du header latéral si existe 
+            if(row_header_id){
+                cell_headers = row_header_id;
+            }
+            headers_id.forEach(function (item, index) {
+                // Si les header latéraux sont présents, les headers du THEAD sont décalés de 1 (une colonne en trop)
+                if(row_header_id){
+                    cell_headers = cell_headers + " " + item[cell_index + 1];
+                } else {
+                    cell_headers = cell_headers + " " + item[cell_index];
+                }
+            });
+            $(element).attr('headers', cell_headers);
+        });
+
     });
 
     // on récupère le contenu
@@ -142,30 +175,30 @@ function updatecontent() {
 };
 
 $('#edit-table').on('click', function(){
-    updatecontent();
+    updateContent();
 })
 
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
     console.log("Création");
     $('#content-created-blueprint').html(initial_content);
-    updatecontent();
+    updateContent();
 } else {
     console.log("Modification");
     getOldContent();
-    updatecontent();
+    updateContent();
 }
 
 // ANCHOR Changement de titre
 $('#table-creator-title').on('keyup', function () {
     $('#table-title').text($('#table-creator-title').val());
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Changement de caption
 $('#table-creator-caption').on('keyup', function () {
     $('#table-caption span').text($('#table-creator-caption').val());
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Changement du nombre de lignes via INPUT
@@ -199,7 +232,7 @@ $('#table-row-nb').on('change', function () {
             }
         }
     }
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Changement du nombre de colonnes via INPUT
@@ -239,7 +272,7 @@ $('#table-col-nb').on('change', function () {
             }
         }
     }
-    updatecontent();
+    updateContent();
 });
 
 // Ajout de colonne
@@ -376,9 +409,15 @@ function removeRow(row) {
 // Déplacement de ligne
 function moveRow(side){
     if(side == "up"){
-        $(selected_row).insertBefore(previous_row);
+        // $(selected_row).insertBefore(previous_row);
+        $(selected_row).each(function(){
+            console.log($(this));
+        })
     }else if(side == "down"){
-        $(selected_row).insertAfter(next_row);
+        // $(selected_row).insertAfter(next_row);
+        $(selected_row).each(function(){
+            console.log($(this));
+        })
     }
 }
 
@@ -461,7 +500,7 @@ function mergeCell(side, cell, other_cell){
     }
 
     $('.content-editable-selected').focus();
-    updatecontent();
+    updateContent();
 }
 
 function splitCell(){
@@ -644,7 +683,7 @@ $('.cell-action').on('click', function () {
     }
 
     $('.content-editable-selected').focus();
-    updatecontent();
+    updateContent();
 });
 
 // ANCHOR Ajout d'un élément
@@ -756,13 +795,13 @@ $('.add-element').on('click', function () {
     }
 
     $('.content-editable-selected').focus();
-    updatecontent();
+    updateContent();
 
 });
 
 // ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {
-    updatecontent();
+    updateContent();
     let post_url = $("#full-table-post").attr('action');
     $.ajax({
         method: "POST",
@@ -971,20 +1010,20 @@ $(document.body)
             $('.side-tool').hide();
         }
 
-        updatecontent();
+        updateContent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
     .on('keyup', '#table-title', function () {
 
         $('#table-creator-title').val($('#table-title').text());
-        updatecontent();
+        updateContent();
 
     })
 
     .on('keyup', '#table-caption', function () {
 
         $('#table-creator-caption').val($('#table-caption span').text());
-        updatecontent();
+        updateContent();
 
     });
 
@@ -992,7 +1031,7 @@ $(document.body)
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
     $('.side-tool').hide();
-    updatecontent();
+    updateContent();
 })
 
 // ANCHOR Fonction Undo/Redo suppression
@@ -1039,7 +1078,7 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-weight-bold');
                 }
             }
-            updatecontent();
+            updateContent();
             break;
         case 'element-italic':
             if(is_text_selected){
@@ -1051,7 +1090,7 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-style-italic');
                 }
             }
-            updatecontent();
+            updateContent();
             break;
         case 'element-underline':
             if(is_text_selected){
@@ -1063,22 +1102,22 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-underline');
                 }
             }
-            updatecontent();
+            updateContent();
             break;
         case 'justify-left':
             $('.content-editable-selected').attr('style', 'text-align: left');
-            updatecontent();
+            updateContent();
             break;
         case 'justify-center':
             $('.content-editable-selected').attr('style', 'text-align: center');
-            updatecontent();
+            updateContent();
             break;
         case 'justify-right':
             $('.content-editable-selected').attr('style', 'text-align: right');
-            updatecontent();
+            updateContent();
             break;
     }
-    updatecontent();
+    updateContent();
 })
 
 // ANCHOR Theme

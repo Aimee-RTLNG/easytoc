@@ -238,6 +238,7 @@ function importData(table) {
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 
+  Object(_table__WEBPACK_IMPORTED_MODULE_1__["updateContent"])();
   $('#full-table tr td').last().focus();
 }
 

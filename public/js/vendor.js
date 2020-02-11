@@ -52250,13 +52250,14 @@ new ClipboardJS('#copy-raw-code');
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: element_types, getOldContent, addCol, addRow, removeCol */
+/*! exports provided: element_types, getOldContent, updateContent, addCol, addRow, removeCol */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateContent", function() { return updateContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
@@ -52353,24 +52354,58 @@ function getOldContent() {
   $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
-function updatecontent() {
+function updateContent() {
   // On ajoute des ID sur chaque headers
   $('#full-table tr th').each(function (index, element) {
     var element_id = Math.random().toString(36).substr(2, 9);
     $(element).attr('id', element_id);
-
-    if ($(element).attr('colspan') > 1) {
-      console.log('colspan');
-    }
   }); // TODO On associe les id à toutes les cellules TD 
 
-  $('#full-table tr').each(function (index, element) {
-    var headers_id = "";
+  var headers_id = [];
+  $('#full-table thead tr').each(function (index, element) {
     var headers = $(this).find('th');
+    var headers_id_row = [];
     headers.each(function (index, element) {
-      headers_id = headers_id + " " + $(element).attr('id');
+      headers_id_row.push($(element).attr('id'));
+
+      if ($(element).attr('colspan') > 1) {
+        var nb_colspan = $(element).attr('colspan');
+
+        for (var i = 1; i < nb_colspan; i++) {
+          headers_id_row.push($(element).attr('id'));
+        }
+      }
     });
-    console.log(headers_id); // $(element).attr('headers', headers_id);
+    headers_id.push(headers_id_row);
+  }); // On associe les ID aux cellules de colonnes
+
+  $('#full-table tbody tr, #full-table tfoot tr').each(function (index, element) {
+    var row_index = index;
+    var row_header_id;
+
+    if ($(this).find('th').length) {
+      row_header_id = $(this).find('th').first().attr('id');
+    }
+
+    var normal_cells = $(this).find('td');
+    normal_cells.each(function (index, element) {
+      var cell_index = index;
+      var cell_headers = ""; // On ajoute l'id du header latéral si existe 
+
+      if (row_header_id) {
+        cell_headers = row_header_id;
+      }
+
+      headers_id.forEach(function (item, index) {
+        // Si les header latéraux sont présents, les headers du THEAD sont décalés de 1 (une colonne en trop)
+        if (row_header_id) {
+          cell_headers = cell_headers + " " + item[cell_index + 1];
+        } else {
+          cell_headers = cell_headers + " " + item[cell_index];
+        }
+      });
+      $(element).attr('headers', cell_headers);
+    });
   }); // on récupère le contenu
 
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
@@ -52387,31 +52422,30 @@ function updatecontent() {
 
   $("#formatted-code").html(PR.prettyPrintOne(code_content));
 }
-
 ;
 $('#edit-table').on('click', function () {
-  updatecontent();
+  updateContent();
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
   console.log("Création");
   $('#content-created-blueprint').html(initial_content);
-  updatecontent();
+  updateContent();
 } else {
   console.log("Modification");
   getOldContent();
-  updatecontent();
+  updateContent();
 } // ANCHOR Changement de titre
 
 
 $('#table-creator-title').on('keyup', function () {
   $('#table-title').text($('#table-creator-title').val());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement de caption
 
 $('#table-creator-caption').on('keyup', function () {
   $('#table-caption span').text($('#table-creator-caption').val());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement du nombre de lignes via INPUT
 
 $('#table-row-nb').on('change', function () {
@@ -52451,7 +52485,7 @@ $('#table-row-nb').on('change', function () {
     }
   }
 
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
@@ -52500,7 +52534,7 @@ $('#table-col-nb').on('change', function () {
     }
   }
 
-  updatecontent();
+  updateContent();
 }); // Ajout de colonne
 
 function addCol(side) {
@@ -52646,9 +52680,15 @@ function removeRow(row) {
 
 function moveRow(side) {
   if (side == "up") {
-    $(selected_row).insertBefore(previous_row);
+    // $(selected_row).insertBefore(previous_row);
+    $(selected_row).each(function () {
+      console.log($(this));
+    });
   } else if (side == "down") {
-    $(selected_row).insertAfter(next_row);
+    // $(selected_row).insertAfter(next_row);
+    $(selected_row).each(function () {
+      console.log($(this));
+    });
   }
 } // Déplacement de colonne
 
@@ -52735,7 +52775,7 @@ function mergeCell(side, cell, other_cell) {
   }
 
   $('.content-editable-selected').focus();
-  updatecontent();
+  updateContent();
 }
 
 function splitCell() {
@@ -52903,7 +52943,7 @@ $('.cell-action').on('click', function () {
     }
 
   $('.content-editable-selected').focus();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Ajout d'un élément
 
 $('.add-element').on('click', function () {
@@ -53004,11 +53044,11 @@ $('.add-element').on('click', function () {
   }
 
   $('.content-editable-selected').focus();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {
-  updatecontent();
+  updateContent();
   var post_url = $("#full-table-post").attr('action');
   $.ajax({
     method: "POST",
@@ -53209,19 +53249,19 @@ $(document.body).off('keyup') // ré-initialisation
     $('.side-tool').hide();
   }
 
-  updatecontent();
+  updateContent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
   $('#table-creator-title').val($('#table-title').text());
-  updatecontent();
+  updateContent();
 }).on('keyup', '#table-caption', function () {
   $('#table-creator-caption').val($('#table-caption span').text());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
   $('.side-tool').hide();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Fonction Undo/Redo suppression
 
 function command(instance) {
@@ -53271,7 +53311,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'element-italic':
@@ -53285,7 +53325,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'element-underline':
@@ -53299,26 +53339,26 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-left':
       $('.content-editable-selected').attr('style', 'text-align: left');
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-center':
       $('.content-editable-selected').attr('style', 'text-align: center');
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-right':
       $('.content-editable-selected').attr('style', 'text-align: right');
-      updatecontent();
+      updateContent();
       break;
   }
 
-  updatecontent();
+  updateContent();
 }); // ANCHOR Theme
 
 $('input[name="theme"]').on('change', function () {
