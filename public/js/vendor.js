@@ -51331,17 +51331,17 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
       "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
     },
     "type-layout": {
-      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Title</h2>",
+      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraph</p>",
+      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Name of the link</a>",
+      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ol>",
+      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ul>",
       "insert-horizontal_rule": "<hr contenteditable='true'>"
     },
     "type-special": {
-      "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+      "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
       "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-      "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+      "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
     }
   };
 } else {
