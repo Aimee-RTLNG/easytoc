@@ -129,9 +129,9 @@
         </div>
 
         <!-- interface d'interaction avec le projet -->
-        <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="Actions sur l'élement">
+        <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
 
-            <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="Actions sur l'élement">
+            <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
                 <div class="main-info-form row" role="region">
@@ -289,28 +289,25 @@
                                     <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">{!! old('html', $content->html) !!}</div>
                                 </div>
 
-                                <!-- panneau code -->
-                                <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                    <a href="aide#formcode" class="btn btn-primary btn_crea blueprint__btn">
-                                        <i class="fa fa-question-circle"></i>
-                                        {{ __("Besoin d'aide !") }}
-                                    </a>
-                                    <div class="copy-container w-100 d-flex flex-row-reverse">
-                                        <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info" title="{{ __('Copier') }}">
-                                            {{ __("Copier") }}
-                                        </button>
-                                    </div>
-                                    <!-- Lien du style à utiliser -->
-                                    <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
-                                    <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
-                                    <div class="copy-container w-100 d-flex flex-row-reverse">
-                                        <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}">
-                                            {{ __("Copier") }}
-                                        </button>
-                                    </div>
-                                    <!-- Code formatté -->
-                                    <pre class="prettyprint linenums:4 content-panel" id="formatted-code"></pre>
+                            <!-- panneau code -->
+                            <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                                <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+                                    <i class="fa fa-question-circle"></i>
+                                    {{ __("Besoin d'aide !") }}
+                                </a>
+                                <div class="copy-container w-100 d-flex flex-row-reverse">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
+                                        {{ __("Copier") }}
+                                    </button>
+                                </div>
+                                <!-- Lien du style à utiliser -->
+                                <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                <h3 class="creator-panel__title mt-3">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
+                                <div class="copy-container w-100 d-flex flex-row-reverse">
+                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
+                                        {{ __("Copier") }}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -424,20 +421,26 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                {{ __('Annuler les modifications') }}
+        <div class="project-action edit-project-action col-12 my-3" role="region" aria-labelledby="form_actions">
+            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <p>{{ __('Annuler les modifications') }}</p>
             </button>
-            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
-                {{ __('Sauvegarder ce projet') }}
+            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
+                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <p>
+                    {{ __('Sauvegarder ce projet') }}
+                </p>
             </button>
-            <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+            <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <div class="crea-item__btns__icon btn--rouge">
-                    <i class="fa fa-times"></i>
-                </div>
-                <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
+                <button type="submit" value="" class="shadow-box btn-delete-def btn btn-danger" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                    <div class="crea-item__btns__icon btn--danger">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <p>{{ __('Supprimer') }}</p>
+                </button>       
             </form>
         </div>
 

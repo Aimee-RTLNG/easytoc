@@ -1,0 +1,15 @@
+.btn--danger {
+    color: $red;
+    background-color: white;
+}
+.btn-gris-annule {
+    color: $dark;
+    background-color: $gris-btn;
+    &:hover {
+        color: $dark;
+        background-color: $gris-btn-hover;
+    }
+    .btn-crea__icon {
+        color: $dark;
+    }
+}

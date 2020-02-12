@@ -373,47 +373,48 @@
                                     </select>
                                 </div>
                                 <!-- Longueur max-->
-                                <div role="section" class="col action-maxlength" style="display:none">
+                                <div role="section" class="col-lg-3 col-md-6 action-maxlength" style="display:none">
                                     <label for="elem-length" class="creator-panel__title">
-                                        {{ __('Longueur maximum') }}
+                                        {{ __('Longueur de caractères maximum') }}
                                     </label>
                                     <input class="form-control form-element-action input-creator" data-action="maxlength" name="elem-length" id="elem-length" placeholder="0 = {{ __('sans limite') }}" />
                                 </div>
                             <!-- Si élément == select -->
                                 <!-- Si élément == lien -->
-                                <div role="section" class="col align-items-center action-url" style="display:none">
-                                    <label for="elem-url">
+                                <div role="section" class="col-lg-9 col-md-6 align-items-center action-url" style="display:none">
+                                    <label for="elem-url" class="creator-panel__title ">
                                         {{ __('Lien associé') }} (url)
                                     </label>
-                                    <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
+                                    <input class="input-creator form-control" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
                                 </div>
-                                <div role="section" class="col align-items-center action-title" style="display:none">
-                                    <label for="elem-url-title">
+                                <div role="section" class="col-lg-3 col-md-6 align-items-center action-title" style="display:none">
+                                    <label for="elem-url-title" class="creator-panel__title">
                                         {{ __('Indication de navigation') }}
                                     </label>
-                                    <input class="input-creator" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
+                                    <input class="input-creator form-control" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
                                 </div>
                                 <!-- Ajout d'option -->
-                                <div role="section" class="col action-add-option" style="display:none">
+                                <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
                                     <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option">
                                         <i class="fa fa-check-square"></i>
                                         {{ __('Ajouter une option') }}
                                     </button>
                                 </div>
-                                <!-- Ajout d'option -->
-                                <div role="section" class="col action-delete-option" style="display:none">
+                                <!-- Suppression d'option -->
+                                <div role="section" class="col-lg-3 col-sm-6 action-delete-option" style="display:none">
                                     <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
-                                        <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash"></i>
                                         {{ __("Supprimer l'option") }}
                                     </button>
                                 </div>
                             </div>
-                            <div role="section" class="col p-0 align-items-center action-multiple-answer" style="display:none">
+                            <!-- Si élément == select -->
+                            <div role="section" class="col-lg-3 col-sm-6 align-items-center action-multiple-answer"style="display:none">
                                 <div class="action-multiple__cont">
-                                        <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
-                                        <label for="elem-multiple-choice" class="creator-panel__title">
-                                            {{ __('Choix multiples') }}
-                                        </label>
+                                    <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
+                                    <label for="elem-multiple-choice" class="creator-panel__title">
+                                        {{ __('Choix multiples') }}
+                                    </label>
                                 </div>
                             </div>
                             <!-- Required-->
@@ -428,7 +429,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -437,7 +437,7 @@
         <!-- Actions importantes sur le projet -->
         <div class="project-action row" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 project-action__btn">
-                <button type="button" accesskey="c" class="btn btn-form-final btn-danger btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+                <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button>

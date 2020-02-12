@@ -45,6 +45,7 @@ body {
         width: 100% !important;
         border-radius: 5px !important;
         border: 1px solid #888;
+        word-break: break-all;
     }
 
     pre.prettyprinted{
@@ -69,8 +70,6 @@ body {
 
 #content-created-blueprint form *{
     border: 0;
-    padding: 5px;
-
     &:hover{
         border: 3px dotted black;
     }
@@ -85,12 +84,12 @@ body {
     }
 
     fieldset{
-        border: 2px solid black;
+        border: none;
         display: flex;
         flex-direction: column;
 
         &:hover{
-            border: 2px solid black;
+            border: none;
         }
 
         label{
@@ -98,13 +97,13 @@ body {
             margin: 5px 15px;
 
             &:hover{
-                border: 3px dotted black;
+                border : none;
             }
         }
     }
 
     legend{
-        border: 2px solid black;
+        border: none;
     }
 
     hr {
@@ -207,7 +206,7 @@ input[type="checkbox"], input[type="radio"]{
     }
 }
 .btn-crea {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     padding: 2px 8px;
     &__icon {
         background-color: white;
@@ -303,6 +302,15 @@ input[type="checkbox"], input[type="radio"]{
     @include flex-row-center;
     &__btn {
         @include flex-row-between-center;
+    }
+}
+.edit-project-action {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto;
+    .btn-crea {
+        margin-right: 0px;
     }
 }
 .main-info-form {
@@ -405,6 +413,79 @@ input[type="checkbox"], input[type="radio"]{
             top: 0;
             left: 0px;
             margin-bottom: 10px;
+        }
+    }
+}
+// Génération formulaire
+#nav-blueprint {
+    font-size: 14px;
+    label {
+        font-size: 14px;
+        width: 100%;
+    }
+    #full-form {
+        max-width: 100%;
+        width: 100%;
+        .form-control {
+            margin-bottom: 0px;
+        }
+    }
+    #form-actions {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.content-html-preview {
+    #full-form .form-control {
+        margin-bottom: 0px;
+    }
+}
+.crea-item__btn-delete {
+    width: auto;
+}
+.btn-delete-def {
+    padding: 8px 20px;
+    color: white;
+    background-color: $red;
+    font-weight: bold;
+    @include flex-row-between-center;
+    width: 150px;
+    border-radius: 10px;
+    font-size: 1.4rem;
+}
+
+
+@include media-breakpoint-down(md) {
+    .edit-project-action > * {
+        margin-bottom: 20px;
+    } 
+    .edit-project-action {
+        .btn-danger {
+            order: 2;
+        }
+    }
+
+}
+@media (max-width: 768px) {
+    .btn-gris {
+        width: 100%;
+    }
+}
+@include media-breakpoint-down(xs) {
+    .form_btn-delete-def {
+        width: 100%;
+        .btn-delete-def {
+            width: 100%;
+        }
+    }
+    .edit-project-action {
+        .btn-success {
+            width: 100%;
+            margin-right: 0px;
+        }
+        .btn-crea {
+            padding: 8px 20px;
         }
     }
 }
