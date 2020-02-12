@@ -91,12 +91,10 @@
                             </a>
                         </div> 
                     </div>
-              
-                </div>
-                <div class="register__illu" style="background-image: url('./images/register-fond.jpg');">
-                </div>
+                </form>
+            </div>
+            <div class="register__illu" style="background-image: url('./images/register-fond.jpg');">
+            </div>
             </div>
         </div>
-    </div>
-</div> 
 @endsection

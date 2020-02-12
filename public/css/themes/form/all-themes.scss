@@ -16,30 +16,30 @@ $themes: (
         aColor : black,
     ),
     green: (
-        backgroundColor: green,
+        backgroundColor: #366E3B,
         textBackgroundColor: white,
-        textColor : green,
+        textColor : #366E3B,
         required : orange,
-        aColor : black,
+        aColor : #366E3B,
     ),
     red: (
-        backgroundColor: red,
+        backgroundColor: #C90000,
         textBackgroundColor: white,
-        textColor : red,
+        textColor : #D74A4A,
         required : orange,
-        aColor : black,
+        aColor : #C90000,
     ),
     blue: (
-        backgroundColor: blue,
+        backgroundColor: #155595,
         textBackgroundColor: white,
-        textColor : blue,
+        textColor : #1B6EC2,
         required : orange,
         aColor : black,
     ),
     grey: (
-        backgroundColor: grey,
-        textBackgroundColor: black,
-        textColor : grey,
+        backgroundColor: #3A3A3A,
+        textBackgroundColor: white,
+        textColor : #787878,
         required : orange,
         aColor : black,
     )
@@ -104,9 +104,12 @@ $themes: (
     border-top-right-radius: 12px;
     @include themify($themes) {
         border: 2px solid themed('backgroundColor');
+                select:focus {
+            border: none !important;
+        }
     }
     color: black;
-    width: 90vw;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     h1 {
@@ -172,7 +175,9 @@ $themes: (
                 left: -15px;
                 height: 7px;
                 width: 7px;
-                background-color: green;
+                @include themify($themes) {
+                    background-color: themed('backgroundColor') ;
+                }
                 border-radius: 50%;
             }
         }
@@ -180,8 +185,8 @@ $themes: (
     .form-control {
         font-family: Arial, Helvetica, sans-serif;
         display: block;
-        max-width: 95%;
-        width: 95%;
+        max-width: 100%;
+        width: 100%;
         margin-bottom: 20px;
         padding: .375rem .75rem;
         font-size: 13px;

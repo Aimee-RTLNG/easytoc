@@ -10908,6 +10908,7 @@ xmp {
   width: 100% !important;
   border-radius: 5px !important;
   border: 1px solid #888;
+  word-break: break-all;
 }
 
 pre.prettyprinted {
@@ -11066,7 +11067,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .btn-crea {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 2px 8px;
 }
 
@@ -11200,6 +11201,12 @@ input[type="checkbox"], input[type="radio"] {
 .edit-project-action {
   flex-wrap: wrap;
   justify-content: space-between;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.edit-project-action .btn-crea {
+  margin-right: 0px;
 }
 
 .main-info-form {
@@ -11366,6 +11373,19 @@ input[type="checkbox"], input[type="radio"] {
   width: auto;
 }
 
+.btn-delete-def {
+  padding: 8px 20px;
+  color: white;
+  background-color: #e3342f;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+}
+
 @media (max-width: 991.98px) {
   .edit-project-action > * {
     margin-bottom: 20px;
@@ -11373,8 +11393,27 @@ input[type="checkbox"], input[type="radio"] {
   .edit-project-action .btn-danger {
     order: 2;
   }
+}
+
+@media (max-width: 768px) {
+  .btn-gris {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .form_btn-delete-def {
+    width: 100%;
+  }
+  .form_btn-delete-def .btn-delete-def {
+    width: 100%;
+  }
   .edit-project-action .btn-success {
     width: 100%;
+    margin-right: 0px;
+  }
+  .edit-project-action .btn-crea {
+    padding: 8px 20px;
   }
 }
 
@@ -11713,6 +11752,10 @@ pre.prettyprinted {
   font-weight: bold;
 }
 
+.dashboard .btn-delete-def {
+  font-size: 1.6rem;
+}
+
 .dashboard__title {
   padding-left: 45px;
   font-weight: 700;
@@ -11965,7 +12008,7 @@ pre.prettyprinted {
     transition: height 0.5s ease;
   }
   .mon-compte.open {
-    height: 610px;
+    height: 700px;
   }
   .mon-compte__entete {
     justify-content: flex-start;
@@ -12071,7 +12114,7 @@ pre.prettyprinted {
 
 @media (max-width: 368px) {
   .mon-compte.open {
-    height: 644px;
+    height: 750px;
   }
   .mon-compte__entete {
     padding-right: 20px;
@@ -12095,6 +12138,10 @@ pre.prettyprinted {
 .edit-content-button, .delete-content-button {
   padding: 2px 10px;
   min-width: 138px;
+}
+
+.content-html-code {
+  max-width: 100%;
 }
 
 .element-actions {
@@ -12129,6 +12176,10 @@ pre.prettyprinted {
 }
 
 .visualisation__infos {
+  margin-bottom: 20px;
+}
+
+.visualisation .content-description {
   margin-bottom: 20px;
 }
 
@@ -12170,4 +12221,23 @@ pre.prettyprinted {
 
 .visualisation .btn-code {
   margin-top: -20px;
+}
+
+.btn--danger {
+  color: #e3342f;
+  background-color: white;
+}
+
+.btn-gris-annule {
+  color: #171819;
+  background-color: #C7C7C7;
+}
+
+.btn-gris-annule:hover {
+  color: #171819;
+  background-color: #BBBBBB;
+}
+
+.btn-gris-annule .btn-crea__icon {
+  color: #171819;
 }

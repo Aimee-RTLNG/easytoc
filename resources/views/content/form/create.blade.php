@@ -403,17 +403,17 @@
                            </div>
                         </div>
                         <!-- Si élément == lien -->
-                        <div role="section" class="col-lg-9 col-md-12 align-items-center action-url" style="display:none">
-                            <label for="elem-url creator-panel__title ">
+                        <div role="section" class="col-lg-9 col-md-6 align-items-center action-url" style="display:none">
+                            <label for="elem-url" class="creator-panel__title ">
                                 {{ __('Lien associé') }} (url)
                             </label>
-                            <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
+                            <input class="input-creator form-control" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
                         </div>
                         <div role="section" class="col-lg-3 col-md-6 align-items-center action-title" style="display:none">
-                            <label for="elem-url-title">
+                            <label for="elem-url-title" class="creator-panel__title">
                                 {{ __('Indication de navigation') }}
                             </label>
-                            <input class="input-creator" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
+                            <input class="input-creator form-control" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
                         </div>
                         <!-- Ajout d'option -->
                          <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
@@ -439,7 +439,7 @@
         <!-- Actions importantes sur le projet -->
         <div class="project-action row" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 project-action__btn">
-                <button type="button" accesskey="c" class="btn btn-form-final btn-danger btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+                <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button>

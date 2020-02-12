@@ -3,6 +3,9 @@
     padding: 2px 10px;
     min-width: 138px;
 }
+.content-html-code {
+    max-width: 100%;
+}
 .element-actions {
     display: flex;
 }
@@ -32,7 +35,11 @@
     &__infos {
         margin-bottom: 20px;
     }
+    .content-description {
+        margin-bottom: 20px;
+    }
 }
+
 // Formulaire généré 
 .visu-copy-container {
     position: relative;

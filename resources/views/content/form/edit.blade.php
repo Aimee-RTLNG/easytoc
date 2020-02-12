@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="3" maxlength="300" value="{{ old('description', $content->description) }}"></textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="Description du projet" class="form-control" id="desc-input" rows="3" maxlength="300">{{ old('description', $content->description) }}</textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                     <!-- Code en brut (non formatté) -->
@@ -333,7 +333,7 @@
                     </a>
                     <div class="row action-supp-crea" role="section">
                         <!-- Intitulé -->
-                        <div role="section" class="col-lg-4 col-md-8 action-question-text">
+                        <div role="section" class="col-lg-3 col-md-6 action-question-text">
                             <label for="elem-title" class="creator-panel__title">
                                 {{ __("Intitulé") }}
                             </label>
@@ -396,7 +396,7 @@
                             <i class="d-block">0 = {{ __('sans limite') }}</i>
                         </div>
                        <!-- Si élément == select -->
-                        <div role="section" class="col-lg-3 col-sm-6  align-items-center action-multiple-answer"style="display:none">
+                        <div role="section" class="col-lg-3 col-sm-6 align-items-center action-multiple-answer"style="display:none">
                             <div class="action-multiple__cont">
                                 <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
                                 <label for="elem-multiple-choice" class="creator-panel__title">
@@ -406,21 +406,21 @@
                         </div>
                         <!-- Si élément == lien -->
                         <div role="section" class="col-lg-9 col-md-12 align-items-center action-url" style="display:none">
-                            <label for="elem-url">
+                            <label for="elem-url" class="creator-panel__title">
                                 {{ __('Lien associé') }} (url)
                             </label>
                             <input class="input-creator form-control" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" size="250" aria-label="{{ __('Lien associé') }}"/>
                         </div>
                         <!-- Ajout d'option -->
                          <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
-                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-light form-element-action element_add-option" title="{{ __('Ajouter une option') }}">
+                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class=" btn btn-primary btn_crea form-element-action element_add-option" title="{{ __('Ajouter une option') }}">
                                 <i class="fa fa-check-square"></i>
                                 {{ __('Ajouter une option') }}
                             </button>
                         </div>
                         <!-- Ajout d'option -->
-                        <div role="section" class="col-lg-3 col-sm-6 btn btn-primary btn_crea form-element-action action-delete-option" style="display:none">
-                           <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-light form-element-action element_delete-option" title="{{ __('Supprimer l\'option') }}">
+                        <div role="section" class="col-lg-3 col-sm-6" style="display:none">
+                           <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class=" btn btn-primary btn_crea form-element-action element_delete-option" title="{{ __('Supprimer l\'option') }}">
                             <i class="fas fa-trash"></i>
                                {{ __("Supprimer l'option") }}
                            </button>
@@ -434,7 +434,7 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action edit-project-action col-12 my-3" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
                 <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                 <p>{{ __('Annuler les modifications') }}</p>
             </button>
@@ -444,13 +444,15 @@
                     {{ __('Sauvegarder ce projet') }}
                 </p>
             </button>
-            <form class="shadow-box crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+            <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <div class="crea-item__btns__icon btn--rouge">
-                    <i class="fa fa-times"></i>
-                </div>
-                <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">       
+                <button type="submit" value="" class="shadow-box btn-delete-def btn btn-danger" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                    <div class="crea-item__btns__icon btn--danger">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <p>{{ __('Supprimer') }}</p>
+                </button>       
             </form>
         </div>
 
