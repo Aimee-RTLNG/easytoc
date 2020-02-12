@@ -1,4 +1,6 @@
 // ANCHOR Données initiales
+import { lang } from "../app";
+
 let element;
 let element_selected_container;
 let input;
@@ -34,13 +36,23 @@ $('#radio02').prop('checked', true);
 $('#table-row-nb').val('2');
 $('#table-col-nb').val('2');
 
+// On désactive les boutons qui ne s'activent qu'au clic sur un élément
+$('.text-formatting').prop('disabled', true);
+$('.element_move').prop('disabled', true);
+$('.action-delete').prop('disabled', true);
+$('.element_merge-right').prop('disabled', true);
+
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
         tlength = tval.length,
         set = $('#desc-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-desc-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+            $('#chara-desc-remains').text(remain + " characters left");
+    } else {
+            $('#chara-desc-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#desc-input').val((tval).substring(0, tlength - 1))
     }
@@ -52,7 +64,11 @@ $('#title-input').keypress(function (e) {
         tlength = tval.length,
         set = $('#title-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-title-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+            $('#chara-title-remains').text(remain + " characters left");
+    } else {
+            $('#chara-title-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#title-input').val((tval).substring(0, tlength - 1))
     }
@@ -68,7 +84,7 @@ export var element_types = {
         "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
         "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
         "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
-        "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
+        "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
     },
     "type-unique": {
         "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
@@ -109,7 +125,7 @@ export function updateContent() {
         $(element).attr('id', element_id);
     });
 
-    // TODO On associe les id à toutes les cellules TD 
+    // On associe les id à toutes les cellules TD 
     let headers_id = [];
     $('#full-table thead tr').each(function (index, element) {
         let headers = $(this).find('th');
@@ -180,11 +196,11 @@ $('#edit-table').on('click', function(){
 
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
-    // // console.log("Création");
+    // console.log("Création");
     // $('#content-created-blueprint').html(initial_content);
     updateContent();
 } else {
-    // // console.log("Modification");
+    // console.log("Modification");
     getOldContent();
     updateContent();
 }
@@ -207,7 +223,11 @@ $('#table-row-nb').on('change', function () {
     $('.content-editable-selected').removeClass('content-editable-selected');
     let new_nb_row = $(this).val();
     if(new_nb_row < 2){
-        message = "A quoi sert un tableau sans lignes ?";
+        if( lang == "en"){
+            message = "Why would you want a table without rows ?";
+        } else {
+            message = "Pourquoi un tableau sans lignes ?";
+        }
         alertMsg(message, "error");
         (this).val("2");
         return;
@@ -217,7 +237,11 @@ $('#table-row-nb').on('change', function () {
         let nb_new_row = new_nb_row - actual_nb_row;
         for (let i = 0; i < nb_new_row; i++) {
             addRow("down");
-            message = "Ligne ajoutée";
+            if( lang == "en"){
+                message = "Row added";
+            } else {
+                message = "Ligne ajoutée";
+            }
             alertMsg(message, "success");
         }
     } else if (new_nb_row < actual_nb_row) {
@@ -227,7 +251,11 @@ $('#table-row-nb').on('change', function () {
             if (!is_removed) {
                 break;
             } else {
-                message = "Ligne supprimée";
+                if( lang == "en"){
+                    message = "Row deleted";
+                } else {
+                    message = "Ligne supprimée";
+                }
                 alertMsg(message, "success");
             }
         }
@@ -241,7 +269,11 @@ $('#table-col-nb').on('change', function () {
     $('.content-editable-selected').removeClass('.content-editable-selected');
     let new_nb_col = $(this).val();
     if(new_nb_col < 2){
-        message = "A quoi sert un tableau sans colonnes ?";
+        if( lang == "en"){
+            message = "Why would you want a table without columns ?";
+        } else {
+            message = "Pourquoi un tableau sans colonnes ?";
+        }
         alertMsg(message, "error");
         $(this).val("2");
         return;
@@ -251,7 +283,11 @@ $('#table-col-nb').on('change', function () {
         let nb_new_col = new_nb_col - actual_nb_col;
         for (let i = 0; i < nb_new_col; i++) {
             addCol("right");
-            message = "Colonne ajoutée";
+            if( lang == "en"){
+                message = "Column added";
+            } else {
+                message = "Colonne ajoutée";
+            }
             alertMsg(message, "success");
         }
     } else if (new_nb_col < actual_nb_col) {
@@ -265,7 +301,11 @@ $('#table-col-nb').on('change', function () {
             }
             let col_removed = removeCol(col_cells);
             if (col_removed) {
-                message = "Colonne supprimée";
+                if( lang == "en"){
+                    message = "Column removed";
+                } else {
+                    message = "Colonne retirée";
+                }
                 alertMsg(message, "success");
             } else {
                 break;
@@ -284,19 +324,21 @@ export function addCol(side) {
     let rows_header = $("#full-table").find('thead tr').length;
     cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
     cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
-    let is_header;
-    if($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY"){
-        is_header = true;
-    }
+    // let is_header;
+    // if($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY"){
+    //     is_header = true;
+    // }
     if (side == "left") {
         if ($(".content-editable-selected").length) {
             cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
             $("#full-table tr").each(function (index, tr) {
-                // $(cell_html).insertBefore($(tr).find("td")[cell_index]);
-                $(tr).find("td")[cell_index].before(cell_html);
+                if($(tr).find("td").length){
+                    let tbody_insert_before = $(tr).find("td")[cell_index];
+                    $(tbody_insert_before).before(cell_html);
+                }
                 if (index < rows_header) {
-                    // $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
-                    $(tr).find("th")[cell_index].before(cell_header_html);
+                    let thead_insert_before = $(tr).find("th")[cell_index];
+                    $(thead_insert_before).before(cell_header_html);
                 }
             })
         } else {
@@ -313,11 +355,13 @@ export function addCol(side) {
         if ($(".content-editable-selected").length) {
             cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
             $("#full-table tr").each(function (index, tr) {
-                // $(cell_html).insertAfter($(tr).find("td")[cell_index]);
-                $(tr).find("td")[cell_index].after(cell_html);
+                if($(tr).find("td").length){
+                    let tbody_insert_after = $(tr).find("td")[cell_index];
+                    $(tbody_insert_after).after(cell_html);
+                }
                 if (index < rows_header) {
-                    // $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
-                    $(tr).find("th")[cell_index].after(cell_header_html);
+                    let thead_insert_after = $(tr).find("th")[cell_index];
+                    $(thead_insert_after).after(cell_header_html);
                 }
             })
         } else {
@@ -400,7 +444,12 @@ function removeRow(row) {
     }
     // Si la ligne est remplie : on demande confirmation
     if (row_length > 1 && is_filled) {
-        if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
+        if( lang == "en"){
+            message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+        } else {
+            message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+        }
+        if (confirm(message)) {
             row.remove();
             return true;
         }
@@ -421,13 +470,23 @@ function removeRow(row) {
 function moveRow(side){
     if(side == "up"){
         // $(selected_row).insertBefore(previous_row);
-        $(selected_row).each(function(){
-            // console.log($(this));
+        $(selected_row).find('td, th').each(function(index, element){
+            let previous_cell = previous_row.find('td, th')[index];
+            let previous_text = $(previous_cell).text();
+            let actual_text = $(this).text();
+
+            $(previous_cell).text(actual_text);
+            $(this).text(previous_text);
         })
     }else if(side == "down"){
         // $(selected_row).insertAfter(next_row);
-        $(selected_row).each(function(){
-            // console.log($(this));
+        $(selected_row).find('td, th').each(function(index, element){
+            let next_cell = next_row.find('td, th')[index];
+            let next_text = $(next_cell).text();
+            let actual_text = $(this).text();
+            
+            $(next_cell).text(actual_text);
+            $(this).text(next_text);
         })
     }
 }
@@ -549,7 +608,12 @@ export function removeCol(cells) {
         });
         // Si la ligne est remplie : on demande confirmation
         if (is_filled) {
-            if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
+            if( lang == "en"){
+                message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+            } else {
+                message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+            }
+            if (confirm(message)) {
                 cells.forEach(function (item, index) {
                     let actual_cell = item;
                     if(actual_cell){
@@ -626,7 +690,11 @@ $('.cell-action').on('click', function () {
         if($('.content-editable-selected').next().length){
             mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
         }else{
-            message = "Fusion impossible : pas de case à droite";
+            if( lang == "en" ){
+                message = "Can't merge : no cell next to this one";
+            } else {
+                message = "Fusion impossible : pas de case à droite";
+            }            
             alertMsg(message, "error");
         }
 
@@ -637,7 +705,11 @@ $('.cell-action').on('click', function () {
             mergeCell("col", $('.content-editable-selected'), other_cell[0]);
             
         }else{
-            message = "Fusion impossible : pas de case en bas";
+            if( lang == "en" ){
+                message = "Can't merge : no cell under to this one";
+            } else {
+                message = "Fusion impossible : pas de case en bas";
+            }  
             alertMsg(message, "error");
         }
     
@@ -658,13 +730,21 @@ $('.cell-action').on('click', function () {
             let col_removed = removeCol(selected_col);
             if (col_removed) {
                 $('#table-col-nb').val(parseInt(nb_col) - 1);
-                message = "Colonne supprimée";
+                if( lang == "en" ){
+                    message = "Deleted column";
+                } else {
+                    message = "Colonne supprimée";
+                }  
                 alertMsg(message, "success");
                 // Quand elle est supprimée, on focus 
                 next_element_select.focus();
             }
         }else{
-            message = "A quoi sert un tableau sans colonnes ?";
+            if( lang == "en"){
+                message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+            } else {
+                message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+            }
             alertMsg(message, "error");
         }
     }
@@ -681,13 +761,21 @@ $('.cell-action').on('click', function () {
             let row_removed = removeRow(selected_row);
             if (row_removed) {
                 $('#table-row-nb').val(parseInt(nb_row) - 1);
-                message = "Colonne supprimée";
+                if( lang == "en" ){
+                    message = "Deleted row";
+                } else {
+                    message = "Ligne supprimée";
+                }  
                 alertMsg(message, "success");
                 // Quand elle est supprimée, on focus 
                 next_element_select.focus();
             }
         }else{
-            message = "A quoi sert un tableau sans lignes ?";
+            if( lang == "en"){
+                message = "Why would you want a table without rows ?";
+            } else {
+                message = "Pourquoi un tableau sans lignes ?";
+            }
             alertMsg(message, "error");
         }
 
@@ -741,7 +829,12 @@ $('.add-element').on('click', function () {
             for(let x = 0; x < cols; x++){
                 $('#full-table tfoot tr').append(cell_html);
             }
-            message = "Pied de tableau ajouté";
+            if( lang == "en") {
+                message = "Pied de tableau ajouté";
+            } else {
+                message = "Table footer added";
+            }
+            
             alertMsg(message, "success");
         }else{
             // On enlève le footer (déjà activé)
@@ -765,7 +858,11 @@ $('.add-element').on('click', function () {
                     removeRow($(this));
                 });
             } else {
-                message = "Veuillez d'abord ajouter des en-têtes verticales.";
+                if( lang == "en"){
+                    message = "Please add the lateral headers first";
+                } else {
+                    message = "Veuillez d'abord ajouter des en-têtes verticales";
+                }
                 alertMsg(message, "error");
                 $(this).prop('checked', 'true');
             }
@@ -798,7 +895,11 @@ $('.add-element').on('click', function () {
                     }
                 });
             } else {
-                message = "Veuillez d'abord ajouter des en-têtes horizontales.";
+                if( lang == "en"){
+                    message = "Please add the horizontal headers first";
+                } else {
+                    message = "Veuillez d'abord ajouter des en-têtes horizontales";
+                }
                 alertMsg(message, "error");
                 $(this).prop('checked', 'true');
             }
@@ -838,7 +939,11 @@ $('#btn-save-project').on('click', function () {
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
         }
-        message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+        if( lang == "en" ){
+            message = "Some informations are missing : please fill the empty fields.";
+        } else {
+            message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+        }
         alertMsg(message, "error");
     });
 })
@@ -857,6 +962,7 @@ $(document.body)
         if (e.target) {
             $(".content-editable-selected").removeClass("content-editable-selected");
             element_selected_container = e.target;
+            $('.text-formatting').prop('disabled', false);
         }
 
         $(element_selected_container).addClass("content-editable-selected");
@@ -880,6 +986,8 @@ $(document.body)
             if (parent_tag == "THEAD" ) {
                 $('.side-tool.vertical-tools').hide();
                 $('.action-merge-right').attr('disabled', false);
+                $('.aaction-move-row-up').attr('disabled', true);
+                $('.action-move-row-down').attr('disabled', false);
                 $('.action-merge-down').attr('disabled', true);
                 if( $("#full-table thead tr").length < 2 ) {
                     $('.action-delete-row').attr('disabled', true);
@@ -920,6 +1028,9 @@ $(document.body)
             } else {
                 $('.action-move-cell-up').attr('disabled', false);
                 $('.action-move-row-up').attr('disabled', false);
+                if (parent_tag == "THEAD" ) {
+                    $('.action-move-row-up').attr('disabled', true);
+                }
                 $('#action-move-up').show();
             }
 
@@ -932,6 +1043,9 @@ $(document.body)
             } else {
                 $('.action-move-cell-down').attr('disabled', false);
                 $('.action-move-row-down').attr('disabled', false);
+                if (parent_tag == "THEAD" ) {
+                    $('.action-move-row-down').attr('disabled', true);
+                }
                 $('#action-move-down').show();
             }
 
@@ -1073,7 +1187,7 @@ var deletecommand = new command({
 
 // ANCHOR Mise en tablee du texte (gras, italic, underline...)
 $('.text-formatting').on("click", function () {
-    // TODO NS_ERROR_FAILURE
+    // NS_ERROR_FAILURE
     let is_text_selected;
     if( window.getSelection().toString().length ){
         is_text_selected = true;
@@ -1139,8 +1253,15 @@ $('input[name="theme"]').on('change', function () {
 
 // ANCHOR Copier le contenu code 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-    message = "Code copié !";
-    $(".copy-container button").text("Copier");
+    
+    if( lang == "en" ){
+        message = "Code copied !";
+        $(".copy-container button").text("Copy");
+    } else {
+        message = "Code copié !";
+        $(".copy-container button").text("Copier");
+    }
+    
     $(this).text(message);
     alertMsg(message);
 })
