@@ -20,7 +20,7 @@ Route::get('/mentions_legales', 'HomeController@mentions_legales')->name('mentio
 Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 
 // ROUTE WIDGETS
-Route::get('/menu', 'MenuController@index')->name('menu');
+Route::view('/menu', '/content/menu/create')->name('menu');
 Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
 Route::get('/tableau', 'TableauController@index')->name('tableau');
 

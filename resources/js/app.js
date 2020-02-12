@@ -48,25 +48,34 @@ new Vue({
 //     el: '#app',
 // });
 
-
+// ANCHOR Burger menu
 window.addEventListener("DOMContentLoaded", (event) => {
     var btn_burger = document.getElementById('bars');
     btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');
     })
 
-    
-    // Scroll vers ancres
-    function scrollTo( target ) {
-        console.log(target);
-	        if( target.length ) {
-	            $("html, body").stop().animate( { scrollTop: target.offset().top }, 500);
-	        }
-	    }
-	$('.next-section i').on('click', function() {
-		scrollTo($('#tools'));
-	})
 
+    // Scroll vers ancres
+    function scrollTo(target) {
+        if (target.length) {
+            $("html, body").stop().animate({
+                scrollTop: target.offset().top
+            }, 500);
+        }
+    }
+    $('.next-section div').on('click', function () {
+        scrollTo($('#tools'));
+    })
+    $('.link-ancre').on('click', function () {
+        var id = $(this).attr('href');
+        scrollTo($(id));
+    })
+    // Profile Mobile
+    $(".fleche-plus").on('click', function () {
+        $('.mon-compte').toggleClass('open');
+        $(this).toggleClass('open');
+    })
     // Slider Home
 
     // console.log($('.slider-tools'));
@@ -89,4 +98,52 @@ window.addEventListener("DOMContentLoaded", (event) => {
     //         }
     //         ]
     //     });
+
+
 });
+
+// ANCHOR Message d'alerte
+let alert_timeout;
+let alert_type;
+let alert_container;
+export function alertMsg(message, state) {
+    alert_container = $('#alert-message');
+    if (state == "success") {
+        alert_type = "success";
+    } else if (state == "error") {
+        alert_type = "danger";
+    }
+
+    clearTimeout(alert_timeout);
+    if (alert_container.is(":hidden")) {
+        if (alert_type == "danger") {
+            alert_container.removeClass("alert-success");
+            alert_container.addClass("alert-danger");
+        } else {
+            alert_container.removeClass("alert-danger");
+            alert_container.addClass("alert-success");
+        }
+        alert_container.find(".alert-content").text(message);
+        alert_container.slideDown();
+    } else {
+        alert_container.slideUp("fast", function () {
+            alert_container.find(".alert-content").text(message);
+            if (alert_type == "danger") {
+                alert_container.removeClass("alert-success");
+                alert_container.addClass("alert-danger");
+            } else {
+                alert_container.removeClass("alert-danger");
+                alert_container.addClass("alert-success");
+            }
+            alert_container.slideDown();
+        });
+    }
+    alert_timeout = setTimeout(function () {
+        alert_container.slideUp();
+    }, 7000);
+
+}
+
+
+// Traduction en JS
+export var lang = $('html').attr('lang');

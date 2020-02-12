@@ -1,4 +1,7 @@
 // ANCHOR Données initiales
+import { lang } from "../app";
+
+// ANCHOR Données initiales
 let element;
 let input;
 let intitule;
@@ -6,11 +9,10 @@ let message;
 let previous_element;
 let next_element;
 
-
 let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<nav class="navbar" id="generated-menu" contenteditable action="#" name="emailmenu">\n\t<h1 id="menu-title">Titre du menu</h1>\n</nav>\n<div class="mt-4" id="menu-actions" contenteditable="false">\n\t<input form="generated-menu" type="submit" value="Envoyer" accesskey="s">\n</div>\n';
+
 
 // Imports
 import { alertMsg } from "../../js/app";
@@ -27,6 +29,22 @@ $('#desc-input').keypress(function (e) {
     }
 })
 
+// ANCHOR Caractères restants Titre du projet
+$('#title-input').keypress(function (e) {
+    var tval = $('#title-input').val(),
+        tlength = tval.length,
+        set = $('#title-input').attr('maxlength'),
+        remain = parseInt(set - tlength);
+    if( lang == "en" ){
+            $('#chara-title-remains').text(remain + " characters left");
+    } else {
+            $('#chara-title-remains').text(remain + " caractères restants");
+    }
+    if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+        $('#title-input').val((tval).substring(0, tlength - 1))
+    }
+})
+
 // ANCHOR Liste de tous les tags possibles dans un formulaire
 const tags_list = ["ul", "li", "a"];
 
@@ -35,15 +53,18 @@ const tags_list = ["ul", "li", "a"];
 // \t = tabulation,  \n = saut de ligne
 export let element_types = {
     "type-menu": {
-        "insert-menu": "\n\t\t<ul data-tag='menu' contenteditable='true'></ul>",
-        "insert-sous-menu": "\n\t\t\t<ul data-tag='sous-menu'><li></li></ul>",
-    }, 
+        "insert-menu": "\n\t<ul data-tag='menu' contenteditable='true'></ul>",
+        "insert-sous-menu": "\n\t\t<li data-tag='sous-menu' contenteditable='true'></li>"    
+    },
+    "type-layout": {
+        "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>"
+    } 
 };
 
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-menu #menu-title, #full-menu, #full-menu a, #full-menu ul, #full-menu ul li, #full-menu li').attr('contenteditable', true);
+    $('#full-menu #menu-title, #full-menu, #full-menu, #full-menu ul, #full-menu ul li, #full-menu li, #full-menu ul a, #full-menu ul li a').attr('contenteditable', true);
     // On récupère les paramètres
 
     // Theme
@@ -119,6 +140,7 @@ $('#menu-creator-link').on('keyup', function () {
 
 
 // APPEND d'une liste pour le menu
+/*
 $('#insert-menu').on('click', function () {
     $("insert-menu").append("<ul contenteditable='true'>Test</ul>");
 });
@@ -127,7 +149,7 @@ $('#insert-menu').on('click', function () {
 $('#insert-sous_menu').on('click',  function () {
     $("insert-menu").appendChild("<ul><li contenteditable='true'> </li></ul>");
 });
-
+*/
 
 
 // Ajout de menu
@@ -139,6 +161,7 @@ export function addMenu() {
 
 
 
+    
     // on récupère l'ancien contenu 
     let previous_content = $('#content-created-blueprint #full-menu').html();
     
@@ -175,9 +198,6 @@ $('.add-element').on('click', function () {
 });
 
 
-
-
-
 // Ajout de sous-menu
 /*
 export function addSousMenu() {
@@ -186,8 +206,6 @@ export function addSousMenu() {
     sousMenu_header_html = "\n\t\t\t\t" + sous-menu_header_html + "\n\t\t\t";
 }
 */
-
-
 
 
 // ANCHOR Fonction Undo/Redo suppression
@@ -208,8 +226,8 @@ function command(instance) {
 // ANCHOR Fonction Suppression
 var deletecommand = new command({
     execute: function () {
-        // element = $(".content-editable-selected").removeClass('content-editable-selected');
-        // element = element.detach();
+         element = $(".content-editable-selected").removeClass('content-editable-selected');
+         element = element.detach();
     },
     undo: function () {
         element.appendTo("#full-menu");
