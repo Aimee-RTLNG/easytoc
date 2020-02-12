@@ -111,9 +111,14 @@ $('#import-data').on('click', function () {
           importData(formatted_json);
           success = true;
         } catch (e) {
-          success = false;
-          console.log(e);
-          message = "Votre fichier est invalide. Merci de réessayer.";
+          success = false; // console.log(e);
+
+          if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+            message = "Your file has an error : please try again.";
+          } else {
+            message = "Votre fichier contient une erreur. Merci de réessayer.";
+          }
+
           Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         }
       };
@@ -121,7 +126,12 @@ $('#import-data').on('click', function () {
       reader.readAsText($("#imported_data")[0].files[0]);
     }
   } else {
-    message = "Format de fichier incorrect";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Incorrect file format : only JSON and CSV allowed;";
+    } else {
+      message = "Format de fichier invalide : fichiers JSON et CSVQ seulement.";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 }); // ANCHOR Générer un exemple
@@ -132,7 +142,13 @@ $('#generate-example').on('click', function () {
   }).fail(function (jqxhr, textStatus, error) {
     console.log(textStatus);
     console.log(error);
-    message = "Erreur dans le chargement de l'exemple";
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Error while loading : the example could not be generated";
+    } else {
+      message = "Erreur dans le chargement de l'exemple";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 });
@@ -254,10 +270,20 @@ function importData(form) {
   Object(_form__WEBPACK_IMPORTED_MODULE_1__["getOldContent"])();
 
   if (success) {
-    message = "Données récupérées";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Data imported";
+    } else {
+      message = "Données récupérées";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
   } else {
-    message = "Erreur dans l'importation des données";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Error while loading data";
+    } else {
+      message = "Erreur dans l'importation des données";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 

@@ -51059,12 +51059,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg */
+/*! exports provided: alertMsg, lang */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51184,36 +51185,9 @@ function alertMsg(message, state) {
   alert_timeout = setTimeout(function () {
     alert_container.slideUp();
   }, 7000);
-}
-/* 
+} // Traduction en JS
 
-// Traduction en JS
-let imported_traduction;
-export let translation = $.getJSON(baseUrl + 'lang/en.json', function(data){
-    return data;
-})
-.done(function (json) {
-    imported_traduction = true;
-    console.log("Traduction importée");
-})
-.fail(function (jqxhr, textStatus, error) {
-    console.log(textStatus);
-    console.log(error);
-    console.log ("Erreur dans le chargement de la traduction");
-    return [];
-})
-
-export function getTranslation(text, lang){
-    console.log(translation);
-    if(lang == "en"){
-        console.log("Français vers Anglais");
-    }else if(lang=="fr"){
-        console.log("Anglais vers français")
-    }
-    return text + " = test";
-}
-
-*/
+var lang = $('html').attr('lang');
 
 /***/ }),
 
@@ -51277,8 +51251,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addOption", function() { return addOption; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "refreshMoveButtons", function() { return refreshMoveButtons; });
-/* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 // ANCHOR Données initiales
+
 var element;
 var element_selected_container;
 var input;
@@ -51301,7 +51276,12 @@ $('#desc-input').keypress(function (e) {
       tlength = tval.length,
       set = $('#desc-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-desc-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#desc-input').val(tval.substring(0, tlength - 1));
@@ -51313,7 +51293,12 @@ $('#title-input').keypress(function (e) {
       tlength = tval.length,
       set = $('#title-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-title-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#title-input').val(tval.substring(0, tlength - 1));
@@ -51323,39 +51308,73 @@ $('#title-input').keypress(function (e) {
 var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
 /*
 let translation_test = getTranslation("Thème du formulaire", "en");
-console.log(translation_test);
+// console.log(translation_test);
 */
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 
-var element_types = {
-  "type-question": {
-    "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-    "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-    "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-    "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-    "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-    "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
-  },
-  "type-answer-option": {
-    "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-    "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-    "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
-  },
-  "type-layout": {
-    "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-    "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-    "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-    "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-    "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
-    "insert-horizontal_rule": "<hr contenteditable='true'>"
-  },
-  "type-special": {
-    "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
-    "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-    "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
-  }
-};
+var element_types; // Traductions
+
+if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  element_types = {
+    "type-question": {
+      "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
+      "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
+      "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+      "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+      "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+      "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choose an option </option>\n\t\t</select>\n</label>"
+    },
+    "type-answer-option": {
+      "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+    },
+    "type-layout": {
+      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+      "insert-horizontal_rule": "<hr contenteditable='true'>"
+    },
+    "type-special": {
+      "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+      "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+      "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+    }
+  };
+} else {
+  element_types = {
+    "type-question": {
+      "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+      "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+      "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+      "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+      "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+      "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
+    },
+    "type-answer-option": {
+      "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+    },
+    "type-layout": {
+      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+      "insert-horizontal_rule": "<hr contenteditable='true'>"
+    },
+    "type-special": {
+      "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+      "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+      "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+    }
+  };
+}
+
 function getOldContent() {
   // On rend l'ancien contenu modifiable
   $('#full-form .label-text').attr('contenteditable', true);
@@ -51404,11 +51423,11 @@ function updatecontent() {
 ; // ANCHOR Initialisation du formulaire
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
-
+  // console.log("Création");
+  // $('#content-created-blueprint').html(initial_content);
   updatecontent();
 } else {
-  console.log("Modification");
+  // console.log("Modification");
   getOldContent();
   updatecontent();
 } // ANCHOR Changement de titre
@@ -51479,8 +51498,13 @@ function addElement(element_type, element_type_name) {
     addOption();
   }
 
-  message = "Element ajouté";
-  Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Element added";
+  } else {
+    message = "Element ajouté";
+  }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
   updatecontent();
 } // ANCHOR Ajout d'un élément
 
@@ -51505,21 +51529,26 @@ $('#btn-save-project').on('click', function () {
       "html": $('#raw-code').val()
     }
   }).done(function (msg) {
-    console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // TODO Erreur
-
+    // console.log(xhr.responseText);
+    // console.log(status);
+    // console.log(error);
+    // TODO Erreur
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
     }
 
-    message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
-    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
 
@@ -51770,7 +51799,7 @@ $(document.body).off('keyup') // ré-initialisation
 
           var link_title;
           $('#elem-url-title').on('keyup', function (e) {
-            console.log($('#elem-url-title').val());
+            // console.log($('#elem-url-title').val());
             e.stopPropagation();
             link_title = $('#elem-url-title').val();
             $(intitule).attr('title', link_title);
@@ -51882,8 +51911,14 @@ $(".form-element-action").on('click', function (e) {
       $(".side-tool").hide();
       $('.action-delete').attr('disabled', 'true');
       $('.action-undo').removeAttr('disabled');
-      message = "Élément supprimé";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Deleted element";
+      } else {
+        message = "Élément supprimé";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
     // Annuler la suppression
 
@@ -51892,8 +51927,14 @@ $(".form-element-action").on('click', function (e) {
       $(this).attr('disabled', 'true');
       $('.alert-success').slideUp();
       $('.element-container').last().find('[contenteditable=true]').first().focus();
-      message = "Élément rétabli";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Element recovered";
+      } else {
+        message = "Élément rétabli";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
     // Changement de l'attr multiple   
 
@@ -51918,7 +51959,7 @@ $(".form-element-action").on('click', function (e) {
           element_selected_container.find("select").removeAttr("required");
           element_selected_container.find("textarea").removeAttr("required");
           element_selected_container.find("input[type='radio']").first().removeAttr("required");
-        } // TODO Retirer l'étoile dans le label (après le span)
+        } // Retirer l'étoile dans le label (après le span)
 
 
         element_selected_container.find("abbr").remove();
@@ -51963,14 +52004,25 @@ $(".form-element-action").on('click', function (e) {
         refreshMoveButtons(previous_option, next_option, true);
       }
 
-      message = "Option ajoutée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Option added";
+      } else {
+        message = "Option ajoutée";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
 
     case "delete-option":
       deleteOption();
-      message = "Option supprimée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Deleted option";
+      } else {
+        message = "Option supprimée";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
   }
 
@@ -52236,10 +52288,16 @@ function refreshMoveButtons(previous_element, next_element, option) {
 } // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-  message = "Code copié !";
-  $(".copy-container button").text("Copier");
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
   $(this).text(message);
-  Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
 });
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');
@@ -52261,8 +52319,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
-/* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 // ANCHOR Données initiales
+
 var element;
 var element_selected_container;
 var input;
@@ -52293,14 +52352,24 @@ $('#central-header-button').prop('checked', true);
 $('#radio02').prop('checked', true);
 $('#radio02').prop('checked', true);
 $('#table-row-nb').val('2');
-$('#table-col-nb').val('2'); // ANCHOR Caractères restants Description du projet
+$('#table-col-nb').val('2'); // On désactive les boutons qui ne s'activent qu'au clic sur un élément
+
+$('.text-formatting').prop('disabled', true);
+$('.element_move').prop('disabled', true);
+$('.action-delete').prop('disabled', true);
+$('.element_merge-right').prop('disabled', true); // ANCHOR Caractères restants Description du projet
 
 $('#desc-input').keypress(function (e) {
   var tval = $('#desc-input').val(),
       tlength = tval.length,
       set = $('#desc-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-desc-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#desc-input').val(tval.substring(0, tlength - 1));
@@ -52312,7 +52381,12 @@ $('#title-input').keypress(function (e) {
       tlength = tval.length,
       set = $('#title-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-title-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#title-input').val(tval.substring(0, tlength - 1));
@@ -52327,7 +52401,7 @@ var element_types = {
     "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
     "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
     "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
-    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
+    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
   },
   "type-unique": {
     "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
@@ -52359,7 +52433,7 @@ function updateContent() {
   $('#full-table tr th').each(function (index, element) {
     var element_id = Math.random().toString(36).substr(2, 9);
     $(element).attr('id', element_id);
-  }); // TODO On associe les id à toutes les cellules TD 
+  }); // On associe les id à toutes les cellules TD 
 
   var headers_id = [];
   $('#full-table thead tr').each(function (index, element) {
@@ -52428,11 +52502,11 @@ $('#edit-table').on('click', function () {
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création"); // $('#content-created-blueprint').html(initial_content);
-
+  // console.log("Création");
+  // $('#content-created-blueprint').html(initial_content);
   updateContent();
 } else {
-  console.log("Modification");
+  // console.log("Modification");
   getOldContent();
   updateContent();
 } // ANCHOR Changement de titre
@@ -52454,8 +52528,13 @@ $('#table-row-nb').on('change', function () {
   var new_nb_row = $(this).val();
 
   if (new_nb_row < 2) {
-    message = "A quoi sert un tableau sans lignes ?";
-    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Why would you want a table without rows ?";
+    } else {
+      message = "Pourquoi un tableau sans lignes ?";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     this.val("2");
     return;
   }
@@ -52467,8 +52546,14 @@ $('#table-row-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_row; i++) {
       addRow("down");
-      message = "Ligne ajoutée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Row added";
+      } else {
+        message = "Ligne ajoutée";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_row < actual_nb_row) {
     var _nb_new_row = actual_nb_row - new_nb_row;
@@ -52479,8 +52564,13 @@ $('#table-row-nb').on('change', function () {
       if (!is_removed) {
         break;
       } else {
-        message = "Ligne supprimée";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Row deleted";
+        } else {
+          message = "Ligne supprimée";
+        }
+
+        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       }
     }
   }
@@ -52494,8 +52584,13 @@ $('#table-col-nb').on('change', function () {
   var new_nb_col = $(this).val();
 
   if (new_nb_col < 2) {
-    message = "A quoi sert un tableau sans colonnes ?";
-    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Why would you want a table without columns ?";
+    } else {
+      message = "Pourquoi un tableau sans colonnes ?";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     $(this).val("2");
     return;
   }
@@ -52507,8 +52602,14 @@ $('#table-col-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_col; i++) {
       addCol("right");
-      message = "Colonne ajoutée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Column added";
+      } else {
+        message = "Colonne ajoutée";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_col < actual_nb_col) {
     var _nb_new_col = actual_nb_col - new_nb_col;
@@ -52526,8 +52627,13 @@ $('#table-col-nb').on('change', function () {
       var col_removed = removeCol(col_cells);
 
       if (col_removed) {
-        message = "Colonne supprimée";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Column removed";
+        } else {
+          message = "Colonne retirée";
+        }
+
+        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       } else {
         break;
       }
@@ -52544,23 +52650,23 @@ function addCol(side) {
   var cell_html = element_types["type-unique"]["insert-cell"];
   var rows_header = $("#full-table").find('thead tr').length;
   cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
-  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
-  var is_header;
-
-  if ($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY") {
-    is_header = true;
-  }
+  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t"; // let is_header;
+  // if($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY"){
+  //     is_header = true;
+  // }
 
   if (side == "left") {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        // $(cell_html).insertBefore($(tr).find("td")[cell_index]);
-        $(tr).find("td")[cell_index].before(cell_html);
+        if ($(tr).find("td").length) {
+          var tbody_insert_before = $(tr).find("td")[cell_index];
+          $(tbody_insert_before).before(cell_html);
+        }
 
         if (index < rows_header) {
-          // $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
-          $(tr).find("th")[cell_index].before(cell_header_html);
+          var thead_insert_before = $(tr).find("th")[cell_index];
+          $(thead_insert_before).before(cell_header_html);
         }
       });
     } else {
@@ -52578,12 +52684,14 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        // $(cell_html).insertAfter($(tr).find("td")[cell_index]);
-        $(tr).find("td")[cell_index].after(cell_html);
+        if ($(tr).find("td").length) {
+          var tbody_insert_after = $(tr).find("td")[cell_index];
+          $(tbody_insert_after).after(cell_html);
+        }
 
         if (index < rows_header) {
-          // $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
-          $(tr).find("th")[cell_index].after(cell_header_html);
+          var thead_insert_after = $(tr).find("th")[cell_index];
+          $(thead_insert_after).after(cell_header_html);
         }
       });
     } else {
@@ -52674,7 +52782,13 @@ function removeRow(row) {
 
 
   if (row_length > 1 && is_filled) {
-    if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+    } else {
+      message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+    }
+
+    if (confirm(message)) {
       row.remove();
       return true;
     } // Si on annule la suppression
@@ -52693,13 +52807,21 @@ function removeRow(row) {
 function moveRow(side) {
   if (side == "up") {
     // $(selected_row).insertBefore(previous_row);
-    $(selected_row).each(function () {
-      console.log($(this));
+    $(selected_row).find('td, th').each(function (index, element) {
+      var previous_cell = previous_row.find('td, th')[index];
+      var previous_text = $(previous_cell).text();
+      var actual_text = $(this).text();
+      $(previous_cell).text(actual_text);
+      $(this).text(previous_text);
     });
   } else if (side == "down") {
     // $(selected_row).insertAfter(next_row);
-    $(selected_row).each(function () {
-      console.log($(this));
+    $(selected_row).find('td, th').each(function (index, element) {
+      var next_cell = next_row.find('td, th')[index];
+      var next_text = $(next_cell).text();
+      var actual_text = $(this).text();
+      $(next_cell).text(actual_text);
+      $(this).text(next_text);
     });
   }
 } // Déplacement de colonne
@@ -52830,7 +52952,13 @@ function removeCol(cells) {
     }); // Si la ligne est remplie : on demande confirmation
 
     if (is_filled) {
-      if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+      } else {
+        message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+      }
+
+      if (confirm(message)) {
         cells.forEach(function (item, index) {
           var actual_cell = item;
 
@@ -52887,8 +53015,13 @@ $('.cell-action').on('click', function () {
     if ($('.content-editable-selected').next().length) {
       mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
     } else {
-      message = "Fusion impossible : pas de case à droite";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Can't merge : no cell next to this one";
+      } else {
+        message = "Fusion impossible : pas de case à droite";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // MERGE DOWN
 
   } else if (element_action == "merge-down") {
@@ -52897,8 +53030,13 @@ $('.cell-action').on('click', function () {
     if (other_cell.length) {
       mergeCell("col", $('.content-editable-selected'), other_cell[0]);
     } else {
-      message = "Fusion impossible : pas de case en bas";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Can't merge : no cell under to this one";
+      } else {
+        message = "Fusion impossible : pas de case en bas";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // SPLIT
 
   } else if (element_action == "split-cell") {
@@ -52918,14 +53056,25 @@ $('.cell-action').on('click', function () {
 
       if (col_removed) {
         $('#table-col-nb').val(parseInt(nb_col) - 1);
-        message = "Colonne supprimée";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
+
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Deleted column";
+        } else {
+          message = "Colonne supprimée";
+        }
+
+        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
         next_element_select.focus();
       }
     } else {
-      message = "A quoi sert un tableau sans colonnes ?";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+      } else {
+        message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     }
   } // Supprimer la ligne
   else if (element_action == "delete-row") {
@@ -52943,14 +53092,25 @@ $('.cell-action').on('click', function () {
 
         if (row_removed) {
           $('#table-row-nb').val(parseInt(nb_row) - 1);
-          message = "Colonne supprimée";
-          Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
+
+          if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+            message = "Deleted row";
+          } else {
+            message = "Ligne supprimée";
+          }
+
+          Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
           _next_element_select.focus();
         }
       } else {
-        message = "A quoi sert un tableau sans lignes ?";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Why would you want a table without rows ?";
+        } else {
+          message = "Pourquoi un tableau sans lignes ?";
+        }
+
+        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
       }
     }
 
@@ -52991,8 +53151,13 @@ $('.add-element').on('click', function () {
         $('#full-table tfoot tr').append(cell_html);
       }
 
-      message = "Pied de tableau ajouté";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Pied de tableau ajouté";
+      } else {
+        message = "Table footer added";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     } else {
       // On enlève le footer (déjà activé)
       $("#full-table tfoot").remove();
@@ -53014,8 +53179,13 @@ $('.add-element').on('click', function () {
           removeRow($(this));
         });
       } else {
-        message = "Veuillez d'abord ajouter des en-têtes verticales.";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Please add the lateral headers first";
+        } else {
+          message = "Veuillez d'abord ajouter des en-têtes verticales";
+        }
+
+        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
     } // PREMIERE COLONNE EN HEADER
@@ -53048,8 +53218,13 @@ $('.add-element').on('click', function () {
           }
         });
       } else {
-        message = "Veuillez d'abord ajouter des en-têtes horizontales.";
-        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Please add the horizontal headers first";
+        } else {
+          message = "Veuillez d'abord ajouter des en-têtes horizontales";
+        }
+
+        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
     }
@@ -53074,21 +53249,26 @@ $('#btn-save-project').on('click', function () {
       "html": $('#raw-code').val()
     }
   }).done(function (msg) {
-    console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // Erreur
-
+    // console.log(xhr.responseText);
+    // console.log(status);
+    // console.log(error);
+    // Erreur
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
     }
 
-    message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
-    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
 
@@ -53100,6 +53280,7 @@ $(document.body).off('keyup') // ré-initialisation
   if (e.target) {
     $(".content-editable-selected").removeClass("content-editable-selected");
     element_selected_container = e.target;
+    $('.text-formatting').prop('disabled', false);
   }
 
   $(element_selected_container).addClass("content-editable-selected");
@@ -53122,6 +53303,8 @@ $(document.body).off('keyup') // ré-initialisation
     if (parent_tag == "THEAD") {
       $('.side-tool.vertical-tools').hide();
       $('.action-merge-right').attr('disabled', false);
+      $('.aaction-move-row-up').attr('disabled', true);
+      $('.action-move-row-down').attr('disabled', false);
       $('.action-merge-down').attr('disabled', true);
 
       if ($("#full-table thead tr").length < 2) {
@@ -53159,6 +53342,11 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-move-cell-up').attr('disabled', false);
       $('.action-move-row-up').attr('disabled', false);
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-row-up').attr('disabled', true);
+      }
+
       $('#action-move-up').show();
     } // Si il n'y a pas de ligne en dessous, on ne peut pas le déplacer vers le bas
 
@@ -53171,6 +53359,11 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-move-cell-down').attr('disabled', false);
       $('.action-move-row-down').attr('disabled', false);
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-row-down').attr('disabled', true);
+      }
+
       $('#action-move-down').show();
     } // Si il n'y a plus qu'une ligne
 
@@ -53209,7 +53402,7 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-delete-col').attr('disabled', false);
     } // Si il n'y a pas de colonne à gauche , on ne peut pas le déplacer vers la gauche
-    // console.log(previous_col);
+    // // console.log(previous_col);
 
 
     if (previous_col.length == 0) {
@@ -53221,7 +53414,7 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-left').attr('disabled', false);
       $('#action-move-left').show();
     } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
-    // console.log(next_col);
+    // // console.log(next_col);
 
 
     if (next_col.length == 0) {
@@ -53302,7 +53495,7 @@ var deletecommand = new command({
 }); // ANCHOR Mise en tablee du texte (gras, italic, underline...)
 
 $('.text-formatting').on("click", function () {
-  // TODO NS_ERROR_FAILURE
+  // NS_ERROR_FAILURE
   var is_text_selected;
 
   if (window.getSelection().toString().length) {
@@ -53379,10 +53572,16 @@ $('input[name="theme"]').on('change', function () {
 }); // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-  message = "Code copié !";
-  $(".copy-container button").text("Copier");
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
   $(this).text(message);
-  Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message);
 });
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');

@@ -28,11 +28,15 @@ class UpdateProfile extends FormRequest
         $pw_db = $this->user()->password;
         return [
             'name' => 'string|min:3|max:255',
-            'email' => 'string|min:10|max:255',
+            'email' => 'string|min:10|max:255|unique:users,email',
             'password' => 'sometimes|nullable|required_with:password_confirmation|string|confirmed',
             'password_confirmation' => 'sometimes|nullable|required_with:password|string',
             'current_password' => 'sometimes|required_with:password',
         ];
+    }
+    public function messages()
+    {
+        return ['unique' => 'Adresse e-mail déjà prise'];
     }
 
     /**
