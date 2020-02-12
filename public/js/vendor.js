@@ -51308,7 +51308,7 @@ $('#title-input').keypress(function (e) {
 var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
 /*
 let translation_test = getTranslation("Thème du formulaire", "en");
-console.log(translation_test);
+// console.log(translation_test);
 */
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
@@ -51533,10 +51533,10 @@ $('#btn-save-project').on('click', function () {
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // Erreur
-
+    // console.log(xhr.responseText);
+    // console.log(status);
+    // console.log(error);
+    // TODO Erreur
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -53249,14 +53249,14 @@ $('#btn-save-project').on('click', function () {
       "html": $('#raw-code').val()
     }
   }).done(function (msg) {
-    //  console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // Erreur
-
+    // console.log(xhr.responseText);
+    // console.log(status);
+    // console.log(error);
+    // Erreur
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -53402,7 +53402,7 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-delete-col').attr('disabled', false);
     } // Si il n'y a pas de colonne à gauche , on ne peut pas le déplacer vers la gauche
-    // console.log(previous_col);
+    // // console.log(previous_col);
 
 
     if (previous_col.length == 0) {
@@ -53414,7 +53414,7 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-left').attr('disabled', false);
       $('#action-move-left').show();
     } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
-    // console.log(next_col);
+    // // console.log(next_col);
 
 
     if (next_col.length == 0) {
