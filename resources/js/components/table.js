@@ -41,6 +41,7 @@ $('.text-formatting').prop('disabled', true);
 $('.element_move').prop('disabled', true);
 $('.action-delete').prop('disabled', true);
 $('.element_merge-right').prop('disabled', true);
+$(".element_delete").prop('disabled', true);
 
 // ANCHOR Caractères restants Description du projet
 $('#desc-input').keypress(function (e) {
@@ -87,16 +88,16 @@ export var element_types = {
         "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
     },
     "type-unique": {
-        "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
-        "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
-        "insert-cell": "\n\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
+        "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' data-tag='cell-header' scope='col'><span contenteditable=true >&#160</span></th>",
+        "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' data-tag='cell-header' scope='row'><span contenteditable=true >&#160</span></th>",
+        "insert-cell": "\n\t\t\t<td class='table-cell cell-text' data-tag='cell'><span contenteditable=true >&#160</span></td>"
     }
 };
 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-table th').attr('contenteditable', true);
-    $('#full-table td').attr('contenteditable', true);
+    $('#full-table th span').attr('contenteditable', true);
+    $('#full-table td span').attr('contenteditable', true);
     $('#table-title').attr('contenteditable', true);
     $('#table-caption').attr('contenteditable', true);
 
@@ -229,7 +230,7 @@ $('#table-row-nb').on('change', function () {
             message = "Pourquoi un tableau sans lignes ?";
         }
         alertMsg(message, "error");
-        (this).val("2");
+        $(this).val("2");
         return;
     }
     let actual_nb_row = $("#full-table").find('tr').length;
@@ -338,6 +339,9 @@ export function addCol(side) {
                 }
                 if (index < rows_header) {
                     let thead_insert_before = $(tr).find("th")[cell_index];
+                    if(!thead_insert_before){
+                        thead_insert_before = $(tr).find("th").first();
+                    }
                     $(thead_insert_before).before(cell_header_html);
                 }
             })
@@ -361,6 +365,9 @@ export function addCol(side) {
                 }
                 if (index < rows_header) {
                     let thead_insert_after = $(tr).find("th")[cell_index];
+                    if(!thead_insert_after){
+                        thead_insert_after = $(tr).find("th").last();
+                    }
                     $(thead_insert_after).after(cell_header_html);
                 }
             })
@@ -472,21 +479,21 @@ function moveRow(side){
         // $(selected_row).insertBefore(previous_row);
         $(selected_row).find('td, th').each(function(index, element){
             let previous_cell = previous_row.find('td, th')[index];
-            let previous_text = $(previous_cell).text();
-            let actual_text = $(this).text();
+            let previous_text = $(previous_cell).find('span').text();
+            let actual_text = $(this).find('span').text();
 
-            $(previous_cell).text(actual_text);
-            $(this).text(previous_text);
+            $(previous_cell).find('span').text(actual_text);
+            $(this).find('span').text(previous_text);
         })
     }else if(side == "down"){
         // $(selected_row).insertAfter(next_row);
         $(selected_row).find('td, th').each(function(index, element){
             let next_cell = next_row.find('td, th')[index];
-            let next_text = $(next_cell).text();
-            let actual_text = $(this).text();
+            let next_text = $(next_cell).find('span').text();
+            let actual_text = $(this).find('span').text();
             
-            $(next_cell).text(actual_text);
-            $(this).text(next_text);
+            $(next_cell).find('span').text(actual_text);
+            $(this).find('span').text(next_text);
         })
     }
 }
@@ -500,48 +507,48 @@ function moveCol(side){
     if(side == "left"){
         rows.each(function(){
             cols = $(this).children('td, th');
-            let other_text = cols.eq(col_id-1).text();
-            let actual_text = cols.eq(col_id).text();
-            cols.eq(col_id).text(other_text);
-            cols.eq(col_id-1).text(actual_text);
+            let other_text = cols.eq(col_id-1).find('span').text();
+            let actual_text = cols.eq(col_id).find('span').text();
+            cols.eq(col_id).find('span').text(other_text);
+            cols.eq(col_id-1).find('span').text(actual_text);
         });
-        previous_cell.focus();
+        $(previous_cell).find("span").focus();
 
     }else if(side == "right"){
         rows.each(function(){
             cols = $(this).children('td, th');
-            let other_text = cols.eq(col_id+1).text();
-            let actual_text = cols.eq(col_id).text();
-            cols.eq(col_id).text(other_text);
-            cols.eq(col_id+1).text(actual_text);
+            let other_text = cols.eq(col_id+1).find('span').text();
+            let actual_text = cols.eq(col_id).find('span').text();
+            cols.eq(col_id).find('span').text(other_text);
+            cols.eq(col_id+1).find('span').text(actual_text);
             
         });
-        next_cell.focus();
+        $(next_cell).find("span").focus();
     }
 }
 
 function moveCell(side){
-    let text_cell = $(".content-editable-selected").text();
+    let text_cell = $(".content-editable-selected").find('span').text();
     let text_other;
     let other_cell;
 
     if(side == "up"){
         other_cell = $(".content-editable-selected").parent().prev().find('td, th')[selected_cell_index];
-        text_other = $(other_cell).text();
+        text_other = $(other_cell).find('span').text();
     }else if(side == "down"){
         other_cell = $(".content-editable-selected").parent().next().find('td, th')[selected_cell_index];
-        text_other = $(other_cell).text();
+        text_other = $(other_cell).find('span').text();
     }else if(side == "left"){
         other_cell = $(".content-editable-selected").prev();
-        text_other = $(other_cell).text();
+        text_other = $(other_cell).find('span').text();
     }else if(side == "right"){
         other_cell = $(".content-editable-selected").next();
-        text_other = $(other_cell).text();
+        text_other = $(other_cell).find('span').text();
     }
 
-    $(".content-editable-selected").text(text_other);
-    $(other_cell).text(text_cell);
-    $(other_cell).focus();
+    $(".content-editable-selected span").text(text_other);
+    $(other_cell).find('span').text(text_cell);
+    $(other_cell).find('span').focus();
 }
 
 function mergeCell(side, cell, other_cell){
@@ -569,7 +576,7 @@ function mergeCell(side, cell, other_cell){
         $(other_cell).detach();
     }
 
-    $('.content-editable-selected').focus();
+    $('.content-editable-selected span').focus();
     updateContent();
 }
 
@@ -620,6 +627,7 @@ export function removeCol(cells) {
                         $(actual_cell).remove();
                     }
                 });
+                $(".element_delete").prop('disabled', true);
                 return true;
             }
             // Si on annule la suppression
@@ -636,6 +644,7 @@ export function removeCol(cells) {
                     $(actual_cell).remove();
                 }
             });
+            $(".element_delete").prop('disabled', true);
             return true;
         }
     } else {
@@ -651,7 +660,7 @@ $('.cell-action').on('click', function () {
 
     // Vider la case
     if (element_action == "empty-cell") {
-        $('.content-editable-selected').text("");
+        $('.content-editable-selected').find('span').text("");
 
     // DEPLACER LIGNE VERS LE HAUT
     } else if (element_action == "move-row-up") {
@@ -737,7 +746,7 @@ $('.cell-action').on('click', function () {
                 }  
                 alertMsg(message, "success");
                 // Quand elle est supprimée, on focus 
-                next_element_select.focus();
+                $(next_element_select).find("span").focus();
             }
         }else{
             if( lang == "en"){
@@ -768,7 +777,7 @@ $('.cell-action').on('click', function () {
                 }  
                 alertMsg(message, "success");
                 // Quand elle est supprimée, on focus 
-                next_element_select.focus();
+                $(next_element_select).find('span').focus();
             }
         }else{
             if( lang == "en"){
@@ -781,7 +790,7 @@ $('.cell-action').on('click', function () {
 
     }
 
-    $('.content-editable-selected').focus();
+    $('.content-editable-selected span').focus();
     updateContent();
 });
 
@@ -849,7 +858,7 @@ $('.add-element').on('click', function () {
             $('#full-table thead').append(element_types["type-container"]["insert-row"]);
             $('#full-table thead tr').append(element_types["type-unique"]["insert-header-col"]);
             $('#full-table thead th').first().addClass("content-editable-selected");
-            $(".content-editable-selected").focus();
+            $(".content-editable-selected span").focus();
             addRow("down");
             $('#full-table thead tr').first().remove();
         }else{        
@@ -876,11 +885,11 @@ $('.add-element').on('click', function () {
             rows.each(function (index) {
                 if (index >= rows_header) {
                     let new_header = $(this).find('th, td').first();
-                    let old_text = $(new_header).text();
+                    let old_text = $(new_header).find('span').text();
                     let new_cell_html = element_types["type-unique"]["insert-header-row"];
                     $(new_header).replaceWith(new_cell_html);
-                    $(new_header).text(old_text);
-                    $(this).find('th').first().text(old_text);
+                    $(new_header).find('span').find('span').text(old_text);
+                    $(this).find('th').first().find('span').text(old_text);
                 }
             });
         } else {
@@ -888,10 +897,10 @@ $('.add-element').on('click', function () {
                 rows.each(function (index) {
                     if (index >= rows_header) {
                         let new_cell = $(this).find('th, td').first();
-                        let old_text = $(new_cell).text();
+                        let old_text = $(new_cell).find('span').text();
                         let new_cell_html = element_types["type-unique"]["insert-cell"];
                         $(new_cell).replaceWith(new_cell_html);
-                        $(this).find('td').first().text(old_text);
+                        $(this).find('td').first().find('span').text(old_text);
                     }
                 });
             } else {
@@ -906,7 +915,7 @@ $('.add-element').on('click', function () {
         }
     }
 
-    $('.content-editable-selected').focus();
+    $('.content-editable-selected span').focus();
     updateContent();
 
 });
@@ -924,7 +933,7 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').text()
+            "html": $('#raw-code').find('span').text()
         }
     }).done(function (msg) {
         // console.log(msg);
@@ -955,6 +964,10 @@ $(document.body)
 
     .off('keyup') // ré-initialisation
 
+    .on('click', 'td, th', function(e){
+        $(e.target).find('span').focus();
+    }) // ré-initialisation
+
     // Quand on sélectionne un élément éditable
     .on('focus', '[contenteditable=true]', function (e) {
 
@@ -965,9 +978,14 @@ $(document.body)
             $('.text-formatting').prop('disabled', false);
         }
 
-        $(element_selected_container).addClass("content-editable-selected");
-
         let tag = $(this).attr('data-tag');
+
+        if( tag != "title" && tag != "caption" ) {
+            $(element_selected_container).closest('td, th').addClass("content-editable-selected");
+        } else {
+            $(element_selected_container).addClass("content-editable-selected");
+        }
+
         if (tag != "title" && tag != "caption") { // si ce n'est pas le titre ou la caption
 
             $('.cell-action').removeAttr('disabled');
@@ -1078,7 +1096,7 @@ $(document.body)
             });
 
             // Si il n'y a plus qu'une colonne
-            if( selected_row[0].cells.length <= 2 ){
+            if( selected_row[0].cells && selected_row[0].cells.length <= 2 ){
                 $('.action-delete-col').attr('disabled', true);
             }else{
                 $('.action-delete-col').attr('disabled', false);
