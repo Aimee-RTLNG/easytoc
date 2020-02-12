@@ -598,7 +598,7 @@ $(document.body)
     // quand on déselectionne un élement...
     .on('blur', '[contenteditable=true]', function (e) {
         // e.preventDefault();
-        let element_select_before = window.getSelection().getRangeAt(0).startContainer;
+        // let element_select_before = window.getSelection().getRangeAt(0).startContainer;
         updatecontent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
@@ -608,7 +608,6 @@ $(document.body)
         updatecontent();
 
     });
-
 
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {

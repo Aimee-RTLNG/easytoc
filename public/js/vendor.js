@@ -51823,7 +51823,7 @@ $(document.body).off('keyup') // ré-initialisation
 }) // quand on déselectionne un élement...
 .on('blur', '[contenteditable=true]', function (e) {
   // e.preventDefault();
-  var element_select_before = window.getSelection().getRangeAt(0).startContainer;
+  // let element_select_before = window.getSelection().getRangeAt(0).startContainer;
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#form-title', function () {
