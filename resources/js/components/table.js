@@ -450,7 +450,7 @@ function removeRow(row) {
             message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
         }
         if (confirm(message)) {
-            row.remove();
+            $(row).remove();
             return true;
         }
         // Si on annule la suppression
@@ -461,7 +461,7 @@ function removeRow(row) {
     }
     // Si il n'y a rien : on supprime
     else {
-        row.remove();
+        $(row).remove();
         return true;
     }
 }
@@ -617,7 +617,7 @@ export function removeCol(cells) {
                 cells.forEach(function (item, index) {
                     let actual_cell = item;
                     if(actual_cell){
-                        actual_cell.remove();
+                        $(actual_cell).remove();
                     }
                 });
                 return true;
@@ -633,7 +633,7 @@ export function removeCol(cells) {
             cells.forEach(function (item, index) {
                 let actual_cell = item;
                 if(actual_cell){
-                    actual_cell.remove();
+                    $(actual_cell).remove();
                 }
             });
             return true;
@@ -924,7 +924,7 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').val()
+            "html": $('#raw-code').text()
         }
     }).done(function (msg) {
         // console.log(msg);

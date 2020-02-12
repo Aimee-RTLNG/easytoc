@@ -398,7 +398,7 @@
                             <i class="d-block">0 = {{ __('sans limite') }}</i>
                         </div>
                        <!-- Si élément == select -->
-                        <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
+                        <div role="section" class="col align-items-center action-multiple-answer" style="display:none">
                             <input class="mr-2 form-element-action" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
                             <label for="elem-multiple-choice">
                                 {{ __('Choix multiples') }}

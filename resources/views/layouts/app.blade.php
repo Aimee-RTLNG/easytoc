@@ -73,7 +73,7 @@
                                 <a class=" btn-connect__link" href="{{ route('profile.view', auth()->user()) }}" title="{{ __('Accéder à mon compte') }}">{{ __('Mon compte') }}</a>
                             </li>
                             <li class="nav-item btn-connect btn-connect--two">
-                                <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>
+                                <div class="btn-connect__icon"><i class="fas fa-times"></i></div>
                                 <a class=" btn-connect__link" href="{{ route('logout') }}" title="{{ __('Se déconnecter') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">

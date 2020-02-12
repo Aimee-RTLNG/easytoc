@@ -51526,17 +51526,17 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').val()
+      "html": $('#raw-code').text()
     }
   }).done(function (msg) {
     // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    // console.log(xhr.responseText);
-    // console.log(status);
-    // console.log(error);
-    // TODO Erreur
+    console.log(xhr.responseText);
+    console.log(status);
+    console.log(error); // TODO Erreur
+
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -52169,7 +52169,7 @@ function addOption(option_type_parameter) {
 
 function deleteOption() {
   var select_option_selected = $(".content-editable-selected select option:selected");
-  select_option_selected.remove();
+  $(select_option_selected).remove();
   $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
   $('.action-delete-option').hide();
 } // ANCHOR Fonction Undo/Redo suppression
@@ -52789,7 +52789,7 @@ function removeRow(row) {
     }
 
     if (confirm(message)) {
-      row.remove();
+      $(row).remove();
       return true;
     } // Si on annule la suppression
     else {
@@ -52798,7 +52798,7 @@ function removeRow(row) {
       }
   } // Si il n'y a rien : on supprime
   else {
-      row.remove();
+      $(row).remove();
       return true;
     }
 } // Déplacement de ligne
@@ -52963,7 +52963,7 @@ function removeCol(cells) {
           var actual_cell = item;
 
           if (actual_cell) {
-            actual_cell.remove();
+            $(actual_cell).remove();
           }
         });
         return true;
@@ -52978,7 +52978,7 @@ function removeCol(cells) {
           var actual_cell = item;
 
           if (actual_cell) {
-            actual_cell.remove();
+            $(actual_cell).remove();
           }
         });
         return true;
@@ -53246,7 +53246,7 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').val()
+      "html": $('#raw-code').text()
     }
   }).done(function (msg) {
     // console.log(msg);

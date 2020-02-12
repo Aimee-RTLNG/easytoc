@@ -290,16 +290,16 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').val()
+            "html": $('#raw-code').text()
         }
     }).done(function (msg) {
         // console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
-        // console.log(xhr.responseText);
-        // console.log(status);
-        // console.log(error);
+        console.log(xhr.responseText);
+        console.log(status);
+        console.log(error);
         // TODO Erreur
         if(!$('#title-input').val()){
             $("#title-input").addClass('required-failed');
@@ -901,7 +901,7 @@ export function addOption(option_type_parameter) {
 // ANCHOR Fonction de suppression d'option (select)
 function deleteOption() {
     let select_option_selected = $(".content-editable-selected select option:selected");
-    select_option_selected.remove();
+    $(select_option_selected).remove();
     $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
     $('.action-delete-option').hide();
 }
