@@ -35,7 +35,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="far fa-eye"></i>
+                                        <i class="fas fa-eye" title="{{ __('Voir le mot de passe en clair') }}"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->

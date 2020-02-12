@@ -24,11 +24,13 @@
 }
 .select-home {
     background-color: $bleu;
-    &__link:before {
-        content: "\f061";
-        font-family: "Font Awesome 5 Free";
-        position: relative;
-        left: -10px;
+    &__link {
+        padding-left: 12px;
+        svg {
+            position: absolute;
+            left: 8px;
+            top: 13px;
+        }
     }
     .dropdown-menu.show {
         font-size: 1.4rem;
@@ -37,8 +39,7 @@
     }
 }
 .show .select-home__link {
-    top: 2px;
-    position: relative;
+    padding-top: 8px;
 }
 .home-present {
     position: relative;
@@ -62,18 +63,8 @@
             line-height: 3.0rem;
             padding-left: 48px;
             list-style-type: none;
-            li:before {
-                content :'\f061';
-                font-size: 18px;
-                color: $bleu;
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-                padding-right: 20px;
-            }
-            li:hover:before{
-                position: relative;
-                left: 10px;
-                transition: left 0.5s;
+            a:hover {
+                color: $bleu-fonce;
             }
         }
         &__btn {
@@ -110,7 +101,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    i {
+    svg {
         cursor: pointer;
         font-size: 2.5rem;
     }
@@ -151,6 +142,9 @@
                 width: 100%;
                 justify-content: center;
                 font-size: 2.0rem;
+                &:focus {
+                    border : 3px solid white;
+                }
             }
         }
     }
@@ -256,7 +250,14 @@
         }
     }
 }
-
+@include media-breakpoint-down(xl) { 
+    .section-home.def {
+        min-height: 800px;
+    }
+    .use-list__blocs {
+    padding-bottom: 50px;
+    }
+}
 @include media-breakpoint-down(lg) { 
     //1199
     .home-present__video {
@@ -321,6 +322,10 @@
     .video-yt {
         height: 300px;
     }
+    .use-list__item__icon {
+        height: 49px;
+        min-height: 49px;
+    }
 
 }
 
@@ -333,14 +338,17 @@
         min-width: 100%;
         font-size: 3rem;
     }
-    .home-present__txt__tips li:before{
-        padding-right: 14px;
-    }
+    // .home-present__txt__tips li:before{
+    //     padding-right: 14px;
+    // }
     .video-yt {
         height: 200px;
     }
     .def__txt__citation {
         margin: 20px 5px 20px 16px;
+    }
+    .section-home .home-tools__item__txt .btn-form-final {
+        width: 100%;
     }
 }
 

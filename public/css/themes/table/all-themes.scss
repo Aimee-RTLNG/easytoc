@@ -1,0 +1,117 @@
+// Themes
+
+$themes: (
+    white: (
+        backgroundColor: #fff,
+        backgroundTheadColor: rgb(189, 189, 189),
+        backgroundTfootColor: rgb(139, 138, 138),
+        textColor : black,
+        borderColor : grey
+    ),
+    black: (
+        backgroundColor: rgb(51, 51, 51),
+        backgroundTheadColor: rgb(15, 15, 15),
+        backgroundTfootColor: rgb(31, 31, 31),
+        textColor : white,
+        borderColor : white
+    ),
+    green: (
+        backgroundColor: green,
+        backgroundTheadColor: rgb(1, 88, 1),
+        backgroundTfootColor: rgb(1, 58, 1),
+        textColor : white,
+        borderColor : rgb(1, 88, 1)
+    ),
+    red: (
+        backgroundColor: red,
+        backgroundTheadColor: rgb(151, 0, 0),
+        backgroundTfootColor: rgb(116, 1, 1),
+        textColor : white,
+        borderColor : rgb(151, 0, 0)
+    ),
+    blue: (
+        backgroundColor: rgb(106, 106, 255),
+        backgroundTheadColor: rgb(64, 64, 233),
+        backgroundTfootColor: rgb(72, 72, 228),
+        textColor : white,
+        borderColor : rgb(64, 64, 233),
+    ),
+    grey: (
+        backgroundColor: grey,
+        backgroundTheadColor: rgb(71, 71, 71),
+        backgroundTfootColor: rgb(95, 95, 95),
+        textColor : black,
+        borderColor : rgb(71, 71, 71)
+    )
+);
+
+
+// Implementation des themes
+
+@mixin themify($themes) {
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+
+// Styles
+
+#full-table {
+    @include themify($themes) {
+      color: themed('textColor');  
+      background-color: themed('backgroundColor');  
+      border-collapse: collapse;
+      width: 100%;
+      overflow: auto;
+
+        .table-caption{
+            font-size: 15px;
+            color: black;
+            font-style: italic;
+        }
+
+        th{
+            background-color: themed('backgroundTheadColor');  
+            font-weight: bold;
+            border: 2px solid themed('borderColor');
+            min-width: 40px;
+        }
+
+        td{
+            border: 1px solid themed('borderColor');
+            min-width: 40px;
+        }
+
+        tfoot td{
+            background-color: themed('backgroundTfootColor');  
+        }
+
+    }
+}
+
+.font-style-italic{
+    font-style: italic;
+}
+
+.font-underline{
+    text-decoration: underline;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}

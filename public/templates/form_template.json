@@ -1,0 +1,173 @@
+{
+	"type": "form",
+	"title": "Exemple de formulaire Easy to C",
+	"url": "/form.php",
+	"options": {"method" : "post", "reset" : "reset"},
+	"style": "green",
+	"items": [
+		{
+			"type": "paragraph",
+			"content": "Ceci est un formulaire test, il a été généré par un fichier en format JSON. Pour en savoir plus, vous pouvez aller consulter le guide d'utilisation / d'importation des données du générateur de formulaire.",
+			"style": [
+				"justify-full",
+				"bold"
+			]
+		},
+		{
+			"type": "link",
+			"content": "Page d'aide à l'utilisation et à l'importation des données pour le générateur de formulaire.",
+			"url": "https://easytoc.ritleng.mmi-unistra.fr/aide#creator",
+			"style": [
+				"bold, italic"
+			]
+		},
+		{
+			"type": "unordered-list",
+			"content": "En remplissant ce formulaire fictif, des questions sur les sujets suivants vous seront posées :",
+			"items": [
+				"Votre identité (seulement votre prénom)",
+				"Vos goûts personnels concernant les couleurs",
+				"Vos chaussettes"
+			]
+		},
+		{
+			"type": "short-answer",
+			"content": "Quelle est votre prénom ?",
+			"name": "firstname",
+			"options": "required",
+			"style": [
+				"bold"
+			],
+			"placeholder": "Entrez votre prénom...",
+			"maxlength": 50
+		},
+		{
+			"type": "short-answer",
+			"content": "Quelle est votre adresse e-mail ?",
+			"name": "email",
+			"answertype": "email",
+			"placeholder": "Entrez votre adresse e-mail..."
+		},
+		{
+			"type": "one-answer",
+			"content": "Quelle est votre couleur préférée ?",
+			"name": "favorite-color",
+			"options": "required",
+			"placeholder": "Choisissez une réponse...",
+			"items": [
+				{
+					"value": "blue",
+					"name": "Bleu"
+				},
+				{
+					"value": "brown",
+					"name": "Brun"
+				},
+				{
+					"value": "green",
+					"name": "Vert"
+				},
+				{
+					"value": "black",
+					"name": "Noir"
+				},
+				{
+					"value": "other",
+					"name": "Autre"
+				}
+			]
+		},
+		{
+			"type": "long-answer",
+			"content": "Quelles sont les raisons de ce choix ?",
+			"name": "favorite-color-reasons",
+			"options": "required",
+			"placeholder": "Expliquez votre choix...",
+			"maxlength": 150
+		},
+		{
+			"type": "many-answer",
+			"content": "De quelles couleurs sont vos chaussettes ?",
+			"name": "sock-colors",
+			"placeholder": "Choisissez une ou plusieurs réponses...",
+			"items": [
+				{
+					"value": "blue",
+					"name": "Bleues"
+				},
+				{
+					"value": "brown",
+					"name": "Brunes"
+				},
+				{
+					"value": "green",
+					"name": "Vertes"
+				},
+				{
+					"value": "white",
+					"name": "Blanches"
+				},
+				{
+					"value": "black",
+					"name": "Noires"
+				},
+				{
+					"value": "red",
+					"name": "Rouges"
+				},
+				{
+					"value": "pink",
+					"name": "Roses"
+				},
+				{
+					"value": "other",
+					"name": "Autre"
+				}
+			]
+		},
+		{
+			"type": "list-answer",
+			"content": "Choisissez votre type de chaussettes préféré",
+			"name": "sock-type",
+			"options": "required, multiple-choice",
+			"placeholder": "Sélectionner une option dans la liste...",
+			"items": [
+				{
+					"value": "invisible",
+					"name": "Invisible"
+				},
+				{
+					"value": "liner",
+					"name": "Socquettes"
+				},
+				{
+					"value": "anklets",
+					"name": "Normales"
+				},
+				{
+					"value": "crew",
+					"name": "Longues"
+				},
+				{
+					"value": "none",
+					"name": "Je n'aime pas les chaussettes !"
+				}
+			]
+		},
+		{
+			"type": "binary-answer",
+			"content": "J'accepte de partager les informations confidentielles données, me concernant moi et mes chaussettes, avec Easy to C.",
+			"name": "approval",
+			"options": "required",
+			"style": [
+				"italic"
+			],
+			"items": [
+				{
+					"value": "agree",
+					"name": "J'accepte ces conditions abusives"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,69 @@
+.theme-white #full-form {
+  color: black;
+  background-color: #fff;
+}
+
+.theme-black #full-form {
+  color: white;
+  background-color: #222;
+}
+
+.theme-green #full-form {
+  color: white;
+  background-color: green;
+}
+
+.theme-red #full-form {
+  color: white;
+  background-color: red;
+}
+
+.theme-blue #full-form {
+  color: white;
+  background-color: blue;
+}
+
+.theme-grey #full-form {
+  color: black;
+  background-color: grey;
+}
+
+#full-form h1 {
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+
+#full-form a {
+  cursor: pointer;
+}
+
+.theme-white #full-form a:hover {
+  color: red;
+  font-weight: bold;
+}
+
+.theme-black #full-form a:hover {
+  color: red;
+  font-weight: bold;
+}
+
+.theme-green #full-form a:hover {
+  color: red;
+  font-weight: bold;
+}
+
+.theme-red #full-form a:hover {
+  color: blue;
+  font-weight: bold;
+}
+
+.theme-blue #full-form a:hover {
+  color: red;
+  font-weight: bold;
+}
+
+.theme-grey #full-form a:hover {
+  color: red;
+  font-weight: bold;
+}
+/*# sourceMappingURL=all-themes.css.map */

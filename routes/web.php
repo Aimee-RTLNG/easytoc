@@ -20,9 +20,9 @@ Route::get('/mentions_legales', 'HomeController@mentions_legales')->name('mentio
 Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 
 // ROUTE WIDGETS
-Route::get('/menu', 'MenuController@index')->name('menu');
-Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
-Route::get('/tableau', 'TableauController@index')->name('tableau');
+Route::view('/menu', '/content/menu/create')->name('menu');
+Route::view('/formulaire', '/content/form/create')->name('formulaire');
+Route::view('/tableau', '/content/table/create')->name('tableau');
 
 // ROUTE LANGUES
 // Route qui permet de connaître la langue active
@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{user}/view', 'Profile\ProfileController@edit')->name('profile.view');
     Route::put('/profile/{user}/info', 'Profile\ProfileController@updateInfo')->name('profile.updateInfo');
     Route::put('/profile/{user}/password', 'Profile\ProfileController@updatePass')->name('profile.updatePass');
+    Route::post('/profile/{user}/destroy', 'Profile\ProfileController@destroy')->name('profile.destroy');
 });
 
 // Content
@@ -57,9 +58,9 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/content', 'ContentController@index')->name('content.index');
     Route::get('/content/{content}', 'ContentController@show')->name('content.show')->where('content', '[0-9]+');
-    Route::get('/content/create', 'ContentController@create')->name('content.create');
-    Route::post('/content/create', 'ContentController@store')->name('content.store');
-    Route::get('/content/{content}/edit', 'ContentController@edit')->name('content.edit')->where('content', '[0-9]+');
+    // Route::get('/content/create', 'ContentController@create')->name('content.create');
+    Route::post('/content/store', 'ContentController@store')->name('content.store');
+    Route::get('/content/edit/{content}', 'ContentController@edit')->name('content.edit')->where('content', '[0-9]+');
     Route::put('/content/{content}/edit', 'ContentController@update')->name('content.update')->where('content', '[0-9]+');
     Route::delete('/content/{content}', 'ContentController@destroy')->name('content.destroy')->where('content', '[0-9]+');
 });

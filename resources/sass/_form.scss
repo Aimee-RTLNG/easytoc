@@ -1,3 +1,6 @@
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 body {
     background-color: #fafafa;
 }
@@ -16,11 +19,12 @@ body {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
     }
 
-/* style du preview */
+/* style du code */
 
-
-    #content-created-preview {
+    #nav-code {
         padding: 2em;
+        border: 1px solid rgba(0, 0, 0, 0.192);
+        border-top: 0;
     }
 
 /* style du code généré */
@@ -32,37 +36,369 @@ body {
         display: inherit;
     }
 
+    .code-display{
+        font-size: 100% !important;
+        margin: 0 !important;
+        padding: 1.5em !important;
+        width: 100% !important;
+        border-radius: 5px !important;
+        border: 1px solid #888;
+    }
+
     pre.prettyprinted{
         font-size: 100% !important;
         margin: 0 !important;
         padding: 1.5em !important;
         width: 100% !important;
-        border-top-left-radius: 0px !important;
-        border-top-right-radius: 0px !important;
-        border-bottom-left-radius: 5px !important;
-        border-bottom-right-radius: 5px !important;
-        background-color: #212529;
+        border-radius: 5px !important;
+        white-space: pre !important;
     }
 
 
 /* style de l'interface actions */
 
-#content-created-blueprint form *{
-    border: 3px dotted rgba(0,0,0,0);
-    padding: 5px;
+[contenteditable="true"]:hover, #full-form input, .element-container{
+    cursor: pointer;
+}
+
+[data-tag="text"]:hover, [data-tag="label-text"]:hover, [data-tag="form-title"]:hover{
     cursor: text;
 }
 
-#content-created-blueprint form *:hover{
-    border: 3px dotted black;
+#content-created-blueprint form *{
+    border: 0;
+    padding: 5px;
+
+    &:hover{
+        border: 3px dotted black;
+    }
+
+    // tous les contenus non modifiables en soit
+    label:hover, abbr:hover, .indicator-required:hover, legend span:hover, fieldset label span:hover{
+        border: 0;
+    }
+
+    select{
+        min-height: 30px;
+    }
+
+    fieldset{
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+
+        &:hover{
+            border: 2px solid black;
+        }
+
+        label{
+
+            margin: 5px 15px;
+
+            &:hover{
+                border: 3px dotted black;
+            }
+        }
+    }
+
+    legend{
+        border: 2px solid black;
+    }
+
+    hr {
+        border: 2px solid rgba(0,0,0,0.5) !important;
+        padding: 0 !important;
+    
+        &:hover {
+            border: 2px solid rgba(0,0,0,0.5) !important;
+        }
+    }
+
+    .type-layout *:hover{
+        border: 0 !important;
+    }
+
 }
+
+.element-container{
+    margin: 10px 5px; 
+    padding: 5px;
+}
+
+.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
+    border: 3px dotted blue !important;
+}
+
+
 
 form {
     border: 0 !important;
 }
 
-easytoc, easytoc *:hover, easytoc:hover {
+input[type="checkbox"], input[type="radio"]{
     cursor: pointer !important;
-    padding: 0px !important;
-    border: 3px dotted rgba(0,0,0,0) !important;
+}
+
+// input[type="text"], textarea{
+//     border: 1px solid black !important;
+// }
+
+// Boutons copier le contenu
+
+#copy-css-link, #copy-raw-code {
+    position: relative;
+    bottom: -10px;
+    right: 70px;
+}
+
+.copy-container{
+    position: absolute;
+}
+
+// Side tools (déplacer supprimer)
+
+.side-tool {
+    width: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    button{
+        margin: 0;
+        padding: 0;
+        border-radius: 2px;
+        color: white;
+        border: none;
+    }
+
+    .btn-info:disabled{
+        background-color: rgb(129, 129, 129);
+    }
+
+}
+
+// Formulaire - création 
+.creator-panel {
+    @include flex-row-between-start;
+    &__title {
+        @include expletus;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0px;
+        line-height: 2.3rem;
+        margin-bottom: 7px;
+    }
+}
+#chara-desc-remains {
+    position: absolute;
+    bottom: 12px;
+    right: 25px;
+    color: $gris-moyen;
+    font-size: 1.2rem;
+}
+.actions-panel {
+    @include flex-col-around-start;
+    & > * {
+        width: 100%;
+    }
+    &__btn {
+        @include flex-row-between-center;
+    }
+}
+.btn-crea {
+    font-size: 1.4rem;
+    padding: 2px 8px;
+    &__icon {
+        background-color: white;
+        height: 30px;
+        width: 30px;
+        min-height: 30px;
+        min-width: 30px;
+        border-radius: 50%;
+        color: $bleu;
+        font-size: 15px;
+        @include flex-row-center;
+    }
+    p {
+        margin-left: 10px;
+        line-height: 1.8rem;
+        text-align: left;
+    }
+    &:not(:last-child) {
+        margin-right: 5px;
+    }
+}
+.template-panel {
+    &__choice {
+        height: 110px;
+        padding: 10px;
+        background-color: $gris-crea;
+        @include flex-row-around-center;
+        & > div {
+            height: 100%;
+            @include flex-col-around-start;
+            & > div {
+                @include flex-row-start-center;
+            }
+        }
+        label {
+            padding-left: 8px;
+            margin-bottom: 0px;
+        }
+        input[type='radio'] {
+            -webkit-appearance:none;
+            width:15px;
+            height:15px;
+            border-radius:6px;
+            outline:none;
+            border: none;
+            background-color: white;
+          }
+          
+          input[type='radio']:hover {
+            box-shadow:0 0 5px 0px $gris-clair inset;
+          }
+          
+          input[type='radio']:before {
+            content:'';
+            display:block;
+            width:60%;
+            height:60%;
+            margin: 20% auto;    
+            border-radius:50%;    
+          }
+          input[type='radio'][value='grey']:checked:before {
+            background:grey;
+          }
+          input[type='radio'][value='green']:checked:before {
+            background:$green;
+          }
+          input[type='radio'][value='black']:checked:before {
+            background:black;
+          }
+          input[type='radio'][value='red']:checked:before {
+            background:$red;
+          }
+          input[type='radio'][value='white']:checked:before {
+            background:$gris-clair;
+            border: 1px $gris-crea solid;
+          }
+          input[type='radio'][value='blue']:checked:before {
+            background:$bleu;
+          }
+    }
+}
+.help-panel {
+    @include flex-col-between-start;
+    height: 50px;
+    margin-top: 6px;
+    color: $bleu;
+    a:hover {
+        text-decoration: underline;
+        color: $bleu-fonce;
+    }
+}
+.project-action {
+    @include flex-row-center;
+    &__btn {
+        @include flex-row-between-center;
+    }
+}
+.main-info-form {
+    @include flex-row-around-end;
+    margin-bottom: 16px;
+    .reset-button {
+        @include flex-row-start-center;
+    }
+    & > * {
+        margin-bottom: 10px;
+    }
+}
+.input-creator {
+    background-color: $gris-crea;
+    color: black;
+    font-weight: bold;
+    &::placeholder {
+        color: black;
+        font-weight: bold;
+    }
+    &:focus {
+        background-color: $gris-clair;
+        border: 1px $gris-crea solid;
+        color: black;
+        font-weight: bold;
+    }
+}
+.content-interface {
+    padding: 20px;
+}
+
+.action-required-cont, .action-multiple__cont {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.action-required, .action-multiple-answer {
+    min-height: 50px;
+ }
+.action-supp-titre {
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+.action-supp {
+    position: relative;
+    &__aide {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    .element_add-option {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.action-supp-crea {
+    & > * {
+        margin-bottom: 20px;
+    }
+}
+.btn-save-project {
+    font-size: 1.6rem;
+}
+.blueprint {
+    position: relative;
+    &__titre {
+        margin-bottom : 20px;
+    }
+    &__btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@include media-breakpoint-down(lg) { 
+    .info-panel {
+        margin-bottom: 20px;
+    }
+    .form_actions_element {
+        & > div:first-child {
+            margin-bottom: 10px;
+        }
+    }
+    #nav-code {
+        padding: 1em;
+    }
+    .blueprint {
+        &__titre {
+            margin-bottom: 8px;
+        }
+        &__btn {
+            position: relative;
+            top: 0;
+            left: 0px;
+            margin-bottom: 10px;
+        }
+    }
 }
