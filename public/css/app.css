@@ -9768,7 +9768,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 18px 2px 5px;
+  padding: 2px 8px 2px 5px;
 }
 
 .btn-connect__icon {
@@ -9883,12 +9883,17 @@ textarea.shadow-box {
   }
   .menu-connect {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-direction: row;
     margin-bottom: 10px;
   }
+  .menu-connect > * {
+    width: 50%;
+  }
   .btn-connect {
     height: 35px;
-    width: 50%;
+    width: 100%;
   }
   .btn-connect__link {
     font-size: 1.5rem;

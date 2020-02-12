@@ -68,17 +68,19 @@
                         @else
 
                         {{-- {{ Auth::user()->name }} --}}
-                            <li class="nav-item btn-connect">
-                                <div class="btn-connect__icon"><i class="fas fa-user-circle"></i></div>
-                                <a class=" btn-connect__link" href="{{ route('profile.view', auth()->user()) }}" title="{{ __('Accéder à mon compte') }}">{{ __('Mon compte') }}</a>
+                            <li class="nav-item">
+                                <a class=" btn-connect" href="{{ route('profile.view', auth()->user()) }}" title="{{ __('Accéder à mon compte') }}">
+                                    <div class="btn-connect__icon"><i class="fas fa-user-circle"></i></div>
+                                    <p class="btn-connect__link" >{{ __('Mon compte') }}</p>
+                                </a>
                             </li>
-                            <li class="nav-item btn-connect btn-connect--two">
-                                <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>
-                                <a class=" btn-connect__link" href="{{ route('logout') }}" title="{{ __('Se déconnecter') }}"
+                            <li class="nav-item btn-connect--two">
+                                <a class="btn-connect" href="{{ route('logout') }}" title="{{ __('Se déconnecter') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                 {{ __('Déconnexion') }}
-                             </a>
+                                    <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>
+                                     <p class="btn-connect__link">{{ __('Déconnexion') }}</p>
+                                </a>
                             </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

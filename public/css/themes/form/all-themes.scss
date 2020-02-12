@@ -78,6 +78,15 @@ $themes: (
     a {
       cursor: pointer;
     } 
+    .text-justify {
+        text-align: justify !important;
+    }
+    .text-left {
+        text-align: left !important;
+    }
+    .text-center {
+        text-align: center !important;
+    }
   }
 // ----
 #generated-form {
