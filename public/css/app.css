@@ -9761,9 +9761,11 @@ textarea.shadow-box {
 }
 
 .btn-connect {
+  min-width: 112px;
+  min-height: 25px;
   background-color: #fff;
   color: black;
-  height: 25px;
+  height: 28px;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
@@ -9844,7 +9846,7 @@ textarea.shadow-box {
     margin-right: 5px;
   }
   .btn-connect--two {
-    margin-left: 3px;
+    margin-left: 10px;
   }
   .menu-lang {
     margin-left: 4px;

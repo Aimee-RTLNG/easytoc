@@ -30,9 +30,11 @@
     }
 }
 .btn-connect {
+    min-width: 112px;
+    min-height: 25px;
     background-color: $white;
     color: black;
-    height: 25px;
+    height: 28px;
     border-radius: 12px;
     @include flex-row-between-center;
     padding: 2px 8px 2px 5px;
@@ -98,7 +100,7 @@
         margin-right: 5px;
     }
     .btn-connect--two {
-        margin-left: 3px;
+        margin-left: 10px;
     }
     .menu-lang  {
         margin-left: 4px;
