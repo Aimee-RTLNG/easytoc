@@ -10908,6 +10908,7 @@ xmp {
   width: 100% !important;
   border-radius: 5px !important;
   border: 1px solid #888;
+  word-break: break-all;
 }
 
 pre.prettyprinted {
@@ -10930,7 +10931,6 @@ pre.prettyprinted {
 
 #content-created-blueprint form * {
   border: 0;
-  padding: 5px;
 }
 
 #content-created-blueprint form *:hover {
@@ -10946,13 +10946,13 @@ pre.prettyprinted {
 }
 
 #content-created-blueprint form * fieldset {
-  border: 2px solid black;
+  border: none;
   display: flex;
   flex-direction: column;
 }
 
 #content-created-blueprint form * fieldset:hover {
-  border: 2px solid black;
+  border: none;
 }
 
 #content-created-blueprint form * fieldset label {
@@ -10960,11 +10960,11 @@ pre.prettyprinted {
 }
 
 #content-created-blueprint form * fieldset label:hover {
-  border: 3px dotted black;
+  border: none;
 }
 
 #content-created-blueprint form * legend {
-  border: 2px solid black;
+  border: none;
 }
 
 #content-created-blueprint form * hr {
@@ -11067,7 +11067,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .btn-crea {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 2px 8px;
 }
 
@@ -11196,6 +11196,17 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.edit-project-action {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.edit-project-action .btn-crea {
+  margin-right: 0px;
 }
 
 .main-info-form {
@@ -11328,6 +11339,81 @@ input[type="checkbox"], input[type="radio"] {
     top: 0;
     left: 0px;
     margin-bottom: 10px;
+  }
+}
+
+#nav-blueprint {
+  font-size: 14px;
+}
+
+#nav-blueprint label {
+  font-size: 14px;
+  width: 100%;
+}
+
+#nav-blueprint #full-form {
+  max-width: 100%;
+  width: 100%;
+}
+
+#nav-blueprint #full-form .form-control {
+  margin-bottom: 0px;
+}
+
+#nav-blueprint #form-actions {
+  max-width: 100%;
+  width: 100%;
+}
+
+.content-html-preview #full-form .form-control {
+  margin-bottom: 0px;
+}
+
+.crea-item__btn-delete {
+  width: auto;
+}
+
+.btn-delete-def {
+  padding: 8px 20px;
+  color: white;
+  background-color: #e3342f;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 991.98px) {
+  .edit-project-action > * {
+    margin-bottom: 20px;
+  }
+  .edit-project-action .btn-danger {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-gris {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .form_btn-delete-def {
+    width: 100%;
+  }
+  .form_btn-delete-def .btn-delete-def {
+    width: 100%;
+  }
+  .edit-project-action .btn-success {
+    width: 100%;
+    margin-right: 0px;
+  }
+  .edit-project-action .btn-crea {
+    padding: 8px 20px;
   }
 }
 
@@ -11567,11 +11653,11 @@ pre.prettyprinted {
   border-radius: 30px;
 }
 
-.type-pin[data-type="Menu"] {
+.type-pin[data-type="Menu"], .type-pin[data-type="menu"] {
   background-color: #e25f5f;
 }
 
-.type-pin[data-type="Table"] {
+.type-pin[data-type="Table"], .type-pin[data-type="table"] {
   background-color: #5ab444;
 }
 
@@ -11664,6 +11750,10 @@ pre.prettyprinted {
   font-size: 2.0rem;
   font-family: 'Expletus Sans', sans-serif;
   font-weight: bold;
+}
+
+.dashboard .btn-delete-def {
+  font-size: 1.6rem;
 }
 
 .dashboard__title {
@@ -11836,6 +11926,7 @@ pre.prettyprinted {
   width: 100%;
   padding: 2px 6px;
   min-width: 130px;
+  margin-bottom: 5px;
 }
 
 .crea-item__btns .btn p {
@@ -11917,7 +12008,7 @@ pre.prettyprinted {
     transition: height 0.5s ease;
   }
   .mon-compte.open {
-    height: 610px;
+    height: 700px;
   }
   .mon-compte__entete {
     justify-content: flex-start;
@@ -11980,10 +12071,10 @@ pre.prettyprinted {
     align-items: center;
   }
   .crea-item__btns .btn:not(.btn-gris) {
+    margin-bottom: 5px;
     justify-content: center;
     min-width: 50px;
     width: 50px;
-    margin-bottom: 0px;
     margin-right: 6px;
   }
   .crea-item__btns .btn:not(.btn-gris) p {
@@ -12023,7 +12114,7 @@ pre.prettyprinted {
 
 @media (max-width: 368px) {
   .mon-compte.open {
-    height: 644px;
+    height: 750px;
   }
   .mon-compte__entete {
     padding-right: 20px;
@@ -12047,6 +12138,10 @@ pre.prettyprinted {
 .edit-content-button, .delete-content-button {
   padding: 2px 10px;
   min-width: 138px;
+}
+
+.content-html-code {
+  max-width: 100%;
 }
 
 .element-actions {
@@ -12082,4 +12177,67 @@ pre.prettyprinted {
 
 .visualisation__infos {
   margin-bottom: 20px;
+}
+
+.visualisation .content-description {
+  margin-bottom: 20px;
+}
+
+.visu-copy-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.visu-copy-container #copy-css-link, .visu-copy-container #copy-raw-code {
+  top: 50px;
+  bottom: 0px;
+  right: 15px;
+}
+
+.visualisation__infos .element-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1199.98px) {
+  .visualisation__infos .element-actions {
+    justify-content: flex-start;
+  }
+}
+
+.visualisation .visu_info {
+  margin-bottom: -8px;
+}
+
+.visualisation .visu_info .btn {
+  margin-top: 10px;
+}
+
+.visualisation .prettyprint {
+  margin-bottom: 20px !important;
+}
+
+.visualisation .btn-code {
+  margin-top: -20px;
+}
+
+.btn--danger {
+  color: #e3342f;
+  background-color: white;
+}
+
+.btn-gris-annule {
+  color: #171819;
+  background-color: #C7C7C7;
+}
+
+.btn-gris-annule:hover {
+  color: #171819;
+  background-color: #BBBBBB;
+}
+
+.btn-gris-annule .btn-crea__icon {
+  color: #171819;
 }

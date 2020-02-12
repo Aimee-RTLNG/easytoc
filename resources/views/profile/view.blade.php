@@ -130,13 +130,19 @@
                                         </div>
                                         <p>{{ __('Modifier') }}</p>
                                     </a>
-                                    <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+                                    <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <div class="crea-item__btns__icon btn--rouge">
+                                        {{-- <div class="crea-item__btns__icon btn--rouge">
                                             <i class="fa fa-times"></i>
-                                        </div>
-                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">       
+                                        </div> --}}
+                                        {{-- <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">        --}}
+                                        <button type="submit" value="{{ __('Supprimer') }}" class="shadow-box btn-delete-def btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                                            <div class="crea-item__btns__icon btn--danger">
+                                                <i class="fa fa-times"></i>
+                                            </div>
+                                            <p>{{ __('Supprimer') }}</p>
+                                        </button>  
                                     </form>
                                 </div>
                             </div>
