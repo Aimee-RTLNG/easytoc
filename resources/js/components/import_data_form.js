@@ -124,7 +124,7 @@ function importData(form) {
     // On enlève le contenu précédent sauf le titre
     $("#full-form .element-container").remove();
     $('.side-tool').hide();
-    $("#actions-interface").hide();
+    $("#actions-interface").addClass('d-none');
 
     // On ajoute les items du formulaire uploadé
     let items_list = form.items;

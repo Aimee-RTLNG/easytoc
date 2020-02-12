@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" title="{{ __('Fermer') }}">×</button>
                 {{ session('info') }}
             </div>
         </div>
@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" title="{{ __('Fermer') }}">×</button>
                 {{ session('error') }}
             </div>
         </div>
@@ -134,7 +134,7 @@
                 <div class="main-info-form row" role="region">
                     <div class="col-lg-3 col-md-6" role="region">
                         <label class="creator-panel__title" for="form-creator-title">{{ __('Titre du formulaire') }}</label>
-                        <input name="form-creator-title" id="form-creator-title" placeholder="Titre du formulaire" class="form-control input-creator" size="30" value="Titre du formulaire" />
+                        <input name="form-creator-title" id="form-creator-title" placeholder="{{ __('Titre du formulaire') }}" class="form-control input-creator" size="30" value="{{ __('Titre du formulaire') }}" />
                     </div>
                     <div class="col-lg-4 col-md-6" role="region">
                         <label class="creator-panel__title" for="form-creator-link">{{ __('Lien de traitement des données') }}</label>
@@ -157,9 +157,9 @@
                 </div>
 
                 <div role="section" class="row form_actions_element" aria-labelledby="form_actions_element">
-                <div role="section" class="col-md-7" aria-labelledby="form_add_static">
+                    <div role="section" class="col-md-7" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément statique') }}</h3>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle section') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une section") }}">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Nouvelle séparation') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une séparation") }}">
                             <i class="fa fa-grip-lines"></i>
                             {{ __('Nouvelle section') }}
                         </button>
@@ -235,18 +235,18 @@
                             <i class="fa fa-tasks"></i>
                             {{ __('Choix multiple') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer" title="{{ __('Ajouter une réponse à choix en liste') }}">
+                        <button class="btn btn-primary btn_crea add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer" title="{{ __('Ajouter une réponse à choix listé') }}">
                             <i class="fa fa-caret-down"></i>
                             {{ __('Choix en liste') }}
                         </button>
                     </div>
                     <div role="section" class="col-md-5" aria-labelledby="form_actions_crud">
                         <h3 id="form_actions_crud" class="mb-3 creator-panel__title">{{ __('Actions sur l\'élément') }}</h3>
-                        <button disabled="true" aria-label="Supprimer" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                        <button disabled="true" aria-label="{{ __('Supprimer') }}" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                             <i class="fa fa-trash"></i>
                             {{ __('Supprimer') }}
                         </button>
-                        <button disabled="true" aria-label="Annuler la suppression" class="btn btn-primary btn_crea element_undo form-element-action action-undo" data-action="undo" title="{{ __('Annuler la suppression') }}">
+                        <button disabled="true" aria-label="{{ __('Annuler la suppression') }}" class="btn btn-primary btn_crea element_undo form-element-action action-undo" data-action="undo" title="{{ __('Annuler la suppression') }}">
                             <i class="fa fa-undo"></i>
                             {{ __('Annuler la suppression') }}
                         </button>
@@ -258,178 +258,177 @@
                     </div>
                 </div>
 
-                <div class="row d-flex m-0 mb-3">
-                    <div class="side-tool" style="display: none">
-                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
-                            <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
-                        </button>
-                        <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer verse le bas') }}">
-                            <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
-                        </button>
-                    </div>
-
-                    <div class="col p-0 m-0">
-                        <nav class="mt-5">
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le formulaire') }}">{{ __('Formulaire') }}</a>
-                                <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}">{{ __('Code généré') }}</a>
-                            </div>
-                        </nav>
-
-
-                        <!-- panneaux -->
-                        <div class="tab-content" id="nav-tabContent" role="section">
-
-                            <!-- Code en brut (non formatté) -->
-                            <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
-
-                            <!-- panneau blueprint -->
-                            <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel" aria-labelledby="nav-blueprint-tab">
-                                <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">@include('content.form.template')</div>
-                            </div>
-
-                            <!-- panneau code -->
-                            <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                <a href="aide#formcode" class="btn btn-primary btn_crea blueprint__btn">
-                                    <i class="fa fa-question-circle"></i>
-                                    {{ __("Besoin d'aide !") }}
-                                </a>
-                                <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea">
-                                        {{ __("Copier") }}
-                                    </button>
-                                </div>
-                                <!-- Lien du style à utiliser -->
-                                <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
-                                <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
-                                <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea">
-                                        {{ __("Copier") }}
-                                    </button>
-                                </div>
-                                <!-- Code formatté -->
-                                <pre class="prettyprint linenums:4 content-panel" id="formatted-code"></pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="side-tool" style="display: none">
-                        <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
-                            <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div id="actions-interface" class="border bg-white rounded p-3 action-supp" style="display: none" role="section">
-                    <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
-                    <a href="aide#formuse" class="btn btn-primary btn_crea action-supp__aide">
-                        <i class="fa fa-question-circle"></i>
-                        {{ __("Besoin d'aide !") }}
-                    </a>
-                    <div class="row action-supp-crea" role="section">
-                        <!-- Intitulé -->
-                        <div role="section" class="col-lg-3 col-md-6 action-question-text">
-                            <label for="elem-title" class="creator-panel__title">
-                                {{ __("Intitulé") }}
-                            </label>
-                            <input class="form-control form-element-action input-creator" data-action="question-text" id="elem-title" name="elem-title" placeholder="{{ __('Texte') }}" size="50" />
-                        </div>  
-                        <!-- Placeholder -->                      
-                        <div role="section" class="col-lg-3 col-md-6 action-placeholder" style="display:none">
-                            <label for="elem-placeholder" class="creator-panel__title">
-                                {{ __('Exemple de réponse') }}
-                            </label>
-                            <input class="form-control form-element-action input-creator" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="{{ __('Exemple de réponse') }}" size="25" aria-label="{{ __('Exemple de réponse') }}" />
-                        </div>
-                        <!-- Référence des options -->                      
-                        <div role="section" class="col-lg-3 col-md-6 action-options-name" style="display:none">
-                            <label for="elem-options-name" class="creator-panel__title">
-                                {{ __('Référence de la question') }}
-                            </label>
-                            <input class="form-control form-element-action input-creator" data-action="options-name" name="elem-options-name" id="elem-options-name" placeholder="{{ __('Référence') }}" aria-label="{{ __('Référence') }}" />
-                        </div>
-                        <!-- Nom des options -->                      
-                        <div role="section" class="col-lg-3 col-md-6 action-option-label" style="display:none">
-                            <label for="elem-option-label" class="creator-panel__title">
-                                {{ __("Nom de l'option") }}
-                            </label>
-                            <input class="form-control form-element-action input-creator" data-action="option-label" name="elem-option-label" id="elem-option-label" placeholder="{{ __('Label') }}" aria-label="{{ __('Label') }}" />
-                        </div>
-                        <!-- Valeur des options -->                      
-                        <div role="section" class="col-lg-3 col-md-6 action-option-value" style="display:none">
-                            <label for="elem-option-value" class="creator-panel__title">
-                                {{ __("Valeur de l'option") }}
-                            </label>
-                            <input class="form-control form-element-action input-creator" data-action="option-value" name="elem-option-value" id="elem-option-value" placeholder="{{ __('Valeur') }}" aria-label="{{ __('Valeur') }}" />
-                        </div>
-                        <!-- Type de réponse-->
-                        <div role="section" class="col-lg-3 col-md-6 action-answer-type" style="display:none">
-                            <label for="elem-type" class="creator-panel__title">{{ __('Type de réponse attendue') }}</label>
-                            <select class="form-control form-element-action input-creator" data-action="answer-type" name="elem-type" id="elem-type">
-                                <option selected disabled>{{ __('Type') }}</option>
-                                <option value="email">{{ __('Email') }}</option>
-                                <option value="number">{{ __('Nombre') }}</option>
-                                <option value="date">{{ __('Date') }}</option>
-                                <option value="text">{{ __('Texte') }}</option>
-                            </select>
-                        </div>
-                        <!-- Required-->
-                        <div role="section" class="col-lg-3 col-sm-6 action-required">
-                            <div class="action-required-cont">
-                                <input class="form-element-action mr-2" data-action="required" type="checkbox" name="elem-required" id="elem-required" role="section">
-                                <label for="elem-required" class="creator-panel__title">
-                                    {{ __('Réponse obligatoire') }}
-                                </label>
-                            </div>
-                        </div>
-                        <!-- Longueur max-->
-                        <div role="section" class="col-lg-3 col-md-6 action-maxlength" style="display:none">
-                            <label for="elem-length" class="creator-panel__title">
-                                {{ __('Longueur de caractères maximum') }}
-                            </label>
-                            <input class="form-control form-element-action input-creator" data-action="maxlength" name="elem-length" id="elem-length" placeholder="Longueur" />
-                            <i class="d-block">0 = {{ __('sans limite') }}</i>
-                        </div>
-                       <!-- Si élément == select -->
-                        <div role="section" class="col-lg-3 col-sm-6 align-items-center action-multiple-answer" style="display:none">
-                           <div class="action-multiple__cont">
-                                <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
-                                <label for="elem-multiple-choice" class="creator-panel__title">
-                                    {{ __('Choix multiples') }}
-                                </label>
-                           </div>
-                        </div>
-                        <!-- Si élément == lien -->
-                        <div role="section" class="col-lg-3 col-md-6 align-items-center action-url" style="display:none">
-                            <label for="elem-url">
-                                {{ __('Lien associé') }} (url)
-                            </label>
-                            <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
-                        </div>
-                        <div role="section" class="col-lg-3 col-md-6 align-items-center action-title" style="display:none">
-                            <label for="elem-url-title">
-                                {{ __('Indication de navigation') }}
-                            </label>
-                            <input class="input-creator" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
-                        </div>
-                        <!-- Ajout d'option -->
-                         <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
-                            <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option">
-                                <i class="fa fa-check-square"></i>
-                                {{ __('Ajouter une option') }}
+                <div class="d-flex bloc-creation-interface">
+                    <div class="bloc-visualisation col p-0 d-flex m-0 mb-3">
+                        <div class="side-tool" style="display: none">
+                            <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
+                                <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
+                            </button>
+                            <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
+                                <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                             </button>
                         </div>
-                        <!-- Ajout d'option -->
-                        <div role="section" class="col-lg-3 col-sm-6 action-delete-option" style="display:none">
-                           <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
-                            <i class="fas fa-trash"></i>
-                               {{ __("Supprimer l'option") }}
-                           </button>
-                       </div>
+
+                        <div class="col p-0 m-0">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le formulaire') }}">{{ __('Formulaire') }}</a>
+                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}">{{ __('Code généré') }}</a>
+                                </div>
+                            </nav>
+
+
+                            <!-- panneaux -->
+                            <div class="tab-content" id="nav-tabContent" role="section">
+
+                                <!-- Code en brut (non formatté) -->
+                                <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
+
+                                <!-- panneau blueprint -->
+                                <div class="tab-pane fade show active" id="nav-blueprint" role="tabpanel" aria-labelledby="nav-blueprint-tab">
+                                    <div id="content-created-blueprint" class="content-panel border border-top-0 rounded-bottom p-4">@include('content.form.template')</div>
+                                </div>
+
+                                <!-- panneau code -->
+                                <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <a href="aide#formcode" class="btn btn-primary btn_crea blueprint__btn">
+                                        <i class="fa fa-question-circle"></i>
+                                        {{ __("Besoin d'aide !") }}
+                                    </a>
+                                    <div class="copy-container w-100 d-flex flex-row-reverse">
+                                        <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" 
+                                            {{ __("Copier") }}
+                                        </button>
+                                    </div>
+                                    <!-- Lien du style à utiliser -->
+                                    <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                    <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
+                                    <div class="copy-container w-100 d-flex flex-row-reverse">
+                                        <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}">
+                                            {{ __("Copier") }}
+                                        </button>
+                                    </div>
+                                    <!-- Code formatté -->
+                                    <pre class="prettyprint linenums:4 content-panel" id="formatted-code"></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="side-tool" style="display: none">
+                            <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                                <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="actions-interface" class="bloc-actions d-none col-3 p-0">
+                        <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
+                        <div class="border bg-white rounded p-3 action-supp text-center" role="section">
+                            <div class="action-supp-crea" role="section">
+                                <!-- Intitulé -->
+                                <div role="section" class="col action-question-text">
+                                    <label for="elem-title" class="creator-panel__title">
+                                        {{ __("Intitulé") }}
+                                    </label>
+                                    <input class="form-control form-element-action input-creator" data-action="question-text" id="elem-title" name="elem-title" placeholder="{{ __('Texte') }}" size="50" />
+                                </div>  
+                                <!-- Placeholder -->                      
+                                <div role="section" class="col action-placeholder" style="display:none">
+                                    <label for="elem-placeholder" class="creator-panel__title">
+                                        {{ __('Exemple de réponse') }}
+                                    </label>
+                                    <input class="form-control form-element-action input-creator" data-action="placeholder" name="elem-placeholder" id="elem-placeholder" placeholder="{{ __('Exemple de réponse') }}" size="25" aria-label="{{ __('Exemple de réponse') }}" />
+                                </div>
+                                <!-- Référence des options -->                      
+                                <div role="section" class="col action-options-name" style="display:none">
+                                    <label for="elem-options-name" class="creator-panel__title">
+                                        {{ __('Référence de la question') }}
+                                    </label>
+                                    <input class="form-control form-element-action input-creator" data-action="options-name" name="elem-options-name" id="elem-options-name" placeholder="{{ __('Référence') }}" aria-label="{{ __('Référence') }}" />
+                                </div>
+                                <!-- Nom des options -->                      
+                                <div role="section" class="col action-option-label" style="display:none">
+                                    <label for="elem-option-label" class="creator-panel__title">
+                                        {{ __("Nom de l'option") }}
+                                    </label>
+                                    <input class="form-control form-element-action input-creator" data-action="option-label" name="elem-option-label" id="elem-option-label" placeholder="{{ __('Label') }}" aria-label="{{ __('Label') }}" />
+                                </div>
+                                <!-- Valeur des options -->                      
+                                <div role="section" class="col action-option-value" style="display:none">
+                                    <label for="elem-option-value" class="creator-panel__title">
+                                        {{ __("Valeur de l'option") }}
+                                    </label>
+                                    <input class="form-control form-element-action input-creator" data-action="option-value" name="elem-option-value" id="elem-option-value" placeholder="{{ __('Valeur') }}" aria-label="{{ __('Valeur') }}" />
+                                </div>
+                                <!-- Type de réponse-->
+                                <div role="section" class="col action-answer-type" style="display:none">
+                                    <label for="elem-type" class="creator-panel__title">{{ __('Type de réponse attendue') }}</label>
+                                    <select class="form-control form-element-action input-creator" data-action="answer-type" name="elem-type" id="elem-type">
+                                        <option selected disabled>{{ __('Type') }}</option>
+                                        <option value="email">{{ __('Email') }}</option>
+                                        <option value="number">{{ __('Nombre') }}</option>
+                                        <option value="date">{{ __('Date') }}</option>
+                                        <option value="text">{{ __('Texte') }}</option>
+                                    </select>
+                                </div>
+                                <!-- Longueur max-->
+                                <div role="section" class="col action-maxlength" style="display:none">
+                                    <label for="elem-length" class="creator-panel__title">
+                                        {{ __('Longueur maximum') }}
+                                    </label>
+                                    <input class="form-control form-element-action input-creator" data-action="maxlength" name="elem-length" id="elem-length" placeholder="0 = {{ __('sans limite') }}" />
+                                </div>
+                            <!-- Si élément == select -->
+                                <!-- Si élément == lien -->
+                                <div role="section" class="col align-items-center action-url" style="display:none">
+                                    <label for="elem-url">
+                                        {{ __('Lien associé') }} (url)
+                                    </label>
+                                    <input class="input-creator" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
+                                </div>
+                                <div role="section" class="col align-items-center action-title" style="display:none">
+                                    <label for="elem-url-title">
+                                        {{ __('Indication de navigation') }}
+                                    </label>
+                                    <input class="input-creator" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
+                                </div>
+                                <!-- Ajout d'option -->
+                                <div role="section" class="col action-add-option" style="display:none">
+                                    <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option">
+                                        <i class="fa fa-check-square"></i>
+                                        {{ __('Ajouter une option') }}
+                                    </button>
+                                </div>
+                                <!-- Ajout d'option -->
+                                <div role="section" class="col action-delete-option" style="display:none">
+                                    <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
+                                        <i class="fas fa-trash"></i>
+                                        {{ __("Supprimer l'option") }}
+                                    </button>
+                                </div>
+                            </div>
+                            <div role="section" class="col p-0 align-items-center action-multiple-answer" style="display:none">
+                                <div class="action-multiple__cont">
+                                        <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
+                                        <label for="elem-multiple-choice" class="creator-panel__title">
+                                            {{ __('Choix multiples') }}
+                                        </label>
+                                </div>
+                            </div>
+                            <!-- Required-->
+                            <div role="section" class="col p-0 action-required">
+                                <div class="action-required-cont">
+                                    <input class="form-element-action mr-2" data-action="required" type="checkbox" name="elem-required" id="elem-required" role="section">
+                                    <label for="elem-required" class="creator-panel__title">
+                                        {{ __('Réponse obligatoire') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 

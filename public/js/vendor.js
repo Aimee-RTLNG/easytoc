@@ -51059,13 +51059,14 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg, lang */
+/*! exports provided: alertMsg, lang, setSideWindow */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSideWindow", function() { return setSideWindow; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51187,7 +51188,24 @@ function alertMsg(message, state) {
   }, 7000);
 } // Traduction en JS
 
-var lang = $('html').attr('lang');
+var lang = $('html').attr('lang'); // Side tools 
+
+function setSideWindow() {
+  if ($(window).scrollTop() > 800) {
+    $('.action-supp').css('position', 'fixed');
+    $('.action-supp').css('top', '25px');
+    var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
+    var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
+
+    if (main_bottom - bottom < 435) {
+      var calcul = 435 - (main_bottom - bottom);
+      $('.action-supp').css('top', '-' + calcul + 'px');
+    }
+  } else {
+    $('.action-supp').css('position', 'relative');
+    $('.action-supp').css('top', '0');
+  }
+}
 
 /***/ }),
 
@@ -51305,12 +51323,11 @@ $('#title-input').keypress(function (e) {
   }
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
-/*
-let translation_test = getTranslation("Thème du formulaire", "en");
-// console.log(translation_test);
-*/
-// ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // TODO Position des paramètres d'élément
+
+$(window).on('scroll', function () {
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
+}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 
 var element_types; // Traductions
@@ -51512,6 +51529,7 @@ $('.add-element').on('click', function () {
   var element_type = $(this).attr("class");
   var element_type_name = $(this).attr("id");
   addElement(element_type, element_type_name);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {
@@ -51561,6 +51579,8 @@ $(document.body).off('keyup') // ré-initialisation
   } else {
     $(this).closest('label').focus();
   }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
 .on('click', '.element-container', function (e) {
   if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
@@ -51568,6 +51588,8 @@ $(document.body).off('keyup') // ré-initialisation
   } else if (e.target.nodeName == "LEGEND") {
     $(this).find('legend span[contenteditable=true]').focus();
   }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Quand on clique sur une option
 .on('click', '#full-form fieldset label, #full-form select option', function (e) {
   $('.content-editable-selected').removeClass('content-editable-selected');
@@ -51578,6 +51600,7 @@ $(document.body).off('keyup') // ré-initialisation
   previous_option = selected_option.prev();
   next_option = selected_option.next();
   refreshMoveButtons(previous_option, next_option, true);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
 }) // Quand on sélectionne un élément éditable
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
@@ -51585,6 +51608,7 @@ $(document.body).off('keyup') // ré-initialisation
   if (e.target) {
     element_select = e.target; // on ré initialise les classes
 
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
     $(".content-editable-selected").removeClass('content-editable-selected');
     $(".option-selected").removeClass('option-selected');
     selected_option = false;
@@ -51604,6 +51628,7 @@ $(document.body).off('keyup') // ré-initialisation
     refreshMoveButtons(previous_element, next_element, false);
   }
 
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
 
@@ -51611,7 +51636,8 @@ $(document.body).off('keyup') // ré-initialisation
     // si ce n'est pas le titre général du formulaire (position verouillée)
     $('.action-delete').removeAttr('disabled');
     $('.element_add-option').attr("disabled", 'true');
-    $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px");
+    $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
+
     var element_type = $(element_selected_container).attr('data-elementtype');
     var element_name = $(element_selected_container).attr('data-elementtypename');
 
@@ -51808,15 +51834,15 @@ $(document.body).off('keyup') // ré-initialisation
         }
       }
 
-      $("#actions-interface").show(); // on affiche l'interface de modification spécifique
+      $("#actions-interface").removeClass('d-none'); // on affiche l'interface de modification spécifique
     } else {
-      $("#actions-interface").hide(); // on masque l'interface de modification spécifique
+      $("#actions-interface").addClass('d-none'); // on masque l'interface de modification spécifique
     }
   } else {
     // Si on a sélectionné le titre principal
     $('.action-delete').attr('disabled', 'true');
     $('.side-tool').hide();
-    $("#actions-interface").hide(); // on affiche l'interface de modification
+    $("#actions-interface").addClass('d-none'); // on affiche l'interface de modification
   }
 
   updatecontent();
@@ -51834,7 +51860,7 @@ $(document.body).off('keyup') // ré-initialisation
 $("#nav-code-tab").on('click', function () {
   $('#generated-form').attr("action", $('#form-creator-link').val());
   $('#generated-form').attr("method", $('#form-creator-method').val());
-  $("#actions-interface").hide();
+  $("#actions-interface").addClass('d-none');
   $('.side-tool').hide();
   updatecontent();
 }); // ANCHOR Actions sur l'élément ciblé
@@ -51873,7 +51899,7 @@ $(".form-element-action").on('click', function (e) {
         next_element = element_selected_container.next();
         refreshMoveButtons(previous_element, next_element, false); // Déplacement des Tools latéraux
 
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
       }
 
       break;
@@ -51899,7 +51925,7 @@ $(".form-element-action").on('click', function (e) {
         next_element = element_selected_container.next();
         refreshMoveButtons(previous_element, next_element, false); // Déplacement des Tools latéraux
 
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
       }
 
       break;
@@ -51907,7 +51933,7 @@ $(".form-element-action").on('click', function (e) {
 
     case "delete":
       deletecommand.execute();
-      $("#actions-interface").hide();
+      $("#actions-interface").addClass('d-none');
       $(".side-tool").hide();
       $('.action-delete').attr('disabled', 'true');
       $('.action-undo').removeAttr('disabled');
@@ -52137,6 +52163,7 @@ function selectText(element) {
 ; // ANCHOR Fonction d'ajout d'option
 
 function addOption(option_type_parameter) {
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   var option_parent_element = $(".content-editable-selected");
   var option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
 

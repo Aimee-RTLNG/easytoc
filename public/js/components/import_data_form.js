@@ -167,7 +167,7 @@ function importData(form) {
 
   $("#full-form .element-container").remove();
   $('.side-tool').hide();
-  $("#actions-interface").hide(); // On ajoute les items du formulaire uploadé
+  $("#actions-interface").addClass('d-none'); // On ajoute les items du formulaire uploadé
 
   var items_list = form.items;
   Object.keys(items_list).forEach(function (key) {
