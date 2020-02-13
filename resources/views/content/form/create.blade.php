@@ -126,9 +126,9 @@
         </div>
 
         <!-- interface d'interaction avec le projet -->
-        <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="Actions sur l'élement">
+        <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
 
-            <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="Actions sur l'élement">
+            <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
                 <div class="main-info-form row" role="region">
@@ -292,12 +292,12 @@
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
                                     <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                    <a href="aide#formcode" class="btn btn-primary btn_crea blueprint__btn">
+                                    <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
                                     </a>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
-                                        <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" 
+                                        <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
                                             {{ __("Copier") }}
                                         </button>
                                     </div>
@@ -305,7 +305,7 @@
                                     <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
                                     <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
-                                        <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}">
+                                        <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
                                             {{ __("Copier") }}
                                         </button>
                                     </div>
@@ -441,7 +441,7 @@
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button>
-                <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" aria-label="Sauvegarder ce projet">
+                <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}
@@ -453,7 +453,6 @@
         @endif
     </div>
 </div>
-
 
 <div class="alert alert-success" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
@@ -479,8 +478,8 @@
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer les données') }}">{{ __('Importer mes données') }}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Annuler') }}</button>
+                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button>
             </div>
         </div>
     </div>
