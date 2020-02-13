@@ -130,6 +130,7 @@ export function setSideWindow(){
     if( $(window).scrollTop() > 800 ){
         $('.action-supp').css('position', 'fixed');
         $('.action-supp').css('top', '25px');
+        $('.action-supp').css('max-width', '25%');
 
         var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
         var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
@@ -141,5 +142,6 @@ export function setSideWindow(){
     } else {
         $('.action-supp').css('position', 'relative');
         $('.action-supp').css('top', '0');
+        $('.action-supp').css('max-width', '100%');
     }
 }

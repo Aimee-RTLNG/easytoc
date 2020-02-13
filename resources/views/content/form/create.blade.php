@@ -373,7 +373,7 @@
                                     </select>
                                 </div>
                                 <!-- Longueur max-->
-                                <div role="section" class="col-lg-3 col-md-6 action-maxlength" style="display:none">
+                                <div role="section" class="col action-maxlength" style="display:none">
                                     <label for="elem-length" class="creator-panel__title">
                                         {{ __('Longueur de caractères maximum') }}
                                     </label>
@@ -381,27 +381,27 @@
                                 </div>
                             <!-- Si élément == select -->
                                 <!-- Si élément == lien -->
-                                <div role="section" class="col-lg-9 col-md-6 align-items-center action-url" style="display:none">
+                                <div role="section" class="col align-items-center action-url" style="display:none">
                                     <label for="elem-url" class="creator-panel__title ">
                                         {{ __('Lien associé') }} (url)
                                     </label>
                                     <input class="input-creator form-control" name="elem-url" id="elem-url" placeholder="{{ __('Entrez une URL') }}" class="form-control  form-element-action" data-action="url" aria-label="{{ __('Lien associé') }}" />
                                 </div>
-                                <div role="section" class="col-lg-3 col-md-6 align-items-center action-title" style="display:none">
+                                <div role="section" class="col align-items-center action-title" style="display:none">
                                     <label for="elem-url-title" class="creator-panel__title">
                                         {{ __('Indication de navigation') }}
                                     </label>
                                     <input class="input-creator form-control" name="elem-url-title" id="elem-url-title" placeholder="{{ __('Indication de navigation') }}" class="form-control  form-element-title" data-action="title" aria-label="{{ __('Indication de navigation') }}" />
                                 </div>
                                 <!-- Ajout d'option -->
-                                <div role="section" class="col-lg-3 col-sm-6 action-add-option" style="display:none">
+                                <div role="section" class="col action-add-option" style="display:none">
                                     <button type="button" aria-label="{{ __('Ajouter une option') }}" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option">
                                         <i class="fa fa-check-square"></i>
                                         {{ __('Ajouter une option') }}
                                     </button>
                                 </div>
                                 <!-- Suppression d'option -->
-                                <div role="section" class="col-lg-3 col-sm-6 action-delete-option" style="display:none">
+                                <div role="section" class="col action-delete-option" style="display:none">
                                     <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
                                     <i class="fas fa-trash"></i>
                                         {{ __("Supprimer l'option") }}
@@ -409,7 +409,7 @@
                                 </div>
                             </div>
                             <!-- Si élément == select -->
-                            <div role="section" class="col-lg-3 col-sm-6 align-items-center action-multiple-answer"style="display:none">
+                            <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
                                 <div class="action-multiple__cont">
                                     <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
                                     <label for="elem-multiple-choice" class="creator-panel__title">
