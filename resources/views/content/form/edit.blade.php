@@ -403,6 +403,7 @@
                                 {{ __("Supprimer l'option") }}
                             </button>
                         </div>
+                    </div>
                         <!-- Si élément == select -->
                         <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
                             <div class="action-multiple__cont">
@@ -425,6 +426,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         @if (Auth::check())
 

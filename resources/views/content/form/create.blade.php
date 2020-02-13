@@ -314,7 +314,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="side-tool" style="display: none">
                             <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                                 <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
@@ -379,7 +378,6 @@
                                     </label>
                                     <input class="form-control form-element-action input-creator" data-action="maxlength" name="elem-length" id="elem-length" placeholder="0 = {{ __('sans limite') }}" />
                                 </div>
-                            <!-- Si élément == select -->
                                 <!-- Si élément == lien -->
                                 <div role="section" class="col align-items-center action-url" style="display:none">
                                     <label for="elem-url" class="creator-panel__title ">
