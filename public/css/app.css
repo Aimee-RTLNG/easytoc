@@ -9719,6 +9719,16 @@ textarea.shadow-box {
   overflow: auto;
 }
 
+#nav-blueprint-tab, #nav-code-tab {
+  font-size: 1.8rem;
+}
+
+.bloc-creation-interface {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 3px dashed rgba(0, 0, 0, 0.5);
+}
+
 .flag {
   background-color: black;
   background-size: cover;
@@ -10925,8 +10935,8 @@ body {
 
 /* style du blueprint */
 #content-created-blueprint {
-  background-color: #f2f2f2;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-color: #24b1f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.92' fill='%232e6bff'/%3E%3C/svg%3E");
 }
 
 /* style du code */
@@ -11078,11 +11088,10 @@ input[type="checkbox"], input[type="radio"] {
 
 .creator-panel__title {
   font-family: 'Expletus Sans', sans-serif;
-  font-size: 1.8rem;
+  font-size: 15px;
   font-weight: bold;
   margin: 0px;
-  line-height: 2.3rem;
-  margin-bottom: 7px;
+  line-height: 2rem;
 }
 
 #chara-desc-remains {
@@ -11327,41 +11336,28 @@ input[type="checkbox"], input[type="radio"] {
 
 .content-interface {
   padding: 20px;
+  padding-bottom: 45px;
 }
 
 .action-required-cont, .action-multiple__cont {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.action-required, .action-multiple-answer {
-  min-height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-supp-titre {
-  margin-bottom: 25px;
-  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .action-supp {
   position: relative;
-}
-
-.action-supp__aide {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-.action-supp .element_add-option {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 240px;
 }
 
 .action-supp-crea > * {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 0;
 }
 
 .btn-save-project {
@@ -11415,6 +11411,7 @@ input[type="checkbox"], input[type="radio"] {
 #nav-blueprint #full-form {
   max-width: 100%;
   width: 100%;
+  background-color: white;
 }
 
 #nav-blueprint #full-form .form-control {
@@ -11491,8 +11488,8 @@ body {
 
 /* style du blueprint */
 #content-created-blueprint {
-  background-color: #f2f2f2;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-color: #4da5dc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='95' height='95' fill='%23165ba0'/%3E%3C/svg%3E");
 }
 
 /* style du code */
@@ -11581,7 +11578,7 @@ pre.prettyprinted {
   border-radius: 2px;
   color: white;
   border: none;
-  min-width: 25px;
+  min-width: 20px;
 }
 
 .side-tool .btn-info:disabled {
@@ -11657,7 +11654,6 @@ pre.prettyprinted {
 }
 
 .profile_content__options > div {
-  flex: 1 1;
   height: 50px;
 }
 
@@ -11784,6 +11780,8 @@ pre.prettyprinted {
 .list-filters {
   margin-left: 10px;
   display: flex;
+  border: 2px solid #1B6EC2;
+  border-radius: 0.5rem;
 }
 
 .list-filters .btn {
@@ -11800,8 +11798,10 @@ pre.prettyprinted {
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  box-shadow: 0px 0px 18px -11px black;
-  box-shadow: inset 15px 0px 24px -22px rgba(0, 0, 0, 0.51);
+}
+
+.list-filters .btn:not(:last-child) {
+  border-right: 1px solid #1B6EC2;
 }
 
 .list-filters .btn span {
@@ -11809,11 +11809,11 @@ pre.prettyprinted {
 }
 
 .list-filters .btn:hover {
-  background-color: #ddd;
+  background-color: rgba(0, 0, 255, 0.5);
 }
 
 .list-filters .btn.active {
-  background-color: #666;
+  background-color: #1B6EC2;
   color: white;
 }
 
@@ -12106,6 +12106,12 @@ pre.prettyprinted {
   .mon-compte__entete__title {
     font-size: 1.8rem;
     padding-left: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .crud_btn {
+    margin-left: -10px;
   }
 }
 

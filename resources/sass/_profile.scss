@@ -35,7 +35,6 @@
         @include flex-row-start-center;
         width: 100%;
         & > div {
-            flex: 1 1;
             height: 50px;
         }
     }
@@ -127,6 +126,8 @@
 .list-filters {
     margin-left: 10px;
     display: flex;
+    border: 2px solid $bleu;
+    border-radius: 0.5rem;
     .btn {
         min-width: 77px;
         border: none;
@@ -137,19 +138,19 @@
         font-size: 1.5rem;
         line-height: 1.2rem;
         @include flex-col-center-center;
-        @include shadow-box;
-        -webkit-box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
-        -moz-box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
-        box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
+
+        &:not(:last-child) {
+            border-right: 1px solid $bleu;
+        }
         span {
             margin-top: 5px;
         }
     }
     .btn:hover {
-        background-color: #ddd;
+        background-color: rgba(0, 0, 255, 0.5);
     }
     .btn.active {
-        background-color: #666;
+        background-color: $bleu;
         color: white;
     }
 }
@@ -379,6 +380,11 @@
         }
     }
 
+}
+@media (max-width: 1200px) {
+    .crud_btn {
+        margin-left: -10px;
+    }
 }
 @include media-breakpoint-down(sm) {
     .dashboard {
