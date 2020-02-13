@@ -122,3 +122,13 @@ body {
     }
 
 }
+
+// Intégration 
+
+.tab-radio-header {
+    @include flex-row-start-center;
+    min-height: 32px;
+}
+.choice-header-tab {
+    @include flex-row-between-center;
+}

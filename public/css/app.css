@@ -9649,6 +9649,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .check-box:hover {
@@ -9701,6 +9702,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .code-display {
@@ -9732,6 +9734,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 #logo-nav {
@@ -9770,6 +9773,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   padding: 2px 8px 2px 5px;
 }
 
@@ -9783,6 +9787,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .btn-connect__icon i {
@@ -9811,6 +9816,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .bars__line {
@@ -9948,6 +9954,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .menu-footer .nav-link {
@@ -10007,6 +10014,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   box-shadow: 0px 0px 18px -11px black;
   background-color: white;
 }
@@ -10031,6 +10039,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .register__illu {
@@ -10061,6 +10070,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .register__form .form-control {
@@ -10098,6 +10108,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .register__line--mdp__item {
@@ -10132,6 +10143,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+  max-width: 100%;
 }
 
 .register input:-internal-autofill-selected {
@@ -10142,6 +10154,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   padding: 2px 20px;
   height: 45px;
   color: white;
@@ -10162,6 +10175,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .connect-network--connexion {
@@ -10183,6 +10197,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   padding: 0 10px;
 }
 
@@ -10194,6 +10209,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .check-conditions .check {
@@ -10252,6 +10268,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .link-mdp-forgot {
@@ -10392,6 +10409,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
   box-shadow: 0px 0px 18px -11px black;
   background-color: white;
 }
@@ -10403,6 +10421,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .authen__form .form-control {
@@ -10509,6 +10528,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .home-present .section-home__title {
@@ -10538,6 +10558,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   margin-bottom: 40px;
 }
 
@@ -10548,6 +10569,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .home-present > .container {
@@ -10565,6 +10587,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   width: 100%;
 }
 
@@ -10590,6 +10613,7 @@ textarea.shadow-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .home-tools__item {
@@ -10597,11 +10621,18 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   height: 450px;
+  max-width: 100%;
+  width: 100%;
   background-color: #171819;
   border-radius: 10px;
   color: white;
   padding: 15px 25px;
+}
+
+.home-tools__item__descr {
+  max-width: 100%;
 }
 
 .home-tools__item__name {
@@ -10629,11 +10660,13 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .home-tools__item__txt a {
   text-align: center;
   width: 100%;
+  max-width: 100%;
   justify-content: center;
   font-size: 2.0rem;
 }
@@ -10658,6 +10691,7 @@ textarea.shadow-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .use-list__item {
@@ -10666,6 +10700,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   height: 295px;
   background-color: #171819;
   border-radius: 10px;
@@ -10865,6 +10900,7 @@ textarea.shadow-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    max-width: 100%;
   }
   .section-home.home-present .home-present__txt__btn .btn-form-final {
     width: 100%;
@@ -11037,6 +11073,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .creator-panel__title {
@@ -11061,6 +11098,7 @@ input[type="checkbox"], input[type="radio"] {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .actions-panel > * {
@@ -11071,6 +11109,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .btn-crea {
@@ -11090,6 +11129,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .btn-crea p {
@@ -11102,6 +11142,12 @@ input[type="checkbox"], input[type="radio"] {
   margin-right: 5px;
 }
 
+@media (max-width: 768px) {
+  .template-panel {
+    margin-top: 24px;
+  }
+}
+
 .template-panel__choice {
   height: 110px;
   padding: 10px;
@@ -11109,6 +11155,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 100%;
 }
 
 .template-panel__choice > div {
@@ -11117,12 +11164,14 @@ input[type="checkbox"], input[type="radio"] {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .template-panel__choice > div > div {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100%;
 }
 
 .template-panel__choice label {
@@ -11183,6 +11232,7 @@ input[type="checkbox"], input[type="radio"] {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
   height: 50px;
   margin-top: 6px;
   color: #1B6EC2;
@@ -11197,12 +11247,14 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .project-action__btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .edit-project-action {
@@ -11220,6 +11272,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  max-width: 100%;
   margin-bottom: 16px;
 }
 
@@ -11227,6 +11280,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100%;
 }
 
 .main-info-form > * {
@@ -11388,6 +11442,7 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   width: 150px;
   border-radius: 10px;
   font-size: 1.4rem;
@@ -11533,6 +11588,21 @@ pre.prettyprinted {
   background-color: #818181;
 }
 
+.tab-radio-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100%;
+  min-height: 32px;
+}
+
+.choice-header-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+
 .compte-page {
   background-color: #F4F2F0;
 }
@@ -11574,6 +11644,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   margin-bottom: 40px;
 }
 
@@ -11581,6 +11652,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100%;
   width: 100%;
 }
 
@@ -11593,6 +11665,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   width: 100%;
   margin-top: 20px;
   height: 40px;
@@ -11726,6 +11799,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
   box-shadow: 0px 0px 18px -11px black;
   box-shadow: inset 15px 0px 24px -22px rgba(0, 0, 0, 0.51);
 }
@@ -11774,6 +11848,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .dashboard__crea__separator {
@@ -11827,6 +11902,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 100%;
   margin-bottom: 20px;
 }
 
@@ -11838,6 +11914,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
   color: white;
   border-radius: 50px;
   font-size: 25px;
@@ -11877,6 +11954,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .crea-item__entete__title {
@@ -11909,6 +11987,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  max-width: 100%;
 }
 
 .crea-item__btns a {
@@ -11926,6 +12005,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .crea-item__btns .btn {
@@ -11952,6 +12032,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .crea-item__btn-delete input {
@@ -11977,6 +12058,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .btn--rouge {
@@ -12076,6 +12158,7 @@ pre.prettyprinted {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
   }
   .crea-item__btns .btn:not(.btn-gris) {
     margin-bottom: 5px;
@@ -12109,6 +12192,7 @@ pre.prettyprinted {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
     padding: 0 14px;
   }
   .list-filters .btn {

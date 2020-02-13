@@ -64,7 +64,7 @@
             @endif
 
             <!-- actions d'initialisation -->
-            <div class="actions-panel @if (Auth::check()) col-lg-4 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="table_tools">
+            <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="table_tools">
                 <h3 id="table_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __('Importer des données') }}">
@@ -131,46 +131,48 @@
         <!-- interface d'interaction avec le projet -->
         <div class="row creator-interfaces d-flex justify-content-around mt-5" role="section" aria-label="Actions sur l'élement">
 
-            <div id="content-interface" class="col shadow-box border-12 bg-white p-3" role="section" aria-label="Actions sur l'élement">
+            <div id="content-interface" class="col shadow-box border-12 bg-white content-interface" role="section" aria-label="Actions sur l'élement">
                 <!-- navigation entre les panneaux -->
 
-                <div class="main-info-form" role="region">
-                    <div class="col p-0 mr-3" role="region">
+                <div class="row mb-5" role="region">
+                    <div class="col-md-6" role="region">
                         <label class="creator-panel__title" for="table-creator-title">{{ __('Titre du tableau') }}</label>
-                        <input name="table-creator-title" id="table-creator-title" placeholder="{{ __('Titre') }}" class="form-control" size="30"/>
+                        <input name="table-creator-title" id="table-creator-title" placeholder="{{ __('Titre') }}" class="form-control input-creator" size="30"/>
                     </div>
-                    <div class="col p-0" role="region">
-                        <label class="creator-panel__caption" for="table-creator-caption">{{ __('Légende du tableau') }}</label>
-                        <input name="table-creator-caption" id="table-creator-caption" placeholder="{{ __('Légende') }}" class="form-control" size="30"/>
+                    <div class="col-md-6" role="region">
+                        <label class="creator-panel__caption creator-panel__title" for="table-creator-caption">{{ __('Légende du tableau') }}</label>
+                        <input class="form-control input-creator" type="text" name="table-creator-caption" id="table-creator-caption" placeholder="{{ __('Légende') }}" size="30"/>
                     </div>
                 </div>
 
-                <div class="main-info-form" role="region">
-                    <div class="col p-0 mr-3" role="region">
+                <div class="row mb-5" role="region">
+                    <div class="col-sm-3" role="region">
                         {{-- NB LIGNES --}}
-                        <label class="creator-panel__row_nb" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
-                        <input type="number" name="table-row-nb" id="table-row-nb" class="form-control" size="3" value="2" min="2"/>
+                        <label class="creator-panel__row_nb creator-panel__title" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
+                        <input class="form-control input-creator" type="number" name="table-row-nb" id="table-row-nb" size="3" value="2" min="2"/>
                     </div>
-                    <div class="col p-0 mr-3" role="region">
+                    <div class="col-sm-3" role="region">
                         {{-- NB COLONNES --}}
-                        <label class="creator-panel__col_nb" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
-                        <input type="number" name="table-col-nb" id="table-col-nb" class="form-control" size="3" value="2" min="2"/>
+                        <label class="creator-panel__col_nb creator-panel__title" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
+                        <input class="form-control input-creator" type="number" name="table-col-nb" id="table-col-nb" size="3" value="2" min="2"/>
                     </div>
-                    <div class="col-2 p-0" role="region">
-                        <label class="creator-panel__footer d-block" for="table-footer">{{ __('Options du tableau') }}</label>
+                    <div class="col-sm-6" role="region">
+                        <label class="creator-panel__footer d-block creator-panel__title" for="table-footer">{{ __('Options du tableau') }}</label>
                         {{-- OPTIONS DU TABLEAU --}}
-                        <label class="central-header-button d-flex align-items-center" for="central-header-button">
-                            <input type="checkbox" class="add-element type-special check-box" value="" id="central-header-button" name="central-header-button" checked>
-                            <span class="ml-3">{{ __('En-têtes horizontales') }}</span>
-                        </label>
-                        <label class="lateral-header-button d-flex align-items-center" for="lateral-header-button">
-                            <input type="checkbox" class="add-element type-special check-box" value="" id="lateral-header-button" name="lateral-header-button">
-                            <span class="ml-3">{{ __('En-têtes verticales') }}</span>
-                        </label>
-                        <label class="footer-button d-flex align-items-center" for="footer-button">
-                            <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
-                            <span class="ml-3">{{ __('Pied de tableau') }}</span>
-                        </label>
+                        <div class="choice-header-tab">
+                            <label class="central-header-button tab-radio-header" for="central-header-button">
+                                <input type="checkbox" class="add-element type-special check-box" value="" id="central-header-button" name="central-header-button" checked>
+                                <span class="ml-3">{{ __('En-têtes horizontales') }}</span>
+                            </label>
+                            <label class="lateral-header-button tab-radio-header" for="lateral-header-button">
+                                <input type="checkbox" class="add-element type-special check-box" value="" id="lateral-header-button" name="lateral-header-button">
+                                <span class="ml-3">{{ __('En-têtes verticales') }}</span>
+                            </label>
+                            <label class="footer-button tab-radio-header" for="footer-button">
+                                <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
+                                <span class="ml-3">{{ __('Pied de tableau') }}</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 

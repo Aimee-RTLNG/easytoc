@@ -228,6 +228,9 @@ input[type="checkbox"], input[type="radio"]{
     }
 }
 .template-panel {
+    @media (max-width: 768px) {
+        margin-top: 24px;
+    }
     &__choice {
         height: 110px;
         padding: 10px;

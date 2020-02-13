@@ -4,36 +4,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
 }
 @mixin flex-row-between-center {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
 }
 @mixin flex-row-around-center {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    max-width: 100%;
 }
 @mixin flex-row-around-end {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+    max-width: 100%;
 }
 @mixin flex-row-between-start{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    max-width: 100%;
 }
 @mixin flex-row-start-between {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    max-width: 100%;
 }
 @mixin flex-row-start-center {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    max-width: 100%;
 }
 
 
@@ -43,42 +50,56 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center; 
+    max-width: 100%;
 }
 @mixin flex-col-center-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    max-width: 100%;
 }
 @mixin flex-col-end-center {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center; 
+    max-width: 100%;
 }
 @mixin flex-col-around-start {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start; 
+    max-width: 100%;
 }
 @mixin flex-col-around-center {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center; 
+    max-width: 100%;
 }
 @mixin flex-col-between-start {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    max-width: 100%;
 }
 @mixin flex-col-between-end {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+    max-width: 100%;
+}
+@mixin flex-col-start-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 100%;
 }
 
 // ---------Image -------//
