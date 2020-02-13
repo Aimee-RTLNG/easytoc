@@ -148,3 +148,13 @@ textarea {
       width: 100%;
       overflow: auto;
   }
+
+#nav-blueprint-tab, #nav-code-tab {
+    font-size: 1.8rem;
+}
+
+.bloc-creation-interface{
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 3px dashed rgba(0,0,0,.5);
+}

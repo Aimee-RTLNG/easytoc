@@ -15,8 +15,10 @@ body {
 /* style du blueprint */
 
     #content-created-blueprint {
-        background-color: #f2f2f2;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        // background-color: #f2f2f2;
+        // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        background-color: #24b1f2;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.92' fill='%232e6bff'/%3E%3C/svg%3E");
     }
 
 /* style du code */
@@ -181,11 +183,10 @@ input[type="checkbox"], input[type="radio"]{
     @include flex-row-between-start;
     &__title {
         @include expletus;
-        font-size: 1.8rem;
+        font-size: 15px;
         font-weight: bold;
         margin: 0px;
-        line-height: 2.3rem;
-        margin-bottom: 7px;
+        line-height: 2rem;
     }
 }
 #chara-desc-remains {
@@ -342,37 +343,42 @@ input[type="checkbox"], input[type="radio"]{
 }
 .content-interface {
     padding: 20px;
+    padding-bottom: 45px;
 }
 
 .action-required-cont, .action-multiple__cont {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    // position: relative;
+    // top: 50%;
+    // transform: translateY(-50%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.action-required, .action-multiple-answer {
-    min-height: 50px;
- }
 .action-supp-titre {
-    margin-bottom: 25px;
-    margin-top: 5px;
+    margin-bottom: 10px;
 }
 .action-supp {
     position: relative;
-    &__aide {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-    }
-    .element_add-option {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+    // top: 380px;
+    width: 240px;
+    // &__aide {
+    //     position: absolute;
+    //     right: 10px;
+    //     top: 10px;
+    // }
+    // .element_add-option {
+    //     position: relative;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    // }
 }
 .action-supp-crea {
     & > * {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        padding: 0;
     }
+    
 }
 .btn-save-project {
     font-size: 1.6rem;

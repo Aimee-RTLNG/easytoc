@@ -6,5 +6,5 @@
     </div>
 </form>
 <div class="mt-4" id="form-actions" contenteditable="false">
-    <input data-tag="input-submit" form="generated-form"type="submit" disabled value="Envoyer" accesskey="s">
+    <input data-tag="input-submit" form="generated-form" type="submit" disabled value="{{ __('Envoyer') }}" accesskey="s" title="{{ __('Envoyer') }}">
 </div>

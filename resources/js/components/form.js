@@ -1,5 +1,5 @@
 // ANCHOR Données initiales
-import { lang } from "../app";
+import { lang, setSideWindow } from "../app";
 
 let element;
 let element_selected_container;
@@ -57,10 +57,11 @@ const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a"
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
 
-/*
-let translation_test = getTranslation("Thème du formulaire", "en");
-// console.log(translation_test);
-*/
+// TODO Position des paramètres d'élément
+
+$(window).on('scroll', function() {
+    setSideWindow();
+});
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
@@ -83,17 +84,17 @@ if( lang == "en" ){
             "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
         },
         "type-layout": {
-            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Title</h2>",
+            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraph</p>",
+            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Name of the link</a>",
+            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ol>",
+            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ul>",
             "insert-horizontal_rule": "<hr contenteditable='true'>",
         },
         "type-special": {
-            "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+            "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
             "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-            "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+            "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
         }
     };
 } else {
@@ -275,6 +276,7 @@ $('.add-element').on('click', function () {
     let element_type = $(this).attr("class");
     let element_type_name = $(this).attr("id");
     addElement(element_type, element_type_name);
+    setSideWindow();
 });
 
 // ANCHOR Sauvegarde définitive
@@ -290,16 +292,16 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').val()
+            "html": $('#raw-code').text()
         }
     }).done(function (msg) {
         // console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
-        // console.log(xhr.responseText);
-        // console.log(status);
-        // console.log(error);
+        console.log(xhr.responseText);
+        console.log(status);
+        console.log(error);
         // TODO Erreur
         if(!$('#title-input').val()){
             $("#title-input").addClass('required-failed');
@@ -327,6 +329,7 @@ $(document.body)
         } else {
             $(this).closest('label').focus();
         }
+        setSideWindow();
     })
 
     // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
@@ -336,6 +339,7 @@ $(document.body)
         } else if (e.target.nodeName == "LEGEND") {
             $(this).find('legend span[contenteditable=true]').focus();
         }
+        setSideWindow();
     })
 
     // Quand on clique sur une option
@@ -351,6 +355,7 @@ $(document.body)
         next_option = selected_option.next();
         refreshMoveButtons(previous_option, next_option, true);
 
+        setSideWindow();
         updatecontent();
     })
 
@@ -362,6 +367,7 @@ $(document.body)
             element_select = e.target;
 
             // on ré initialise les classes
+            setSideWindow();
             $(".content-editable-selected").removeClass('content-editable-selected');
             $(".option-selected").removeClass('option-selected');
             selected_option = false;
@@ -381,6 +387,7 @@ $(document.body)
             refreshMoveButtons(previous_element, next_element, false);
         }
 
+        setSideWindow();
         $(element_selected_container).addClass("content-editable-selected");
 
         let tag = $(this).attr('data-tag');
@@ -390,6 +397,8 @@ $(document.body)
             $('.element_add-option').attr("disabled", 'true');
 
             $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px");
+            // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
+            
 
             let element_type = $(element_selected_container).attr('data-elementtype');
             let element_name = $(element_selected_container).attr('data-elementtypename');
@@ -580,17 +589,17 @@ $(document.body)
 
                 }
 
-                $("#actions-interface").show(); // on affiche l'interface de modification spécifique
+                $("#actions-interface").removeClass('d-none'); // on affiche l'interface de modification spécifique
 
             } else {
-                $("#actions-interface").hide(); // on masque l'interface de modification spécifique
+                $("#actions-interface").addClass('d-none'); // on masque l'interface de modification spécifique
             }
 
         } else {
             // Si on a sélectionné le titre principal
             $('.action-delete').attr('disabled', 'true');
             $('.side-tool').hide();
-            $("#actions-interface").hide(); // on affiche l'interface de modification
+            $("#actions-interface").addClass('d-none'); // on affiche l'interface de modification
         }
 
         updatecontent();
@@ -598,7 +607,7 @@ $(document.body)
     // quand on déselectionne un élement...
     .on('blur', '[contenteditable=true]', function (e) {
         // e.preventDefault();
-        let element_select_before = window.getSelection().getRangeAt(0).startContainer;
+        // let element_select_before = window.getSelection().getRangeAt(0).startContainer;
         updatecontent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
@@ -609,12 +618,11 @@ $(document.body)
 
     });
 
-
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
     $('#generated-form').attr("action", $('#form-creator-link').val());
     $('#generated-form').attr("method", $('#form-creator-method').val());
-    $("#actions-interface").hide();
+    $("#actions-interface").addClass('d-none');
     $('.side-tool').hide();
     updatecontent();
 })
@@ -655,6 +663,7 @@ $(".form-element-action").on('click', function (e) {
                 refreshMoveButtons(previous_element, next_element, false);
                 // Déplacement des Tools latéraux
                 $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+                // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
             }
             break;
         // Déplacement vers le bas
@@ -677,12 +686,13 @@ $(".form-element-action").on('click', function (e) {
                 refreshMoveButtons(previous_element, next_element, false);
                 // Déplacement des Tools latéraux
                 $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+                // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
             }
             break;
         // Suppression
         case "delete":
             deletecommand.execute();
-            $("#actions-interface").hide();
+            $("#actions-interface").addClass('d-none');
             $(".side-tool").hide();
             $('.action-delete').attr('disabled', 'true');
             $('.action-undo').removeAttr('disabled');
@@ -871,6 +881,7 @@ function selectText(element) {
 
 // ANCHOR Fonction d'ajout d'option
 export function addOption(option_type_parameter) {
+    setSideWindow();
     let option_parent_element = $(".content-editable-selected");
     let option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
     if (!option_type) {
@@ -902,7 +913,7 @@ export function addOption(option_type_parameter) {
 // ANCHOR Fonction de suppression d'option (select)
 function deleteOption() {
     let select_option_selected = $(".content-editable-selected select option:selected");
-    select_option_selected.remove();
+    $(select_option_selected).remove();
     $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
     $('.action-delete-option').hide();
 }
@@ -1029,4 +1040,3 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');
-

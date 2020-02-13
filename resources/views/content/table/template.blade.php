@@ -10,14 +10,14 @@
         </caption>
         <thead class='table-head' data-tag='header'>
                 <tr class='table-row' data-tag='row'>
-                    <th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'> {{ __('En-tête') }} </th>
-                    <th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'> {{ __('En-tête') }} </th>
+                    <th class='table-header-cell cell-text' data-tag='cell-header' scope='col'> <span contenteditable="true"> {{ __('En-tête') }} </span> </th>
+                    <th class='table-header-cell cell-text' data-tag='cell-header' scope='col'> <span contenteditable="true"> {{ __('En-tête') }} </span> </th>
                 </tr>
         </thead>
         <tbody>
                 <tr class="table-row" data-tag="row">
-                    <td class='table-cell cell-text' contenteditable=true data-tag='cell'> {{ __('Cellule') }} </td>
-                    <td class='table-cell cell-text' contenteditable=true data-tag='cell'> {{ __('Cellule') }} </td>
+                    <td class='table-cell cell-text' data-tag='cell'> <span contenteditable="true"> {{ __('Cellule') }} </span> </td>
+                    <td class='table-cell cell-text' data-tag='cell'> <span contenteditable="true"> {{ __('Cellule') }} </span> </td>
                 </tr>
         </tbody>
     </table>
