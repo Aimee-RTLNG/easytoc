@@ -9717,6 +9717,16 @@ textarea.shadow-box {
   overflow: auto;
 }
 
+#nav-blueprint-tab, #nav-code-tab {
+  font-size: 1.8rem;
+}
+
+.bloc-creation-interface {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 3px dashed rgba(0, 0, 0, 0.5);
+}
+
 .flag {
   background-color: black;
   background-size: cover;
@@ -10882,8 +10892,8 @@ body {
 
 /* style du blueprint */
 #content-created-blueprint {
-  background-color: #f2f2f2;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-color: #24b1f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.92' fill='%232e6bff'/%3E%3C/svg%3E");
 }
 
 /* style du code */
@@ -11034,11 +11044,10 @@ input[type="checkbox"], input[type="radio"] {
 
 .creator-panel__title {
   font-family: 'Expletus Sans', sans-serif;
-  font-size: 1.8rem;
+  font-size: 15px;
   font-weight: bold;
   margin: 0px;
-  line-height: 2.3rem;
-  margin-bottom: 7px;
+  line-height: 2rem;
 }
 
 #chara-desc-remains {
@@ -11266,41 +11275,28 @@ input[type="checkbox"], input[type="radio"] {
 
 .content-interface {
   padding: 20px;
+  padding-bottom: 45px;
 }
 
 .action-required-cont, .action-multiple__cont {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.action-required, .action-multiple-answer {
-  min-height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-supp-titre {
-  margin-bottom: 25px;
-  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .action-supp {
   position: relative;
-}
-
-.action-supp__aide {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-.action-supp .element_add-option {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 240px;
 }
 
 .action-supp-crea > * {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 0;
 }
 
 .btn-save-project {
@@ -11429,8 +11425,8 @@ body {
 
 /* style du blueprint */
 #content-created-blueprint {
-  background-color: #f2f2f2;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-color: #4da5dc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='95' height='95' fill='%23165ba0'/%3E%3C/svg%3E");
 }
 
 /* style du code */
@@ -11519,7 +11515,7 @@ pre.prettyprinted {
   border-radius: 2px;
   color: white;
   border: none;
-  min-width: 25px;
+  min-width: 20px;
 }
 
 .side-tool .btn-info:disabled {

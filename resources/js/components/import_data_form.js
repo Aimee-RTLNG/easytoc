@@ -124,7 +124,7 @@ function importData(form) {
     // On enlève le contenu précédent sauf le titre
     $("#full-form .element-container").remove();
     $('.side-tool').hide();
-    $("#actions-interface").hide();
+    $("#actions-interface").addClass('d-none');
 
     // On ajoute les items du formulaire uploadé
     let items_list = form.items;
@@ -162,7 +162,7 @@ function importData(form) {
                 $('.content-editable-selected input, .content-editable-selected textarea').attr('maxlength', items_list[key].maxlength);
                 // Options
                 if (items_list[key].options) {
-                    if (items_list[key].options.includes("required") && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
+                    if (items_list[key].options.indexOf("required") != -1 && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
                         $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required');
                         // Attribut required : petite étoile à côté du label
                         var required_star = element_types["type-special"]["make-required"];
@@ -170,7 +170,7 @@ function importData(form) {
                         $('.content-editable-selected').addClass('field-required');
                         required_count += 1;
                     }
-                    if (items_list[key].options.includes("multiple-choice")) {
+                    if (items_list[key].options.indexOf("multiple-choice") != -1) {
                         $('.content-editable-selected select').attr('multiple', 'multiple');
                     }
                 }
