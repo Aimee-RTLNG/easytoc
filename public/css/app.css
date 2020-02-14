@@ -9724,9 +9724,21 @@ textarea.shadow-box {
 }
 
 .bloc-creation-interface {
+  display: flex;
+  max-width: 100%;
   margin-top: 20px;
   padding-top: 20px;
   border-top: 3px dashed rgba(0, 0, 0, 0.5);
+  margin-left: 0px;
+}
+
+@media (max-width: 768px) {
+  .mt-4-md {
+    margin-top: 1.5rem;
+  }
+  .mb-4-md {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .flag {
@@ -11084,6 +11096,7 @@ input[type="checkbox"], input[type="radio"] {
   justify-content: space-between;
   align-items: flex-start;
   max-width: 100%;
+  margin: 0px;
 }
 
 .creator-panel__title {
@@ -11600,6 +11613,16 @@ pre.prettyprinted {
   max-width: 100%;
 }
 
+.btn-save-tab {
+  height: auto;
+  min-height: 45px;
+}
+
+#generated-table {
+  background-color: white;
+  padding: 20px;
+}
+
 .compte-page {
   background-color: #F4F2F0;
 }
@@ -11809,7 +11832,7 @@ pre.prettyprinted {
 }
 
 .list-filters .btn:hover {
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: rgba(27, 110, 194, 0.2);
 }
 
 .list-filters .btn.active {

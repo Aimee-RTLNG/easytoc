@@ -134,3 +134,13 @@ body {
 .choice-header-tab {
     @include flex-row-between-center;
 }
+.btn-save-tab {
+    height: auto;
+    min-height: 45px;
+}
+
+// Aperçu tableau 
+#generated-table {
+    background-color: white;
+    padding: 20px;
+}

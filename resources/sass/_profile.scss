@@ -147,7 +147,7 @@
         }
     }
     .btn:hover {
-        background-color: rgba(0, 0, 255, 0.5);
+        background-color: rgba($bleu, 0.2);
     }
     .btn.active {
         background-color: $bleu;

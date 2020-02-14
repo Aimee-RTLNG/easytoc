@@ -258,7 +258,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex bloc-creation-interface">
+                <div class="bloc-creation-interface">
                     <div class="bloc-visualisation col p-0 d-flex m-0 mb-3">
                         <div class="side-tool" style="display: none">
                             <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">

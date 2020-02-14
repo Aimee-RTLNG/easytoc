@@ -181,6 +181,7 @@ input[type="checkbox"], input[type="radio"]{
 // Formulaire - création 
 .creator-panel {
     @include flex-row-between-start;
+    margin: 0px;
     &__title {
         @include expletus;
         font-size: 15px;

@@ -131,29 +131,29 @@
             <div id="content-interface" class="col shadow-box border-12 bg-white content-interface" role="section" aria-label="Actions sur l'élement">
                 <!-- navigation entre les panneaux -->
 
-                <div class="row mb-5" role="region">
+                <div class="row mb-4" role="region">
                     <div class="col-md-6" role="region">
                         <label class="creator-panel__title" for="table-creator-title">{{ __('Titre du tableau') }}</label>
                         <input name="table-creator-title" id="table-creator-title" placeholder="{{ __('Titre') }}" class="form-control input-creator" size="30"/>
                     </div>
-                    <div class="col-md-6" role="region">
+                    <div class="col-md-6 mt-4-md" role="region">
                         <label class="creator-panel__caption creator-panel__title" for="table-creator-caption">{{ __('Légende du tableau') }}</label>
                         <input class="form-control input-creator" type="text" name="table-creator-caption" id="table-creator-caption" placeholder="{{ __('Légende') }}" size="250"/>
                     </div>
                 </div>
 
-                <div class="row mb-5" role="region">
-                    <div class="col-sm-3" role="region">
+                <div class="row mb-4" role="region">
+                    <div class="col-sm-6 col-md-3" role="region">
                         {{-- NB LIGNES --}}
                         <label class="creator-panel__row_nb creator-panel__title" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
                         <input class="form-control input-creator" type="number" name="table-row-nb" id="table-row-nb" size="3" value="2" min="2"/>
                     </div>
-                    <div class="col-sm-3" role="region">
+                    <div class="col-sm-6 col-md-3" role="region">
                         {{-- NB COLONNES --}}
                         <label class="creator-panel__col_nb creator-panel__title" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
                         <input class="form-control input-creator" type="number" name="table-col-nb" id="table-col-nb" size="3" value="2" min="2"/>
                     </div>
-                    <div class="col-sm-6" role="region">
+                    <div class="col-md-6 mt-4-md" role="region">
                         <label class="creator-panel__footer d-block creator-panel__title" for="table-footer">{{ __('Options du tableau') }}</label>
                         {{-- OPTIONS DU TABLEAU --}}
                        <div class="choice-header-tab">
@@ -174,7 +174,7 @@
                 </div>
 
                 <div role="section" class="row" aria-labelledby="form_actions_element">
-                    <div role="section" class="col" aria-labelledby="form_add_static">
+                    <div role="section" class="col-md-6" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément') }}</h3>
                         <button class="btn btn-primary btn_crea add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à gauche') }}" title="{{ __('Nouvelle colonne à gauche') }}" id="insert-col_left" role="listitem">
                             <i class="fa fa-grip-lines-vertical"></i>
@@ -194,7 +194,7 @@
                             {{ __('Nouvelle ligne en bas') }}
                         </button>
                     </div>
-                    <div role="section" class="col-7" aria-labelledby="form_actions_text">
+                    <div role="section" class="col-md-6 mt-4-md" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 creator-panel__title">{{ __('Mise en forme du texte') }}</h3>
                         <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label=" {{ __('Gras') }}" title="{{ __('Mettre le texte en gras') }}" id="element-bold" role="listitem">
                             <i class="fa fa-bold"></i>
@@ -223,25 +223,27 @@
                         </button>
                     </div>
                 </div>
-                <div role="section" class="row p-0 m-0" aria-labelledby="form_actions_crud">
-                    <div role="section" class="col p-0 m-0" aria-labelledby="form_actions_crud">
-                        <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Déplacer une case') }}</h3>
-                        <button disabled="true" aria-label="{{ __('Déplacer la case à gauche') }}" title="{{ __('Déplacer la case à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-left" data-action="move-cell-left">
-                            <i class="fa fa-arrow-left"></i><i class="fa fa-vector-square"></i>
-                            {{ __('Gauche') }}
-                        </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer la case à droite') }}" title="{{ __('Déplacer la case à droite') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-right" data-action="move-cell-right">
-                            <i class="fa fa-vector-square"></i><i class="fa fa-arrow-right"></i>
-                            {{ __('Droite') }}
-                        </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer la case en haut') }}" title="{{ __('Déplacer la case en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-up" data-action="move-cell-up">
-                            <i class="fa fa-vector-square"></i><i class="fa fa-arrow-up"></i>
-                            {{ __('Haut') }}
-                        </button>
-                        <button disabled="true" aria-label="{{ __('Déplacer la case en bas') }}" title="{{ __('Déplacer la case en bas') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-down" data-action="move-cell-down">
-                            <i class="fa fa-vector-square"></i><i class="fa fa-arrow-down"></i>
-                            {{ __('Bas') }}
-                        </button>
+                <div role="section" class="row mt-4" aria-labelledby="form_actions_crud">
+                    <div role="section" class="col-md-6" aria-labelledby="form_actions_crud">
+                       <div class="mb-4">
+                            <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Déplacer une case') }}</h3>
+                            <button disabled="true" aria-label="{{ __('Déplacer la case à gauche') }}" title="{{ __('Déplacer la case à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-left" data-action="move-cell-left">
+                                <i class="fa fa-arrow-left"></i><i class="fa fa-vector-square"></i>
+                                {{ __('Gauche') }}
+                            </button>
+                            <button disabled="true" aria-label="{{ __('Déplacer la case à droite') }}" title="{{ __('Déplacer la case à droite') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-right" data-action="move-cell-right">
+                                <i class="fa fa-vector-square"></i><i class="fa fa-arrow-right"></i>
+                                {{ __('Droite') }}
+                            </button>
+                            <button disabled="true" aria-label="{{ __('Déplacer la case en haut') }}" title="{{ __('Déplacer la case en haut') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-up" data-action="move-cell-up">
+                                <i class="fa fa-vector-square"></i><i class="fa fa-arrow-up"></i>
+                                {{ __('Haut') }}
+                            </button>
+                            <button disabled="true" aria-label="{{ __('Déplacer la case en bas') }}" title="{{ __('Déplacer la case en bas') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-cell-down" data-action="move-cell-down">
+                                <i class="fa fa-vector-square"></i><i class="fa fa-arrow-down"></i>
+                                {{ __('Bas') }}
+                            </button>
+                       </div>
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Déplacer une ligne / colonne') }}</h3>
                         <button disabled="true" aria-label="{{ __('Déplacer la colonne à gauche') }}" title="{{ __('Déplacer la colonne à gauche') }}" class="btn btn-primary btn_crea cell-action element_move table-element-action action-move-col-left" data-action="move-col-left">
                             <i class="fa fa-arrow-left"></i><i class="fa fa-grip-lines-vertical"></i>
@@ -260,20 +262,22 @@
                             {{ __('Bas') }}
                         </button>
                     </div>
-                    <div role="section" class="col-7" aria-labelledby="form_actions_crud">
-                        <h3 id="table_actions_crud" class="mb-3 creator-panel__title">{{ __('Suppression') }}</h3>
-                        <button disabled="true" aria-label="{{ __('Supprimer la ligne') }}" title="{{ __('Supprimer la ligne') }}" class="btn btn-primary btn_crea cell-action element_delete form-element-action action-delete-row" data-action="delete-row">
-                            <i class="fa fa-grip-lines"></i><i class="fa fa-trash"></i>
-                            {{ __('Supprimer la ligne') }}
-                        </button>
-                        <button disabled="true" aria-label="{{ __('Supprimer la colonne') }}" title="{{ __('Supprimer la colonne') }}" class="btn btn-primary btn_crea cell-action element_delete form-element-action action-delete-col" data-action="delete-col">
-                            <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-trash"></i>
-                            {{ __('Supprimer la colonne') }}
-                        </button>
-                        <button disabled="true" aria-label="{{ __('Vider la case') }}" title="{{ __('Vider la case') }}" class="btn btn-primary btn_crea cell-action element_empty form-element-action action-delete" data-action="empty-cell">
-                            <i class="fa fa-vector-square"></i><i class="fa fa-trash"></i>
-                            {{ __('Vider la case') }}
-                        </button>
+                    <div role="section" class="col-md-6 mt-4-md" aria-labelledby="form_actions_crud">
+                        <div class="action_delete_td mb-4">
+                            <h3 id="table_actions_crud" class="mb-3 creator-panel__title">{{ __('Suppression') }}</h3>
+                            <button disabled="true" aria-label="{{ __('Supprimer la ligne') }}" title="{{ __('Supprimer la ligne') }}" class="btn btn-primary btn_crea cell-action element_delete form-element-action action-delete-row" data-action="delete-row">
+                                <i class="fa fa-grip-lines"></i><i class="fa fa-trash"></i>
+                                {{ __('Supprimer la ligne') }}
+                            </button>
+                            <button disabled="true" aria-label="{{ __('Supprimer la colonne') }}" title="{{ __('Supprimer la colonne') }}" class="btn btn-primary btn_crea cell-action element_delete form-element-action action-delete-col" data-action="delete-col">
+                                <i class="fa fa-grip-lines-vertical"></i><i class="fa fa-trash"></i>
+                                {{ __('Supprimer la colonne') }}
+                            </button>
+                            <button disabled="true" aria-label="{{ __('Vider la case') }}" title="{{ __('Vider la case') }}" class="btn btn-primary btn_crea cell-action element_empty form-element-action action-delete" data-action="empty-cell">
+                                <i class="fa fa-vector-square"></i><i class="fa fa-trash"></i>
+                                {{ __('Vider la case') }}
+                            </button>
+                        </div>
                         <h3 id="table_actions_crud" class="mb-3 creator-panel__title">{{ __('Fusion de cases') }}</h3>
                         {{-- MERGE --}}
                         <button disabled="true" aria-label="{{ __('Diviser la case') }}" title="{{ __('Diviser la case') }}" class="btn btn-primary btn_crea cell-action element_split form-element-action action-split" data-action="split-cell">
@@ -295,10 +299,10 @@
 
 
 
-                <div class="row w-100 d-flex m-0 mb-3">
+                <div class="row w-100 bloc-creation-interface">
 
-                    <div class="col p-0 m-0">
-                        <nav class="mt-5">
+                    <div class="col-12">
+                        <nav class="">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le tableau') }}">{{ __('Tableau') }}</a>
                                 <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title={{ __('Voir le code généré') }}>{{ __('Code généré') }}</a>
@@ -325,7 +329,7 @@
                                     {{ __("Besoin d'aide !") }}
                                 </a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info" title="{{ __('Copier') }}"> 
+                                    <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}"> 
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -333,7 +337,7 @@
                                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/table/all-themes.css') }}" rel="stylesheet"></xmp>
                                 <h3 class="mt-3">{{ __("Voici le code brut pour votre tableau: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
-                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}" > 
+                                    <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}" > 
                                         {{ __("Copier") }}
                                     </button>
                                 </div>
@@ -371,9 +375,9 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button type="button" accesskey="c" class="btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
+            <button type="button" accesskey="c" class=" btn-save-tab btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
                             modifications') }}</button>
-            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">{{ __('Sauvegarder ce projet') }}</button>
+            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea ml-2 btn-save-tab" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">{{ __('Sauvegarder ce projet') }}</button>
         </div>
 
         @endif

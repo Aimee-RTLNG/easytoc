@@ -154,7 +154,19 @@ textarea {
 }
 
 .bloc-creation-interface{
+    display: flex;
+    max-width: 100%;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 3px dashed rgba(0,0,0,.5);
+    margin-left: 0px;
 }
+@media (max-width: 768px){
+    //768
+    .mt-4-md {
+        margin-top: 1.5rem;
+    }
+    .mb-4-md {
+        margin-bottom: 1.5rem;
+    }
+ }
