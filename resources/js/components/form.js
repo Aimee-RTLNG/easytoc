@@ -588,7 +588,6 @@ $(document.body)
                     }
 
                 }
-
                 $("#actions-interface").removeClass('d-none'); // on affiche l'interface de modification spécifique
 
             } else {

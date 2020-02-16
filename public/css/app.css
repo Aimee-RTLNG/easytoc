@@ -11363,9 +11363,26 @@ input[type="checkbox"], input[type="radio"] {
   margin-bottom: 10px;
 }
 
+@media (max-width: 992px) {
+  .action-required-cont, .action-multiple__cont {
+    justify-content: flex-start;
+  }
+  .action-supp-titre {
+    margin-bottom: 6px;
+    margin-top: 10px;
+  }
+}
+
 .action-supp {
+  text-align: center;
   position: relative;
   width: 240px;
+}
+
+@media (max-width: 992px) {
+  .action-supp {
+    text-align: left;
+  }
 }
 
 .action-supp-crea > * {
@@ -11436,6 +11453,15 @@ input[type="checkbox"], input[type="radio"] {
   width: 100%;
 }
 
+.bloc-creation-interface {
+  flex-wrap: wrap;
+}
+
+.bloc-creation-interface > .bloc-visualisation {
+  display: flex;
+  max-width: 100%;
+}
+
 .content-html-preview #full-form .form-control {
   margin-bottom: 0px;
 }
@@ -11456,6 +11482,11 @@ input[type="checkbox"], input[type="radio"] {
   width: 150px;
   border-radius: 10px;
   font-size: 1.6rem;
+}
+
+.elmt-select-options {
+  position: fixed;
+  max-width: 25%;
 }
 
 @media (max-width: 991.98px) {

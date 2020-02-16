@@ -259,7 +259,7 @@
                 </div>
 
                 <div class="bloc-creation-interface">
-                    <div class="bloc-visualisation col p-0 d-flex m-0 mb-3">
+                    <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                                 <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
@@ -323,7 +323,7 @@
 
                     <div id="actions-interface" class="bloc-actions d-none col-3 p-0">
                         <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
-                        <div class="border bg-white rounded p-3 action-supp text-center" role="section">
+                        <div class="border bg-white rounded p-3 action-supp" role="section">
                             <div class="action-supp-crea" role="section">
                                 <!-- Intitulé -->
                                 <div role="section" class="col action-question-text">
@@ -407,7 +407,7 @@
                                 </div>
                             </div>
                             <!-- Si élément == select -->
-                            <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
+                            <div role="section" class=" align-items-center action-multiple-answer"style="display:none">
                                 <div class="action-multiple__cont">
                                     <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
                                     <label for="elem-multiple-choice" class="creator-panel__title">
@@ -433,13 +433,13 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action row" role="region" aria-labelledby="form_actions">
-           <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn">
+        <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
+           <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
                 <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button>
-                <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
+                <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}

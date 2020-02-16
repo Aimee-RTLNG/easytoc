@@ -51191,21 +51191,37 @@ function alertMsg(message, state) {
 var lang = $('html').attr('lang'); // Side tools 
 
 function setSideWindow() {
-  if ($(window).scrollTop() > 800) {
-    $('.action-supp').css('position', 'fixed');
-    $('.action-supp').css('top', '25px');
-    $('.action-supp').css('max-width', '25%');
-    var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
-    var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
+  if ($(window).width() >= 992) {
+    if ($(window).scrollTop() > 800) {
+      // Integration aside
+      $('.action-supp').css('width', '240px');
+      $('#actions-interface').removeClass('col-12');
+      $('#actions-interface').addClass('col-3');
+      $('#actions-interface').addClass('p-0'); // ---
 
-    if (main_bottom - bottom < 435) {
-      var calcul = 435 - (main_bottom - bottom);
-      $('.action-supp').css('top', '-' + calcul + 'px');
+      $('.action-supp').css('position', 'fixed');
+      $('.action-supp').css('top', '25px');
+      $('.action-supp').css('max-width', '25%');
+      var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
+      var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
+
+      if (main_bottom - bottom < 435) {
+        var calcul = 435 - (main_bottom - bottom);
+        $('.action-supp').css('top', '-' + calcul + 'px');
+      }
+    } else {
+      $('.action-supp').css('position', 'relative');
+      $('.action-supp').css('top', '0');
+      $('.action-supp').css('max-width', '100%');
     }
   } else {
+    // Integration full width
     $('.action-supp').css('position', 'relative');
-    $('.action-supp').css('top', '0');
     $('.action-supp').css('max-width', '100%');
+    $('.action-supp').css('width', '100%');
+    $('#actions-interface').removeClass('col-3');
+    $('#actions-interface').removeClass('p-0');
+    $('#actions-interface').addClass('col-12'); // ---
   }
 }
 

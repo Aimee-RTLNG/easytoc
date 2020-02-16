@@ -262,7 +262,7 @@
                 </div>
 
                 <div class="bloc-creation-interface">
-                    <div class="bloc-visualisation col p-0 d-flex m-0 mb-3">
+                    <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                                 <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
@@ -321,7 +321,7 @@
 
                 <div id="actions-interface" class="bloc-actions d-none col-3 p-0">
                     <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
-                    <div class="border bg-white rounded p-3 action-supp text-center" role="section">
+                    <div class="border bg-white rounded p-3 action-supp" role="section">
                         <div class="action-supp-crea" role="section">
                             <!-- Intitulé -->
                             <div role="section" class="col action-question-text">
@@ -405,7 +405,7 @@
                         </div>
                     </div>
                         <!-- Si élément == select -->
-                        <div role="section" class="col align-items-center action-multiple-answer"style="display:none">
+                        <div role="section" class=" align-items-center action-multiple-answer"style="display:none">
                             <div class="action-multiple__cont">
                                 <input class="mr-2 form-element-action input-creator" data-action="multiple-answer" type="checkbox" name="elem-multiple-choice" id="elem-multiple-choice" role="section">
                                 <label for="elem-multiple-choice" class="creator-panel__title">

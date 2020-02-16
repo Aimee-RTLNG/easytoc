@@ -359,10 +359,22 @@ input[type="checkbox"], input[type="radio"]{
 .action-supp-titre {
     margin-bottom: 10px;
 }
+@media (max-width: 992px) {
+    .action-required-cont, .action-multiple__cont {
+        justify-content: flex-start;
+    }
+    .action-supp-titre {
+        margin-bottom: 6px;
+        margin-top: 10px;
+    }
+}
 .action-supp {
+    text-align: center;
     position: relative;
-    // top: 380px;
     width: 240px;
+    @media (max-width: 992px){
+        text-align: left;
+    }
     // &__aide {
     //     position: absolute;
     //     right: 10px;
@@ -440,7 +452,13 @@ input[type="checkbox"], input[type="radio"]{
         width: 100%;
     }
 }
-
+.bloc-creation-interface  {
+    flex-wrap: wrap;
+    & > .bloc-visualisation {
+        display: flex;
+        max-width: 100%;
+    }
+}
 .content-html-preview {
     #full-form .form-control {
         margin-bottom: 0px;
@@ -458,6 +476,10 @@ input[type="checkbox"], input[type="radio"]{
     width: 150px;
     border-radius: 10px;
     font-size: 1.6rem;
+}
+.elmt-select-options {
+    position: fixed;
+    max-width: 25%;
 }
 
 
