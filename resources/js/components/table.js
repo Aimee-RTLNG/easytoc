@@ -933,7 +933,8 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').find('span').text()
+            "html": $('#raw-code').text()
+            // "html": $('#raw-code').find('span').text()
         }
     }).done(function (msg) {
         // console.log(msg);
@@ -942,7 +943,7 @@ $('#btn-save-project').on('click', function () {
     }).fail(function (xhr, status, error) {
         // console.log(xhr.responseText);
         // console.log(status);
-        // console.log(error);
+        console.log($('#raw-code').text());
         // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');

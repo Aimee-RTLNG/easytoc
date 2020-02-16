@@ -276,7 +276,7 @@ function importData(table) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\import_data_table.js */"./resources/js/components/import_data_table.js");
+module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\components\import_data_table.js */"./resources/js/components/import_data_table.js");
 
 
 /***/ })

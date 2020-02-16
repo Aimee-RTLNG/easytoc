@@ -111,15 +111,21 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .home-tools {
    &__item {
        @include flex-col-between-center;
         height: 450px;
+        max-width: 100%;
+        width: 100%;
         background-color: $gris-fonce;
         border-radius: 10px;
         color: white;
         padding: 15px 25px;
+        &__descr {
+            max-width: 100%;
+        }
         &__name {
             text-transform: uppercase;
             @include expletus;
@@ -140,6 +146,7 @@
             a {
                 text-align: center;
                 width: 100%;
+                max-width: 100%;
                 justify-content: center;
                 font-size: 2.0rem;
                 &:focus {
@@ -164,6 +171,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .use-list {
     &__item {

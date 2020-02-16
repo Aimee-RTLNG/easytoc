@@ -181,6 +181,7 @@ input[type="checkbox"], input[type="radio"]{
 // Formulaire - création 
 .creator-panel {
     @include flex-row-between-start;
+    margin: 0px;
     &__title {
         @include expletus;
         font-size: 15px;
@@ -229,6 +230,9 @@ input[type="checkbox"], input[type="radio"]{
     }
 }
 .template-panel {
+    @media (max-width: 768px) {
+        margin-top: 24px;
+    }
     &__choice {
         height: 110px;
         padding: 10px;
@@ -355,10 +359,22 @@ input[type="checkbox"], input[type="radio"]{
 .action-supp-titre {
     margin-bottom: 10px;
 }
+@media (max-width: 992px) {
+    .action-required-cont, .action-multiple__cont {
+        justify-content: flex-start;
+    }
+    .action-supp-titre {
+        margin-bottom: 6px;
+        margin-top: 10px;
+    }
+}
 .action-supp {
+    text-align: center;
     position: relative;
-    // top: 380px;
     width: 240px;
+    @media (max-width: 992px){
+        text-align: left;
+    }
     // &__aide {
     //     position: absolute;
     //     right: 10px;
@@ -426,6 +442,7 @@ input[type="checkbox"], input[type="radio"]{
     #full-form {
         max-width: 100%;
         width: 100%;
+        background-color: white;
         .form-control {
             margin-bottom: 0px;
         }
@@ -435,7 +452,13 @@ input[type="checkbox"], input[type="radio"]{
         width: 100%;
     }
 }
-
+.bloc-creation-interface  {
+    flex-wrap: wrap;
+    & > .bloc-visualisation {
+        display: flex;
+        max-width: 100%;
+    }
+}
 .content-html-preview {
     #full-form .form-control {
         margin-bottom: 0px;
@@ -445,14 +468,18 @@ input[type="checkbox"], input[type="radio"]{
     width: auto;
 }
 .btn-delete-def {
-    padding: 8px 20px;
+    padding: 8px 10px;
     color: white;
     background-color: $red;
     font-weight: bold;
     @include flex-row-between-center;
     width: 150px;
     border-radius: 10px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+}
+.elmt-select-options {
+    position: fixed;
+    max-width: 25%;
 }
 
 
