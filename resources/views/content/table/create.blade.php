@@ -374,10 +374,17 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button type="button" accesskey="c" class=" btn-save-tab btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">{{ __('Annuler les
-                            modifications') }}</button>
-            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn_crea ml-2 btn-save-tab" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">{{ __('Sauvegarder ce projet') }}</button>
+        <div class="project-action col-8 mx-auto my-3" role="region" aria-labelledby="form_actions">
+            <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <p>{{ __('Annuler les modifications') }}</p>
+            </button>
+            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">
+                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <p>
+                    {{ __('Sauvegarder ce projet') }}
+                </p>
+            </button>
         </div>
 
         @endif

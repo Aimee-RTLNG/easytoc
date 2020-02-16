@@ -126,6 +126,29 @@ body {
 }
 
 // Intégration 
+.project-action {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include media-breakpoint-down(sm) {
+        .btn-delete-def, .form_btn-delete-def {
+            width: 100%;
+        }
+    }
+    @media(max-width: 565px) {
+        .btn-crea:not(:last-child)  {
+            margin-right: 0px;
+        }
+    }
+    & > * {
+        margin-bottom: 10px;
+        @media(max-width: 565px) {
+            width: 100%;
+        }
+    }
+    & > button {
+        padding: 2px 8px;
+    }
+}
 
 .tab-radio-header {
     @include flex-row-start-center;
@@ -140,7 +163,10 @@ body {
 }
 
 // Aperçu tableau 
-#generated-table {
-    background-color: white;
+#nav-blueprint #generated-table {
+    background-color: $body-bg;
     padding: 20px;
+}
+.visualisation #generated-table {
+    margin: 30px 0px;
 }

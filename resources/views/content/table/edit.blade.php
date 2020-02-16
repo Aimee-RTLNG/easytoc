@@ -376,20 +376,26 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action col-8 mx-auto my-3 d-flex justify-content-between align-items-center" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class=" btn-save-tab btn btn-danger btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                {{ __('Annuler les modifications') }}
+        <div class="project-action col-8 mx-auto my-3" role="region" aria-labelledby="form_actions">
+            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <p>{{ __('Annuler les modifications') }}</p>
             </button>
-            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-table" accesskey="s" class="btn btn-form-final btn-success btn_crea ml-2 btn-save-tab" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
-                {{ __('Sauvegarder ce projet') }}
+            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-table" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
+                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <p>
+                    {{ __('Sauvegarder ce projet') }}
+                </p>
             </button>
-            <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+            <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <div class="crea-item__btns__icon btn--rouge">
-                    <i class="fa fa-times"></i>
-                </div>
-                <input type="submit" value="{{ __('Supprimer') }}" class=" btn-save-tab" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer">       
+                <button  type="submit" value="" class="shadow-box btn-delete-def btn btn-danger" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                    <div class="crea-item__btns__icon btn--danger">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <p>{{ __('Supprimer') }}</p>
+                </button>
             </form>
         </div>
 

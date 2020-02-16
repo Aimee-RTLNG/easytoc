@@ -450,14 +450,14 @@ input[type="checkbox"], input[type="radio"]{
     width: auto;
 }
 .btn-delete-def {
-    padding: 8px 20px;
+    padding: 8px 10px;
     color: white;
     background-color: $red;
     font-weight: bold;
     @include flex-row-between-center;
     width: 150px;
     border-radius: 10px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 

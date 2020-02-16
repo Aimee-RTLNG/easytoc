@@ -11445,7 +11445,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .btn-delete-def {
-  padding: 8px 20px;
+  padding: 8px 10px;
   color: white;
   background-color: #e3342f;
   font-weight: bold;
@@ -11455,7 +11455,7 @@ input[type="checkbox"], input[type="radio"] {
   max-width: 100%;
   width: 150px;
   border-radius: 10px;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 991.98px) {
@@ -11598,6 +11598,37 @@ pre.prettyprinted {
   background-color: #818181;
 }
 
+.project-action {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767.98px) {
+  .project-action .btn-delete-def, .project-action .form_btn-delete-def {
+    width: 100%;
+  }
+}
+
+@media (max-width: 565px) {
+  .project-action .btn-crea:not(:last-child) {
+    margin-right: 0px;
+  }
+}
+
+.project-action > * {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 565px) {
+  .project-action > * {
+    width: 100%;
+  }
+}
+
+.project-action > button {
+  padding: 2px 8px;
+}
+
 .tab-radio-header {
   display: flex;
   justify-content: flex-start;
@@ -11618,9 +11649,13 @@ pre.prettyprinted {
   min-height: 45px;
 }
 
-#generated-table {
-  background-color: white;
+#nav-blueprint #generated-table {
+  background-color: #f8fafc;
   padding: 20px;
+}
+
+.visualisation #generated-table {
+  margin: 30px 0px;
 }
 
 .compte-page {

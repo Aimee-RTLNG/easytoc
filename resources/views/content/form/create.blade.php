@@ -434,7 +434,7 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action row" role="region" aria-labelledby="form_actions">
-           <div class="col-lg-8 mt-4 mb-4 project-action__btn">
+           <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn">
                 <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
