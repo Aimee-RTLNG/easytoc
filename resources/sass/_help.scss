@@ -1,0 +1,15 @@
+.help-container{
+    
+    scroll-behavior: smooth;
+    display: grid;
+    grid-template-columns: 1fr 25em;
+    margin: 0 auto;
+
+    .summary-container{
+        position: sticky;
+        top: 15px;
+        left: 15px;
+        align-self: start;
+    }
+
+}
