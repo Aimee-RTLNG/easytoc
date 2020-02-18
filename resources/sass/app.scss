@@ -20,7 +20,7 @@
 @import 'auth';
 @import 'home';
 
-@import '_form'; // pas en sass
+@import 'form'; 
 @import 'table';
 
 @import 'profile';
@@ -28,6 +28,8 @@
 @import 'help';
 
 @import 'visualiser';
+
+@import 'prio';
 
 
 // Pour les thèmes : voir dans public/css/themes

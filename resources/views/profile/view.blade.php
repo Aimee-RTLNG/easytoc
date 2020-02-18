@@ -92,7 +92,7 @@
                     @foreach ($user->contents as $content)
                         <div class="crea-item row list-element"  data-type="{{ $content->type->name_en }}" data-date="{{ $content->updated_at }}" >
                             <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
-                            <div class="col-md-9 crea-item__infos">
+                            <div class="col-md-8 crea-item__infos">
                                 <div class="crea-item__entete">
                                     <h3 class="crea-item__entete__title"><a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a></h3>
                                     <div class="crea-item__entete__under"></div>
@@ -116,8 +116,8 @@
                                     }
                                 ?>
                             </div>
-                            <div class="col-md-3 crea-item__btns">
-                                <div>
+                            <div class="col-md-4 crea-item__btns">
+                                <div class="crud_btn">
                                     <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Visualiser')}}">
                                         <div  class="crea-item__btns__icon">
                                             <i class="fa fa-eye"></i>
@@ -130,13 +130,19 @@
                                         </div>
                                         <p>{{ __('Modifier') }}</p>
                                     </a>
-                                    <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+                                    <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <div class="crea-item__btns__icon btn--rouge">
+                                        {{-- <div class="crea-item__btns__icon btn--rouge">
                                             <i class="fa fa-times"></i>
-                                        </div>
-                                        <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">       
+                                        </div> --}}
+                                        {{-- <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">        --}}
+                                        <button type="submit" value="{{ __('Supprimer') }}" class="shadow-box btn-delete-def btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                                            <div class="crea-item__btns__icon btn--danger">
+                                                <i class="fa fa-times"></i>
+                                            </div>
+                                            <p>{{ __('Supprimer') }}</p>
+                                        </button>  
                                     </form>
                                 </div>
                             </div>
@@ -329,7 +335,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </main>

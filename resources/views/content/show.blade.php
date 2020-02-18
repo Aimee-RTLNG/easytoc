@@ -37,7 +37,7 @@
     </div>
         {{-- Infos prrojet et actions --}}
         <div class="row visualisation__infos">
-            <div class="col-8">
+            <div class="col-lg-7">
                 <div class="content-title">
                     <h3 class="visu__title">
                         {{ $content->title }}
@@ -49,7 +49,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col element-actions">
+            <div class="col-lg-5 element-actions">
                 <a class="btn btn-form-final btn-primary edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">
                     <div class="rond-i">
                         <i class="fa fa-edit"></i>
@@ -83,13 +83,15 @@
         <h3 class="visu__title">{{ __('Code généré') }}</h3>
         <div class="row">
 
-            <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-            <a target="_blank" href="aide#formcode" class="btn btn-light" title="{{ __('Accéder à la page d\'aide') }}">
-                <i class="fa fa-question-circle"></i>
-                {{ __("Besoin d'aide !") }}
-            </a>
-            <div class="copy-container w-100 d-flex flex-row-reverse">
-                <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-info" title="{{ __('Copier') }}"> 
+            <div class="visu_info">
+                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                <a target="_blank" href="../aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
+                    <i class="fa fa-question-circle"></i>
+                    {{ __("Besoin d'aide !") }}
+                </a>
+            </div>
+            <div class="copy-container visu-copy-container w-100">
+                <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}"> 
                     {{ __("Copier") }}
                 </button>
             </div>
@@ -105,8 +107,8 @@
             <h3 class="mt-3">
                 {{ __("Voici le code brut généré: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}
             </h3>
-            <div class="copy-container w-100 d-flex flex-row-reverse">
-                <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-info" title="{{ __('Copier') }}">
+            <div class="copy-container visu-copy-container btn-code w-100">
+                <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
                     {{ __("Copier") }}
                 </button>
             </div>
@@ -120,7 +122,7 @@
 @endsection
 
 @section('pagespecificscripts')
-    <script type="application/javascript" src="{{ URL::asset('js/components/content_view.js') }}"></script>
+    {{-- <script type="application/javascript" src="{{ URL::asset('js/components/content_view.js') }}"></script> --}}
     {{-- Script PRETTIFY + skin --}}
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection

@@ -51059,13 +51059,14 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg, lang */
+/*! exports provided: alertMsg, lang, setSideWindow */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSideWindow", function() { return setSideWindow; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51187,7 +51188,42 @@ function alertMsg(message, state) {
   }, 7000);
 } // Traduction en JS
 
-var lang = $('html').attr('lang');
+var lang = $('html').attr('lang'); // Side tools 
+
+function setSideWindow() {
+  if ($(window).width() >= 992) {
+    if ($(window).scrollTop() > 800) {
+      // Integration aside
+      $('.action-supp').css('width', '240px');
+      $('#actions-interface').removeClass('col-12');
+      $('#actions-interface').addClass('col-3');
+      $('#actions-interface').addClass('p-0'); // ---
+
+      $('.action-supp').css('position', 'fixed');
+      $('.action-supp').css('top', '25px');
+      $('.action-supp').css('max-width', '25%');
+      var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
+      var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
+
+      if (main_bottom - bottom < 435) {
+        var calcul = 435 - (main_bottom - bottom);
+        $('.action-supp').css('top', '-' + calcul + 'px');
+      }
+    } else {
+      $('.action-supp').css('position', 'relative');
+      $('.action-supp').css('top', '0');
+      $('.action-supp').css('max-width', '100%');
+    }
+  } else {
+    // Integration full width
+    $('.action-supp').css('position', 'relative');
+    $('.action-supp').css('max-width', '100%');
+    $('.action-supp').css('width', '100%');
+    $('#actions-interface').removeClass('col-3');
+    $('#actions-interface').removeClass('p-0');
+    $('#actions-interface').addClass('col-12'); // ---
+  }
+}
 
 /***/ }),
 
@@ -51305,12 +51341,11 @@ $('#title-input').keypress(function (e) {
   }
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
-/*
-let translation_test = getTranslation("Thème du formulaire", "en");
-// console.log(translation_test);
-*/
-// ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // TODO Position des paramètres d'élément
+
+$(window).on('scroll', function () {
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
+}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // \t = tabulation,  \n = saut de ligne
 
 var element_types; // Traductions
@@ -51331,17 +51366,17 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
       "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
     },
     "type-layout": {
-      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Title</h2>",
+      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraph</p>",
+      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Name of the link</a>",
+      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ol>",
+      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ul>",
       "insert-horizontal_rule": "<hr contenteditable='true'>"
     },
     "type-special": {
-      "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+      "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
       "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-      "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+      "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
     }
   };
 } else {
@@ -51512,6 +51547,7 @@ $('.add-element').on('click', function () {
   var element_type = $(this).attr("class");
   var element_type_name = $(this).attr("id");
   addElement(element_type, element_type_name);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {
@@ -51526,17 +51562,17 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').val()
+      "html": $('#raw-code').text()
     }
   }).done(function (msg) {
     // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    // console.log(xhr.responseText);
-    // console.log(status);
-    // console.log(error);
-    // TODO Erreur
+    console.log(xhr.responseText);
+    console.log(status);
+    console.log(error); // TODO Erreur
+
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -51561,6 +51597,8 @@ $(document.body).off('keyup') // ré-initialisation
   } else {
     $(this).closest('label').focus();
   }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
 .on('click', '.element-container', function (e) {
   if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
@@ -51568,6 +51606,8 @@ $(document.body).off('keyup') // ré-initialisation
   } else if (e.target.nodeName == "LEGEND") {
     $(this).find('legend span[contenteditable=true]').focus();
   }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Quand on clique sur une option
 .on('click', '#full-form fieldset label, #full-form select option', function (e) {
   $('.content-editable-selected').removeClass('content-editable-selected');
@@ -51578,6 +51618,7 @@ $(document.body).off('keyup') // ré-initialisation
   previous_option = selected_option.prev();
   next_option = selected_option.next();
   refreshMoveButtons(previous_option, next_option, true);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
 }) // Quand on sélectionne un élément éditable
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
@@ -51585,6 +51626,7 @@ $(document.body).off('keyup') // ré-initialisation
   if (e.target) {
     element_select = e.target; // on ré initialise les classes
 
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
     $(".content-editable-selected").removeClass('content-editable-selected');
     $(".option-selected").removeClass('option-selected');
     selected_option = false;
@@ -51604,6 +51646,7 @@ $(document.body).off('keyup') // ré-initialisation
     refreshMoveButtons(previous_element, next_element, false);
   }
 
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
 
@@ -51611,7 +51654,8 @@ $(document.body).off('keyup') // ré-initialisation
     // si ce n'est pas le titre général du formulaire (position verouillée)
     $('.action-delete').removeAttr('disabled');
     $('.element_add-option').attr("disabled", 'true');
-    $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px");
+    $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
+
     var element_type = $(element_selected_container).attr('data-elementtype');
     var element_name = $(element_selected_container).attr('data-elementtypename');
 
@@ -51808,22 +51852,22 @@ $(document.body).off('keyup') // ré-initialisation
         }
       }
 
-      $("#actions-interface").show(); // on affiche l'interface de modification spécifique
+      $("#actions-interface").removeClass('d-none'); // on affiche l'interface de modification spécifique
     } else {
-      $("#actions-interface").hide(); // on masque l'interface de modification spécifique
+      $("#actions-interface").addClass('d-none'); // on masque l'interface de modification spécifique
     }
   } else {
     // Si on a sélectionné le titre principal
     $('.action-delete').attr('disabled', 'true');
     $('.side-tool').hide();
-    $("#actions-interface").hide(); // on affiche l'interface de modification
+    $("#actions-interface").addClass('d-none'); // on affiche l'interface de modification
   }
 
   updatecontent();
 }) // quand on déselectionne un élement...
 .on('blur', '[contenteditable=true]', function (e) {
   // e.preventDefault();
-  var element_select_before = window.getSelection().getRangeAt(0).startContainer;
+  // let element_select_before = window.getSelection().getRangeAt(0).startContainer;
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#form-title', function () {
@@ -51834,7 +51878,7 @@ $(document.body).off('keyup') // ré-initialisation
 $("#nav-code-tab").on('click', function () {
   $('#generated-form').attr("action", $('#form-creator-link').val());
   $('#generated-form').attr("method", $('#form-creator-method').val());
-  $("#actions-interface").hide();
+  $("#actions-interface").addClass('d-none');
   $('.side-tool').hide();
   updatecontent();
 }); // ANCHOR Actions sur l'élément ciblé
@@ -51873,7 +51917,7 @@ $(".form-element-action").on('click', function (e) {
         next_element = element_selected_container.next();
         refreshMoveButtons(previous_element, next_element, false); // Déplacement des Tools latéraux
 
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
       }
 
       break;
@@ -51899,7 +51943,7 @@ $(".form-element-action").on('click', function (e) {
         next_element = element_selected_container.next();
         refreshMoveButtons(previous_element, next_element, false); // Déplacement des Tools latéraux
 
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
       }
 
       break;
@@ -51907,7 +51951,7 @@ $(".form-element-action").on('click', function (e) {
 
     case "delete":
       deletecommand.execute();
-      $("#actions-interface").hide();
+      $("#actions-interface").addClass('d-none');
       $(".side-tool").hide();
       $('.action-delete').attr('disabled', 'true');
       $('.action-undo').removeAttr('disabled');
@@ -52137,6 +52181,7 @@ function selectText(element) {
 ; // ANCHOR Fonction d'ajout d'option
 
 function addOption(option_type_parameter) {
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   var option_parent_element = $(".content-editable-selected");
   var option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
 
@@ -52169,7 +52214,7 @@ function addOption(option_type_parameter) {
 
 function deleteOption() {
   var select_option_selected = $(".content-editable-selected select option:selected");
-  select_option_selected.remove();
+  $(select_option_selected).remove();
   $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
   $('.action-delete-option').hide();
 } // ANCHOR Fonction Undo/Redo suppression
@@ -52357,7 +52402,8 @@ $('#table-col-nb').val('2'); // On désactive les boutons qui ne s'activent qu'a
 $('.text-formatting').prop('disabled', true);
 $('.element_move').prop('disabled', true);
 $('.action-delete').prop('disabled', true);
-$('.element_merge-right').prop('disabled', true); // ANCHOR Caractères restants Description du projet
+$('.element_merge-right').prop('disabled', true);
+$(".element_delete").prop('disabled', true); // ANCHOR Caractères restants Description du projet
 
 $('#desc-input').keypress(function (e) {
   var tval = $('#desc-input').val(),
@@ -52404,15 +52450,15 @@ var element_types = {
     "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
   },
   "type-unique": {
-    "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
-    "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
-    "insert-cell": "\n\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
+    "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' data-tag='cell-header' scope='col'><span contenteditable=true >&#160</span></th>",
+    "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' data-tag='cell-header' scope='row'><span contenteditable=true >&#160</span></th>",
+    "insert-cell": "\n\t\t\t<td class='table-cell cell-text' data-tag='cell'><span contenteditable=true >&#160</span></td>"
   }
 };
 function getOldContent() {
   // On rend l'ancien contenu modifiable
-  $('#full-table th').attr('contenteditable', true);
-  $('#full-table td').attr('contenteditable', true);
+  $('#full-table th span').attr('contenteditable', true);
+  $('#full-table td span').attr('contenteditable', true);
   $('#table-title').attr('contenteditable', true);
   $('#table-caption').attr('contenteditable', true); // Theme
 
@@ -52535,7 +52581,7 @@ $('#table-row-nb').on('change', function () {
     }
 
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
-    this.val("2");
+    $(this).val("2");
     return;
   }
 
@@ -52666,6 +52712,11 @@ function addCol(side) {
 
         if (index < rows_header) {
           var thead_insert_before = $(tr).find("th")[cell_index];
+
+          if (!thead_insert_before) {
+            thead_insert_before = $(tr).find("th").first();
+          }
+
           $(thead_insert_before).before(cell_header_html);
         }
       });
@@ -52691,6 +52742,11 @@ function addCol(side) {
 
         if (index < rows_header) {
           var thead_insert_after = $(tr).find("th")[cell_index];
+
+          if (!thead_insert_after) {
+            thead_insert_after = $(tr).find("th").last();
+          }
+
           $(thead_insert_after).after(cell_header_html);
         }
       });
@@ -52789,7 +52845,7 @@ function removeRow(row) {
     }
 
     if (confirm(message)) {
-      row.remove();
+      $(row).remove();
       return true;
     } // Si on annule la suppression
     else {
@@ -52798,7 +52854,7 @@ function removeRow(row) {
       }
   } // Si il n'y a rien : on supprime
   else {
-      row.remove();
+      $(row).remove();
       return true;
     }
 } // Déplacement de ligne
@@ -52809,19 +52865,19 @@ function moveRow(side) {
     // $(selected_row).insertBefore(previous_row);
     $(selected_row).find('td, th').each(function (index, element) {
       var previous_cell = previous_row.find('td, th')[index];
-      var previous_text = $(previous_cell).text();
-      var actual_text = $(this).text();
-      $(previous_cell).text(actual_text);
-      $(this).text(previous_text);
+      var previous_text = $(previous_cell).find('span').text();
+      var actual_text = $(this).find('span').text();
+      $(previous_cell).find('span').text(actual_text);
+      $(this).find('span').text(previous_text);
     });
   } else if (side == "down") {
     // $(selected_row).insertAfter(next_row);
     $(selected_row).find('td, th').each(function (index, element) {
       var next_cell = next_row.find('td, th')[index];
-      var next_text = $(next_cell).text();
-      var actual_text = $(this).text();
-      $(next_cell).text(actual_text);
-      $(this).text(next_text);
+      var next_text = $(next_cell).find('span').text();
+      var actual_text = $(this).find('span').text();
+      $(next_cell).find('span').text(actual_text);
+      $(this).find('span').text(next_text);
     });
   }
 } // Déplacement de colonne
@@ -52835,46 +52891,46 @@ function moveCol(side) {
   if (side == "left") {
     rows.each(function () {
       cols = $(this).children('td, th');
-      var other_text = cols.eq(col_id - 1).text();
-      var actual_text = cols.eq(col_id).text();
-      cols.eq(col_id).text(other_text);
-      cols.eq(col_id - 1).text(actual_text);
+      var other_text = cols.eq(col_id - 1).find('span').text();
+      var actual_text = cols.eq(col_id).find('span').text();
+      cols.eq(col_id).find('span').text(other_text);
+      cols.eq(col_id - 1).find('span').text(actual_text);
     });
-    previous_cell.focus();
+    $(previous_cell).find("span").focus();
   } else if (side == "right") {
     rows.each(function () {
       cols = $(this).children('td, th');
-      var other_text = cols.eq(col_id + 1).text();
-      var actual_text = cols.eq(col_id).text();
-      cols.eq(col_id).text(other_text);
-      cols.eq(col_id + 1).text(actual_text);
+      var other_text = cols.eq(col_id + 1).find('span').text();
+      var actual_text = cols.eq(col_id).find('span').text();
+      cols.eq(col_id).find('span').text(other_text);
+      cols.eq(col_id + 1).find('span').text(actual_text);
     });
-    next_cell.focus();
+    $(next_cell).find("span").focus();
   }
 }
 
 function moveCell(side) {
-  var text_cell = $(".content-editable-selected").text();
+  var text_cell = $(".content-editable-selected").find('span').text();
   var text_other;
   var other_cell;
 
   if (side == "up") {
     other_cell = $(".content-editable-selected").parent().prev().find('td, th')[selected_cell_index];
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   } else if (side == "down") {
     other_cell = $(".content-editable-selected").parent().next().find('td, th')[selected_cell_index];
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   } else if (side == "left") {
     other_cell = $(".content-editable-selected").prev();
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   } else if (side == "right") {
     other_cell = $(".content-editable-selected").next();
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   }
 
-  $(".content-editable-selected").text(text_other);
-  $(other_cell).text(text_cell);
-  $(other_cell).focus();
+  $(".content-editable-selected span").text(text_other);
+  $(other_cell).find('span').text(text_cell);
+  $(other_cell).find('span').focus();
 }
 
 function mergeCell(side, cell, other_cell) {
@@ -52908,7 +52964,7 @@ function mergeCell(side, cell, other_cell) {
     $(other_cell).detach();
   }
 
-  $('.content-editable-selected').focus();
+  $('.content-editable-selected span').focus();
   updateContent();
 }
 
@@ -52963,9 +53019,10 @@ function removeCol(cells) {
           var actual_cell = item;
 
           if (actual_cell) {
-            actual_cell.remove();
+            $(actual_cell).remove();
           }
         });
+        $(".element_delete").prop('disabled', true);
         return true;
       } // Si on annule la suppression
       else {
@@ -52978,9 +53035,10 @@ function removeCol(cells) {
           var actual_cell = item;
 
           if (actual_cell) {
-            actual_cell.remove();
+            $(actual_cell).remove();
           }
         });
+        $(".element_delete").prop('disabled', true);
         return true;
       }
   } else {
@@ -52994,7 +53052,7 @@ $('.cell-action').on('click', function () {
   var nb_row = $('#table-row-nb').val(); // Vider la case
 
   if (element_action == "empty-cell") {
-    $('.content-editable-selected').text(""); // DEPLACER LIGNE VERS LE HAUT
+    $('.content-editable-selected').find('span').text(""); // DEPLACER LIGNE VERS LE HAUT
   } else if (element_action == "move-row-up") {
     moveRow("up"); // DEPLACER LIGNE VERS LE BAS
   } else if (element_action == "move-row-down") {
@@ -53065,7 +53123,7 @@ $('.cell-action').on('click', function () {
 
         Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
-        next_element_select.focus();
+        $(next_element_select).find("span").focus();
       }
     } else {
       if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
@@ -53101,7 +53159,7 @@ $('.cell-action').on('click', function () {
 
           Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
-          _next_element_select.focus();
+          $(_next_element_select).find('span').focus();
         }
       } else {
         if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
@@ -53114,7 +53172,7 @@ $('.cell-action').on('click', function () {
       }
     }
 
-  $('.content-editable-selected').focus();
+  $('.content-editable-selected span').focus();
   updateContent();
 }); // ANCHOR Ajout d'un élément
 
@@ -53170,7 +53228,7 @@ $('.add-element').on('click', function () {
       $('#full-table thead').append(element_types["type-container"]["insert-row"]);
       $('#full-table thead tr').append(element_types["type-unique"]["insert-header-col"]);
       $('#full-table thead th').first().addClass("content-editable-selected");
-      $(".content-editable-selected").focus();
+      $(".content-editable-selected span").focus();
       addRow("down");
       $('#full-table thead tr').first().remove();
     } else {
@@ -53199,11 +53257,11 @@ $('.add-element').on('click', function () {
       _rows.each(function (index) {
         if (index >= rows_header) {
           var new_header = $(this).find('th, td').first();
-          var old_text = $(new_header).text();
+          var old_text = $(new_header).find('span').text();
           var new_cell_html = element_types["type-unique"]["insert-header-row"];
           $(new_header).replaceWith(new_cell_html);
-          $(new_header).text(old_text);
-          $(this).find('th').first().text(old_text);
+          $(new_header).find('span').find('span').text(old_text);
+          $(this).find('th').first().find('span').text(old_text);
         }
       });
     } else {
@@ -53211,10 +53269,10 @@ $('.add-element').on('click', function () {
         _rows.each(function (index) {
           if (index >= rows_header) {
             var new_cell = $(this).find('th, td').first();
-            var old_text = $(new_cell).text();
+            var old_text = $(new_cell).find('span').text();
             var new_cell_html = element_types["type-unique"]["insert-cell"];
             $(new_cell).replaceWith(new_cell_html);
-            $(this).find('td').first().text(old_text);
+            $(this).find('td').first().find('span').text(old_text);
           }
         });
       } else {
@@ -53230,7 +53288,7 @@ $('.add-element').on('click', function () {
     }
   }
 
-  $('.content-editable-selected').focus();
+  $('.content-editable-selected span').focus();
   updateContent();
 }); // ANCHOR Sauvegarde définitive
 
@@ -53246,7 +53304,8 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').val()
+      "html": $('#raw-code').text() // "html": $('#raw-code').find('span').text()
+
     }
   }).done(function (msg) {
     // console.log(msg);
@@ -53255,8 +53314,8 @@ $('#btn-save-project').on('click', function () {
   }).fail(function (xhr, status, error) {
     // console.log(xhr.responseText);
     // console.log(status);
-    // console.log(error);
-    // Erreur
+    console.log($('#raw-code').text()); // Erreur
+
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
@@ -53274,6 +53333,9 @@ $('#btn-save-project').on('click', function () {
 
 var element_select;
 $(document.body).off('keyup') // ré-initialisation
+.on('click', 'td, th', function (e) {
+  $(e.target).find('span').focus();
+}) // ré-initialisation
 // Quand on sélectionne un élément éditable
 .on('focus', '[contenteditable=true]', function (e) {
   // on récupère l'élément sélectionné et on focus sur l'élément parent
@@ -53283,8 +53345,13 @@ $(document.body).off('keyup') // ré-initialisation
     $('.text-formatting').prop('disabled', false);
   }
 
-  $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
+
+  if (tag != "title" && tag != "caption") {
+    $(element_selected_container).closest('td, th').addClass("content-editable-selected");
+  } else {
+    $(element_selected_container).addClass("content-editable-selected");
+  }
 
   if (tag != "title" && tag != "caption") {
     // si ce n'est pas le titre ou la caption
@@ -53397,7 +53464,7 @@ $(document.body).off('keyup') // ré-initialisation
       }
     }); // Si il n'y a plus qu'une colonne
 
-    if (selected_row[0].cells.length <= 2) {
+    if (selected_row[0].cells && selected_row[0].cells.length <= 2) {
       $('.action-delete-col').attr('disabled', true);
     } else {
       $('.action-delete-col').attr('disabled', false);
