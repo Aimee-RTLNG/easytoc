@@ -9818,6 +9818,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .check-box:hover {
@@ -9869,6 +9870,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .code-display {
@@ -9883,6 +9885,28 @@ textarea.shadow-box {
 #content-created-blueprint {
   width: 100%;
   overflow: auto;
+}
+
+#nav-blueprint-tab, #nav-code-tab {
+  font-size: 1.8rem;
+}
+
+.bloc-creation-interface {
+  display: flex;
+  max-width: 100%;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 3px dashed rgba(0, 0, 0, 0.5);
+  margin-left: 0px;
+}
+
+@media (max-width: 768px) {
+  .mt-4-md {
+    margin-top: 1.5rem;
+  }
+  .mb-4-md {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .flag {
@@ -9900,6 +9924,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 #logo-nav {
@@ -9926,14 +9951,17 @@ textarea.shadow-box {
 }
 
 .btn-connect {
+  min-width: 112px;
+  min-height: 25px;
   background-color: #fff;
   color: black;
-  height: 25px;
+  height: 28px;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 18px 2px 5px;
+  max-width: 100%;
+  padding: 2px 8px 2px 5px;
 }
 .btn-connect__icon {
   margin-right: 10px;
@@ -9945,6 +9973,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .btn-connect__icon i {
   font-size: 11px;
@@ -9969,6 +9998,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 .bars__line {
   border-radius: 5px;
@@ -10001,7 +10031,7 @@ textarea.shadow-box {
   }
 
   .btn-connect--two {
-    margin-left: 3px;
+    margin-left: 10px;
   }
 
   .menu-lang {
@@ -10042,13 +10072,15 @@ textarea.shadow-box {
 
   .menu-connect {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-direction: row;
     margin-bottom: 10px;
   }
 
   .btn-connect {
     height: 35px;
-    width: 50%;
+    width: 100%;
   }
   .btn-connect__link {
     font-size: 1.5rem;
@@ -10098,6 +10130,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .menu-footer .nav-link {
   padding: 0px 16px;
@@ -10156,6 +10189,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   box-shadow: 0px 0px 18px -11px black;
   background-color: white;
 }
@@ -10178,6 +10212,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 .register__illu {
   width: 50%;
@@ -10204,6 +10239,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 .register__form .form-control {
   width: 70%;
@@ -10235,6 +10271,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 .register__line--mdp__item {
   width: 49%;
@@ -10263,6 +10300,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+  max-width: 100%;
 }
 .register input:-internal-autofill-selected {
   background-color: #171819 !important;
@@ -10272,6 +10310,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   padding: 2px 20px;
   height: 45px;
   color: white;
@@ -10291,6 +10330,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 .connect-network--connexion {
   margin-bottom: 30px;
@@ -10309,6 +10349,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   padding: 0 10px;
 }
 .connect-network a:nth-child(2) {
@@ -10319,6 +10360,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 .check-conditions .check {
   margin-top: 5px;
@@ -10371,6 +10413,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .link-mdp-forgot {
@@ -10519,6 +10562,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
   box-shadow: 0px 0px 18px -11px black;
   background-color: white;
 }
@@ -10529,6 +10573,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 .authen__form .form-control {
   width: 100%;
@@ -10626,6 +10671,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 .home-present .section-home__title {
   width: 100%;
@@ -10650,6 +10696,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   margin-bottom: 40px;
 }
 .home-present__video {
@@ -10659,6 +10706,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .home-present > .container {
   height: auto;
@@ -10674,6 +10722,7 @@ textarea.shadow-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   width: 100%;
 }
 .video-yt__btn a {
@@ -10697,6 +10746,7 @@ textarea.shadow-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .home-tools__item {
@@ -10704,7 +10754,10 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   height: 450px;
+  max-width: 100%;
+  width: 100%;
   background-color: #171819;
   border-radius: 10px;
   color: white;
@@ -10712,8 +10765,7 @@ textarea.shadow-box {
 }
 .home-tools__item__name {
   text-transform: uppercase;
-  font-family: "Expletus Sans", sans-serif;
-  font-size: 2rem;
+  font-family: "Expletus Sans", sans-serif;  font-size: 2rem;
   font-weight: bold;
 }
 .home-tools__item__illu {
@@ -10733,10 +10785,12 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 .home-tools__item__txt a {
   text-align: center;
   width: 100%;
+  max-width: 100%;
   justify-content: center;
   font-size: 2rem;
 }
@@ -10758,6 +10812,7 @@ textarea.shadow-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .use-list__item {
@@ -10766,6 +10821,7 @@ textarea.shadow-box {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   height: 295px;
   background-color: #171819;
   border-radius: 10px;
@@ -10968,6 +11024,7 @@ textarea.shadow-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    max-width: 100%;
   }
 
   .section-home.home-present .home-present__txt__btn .btn-form-final {
@@ -10993,8 +11050,8 @@ body {
 
 /* style du blueprint */
 #content-created-blueprint {
-  background-color: #f2f2f2;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-color: #24b1f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.92' fill='%232e6bff'/%3E%3C/svg%3E");
 }
 
 /* style du code */
@@ -11019,6 +11076,7 @@ xmp {
   width: 100% !important;
   border-radius: 5px !important;
   border: 1px solid #888;
+  word-break: break-all;
 }
 
 pre.prettyprinted {
@@ -11041,7 +11099,6 @@ pre.prettyprinted {
 
 #content-created-blueprint form * {
   border: 0;
-  padding: 5px;
 }
 #content-created-blueprint form *:hover {
   border: 3px dotted black;
@@ -11053,21 +11110,21 @@ pre.prettyprinted {
   min-height: 30px;
 }
 #content-created-blueprint form * fieldset {
-  border: 2px solid black;
+  border: none;
   display: flex;
   flex-direction: column;
 }
 #content-created-blueprint form * fieldset:hover {
-  border: 2px solid black;
+  border: none;
 }
 #content-created-blueprint form * fieldset label {
   margin: 5px 15px;
 }
 #content-created-blueprint form * fieldset label:hover {
-  border: 3px dotted black;
+  border: none;
 }
 #content-created-blueprint form * legend {
-  border: 2px solid black;
+  border: none;
 }
 #content-created-blueprint form * hr {
   border: 2px solid rgba(0, 0, 0, 0.5) !important;
@@ -11128,18 +11185,18 @@ input[type=checkbox], input[type=radio] {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
+  margin: 0px;
 }
 .creator-panel__title {
   font-family: "Expletus Sans", sans-serif;
   font-size: 1.8rem;
   font-weight: bold;
   margin: 0px;
-  line-height: 2.3rem;
-  margin-bottom: 7px;
+  line-height: 2rem;
 }
 
-#chara-desc-remains {
-  position: absolute;
+#chara-desc-remains {  position: absolute;
   bottom: 12px;
   right: 25px;
   color: #888888;
@@ -11151,6 +11208,7 @@ input[type=checkbox], input[type=radio] {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  max-width: 100%;
 }
 .actions-panel > * {
   width: 100%;
@@ -11159,10 +11217,11 @@ input[type=checkbox], input[type=radio] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 
 .btn-crea {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 2px 8px;
 }
 .btn-crea__icon {
@@ -11177,6 +11236,7 @@ input[type=checkbox], input[type=radio] {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .btn-crea p {
   margin-left: 10px;
@@ -11187,6 +11247,12 @@ input[type=checkbox], input[type=radio] {
   margin-right: 5px;
 }
 
+@media (max-width: 768px) {
+  .template-panel {
+    margin-top: 24px;
+  }
+}
+
 .template-panel__choice {
   height: 110px;
   padding: 10px;
@@ -11194,6 +11260,7 @@ input[type=checkbox], input[type=radio] {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 100%;
 }
 .template-panel__choice > div {
   height: 100%;
@@ -11201,11 +11268,13 @@ input[type=checkbox], input[type=radio] {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  max-width: 100%;
 }
 .template-panel__choice > div > div {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100%;
 }
 .template-panel__choice label {
   padding-left: 8px;
@@ -11256,6 +11325,7 @@ input[type=checkbox], input[type=radio] {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
   height: 50px;
   margin-top: 6px;
   color: #1B6EC2;
@@ -11269,23 +11339,38 @@ input[type=checkbox], input[type=radio] {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .project-action__btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
+}
+
+.edit-project-action {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.edit-project-action .btn-crea {
+  margin-right: 0px;
 }
 
 .main-info-form {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  max-width: 100%;
   margin-bottom: 16px;
 }
 .main-info-form .reset-button {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100%;
 }
 .main-info-form > * {
   margin-bottom: 10px;
@@ -11325,25 +11410,34 @@ input[type=checkbox], input[type=radio] {
 
 .content-interface {
   padding: 20px;
+  padding-bottom: 45px;
 }
 
 .action-required-cont, .action-multiple__cont {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.action-required, .action-multiple-answer {
-  min-height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-supp-titre {
-  margin-bottom: 25px;
-  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 992px) {
+  .action-required-cont, .action-multiple__cont {
+    justify-content: flex-start;
+  }
+  .action-supp-titre {
+    margin-bottom: 6px;
+    margin-top: 10px;
+  }
 }
 
 .action-supp {
+  text-align: center;
   position: relative;
+  width: 240px;
 }
 .action-supp__aide {
   position: absolute;
@@ -11357,7 +11451,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 .action-supp-crea > * {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 0;
 }
 
 .btn-save-project {
@@ -11411,8 +11506,8 @@ body {
 
 /* style du blueprint */
 #content-created-blueprint {
-  background-color: #f2f2f2;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-color: #4da5dc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='95' height='95' fill='%23165ba0'/%3E%3C/svg%3E");
 }
 
 /* style du code */
@@ -11498,10 +11593,70 @@ pre.prettyprinted {
   border-radius: 2px;
   color: white;
   border: none;
-  min-width: 25px;
+  min-width: 20px;
 }
 .side-tool .btn-info:disabled {
   background-color: #818181;
+}
+
+.project-action {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767.98px) {
+  .project-action .btn-delete-def, .project-action .form_btn-delete-def {
+    width: 100%;
+  }
+}
+
+@media (max-width: 565px) {
+  .project-action .btn-crea:not(:last-child) {
+    margin-right: 0px;
+  }
+}
+
+.project-action > * {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 565px) {
+  .project-action > * {
+    width: 100%;
+  }
+}
+
+.project-action > button {
+  padding: 2px 8px;
+}
+
+.tab-radio-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100%;
+  min-height: 32px;
+}
+
+.choice-header-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+
+.btn-save-tab {
+  height: auto;
+  min-height: 45px;
+}
+
+#nav-blueprint #generated-table {
+  background-color: #f8fafc;
+  padding: 20px;
+}
+
+.visualisation #generated-table {
+  margin: 30px 0px;
 }
 
 .compte-page {
@@ -11540,22 +11695,24 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   margin-bottom: 40px;
 }
 .profile_content__options {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100%;
   width: 100%;
 }
 .profile_content__options > div {
-  flex: 1 1;
   height: 50px;
 }
 .profile_content__sort {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
   width: 100%;
   margin-top: 20px;
   height: 40px;
@@ -11656,6 +11813,8 @@ pre.prettyprinted {
 .list-filters {
   margin-left: 10px;
   display: flex;
+  border: 2px solid #1B6EC2;
+  border-radius: 0.5rem;
 }
 .list-filters .btn {
   min-width: 77px;
@@ -11670,17 +11829,20 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 18px -11px black;
-  box-shadow: inset 15px 0px 24px -22px rgba(0, 0, 0, 0.51);
+  max-width: 100%;
+}
+
+.list-filters .btn:not(:last-child) {
+  border-right: 1px solid #1B6EC2;
 }
 .list-filters .btn span {
   margin-top: 5px;
 }
 .list-filters .btn:hover {
-  background-color: #ddd;
+  background-color: rgba(27, 110, 194, 0.2);
 }
 .list-filters .btn.active {
-  background-color: #666;
+  background-color: #1B6EC2;
   color: white;
 }
 
@@ -11709,6 +11871,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .dashboard__crea__separator {
   width: 130px;
@@ -11756,6 +11919,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 100%;
   margin-bottom: 20px;
 }
 .mon-compte__entete__picto {
@@ -11766,6 +11930,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
   color: white;
   border-radius: 50px;
   font-size: 25px;
@@ -11801,6 +11966,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 .crea-item__entete__title {
   font-size: 2.5rem;
@@ -11828,6 +11994,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  max-width: 100%;
 }
 .crea-item__btns a {
   margin-bottom: 10px;
@@ -11843,12 +12010,14 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 .crea-item__btns .btn {
   justify-content: flex-start;
   width: 100%;
   padding: 2px 6px;
   min-width: 130px;
+  margin-bottom: 5px;
 }
 .crea-item__btns .btn p {
   margin-left: 6px;
@@ -11863,6 +12032,7 @@ pre.prettyprinted {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 .crea-item__btn-delete input {
   background: transparent;
@@ -11885,6 +12055,7 @@ pre.prettyprinted {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 100%;
 }
 
 .btn--rouge {
@@ -11925,7 +12096,7 @@ pre.prettyprinted {
     transition: height 0.5s ease;
   }
   .mon-compte.open {
-    height: 610px;
+    height: 700px;
   }
   .mon-compte__entete {
     justify-content: flex-start;
@@ -11994,12 +12165,13 @@ pre.prettyprinted {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
   }
   .crea-item__btns .btn:not(.btn-gris) {
+    margin-bottom: 5px;
     justify-content: center;
     min-width: 50px;
     width: 50px;
-    margin-bottom: 0px;
     margin-right: 6px;
   }
   .crea-item__btns .btn:not(.btn-gris) p {
@@ -12028,6 +12200,7 @@ pre.prettyprinted {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
     padding: 0 14px;
   }
 
@@ -12041,7 +12214,7 @@ pre.prettyprinted {
 }
 @media (max-width: 368px) {
   .mon-compte.open {
-    height: 644px;
+    height: 750px;
   }
 
   .mon-compte__entete {
@@ -12081,6 +12254,10 @@ pre.prettyprinted {
 .edit-content-button, .delete-content-button {
   padding: 2px 10px;
   min-width: 138px;
+}
+
+.content-html-code {
+  max-width: 100%;
 }
 
 .element-actions {

@@ -52,16 +52,21 @@ class ResetPassword extends Notification
      */
     public function toMail($notifiable)
     {
+        $link = url( "/password/reset/?token=" . $this->token );
         if (static::$toMailCallback) {
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
         return (new MailMessage)
-            ->subject(Lang::get('Mot de passe perdu'))
-            ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::get('Reset Password'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
-            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+        
+
+            //->view('reset.mail')
+            ->from('info@easytoc.com')
+            ->subject(Lang::get('Reinitialisation du mot de passe'))
+            ->line(Lang::get('Vous recevez ce courriel parce que nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.'))
+            ->action(Lang::get('Reinitialiser Mot de Passe'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->line(Lang::get('Ce lien de réinitialisation de mot de passe expirera en :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+            ->line(Lang::get('Si vous n\'avez pas demandé de réinitialisation de mot de passe, aucune autre action n\'est requise.'));
     }
 
     /**

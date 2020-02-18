@@ -31,36 +31,38 @@
                         <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. Easy to C peut vous aider dans cette démarche.')}}
                         </p>
                         <div class="home-present__txt__btn">
-                        <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
-                        <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-arrow-right"></i>
-                            {{__('Commencer un projet')}}
-                        </a>
+                            <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
+                                <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-arrow-right"></i>
+                                    {{__('Commencer un projet')}}
+                                </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
                                     <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
                                     <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
                                 </div>
                             </div>
-                            <a href="register" class="btn-primary btn-form-final">
-                                <i class="fas fa-arrow-right"></i>
-                                <p>{{__("S'inscrire")}}</p>
-                            </a>
+                            @guest
+                                <a href="register" class="btn-primary btn-form-final">
+                                    <i class="fas fa-arrow-right"></i>
+                                    <p>{{__("S'inscrire")}}</p>
+                                </a>
+                            @endguest
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li><a class="link-ancre" tabindex="0" href="#reasons">{{__('Pourquoi rendre son site accessible ?')}}</a></li>
-                            <li><a class="link-ancre" tabindex="0" href="#how">{{__('Comment Easy to C peut m’aider ?')}}</a></li>
                             <li><a class="link-ancre" tabindex="0" href="#tools">{{__('Comment fonctionnent les outils Easy to C ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#how">{{__('Comment Easy to C peut m’aider ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#reasons">{{__('Pourquoi rendre son site accessible ?')}}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-6">
                     <div class="home-present__video">
                         <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
-                        <div class="video-yt__btn">
+                        {{-- <div class="video-yt__btn">
                             <a class="btn-primary btn-form-final" href="#">{{__('Audio-Description')}}</a>
                             <a class="btn-primary btn-form-final" href="#">{{__('Activer les sous-titres')}}</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
