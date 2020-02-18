@@ -29,8 +29,8 @@
                     <div id="signUp">
                         <h3>{{ __('Se créer un compte Easy to C') }}</h3>
                         <p>{{ __("Si vous souhaitez vous créer un compte sur Easy to C, voici quelques étapes très simples : il vous suffit de vous rendre sur la ") }} <a href="register" title="{{ __('Redirection vers la page Inscription') }}">{{ __('page Inscription') }}</a>.</p>
-                        <p>{{ __("Sur cette page, vous avez alors à remplir quelques informations, notamment votre identifiant (nom du compte), qui n'a pas besoin d'être votre véritable nom ni votre prénom. Vous devez également indiquer une adresse e-mail, essentielle pour se connecter et accéder à son compte : c'est également sur cette adresse e-mail que vous recevrez des mails de notre part (uniquement dans le cadre d'une ré-initialisation de mot de passe). Votre mot de passe doit être indiqué deux fois pour éviter les fautes de frappes. Le mot de passe que vous choisissez doit minimum faire 8 caractères de long. Si par la suite, vous perdez votre mot de passe, vous avez la possibilité de le réinitialiser en cliquant sur ce lien : ") }}<a href="password/reset" title="{{ __("Redirection vers la page d'oubli de mot de passe") }}">{{ __("J'ai oublié mon mot de passe") }}</a>.</p>
-                        <p>{{ __("Afin de s'assurer que vous respecterez les conditions d'utilisation du site Easy to C, vous ne pouvez procéder à l'inscription qu'après avoir lu et consenti à ces règles : le bouton \"J'ai lu et j'accepte les Conditions générales d'utilisation du site\" est obligatoire.") }}</p> <p>{{ __("Chaque champ du formulaire est obligatoire : vous ne pouvez pas vous inscrire sans valider ces conditions. Si il s'avère que votre compte ou votre utilisation du site ne respecte pas les Conditions générales d'utilisation du site, nous nous reservons le droit de supprimer définitivement votre compte et les données associées.") }}</p>
+                        <p>{{ __("Sur cette page, vous avez alors à remplir quelques informations, notamment votre identifiant (nom du compte), qui n'a pas besoin d'être votre véritable nom ni votre prénom. Vous devez également indiquer une adresse e-mail, essentielle pour se connecter et accéder à son compte : c'est également sur cette adresse e-mail que vous recevrez des mails de notre part (uniquement dans le cadre d'une ré-initialisation de mot de passe). Votre mot de passe doit être indiqué deux fois pour éviter les fautes de frappes. Le mot de passe que vous choisissez doit minimum faire 8 caractères de long. Si par la suite, vous perdez votre mot de passe, vous avez la possibilité de le réinitialiser en cliquant sur ce lien: ") }}<a href="password/reset" title="{{ __("Redirection vers la page d'oubli de mot de passe") }}">{{ __("J'ai oublié mon mot de passe") }}</a>.</p>
+                        <p>{{ __("Afin de s'assurer que vous respecterez les conditions d'utilisation du site Easy to C, vous ne pouvez procéder à l'inscription qu'après avoir lu et consenti à ces règles: le bouton \"J'ai lu et j'accepte les Conditions générales d'utilisation du site\" est obligatoire.") }}</p> <p>{{ __("Chaque champ du formulaire est obligatoire : vous ne pouvez pas vous inscrire sans valider ces conditions. Si il s'avère que votre compte ou votre utilisation du site ne respecte pas les Conditions générales d'utilisation du site, nous nous reservons le droit de supprimer définitivement votre compte et les données associées.") }}</p>
                     </div>         
                     
                     <div id="signIn">
@@ -52,6 +52,8 @@
                     </div>
                 </div>
 
+                <hr>
+
                 <div id="project">
                     <h2>{{ __('Création de projet') }}</h2>
 
@@ -71,6 +73,8 @@
                         <h3>{{ __('Actions sur mon projet') }}</h3>
                     </div>  
                 </div>
+
+                <hr>
                 
                 <div id="tableCreator">
                     <h2>{{ __('Guide d\'utilisation du générateur de tableau') }}</h2>
@@ -89,6 +93,8 @@
 
                 </div>
 
+                <hr>
+
                 <div id="menuCreator">
                     <h2>{{ __('Guide d\'utilisation du générateur de menu') }}</h2>
 
@@ -104,6 +110,8 @@
                         <h3>{{ __('Ajouter du contenu au menu') }}</h3>
                     </div>  
                 </div>
+
+                <hr>
 
                 <div id="formCreator">
                     <h2>{{ __('Guide d\'utilisation du générateur de formulaire') }}</h2>
@@ -129,42 +137,54 @@
                 <h3>{{ __('Table des matières') }}</h3>
                 <ul>
                     {{-- Compte Utilisateur --}}
-                    <li><a href="#account" title="{{ __('Compte Easy to C') }}">{{ __('Compte Easy to C') }}</a></li>
-                    <ul>
-                        {{-- S'inscrire / Se connecter --}}
-                        <li><a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a></li>
-                        <li><a href="#signIn" title="{{ __('Se connecter à son compte Easy to C') }}">{{ __('Accéder à son compte') }}</a></li>
-                        <li><a href="#listAccount" title="{{ __("Retrouver ses anciennes créations") }}">{{ __('Retrouver ses créations') }}</a></li>
-                        <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
-                        <li><a href="#deleteAccount" title="{{ __('Effacer toutes les données de son compte') }}">{{ __('Supprimer son compte') }}</a></li>
-                    </ul>
+                    <li>
+                        <a href="#account" title="{{ __('Compte Easy to C') }}">{{ __('Compte Easy to C') }}</a>
+                        <ul>
+                            {{-- S'inscrire / Se connecter --}}
+                            <li><a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a></li>
+                            <li><a href="#signIn" title="{{ __('Se connecter à son compte Easy to C') }}">{{ __('Accéder à son compte') }}</a></li>
+                            <li><a href="#listAccount" title="{{ __("Retrouver ses anciennes créations") }}">{{ __('Retrouver ses créations') }}</a></li>
+                            <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
+                            <li><a href="#deleteAccount" title="{{ __('Effacer toutes les données de son compte') }}">{{ __('Supprimer son compte') }}</a></li>
+                        </ul>
+                    </li>
                     {{-- Création d'un projet --}}
-                    <li><a href="#project" title="{{ __('Création de projet') }}">{{ __('Créer un projet') }}</a></li>
-                    <ul> 
-                        <li><a href="#infoProject" title="{{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
-                        <li><a href="#updateProject" title="{{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
-                        <li><a href="#useCode" title="{{ __('Utiliser le code généreré') }}">{{ __('Utiliser le code généreré') }}</a></li>
-                        <li><a href="#actionsProject" title="{{ __('Actions sur mon projet') }}">{{ __('Actions sur le projet') }}</a></li>
-                    </ul>
+                    <li>
+                        <a href="#project" title="{{ __('Création de projet') }}">{{ __('Créer un projet') }}</a>
+                        <ul> 
+                            <li><a href="#infoProject" title="{{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
+                            <li><a href="#updateProject" title="{{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
+                            <li><a href="#useCode" title="{{ __('Utiliser le code généreré') }}">{{ __('Utiliser le code généreré') }}</a></li>
+                            <li><a href="#actionsProject" title="{{ __('Actions sur mon projet') }}">{{ __('Actions sur le projet') }}</a></li>
+                        </ul>
+                    </li>
                     {{-- Générateur de tableau --}}
-                    <li><a href="#tableCreator" title="{{ __('Guide d\'utilisation du générateur de tableau') }}">{{ __('Générateur de tableau') }}</a></li>
-                    <ul> 
-                        <li><a href="#importTable" title="{{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
-                        <li><a href="#generateTable" title="{{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
-                        <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au tableau') }}">{{ __('Ajouter du contenu au tableau') }}</a></li>
-                    </ul>
-                    <li><a href="#menuCreator" title="{{ __('Guide d\'utilisation du générateur de menu') }}">{{ __('Générateur de menu') }}</a></li>
-                    <ul> 
-                        <li><a href="#importMenu" title="{{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
-                        <li><a href="#generateTable" title="{{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
-                        <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au menu') }}">{{ __('Ajouter du contenu au menu') }}</a></li>
-                    </ul>
-                    <li><a href="#formCreator" title="{{ __('Guide d\'utilisation du générateur de formulaire') }}">{{ __('Générateur de formulaire') }}</a></li>
-                    <ul> 
-                        <li><a href="#importForm" title="{{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
-                        <li><a href="#generateForm" title="{{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
-                        <li><a href="#addElementForm" title="{{ __('Ajouter du contenu au formulaire') }}">{{ __('Ajouter du contenu au formulaire') }}</a></li>
-                    </ul>
+                    <li>
+                        <a href="#tableCreator" title="{{ __('Guide d\'utilisation du générateur de tableau') }}">{{ __('Générateur de tableau') }}</a>
+                        <ul> 
+                            <li><a href="#importTable" title="{{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
+                            <li><a href="#generateTable" title="{{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
+                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au tableau') }}">{{ __('Ajouter du contenu au tableau') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- Générateur de menu --}}
+                    <li>
+                        <a href="#menuCreator" title="{{ __('Guide d\'utilisation du générateur de menu') }}">{{ __('Générateur de menu') }}</a>
+                        <ul> 
+                            <li><a href="#importMenu" title="{{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
+                            <li><a href="#generateTable" title="{{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
+                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au menu') }}">{{ __('Ajouter du contenu au menu') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- Générateur de formulaire --}}
+                    <li>
+                        <a href="#formCreator" title="{{ __('Guide d\'utilisation du générateur de formulaire') }}">{{ __('Générateur de formulaire') }}</a>
+                        <ul> 
+                            <li><a href="#importForm" title="{{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
+                            <li><a href="#generateForm" title="{{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
+                            <li><a href="#addElementForm" title="{{ __('Ajouter du contenu au formulaire') }}">{{ __('Ajouter du contenu au formulaire') }}</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

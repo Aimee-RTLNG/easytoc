@@ -10,6 +10,62 @@
         top: 15px;
         left: 15px;
         align-self: start;
+        background-color: rgb(231, 231, 230);
+        padding: 10px;
+
+        ul{
+            list-style: upper-roman;
+            list-style-position: outside;
+        }
+
+        ul ul {
+            list-style: lower-alpha;
+        }
+
+        a{
+            color: rgb(29, 29, 29);
+            font-weight: normal;
+            transition: all .2s;
+            list-style: none;
+
+            &:hover{
+                color: black;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .help-text-container{
+        text-align: justify;
+        margin-right: 15px;
+
+        a{
+            color: $indigo;
+            font-weight: bold;
+            text-decoration: underline;
+
+            &:hover{
+                color: black;
+            }
+        }
+
+        h2, h3{
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        div div{
+            margin-left: 15px;
+
+            p{
+                margin-bottom: 10px;
+            }
+
+            h3{
+                margin-left: 10px;
+            }
+            
+        }
     }
 
 }

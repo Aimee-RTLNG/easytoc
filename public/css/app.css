@@ -12057,6 +12057,61 @@ pre.prettyprinted {
   top: 15px;
   left: 15px;
   align-self: start;
+  background-color: #e7e7e6;
+  padding: 10px;
+}
+
+.help-container .summary-container ul {
+  list-style: upper-roman;
+  list-style-position: outside;
+}
+
+.help-container .summary-container ul ul {
+  list-style: lower-alpha;
+}
+
+.help-container .summary-container a {
+  color: #1d1d1d;
+  font-weight: normal;
+  transition: all .2s;
+  list-style: none;
+}
+
+.help-container .summary-container a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.help-container .help-text-container {
+  text-align: justify;
+  margin-right: 15px;
+}
+
+.help-container .help-text-container a {
+  color: #6574cd;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.help-container .help-text-container a:hover {
+  color: black;
+}
+
+.help-container .help-text-container h2, .help-container .help-text-container h3 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.help-container .help-text-container div div {
+  margin-left: 15px;
+}
+
+.help-container .help-text-container div div p {
+  margin-bottom: 10px;
+}
+
+.help-container .help-text-container div div h3 {
+  margin-left: 10px;
 }
 
 .edit-content-button, .delete-content-button {
