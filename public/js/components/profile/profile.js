@@ -118,4 +118,4 @@ module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resour
 
 /***/ })
 
-},[[0,"/js/manifest"]]]);
+},[[0,"/js/manifest","/js/vendor"]]]);
