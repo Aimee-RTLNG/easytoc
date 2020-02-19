@@ -24,69 +24,73 @@
             </div>
         </div>
         @endif
-        <div class="row">
-            <div class="col-12">
+        <div class="row d-flex">
+            <div class="col-8">
                 <div class="entete">
                     <h2 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h2>
                     <div class="entete__under"></div>
                 </div>
             </div>
+            <div class="col-4 d-flex align-items-center justify-content-center">
+                <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
+                    <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-arrow-right"></i>
+                        <p>{{ __('Commencer un projet') }}</p>
+                    </a>
+                    <div class="dropdown-menu mt-2">
+                        <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
+                        <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
+                        <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row profile_content">
             <div class="col-lg-8">
-                <div class="row profile_content__filters">
-                    <div class="profile_content__options col-12">
-                        <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
-                            <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-arrow-right"></i>
-                                <p>Commencer un projet</p>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
-                                <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
-                                <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
+                <div class="dashboard">
+                    <div class="row profile_content__filters m-0 p-0">
+                        <div class="profile_content__options col-12 d-flex justify-space-between">
+                            <div id="list-filters" class="list-filters">
+                                <button class="btn btn-filter-type active" data-type="all">
+                                    {{ __('Tous') }}
+                                    <div class="all_types">
+                                        <span class="type-pin type-Menu" data-type="Menu"></span>
+                                        <span class="type-pin type-Form" data-type="Form"></span>
+                                        <span class="type-pin type-Table" data-type="Table"></span>
+                                    </div>
+                                </button>
+                                <button class="btn btn-filter-type" data-type="menu">
+                                    {{ __('Menu') }}
+                                    <span class="type-pin type-Menu" data-type="Menu"></span>
+                                </button>
+                                <button class="btn btn-filter-type" data-type="form">
+                                    {{ __('Formulaire') }}
+                                    <span class="type-pin type-Form" data-type="Form"></span>
+                                </button>
+                                <button class="btn btn-filter-type" data-type="table">
+                                    {{ __('Tableau') }}
+                                    <span class="type-pin type-Table" data-type="Table"></span>
+                                </button>
+                            </div>
+                            {{-- <button class="btn btn-filter-date" data-date="old">
+                                {{ __('Plus récents') }}
+                                <i class="fas fa-sort"></i>
+                            </button> --}}
+                            <div class="input-group filter-name">
+                                <input type="text" class="form-control" placeholder="{{ __('Rechercher') }}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div id="list-filters" class="list-filters">
-                            <button class="btn btn-filter-type active" data-type="all">
-                                {{ __('Tout voir') }}
-                                <div class="all_types">
-                                    <span class="type-pin type-Menu" data-type="Menu"></span>
-                                    <span class="type-pin type-Form" data-type="Form"></span>
-                                    <span class="type-pin type-Table" data-type="Table"></span>
-                                </div>
-                            </button>
-                            <button class="btn btn-filter-type" data-type="menu">
-                                {{ __('Menu') }}
-                                <span class="type-pin type-Menu" data-type="Menu"></span>
-                            </button>
-                            <button class="btn btn-filter-type" data-type="form">
-                                {{ __('Formulaire') }}
-                                <span class="type-pin type-Form" data-type="Form"></span>
-                            </button>
-                            <button class="btn btn-filter-type" data-type="table">
-                                {{ __('Tableau') }}
-                                <span class="type-pin type-Table" data-type="Table"></span>
-                            </button>
-                        </div>
                     </div>
-                    <div class="profile_content__sort col-12">
-                        <button class="btn btn-filter-date" data-date="old">
-                            {{ __('Trier par date de modification') }}
-                            <i class="fas fa-sort"></i>
-                        </button>
-                        <div class="filter-name">
-                            <input type="text" placeholder="{{ __('Rechercher') }}">
-                            <i class="fas fa-search"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dashboard">
+                    
                     @if($user->contents->isEmpty())
-                        <h2 class="dashboard__title">{{ __('Vous n\'avez aucun projet sauvegardé') }}</h2>
-                    @else 
-                        <h2 class="dashboard__title">{{ __('Voici vos dernières créations :') }}</h2>
+                        <h2 class="dashboard__title">
+                            {{ __('Vous n\'avez aucun projet sauvegardé') }}
+                        </h2>
                     @endif
                     <div class="panel panel-default full-list">
                     @foreach ($user->contents as $content)
@@ -94,23 +98,26 @@
                             <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
                             <div class="col-md-8 crea-item__infos">
                                 <div class="crea-item__entete">
-                                    <h3 class="crea-item__entete__title"><a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}">{{ $content->title }}</a></h3>
+                                    <h3 class="crea-item__entete__title">
+                                        <a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}" title="{{ __('Voir le projet') }}">{{ $content->title }}</a>
+                                    </h3>
                                     <div class="crea-item__entete__under"></div>
                                 </div>
                                 <p class="crea-item__descr">
                                     {{ $content->description }}
                                 </p>
                                 <?php 
+                                $date_project = date('d/m/Y', strtotime( $content->updated_at ));
                                 if (App::isLocale('en')) {
                                 ?>
                                     <p class="crea-item__type-date">
-                                        {{ $content->type->name_en }} / {{ __('Dernière modification') }} : {{ $content->updated_at }}
+                                        {{ $content->type->name_en }} / {{ __('Dernière modification') }} : <?php echo $date_project ?>
                                     </p>
                                 <?php
                                 }else if (App::isLocale('fr')) {
                                 ?>
                                     <p class="crea-item__type-date">
-                                        {{ $content->type->name_fr }} / {{ __('Dernière modification') }} :  {{ $content->updated_at }}
+                                        {{ $content->type->name_fr }} / {{ __('Dernière modification') }} :  <?php echo $date_project ?>
                                     </p>
                                 <?php
                                     }
@@ -155,7 +162,7 @@
                 <div class="mon-compte">
                     <div class="mon-compte__entete">
                         <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
-                        <h2 class="mon-compte__entete__title">{{ __('Modifier les paramètres de votre compte') }}</h2>
+                        <h2 class="mon-compte__entete__title">{{ __('Informations de votre compte') }}</h2>
                         <div class="fleche-plus">
                             <i class="fas fa-chevron-down " tabindex="0"></i>
                         </div>
@@ -313,18 +320,25 @@
 
                             </form>
                             <hr>
+                            <div class="mon-compte__entete">
+                                <div class="mon-compte__entete__picto"><i class="fas fa-frown"></i></div>
+                                <h2 class="mon-compte__entete__title">{{ __('Supprimer votre compte') }}</h2>
+                                <div class="fleche-plus">
+                                    <i class="fas fa-chevron-down " tabindex="0"></i>
+                                </div>
+                            </div>
                             <form id="formDeleteUser" class="form-horizontal" method="POST" action="{{ route('profile.destroy', ['user' => $user]) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
-
                                 <div>
-                                    <h3 class="panel-heading">{{ __('Supprimer mon compte') }}</h3>
-                                    <p>{{ __('Attention, en supprimant votre compte, tout le contenu sera également supprimé.') }}</p>
+                                    <p>
+                                        {{ __("Attention, en supprimant votre compte, tout le contenu sera également supprimé. On peut tout de même rester amis, non ?") }}
+                                    </p>
                                     <!-- Bouton d'envoi -->
                                     <div class="form-group mon-compte__btn-save">
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" form="formDeleteUser" class="formDeleteUser btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer votre compte ?') }}')" >
-                                                {{ __('Supprimer mon compte') }}
+                                            <button type="submit" form="formDeleteUser" class="formDeleteUser btn btn-danger btn-form-final formInfoSend" onclick="return confirm('{{ __('Voulez vous vraiment supprimer votre compte ?') }}')" >
+                                                {{ __('Supprimer le compte') }}
                                             </button>
                                         </div>
                                     </div>

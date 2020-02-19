@@ -6,7 +6,12 @@
 }
 .profile_content {
     padding-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
+
+    .filter-name{
+        width: 200px;
+    }
+
     &__list-crea {
         width: 250px;
         max-width: 250px;
@@ -32,11 +37,8 @@
         margin-bottom: 40px;
     }
     &__options {
-        @include flex-row-start-center;
+        @include flex-row-between-center;
         width: 100%;
-        & > div {
-            height: 50px;
-        }
     }
     &__sort {
         @include flex-row-between-center;
@@ -48,25 +50,12 @@
             border-radius: 0px;
             @include shadow-box;
         }
-        .filter-name {
-            height: 100%;
-            width: 240px;
-            position: relative;
-            svg {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 9px;
-                color: #CACACA;
-            }
-        }
         input {
             padding-left: 30px;
             height: 100%;
             width: 100%;
             color: $gris;
             border: none;
-            @include shadow-box;
             &::placeholder {
                 color: #CACACA;
             }
@@ -85,13 +74,13 @@
     height: 10px;
     border-radius: 30px;
     &[data-type="Menu"], &[data-type="menu"] {
-        background-color: rgb(226, 95, 95);
+        background-color: rgb(207, 24, 24);
     }
     &[data-type="Table"], &[data-type="table"] {
-        background-color: rgb(90, 180, 68);
+        background-color: rgb(5, 221, 5);
     }
     &[data-type="Form"], &[data-type="form"] {
-        background-color: rgb(43, 139, 177);
+        background-color: rgb(2, 46, 170);
     }
 }
 .all_types {
@@ -124,10 +113,9 @@
 }
 
 .list-filters {
-    margin-left: 10px;
     display: flex;
     border: 2px solid $bleu;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     .btn {
         min-width: 77px;
         border: none;
@@ -138,9 +126,10 @@
         font-size: 1.5rem;
         line-height: 1.2rem;
         @include flex-col-center-center;
+        border-radius: 0;
 
         &:not(:last-child) {
-            border-right: 1px solid $bleu;
+            border-right: 2px solid $bleu;
         }
         span {
             margin-top: 5px;
@@ -161,9 +150,9 @@
 .dashboard {
     min-height: 360px;
     @include shadow-box;
-    background-color: $gris-clair;
-    padding: 35px 35px 20px 0px;
-    border-radius: 12px;
+    background-color: white;
+    padding: 15px 0px;
+    border-radius: 10px;
     font-size: 2.0rem;
     @include expletus;
     font-weight: bold;
@@ -211,7 +200,6 @@
         font-weight: 700;
         color: $dark;
         background-color: $gris-clair;
-        @include shadow-box;
         border: none;
         height: 35px;
     }
@@ -219,7 +207,7 @@
         font-family: 'Roboto','Arial', sans-serif;
     }
     &__entete {
-        @include flex-row-around-center;
+        @include flex-row-center;
         margin-bottom: 20px;
         &__picto {
             height: 40px;
@@ -243,7 +231,8 @@
         color: white;
     }
     &__btn-save {
-        margin-top: 30px;
+        margin-top: 10px;
+        margin-bottom: 25px;
     }
 }
 .formInfoSend {
@@ -253,16 +242,22 @@
 // Bloc de créations 
 .crea-item  {
     position: relative;
-    background-color: white;
-    border-radius: 20px;
-    padding: 30px 20px 20px 40px;
-    margin-bottom: 30px;
+    border-radius: 0;
+    background-color: rgb(230, 241, 253);
+    &:nth-child(2n){
+        background-color: white;
+    }
+    padding: 20px 0px 20px 40px;
+    margin-bottom: 10px;
     &__entete {
         @include flex-col-between-start;
         &__title {
             font-size: 2.5rem;
             @include expletus;
             font-weight: 700;
+            &:hover{
+                color: $bleu;
+            }
         }
         &__under {
             height: 4px;
@@ -460,7 +455,7 @@
         .btn, .filter-name {
             width: 100%;
             height: 50%;
-            margin-bottom: 5px;
+            margin-top: 5px;
         }
         .btn-filter-date {
             @include flex-row-between-center;

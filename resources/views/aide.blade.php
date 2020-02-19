@@ -57,7 +57,7 @@
                             {{ __("Chaque champ du formulaire est obligatoire : vous ne pouvez pas vous inscrire sans valider ces conditions. Si il s'avère que votre compte ou votre utilisation du site ne respecte pas les Conditions générales d'utilisation du site, nous nous reservons le droit de supprimer définitivement votre compte et les données associées.") }}
                         </p>
                         <p>
-                            {{ __("Une fois inscrit, vous êtes automatiquement redirigé sur la page d'Accueil, tout en étant connecté. Pour avoir plus d'informations sur votre compte, référez vous aux sous-parties ") }}
+                            {{ __("Une fois inscrit, vous êtes automatiquement redirigé sur votre compte. Pour avoir plus d'informations sur votre compte, référez vous aux sous-parties ") }}
                             <a href="#listAccount" title="{{ __('Redirection vers la partie "Retrouver ses créations"') }}">
                                 {{ __('Retrouver ses créations') }}
                             </a>, 
@@ -87,10 +87,24 @@
                         <p>
                             {{ __("Vous avez la possibilité de vous connecter plus rapidement en utilisant la connexion via Facebook ou via Google (uniquement disponible si vous vous êtes inscrit via une de ces méthodes. Si vous vous êtes inscrit manuellement, vous ne pouvez accéder à ce compte qu'en vous connectant manuellement, et inversement.") }}
                         </p> 
+                        <p>
+                            {{ __("Pour accéder à votre compte une fois connecté, rendez vous sur la ") }} 
+                            <a href="profile" title="{{ __('Redirection vers la page Mon Compte') }}">
+                                {{ __('page Mon Compte') }}
+                            </a>.
+                            {{ __("Via cette page, vous retrouverez vos différentes créations, les informations concernant votre compte, ainsi que différentes actions possibles.") }} 
+                        </p> 
                     </div>
 
                     <div id="listAccount">
-                        <h3>{{ __("Retrouver ses anciennes créations") }}</h3>
+                        <h3>{{ __("Accéder à mes projets") }}</h3>
+                        <p>
+                            {{ __("Vous pouvez retrouver les différent projets que vous avez sauvegardé, accédez à la ") }} 
+                            <a href="profile" title="{{ __('Redirection vers la page Mon Compte') }}">
+                                {{ __('page Mon Compte') }}
+                            </a>.
+                            {{ __("La liste des projets sauvegardés se trouvent sur la gauche du tableau de bord. Vous avez la possibilité de trier cette liste par type (Menu, Formulaire, Tableau), par date de modification. Vous pouvez également rechercher dans la liste via la barre de recherche.") }} 
+                        </p> 
                     </div>
 
                     <div id="infoAccount">
@@ -192,8 +206,8 @@
                         <ul>
                             {{-- S'inscrire / Se connecter --}}
                             <li><a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a></li>
-                            <li><a href="#signIn" title="{{ __('Se connecter à son compte Easy to C') }}">{{ __('Accéder à son compte') }}</a></li>
-                            <li><a href="#listAccount" title="{{ __("Retrouver ses anciennes créations") }}">{{ __('Retrouver ses créations') }}</a></li>
+                            <li><a href="#signIn" title="{{ __('Se connecter à son compte Easy to C') }}">{{ __('Se connecter à son compte') }}</a></li>
+                            <li><a href="#listAccount" title="{{ __("Accéder à mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
                             <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
                             <li><a href="#deleteAccount" title="{{ __('Effacer toutes les données de son compte') }}">{{ __('Supprimer son compte') }}</a></li>
                         </ul>
