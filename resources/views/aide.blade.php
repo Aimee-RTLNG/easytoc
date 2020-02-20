@@ -103,20 +103,48 @@
                             <a href="profile" title="{{ __('Redirection vers la page Mon Compte') }}">
                                 {{ __('page Mon Compte') }}
                             </a>.
-                            {{ __("La liste des projets sauvegardés se trouvent sur la gauche du tableau de bord. Vous avez la possibilité de trier cette liste par type (Menu, Formulaire, Tableau), par date de modification. Vous pouvez également rechercher dans la liste via la barre de recherche.") }} 
+                            {{ __("La liste des projets sauvegardés se trouvent sur la gauche du tableau de bord. Vous avez la possibilité de trier cette liste par type (Menu, Formulaire, Tableau), par date de modification. Vous pouvez également rechercher dans la liste via la barre de recherche.") }}
+                            {{ __("Pour chaque projet, vous pouvez voir son titre, sa description, sa date de dernière modification ainsi que son type (Tableau, Formulaire ou Menu).") }}
+                            {{ __("Sur la droite de chaque projet, vous avez trois actions disponibles : visualiser, modifier et supprimer.") }}
                         </p> 
+                        <p>
+                            <b>{{ __("Visualiser") }}</b> {{ __('vous permettra de voir votre projet, l\'afficher en tant que tel mais également voir le code qui permet de le générer et le copier. Les autres actions possibles sur ce projet sont également présentes sur la page Visualisation.') }}
+                        </p> 
+                        <p>
+                            <b>{{ __("Modifer") }}</b> {{ __('vous permettra de modifier votre projet avec la même interface qui vous a permis de le créer. Les outils sont les mêmes pour ne pas vous dérouter. Sur la page de modification, vous aurez la possibilité d\'annuler ou de sauvegarder vos modifications. Vous pourrez également le supprimer.') }}
+                        </p> 
+                        <p>
+                            <b>{{ __("Supprimer") }}</b> {{ __('vous permettra de supprimer définitivement votre projet. Un message de confirmation vous demandera de valider la suppression avant de le faire. Attention : un dossier supprimé ne peut pas être rétabli.') }}
+                        </p>
                     </div>
 
                     <div id="infoAccount">
                         <h3>{{ __('Modifier ses informations de compte') }}</h3>
+                        <p>
+                            {{ __("Vous pouvez retrouver les informations de votre compte sur votre tableau de bord de la ") }} 
+                            <a href="profile" title="{{ __('Redirection vers la page Mon Compte') }}">
+                                {{ __('page Mon Compte') }}
+                            </a>.
+                            {{ __("Toutes les informations concernant votre compte se trouve sur la droite du tableau de bord. Vous avez la possibilité de modifier ces informations : adresse e-mail, mot de passe, nom du compte.") }}
+                        </p>
+                        <p>
+                            <i class="fa fa-exclamation-triangle mr-2"></i>
+                            {{ __("Attention : vous ne pouvez pas avoir la même adresse e-mail qu'un autre utilisateur. Vous ne pouvez donc pas avoir plusieurs compte sur la même adresse.") }}
+                        </p>
                     </div>
 
                     <div id="deleteAccount">
                         <h3>{{ __('Effacer toutes les données de son compte') }}</h3>
+                        <p>
+                            {{ __("Si vous ne souhaitez plus utiliser votre compte, ou pour toute autre raison, vous avez la possibilité de Supprimer votre compte.") }}
+                            {{ __("Vous devrez valider l'action avant que votre compte soit supprimé : ce sera la seule étape. Soyez vigilant, lors du choix que vous faites.") }}
+                            <i>{{ __("Avez-vous fait le bon choix ? Pourrons-nous un jour vous pardonnez ? Toutes ces questions ne devraient pas se poser : ne nous quittez pas, vous allez nous manquer.") }}</i>
+                            {{ __("Tous les contenus associés à votre compte seront supprimés et ne pourrons pas être rétablis.") }}
+                        </p>
                     </div>
                 </div>
 
-                <hr>
+                <hr class="pb-5">
 
                 <div id="project">
                     <h2>{{ __('Création de projet') }}</h2>
@@ -138,7 +166,7 @@
                     </div>  
                 </div>
 
-                <hr>
+                <hr class="pb-5">
                 
                 <div id="tableCreator">
                     <h2>{{ __('Guide d\'utilisation du générateur de tableau') }}</h2>
@@ -157,7 +185,7 @@
 
                 </div>
 
-                <hr>
+                <hr class="pb-5">
 
                 <div id="menuCreator">
                     <h2>{{ __('Guide d\'utilisation du générateur de menu') }}</h2>
@@ -175,7 +203,7 @@
                     </div>  
                 </div>
 
-                <hr>
+                <hr class="pb-5">
 
                 <div id="formCreator">
                     <h2>{{ __('Guide d\'utilisation du générateur de formulaire') }}</h2>
@@ -251,6 +279,9 @@
                     </li>
                 </ul>
             </div>
+
+            <hr class="pb-5">
+            
         </div>
     </div>
     
