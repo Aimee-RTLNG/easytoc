@@ -1,26 +1,33 @@
 // ANCHOR Données initiales
-import { lang, setSideWindow } from "../app";
 
-let element;
-let element_selected_container;
-let input;
-let intitule;
-let previous_element;
-let next_element;
-let message;
-let previous_option;
-let selected_option;
-let next_option;
+// On importe les variables et fonctions externes (qui sont définie dans app.js)
+import { 
+    lang,  // la variable lang est soit "en" soit "fr" et permet de définir le contenu des messages
+    setSideWindow, // c'est unn fonction qui permet d'ajuster la side tools box quand on scroll. Comme elle est commune aux trois outils, elle est définie dans app.js
+    alertMsg // fonction qui affiche le message pop up en bas à droite
+} from "../app"; 
 
-let user_id = $('input[name=user_id]').val();
-let type_id = $('input[name=type_id]').val();
-let csrf_token = $('meta[name="csrf-token"]').attr('content');
-// let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+// Ce code était orienté formulaire, il y a donc les variables de contenu générés par la section d’un élément : 
+// les titres des variables sont assez explicites, tu peux t’imaginer déjà le nom des variables qui existeraient pour les menu : element, link, intitule etc…
+// chacune de ses variables est redéfinie quand on clique sur un element qui a la classe '.element-container'
+let element; // sert à identifier 
+let element_selected_container; // sert à identifier tout le container qui contient l'élement sélectionenr (généralement la racine de '.element-container' )
+let intitule; // par exemple menu_title
+let input; // par exemple menu_link
+let previous_element; // par exemple : previous_menu
+let next_element; // par exemple : next_menu
+let previous_option; // par exemple : previous_lower_menu
+let selected_option; // par exemple : selected_lower_menu
+let next_option; // par exemple : next_lower_menu
 
-// Imports
-import { alertMsg } from "../../js/app";
+let message; // variable qui contient les messages qui apparaissent dans l'infobulle en bas à droite (et qui sera définie en fonction de la variable lang)
 
-// ANCHOR Caractères restants Description du projet
+let user_id = $('input[name=user_id]').val(); // récupère l'id de l'utilisateur pour la sauvegarde AJAX
+let type_id = $('input[name=type_id]').val(); // récupère l'id du type (menu, form, table) pour la sauvegarde AJAX
+let csrf_token = $('meta[name="csrf-token"]').attr('content'); // sans ce token, on ne peut pas envoyer le formulaire en AJAX
+
+// ANCHOR Caractères restants Description du projet ( à ne pas toucher )
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans le textarea description
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
         tlength = tval.length,
@@ -36,7 +43,8 @@ $('#desc-input').keypress(function (e) {
     }
 })
 
-// ANCHOR Caractères restants Titre du projet
+// ANCHOR Caractères restants Titre du projet ( à ne pas toucher )
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans l'input de titre
 $('#title-input').keypress(function (e) {
     var tval = $('#title-input').val(),
         tlength = tval.length,
@@ -53,21 +61,23 @@ $('#title-input').keypress(function (e) {
 })
 
 // ANCHOR Liste de tous les tags possibles dans un formulaire
+// Pourrait donc être remplacé par une liste, des liens etc...
 const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5",
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
 
-// TODO Position des paramètres d'élément
-
+// ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
 $(window).on('scroll', function() {
     setSideWindow();
 });
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
-// \t = tabulation,  \n = saut de ligne
-export let element_types;
-
-// Traductions
+// Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
+// et la bonne structure. 
+// \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
+export let element_types; // En exportant ce tableau objet, on permet au fichier import_data_... de générer du contenu en fonction des données importées
+// le fichier import_data_menu/form/table appelera donc un élément de se tableau grâce aux index (ne pas oublier d'importer cette variable dans le fichier import)
+// par exemple, si dans le CSV, j'ai un élément de type 'link', alors il cherchera dans ce tableau objet element_types['type-layout']['insert-link]
 if( lang == "en" ){
     element_types = {
         "type-question": {
@@ -127,40 +137,48 @@ if( lang == "en" ){
         }
     };
 }
+// Bien séparer le contenu en fonction des langues si le texte à l'intérieur des balises peut se traduire : pas la peine si uniquement le mot "Menu" apparait.
+// Par contre, si le mot Lien est écrit, alors il faudra un équivalent Link
 
+// ANCHOR Rendre l'ancien contenu dynamique ( à ne pas toucher )
+// Cette fonction, utilisée à la fois sur ce fichier et sur le fichier import_machin, permet de rendre le contenu HTML dynamique
+// c'est à dire : imaginons que je load un "<h1>Titre</h1>" dans l'espace de création, soit parce que je suis en modification, soit parce que j'ai importé des données
+// mon contenu ne possède pas les bons attributs pour permettre le changement dynamique ( contenteditable ) car, lors de la sauvegarde, ceux-ci sont enlevés (logique)
+// il faut alors remettre des "contenteditable" sur chaque élément modifiable dans le texte.
+// de plus, cette fonction permet de récupèrer les paramètre du contenu généré (titre du formulaire, lien, theme, options).... 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
     $('#full-form .label-text').attr('contenteditable', true);
     $('#full-form .label-option-text').attr('contenteditable', true);
     $('#full-form #form-title, #full-form h2,#full-form p,#full-form a,#full-form ol,#full-form ul,#full-form hr').attr('contenteditable', true);
+    
     // On récupère les paramètres
-
     // Theme
     let actual_theme = $("#generated-form").attr('class');
     actual_theme = actual_theme.replace('theme-', '');
     let selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
     selected_theme.prop('checked', true);
 
-    // Titre
+    // Titre (non présent pour les menu)
     let actual_title = $("#full-form #form-title").text();
     $("#form-creator-title").val(actual_title);
 
-    // Methode
+    // Methode (non présent pour les menu)
     let actual_method = $("#generated-form").attr('method');
     $("#form-creator-method").val(actual_method);
 
-    // Lien
+    // Lien (non présent pour les menu)
     let actual_link = $("#generated-form").attr('action');
     $("#form-creator-link").val(actual_link);
 
-    // Option de réinitialisation
+    // Option de réinitialisation (non présent pour les menu)
     let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
     if (actual_reset.length > 0) {
         $('#reset-button').prop('checked', true);
     }
 }
 
-// ANCHOR Fonction de sauvegarde
+// ANCHOR Fonction de sauvegarde ( à ne pas toucher )
 function updatecontent() {
 
     // on récupère le contenu
@@ -177,39 +195,40 @@ function updatecontent() {
     $('#raw-code').html(blueprint_content);
     var code_content = $('<div>').text($('#raw-code').text()).html();
 
-    // prettify
+    // prettify (permet de rendre le code joli)
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
-// ANCHOR Initialisation du formulaire
+// ANCHOR Initialisation du formulaire ( à ne pas toucher )
 if ($('#raw-code').val().length <= 0) {
-    // console.log("Création");
-    // $('#content-created-blueprint').html(initial_content);
+    // Il n'y a aucun contenu précédent : on est donc en création à partir de 0
     updatecontent();
 } else {
-    // console.log("Modification");
+    // Il y a du contenu déjà crée : on est en modification ou en génération de contenu
     getOldContent();
     updatecontent();
 }
 
-// ANCHOR Changement de titre
+// ANCHOR Changement de titre ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 $('#form-creator-title').on('keyup', function () {
     $('#form-title').text($('#form-creator-title').val());
     updatecontent();
 });
 
-// ANCHOR Changement de lien
+// ANCHOR Changement de lien ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 $('#form-creator-link').on('keyup', function () {
     $('#generated-form').attr("action", $('#form-creator-link').val());
     updatecontent();
 });
 
-// ANCHOR Changement de méthode
+// ANCHOR Changement de méthode ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 $('#form-creator-method').on('change', function () {
     $('#generated-form').attr("method", $('#form-creator-method').val());
     updatecontent();
 });
 
+// ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
+// Cette fonction se base sur la liste d'élément précédemment définis element_types 
 export function addElement(element_type, element_type_name) {
     // permettra d'identifier l'élément (lui donne un ID aléatoire)
     let element_id = Math.random().toString(36).substr(2, 9);
@@ -271,15 +290,15 @@ export function addElement(element_type, element_type_name) {
     updatecontent();
 }
 
-// ANCHOR Ajout d'un élément
+// ANCHOR Ajout d'un élément : quand on clique sur un bouton avec la classe .add-element
 $('.add-element').on('click', function () {
-    let element_type = $(this).attr("class");
-    let element_type_name = $(this).attr("id");
-    addElement(element_type, element_type_name);
+    let element_type = $(this).attr("class"); // récupère le type d'élément à ajouter
+    let element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
+    addElement(element_type, element_type_name); // on ajoute l'élement
     setSideWindow();
 });
 
-// ANCHOR Sauvegarde définitive
+// ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 $('#btn-save-project').on('click', function () {
     updatecontent();
     let post_url = $("#full-form-post").attr('action');
@@ -320,7 +339,7 @@ $('#btn-save-project').on('click', function () {
 let element_select;
 $(document.body)
 
-    .off('keyup') // ré-initialisation
+    .off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois 
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (pour contrer comportement de formulaire de base)
     .on('click', '.element-container label, .element-container legend', function (e) {
@@ -359,7 +378,7 @@ $(document.body)
         updatecontent();
     })
 
-    // Quand on sélectionne un élément éditable
+    // Quand on sélectionne un élément éditable (c'est là le plus important)
     .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
 
         // on récupère l'élément sélectionné et on focus sur l'élément parent
@@ -485,7 +504,7 @@ $(document.body)
                     $("#elem-option-value").val(option_value);
                 }
 
-                // on cache toutes les actions de bases pour les réafficher en fonction
+                // on cache toutes les actions de bases pour les réafficher en fonction du contenu sélectionné
                 $('.action-answer-type').hide();
                 $('.action-placeholder').hide();
                 $('.action-maxlength').hide();
@@ -854,7 +873,7 @@ $(".form-element-action").on('click', function (e) {
 });
 
 // ANCHOR Selection de tout le texte au clic
-// NOTE Non utilisé
+// NOTE Non utilisé : permet en gros de sélectionner tout le texte au clic sur un element contenteditabme
 function selectText(element) {
     var sel, range;
     var el = element[0];
@@ -878,7 +897,7 @@ function selectText(element) {
     }
 };
 
-// ANCHOR Fonction d'ajout d'option
+// ANCHOR Fonction d'ajout d'option ( osef ça concerne pas les menus )
 export function addOption(option_type_parameter) {
     setSideWindow();
     let option_parent_element = $(".content-editable-selected");
@@ -909,7 +928,7 @@ export function addOption(option_type_parameter) {
 
 }
 
-// ANCHOR Fonction de suppression d'option (select)
+// ANCHOR Fonction de suppression d'option dans un select ( osef ça concerne pas les menus )
 function deleteOption() {
     let select_option_selected = $(".content-editable-selected select option:selected");
     $(select_option_selected).remove();
@@ -917,7 +936,9 @@ function deleteOption() {
     $('.action-delete-option').hide();
 }
 
-// ANCHOR Fonction Undo/Redo suppression
+// ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
+// Je comprend pas ce truc mais c'est une fonction essentielle pour que le UNDO remarche..
+// Autant la laisser définie même si non utilisée dans deletecommand (sur ce script, elle est utilisée), elle fait pas de mal :)
 function command(instance) {
     this.command = instance;
     this.done = [];
@@ -933,6 +954,8 @@ function command(instance) {
 }
 
 // ANCHOR Fonction Suppression
+// Je comprend pas moi-même comment ça marche. Quand on clique sur supprimer, ça ne fait que "détacher" l'élement
+// Si tu comptes modifier cette fonction, cela risque de poser problème.. c'est risqué.
 var deletecommand = new command({
     execute: function () {
         element = $(".content-editable-selected").removeClass('content-editable-selected');
@@ -943,7 +966,7 @@ var deletecommand = new command({
     }
 });
 
-// ANCHOR Mise en forme du texte (gras, italic, underline...)
+// ANCHOR Mise en forme du texte (gras, italic, underline...) ( à ne pas toucher )
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
         case 'element-bold':
@@ -980,14 +1003,17 @@ $('.text-formatting').on("click", function () {
     updatecontent();
 })
 
-// ANCHOR Theme
+// ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite ( à ne pas toucher )
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-form').attr('class', theme);
     updatecontent();
 })
 
-// ANCHOR Activer / désactiver les boutons de déplacement
+// ANCHOR Activer / désactiver les boutons de déplacement dynamique
+// Cette fonction permet de re-placer les boutons de déplacement (haut/bas)
+// A toi de voir si tu peux l'utiliser ou non
+// Attention : c'est une fonction exportée, il faut faire attention à ce qu'elle ne soit pas appelée dans un autre fichier !
 export function refreshMoveButtons(previous_element, next_element, option) {
     if (option) {
         if (previous_element) {
@@ -1024,7 +1050,7 @@ export function refreshMoveButtons(previous_element, next_element, option) {
     }
 }
 
-// ANCHOR Copier le contenu code 
+// ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )
 $("#copy-raw-code, #copy-css-link").on('click', function () {
     if( lang == "en" ){
         message = "Code copied !";
@@ -1037,5 +1063,5 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
     $(this).text(message);
     alertMsg(message, "success");
 })
-new ClipboardJS('#copy-css-link');
-new ClipboardJS('#copy-raw-code');
+new ClipboardJS('#copy-css-link'); // pas touche
+new ClipboardJS('#copy-raw-code'); // pas touche
