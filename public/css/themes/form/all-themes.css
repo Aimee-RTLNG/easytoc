@@ -7,6 +7,18 @@
   cursor: pointer;
 }
 
+#full-form .text-justify {
+  text-align: justify !important;
+}
+
+#full-form .text-left {
+  text-align: left !important;
+}
+
+#full-form .text-center {
+  text-align: center !important;
+}
+
 #generated-form {
   margin: 20px 0px;
   font-family: Arial, Helvetica, sans-serif;

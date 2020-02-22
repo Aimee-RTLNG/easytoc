@@ -15,8 +15,10 @@ body {
 /* style du blueprint */
 
     #content-created-blueprint {
-        background-color: #f2f2f2;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        // background-color: #f2f2f2;
+        // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        background-color: #24b1f2;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.92' fill='%232e6bff'/%3E%3C/svg%3E");
     }
 
 /* style du code */
@@ -179,13 +181,13 @@ input[type="checkbox"], input[type="radio"]{
 // Formulaire - création 
 .creator-panel {
     @include flex-row-between-start;
+    margin: 0px;
     &__title {
         @include expletus;
-        font-size: 1.8rem;
+        font-size: 15px;
         font-weight: bold;
         margin: 0px;
-        line-height: 2.3rem;
-        margin-bottom: 7px;
+        line-height: 2rem;
     }
 }
 #chara-desc-remains {
@@ -228,6 +230,9 @@ input[type="checkbox"], input[type="radio"]{
     }
 }
 .template-panel {
+    @media (max-width: 768px) {
+        margin-top: 24px;
+    }
     &__choice {
         height: 110px;
         padding: 10px;
@@ -339,37 +344,54 @@ input[type="checkbox"], input[type="radio"]{
 }
 .content-interface {
     padding: 20px;
+    padding-bottom: 45px;
 }
 
 .action-required-cont, .action-multiple__cont {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    // position: relative;
+    // top: 50%;
+    // transform: translateY(-50%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.action-required, .action-multiple-answer {
-    min-height: 50px;
- }
 .action-supp-titre {
-    margin-bottom: 25px;
-    margin-top: 5px;
+    margin-bottom: 10px;
+}
+@media (max-width: 992px) {
+    .action-required-cont, .action-multiple__cont {
+        justify-content: flex-start;
+    }
+    .action-supp-titre {
+        margin-bottom: 6px;
+        margin-top: 10px;
+    }
 }
 .action-supp {
+    text-align: center;
     position: relative;
-    &__aide {
-        position: absolute;
-        right: 10px;
-        top: 10px;
+    width: 240px;
+    @media (max-width: 992px){
+        text-align: left;
     }
-    .element_add-option {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+    // &__aide {
+    //     position: absolute;
+    //     right: 10px;
+    //     top: 10px;
+    // }
+    // .element_add-option {
+    //     position: relative;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    // }
 }
 .action-supp-crea {
     & > * {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        padding: 0;
     }
+    
 }
 .btn-save-project {
     font-size: 1.6rem;
@@ -420,6 +442,7 @@ input[type="checkbox"], input[type="radio"]{
     #full-form {
         max-width: 100%;
         width: 100%;
+        background-color: white;
         .form-control {
             margin-bottom: 0px;
         }
@@ -429,7 +452,13 @@ input[type="checkbox"], input[type="radio"]{
         width: 100%;
     }
 }
-
+.bloc-creation-interface  {
+    flex-wrap: wrap;
+    & > .bloc-visualisation {
+        display: flex;
+        max-width: 100%;
+    }
+}
 .content-html-preview {
     #full-form .form-control {
         margin-bottom: 0px;
@@ -439,14 +468,18 @@ input[type="checkbox"], input[type="radio"]{
     width: auto;
 }
 .btn-delete-def {
-    padding: 8px 20px;
+    padding: 8px 10px;
     color: white;
     background-color: $red;
     font-weight: bold;
     @include flex-row-between-center;
     width: 150px;
     border-radius: 10px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+}
+.elmt-select-options {
+    position: fixed;
+    max-width: 25%;
 }
 
 

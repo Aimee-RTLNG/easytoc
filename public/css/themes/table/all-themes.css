@@ -1,31 +1,89 @@
+#content-created-blueprint .theme-black table *:hover {
+  border: 3px dotted red;
+}
+
+#generated-table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.theme-white .table-title {
+  border-bottom: 2px solid grey;
+}
+
+.theme-black .table-title {
+  border-bottom: 2px solid #596275;
+}
+
+.theme-green .table-title {
+  border-bottom: 2px solid #079992;
+}
+
+.theme-red .table-title {
+  border-bottom: 2px solid #740101;
+}
+
+.theme-blue .table-title {
+  border-bottom: 2px solid #192a56;
+}
+
+.theme-grey .table-title {
+  border-bottom: 2px solid black;
+}
+
+#full-table {
+  padding: 20px 0px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+}
+
 .theme-white #full-table {
   color: black;
   background-color: #fff;
   border-collapse: collapse;
   width: 100%;
-  overflow: auto;
 }
 
 .theme-white #full-table .table-caption {
+  caption-side: bottom;
   font-size: 15px;
   color: black;
   font-style: italic;
+  border-left: 2px solid grey;
+  position: relative;
+  top: 10px;
 }
 
 .theme-white #full-table th {
   background-color: #bdbdbd;
   font-weight: bold;
   border: 2px solid grey;
-  min-width: 40px;
+  min-width: 90px;
+  padding: 10px 6px;
+  font-size: 16px;
+  color: black;
 }
 
 .theme-white #full-table td {
   border: 1px solid grey;
-  min-width: 40px;
+  min-width: 90px;
+  padding: 10px 6px;
 }
 
 .theme-white #full-table tfoot td {
   background-color: #8b8a8a;
+  color: black;
 }
 
 .theme-black #full-table {
@@ -33,149 +91,189 @@
   background-color: #333333;
   border-collapse: collapse;
   width: 100%;
-  overflow: auto;
 }
 
 .theme-black #full-table .table-caption {
+  caption-side: bottom;
   font-size: 15px;
   color: black;
   font-style: italic;
+  border-left: 2px solid #596275;
+  position: relative;
+  top: 10px;
 }
 
 .theme-black #full-table th {
   background-color: #0f0f0f;
   font-weight: bold;
-  border: 2px solid white;
-  min-width: 40px;
+  border: 2px solid #596275;
+  min-width: 90px;
+  padding: 10px 6px;
+  font-size: 16px;
+  color: white;
 }
 
 .theme-black #full-table td {
-  border: 1px solid white;
-  min-width: 40px;
+  border: 1px solid #596275;
+  min-width: 90px;
+  padding: 10px 6px;
 }
 
 .theme-black #full-table tfoot td {
   background-color: #1f1f1f;
+  color: white;
 }
 
 .theme-green #full-table {
-  color: white;
-  background-color: green;
+  color: black;
+  background-color: #D5F2B7;
   border-collapse: collapse;
   width: 100%;
-  overflow: auto;
 }
 
 .theme-green #full-table .table-caption {
+  caption-side: bottom;
   font-size: 15px;
   color: black;
   font-style: italic;
+  border-left: 2px solid #079992;
+  position: relative;
+  top: 10px;
 }
 
 .theme-green #full-table th {
-  background-color: #015801;
+  background-color: #38ada9;
   font-weight: bold;
-  border: 2px solid #015801;
-  min-width: 40px;
+  border: 2px solid #079992;
+  min-width: 90px;
+  padding: 10px 6px;
+  font-size: 16px;
+  color: white;
 }
 
 .theme-green #full-table td {
-  border: 1px solid #015801;
-  min-width: 40px;
+  border: 1px solid #079992;
+  min-width: 90px;
+  padding: 10px 6px;
 }
 
 .theme-green #full-table tfoot td {
-  background-color: #013a01;
+  background-color: #079992;
+  color: white;
 }
 
 .theme-red #full-table {
-  color: white;
-  background-color: red;
+  color: black;
+  background-color: #FFE9E9;
   border-collapse: collapse;
   width: 100%;
-  overflow: auto;
 }
 
 .theme-red #full-table .table-caption {
+  caption-side: bottom;
   font-size: 15px;
   color: black;
   font-style: italic;
+  border-left: 2px solid #740101;
+  position: relative;
+  top: 10px;
 }
 
 .theme-red #full-table th {
   background-color: #970000;
   font-weight: bold;
-  border: 2px solid #970000;
-  min-width: 40px;
+  border: 2px solid #740101;
+  min-width: 90px;
+  padding: 10px 6px;
+  font-size: 16px;
+  color: white;
 }
 
 .theme-red #full-table td {
-  border: 1px solid #970000;
-  min-width: 40px;
+  border: 1px solid #740101;
+  min-width: 90px;
+  padding: 10px 6px;
 }
 
 .theme-red #full-table tfoot td {
   background-color: #740101;
+  color: white;
 }
 
 .theme-blue #full-table {
-  color: white;
-  background-color: #6a6aff;
+  color: black;
+  background-color: #98C3DB;
   border-collapse: collapse;
   width: 100%;
-  overflow: auto;
 }
 
 .theme-blue #full-table .table-caption {
+  caption-side: bottom;
   font-size: 15px;
   color: black;
   font-style: italic;
+  border-left: 2px solid #192a56;
+  position: relative;
+  top: 10px;
 }
 
 .theme-blue #full-table th {
-  background-color: #4040e9;
+  background-color: #273c75;
   font-weight: bold;
-  border: 2px solid #4040e9;
-  min-width: 40px;
+  border: 2px solid #192a56;
+  min-width: 90px;
+  padding: 10px 6px;
+  font-size: 16px;
+  color: white;
 }
 
 .theme-blue #full-table td {
-  border: 1px solid #4040e9;
-  min-width: 40px;
+  border: 1px solid #192a56;
+  min-width: 90px;
+  padding: 10px 6px;
 }
 
 .theme-blue #full-table tfoot td {
-  background-color: #4848e4;
+  background-color: #192a56;
+  color: white;
 }
 
 .theme-grey #full-table {
-  color: black;
+  color: white;
   background-color: grey;
   border-collapse: collapse;
   width: 100%;
-  overflow: auto;
 }
 
 .theme-grey #full-table .table-caption {
+  caption-side: bottom;
   font-size: 15px;
   color: black;
   font-style: italic;
+  border-left: 2px solid black;
+  position: relative;
+  top: 10px;
 }
 
 .theme-grey #full-table th {
   background-color: #474747;
   font-weight: bold;
-  border: 2px solid #474747;
-  min-width: 40px;
+  border: 2px solid black;
+  min-width: 90px;
+  padding: 10px 6px;
+  font-size: 16px;
+  color: white;
 }
 
 .theme-grey #full-table td {
-  border: 1px solid #474747;
-  min-width: 40px;
+  border: 1px solid black;
+  min-width: 90px;
+  padding: 10px 6px;
 }
 
 .theme-grey #full-table tfoot td {
   background-color: #5f5f5f;
+  color: white;
 }
 
 .font-style-italic {

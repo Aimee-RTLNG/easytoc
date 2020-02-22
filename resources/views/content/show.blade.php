@@ -122,7 +122,7 @@
 @endsection
 
 @section('pagespecificscripts')
-    <script type="application/javascript" src="{{ URL::asset('js/components/content_view.js') }}"></script>
+    {{-- <script type="application/javascript" src="{{ URL::asset('js/components/content_view.js') }}"></script> --}}
     {{-- Script PRETTIFY + skin --}}
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection
