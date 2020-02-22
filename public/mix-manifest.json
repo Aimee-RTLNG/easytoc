@@ -1,10 +1,11 @@
 {
-    "/js/app.js": "/js/app.js?id=868ec0a78be9f91735b9",
+    "/js/app.js": "/js/app.js?id=a05a3358fdbf805bcbff",
     "/js/components/form.js": "/js/components/form.js?id=a4c7fb4b5c1b0a1845a9",
-    "/js/components/import_data_form.js": "/js/components/import_data_form.js?id=89b4d06da2d436b0bacd",
-    "/js/components/import_data_table.js": "/js/components/import_data_table.js?id=30b65cfb74bc9c81f8c7",
-    "/js/components/profile/profile.js": "/js/components/profile/profile.js?id=7d59dcadafbdeeba01c4",
-    "/css/app.css": "/css/app.css?id=7aa12fad615e386bf126",
+    "/js/components/import_data_form.js": "/js/components/import_data_form.js?id=d689996a2b13edd3eacf",
+    "/js/components/import_data_table.js": "/js/components/import_data_table.js?id=c00a58d3bd159800a392",
+    "/js/components/menu.js": "/js/components/menu.js?id=041f607335d178a8f4c3",
+    "/js/components/profile/profile.js": "/js/components/profile/profile.js?id=ae771bd4adfa84f628e9",
+    "/css/app.css": "/css/app.css?id=1e88ee928831c353bfeb",
     "/js/components/table.js": "/js/components/table.js?id=46d55a3a5c32c87e927b",
     "/js/manifest.js": "/js/manifest.js?id=41f053ba9a94d81b39f8",
     "/js/vendor.js": "/js/vendor.js?id=14e2c3537bd7b4f981bb"
