@@ -36,7 +36,7 @@ class UpdateProfile extends FormRequest
     }
     public function messages()
     {
-        return ['unique' => 'Adresse e-mail déjà prise'];
+        return ['unique' => __("Adresse e-mail déjà utilisée : choisissez une autre adresse.")];
     }
 
     /**

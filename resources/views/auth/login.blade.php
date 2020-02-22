@@ -17,7 +17,7 @@
                                     <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img">{{ __('Connexion') }} Facebook</a>
                                     <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" class="connect-network__img">{{ __('Connexion') }} Google</a>
                                 </div>
-                                <p class="commentaire">Tous les champs sont obligatoires</p>
+                                <p class="commentaire">{{ __('Tous les champs sont obligatoires') }}</p>
                            </div>
         
                             <div class="register__line">

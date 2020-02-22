@@ -162,6 +162,7 @@
     "Réinitialiser mon mot de passe": "Reset Password",
     "Envoyer un lien de réinitialisation": "Send Password Reset Link",
     "Mettre à jour mon mot de passe": "Reset my password",
+    "Adresse e-mail déjà utilisée : choisissez une autre adresse.": "Email adress already in use !",
 
     "###____PAGE_____CREATION_____FORM____###":"########################################################",
     "Thème du formulaire": "Form's theme",
