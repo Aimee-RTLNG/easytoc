@@ -23,6 +23,8 @@ Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 Route::view('/menu', '/content/menu/create')->name('menu');
 Route::view('/formulaire', '/content/form/create')->name('formulaire');
 Route::view('/tableau', '/content/table/create')->name('tableau');
+// Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
+// Route::get('/tableau', 'TableauController@index')->name('tableau');
 
 // ROUTE LANGUES
 // Route qui permet de connaître la langue active

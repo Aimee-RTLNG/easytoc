@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('titre') {{ __('Formulaire') }} - EasyToC @endsection
+@section('titre') {{ __('Menu') }} - EasyToC @endsection
 
 @section('pagespecificstyles')
-    <link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -368,6 +368,16 @@
     </div>
 </div>
 
+<div class="alert alert-success" role="alert" style="display: none">
+    <span class="alert-content">
+        Contenu de l'alerte
+    </span>
+    <button type="button" class="close ml-3" data-dismiss="alert" aria-label="{{ __('Fermer') }}" title="{{ __('Fermer') }}">
+        <span aria-hidden="true">
+            <i class="fa fa-times"></i>
+        </span>
+    </button>
+</div>
 
 <div class="alert alert-success" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
