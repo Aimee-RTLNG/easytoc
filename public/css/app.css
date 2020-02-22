@@ -11897,7 +11897,6 @@ pre.prettyprinted {
 }
 
 .dashboard {
-  min-height: 360px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   background-color: white;
   padding: 15px 0px;
