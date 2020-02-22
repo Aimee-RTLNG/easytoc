@@ -9,12 +9,13 @@ require('clipboard/dist/clipboard.min.js');
 // ANCHOR Font awesome
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 
-import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup, faExclamationTriangle, faFrown} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup);
+library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup, faExclamationTriangle, faFrown);
 
 dom.watch();
 
+let message;
 
 // ANCHOR Visualisation des contenus générés (form, table, menu)
 
@@ -164,3 +165,22 @@ export function setSideWindow(){
         // ---
     }
 }
+
+// Copier le contenu du code sur la page visualisation
+
+// ANCHOR Copier le contenu code 
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+    
+    if( lang == "en" ){
+        message = "Code copied !";
+        $(".copy-container button").text("Copy");
+    } else {
+        message = "Code copié !";
+        $(".copy-container button").text("Copier");
+    }
+    
+    $(this).text(message);
+    alertMsg(message);
+})
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code');
