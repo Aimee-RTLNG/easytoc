@@ -294,16 +294,16 @@ function importData(form) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!***********************************************************!*\
   !*** multi ./resources/js/components/import_data_form.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\import_data_form.js */"./resources/js/components/import_data_form.js");
+module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\import_data_form.js */"./resources/js/components/import_data_form.js");
 
 
 /***/ })
 
-},[[3,"/js/manifest","/js/vendor"]]]);
+},[[4,"/js/manifest","/js/vendor"]]]);

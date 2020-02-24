@@ -15,6 +15,7 @@ library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp,
 
 dom.watch();
 
+let message;
 
 // ANCHOR Visualisation des contenus générés (form, table, menu)
 
@@ -164,3 +165,45 @@ export function setSideWindow(){
         // ---
     }
 }
+
+// Copier le contenu du code sur la page visualisation
+
+// ANCHOR Copier le contenu code 
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+    
+    if( lang == "en" ){
+        message = "Code copied !";
+        $(".copy-container button").text("Copy");
+    } else {
+        message = "Code copié !";
+        $(".copy-container button").text("Copier");
+    }
+    
+    $(this).text(message);
+    alertMsg(message);
+})
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code');
+
+// Navigation menu
+$(window).on('load', function(){
+    let onglet_actif = $('nav .nav-link')[0];
+    if ( window.location.pathname.indexOf("menu") != -1 ){
+        onglet_actif = $('nav .nav-link')[1];
+    } else if ( window.location.pathname.indexOf("table") != -1 ){
+        onglet_actif = $('nav .nav-link')[2];
+    } else if ( window.location.pathname.indexOf("form") != -1 ){
+        onglet_actif = $('nav .nav-link')[3];
+    } else if ( window.location.pathname.indexOf("aide") != -1 ){
+        onglet_actif = $('nav .nav-link')[4];
+    } else if ( window.location.pathname.indexOf("register") != -1 ){
+        onglet_actif = $('.menu-connect .nav-item')[0];
+    } else if (  window.location.pathname.indexOf("login") != -1  ) {
+        onglet_actif = $('.menu-connect .nav-item')[1];
+    } else if (  window.location.pathname.indexOf("profile") != -1  ) {
+        onglet_actif = $('.menu-connect .nav-item')[0];
+    }
+    if(onglet_actif) {
+        $(onglet_actif).addClass('onglet-actif');
+    }
+})

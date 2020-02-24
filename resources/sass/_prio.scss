@@ -5,7 +5,7 @@
 .btn-gris-annule {
     color: $dark;
     background-color: $gris-btn;
-    &:hover {
+    &:hover, &:focus {
         color: $dark;
         background-color: $gris-btn-hover;
     }

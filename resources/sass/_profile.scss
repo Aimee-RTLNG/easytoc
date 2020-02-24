@@ -255,7 +255,7 @@
             font-size: 2.5rem;
             @include expletus;
             font-weight: 700;
-            &:hover{
+            &:hover, &:focus{
                 color: $bleu;
             }
         }
@@ -302,7 +302,7 @@
         }
         .btn-gris{
             background-color: $gris-clair;
-            &:hover {
+            &:hover, &:focus {
                 background-color: $gris-clair-hover;
             }
         }

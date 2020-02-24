@@ -70,7 +70,7 @@ body {
 
 #content-created-blueprint form *{
     border: 0;
-    &:hover{
+    &:hover, &:focus{
         border: 3px dotted black;
     }
 
@@ -88,7 +88,7 @@ body {
         display: flex;
         flex-direction: column;
 
-        &:hover{
+        &:hover, &:focus{
             border: none;
         }
 
@@ -96,7 +96,7 @@ body {
 
             margin: 5px 15px;
 
-            &:hover{
+            &:hover, &:focus{
                 border : none;
             }
         }
@@ -110,7 +110,7 @@ body {
         border: 2px solid rgba(0,0,0,0.5) !important;
         padding: 0 !important;
     
-        &:hover {
+        &:hover, &:focus {
             border: 2px solid rgba(0,0,0,0.5) !important;
         }
     }
@@ -208,8 +208,8 @@ input[type="checkbox"], input[type="radio"]{
 }
 .btn-crea {
     font-size: 1.6rem;
-    padding: 2px 8px;
-    &__icon {
+    padding: 2px 4px;
+    &__icon { 
         background-color: white;
         height: 30px;
         width: 30px;

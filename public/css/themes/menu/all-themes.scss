@@ -3,33 +3,39 @@
 $themes: (
     white: (
         backgroundColor: #fff,
-        aHoverColor: red,
+        aHoverColor: rgb(202, 202, 202),
+        borderHover : rgb(94, 94, 94),
         textColor : black
     ),
     black: (
-        backgroundColor: #222,
-        aHoverColor: red,
+        backgroundColor: rgb(51, 51, 51),
+        aHoverColor: rgb(0, 0, 0),
+        borderHover : rgb(212, 212, 212),
         textColor : white
     ),
     green: (
-        backgroundColor: green,
-        aHoverColor: red,
-        textColor : white
+        backgroundColor: #38ada9,
+        aHoverColor: #016d67,
+        borderHover : rgb(72, 248, 189),
+        textColor : black
     ),
     red: (
-        backgroundColor: red,
-        aHoverColor: blue,
+        backgroundColor: rgb(185, 44, 44),
+        aHoverColor: rgb(112, 14, 14),
+        borderHover : rgb(252, 64, 64),
         textColor : white
     ),
     blue: (
-        backgroundColor: blue,
-        aHoverColor: red,
+        backgroundColor: #273c75,
+        aHoverColor: #0a1a4d,
+        borderHover : rgb(122, 228, 255),
         textColor : white
     ),
     grey: (
-        backgroundColor: grey,
-        aHoverColor: red,
-        textColor : black
+        backgroundColor: rgb(97, 97, 97),
+        aHoverColor: rgb(46, 46, 46),
+        borderHover : rgb(226, 226, 226),
+        textColor : white
     )
 );
 
@@ -61,7 +67,90 @@ $themes: (
 
 #full-menu {
     @include themify($themes) {
-      color: themed('textColor');  
-      background-color: themed('backgroundColor');  
+        color: themed('textColor');  
+        background-color: themed('backgroundColor');  
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+
+        .menu-identity{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 20%;
+            padding: 10px 0px 10px 15px;
+
+            .menu-title{
+                color: themed('textColor');
+                max-width: 100px;
+            }
+
+            .menu-logo{
+                width: 40px;
+                height: 40px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .menu-logo-solo{
+                width: 100%;
+            }
+
+            .menu-separator{
+                height: 60%;
+                width: 2px;
+                background-color: themed('textColor');
+                opacity: .3;
+                position: relative;
+                left: 1px;
+            }
+        }
+
+        .menu-items{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            width: 80%;
+            margin: 0;
+            padding: 0;
+
+            .menu-item{
+
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: themed('backgroundColor');  
+                transition: all .2s;
+                border-bottom: 0px solid white;
+
+                a{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &:hover, &:focus, &:focus{
+
+                    background-color: themed('aHoverColor'); 
+                    border-bottom: 5px solid themed('borderHover'); 
+
+                    .menu-submenu{
+                        // display: block;
+                    }
+                }
+            }
+        }
+
+        .menu-submenu{
+            display: none;
+        }
+
     }
-  }
+
+}

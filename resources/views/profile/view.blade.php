@@ -88,7 +88,7 @@
                     </div>
                     
                     @if($user->contents->isEmpty())
-                        <h2 class="dashboard__title">
+                        <h2 class="dashboard__title mt-5">
                             {{ __('Vous n\'avez aucun projet sauvegardé') }}
                         </h2>
                     @endif

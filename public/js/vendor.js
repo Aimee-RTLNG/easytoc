@@ -51081,7 +51081,8 @@ __webpack_require__(/*! clipboard/dist/clipboard.min.js */ "./node_modules/clipb
 
 
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlusCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSort"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPen"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faItalic"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBold"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUnderline"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignCenter"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignJustify"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTasks"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faComment"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLines"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faParagraph"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeading"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faLink"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListOl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListUl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faQuestionCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrashAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSync"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileCode"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faVectorSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLinesVertical"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSave"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCut"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectGroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectUngroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faExclamationTriangle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFrown"]);
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch(); // ANCHOR Visualisation des contenus générés (form, table, menu)
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
+var message; // ANCHOR Visualisation des contenus générés (form, table, menu)
 // Empêcher l'envoi du formulaire 
 
 $(document).ready(function () {
@@ -51223,7 +51224,47 @@ function setSideWindow() {
     $('#actions-interface').removeClass('p-0');
     $('#actions-interface').addClass('col-12'); // ---
   }
-}
+} // Copier le contenu du code sur la page visualisation
+// ANCHOR Copier le contenu code 
+
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+  if (lang == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
+  $(this).text(message);
+  alertMsg(message);
+});
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code'); // Navigation menu
+
+$(window).on('load', function () {
+  var onglet_actif = $('nav .nav-link')[0];
+
+  if (window.location.pathname.indexOf("menu") != -1) {
+    onglet_actif = $('nav .nav-link')[1];
+  } else if (window.location.pathname.indexOf("table") != -1) {
+    onglet_actif = $('nav .nav-link')[2];
+  } else if (window.location.pathname.indexOf("form") != -1) {
+    onglet_actif = $('nav .nav-link')[3];
+  } else if (window.location.pathname.indexOf("aide") != -1) {
+    onglet_actif = $('nav .nav-link')[4];
+  } else if (window.location.pathname.indexOf("register") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("login") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[1];
+  } else if (window.location.pathname.indexOf("profile") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  }
+
+  if (onglet_actif) {
+    $(onglet_actif).addClass('onglet-actif');
+  }
+});
 
 /***/ }),
 
@@ -51581,7 +51622,7 @@ $('.add-element').on('click', function () {
   addElement(element_type, element_type_name); // on ajoute l'élement
 
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
-}); // ANCHOR Sauvegarde définitive
+}); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 
 $('#btn-save-project').on('click', function () {
   updatecontent();
@@ -51622,7 +51663,7 @@ $('#btn-save-project').on('click', function () {
 }); // ANCHOR Action sur l'élement
 
 var element_select;
-$(document.body).off('keyup') // ré-initialisation
+$(document.body).off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois 
 // Empeche de passer le focus sur l'input quand on clique sur le label (pour contrer comportement de formulaire de base)
 .on('click', '.element-container label, .element-container legend', function (e) {
   if ($(e.target).prop('tagName') != "SELECT") {
@@ -51653,7 +51694,7 @@ $(document.body).off('keyup') // ré-initialisation
   refreshMoveButtons(previous_option, next_option, true);
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
-}) // Quand on sélectionne un élément éditable
+}) // Quand on sélectionne un élément éditable (c'est là le plus important)
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
   // on récupère l'élément sélectionné et on focus sur l'élément parent
   if (e.target) {
@@ -51775,7 +51816,7 @@ $(document.body).off('keyup') // ré-initialisation
 
         var option_value = $('.content-editable-selected input').attr('value');
         $("#elem-option-value").val(option_value);
-      } // on cache toutes les actions de bases pour les réafficher en fonction
+      } // on cache toutes les actions de bases pour les réafficher en fonction du contenu sélectionné
 
 
       $('.action-answer-type').hide();

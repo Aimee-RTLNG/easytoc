@@ -1,3 +1,60 @@
+.navbar{
+    padding: 0 !important;
+
+    .container{
+        padding: 0;
+        height: 100%;
+
+        #navbarSupportedContent{
+            min-height: 65px;
+
+            &.navbar-collapse.show{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                padding-bottom: 15px;
+            }
+
+            .nav{
+                min-height: 65px;
+                display: flex;
+                justify-content: center;
+
+                a{
+                    min-height: 65px;
+                    flex: auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .menu-lang{
+                justify-content: space-evenly;
+                min-height: 65px;
+            }
+
+        }
+
+        .menu-connect{
+            .nav-item &:hover, .nav-item &:focus{
+                a{
+                    background-color: $blue;
+                    color: white;
+                }
+            }
+    
+            .nav-item.onglet-actif{
+                a{
+                    background-color: $blue;
+                    p{ 
+                        color: white !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
 .flag {
     @include back-img;
@@ -8,27 +65,47 @@
 }
 .link-flag {
     @include flex-row-between-center;
+    padding: 10px 0;
+    min-height: 65px;
+    border-bottom: 0px solid white;
+    transition: all .2s;
+
+    &:hover, &:focus{
+        color: white !important;
+        border-bottom: 5px solid $blue;
+        background-color: black;
+    }
 }
 #logo-nav {
     height: 50px;
 }
 .main-menu .nav-link {
-    padding-right: 0px;
-    &:after{
-        content: '|';
-        color: white;
-        padding-left: 20px;
+    border-bottom: 0px solid white;
+    transition: all .2s;
+
+    // &:after{
+    //     content: '|';
+    //     color: white;
+    //     padding-left: 20px;
+    // }
+
+    &.onglet-actif{
+        background-color: $blue;
+    }
+
+    &:hover, &:focus{
+        color: white !important;
+        border-bottom: 5px solid $blue;
+        background-color: black;
     }
 }
+
 .menu-lang  {
-    margin-left: 3rem;
     a{
         text-decoration: none;
     }
-    a:first-child {
-        margin-right: 2rem;
-    }
 }
+
 .btn-connect {
     min-width: 112px;
     min-height: 25px;
@@ -38,6 +115,11 @@
     border-radius: 12px;
     @include flex-row-between-center;
     padding: 2px 8px 2px 5px;
+
+    svg{
+        width: 10px !important;
+    }
+
     &__icon {
         margin-right: 10px;
         background-color: $gris-fonce;

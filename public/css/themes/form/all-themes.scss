@@ -163,7 +163,7 @@ $themes: (
             color: themed('aColor') ;
         }
         text-decoration: none;
-        &:hover{
+        &:hover, &:focus, &:focus{
             @include themify($themes) {
                 color: themed('aColor') ;
             }
@@ -255,7 +255,7 @@ $themes: (
     input {
         cursor: pointer;
         font-size: 16px;
-        &:hover{
+        &:hover, &:focus{
             color: white;
         }
     }
@@ -266,7 +266,7 @@ $themes: (
         border-radius: 12px;
         min-width: 40%;
         transition: all 0.25s ease;
-        &:hover {
+        &:hover, &:focus {
             background-color: #E13838;
             transition: all 0.25s ease;
         }
@@ -279,7 +279,7 @@ $themes: (
         background-color: #393737;
         border-radius: 12px;
         min-width: 40%;
-        &:hover {
+        &:hover, &:focus {
             background-color: #63CF72;
             transition: all 0.25s ease;
         }
