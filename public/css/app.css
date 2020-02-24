@@ -9817,6 +9817,10 @@ textarea.shadow-box {
   transition: all .2s;
 }
 
+.main-menu .nav-link.onglet-actif {
+  background-color: #3490dc;
+}
+
 .main-menu .nav-link:hover, .main-menu .nav-link:focus {
   color: white !important;
   border-bottom: 5px solid #3490dc;

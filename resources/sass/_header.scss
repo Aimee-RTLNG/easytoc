@@ -69,6 +69,10 @@
     //     color: white;
     //     padding-left: 20px;
     // }
+    
+    &.onglet-actif{
+        background-color: $blue;
+    }
 
     &:hover, &:focus{
         color: white !important;

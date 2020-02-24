@@ -184,3 +184,18 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');
+
+// Navigation menu
+$(window).on('load', function(){
+    let onglet_actif = $('nav .nav-link')[0];
+    if ( window.location.pathname.indexOf("menu") != -1 ){
+        onglet_actif = $('nav .nav-link')[1];
+    } else if ( window.location.pathname.indexOf("table") != -1 ){
+        onglet_actif = $('nav .nav-link')[2];
+    } else if ( window.location.pathname.indexOf("form") != -1 ){
+        onglet_actif = $('nav .nav-link')[3];
+    } else if ( window.location.pathname.indexOf("aide") != -1 ){
+        onglet_actif = $('nav .nav-link')[4];
+    }
+    $(onglet_actif).addClass('onglet-actif');
+})
