@@ -9780,7 +9780,7 @@ textarea.shadow-box {
   min-height: 65px;
 }
 
-.nav-item .navbar .container .menu-connect:hover a, .nav-item .navbar .container .menu-connect:focus a {
+.navbar .container .menu-connect .nav-item:hover a, .navbar .container .menu-connect .nav-item:focus a {
   background-color: #3490dc;
   color: white;
 }
