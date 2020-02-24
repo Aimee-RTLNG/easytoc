@@ -9780,6 +9780,19 @@ textarea.shadow-box {
   min-height: 65px;
 }
 
+.nav-item .navbar .container .menu-connect:hover a, .nav-item .navbar .container .menu-connect:focus a {
+  background-color: #3490dc;
+  color: white;
+}
+
+.navbar .container .menu-connect .nav-item.onglet-actif a {
+  background-color: #3490dc;
+}
+
+.navbar .container .menu-connect .nav-item.onglet-actif a p {
+  color: white !important;
+}
+
 .flag {
   background-color: black;
   background-size: cover;

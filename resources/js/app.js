@@ -196,6 +196,14 @@ $(window).on('load', function(){
         onglet_actif = $('nav .nav-link')[3];
     } else if ( window.location.pathname.indexOf("aide") != -1 ){
         onglet_actif = $('nav .nav-link')[4];
+    } else if ( window.location.pathname.indexOf("register") != -1 ){
+        onglet_actif = $('.menu-connect .nav-item')[0];
+    } else if (  window.location.pathname.indexOf("login") != -1  ) {
+        onglet_actif = $('.menu-connect .nav-item')[1];
+    } else if (  window.location.pathname.indexOf("profile") != -1  ) {
+        onglet_actif = $('.menu-connect .nav-item')[0];
     }
-    $(onglet_actif).addClass('onglet-actif');
+    if(onglet_actif) {
+        $(onglet_actif).addClass('onglet-actif');
+    }
 })

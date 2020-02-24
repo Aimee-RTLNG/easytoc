@@ -33,6 +33,25 @@
                 justify-content: space-evenly;
                 min-height: 65px;
             }
+
+        }
+
+        .menu-connect{
+            .nav-item &:hover, .nav-item &:focus{
+                a{
+                    background-color: $blue;
+                    color: white;
+                }
+            }
+    
+            .nav-item.onglet-actif{
+                a{
+                    background-color: $blue;
+                    p{ 
+                        color: white !important;
+                    }
+                }
+            }
         }
     }
 }
@@ -69,7 +88,7 @@
     //     color: white;
     //     padding-left: 20px;
     // }
-    
+
     &.onglet-actif{
         background-color: $blue;
     }
