@@ -133,8 +133,13 @@
 
                 <div class="mb-3 row" role="region">
                     <div class="col-md-6" role="region">
-                        <label class="creator-panel__title" for="form-creator-title">{{ __('Titre du menu') }}</label>
-                        <input name="form-creator-title" id="form-creator-title" placeholder="{{ __('Titre du menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre du menu') }}" />
+                        <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre du menu') }}</label>
+                        <input name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre du menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre du menu') }}" />
+                    </div>
+
+                    <div class="col-md-6" role="region">
+                        <label class="creator-panel__title" for="menu-creator-link">{{ __('Logo du menu') }}</label>
+                        <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="Lien du logo" class="form-control input-creator" size="30" />
                     </div>
                 </div>
 

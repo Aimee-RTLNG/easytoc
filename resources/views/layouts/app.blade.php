@@ -38,21 +38,21 @@
                     </div>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                  <ul class="nav navbar-dark bg-dark main-menu">
-                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}" title="{{ __('Accéder à l\'accueil') }}">{{ __('Accueil') }}</a></li>
-                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}" title="{{ __('Créer un menu') }}">{{ __('Créer un menu') }}</a></li>
-                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}" title="{{ __('Créer un tableau') }}">{{ __('Créer un tableau') }}</a></li>
-                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}" title="{{ __('Créer un formulaire') }}">{{ __('Créer un formulaire') }}</a></li>
-                    <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
-                </ul>
-                    <ul class="navbar-nav mr-xl-auto text-light menu-lang">
+                <div class="collapse navbar-collapse justify-content-between row" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-dark bg-dark main-menu col-7 m-0 p-0">
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}" title="{{ __('Accéder à l\'accueil') }}"><span>{{ __('Accueil') }}</span></a></li>
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}" title="{{ __('Créer un menu') }}"><span>{{ __('Créer un menu') }}</span></a></li>
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}" title="{{ __('Créer un tableau') }}"><span>{{ __('Créer un tableau') }}</span></a></li>
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}" title="{{ __('Créer un formulaire') }}"><span>{{ __('Créer un formulaire') }}</span></a></li>
+                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}"><span>{{ __('Aide') }}</span></a></li>
+                    </ul>
+                    <ul class="navbar-nav text-light menu-lang col mr-3 p-0">
                         <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Passer en français') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.png') }})"></div> {{ __('EN') }}</a>
                         <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Passer en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto menu-connect">
+                    <ul class="navbar-nav menu-connect col m-0 p-0">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('register'))

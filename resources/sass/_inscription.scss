@@ -169,7 +169,7 @@
         font-weight: bold;
         a {
             color: $bleu;
-            &:hover {
+            &:hover, &:focus {
                 color: $bleu;
             }
         }
@@ -178,7 +178,7 @@
 .link-account-ok, .link-form {
     color: $bleu;
     margin-top: 2px;
-    &:hover {
+    &:hover, &:focus {
         color: $bleu;
     }
 }

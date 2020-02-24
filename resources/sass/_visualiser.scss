@@ -20,7 +20,7 @@
         color: white;
         background-color: $red;
     }
-    &:hover {
+    &:hover, &:focus {
         background-color: $gris-clair-hover;
         color: $red;
     }
