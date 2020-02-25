@@ -9705,10 +9705,6 @@ textarea.shadow-box {
   max-width: 100%;
 }
 
-.code-display {
-  overflow-wrap: break-word;
-}
-
 .required-failed {
   border: 3px solid #dd1313;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
@@ -9739,6 +9735,34 @@ textarea.shadow-box {
   .mb-4-md {
     margin-bottom: 1.5rem;
   }
+}
+
+/* style du code généré */
+xmp {
+  margin: 0;
+  padding: 0;
+  display: inherit;
+}
+
+.code-display {
+  font-size: 1em !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-radius: 5px !important;
+  border: 1px solid #888;
+  overflow: hidden;
+  color: white;
+  font-family: monospace, monospace;
+  background: #000;
+}
+
+pre.prettyprinted {
+  font-size: 100% !important;
+  margin: 0 !important;
+  padding: 1.5em !important;
+  width: 100% !important;
+  border-radius: 5px !important;
 }
 
 .navbar {
@@ -11021,33 +11045,6 @@ body {
   border-top: 0;
 }
 
-/* style du code généré */
-xmp {
-  margin: 0;
-  padding: 0;
-  white-space: pre-line;
-  display: inherit;
-}
-
-.code-display {
-  font-size: 100% !important;
-  margin: 0 !important;
-  padding: 1.5em !important;
-  width: 100% !important;
-  border-radius: 5px !important;
-  border: 1px solid #888;
-  word-break: break-all;
-}
-
-pre.prettyprinted {
-  font-size: 100% !important;
-  margin: 0 !important;
-  padding: 1.5em !important;
-  width: 100% !important;
-  border-radius: 5px !important;
-  white-space: pre !important;
-}
-
 /* style de l'interface actions */
 [contenteditable="true"]:hover, #full-form input, .element-container {
   cursor: pointer;
@@ -11604,31 +11601,6 @@ body {
   padding: 2em;
   border: 1px solid rgba(0, 0, 0, 0.192);
   border-top: 0;
-}
-
-/* style du code généré */
-xmp {
-  margin: 0;
-  padding: 0;
-  white-space: pre-line;
-  display: inherit;
-}
-
-.code-display {
-  font-size: 100% !important;
-  margin: 0 !important;
-  padding: 1.5em !important;
-  width: 100% !important;
-  border-radius: 5px !important;
-  border: 1px solid #888;
-}
-
-pre.prettyprinted {
-  font-size: 100% !important;
-  margin: 0 !important;
-  padding: 1.5em !important;
-  width: 100% !important;
-  border-radius: 5px !important;
 }
 
 /* style de l'interface actions */

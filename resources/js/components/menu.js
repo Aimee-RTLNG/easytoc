@@ -3,30 +3,28 @@
 // On importe les variables et fonctions externes (qui sont définie dans app.js)
 import { 
     lang,  // la variable lang est soit "en" soit "fr" et permet de définir le contenu des messages
-    setSideWindow, // c'est unn fonction qui permet d'ajuster la side tools box quand on scroll. Comme elle est commune aux trois outils, elle est définie dans app.js
+    setSideWindow, // c'est un fonction qui permet d'ajuster la side tools box quand on scroll.
     alertMsg // fonction qui affiche le message pop up en bas à droite
 } from "../app"; 
 
-// Ce code était orienté formulaire, il y a donc les variables de contenu générés par la section d’un élément : 
-// les titres des variables sont assez explicites, tu peux t’imaginer déjà le nom des variables qui existeraient pour les menu : element, link, intitule etc…
-// chacune de ses variables est redéfinie quand on clique sur un element qui a la classe '.element-container'
-let element; // sert à identifier 
-let element_selected_container; // sert à identifier tout le container qui contient l'élement sélectionenr (généralement la racine de '.element-container' )
-let intitule; // par exemple menu_title
-let input; // par exemple menu_link
-let previous_element; // par exemple : previous_menu
-let next_element; // par exemple : next_menu
-let previous_option; // par exemple : previous_lower_menu
-let selected_option; // par exemple : selected_lower_menu
-let next_option; // par exemple : next_lower_menu
+let element; 
+let element_selected_container;
+let menu_title; 
+let menu_link; 
+let previous_menu; 
+let selected_menu;
+let next_menu;
+let previous_lower_menu; 
+let selected_lower_menu;
+let next_lower_menu; 
 
-let message; // variable qui contient les messages qui apparaissent dans l'infobulle en bas à droite (et qui sera définie en fonction de la variable lang)
+let message; 
 
-let user_id = $('input[name=user_id]').val(); // récupère l'id de l'utilisateur pour la sauvegarde AJAX
-let type_id = $('input[name=type_id]').val(); // récupère l'id du type (menu, form, table) pour la sauvegarde AJAX
-let csrf_token = $('meta[name="csrf-token"]').attr('content'); // sans ce token, on ne peut pas envoyer le formulaire en AJAX
+let user_id = $('input[name=user_id]').val(); 
+let type_id = $('input[name=type_id]').val(); 
+let csrf_token = $('meta[name="csrf-token"]').attr('content'); 
 
-// ANCHOR Caractères restants Description du projet ( à ne pas toucher )
+// ANCHOR Caractères restants Description du projet
 // Permet d'afficher "x caractères restants" lorsque l'on écrit dans le textarea description
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
@@ -43,7 +41,7 @@ $('#desc-input').keypress(function (e) {
     }
 })
 
-// ANCHOR Caractères restants Titre du projet ( à ne pas toucher )
+// ANCHOR Caractères restants Titre du projet
 // Permet d'afficher "x caractères restants" lorsque l'on écrit dans l'input de titre
 $('#title-input').keypress(function (e) {
     var tval = $('#title-input').val(),
@@ -60,16 +58,10 @@ $('#title-input').keypress(function (e) {
     }
 })
 
-// ANCHOR Liste de tous les tags possibles dans un formulaire
-// Pourrait donc être remplacé par une liste, des liens etc...
-const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5",
-    "select", "optgroup", "option", "hr", "textarea", "abbr"
-];
-
 // ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
-$(window).on('scroll', function() {
-    setSideWindow();
-});
+// $(window).on('scroll', function() {
+//     setSideWindow();
+// });
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
@@ -80,60 +72,30 @@ export let element_types; // En exportant ce tableau objet, on permet au fichier
 // par exemple, si dans le CSV, j'ai un élément de type 'link', alors il cherchera dans ce tableau objet element_types['type-layout']['insert-link]
 if( lang == "en" ){
     element_types = {
-        "type-question": {
-            "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
-            "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
-            "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-            "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
-            "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
-            "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choose an option </option>\n\t\t</select>\n</label>"
+        "type-info": {
+            "insert-title": "\t<span contenteditable='true' data-tag='menu-title' class='menu-title'>Mon menu</span>\n",
+            "insert-img": "\t<div class='menu-logo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
+            "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
+            "insert-separator": "\t<span class='menu-separator'></span>\n",
         },
-        "type-answer-option": {
-            "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-            "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-            "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
-        },
-        "type-layout": {
-            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Title</h2>",
-            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraph</p>",
-            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Name of the link</a>",
-            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ol>",
-            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ul>",
-            "insert-horizontal_rule": "<hr contenteditable='true'>",
-        },
-        "type-special": {
-            "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
-            "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-            "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
+        "type-menu": {
+            "insert-menu_link": '\t<div class="menu-item"><a href="/link" class="menu-link" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
+            "insert-menu_many": '\t<div class="menu-item"><a href="/link" class="menu-link has-submenu" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
+            "insert-lower_menu": '\t<div class="menu-submenu"><ul></ul></div>\n'
         }
     };
 } else {
     element_types = {
-        "type-question": {
-            "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-            "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-            "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-            "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-            "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-            "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
+        "type-info": {
+            "insert-title": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
+            "insert-img": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
+            "insert-banner": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+            "insert-separator": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
         },
-        "type-answer-option": {
-            "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-            "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-            "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
-        },
-        "type-layout": {
-            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
-            "insert-horizontal_rule": "<hr contenteditable='true'>",
-        },
-        "type-special": {
-            "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
-            "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-            "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+        "type-menu": {
+            "insert-menu_solo": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-menu_many": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-lower_menu": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
         }
     };
 }

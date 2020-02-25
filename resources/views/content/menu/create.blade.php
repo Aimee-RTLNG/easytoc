@@ -240,7 +240,7 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h3>
                                     <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
@@ -251,7 +251,10 @@
                                         </button>
                                     </div>
                                     <!-- Lien du style à utiliser -->
-                                    <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                    <div class="code-display" id="css-link">
+                                        <xmp><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                        <xmp><script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script></xmp>
+                                    </div>
                                     <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
@@ -436,6 +439,7 @@
 
 @section('pagespecificscripts')
 
+<script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script>
 <script type="application/javascript" src="{{ URL::asset('js/components/menu.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
