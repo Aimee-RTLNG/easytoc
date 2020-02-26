@@ -40,9 +40,8 @@
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel col-lg-4" role="region" aria-labelledby="form_infos">
-                {{-- <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le menu') }}</h3> --}}
-                <form id="full-form-post" action="{{ route('content.store') }}" method="post">
+            <div class="info-panel col-lg-4" role="region" aria-labelledby="menu_infos">
+                <form id="full-menu-post" action="{{ route('content.store') }}" method="post" autocomplete="off">
                     @csrf
                     <input type="hidden" name="type_id" value="3">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -132,31 +131,43 @@
                 <!-- navigation entre les panneaux -->
 
                 <div class="mb-3 row" role="region">
-                    <div class="col-md-6" role="region">
-                        <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre du menu') }}</label>
-                        <input name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre du menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre du menu') }}" />
+                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
+                        <div class="col">
+                            <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre de menu') }}</label>
+                            <input type="text" name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre de menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre de menu') }}" autocomplete="off"/>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="menu-creator-title-display" id="menu-creator-title-display" checked autocomplete="off" />
+                            <label class="creator-panel__title-display" for="menu-creator-title-display">{{ __('Afficher le titre') }}</label>
+                        </div>
                     </div>
 
-                    <div class="col-md-6" role="region">
-                        <label class="creator-panel__title" for="menu-creator-link">{{ __('Logo du menu') }}</label>
-                        <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="Lien du logo" class="form-control input-creator" size="30" />
+                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
+                        <div class="col">
+                            <label class="creator-panel__link" for="menu-creator-link">{{ __('Logo de menu') }}</label>
+                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/favicon.ico') }}" class="form-control input-creator" autocomplete="off"/>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
+                            <label class="creator-panel__link-display" for="menu-creator-link-display">{{ __('Afficher le logo') }}</label>
+                        </div>
                     </div>
                 </div>
 
                 <div role="section" class="row form_actions_element" aria-labelledby="form_actions_element">
                     <div role="section" class="col-md-7" aria-labelledby="form_add_static">
-                        <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément statique') }}</h3>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem" title="{{ __("Ajouter un titre") }}">
-                            <i class="fa fa-heading"></i>
-                            {{ __('Titre') }}
-                        </button>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem" title="{{ __("Ajouter un lien") }}">
+                        <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément') }}</h3>
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Lien simple') }}" id="insert-title" role="listitem" title="{{ __("Ajouter un lien") }}">
                             <i class="fa fa-link"></i>
-                            {{ __('Lien') }}
+                            {{ __('Lien simple') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem" title="{{ __("Ajouter une liste à puces") }}">
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Rubrique avec sous-menu') }}" id="insert-link" role="listitem" title="{{ __("Ajouter une rubrique avec sous-menu") }}">
+                            <i class="fa fa-heading"></i>
+                            {{ __('Rubrique avec sous-menu') }}
+                        </button>
+                        <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Menu avec sous-menu') }}" id="insert-unordered_list" role="listitem" title="{{ __("Ajouter un menu avec sous-menu") }}">
                             <i class="fa fa-list-ul"></i>
-                            {{ __('Liste à puces') }}
+                            {{ __('Lien avec sous-menu') }}
                         </button>
                     </div>
                     <div role="section" class="col-md-5" aria-labelledby="form_actions_text">
@@ -173,18 +184,6 @@
                             <i class="fa fa-underline"></i>
                             {{ __('Souligné') }}
                         </button>
-                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem" title="{{ __("Mettre le texte à gauche") }}">
-                            <i class="fa fa-align-left"></i>
-                            {{ __('Aligner à gauche') }}
-                        </button>
-                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem" title="{{ __("Mettre le texte au centre") }}">
-                            <i class="fa fa-align-center"></i>
-                            {{ __('Centrer') }}
-                        </button>
-                        <button class="btn btn-primary btn_crea text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem" title="{{ __("Justifier le texte") }}">
-                            <i class="fa fa-align-justify"></i>
-                            {{ __('Justifier') }}
-                        </button>
                     </div>
                 </div>
                 <div role="section" class="row mt-4 form_actions_element" aria-labelledby="form_actions_element">
@@ -198,11 +197,6 @@
                             <i class="fa fa-undo"></i>
                             {{ __('Annuler la suppression') }}
                         </button>
-                        <!-- Ajout d'option -->
-                        <button type="button" aria-label="{{ __('Ajouter une option') }}" disabled="true" data-action="add-option" class="btn btn-primary btn_crea form-element-action element_add-option" title="{{ __('Ajouter une option') }}">
-                            <i class="fa fa-check-square"></i>
-                            {{ __('Ajouter une option') }}
-                        </button>
                     </div>
                     {{-- ici --}}
                 </div>
@@ -210,10 +204,10 @@
                 <div class="bloc-creation-interface">
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
-                            <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
+                            <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                                 <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                             </button>
-                            <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
+                            <button  id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
                                 <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                             </button>
                         </div>
@@ -228,7 +222,7 @@
 
 
                             <!-- panneaux -->
-                            <div class="tab-content" id="nav-tabContent" role="section">
+                            <div class="tab-content menu-tabs" id="nav-tabContent" role="section">
 
                                 <!-- Code en brut (non formatté) -->
                                 <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
@@ -240,7 +234,7 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h3>
                                     <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
@@ -251,7 +245,10 @@
                                         </button>
                                     </div>
                                     <!-- Lien du style à utiliser -->
-                                    <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                    <div class="code-display" id="css-link">
+                                        <xmp><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                        <xmp><script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script></xmp>
+                                    </div>
                                     <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
@@ -264,7 +261,7 @@
                             </div>
                         </div>
                         <div class="side-tool" style="display: none">
-                            <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                            <button class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                                 <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                             </button>
                         </div>
@@ -384,11 +381,11 @@
         <!-- Actions importantes sur le projet -->
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
-                <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+                <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button>
-                <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
+                <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}
@@ -436,6 +433,7 @@
 
 @section('pagespecificscripts')
 
+<script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script>
 <script type="application/javascript" src="{{ URL::asset('js/components/menu.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>

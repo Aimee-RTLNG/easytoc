@@ -46,11 +46,19 @@
         }
 
         .menu-connect{
-            .nav-item:hover a, .nav-item a:focus{
-                    background-color: $bleu;
-                    .btn-connect__link {
-                        color: white;
-                    }
+
+            .nav-item{
+                a:focus{
+                    background-color: $blue;
+                    color: white;
+                }
+            }
+
+            .nav-item:hover, .nav-item:focus{
+                a, a:focus{
+                    background-color: $blue;
+                    color: white;
+                }
             }
     
             .nav-item.onglet-actif{

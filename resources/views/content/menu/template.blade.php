@@ -1,63 +1,87 @@
 <div data-tag="menu" class="theme-blue" id="generated-menu" name="generated-menu">
-    <nav id="full-menu" aria-label="{{ __('Menu de navigation') }}">
+    <nav id="full-menu" aria-label="{{ __('Mon menu') }}" role="menubar">
         <div class="menu-identity">
-            <div class="menu-logo" style="background-image: url({{ URL::asset('images/favicon.ico') }})"></div>
-            <span contenteditable="true" data-tag="menu-title" class="menu-title">
-                {{ __('Mon menu') }}
+            <div class="menu-logo" id="menu-logo" style="background-image: url({{ URL::asset('images/favicon.ico') }})"></div>
+            <span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">
+                {{ __('Titre du menu') }}
             </span>
             <span class="menu-separator"></span>
         </div>
-        <ul class="menu-items">
-            <div class="menu-item">
-                <a href="/home" class="menu-link" onclick="return false;">
-                    <li>
-                        <span contenteditable="true" data-tag="menu-item" class="menu-item-title">
-                            {{ __('Accueil') }}
-                        </span>
+        <ul class="menu-items" role="menubar" aria-label="{{ __('Mon menu') }}" id="menubar-easytoc">
+            <li role="none" class="menu-item" tabindex="1">
+                <a role="menuitem"  href="/home" class="menu-name">
+                    <span contenteditable="true" class="menu-item-title">
+                        {{ __('Accueil') }}
+                    </span>
+                </a>
+            </li>
+            <li role="none" class="menu-item has-submenu">
+                <button role="menuitem" aria-expanded="false" aria-controls="presentation_menu"  class="menu-name menu-submenus" tabindex="1">
+                    <span contenteditable="true" class="menu-item-title">
+                        {{ __('Présentation') }}
+                    </span>
+                </button>
+                <ul role="menu" aria-label="" id="presentation_menu" >
+                    <li role="none" class="menu-item" >
+                        <a role="menuitem" href="/" class="menu-link" >
+                            <span contenteditable="true" class="menu-item-title">
+                                {{ __('Notre équipe') }}
+                            </span>
+                        </a>
                     </li>
-                </a>
-            </div>
-            <div class="menu-item">
-                <a href="/presentation" class="menu-link" onclick="return false;">
-                    <li>
-                        <span contenteditable="true" data-tag="menu-item" class="menu-item-title">
-                            {{ __('Présentation') }}
-                        </span>
-                </li>
-                </a>
-                <div class="menu-submenu">
-                    <ul>
-                        <li>{{ __('Notre histoire') }}</li>
-                        <li>{{ __('Nos valeurs') }}</li>
-                        <li>{{ __('Notre équipe') }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="menu-item">
-                <a href="/produits" class="menu-link" onclick="return false;">
-                    <li>
-                        <span contenteditable="true" data-tag="menu-item" class="menu-item-title">
-                            {{ __('Services') }}
-                        </span>
+                    <li role="none" class="menu-item">
+                        <a role="menuitem"  href="/" class="menu-link" >
+                            <span contenteditable="true" class="menu-item-title">
+                                {{ __('Nos valeurs') }}
+                            </span>
+                        </a>
                     </li>
-                </a>
-                <div class="menu-submenu">
-                    <ul>
-                        <li>{{ __('Catalogue') }}</li>
-                        <li>{{ __('Réservations') }}</li>
-                        <li>{{ __('Tarifs') }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="menu-item">
-                <a href="/contact" class="menu-link" onclick="return false;">
-                    <li>
-                        <span contenteditable="true" data-tag="menu-item" class="menu-item-title">
-                            {{ __('Contact') }}
-                        </span>
+                    <li role="none" class="menu-item">
+                        <a role="menuitem"  href="/" class="menu-link" >
+                            <span contenteditable="true" class="menu-item-title">
+                                {{ __('Notre histoire') }}
+                            </span>
+                        </a>
                     </li>
+                </ul>
+            </li>
+            <li role="none" class="menu-item has-submenu">
+                <button role="menuitem" aria-expanded="false" aria-controls="catalog_menu" class="menu-name menu-submenus">
+                    <span contenteditable="true" class="menu-item-title">
+                        {{ __('Catalogue') }}
+                    </span>
+                </button>
+                <ul role="menu" aria-label="" id="catalog_menu">
+                    <li role="none" class="menu-item">
+                        <a role="menuitem" href="/sneakers" class="menu-link" onclick="return false;">
+                            <span contenteditable="true" class="menu-item-title">
+                                {{ __('Baskets') }}
+                            </span>
+                        </a>
+                    </li>
+                    <li role="none" class="menu-item">
+                        <a role="menuitem" href="/heels" class="menu-link" onclick="return false;">
+                            <span contenteditable="true" class="menu-item-title">
+                                {{ __('Talons') }}
+                            </span>
+                        </a>
+                    </li>
+                    <li role="none" class="menu-item">
+                        <a role="menuitem" href="/flipflops" class="menu-link" onclick="return false;">
+                            <span contenteditable="true" class="menu-item-title">
+                                {{ __('Claquettes') }}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li role="none" class="menu-item">
+                <a role="menuitem"  href="/contact" class="menu-link" onclick="return false;">
+                    <span contenteditable="true" class="menu-item-title">
+                        {{ __('Contact') }}
+                    </span>
                 </a>
-            </div>
+            </li>
         </ul>
     </nav>
 </div>

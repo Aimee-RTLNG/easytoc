@@ -153,9 +153,6 @@ textarea {
       border-radius: 50%;
       @include flex-row-center;
   }
-  .code-display {
-    overflow-wrap: break-word;
-  }
 
   .required-failed{
       border: 3px solid rgb(221, 19, 19);
@@ -188,3 +185,33 @@ textarea {
         margin-bottom: 1.5rem;
     }
  }
+
+ /* style du code généré */
+
+ xmp{
+    margin: 0;
+    padding: 0;
+    display: inherit;
+}
+
+.code-display{
+    font-size: 1em !important;
+    margin: 0 !important;
+    padding: 1.5em !important;
+    width: 100% !important;
+    border-radius: 5px !important;
+    border: 1px solid #888;
+    // word-break: break-all;
+    overflow: hidden;
+    color: white;
+    font-family: monospace, monospace;
+    background: #000;
+}
+
+pre.prettyprinted{
+    font-size: 100% !important;
+    margin: 0 !important;
+    padding: 1.5em !important;
+    width: 100% !important;
+    border-radius: 5px !important;
+}

@@ -264,10 +264,10 @@
                 <div class="bloc-creation-interface">
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
-                            <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
+                            <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                                 <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                             </button>
-                            <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
+                            <button id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
                                 <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                             </button>
                         </div>
@@ -313,7 +313,7 @@
                         </div>
                     </div>
                     <div class="side-tool" style="display: none">
-                        <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                        <button class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
@@ -432,11 +432,11 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action row edit-project-action col-12 my-3" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+            <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
                 <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                 <p>{{ __('Annuler les modifications') }}</p>
             </button>
-            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
+            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
                 <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                 <p>
                     {{ __('Sauvegarder ce projet') }}

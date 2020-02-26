@@ -51264,7 +51264,55 @@ $(window).on('load', function () {
   if (onglet_actif) {
     $(onglet_actif).addClass('onglet-actif');
   }
-});
+}); // RACCOURCIS CLAVIER
+// CTRL ALT U - move up 
+// CTRL ALT D - move down
+// CTRL ALT T - trash
+// CTRL ALT I - bloc informations
+// CTRL ALT S - bloc informations
+// (bien relacher la touche custom avant le ctrl alt )
+
+document.onkeyup = function (e) {
+  if (e.ctrlKey && e.altKey && e.which == 85) {
+    if ($(".content-editable-selected").length > 0) {
+      if (!$("#action-move-up").attr('disabled')) {
+        $("#action-move-up").click();
+      }
+    }
+  } else if (e.ctrlKey && e.altKey && e.which == 68) {
+    if ($(".content-editable-selected").length > 0) {
+      if (!$("#action-move-down").attr('disabled')) {
+        $("#action-move-down").click();
+      }
+    }
+  } else if (e.ctrlKey && e.altKey && e.which == 84) {
+    if ($(".content-editable-selected").length > 0) {
+      if (!$("#action-delete").attr('disabled')) {
+        $("#action-delete").click();
+      }
+    }
+  } else if (e.ctrlKey && e.altKey && e.which == 73) {
+    if ($(".action-supp-crea").length > 0) {
+      $(".action-supp-crea input").first().focus();
+    }
+  } else if (e.ctrlKey && e.altKey && e.which == 83) {
+    console.log(e);
+
+    if ($('#btn-save-project, #btn-update-project').length > 0) {
+      console.log(e);
+      var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+
+      if (lang == "en") {
+        _message = "Are you sure to save and quit your project ? You will be redirected.";
+      }
+
+      if (window.confirm(_message)) {
+        $('#btn-save-project').click();
+        $('#btn-update-project').click();
+      }
+    }
+  }
+};
 
 /***/ }),
 
@@ -51438,7 +51486,7 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     "type-special": {
       "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
       "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-      "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
+      "reset-button": "\n\t<input type='reset' value='Reset' form='generated-form' title='Reset the form'>"
     }
   };
 } else {
@@ -51467,7 +51515,7 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     "type-special": {
       "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
       "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-      "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+      "reset-button": "\n\t<input type='reset' value='Réinitialiser' form='generated-form'>"
     }
   };
 } // Bien séparer le contenu en fonction des langues si le texte à l'intérieur des balises peut se traduire : pas la peine si uniquement le mot "Menu" apparait.

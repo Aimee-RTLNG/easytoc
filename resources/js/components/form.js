@@ -104,7 +104,7 @@ if( lang == "en" ){
         "type-special": {
             "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
             "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-            "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
+            "reset-button": "\n\t<input type='reset' value='Reset' form='generated-form' title='Reset the form'>"
         }
     };
 } else {
@@ -133,7 +133,7 @@ if( lang == "en" ){
         "type-special": {
             "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
             "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-            "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+            "reset-button": "\n\t<input type='reset' value='Réinitialiser' form='generated-form'>"
         }
     };
 }
@@ -1065,3 +1065,7 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link'); // pas touche
 new ClipboardJS('#copy-raw-code'); // pas touche
+
+
+  
+  
