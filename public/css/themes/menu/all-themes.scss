@@ -71,21 +71,18 @@ $themes: (
         background-color: themed('backgroundColor');  
         display: flex;
         width: 100%;
+        height: 60px;
         justify-content: space-evenly;
 
-        .has-submenu{
-            .menu-link:after{
-                content : "▾";
-                font-weight: bold;
-                padding-left: 10px;
-                font-size: 20px;
-            }
-        }
+        .hidden{
+            display: none !important;
+        }        
 
         .menu-identity{
             display: flex;
             justify-content: space-between;
             align-items: center;
+            float: left;
             width: 20%;
             padding: 10px 0px 10px 15px;
 
@@ -113,6 +110,7 @@ $themes: (
                 opacity: .3;
                 position: relative;
                 left: 1px;
+                margin-left: 10px;
             }
         }
 
@@ -121,12 +119,16 @@ $themes: (
             justify-content: space-around;
             align-items: center;
             list-style: none;
-            width: 80%;
             margin: 0;
             padding: 0;
+            min-width: 80%;
+
+            &.full-width{
+                width: 100%;
+            }
 
             .menu-item{
-
+                position: relative;
                 width: 100%;
                 height: 100%;
                 display: flex;
@@ -146,16 +148,40 @@ $themes: (
 
                 &.menu-title{
                     &:hover, &:focus{
-
                         text-decoration: underline;
+                    }
                 }
 
-                &:hover, &:focus{
-
+                &:hover, &:focus, .menu-item > a:hover , .menu-item > a:focus{
                     background-color: themed('aHoverColor'); 
                     border-bottom: 5px solid themed('borderHover'); 
-
                 }
+            }
+
+            .has-submenu{
+                .menu-submenus:after{
+                    content : "▾";
+                    font-weight: bold;
+                    padding-left: 10px;
+                    font-size: 20px;
+                }
+    
+                ul{
+                    display: none;
+                    width: calc(100% + 40px);
+
+                    li span{
+                        padding: 10px;
+                    }
+                }
+    
+                a:hover + ul, a:focus + ul, ul:hover, ul:focus{
+                    display: block;
+                    position: absolute;
+                    left: -40px;
+                    top: 60px;
+                }
+                
             }
         }
 
@@ -163,6 +189,8 @@ $themes: (
             display: none;
         }
 
+        span{
+            text-align: center;
+        }
     }
-
 }

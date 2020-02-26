@@ -73,8 +73,8 @@ export let element_types; // En exportant ce tableau objet, on permet au fichier
 if( lang == "en" ){
     element_types = {
         "type-info": {
-            "insert-title": "\t<span contenteditable='true' data-tag='menu-title' class='menu-title'>Mon menu</span>\n",
-            "insert-img": "\t<div class='menu-logo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
+            "insert-title": "\t<span contenteditable='true' id='menu-title' data-tag='menu-title' class='menu-title'>Mon menu</span>\n",
+            "insert-img": "\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
             "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
             "insert-separator": "\t<span class='menu-separator'></span>\n",
         },
@@ -87,32 +87,25 @@ if( lang == "en" ){
 } else {
     element_types = {
         "type-info": {
-            "insert-title": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
-            "insert-img": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
-            "insert-banner": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-            "insert-separator": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+            "insert-title": "\t<span contenteditable='true' id='menu-title' data-tag='menu-title' class='menu-title'>Mon menu</span>\n",
+            "insert-img": "\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
+            "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
+            "insert-separator": "\t<span class='menu-separator'></span>\n",
         },
         "type-menu": {
-            "insert-menu_solo": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-            "insert-menu_many": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-            "insert-lower_menu": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+            "insert-menu_link": '\t<div class="menu-item"><a href="/link" class="menu-link" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
+            "insert-menu_many": '\t<div class="menu-item"><a href="/link" class="menu-link has-submenu" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
+            "insert-lower_menu": '\t<div class="menu-submenu"><ul></ul></div>\n'
         }
     };
 }
-// Bien séparer le contenu en fonction des langues si le texte à l'intérieur des balises peut se traduire : pas la peine si uniquement le mot "Menu" apparait.
-// Par contre, si le mot Lien est écrit, alors il faudra un équivalent Link
 
-// ANCHOR Rendre l'ancien contenu dynamique ( à ne pas toucher )
-// Cette fonction, utilisée à la fois sur ce fichier et sur le fichier import_machin, permet de rendre le contenu HTML dynamique
-// c'est à dire : imaginons que je load un "<h1>Titre</h1>" dans l'espace de création, soit parce que je suis en modification, soit parce que j'ai importé des données
-// mon contenu ne possède pas les bons attributs pour permettre le changement dynamique ( contenteditable ) car, lors de la sauvegarde, ceux-ci sont enlevés (logique)
-// il faut alors remettre des "contenteditable" sur chaque élément modifiable dans le texte.
-// de plus, cette fonction permet de récupèrer les paramètre du contenu généré (titre du formulaire, lien, theme, options).... 
+
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
-    $('#full-form .label-text').attr('contenteditable', true);
-    $('#full-form .label-option-text').attr('contenteditable', true);
-    $('#full-form #form-title, #full-form h2,#full-form p,#full-form a,#full-form ol,#full-form ul,#full-form hr').attr('contenteditable', true);
+    $('#full-menu .label-text').attr('contenteditable', true);
+    $('#full-menu .label-option-text').attr('contenteditable', true);
+    $('#full-menu #form-title, #full-form h2,#full-form p,#full-form a,#full-form ol,#full-form ul,#full-form hr').attr('contenteditable', true);
     
     // On récupère les paramètres
     // Theme
@@ -122,16 +115,13 @@ export function getOldContent() {
     selected_theme.prop('checked', true);
 
     // Titre (non présent pour les menu)
-    let actual_title = $("#full-form #form-title").text();
-    $("#form-creator-title").val(actual_title);
-
-    // Methode (non présent pour les menu)
-    let actual_method = $("#generated-menu").attr('method');
-    $("#form-creator-method").val(actual_method);
+    let actual_title = $("#full-menu #menu-title").text();
+    $("#menu-creator-title").val(actual_title);
 
     // Lien (non présent pour les menu)
-    let actual_link = $("#generated-menu").attr('action');
-    $("#form-creator-link").val(actual_link);
+    let actual_link = $("#menu-logo").css('background-image');
+    console.log(actual_link);
+    $("#menu-creator-link").val(actual_link);
 
     // Option de réinitialisation (non présent pour les menu)
     let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
@@ -147,8 +137,7 @@ function updatecontent() {
     var blueprint_content = $('#content-created-blueprint').html();
     // on trie les éléments à ne pas inclure dans le code 
     blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
-    blueprint_content = blueprint_content.replace(/ disabled="(.*?)\"/g, "");
-    blueprint_content = blueprint_content.replace(/ option-selected /g, "");
+    blueprint_content = blueprint_content.replace(/ onclick="(.*?)\"/g, "");
     blueprint_content = blueprint_content.replace(/ content-editable-selected/g, "");
     // on remplace les doubles sauts de lignes
     blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
@@ -171,23 +160,70 @@ if ($('#raw-code').val().length <= 0) {
     updatecontent();
 }
 
-// ANCHOR Changement de titre ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
-$('#form-creator-title').on('keyup', function () {
-    $('#form-title').text($('#form-creator-title').val());
+// ANCHOR Changement de titre du menu
+$('#menu-creator-title').on('keyup', function () {
+    $('#full-menu #menu-title').text($('#menu-creator-title').val());
     updatecontent();
 });
 
-// ANCHOR Changement de lien ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
-$('#form-creator-link').on('keyup', function () {
-    $('#generated-menu').attr("action", $('#form-creator-link').val());
+// ANCHOR Afficher ou non le titre du menu
+$('#menu-creator-title-display').on('click', function () {
+    if( $(this).is(":checked") ){
+        $('#full-menu .menu-identity .menu-separator').before( element_types["type-info"]["insert-title"] );
+        $('#full-menu .menu-identity #menu-title').text( $('#menu-creator-title').val() );
+        if( $('#menu-creator-link-display').is(":checked") ){
+            $('#full-menu .menu-identity #menu-logo').removeClass('menu-logo-solo');
+            $('#full-menu .menu-identity').removeClass('hidden');
+            $('#menubar-easytoc').removeClass('full-width');
+        } else {
+            $('#full-menu .menu-identity').removeClass('hidden');
+            $('#menubar-easytoc').removeClass('full-width');
+        }
+    } else {
+        $('#full-menu #menu-title').remove();
+        if( $('#menu-creator-link-display').is(":checked") ){
+            $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
+            $('#full-menu .menu-identity').removeClass('hidden');
+            $('#menubar-easytoc').removeClass('full-width');
+        } else {
+            $('#full-menu .menu-identity').addClass('hidden');
+            $('#menubar-easytoc').addClass('full-width');
+        }
+    }
+
+});
+
+// ANCHOR Changement de lien du logo
+$('#menu-creator-link').on('keyup', function () {
+    $("#menu-logo").css('background-image', 'url('+$('#menu-creator-link').val()+')');
     updatecontent();
 });
 
-// ANCHOR Changement de méthode ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
-$('#form-creator-method').on('change', function () {
-    $('#generated-menu').attr("method", $('#form-creator-method').val());
-    updatecontent();
+// ANCHOR Afficher ou non le logo
+$('#menu-creator-link-display').on('click', function () {
+   if( $(this).is(":checked") ){
+     $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
+     $('#full-menu .menu-identity #menu-logo').css('background-image', 'url('+$('#menu-creator-link').val()+')');
+     if( !$('#menu-creator-title-display').is(":checked") ){
+        $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
+        $('#full-menu .menu-identity').removeClass('hidden');
+        $('#menubar-easytoc').removeClass('full-width');
+     } else {
+        $('#full-menu .menu-identity').removeClass('hidden');
+        $('#menubar-easytoc').removeClass('full-width');
+     }
+   } else {
+     $('#full-menu #menu-logo').remove();
+     if( $('#menu-creator-title-display').is(":checked") ){
+        $('#full-menu .menu-identity').removeClass('hidden');
+        $('#menubar-easytoc').removeClass('full-width');
+     } else {
+        $('#full-menu .menu-identity').addClass('hidden');
+        $('#menubar-easytoc').addClass('full-width');
+     }
+   }
 });
+
 
 // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
 // Cette fonction se base sur la liste d'élément précédemment définis element_types 

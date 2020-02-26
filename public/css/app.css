@@ -11724,6 +11724,10 @@ body {
   margin: 30px 0px;
 }
 
+.menu-tabs #content-created-blueprint {
+  resize: vertical;
+}
+
 .compte-page {
   background-color: #F4F2F0;
 }

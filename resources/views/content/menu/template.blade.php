@@ -1,9 +1,9 @@
 <div data-tag="menu" class="theme-blue" id="generated-menu" name="generated-menu">
     <nav id="full-menu" aria-label="{{ __('Mon menu') }}" role="menubar">
         <div class="menu-identity">
-            <div class="menu-logo" style="background-image: url({{ URL::asset('images/favicon.ico') }})"></div>
-            <span contenteditable="true" data-tag="menu-title" class="menu-title">
-                {{ __('Mon menu') }}
+            <div class="menu-logo" id="menu-logo" style="background-image: url({{ URL::asset('images/favicon.ico') }})"></div>
+            <span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">
+                {{ __('Titre du menu') }}
             </span>
             <span class="menu-separator"></span>
         </div>
@@ -16,28 +16,28 @@
                 </a>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <a role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0" class="menu-title" onclick="return false;">
+                <a role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0" class="menu-name menu-submenus" >
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Présentation') }}
                     </span>
                 </a>
-                <ul role="menu" aria-label="">
-                    <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="-1" href="/team" class="menu-link" onclick="return false;">
+                <ul role="menu" aria-label="" tabindex="0" >
+                    <li role="none" class="menu-item" tabindex="1">
+                        <a role="menuitem" href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Notre équipe') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="-1" href="/values" class="menu-link" onclick="return false;">
+                        <a role="menuitem" tabindex="1" href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Nos valeurs') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="-1" href="/history" class="menu-link" onclick="return false;">
+                        <a role="menuitem" tabindex="1" href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Notre histoire') }}
                             </span>
@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <a role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0" class="menu-link" href="/catalog" onclick="return false;">
+                <a role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0" class="menu-link menu-submenus" href="/catalog" onclick="return false;">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Catalogue') }}
                     </span>
