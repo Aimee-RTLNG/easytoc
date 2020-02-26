@@ -8,7 +8,7 @@
             <span class="menu-separator"></span>
         </div>
         <ul class="menu-items" role="menubar" aria-label="{{ __('Mon menu') }}" id="menubar-easytoc">
-            <li role="none" class="menu-item">
+            <li role="none" class="menu-item" tabindex="1">
                 <a role="menuitem"  href="/home" class="menu-name">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Accueil') }}
@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <button role="menuitem" aria-expanded="false" aria-controls="presentation_menu"  class="menu-name menu-submenus" >
+                <button role="menuitem" aria-expanded="false" aria-controls="presentation_menu"  class="menu-name menu-submenus" tabindex="1">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Présentation') }}
                     </span>
@@ -53,21 +53,21 @@
                 </button>
                 <ul role="menu" aria-label="" id="catalog_menu">
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="-1" href="/sneakers" class="menu-link" onclick="return false;">
+                        <a role="menuitem" href="/sneakers" class="menu-link" onclick="return false;">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Baskets') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="-1" href="/heels" class="menu-link" onclick="return false;">
+                        <a role="menuitem" href="/heels" class="menu-link" onclick="return false;">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Talons') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="-1" href="/flipflops" class="menu-link" onclick="return false;">
+                        <a role="menuitem" href="/flipflops" class="menu-link" onclick="return false;">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Claquettes') }}
                             </span>

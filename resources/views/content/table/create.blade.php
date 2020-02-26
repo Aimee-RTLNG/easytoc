@@ -347,26 +347,7 @@
                         </div>
                     </div>
 
-
-                    {{-- <div class="side-tool vertical-tools" style="display: none">
-                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
-                            <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
-                        </button>
-                        <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer verse le bas') }}">
-                            <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
-                        </button>
-                    </div> --}}
-
                 </div>
-
-                {{-- <div class="side-tool horizontal-tools flex-row justify-content-around" style="display: none">
-                    <button accesskey="l" id="action-move-left" data-action="move-left" class="btn-info table-element-action action-move-left" title="{{ __('Déplacer vers la gauche') }}">
-                        <i class="fas fa-caret-left" title="{{ __('Déplacer vers la gauche') }}"></i>
-                    </button>
-                    <button accesskey="r" id="action-move-right" data-action="move-right" class="btn-info table-element-action action-move-right" title="{{ __('Déplacer vers la droite') }}">
-                        <i class="fas fa-caret-right" title="{{ __('Déplacer vers la droite') }}"></i>
-                    </button>
-                </div> --}}
 
             </div>
         </div>
@@ -375,11 +356,11 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3" role="region" aria-labelledby="form_actions">
-            <button type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+            <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                 <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                 <p>{{ __('Annuler les modifications') }}</p>
             </button>
-            <button type="submit" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">
+            <button type="submit" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">
                 <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                 <p>
                     {{ __('Sauvegarder ce projet') }}

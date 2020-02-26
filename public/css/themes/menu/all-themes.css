@@ -39,7 +39,7 @@
 .theme-white #full-menu .menu-identity .menu-logo {
   width: 40px;
   height: 40px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -120,6 +120,8 @@
 }
 
 .theme-white #full-menu .menu-items .has-submenu .menu-submenus {
+  width: 100%;
+  height: 100%;
   background: none;
   border: 0px solid black;
   color: black;
@@ -192,7 +194,7 @@
 .theme-black #full-menu .menu-identity .menu-logo {
   width: 40px;
   height: 40px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -273,6 +275,8 @@
 }
 
 .theme-black #full-menu .menu-items .has-submenu .menu-submenus {
+  width: 100%;
+  height: 100%;
   background: none;
   border: 0px solid black;
   color: white;
@@ -345,7 +349,7 @@
 .theme-green #full-menu .menu-identity .menu-logo {
   width: 40px;
   height: 40px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -426,6 +430,8 @@
 }
 
 .theme-green #full-menu .menu-items .has-submenu .menu-submenus {
+  width: 100%;
+  height: 100%;
   background: none;
   border: 0px solid black;
   color: black;
@@ -498,7 +504,7 @@
 .theme-red #full-menu .menu-identity .menu-logo {
   width: 40px;
   height: 40px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -579,6 +585,8 @@
 }
 
 .theme-red #full-menu .menu-items .has-submenu .menu-submenus {
+  width: 100%;
+  height: 100%;
   background: none;
   border: 0px solid black;
   color: white;
@@ -651,7 +659,7 @@
 .theme-blue #full-menu .menu-identity .menu-logo {
   width: 40px;
   height: 40px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -732,6 +740,8 @@
 }
 
 .theme-blue #full-menu .menu-items .has-submenu .menu-submenus {
+  width: 100%;
+  height: 100%;
   background: none;
   border: 0px solid black;
   color: white;
@@ -804,7 +814,7 @@
 .theme-grey #full-menu .menu-identity .menu-logo {
   width: 40px;
   height: 40px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -885,6 +895,8 @@
 }
 
 .theme-grey #full-menu .menu-items .has-submenu .menu-submenus {
+  width: 100%;
+  height: 100%;
   background: none;
   border: 0px solid black;
   color: white;

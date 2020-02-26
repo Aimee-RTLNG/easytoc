@@ -207,3 +207,52 @@ $(window).on('load', function(){
         $(onglet_actif).addClass('onglet-actif');
     }
 })
+
+// RACCOURCIS CLAVIER
+
+// CTRL ALT U - move up 
+// CTRL ALT D - move down
+// CTRL ALT T - trash
+// CTRL ALT I - bloc informations
+// CTRL ALT S - bloc informations
+
+// (bien relacher la touche custom avant le ctrl alt )
+
+document.onkeyup = function(e) {
+    if (e.ctrlKey && e.altKey && e.which == 85) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-up").attr('disabled') ){
+                $("#action-move-up").click();
+            }
+        }
+    } else if (e.ctrlKey && e.altKey && e.which == 68) {
+          if( $(".content-editable-selected").length > 0 ){
+              if( !$("#action-move-down").attr('disabled') ){
+                 $("#action-move-down").click();
+              }
+          }
+    } else if (e.ctrlKey && e.altKey && e.which == 84) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-delete").attr('disabled') ){
+               $("#action-delete").click();
+            }
+        }
+    } else if (e.ctrlKey && e.altKey && e.which == 73) {
+        if( $(".action-supp-crea").length > 0 ){
+            $(".action-supp-crea input").first().focus();
+        }
+    } else if (e.ctrlKey && e.altKey && e.which == 83) {
+        console.log(e);
+        if( $('#btn-save-project, #btn-update-project').length > 0 ){
+            console.log(e);
+            let message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+            if ( lang == "en" ){
+                message = "Are you sure to save and quit your project ? You will be redirected.";
+            }
+            if (window.confirm(message)) { 
+                $('#btn-save-project').click();
+                $('#btn-update-project').click();
+            }        
+        }
+    }
+};
