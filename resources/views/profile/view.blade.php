@@ -25,13 +25,13 @@
         </div>
         @endif
         <div class="row d-flex">
-            <div class="col-8">
+            <div class="col-lg-8">
                 <div class="entete">
                     <h2 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h2>
                     <div class="entete__under"></div>
                 </div>
             </div>
-            <div class="col-4 d-flex align-items-center justify-content-center">
+            <div class="col-lg-4 start-project-profile">
                 <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
                     <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-arrow-right"></i>
@@ -49,7 +49,7 @@
             <div class="col-lg-8">
                 <div class="dashboard">
                     <div class="row profile_content__filters m-0 p-0">
-                        <div class="profile_content__options col-12 d-flex justify-space-between">
+                        <div class="profile_content__options col-12">
                             <div id="list-filters" class="list-filters">
                                 <button class="btn btn-filter-type active" data-type="all">
                                     {{ __('Tous') }}
@@ -164,7 +164,7 @@
                         <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
                         <h2 class="mon-compte__entete__title">{{ __('Informations de votre compte') }}</h2>
                         <div class="fleche-plus">
-                            <i class="fas fa-chevron-down " tabindex="0"></i>
+                            <i class="fas fa-chevron-down" tabindex="0"></i>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -323,9 +323,9 @@
                             <div class="mon-compte__entete">
                                 <div class="mon-compte__entete__picto"><i class="fas fa-frown"></i></div>
                                 <h2 class="mon-compte__entete__title">{{ __('Supprimer votre compte') }}</h2>
-                                <div class="fleche-plus">
+                                {{-- <div class="fleche-plus">
                                     <i class="fas fa-chevron-down " tabindex="0"></i>
-                                </div>
+                                </div> --}}
                             </div>
                             <form id="formDeleteUser" class="form-horizontal" method="POST" action="{{ route('profile.destroy', ['user' => $user]) }}">
                                 {{ csrf_field() }}

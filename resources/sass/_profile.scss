@@ -334,6 +334,14 @@
     color: white;
     background-color: $red;
 }
+.start-project-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media(max-width: 991px) {
+        justify-content: flex-start;
+    }
+}
 .fleche-plus {
     display: none;
     position: absolute;
@@ -408,6 +416,9 @@
     }
     .list-filters {
         margin-left: 0px;
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        }
         .btn {
             flex: 1 1;
         }

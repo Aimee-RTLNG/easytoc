@@ -257,6 +257,9 @@ input[type="checkbox"], input[type="radio"]{
             outline:none;
             border: none;
             background-color: white;
+            &:focus {
+                border: $bleu 1.5px solid;
+            }
           }
           
           input[type='radio']:hover {
@@ -285,7 +288,7 @@ input[type="checkbox"], input[type="radio"]{
           }
           input[type='radio'][value='white']:checked:before {
             background:$gris-clair;
-            border: 1px $gris-crea solid;
+            border: 1px black solid;
           }
           input[type='radio'][value='blue']:checked:before {
             background:$bleu;
@@ -337,7 +340,7 @@ input[type="checkbox"], input[type="radio"]{
     }
     &:focus {
         background-color: $gris-clair;
-        border: 1px $gris-crea solid;
+        border: 2px $bleu solid;
         color: black;
         font-weight: bold;
     }
@@ -372,19 +375,10 @@ input[type="checkbox"], input[type="radio"]{
     text-align: center;
     position: relative;
     width: 240px;
+    margin-bottom: 2px;
     @media (max-width: 992px){
         text-align: left;
     }
-    // &__aide {
-    //     position: absolute;
-    //     right: 10px;
-    //     top: 10px;
-    // }
-    // .element_add-option {
-    //     position: relative;
-    //     top: 50%;
-    //     transform: translateY(-50%);
-    // }
 }
 .action-supp-crea {
     & > * {
