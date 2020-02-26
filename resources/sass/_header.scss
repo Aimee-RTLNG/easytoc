@@ -37,8 +37,16 @@
         }
 
         .menu-connect{
+
+            .nav-item{
+                a:focus{
+                    background-color: $blue;
+                    color: white;
+                }
+            }
+
             .nav-item:hover, .nav-item:focus{
-                a{
+                a, a:focus{
                     background-color: $blue;
                     color: white;
                 }
