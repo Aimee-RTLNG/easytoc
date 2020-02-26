@@ -9,6 +9,18 @@ body {
 .btn-primary {
     @include expletus;
 }
+.btn-primary:hover,.btn-primary:focus  {
+    color: #fff;
+    background-color: #165ba0;
+    border-color: #155595;
+}
+#btn-save-project:focus {
+    border: 2px $bleu solid;
+}
+.modal-content .close {
+    font-size: 35px;
+    padding: 4px 15px;
+}
 a {
     color: inherit;
     &:hover, &:focus {
@@ -38,6 +50,9 @@ p, h1, h2{
         @include expletus;
         font-size: 3.4rem;
         font-weight: bold;
+        @media (max-width: 576px) {
+            font-size: 2.8rem;
+        }
         &--username {
             color: $bleu;
             display: block;
@@ -88,6 +103,9 @@ textarea {
     background-color: $gris-crea;
     border: 1px $border solid;
     @include flex-row-center;
+    &:hover, &:focus {
+        border: 2px $bleu solid;
+    }
   }
   
   .check-box:hover {

@@ -103,7 +103,7 @@
     justify-content: center;
     svg {
         cursor: pointer;
-        font-size: 2.5rem;
+        font-size: 36px;
     }
 }
 // Section outils
@@ -287,6 +287,7 @@
 }
 @include media-breakpoint-down(md) { 
     //992
+
     .section-home {
         height: auto;
         padding: 40px 0px;
@@ -298,6 +299,9 @@
         &__title {
             min-width: 85%;
         }
+    }
+    .home-present {
+        padding-bottom: 55px;
     }
     .home-present__txt {
         padding-bottom: 30px;

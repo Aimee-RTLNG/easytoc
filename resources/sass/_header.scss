@@ -10,9 +10,18 @@
 
             &.navbar-collapse.show{
                 display: flex;
-                align-items: center;
-                flex-direction: column;
-                padding-bottom: 15px;
+            }
+            &.navbar-collapse {
+                @media(max-width: 992px) {
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    flex-direction: column;
+                    padding-bottom: 15px;
+                    .menu-connect{
+                        padding: 0px 10px;
+                        justify-content: center;
+                    }
+                }
             }
 
             .nav{
@@ -54,7 +63,7 @@
     
             .nav-item.onglet-actif{
                 a{
-                    background-color: $blue;
+                    background-color: $bleu;
                     p{ 
                         color: white !important;
                     }
@@ -80,8 +89,9 @@
 
     &:hover, &:focus{
         color: white !important;
-        border-bottom: 5px solid $blue;
+        border-bottom: 5px solid $bleu-clair;
         background-color: black;
+        padding: 10px;
     }
 }
 #logo-nav {
@@ -98,12 +108,12 @@
     // }
 
     &.onglet-actif{
-        background-color: $blue;
+        background-color: $bleu;
     }
 
     &:hover, &:focus{
         color: white !important;
-        border-bottom: 5px solid $blue;
+        border-bottom: 5px solid $bleu-clair;
         background-color: black;
     }
 }

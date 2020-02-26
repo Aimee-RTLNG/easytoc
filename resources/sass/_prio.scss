@@ -9,6 +9,9 @@
         color: $dark;
         background-color: $gris-btn-hover;
     }
+    &:focus {
+        border: 2px $bleu solid;
+    }
     .btn-crea__icon {
         color: $dark;
     }

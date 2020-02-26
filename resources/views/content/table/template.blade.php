@@ -1,4 +1,4 @@
-<div id="generated-table" class="theme-white">
+<div id="generated-table" class="theme-blue">
     <span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">
         {{ __('Titre du tableau') }}
     </span>
