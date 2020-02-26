@@ -159,27 +159,31 @@ $themes: (
             }
 
             .has-submenu{
-                .menu-submenus:after{
-                    content : "▾";
-                    font-weight: bold;
-                    padding-left: 10px;
-                    font-size: 20px;
+
+                .menu-submenus{
+                
+                    background: none;
+                    border: 0px solid black;
+                    color: themed('textColor'); 
+
+                    &:after{
+                        content : "▾";
+                        font-weight: bold;
+                        padding-left: 10px;
+                        font-size: 20px;
+                    }
                 }
     
                 ul{
                     display: none;
                     width: calc(100% + 40px);
+                    position: absolute;
+                    left: -40px;
+                    top: 60px;
 
                     li span{
                         padding: 10px;
                     }
-                }
-    
-                a:hover + ul, a:focus + ul, ul:hover, ul:focus{
-                    display: block;
-                    position: absolute;
-                    left: -40px;
-                    top: 60px;
                 }
                 
             }

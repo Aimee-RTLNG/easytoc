@@ -9,20 +9,20 @@
         </div>
         <ul class="menu-items" role="menubar" aria-label="{{ __('Mon menu') }}" id="menubar-easytoc">
             <li role="none" class="menu-item">
-                <a role="menuitem" tabindex="0" href="/home" class="menu-link" onclick="return false;">
+                <a role="menuitem"  href="/home" class="menu-name">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Accueil') }}
                     </span>
                 </a>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <a role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0" class="menu-name menu-submenus" >
+                <button role="menuitem" aria-expanded="false" aria-controls="presentation_menu"  class="menu-name menu-submenus" >
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Présentation') }}
                     </span>
-                </a>
-                <ul role="menu" aria-label="" tabindex="0" >
-                    <li role="none" class="menu-item" tabindex="1">
+                </button>
+                <ul role="menu" aria-label="" id="presentation_menu" >
+                    <li role="none" class="menu-item" >
                         <a role="menuitem" href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Notre équipe') }}
@@ -30,14 +30,14 @@
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="1" href="/" class="menu-link" >
+                        <a role="menuitem"  href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Nos valeurs') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" tabindex="1" href="/" class="menu-link" >
+                        <a role="menuitem"  href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Notre histoire') }}
                             </span>
@@ -46,12 +46,12 @@
                 </ul>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <a role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0" class="menu-link menu-submenus" href="/catalog" onclick="return false;">
+                <button role="menuitem" aria-expanded="false" aria-controls="catalog_menu" class="menu-name menu-submenus">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Catalogue') }}
                     </span>
-                </a>
-                <ul role="menu" aria-label="">
+                </button>
+                <ul role="menu" aria-label="" id="catalog_menu">
                     <li role="none" class="menu-item">
                         <a role="menuitem" tabindex="-1" href="/sneakers" class="menu-link" onclick="return false;">
                             <span contenteditable="true" class="menu-item-title">
@@ -76,7 +76,7 @@
                 </ul>
             </li>
             <li role="none" class="menu-item">
-                <a role="menuitem" tabindex="0" href="/contact" class="menu-link" onclick="return false;">
+                <a role="menuitem"  href="/contact" class="menu-link" onclick="return false;">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Contact') }}
                     </span>

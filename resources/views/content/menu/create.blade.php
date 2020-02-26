@@ -167,7 +167,7 @@
                         </button>
                         <button class="btn btn-primary btn_crea add-element type-layout" type="button" aria-label="{{ __('Menu avec sous-menu') }}" id="insert-unordered_list" role="listitem" title="{{ __("Ajouter un menu avec sous-menu") }}">
                             <i class="fa fa-list-ul"></i>
-                            {{ __('Menu avec sous-menu') }}
+                            {{ __('Lien avec sous-menu') }}
                         </button>
                     </div>
                     <div role="section" class="col-md-5" aria-labelledby="form_actions_text">
