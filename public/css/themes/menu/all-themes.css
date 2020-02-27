@@ -10,6 +10,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme-white #full-menu .hidden {
@@ -114,7 +115,7 @@
   text-decoration: underline;
 }
 
-.theme-white #full-menu .menu-items .menu-item:hover, .theme-white #full-menu .menu-items .menu-item:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-white #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-white #full-menu .menu-items .menu-item a:hover, .theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:hover, .theme-white #full-menu .menu-items .menu-item button:focus {
   background-color: #cacaca;
   border-bottom: 5px solid #5e5e5e;
 }
@@ -127,8 +128,15 @@
   color: black;
 }
 
-.theme-white #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-white #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-white #full-menu .menu-items .has-submenu .menu-submenus:after {
   content: "▾";
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.theme-white #full-menu .menu-items .has-submenu .menu-submenus.open .theme-white #full-menu .menu-items .has-submenu .menu-submenus:after {
+  content: "▴";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
@@ -165,6 +173,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme-black #full-menu .hidden {
@@ -269,7 +278,7 @@
   text-decoration: underline;
 }
 
-.theme-black #full-menu .menu-items .menu-item:hover, .theme-black #full-menu .menu-items .menu-item:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-black #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-black #full-menu .menu-items .menu-item a:hover, .theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:hover, .theme-black #full-menu .menu-items .menu-item button:focus {
   background-color: black;
   border-bottom: 5px solid #d4d4d4;
 }
@@ -282,8 +291,15 @@
   color: white;
 }
 
-.theme-black #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-black #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-black #full-menu .menu-items .has-submenu .menu-submenus:after {
   content: "▾";
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.theme-black #full-menu .menu-items .has-submenu .menu-submenus.open .theme-black #full-menu .menu-items .has-submenu .menu-submenus:after {
+  content: "▴";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
@@ -320,6 +336,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme-green #full-menu .hidden {
@@ -424,7 +441,7 @@
   text-decoration: underline;
 }
 
-.theme-green #full-menu .menu-items .menu-item:hover, .theme-green #full-menu .menu-items .menu-item:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-green #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-green #full-menu .menu-items .menu-item a:hover, .theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:hover, .theme-green #full-menu .menu-items .menu-item button:focus {
   background-color: #016d67;
   border-bottom: 5px solid #48f8bd;
 }
@@ -437,8 +454,15 @@
   color: black;
 }
 
-.theme-green #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-green #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-green #full-menu .menu-items .has-submenu .menu-submenus:after {
   content: "▾";
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.theme-green #full-menu .menu-items .has-submenu .menu-submenus.open .theme-green #full-menu .menu-items .has-submenu .menu-submenus:after {
+  content: "▴";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
@@ -475,6 +499,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme-red #full-menu .hidden {
@@ -579,7 +604,7 @@
   text-decoration: underline;
 }
 
-.theme-red #full-menu .menu-items .menu-item:hover, .theme-red #full-menu .menu-items .menu-item:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-red #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-red #full-menu .menu-items .menu-item a:hover, .theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:hover, .theme-red #full-menu .menu-items .menu-item button:focus {
   background-color: #700e0e;
   border-bottom: 5px solid #fc4040;
 }
@@ -592,8 +617,15 @@
   color: white;
 }
 
-.theme-red #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-red #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-red #full-menu .menu-items .has-submenu .menu-submenus:after {
   content: "▾";
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.theme-red #full-menu .menu-items .has-submenu .menu-submenus.open .theme-red #full-menu .menu-items .has-submenu .menu-submenus:after {
+  content: "▴";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
@@ -630,6 +662,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme-blue #full-menu .hidden {
@@ -734,7 +767,7 @@
   text-decoration: underline;
 }
 
-.theme-blue #full-menu .menu-items .menu-item:hover, .theme-blue #full-menu .menu-items .menu-item:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-blue #full-menu .menu-items .menu-item a:hover, .theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:hover, .theme-blue #full-menu .menu-items .menu-item button:focus {
   background-color: #0a1a4d;
   border-bottom: 5px solid #7ae4ff;
 }
@@ -747,8 +780,15 @@
   color: white;
 }
 
-.theme-blue #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-blue #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-blue #full-menu .menu-items .has-submenu .menu-submenus:after {
   content: "▾";
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.theme-blue #full-menu .menu-items .has-submenu .menu-submenus.open .theme-blue #full-menu .menu-items .has-submenu .menu-submenus:after {
+  content: "▴";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
@@ -785,6 +825,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme-grey #full-menu .hidden {
@@ -889,7 +930,7 @@
   text-decoration: underline;
 }
 
-.theme-grey #full-menu .menu-items .menu-item:hover, .theme-grey #full-menu .menu-items .menu-item:focus, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-grey #full-menu .menu-items .menu-item a:hover, .theme-grey #full-menu .menu-items .menu-item a:focus, .theme-grey #full-menu .menu-items .menu-item button:hover, .theme-grey #full-menu .menu-items .menu-item button:focus {
   background-color: #2e2e2e;
   border-bottom: 5px solid #e2e2e2;
 }
@@ -902,8 +943,15 @@
   color: white;
 }
 
-.theme-grey #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-grey #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-grey #full-menu .menu-items .has-submenu .menu-submenus:after {
   content: "▾";
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.theme-grey #full-menu .menu-items .has-submenu .menu-submenus.open .theme-grey #full-menu .menu-items .has-submenu .menu-submenus:after {
+  content: "▴";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;

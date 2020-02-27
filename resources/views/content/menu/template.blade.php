@@ -8,20 +8,20 @@
             <span class="menu-separator"></span>
         </div>
         <ul class="menu-items" role="menubar" aria-label="{{ __('Mon menu') }}" id="menubar-easytoc">
-            <li role="none" class="menu-item" tabindex="1">
-                <a role="menuitem"  href="/home" class="menu-name">
+            <li role="none" class="menu-item">
+                <a role="menuitem"  href="/home" class="menu-name" tabindex="0">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Accueil') }}
                     </span>
                 </a>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <button role="menuitem" aria-expanded="false" aria-controls="presentation_menu"  class="menu-name menu-submenus" tabindex="1">
+                <button role="menuitem" aria-expanded="false" aria-controls="presentation_menu"  class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(this)">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Présentation') }}
                     </span>
                 </button>
-                <ul role="menu" aria-label="" id="presentation_menu" >
+                <ul role="menu" class="submenu" aria-label="" id="presentation_menu">
                     <li role="none" class="menu-item" >
                         <a role="menuitem" href="/" class="menu-link" >
                             <span contenteditable="true" class="menu-item-title">
@@ -46,12 +46,12 @@
                 </ul>
             </li>
             <li role="none" class="menu-item has-submenu">
-                <button role="menuitem" aria-expanded="false" aria-controls="catalog_menu" class="menu-name menu-submenus">
+                <button role="menuitem" aria-expanded="false" aria-controls="catalog_menu" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(this)">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Catalogue') }}
                     </span>
                 </button>
-                <ul role="menu" aria-label="" id="catalog_menu">
+                <ul role="menu" class="submenu" aria-label="" id="catalog_menu">
                     <li role="none" class="menu-item">
                         <a role="menuitem" href="/sneakers" class="menu-link" onclick="return false;">
                             <span contenteditable="true" class="menu-item-title">
@@ -75,8 +75,8 @@
                     </li>
                 </ul>
             </li>
-            <li role="none" class="menu-item">
-                <a role="menuitem"  href="/contact" class="menu-link" onclick="return false;">
+            <li role="none" class="menu-item" >
+                <a role="menuitem"  href="/contact" class="menu-link" onclick="return false;" tabindex="0">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Contact') }}
                     </span>
