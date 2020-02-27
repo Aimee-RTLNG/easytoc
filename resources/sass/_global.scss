@@ -215,3 +215,32 @@ pre.prettyprinted{
     width: 100% !important;
     border-radius: 5px !important;
 }
+// Page intérieur texte
+.wysiwyg {
+    .secondary_title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+    .third_title {
+        margin-left: 10px;
+        padding-top: 25px;
+        font-weight: bold;
+        margin: 10px 0;
+        font-size: 1.575rem;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    a {
+        color: $blue;
+        font-weight: bold;
+        text-decoration: underline;
+        &:hover {
+            color: $bleu-fonce;
+        }
+    }
+    .child-bloc {
+        margin-left: 15px;
+    }
+}

@@ -9790,6 +9790,38 @@ pre.prettyprinted {
   border-radius: 5px !important;
 }
 
+.wysiwyg .secondary_title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.wysiwyg .third_title {
+  margin-left: 10px;
+  padding-top: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.575rem;
+}
+
+.wysiwyg p {
+  margin-bottom: 10px;
+}
+
+.wysiwyg a {
+  color: #3490dc;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.wysiwyg a:hover {
+  color: #155595;
+}
+
+.wysiwyg .child-bloc {
+  margin-left: 15px;
+}
+
 .navbar {
   padding: 0 !important;
 }
@@ -9840,12 +9872,20 @@ pre.prettyprinted {
 }
 
 .navbar .container .menu-connect .nav-item a:focus {
-  background-color: #3490dc;
+  background-color: #1B6EC2;
+  color: white;
+}
+
+.navbar .container .menu-connect .nav-item a:focus .btn-connect__link {
   color: white;
 }
 
 .navbar .container .menu-connect .nav-item:hover a, .navbar .container .menu-connect .nav-item:hover a:focus, .navbar .container .menu-connect .nav-item:focus a, .navbar .container .menu-connect .nav-item:focus a:focus {
-  background-color: #3490dc;
+  background-color: #1B6EC2;
+  color: white;
+}
+
+.navbar .container .menu-connect .nav-item:hover a .btn-connect__link, .navbar .container .menu-connect .nav-item:hover a:focus .btn-connect__link, .navbar .container .menu-connect .nav-item:focus a .btn-connect__link, .navbar .container .menu-connect .nav-item:focus a:focus .btn-connect__link {
   color: white;
 }
 
@@ -10796,6 +10836,10 @@ pre.prettyprinted {
   padding: 15px 25px;
 }
 
+.home-tools__item:focus {
+  border: 4px #1B6EC2 solid;
+}
+
 .home-tools__item__descr {
   max-width: 100%;
 }
@@ -10873,6 +10917,10 @@ pre.prettyprinted {
   padding: 15px 19px;
   text-align: center;
   z-index: 2;
+}
+
+.use-list__item:focus {
+  border: 4px #1b6ec2 solid;
 }
 
 .use-list__item__icon {
@@ -11792,6 +11840,10 @@ body {
   resize: vertical;
 }
 
+.menu-blueprint {
+  min-height: 350px;
+}
+
 .compte-page {
   background-color: #F4F2F0;
 }
@@ -12471,7 +12523,7 @@ body {
 }
 
 .help-container .summary-container a:hover, .help-container .summary-container a:focus {
-  color: black;
+  color: #155595;
   font-weight: bold;
 }
 
@@ -12487,7 +12539,7 @@ body {
 }
 
 .help-container .help-text-container a:hover, .help-container .help-text-container a:focus {
-  color: black;
+  color: #155595;
 }
 
 .help-container .help-text-container h2, .help-container .help-text-container h3 {

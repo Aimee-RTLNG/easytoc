@@ -152,7 +152,7 @@ $themes: (
                     }
                 }
 
-                &:hover, &:focus, .menu-item > a:hover , .menu-item > a:focus{
+                &:hover, a:focus,button:focus, .menu-item > a:hover , .menu-item > a:focus{
                     background-color: themed('aHoverColor'); 
                     border-bottom: 5px solid themed('borderHover'); 
                 }
