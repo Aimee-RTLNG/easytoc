@@ -4,7 +4,7 @@
 /*!*****************************************!*\
   !*** ./resources/js/components/menu.js ***!
   \*****************************************/
-/*! exports provided: element_types, getOldContent, addLink, addlink */
+/*! exports provided: element_types, getOldContent, addLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,13 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addLink", function() { return addLink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addlink", function() { return addlink; });
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 // ANCHOR Données initiales
 // On importe les variables et fonctions externes (qui sont définie dans app.js)
 
 var element;
-var element_selected_container;
+var link_type;
 var previous_link;
 var selected_link;
 var next_link;
@@ -287,39 +286,49 @@ $('#btn-save-project').on('click', function () {
   });
 }); // ANCHOR Action sur l'élement
 
-var element_select;
-$(document.body).off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
+$(document.body).off('keyup').off('click') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
 .on('click', '#full-menu a', function (e) {
   e.preventDefault(); // Empêcher la redirection
 }).on('focus', '#full-menu a, #full-menu button', function (e) {
   e.preventDefault();
-  selected_link = $(this).parent();
+  console.log('click');
+  selected_link = $(this).closest('li');
+  console.log(selected_link);
   previous_link = selected_link.prev();
   next_link = selected_link.next();
+  console.log(previous_link);
+  console.log(next_link);
   $('.content-editable-selected').removeClass('content-editable-selected');
 
   if ($(this).hasClass('sub-link')) {
+    // lien de sous menu
     $(this).addClass('content-editable-selected');
-  } else {
+  } else if ($(this).hasClass('menu-submenus')) {} else {
     $(this).closest('.element-container').addClass('content-editable-selected');
   } // Affiche les input pour personnalisr les liens
 
 
   $('.custom-info-element').slideDown();
-  $('#nav-name').val($(selected_link).text().trim());
-  $('#nav-link').val($(selected_link).find('a').first().attr('href'));
+  $('#nav-name').val($(this).find('[contenteditable=true]').text().trim());
+  $('#nav-link').val($(this).find('a').first().attr('href'));
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du menu
-.on('keyup', '#full-menu #menu-title', function (e) {
+.on('keyup', '#full-menu #menu-title ', function (e) {
   $('#menu-creator-title').val($('#full-menu #menu-title').text().trim());
   updatecontent();
 }) // ANCHOR Modification du titre
-.on('keyup', '#nav-name #nav-link', function (e) {
-  if (e.target) {
-    console.log(e.target);
-  }
+.on('keyup', '#nav-name, #nav-link', function (e) {
+  var link_text = $(selected_link).find('span');
+  var link_selected = $(selected_link).find('a');
 
-  $('.content-editable-selected').find('span').first().text();
+  if ($(e.target).attr('id') == "nav-name") {
+    $(link_text).text($('#nav-name').val());
+  } else if ($(e.target).attr('id') == "nav-link") {
+    $(link_selected).attr('href', $('#nav-link').val());
+  } // $('.content-editable-selected').find('span').first().text();
+
+
+  updatecontent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
@@ -327,16 +336,16 @@ $("#nav-code-tab").on('click', function () {
 }); // ANCHOR Actions sur l'élément ciblé
 
 $(".form-element-action").on('click', function (e) {
-  updatecontent();
-}); // ANCHOR Fonction d'ajout d'sublink ( osef ça concerne pas les menus )
-
-function addlink(type) {
-  if (type = "link") {
-    $('#full-menu #menubar-easytoc').append(element_types["type-menu"]["insert-menu_link"]);
-  } else if (type = "sublink") {
-    $('#full-menu #menubar-easytoc').append(element_types["type-menu"]["insert-sub_link"]);
+  if ($(this).attr('id') == "insert-menu_link") {
+    addLink("link");
+  } else if ($(this).attr('id') == "insert-sub_menu") {
+    addLink("sub_menu");
+  } else if ($(this).attr('id') == "insert-sub_menu") {
+    addLink("sub_link");
   }
-} // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
+
+  updatecontent();
+}); // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
 
 function deleteLink() {} // ANCHOR Fonction Undo/Redo suppression 
 
@@ -407,7 +416,7 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
 });
 new ClipboardJS('#copy-css-link');
-new ClipboardJS('#copy-raw-code');
+new ClipboardJS('#copy-raw-code'); // ANCHOR
 
 /***/ }),
 
@@ -418,7 +427,7 @@ new ClipboardJS('#copy-raw-code');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\menu.js */"./resources/js/components/menu.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\menu.js */"./resources/js/components/menu.js");
 
 
 /***/ })

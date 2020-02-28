@@ -108,11 +108,11 @@ export function getOldContent() {
     selected_theme.prop('checked', true);
 
     // Titre
-    let actual_title = $("#table-title").text();
+    let actual_title = $("#table-title").text().trim();
     $("#table-creator-title").val(actual_title);
 
     // Légende
-    let actual_caption = $("#table-caption span").text();
+    let actual_caption = $("#table-caption span").text().trim();
     $("#table-creator-caption").val(actual_caption);
 
 }
@@ -885,7 +885,7 @@ $('.add-element').on('click', function () {
             rows.each(function (index) {
                 if (index >= rows_header) {
                     let new_header = $(this).find('th, td').first();
-                    let old_text = $(new_header).find('span').text();
+                    let old_text = $(new_header).find('span').text().trim();
                     let new_cell_html = element_types["type-unique"]["insert-header-row"];
                     $(new_header).replaceWith(new_cell_html);
                     $(new_header).find('span').find('span').text(old_text);
@@ -897,7 +897,7 @@ $('.add-element').on('click', function () {
                 rows.each(function (index) {
                     if (index >= rows_header) {
                         let new_cell = $(this).find('th, td').first();
-                        let old_text = $(new_cell).find('span').text();
+                        let old_text = $(new_cell).find('span').text().trim();
                         let new_cell_html = element_types["type-unique"]["insert-cell"];
                         $(new_cell).replaceWith(new_cell_html);
                         $(this).find('td').first().find('span').text(old_text);
@@ -933,7 +933,7 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').text()
+            "html": $('#raw-code').text().trim()
             // "html": $('#raw-code').find('span').text()
         }
     }).done(function (msg) {
@@ -943,7 +943,7 @@ $('#btn-save-project').on('click', function () {
     }).fail(function (xhr, status, error) {
         // console.log(xhr.responseText);
         // console.log(status);
-        console.log($('#raw-code').text());
+        console.log($('#raw-code').text().trim());
         // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');
@@ -1159,14 +1159,14 @@ $(document.body)
     // ANCHOR Modification du texte via l'intérieur du formulaire
     .on('keyup', '#table-title', function () {
 
-        $('#table-creator-title').val($('#table-title').text());
+        $('#table-creator-title').val($('#table-title').text().trim());
         updateContent();
 
     })
 
     .on('keyup', '#table-caption', function () {
 
-        $('#table-creator-caption').val($('#table-caption span').text());
+        $('#table-creator-caption').val($('#table-caption span').text().trim());
         updateContent();
 
     });

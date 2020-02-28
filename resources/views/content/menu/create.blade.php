@@ -157,13 +157,17 @@
                 <div role="section" class="row form_actions_element" aria-labelledby="form_actions_element">
                     <div role="section" class="col-md-7" aria-labelledby="form_add_static">
                         <h3 id="form_add_static" class="mb-3 creator-panel__title">{{ __('Ajouter un élément') }}</h3>
-                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien") }}">
+                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien simple") }}">
                             <i class="fa fa-link"></i>
                             {{ __('Lien simple') }}
                         </button>
                         <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Rubrique avec sous-menu') }}" id="insert-sub_menu" role="listitem" title="{{ __("Ajouter une rubrique avec sous-menu") }}">
                             <i class="fa fa-heading"></i>
                             {{ __('Rubrique avec sous-menu') }}
+                        </button>
+                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}">
+                            <i class="fa fa-link"></i>
+                            {{ __('Lien de sous-menu') }}
                         </button>
                     </div>
                     <div role="section" class="col-md-5" aria-labelledby="form_actions_text">

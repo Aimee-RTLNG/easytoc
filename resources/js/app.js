@@ -219,29 +219,49 @@ $(window).on('load', function(){
 // (bien relacher la touche custom avant le ctrl alt )
 
 document.onkeyup = function(e) {
+    // Move up
+    // CTRL ALT + U
     if (e.ctrlKey && e.altKey && e.which == 85) {
         if( $(".content-editable-selected").length > 0 ){
             if( !$("#action-move-up").attr('disabled') ){
                 $("#action-move-up").click();
             }
         }
-    } else if (e.ctrlKey && e.altKey && e.which == 68) {
+    } 
+    // Move Down
+    // CTRL ALT + D
+    else if (e.ctrlKey && e.altKey && e.which == 68) {
           if( $(".content-editable-selected").length > 0 ){
               if( !$("#action-move-down").attr('disabled') ){
                  $("#action-move-down").click();
               }
           }
-    } else if (e.ctrlKey && e.altKey && e.which == 84) {
+    } 
+    // Suprrimer 
+    // CTRL ATL + T 
+    else if (e.ctrlKey && e.altKey && e.which == 84) {
         if( $(".content-editable-selected").length > 0 ){
             if( !$("#action-delete").attr('disabled') ){
                $("#action-delete").click();
             }
         }
-    } else if (e.ctrlKey && e.altKey && e.which == 73) {
+    } 
+    // Accéder au bloc informations
+    // CTRL ATL + I
+    else if (e.ctrlKey && e.altKey && e.which == 73) {
         if( $(".action-supp-crea").length > 0 ){
             $(".action-supp-crea input").first().focus();
         }
-    } else if (e.ctrlKey && e.altKey && e.which == 83) {
+    } 
+    // Accéder au bloc propriétés 
+    // CTRL ATL + P 
+    else if (e.ctrlKey && e.altKey && e.which == 80) {
+        if( $("#content-interface").length > 0 ){
+            $("#content-interface input").first().focus();
+        }
+    } 
+    // Sauvegarder
+    else if (e.ctrlKey && e.altKey && e.which == 83) {
         console.log(e);
         if( $('#btn-save-project, #btn-update-project').length > 0 ){
             console.log(e);

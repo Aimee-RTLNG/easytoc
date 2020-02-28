@@ -8,7 +8,7 @@ import {
 } from "../app"; 
 
 let element; 
-let element_selected_container;
+let link_type;
 let previous_link; 
 let selected_link;
 let next_link;
@@ -283,10 +283,10 @@ $('#btn-save-project').on('click', function () {
 })
 
 // ANCHOR Action sur l'élement
-let element_select;
+
 $(document.body)
 
-    .off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
+    .off('keyup').off('click') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
 
     .on('click', '#full-menu a', function (e) {
         e.preventDefault(); // Empêcher la redirection
@@ -295,14 +295,23 @@ $(document.body)
     .on('focus', '#full-menu a, #full-menu button', function (e) {
         e.preventDefault();
 
-        selected_link = $(this).parent();
+        console.log('click');
+
+        selected_link = $(this).closest('li');
+        console.log( selected_link );
+
         previous_link = selected_link.prev();
         next_link = selected_link.next();
+        console.log( previous_link );
+        console.log( next_link );
 
         $('.content-editable-selected').removeClass('content-editable-selected');
 
         if( $(this).hasClass('sub-link') ){
+            // lien de sous menu
             $(this).addClass('content-editable-selected');
+        } else if ( $(this).hasClass('menu-submenus') ) {
+           
         } else {
             $(this).closest('.element-container').addClass('content-editable-selected');
         }
@@ -310,26 +319,34 @@ $(document.body)
         // Affiche les input pour personnalisr les liens
         $('.custom-info-element').slideDown();
 
-        $('#nav-name').val( $(selected_link).text().trim() );
-        $('#nav-link').val( $(selected_link).find('a').first().attr('href') );
+        $('#nav-name').val( $(this).find('[contenteditable=true]').text().trim() );
+        $('#nav-link').val( $(this).find('a').first().attr('href') );
 
         updatecontent();
     })
 
     // ANCHOR Modification du texte via l'intérieur du menu
-    .on('keyup', '#full-menu #menu-title', function (e) {
+    .on('keyup', '#full-menu #menu-title ', function (e) {
 
         $('#menu-creator-title').val( $('#full-menu #menu-title').text().trim() );
+
         updatecontent();
     })
     
     // ANCHOR Modification du titre
-    .on('keyup', '#nav-name #nav-link', function (e) {
+    .on('keyup', '#nav-name, #nav-link', function (e) {
 
-        if( e.target ){
-            console.log (e.target);
+        let link_text = $(selected_link).find('span');
+        let link_selected = $(selected_link).find('a');
+
+        if( $(e.target).attr('id') == "nav-name" ){
+            $(link_text).text( $('#nav-name').val() );
+        } else if ( $(e.target).attr('id') == "nav-link" ) {
+            $(link_selected).attr( 'href',  $('#nav-link').val() );
         }
-        $('.content-editable-selected').find('span').first().text();
+        // $('.content-editable-selected').find('span').first().text();
+
+        updatecontent();
 
     });
 
@@ -341,32 +358,20 @@ $("#nav-code-tab").on('click', function () {
 // ANCHOR Actions sur l'élément ciblé
 $(".form-element-action").on('click', function (e) {
 
-
+    if( $(this).attr('id') == "insert-menu_link" ){
+        addLink("link");
+    } else if ( $(this).attr('id') == "insert-sub_menu" ) {
+        addLink("sub_menu");
+    } else if ( $(this).attr('id') == "insert-sub_menu" ) {
+        addLink("sub_link");
+    }
     updatecontent();
 
 });
 
-
-// ANCHOR Fonction d'ajout d'sublink ( osef ça concerne pas les menus )
-export function addlink( type ) {
-    
-    if( type = "link" ){
-
-        $('#full-menu #menubar-easytoc').append( element_types["type-menu"]["insert-menu_link"] );
-
-    } else if ( type = "sublink" ) {
-
-        $('#full-menu #menubar-easytoc').append( element_types["type-menu"]["insert-sub_link"] );
-
-    }
-    
-
-}
-
 // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
 function deleteLink() {
     
-
 }
 
 // ANCHOR Fonction Undo/Redo suppression 
@@ -436,3 +441,5 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link'); 
 new ClipboardJS('#copy-raw-code'); 
+
+// ANCHOR 
