@@ -7,14 +7,11 @@ import {
     alertMsg // fonction qui affiche le message pop up en bas à droite
 } from "../app"; 
 
-let element; 
+let element_content; 
 let link_type;
 let previous_link; 
 let selected_link;
 let next_link;
-let previous_sublink; 
-let selected_sublink;
-let next_sublink; 
 
 let message; 
 
@@ -66,29 +63,29 @@ export let element_types; // En exportant ce tableau objet, on permet au fichier
 if( lang == "en" ){
     element_types = {
         "type-info": {
-            "insert-title": "\t<span contenteditable='true' id='menu-title' data-tag='menu-title' class='menu-title'>Mon menu</span>\n",
-            "insert-img": "\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
-            "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
-            "insert-separator": "\t<span class='menu-separator'></span>\n",
+            "insert-title": '\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
+            "insert-img": '\t<div class="menu-logo" id="menu-logo"></div>\n',
+            "insert-banner": "\t<div class='menu-logo menu-logo-solo'></div>\n",
+            "insert-separator": '\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
-            "insert-menu_link": '\t<div class="menu-item"><a href="/link" class="menu-link" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
-            "insert-sub_link": '\t<div class="menu-item"><a href="/link" class="menu-link has-submenu" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
-            "insert-sub_menu": '\t<div class="menu-submenu"><ul></ul></div>\n'
+            "insert-menu_link": '\t<li role="none" class="menu-item element-container"><a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Go to the Link page"><span contenteditable="true" class="menu-item-title">Link</span></a></li>\n',
+            "insert-sub_link": '\t\t<li role="none" class="menu-item" ><a role="menuitem" href="/" class="menu-link sub-link" title="Go to the Menu - Link page"><span contenteditable="true" class="menu-item-title">Sub-menu link</span></a></li>\n',
+            "insert-sub_menu": '\t<li role="none" class="menu-item has-submenu element-container"><button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)"><span contenteditable="true" class="menu-item-title">Menu</span></button><ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID"></ul></li>\n'
         }
     };
 } else {
     element_types = {
         "type-info": {
-            "insert-title": "\t<span contenteditable='true' id='menu-title' data-tag='menu-title' class='menu-title'>Mon menu</span>\n",
-            "insert-img": "\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
-            "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/favicon.ico') }})'></div>\n",
-            "insert-separator": "\t<span class='menu-separator'></span>\n",
+            "insert-title": '\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
+            "insert-img": "\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+            "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+            "insert-separator": '\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
-            "insert-menu_link": '\t<div class="menu-item"><a href="/link" class="menu-link" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
-            "insert-sub_link": '\t<div class="menu-item"><a href="/link" class="menu-link has-submenu" onclick="return false;"><li><span contenteditable="true" data-tag="menu-item" class="menu-item-title">Lien</span></li></a></div>\n',
-            "insert-sub_menu": '\t<div class="menu-submenu"><ul></ul></div>\n'
+            "insert-menu_link": '\t<li role="none" class="menu-item element-container"><a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Se rendre sur la page Lien"><span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+            "insert-sub_link": '\t\t<li role="none" class="menu-item" ><a role="menuitem" href="/" class="menu-link sub-link" title="Se rendre sur la page menu - Lien"><span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+            "insert-sub_menu": '\t<li role="none" class="menu-item has-submenu element-container"><button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID"  class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)"><span contenteditable="true" class="menu-item-title">Menu</span></button><ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID"></ul></li>\n'
         }
     };
 }
@@ -220,29 +217,72 @@ $('#menu-creator-link-display').on('click', function () {
 export function addLink( type ) {
     // permettra d'identifier l'élément (lui donne un ID aléatoire)
     let element_id = Math.random().toString(36).substr(2, 9);
+    let menu_length;
+
+    if( type == "sub_link" ){
+        menu_length = $( selected_link ).find('ul').children("li").length;
+        console.log ( $( selected_link ).find('ul') );
+    } else {
+        menu_length = $("#menubar-easytoc").children("li").length;
+    }
+    console.log(menu_length);
+    
+    if( menu_length > 8 ){
+        message = "Vous ne pouvez pas rajouter plus de liens";
+        if (lang == "en" ){
+            message = "You already have too much links !"
+        }
+        alertMsg( message, "error");
+        return;
+    }
 
     // on récupère le type de l'élément
     if ( type == "link" ) {
         let added_content = element_types["type-menu"]["insert-menu_link"];
         let id_replace_regex = /REPLACEID/g;
         element_content = added_content.replace(id_replace_regex, element_id);
-    } else if ( type == "sub_link" ) {
+        $('#menubar-easytoc').append( element_content );
+    } 
+    
+    else if ( type == "sub_link" ) {
+        // On ajoute un lien
         let added_content = element_types["type-menu"]["insert-sub_link"];
         let id_replace_regex = /REPLACEID/g;
         element_content = added_content.replace(id_replace_regex, element_id);
-    } else if ( type == "sub_menu" ) {
+        $( selected_link ).find('ul').append( element_content );
+
+        // On définit le titre du lien
+        let menu_title =  $(selected_link).find('.menu-submenus span').text().trim();
+        let link_title = 'Se rendre sur la page '+ menu_title +' - ' + $( selected_link ).find('ul li').last().text().trim(); 
+        if(lang == 'en'){
+            link_title = 'Go to page '+ menu_title +' - ' + $( selected_link ).find('ul li').last().text().trim(); 
+        }
+        $( selected_link ).find('li a').last().attr('title', link_title);
+    } 
+    
+    else if ( type == "sub_menu" ) {
         let added_content = element_types["type-menu"]["insert-sub_menu"];
         let id_replace_regex = /REPLACEID/g;
         element_content = added_content.replace(id_replace_regex, element_id);
+        $('#menubar-easytoc').append( element_content );
     }
+
+    updatecontent();
 }
 
 // ANCHOR Ajout d'un élément : quand on clique sur un bouton avec la classe .add-element
 $('.add-element').on('click', function () {
-    let element_type = $(this).attr("class"); // récupère le type d'élément à ajouter
-    let element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
-    addElement(element_type, element_type_name); // on ajoute l'élement
-    setSideWindow();
+
+    if( $(this).attr('id') == "insert-menu_link" ){
+        addLink("link");
+    } else if ( $(this).attr('id') == "insert-sub_menu" ) {
+        addLink("sub_menu");
+    } else if ( $(this).attr('id') == "insert-sub_link" ) {
+        addLink("sub_link");
+    }
+
+    updatecontent();
+
 });
 
 // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
@@ -295,19 +335,14 @@ $(document.body)
     .on('focus', '#full-menu a, #full-menu button', function (e) {
         e.preventDefault();
 
-        console.log('click');
-
         selected_link = $(this).closest('li');
-        console.log( selected_link );
-
         previous_link = selected_link.prev();
         next_link = selected_link.next();
-        console.log( previous_link );
-        console.log( next_link );
 
         $('.content-editable-selected').removeClass('content-editable-selected');
         $(selected_link).addClass('content-editable-selected');
 
+        $("#insert-sub_link").attr('disabled', true);
         $("#action-move-up").attr('disabled', true);
         $("#action-move-down").attr('disabled', true);
         $("#nav-link").removeAttr('disabled');
@@ -319,6 +354,7 @@ $(document.body)
             $("#action-move-down").removeAttr('disabled');
         } else if ( $(this).hasClass('menu-submenus') ) {   
             link_type = "menu";
+            $("#insert-sub_link").removeAttr('disabled');
             $("#action-move-right").removeAttr('disabled');
             $("#action-move-left").removeAttr('disabled');
             $("#nav-link").attr('disabled', true);
@@ -329,7 +365,7 @@ $(document.body)
             $("#action-move-left").removeAttr('disabled');
         }
 
-        // Affiche les input pour personnalisr les liens
+        // Affiche les input pour personnaliser les liens
         $('.custom-info-element').slideDown();
 
         $('#nav-name').val( $(selected_link).find('span').first().text().trim() );
@@ -337,6 +373,7 @@ $(document.body)
             $('#nav-link').val( $(selected_link).find('a').attr('href') );
         }
 
+        setMove( selected_link );
         updatecontent();
     })
 
@@ -351,17 +388,54 @@ $(document.body)
 
         let link_text = $(selected_link).find('span');
         let link_selected = $(selected_link).find('a');
-
+        let link_title;
         if( $(e.target).attr('id') == "nav-name" ){
-            $(link_text).text( $('#nav-name').val() );
+            if ( link_type == "menu" ){
+                let menu_title =  $('#nav-name').val();
+                $(link_text).first().text( menu_title );
+            } else {
+                $(link_text).text( $('#nav-name').val() );
+                if ( link_type == "link" ){
+                    link_title = 'Se rendre sur la page '+  $('#nav-name').val();
+                    if(lang == 'en'){
+                        link_title = 'Go to page '+ $('#nav-name').val();
+                    }
+                    $( link_selected ).attr( 'title',  link_title );
+                } else {
+                    let menu_title =  $(selected_link).parent().parent().find('button').text().trim();
+                    link_title = 'Se rendre sur la page '+ menu_title +' - ' + $('#nav-name').val();
+                    if(lang == 'en'){
+                        link_title = 'Go to page '+ menu_title +' - ' + $('#nav-name').val(); 
+                    }
+                    $( link_selected ).attr( 'title',  link_title );
+                }
+            }
         } else if ( $(e.target).attr('id') == "nav-link" ) {
-            console.log( $(link_selected).attr('href') );
-            $(link_selected).attr( 'href',  $('#nav-link').val() );
+            $( link_selected ).attr( 'href',  $('#nav-link').val() );
         }
-        // $('.content-editable-selected').find('span').first().text();
-
         updatecontent();
 
+    })
+    
+    .on('keyup', 'a span[contenteditable=true]', function(){
+        let link_title;
+        let link_selected = $(selected_link).find('a');
+        if ( link_type == "link" ){
+            link_title = 'Se rendre sur la page '+  $('#nav-name').val();
+            if(lang == 'en'){
+                link_title = 'Go to page '+ $('#nav-name').val();
+            }
+            $( link_selected ).attr( 'title',  link_title );
+        } else {
+            let menu_title =  $(selected_link).parent().parent().find('button').text().trim();
+            link_title = 'Se rendre sur la page '+ menu_title +' - ' + $('#nav-name').val();
+            if(lang == 'en'){
+                link_title = 'Go to page '+ menu_title +' - ' + $('#nav-name').val(); 
+            }
+            $( link_selected ).attr( 'title',  link_title );
+        }
+
+        $('#nav-name').val( $(this).text().trim() );
     });
 
 // ANCHOR Masquer les sidetools au changement d'onglet
@@ -372,22 +446,74 @@ $("#nav-code-tab").on('click', function () {
 // ANCHOR Actions sur l'élément ciblé
 $(".form-element-action").on('click', function (e) {
 
-    if( $(this).attr('id') == "insert-menu_link" ){
-        addLink("link");
-    } else if ( $(this).attr('id') == "insert-sub_menu" ) {
-        addLink("sub_menu");
-    } else if ( $(this).attr('id') == "insert-sub_menu" ) {
-        addLink("sub_link");
-    } else if ( $(this).attr('id') == "delete-link" ) {
+    if ( $(this).attr('id') == "action-delete" ) {
         deleteLink();
+    } else if ( $(this).attr('data-action') == "move-up" ) {
+        moveLink("up");
+    } else if ( $(this).attr('data-action') == "move-down" ) {
+        moveLink("down");
+    } else if ($(this).attr('data-action') == "move-right" ) {
+        moveLink("right");
+    } else if ($(this).attr('data-action') == "move-left" ) {
+        moveLink("left");
     }
     updatecontent();
 
 });
 
-// ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
+// ANCHOR Fonction de déplacement d'un lien
+function moveLink( direction ) {
+    switch (direction) {
+        case "up":
+        case "left":
+            $(selected_link).insertBefore(previous_link);
+            break;
+        case "down":
+        case "right":
+            $(selected_link).insertAfter(next_link);
+            break;
+        default:
+            break;
+    }
+    setMove( selected_link );
+}
+
+// ANCHOR Fonction de suppression de link
 function deleteLink() {
     $(selected_link).remove();
+}
+
+function setMove( selected_link ){
+    previous_link = $(selected_link).prev();
+    next_link = $(selected_link).next();
+
+    if ( previous_link.length == 0 ){
+        if( link_type == "menu" || link_type == "link" ){
+            $("#action-move-left").attr('disabled', true);
+        } else if ( link_type == "sub-link" ) {
+            $("#action-move-up").attr('disabled', true);
+        }
+    } else {
+        if( link_type == "menu" || link_type == "link" ){
+            $("#action-move-left").removeAttr('disabled');
+        } else if ( link_type == "sub-link" ) {
+            $("#action-move-up").removeAttr('disabled');
+        }
+    }
+
+    if ( next_link.length == 0 ){
+        if( link_type == "menu" || link_type == "link" ){
+            $("#action-move-right").attr('disabled', true);
+        } else if ( link_type == "sub-link" ) {
+            $("#action-move-down").attr('disabled', true);
+        }
+    } else {
+        if( link_type == "menu" || link_type == "link" ){
+            $("#action-move-right").removeAttr('disabled');
+        } else if ( link_type == "sub-link" ) {
+            $("#action-move-down").removeAttr('disabled');
+        }
+    }
 }
 
 // ANCHOR Mise en forme du texte (gras, italic, underline...) 

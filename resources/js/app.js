@@ -187,7 +187,6 @@ new ClipboardJS('#copy-raw-code');
 
 // Navigation menu
 $(window).on('load', function(){
-    console.log(window.location.pathname.indexOf("aide"));
     let onglet_actif = $('nav .nav-link')[0];
     if ( window.location.pathname.indexOf("menu") != -1 ){
         onglet_actif = $('nav .nav-link')[1];

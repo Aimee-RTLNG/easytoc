@@ -145,7 +145,7 @@
                     <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
                         <div class="col">
                             <label class="creator-panel__link" for="menu-creator-link">{{ __('Logo de menu') }}</label>
-                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/favicon.ico') }}" class="form-control input-creator" autocomplete="off"/>
+                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.png') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
                         <div>
                             <input type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
@@ -165,8 +165,8 @@
                             <i class="fa fa-heading"></i>
                             {{ __('Rubrique avec sous-menu') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}">
-                            <i class="fa fa-link"></i>
+                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien de sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}" disabled>
+                            <i class="fa fa-list-ul"></i>
                             {{ __('Lien de sous-menu') }}
                         </button>
                     </div>

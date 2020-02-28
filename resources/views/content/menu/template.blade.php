@@ -1,15 +1,15 @@
 <div data-tag="menu" class="theme-blue" id="generated-menu" name="generated-menu">
-    <nav id="full-menu" aria-label="{{ __('Mon menu') }}" role="menubar">
+    <nav id="full-menu" role="menubar">
         <div class="menu-identity">
-            <div class="menu-logo" id="menu-logo" style="background-image: url({{ URL::asset('images/favicon.ico') }})"></div>
+            <div class="menu-logo" id="menu-logo" style="background-image: url('{{ URL::asset('images/Logo-white.png') }}')"></div>
             <span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">
                 {{ __('Titre du menu') }}
             </span>
             <span class="menu-separator"></span>
         </div>
-        <ul class="menu-items" role="menubar" aria-label="{{ __('Mon menu') }}" id="menubar-easytoc">
+        <ul class="menu-items" role="menubar" id="menubar-easytoc">
             <li role="none" class="menu-item element-container">
-                <a role="menuitem"  href="/home" class="menu-name" tabindex="0">
+                <a role="menuitem"  href="/home" class="menu-name" tabindex="0" title="{{ __('Se rendre sur la page Accueil') }}">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Accueil') }}
                     </span>
@@ -21,23 +21,23 @@
                         {{ __('Présentation') }}
                     </span>
                 </button>
-                <ul role="menu" class="submenu hidden" aria-label="" id="presentation_menu">
+                <ul role="menu" class="submenu hidden" id="presentation_menu">
                     <li role="none" class="menu-item" >
-                        <a role="menuitem" href="/" class="menu-link sub-link" >
+                        <a role="menuitem" href="/" class="menu-link sub-link" title="{{ __('Se rendre sur la page Présentation - Notre équipe') }}">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Notre équipe') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem"  href="/" class="menu-link sub-link" >
+                        <a role="menuitem"  href="/" class="menu-link sub-link" title="{{ __('Se rendre sur la page Présentation - Nos valeurs') }}">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Nos valeurs') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem"  href="/" class="menu-link sub-link" >
+                        <a role="menuitem"  href="/" class="menu-link sub-link" title="{{ __('Se rendre sur la page Présentation - Notre histoire') }}">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Notre histoire') }}
                             </span>
@@ -51,23 +51,23 @@
                         {{ __('Catalogue') }}
                     </span>
                 </button>
-                <ul role="menu" class="submenu hidden" aria-label="" id="catalog_menu">
+                <ul role="menu" class="submenu hidden" id="catalog_menu">
                     <li role="none" class="menu-item">
-                        <a role="menuitem" href="/sneakers" class="menu-link sub-link" >
+                        <a role="menuitem" href="/sneakers" class="menu-link sub-link" title="{{ __('Se rendre sur la page Catalogue - Baskets') }}">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Baskets') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" href="/heels" class="menu-link sub-link" >
+                        <a role="menuitem" href="/heels" class="menu-link sub-link" title="{{ __('Se rendre sur la page Catalogue - Talons') }}">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Talons') }}
                             </span>
                         </a>
                     </li>
                     <li role="none" class="menu-item">
-                        <a role="menuitem" href="/flipflops" class="menu-link sub-link" >
+                        <a role="menuitem" href="/flipflops" class="menu-link sub-link" title="{{ __('Se rendre sur la page Catalogue - Claquettes') }}">
                             <span contenteditable="true" class="menu-item-title">
                                 {{ __('Claquettes') }}
                             </span>
@@ -76,7 +76,7 @@
                 </ul>
             </li>
             <li role="none" class="menu-item element-container">
-                <a role="menuitem"  href="/contact" class="menu-link" tabindex="0">
+                <a role="menuitem"  href="/contact" class="menu-link" tabindex="0" title="{{ __('Se rendre sur la page Contact') }}">
                     <span contenteditable="true" class="menu-item-title">
                         {{ __('Contact') }}
                     </span>
