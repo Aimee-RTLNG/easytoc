@@ -51278,45 +51278,65 @@ $(window).on('load', function () {
 // (bien relacher la touche custom avant le ctrl alt )
 
 document.onkeyup = function (e) {
+  // Move up
+  // CTRL ALT + U
   if (e.ctrlKey && e.altKey && e.which == 85) {
     if ($(".content-editable-selected").length > 0) {
       if (!$("#action-move-up").attr('disabled')) {
         $("#action-move-up").click();
       }
     }
-  } else if (e.ctrlKey && e.altKey && e.which == 68) {
-    if ($(".content-editable-selected").length > 0) {
-      if (!$("#action-move-down").attr('disabled')) {
-        $("#action-move-down").click();
+  } // Move Down
+  // CTRL ALT + D
+  else if (e.ctrlKey && e.altKey && e.which == 68) {
+      if ($(".content-editable-selected").length > 0) {
+        if (!$("#action-move-down").attr('disabled')) {
+          $("#action-move-down").click();
+        }
       }
-    }
-  } else if (e.ctrlKey && e.altKey && e.which == 84) {
-    if ($(".content-editable-selected").length > 0) {
-      if (!$("#action-delete").attr('disabled')) {
-        $("#action-delete").click();
-      }
-    }
-  } else if (e.ctrlKey && e.altKey && e.which == 73) {
-    if ($(".action-supp-crea").length > 0) {
-      $(".action-supp-crea input").first().focus();
-    }
-  } else if (e.ctrlKey && e.altKey && e.which == 83) {
-    console.log(e);
+    } // Suprrimer 
+    // CTRL ATL + T 
+    else if (e.ctrlKey && e.altKey && e.which == 84) {
+        if ($(".content-editable-selected").length > 0) {
+          if (!$("#action-delete").attr('disabled')) {
+            $("#action-delete").click();
+          }
+        }
+      } // Accéder au bloc informations
+      // CTRL ATL + I
+      else if (e.ctrlKey && e.altKey && e.which == 73) {
+          if ($(".action-supp-crea").length > 0) {
+            $(".action-supp-crea input").first().focus();
+          }
+        } // Accéder au bloc propriétés 
+        // CTRL ATL + P 
+        else if (e.ctrlKey && e.altKey && e.which == 80) {
+            if ($("#content-interface").length > 0) {
+              $("#content-interface input").first().focus();
+            }
+          } // Sauvegarder
+          else if (e.ctrlKey && e.altKey && e.which == 83) {
+              console.log(e);
 
-    if ($('#btn-save-project, #btn-update-project').length > 0) {
-      console.log(e);
-      var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+              if ($('#btn-save-project, #btn-update-project').length > 0) {
+                console.log(e);
+                var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
 
-      if (lang == "en") {
-        _message = "Are you sure to save and quit your project ? You will be redirected.";
-      }
+                if (lang == "en") {
+                  _message = "Are you sure to save and quit your project ? You will be redirected.";
+                }
 
-      if (window.confirm(_message)) {
-        $('#btn-save-project').click();
-        $('#btn-update-project').click();
-      }
-    }
-  }
+                if (window.confirm(_message)) {
+                  $('#btn-save-project').click();
+                  $('#btn-update-project').click();
+                }
+              }
+            }
+}; // Désactiver le drag and drop des links et des images
+
+
+window.ondragstart = function () {
+  return false;
 };
 
 /***/ }),
@@ -52602,10 +52622,10 @@ function getOldContent() {
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre
 
-  var actual_title = $("#table-title").text();
+  var actual_title = $("#table-title").text().trim();
   $("#table-creator-title").val(actual_title); // Légende
 
-  var actual_caption = $("#table-caption span").text();
+  var actual_caption = $("#table-caption span").text().trim();
   $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
@@ -53392,7 +53412,7 @@ $('.add-element').on('click', function () {
       _rows.each(function (index) {
         if (index >= rows_header) {
           var new_header = $(this).find('th, td').first();
-          var old_text = $(new_header).find('span').text();
+          var old_text = $(new_header).find('span').text().trim();
           var new_cell_html = element_types["type-unique"]["insert-header-row"];
           $(new_header).replaceWith(new_cell_html);
           $(new_header).find('span').find('span').text(old_text);
@@ -53404,7 +53424,7 @@ $('.add-element').on('click', function () {
         _rows.each(function (index) {
           if (index >= rows_header) {
             var new_cell = $(this).find('th, td').first();
-            var old_text = $(new_cell).find('span').text();
+            var old_text = $(new_cell).find('span').text().trim();
             var new_cell_html = element_types["type-unique"]["insert-cell"];
             $(new_cell).replaceWith(new_cell_html);
             $(this).find('td').first().find('span').text(old_text);
@@ -53439,7 +53459,7 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').text() // "html": $('#raw-code').find('span').text()
+      "html": $('#raw-code').text().trim() // "html": $('#raw-code').find('span').text()
 
     }
   }).done(function (msg) {
@@ -53449,7 +53469,7 @@ $('#btn-save-project').on('click', function () {
   }).fail(function (xhr, status, error) {
     // console.log(xhr.responseText);
     // console.log(status);
-    console.log($('#raw-code').text()); // Erreur
+    console.log($('#raw-code').text().trim()); // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
@@ -53659,10 +53679,10 @@ $(document.body).off('keyup') // ré-initialisation
   updateContent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
-  $('#table-creator-title').val($('#table-title').text());
+  $('#table-creator-title').val($('#table-title').text().trim());
   updateContent();
 }).on('keyup', '#table-caption', function () {
-  $('#table-creator-caption').val($('#table-caption span').text());
+  $('#table-creator-caption').val($('#table-caption span').text().trim());
   updateContent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 

@@ -73,6 +73,9 @@ $themes: (
         width: 100%;
         height: 60px;
         justify-content: space-evenly;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        z-index: 10;
 
         .hidden{
             display: none !important;
@@ -144,6 +147,7 @@ $themes: (
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
                 }
 
                 &.menu-title{
@@ -152,12 +156,18 @@ $themes: (
                     }
                 }
 
+                a:hover, a:focus, button:hover, button:focus, .content-editable-selected {
+                    background-color: themed('aHoverColor') !important; 
+                    border-bottom: 5px solid themed('borderHover') !important; 
+                }
+
                 &:hover, a:focus,button:focus, .menu-item > a:hover , .menu-item > a:focus{
                     background-color: themed('aHoverColor'); 
                     border-bottom: 5px solid themed('borderHover'); 
                 }
             }
 
+        
             .has-submenu{
 
                 .menu-submenus{
@@ -167,8 +177,15 @@ $themes: (
                     border: 0px solid black;
                     color: themed('textColor'); 
 
-                    &:after{
+                    &.closed:after{
                         content : "▾";
+                        font-weight: bold;
+                        padding-left: 10px;
+                        font-size: 20px;
+                    }
+
+                    &.open:after{
+                        content : "▴";
                         font-weight: bold;
                         padding-left: 10px;
                         font-size: 20px;
@@ -176,9 +193,9 @@ $themes: (
                 }
     
                 ul{
-                    display: none;
                     width: calc(100% + 40px);
                     position: absolute;
+                    z-index: 9;
                     left: -40px;
                     top: 60px;
 
@@ -198,4 +215,16 @@ $themes: (
             text-align: center;
         }
     }
+}
+
+.text-bold > a:first-child, .text-bold button span, a.text-bold span{
+    font-weight: bold !important;
+}
+
+.text-italic > a:first-child, .text-italic button span, a.text-italic span{
+    font-style: italic !important;
+}
+
+.text-underline > a:first-child, .text-underline button span, a.text-underline span{
+    text-decoration: underline !important;
 }
