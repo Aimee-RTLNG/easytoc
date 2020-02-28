@@ -53,7 +53,7 @@
                             <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Passer en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav menu-connect col m-0 p-0">
+                        <ul class="navbar-nav menu-connect col m-0">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('register'))

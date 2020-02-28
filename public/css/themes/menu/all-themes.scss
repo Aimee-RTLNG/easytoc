@@ -160,6 +160,11 @@ $themes: (
                     background-color: themed('aHoverColor') !important; 
                     border-bottom: 5px solid themed('borderHover') !important; 
                 }
+
+                &:hover, a:focus,button:focus, .menu-item > a:hover , .menu-item > a:focus{
+                    background-color: themed('aHoverColor'); 
+                    border-bottom: 5px solid themed('borderHover'); 
+                }
             }
 
             .has-submenu{

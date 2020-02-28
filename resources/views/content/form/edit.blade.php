@@ -486,8 +486,20 @@
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button>
+                {{-- <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
+                <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
+                    <div class="btn-crea__icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <p>{{ __('Importer mes données') }}</p>
+                </button>
+                <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
+                    <div class="btn-crea__icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <p>{{ __('Annuler') }}</p>
+                </button>
             </div>
         </div>
     </div>

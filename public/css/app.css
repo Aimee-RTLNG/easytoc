@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(/node_modules/code-prettify/styles/suburst.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(/node_modules/code-prettify/styles/suburst.css);
+@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -9799,6 +9801,48 @@ img, a {
   -ms-user-select: none !important;
 }
 
+.wysiwyg .secondary_title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.wysiwyg .secondary_title:focus {
+  outline: none;
+  color: #3490dc;
+  text-decoration: underline;
+}
+
+.wysiwyg .third_title {
+  margin-left: 10px;
+  padding-top: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.575rem;
+}
+
+.wysiwyg p {
+  margin-bottom: 10px;
+}
+
+.wysiwyg a {
+  color: #3490dc;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.wysiwyg a:hover {
+  color: #155595;
+}
+
+.wysiwyg .child-bloc {
+  margin-left: 15px;
+}
+
+nav.navbar {
+  overflow: hidden;
+}
+
 .navbar {
   padding: 0 !important;
 }
@@ -9849,12 +9893,21 @@ img, a {
 }
 
 .navbar .container .menu-connect .nav-item a:focus {
-  background-color: #3490dc;
+  outline: none;
+  background-color: #1B6EC2;
+  color: white;
+}
+
+.navbar .container .menu-connect .nav-item a:focus .btn-connect__link {
   color: white;
 }
 
 .navbar .container .menu-connect .nav-item:hover a, .navbar .container .menu-connect .nav-item:hover a:focus, .navbar .container .menu-connect .nav-item:focus a, .navbar .container .menu-connect .nav-item:focus a:focus {
-  background-color: #3490dc;
+  background-color: #1B6EC2;
+  color: white;
+}
+
+.navbar .container .menu-connect .nav-item:hover a .btn-connect__link, .navbar .container .menu-connect .nav-item:hover a:focus .btn-connect__link, .navbar .container .menu-connect .nav-item:focus a .btn-connect__link, .navbar .container .menu-connect .nav-item:focus a:focus .btn-connect__link {
   color: white;
 }
 
@@ -9888,11 +9941,27 @@ img, a {
   transition: all .2s;
 }
 
+@media (max-width: 991px) {
+  .link-flag {
+    padding: 10px 20px;
+  }
+  .link-flag:hover, .link-flag:focus {
+    padding: 10px 20px;
+  }
+}
+
 .link-flag:hover, .link-flag:focus {
   color: white !important;
   border-bottom: 5px solid #3490dc;
   background-color: black;
   padding: 10px;
+}
+
+@media (min-width: 991px) {
+  .link-flag:hover, .link-flag:focus {
+    margin-left: -5px;
+    margin-right: 0px;
+  }
 }
 
 #logo-nav {
@@ -10805,6 +10874,10 @@ img, a {
   padding: 15px 25px;
 }
 
+.home-tools__item:focus {
+  border: 4px #1B6EC2 solid;
+}
+
 .home-tools__item__descr {
   max-width: 100%;
 }
@@ -10882,6 +10955,10 @@ img, a {
   padding: 15px 19px;
   text-align: center;
   z-index: 2;
+}
+
+.use-list__item:focus {
+  border: 4px #1b6ec2 solid;
 }
 
 .use-list__item__icon {
@@ -11809,8 +11886,20 @@ body {
   margin: 0;
 }
 
+.menu-blueprint {
+  min-height: 350px;
+}
+
 .compte-page {
   background-color: #F4F2F0;
+}
+
+.modif-compte .help-block {
+  color: #e3342f;
+}
+
+.modif-compte .warning-block {
+  color: #155595;
 }
 
 .full-list {
@@ -12002,8 +12091,12 @@ body {
   margin-top: 5px;
 }
 
-.list-filters .btn:hover {
+.list-filters .btn:hover, .list-filters .btn:focus {
   background-color: rgba(27, 110, 194, 0.2);
+}
+
+.list-filters .btn.active:focus {
+  background-color: rgba(27, 110, 194, 0.8);
 }
 
 .list-filters .btn.active {
@@ -12088,6 +12181,10 @@ body {
 
 .mon-compte input.form-control {
   font-family: 'Roboto','Arial', sans-serif;
+}
+
+.mon-compte input.form-control:focus {
+  border: 3px #1B6EC2 solid;
 }
 
 .mon-compte__entete {
@@ -12400,6 +12497,18 @@ body {
   }
 }
 
+.crud_btn > *:focus {
+  border: 3px #3490dc solid;
+}
+
+.crud_btn .btn-danger:focus {
+  box-shadow: 0 0 0 0.3rem rgba(227, 52, 47, 0.5);
+}
+
+.see-content-button:focus {
+  color: #155595;
+}
+
 @media (max-width: 575.98px) {
   .profile_content .select-home .dropdown-menu.show {
     left: -10px !important;
@@ -12488,7 +12597,7 @@ body {
 }
 
 .help-container .summary-container a:hover, .help-container .summary-container a:focus {
-  color: black;
+  color: #155595;
   font-weight: bold;
 }
 
@@ -12504,7 +12613,7 @@ body {
 }
 
 .help-container .help-text-container a:hover, .help-container .help-text-container a:focus {
-  color: black;
+  color: #155595;
 }
 
 .help-container .help-text-container h2, .help-container .help-text-container h3 {
@@ -12525,6 +12634,12 @@ body {
   padding-top: 25px;
 }
 
+.visu__title:focus {
+  outline: none;
+  color: #3490dc;
+  text-decoration: underline;
+}
+
 .edit-content-button, .delete-content-button {
   padding: 2px 10px;
   min-width: 138px;
@@ -12532,6 +12647,7 @@ body {
 
 .content-html-code {
   max-width: 100%;
+  flex: 0 0 100%;
 }
 
 .element-actions {

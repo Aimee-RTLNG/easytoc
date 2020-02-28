@@ -7,16 +7,16 @@
 
     <div class="container">
         <div class="entete">
-
             <h2 class="entete__title">{{ __('Aide') }}</h2>
             <div class="entete__under"></div>
+        </div>
             
             {{-- ANCHOR Introduction --}}
             <p>
                 {{ __("Voici quelques conseils afin de mieux comprendre et utiliser le potentiel de EasytoC, l’outil qui facilitera l’intégration de vos contenus. Les articles ci-dessous sont là pour résoudre tout problème que vous pourriez rencontrer et pour vous aider à découvrir des fonctionnalités dont vous ignoriez l'existence. Sélectionnez simplement l'une des sections ci-dessous pour accéder à plusieurs documents d'aide détaillés et pertinents pour les créateurs de formulaires, menus et tableaux en ligne.") }} 
             </p>
             
-        </div>
+        
 
         <div class="help-container">
 

@@ -123,6 +123,9 @@
         border-radius: 10px;
         color: white;
         padding: 15px 25px;
+        &:focus {
+            border: 4px $bleu solid;
+        }
         &__descr {
             max-width: 100%;
         }
@@ -184,6 +187,9 @@
         padding: 15px 19px;
         text-align: center;
         z-index: 2;
+        &:focus {
+            border: 4px #1b6ec2 solid;
+        }
         &__icon {
             height: 59px;
             min-height: 59px;

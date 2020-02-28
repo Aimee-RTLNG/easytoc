@@ -1,3 +1,6 @@
+nav.navbar{
+    overflow: hidden;
+}
 .navbar{
     padding: 0 !important;
 
@@ -49,15 +52,22 @@
 
             .nav-item{
                 a:focus{
-                    background-color: $blue;
+                    outline: none;
+                    background-color: $bleu;
                     color: white;
+                    .btn-connect__link {
+                        color: white;
+                    }
                 }
             }
 
             .nav-item:hover, .nav-item:focus{
                 a, a:focus{
-                    background-color: $blue;
+                    background-color: $bleu;
                     color: white;
+                    .btn-connect__link {
+                        color: white;
+                    }
                 }
             }
     
@@ -86,12 +96,22 @@
     min-height: 65px;
     border-bottom: 0px solid white;
     transition: all .2s;
+    @media (max-width: 991px) {
+        padding: 10px 20px;
+        &:hover, &:focus {
+            padding: 10px 20px;
+        }
+    }
 
     &:hover, &:focus{
         color: white !important;
         border-bottom: 5px solid $bleu-clair;
         background-color: black;
         padding: 10px;
+        @media (min-width: 991px) {
+            margin-left: -5px;
+            margin-right: 0px;
+        }
     }
 }
 #logo-nav {
