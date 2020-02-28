@@ -130,9 +130,9 @@
             <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
-                <div class="mb-3 row" role="region">
+                <div class="pb-3 row m-0" role="region">
                     <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
-                        <div class="col">
+                        <div class="col pl-0">
                             <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre de menu') }}</label>
                             <input type="text" name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre de menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre de menu') }}" autocomplete="off"/>
                         </div>
@@ -182,17 +182,24 @@
                         </button>
                     </div>
                 </div>
-                <div role="section" class="row mt-4 form_actions_element" aria-labelledby="form_actions_element">
-                    <div role="section" class="col-md-5" aria-labelledby="form_actions_crud">
-                        <h3 id="form_actions_crud" class="mb-3 creator-panel__title">{{ __('Actions sur l\'élément') }}</h3>
-                        <button disabled="true" aria-label="{{ __('Supprimer') }}" class="btn btn-primary btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                <div role="section" class="row mt-4 form_actions_element custom-info-element" aria-labelledby="form_actions_element" style="display: none">
+                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-labelledby="form_actions_crud">
+
+                        <div class="col">
+                            <label for="nav-name">{{ __('Nom du lien') }}</label>
+                            <input type="text" id="nav-name" class="form-control" placeholder="{{ __('Titre') }}">
+                        </div>
+
+                        <div class="col">
+                            <label for="nav-link">{{ __('URL de redirection du lien') }}</label>
+                            <input type="url" id="nav-link" class="form-control" placeholder="URL">
+                        </div>
+                        
+                        <button disabled="true" aria-label="{{ __('Supprimer') }}" class="btn btn-primary mb-0 btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                             <i class="fa fa-trash"></i>
                             {{ __('Supprimer') }}
                         </button>
-                        <button disabled="true" aria-label="{{ __('Annuler la suppression') }}" class="btn btn-primary btn_crea element_undo form-element-action action-undo" data-action="undo" title="{{ __('Annuler la suppression') }}">
-                            <i class="fa fa-undo"></i>
-                            {{ __('Annuler la suppression') }}
-                        </button>
+
                     </div>
                     {{-- ici --}}
                 </div>

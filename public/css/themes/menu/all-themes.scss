@@ -74,6 +74,8 @@ $themes: (
         height: 60px;
         justify-content: space-evenly;
         font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        z-index: 10;
 
         .hidden{
             display: none !important;
@@ -187,6 +189,7 @@ $themes: (
                 ul{
                     width: calc(100% + 40px);
                     position: absolute;
+                    z-index: 9;
                     left: -40px;
                     top: 60px;
 
@@ -208,14 +211,14 @@ $themes: (
     }
 }
 
-.text-bold > a:first-child, .text-bold button span{
+.text-bold > a:first-child, .text-bold button span, a.text-bold span{
     font-weight: bold !important;
 }
 
-.text-italic > a:first-child, .text-italic button span{
+.text-italic > a:first-child, .text-italic button span, a.text-italic span{
     font-style: italic !important;
 }
 
-.text-underline > a:first-child, .text-underline button span{
+.text-underline > a:first-child, .text-underline button span, a.text-underline span{
     text-decoration: underline !important;
 }

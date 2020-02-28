@@ -293,25 +293,33 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   e.preventDefault(); // Empêcher la redirection
 }).on('focus', '#full-menu a, #full-menu button', function (e) {
   e.preventDefault();
+  selected_link = $(this).parent();
+  previous_link = selected_link.prev();
+  next_link = selected_link.next();
   $('.content-editable-selected').removeClass('content-editable-selected');
 
   if ($(this).hasClass('sub-link')) {
     $(this).addClass('content-editable-selected');
   } else {
     $(this).closest('.element-container').addClass('content-editable-selected');
-  }
+  } // Affiche les input pour personnalisr les liens
 
-  selected_link = $(this).parent();
-  previous_link = selected_link.prev();
-  next_link = selected_link.next();
+
+  $('.custom-info-element').slideDown();
+  $('#nav-name').val($(selected_link).text().trim());
+  $('#nav-link').val($(selected_link).find('a').first().attr('href'));
   updatecontent();
-}) // Quand on sélectionne un élément éditable (c'est là le plus important)
-.on('focus', '[contenteditable=true]', function (e) {
-  updatecontent();
-}) // ANCHOR Modification du texte via l'intérieur du formulaire
-.on('keyup', '#full-menu #menu-title', function () {
+}) // ANCHOR Modification du texte via l'intérieur du menu
+.on('keyup', '#full-menu #menu-title', function (e) {
   $('#menu-creator-title').val($('#full-menu #menu-title').text().trim());
   updatecontent();
+}) // ANCHOR Modification du titre
+.on('keyup', '#nav-name #nav-link', function (e) {
+  if (e.target) {
+    console.log(e.target);
+  }
+
+  $('.content-editable-selected').find('span').first().text();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
@@ -320,53 +328,17 @@ $("#nav-code-tab").on('click', function () {
 
 $(".form-element-action").on('click', function (e) {
   updatecontent();
-}).on('change', function (e) {
-  updatecontent();
-}).on('keyup', function (e) {
-  updatecontent();
-}); // ANCHOR Selection de tout le texte au clic
-// NOTE Non utilisé : permet en gros de sélectionner tout le texte au clic sur un element contenteditabme
+}); // ANCHOR Fonction d'ajout d'sublink ( osef ça concerne pas les menus )
 
-function selectText(element) {
-  var sel, range;
-  var el = element[0];
-
-  if (window.getSelection && document.createRange) {
-    //Browser compatibility
-    sel = window.getSelection();
-
-    if (sel.toString() == '') {
-      //no text selection
-      window.setTimeout(function () {
-        range = document.createRange(); //range object
-
-        range.selectNodeContents(el); //sets Range
-
-        sel.removeAllRanges(); //remove all ranges from selection
-
-        sel.addRange(range); //add Range to a Selection.
-      }, 1);
-    }
-  } else if (document.selection) {
-    //older ie
-    sel = document.selection.createRange();
-
-    if (sel.text == '') {
-      //no text selection
-      range = document.body.createTextRange(); //Creates TextRange object
-
-      range.moveToElementText(el); //sets Range
-
-      range.select(); //make selection.
-    }
+function addlink(type) {
+  if (type = "link") {
+    $('#full-menu #menubar-easytoc').append(element_types["type-menu"]["insert-menu_link"]);
+  } else if (type = "sublink") {
+    $('#full-menu #menubar-easytoc').append(element_types["type-menu"]["insert-sub_link"]);
   }
-}
+} // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
 
-; // ANCHOR Fonction d'ajout d'sublink ( osef ça concerne pas les menus )
-
-function addlink() {} // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
-
-function deleteLink() {} // ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
+function deleteLink() {} // ANCHOR Fonction Undo/Redo suppression 
 
 
 function command(instance) {
@@ -393,7 +365,7 @@ var deletecommand = new command({
   undo: function undo() {
     element.appendTo("#full-form");
   }
-}); // ANCHOR Mise en forme du texte (gras, italic, underline...) ( à ne pas toucher )
+}); // ANCHOR Mise en forme du texte (gras, italic, underline...) 
 
 $('.text-formatting').on("click", function () {
   switch ($(this).attr('id')) {
@@ -414,13 +386,13 @@ $('.text-formatting').on("click", function () {
   }
 
   updatecontent();
-}); // ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite ( à ne pas toucher )
+}); // ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite 
 
 $('input[name="theme"]').on('change', function () {
   var theme = "theme-" + $(this).val();
   $('#generated-menu').attr('class', theme);
   updatecontent();
-}); // ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )
+}); // ANCHOR Copier le contenu code rapidement grâce aux boutons 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
   if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
@@ -434,9 +406,8 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
   $(this).text(message);
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
 });
-new ClipboardJS('#copy-css-link'); // pas touche
-
-new ClipboardJS('#copy-raw-code'); // pas touche
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code');
 
 /***/ }),
 
