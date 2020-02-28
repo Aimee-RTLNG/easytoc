@@ -9,9 +9,9 @@ import {
 
 let element; 
 let element_selected_container;
-let previous_element; 
-let selected_element;
-let next_element;
+let previous_link; 
+let selected_link;
+let next_link;
 let previous_sublink; 
 let selected_sublink;
 let next_sublink; 
@@ -288,21 +288,24 @@ $(document.body)
 
     .off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
 
-    // Empêcher la redirection
     .on('click', '#full-menu a', function (e) {
-        e.preventDefault();
+        e.preventDefault(); // Empêcher la redirection
     })
 
-    // Quand on clique sur un sous menu
-    .on('click', '#full-menu .has-submenu li', function (e) {
+    .on('focus', '#full-menu a, #full-menu button', function (e) {
+        e.preventDefault();
+
         $('.content-editable-selected').removeClass('content-editable-selected');
 
-        // $(this).closest('.element-container').addClass('content-editable-selected');
-        $(this).addClass('content-editable-selected');
+        if( $(this).hasClass('sub-link') ){
+            $(this).addClass('content-editable-selected');
+        } else {
+            $(this).closest('.element-container').addClass('content-editable-selected');
+        }
 
-        selected__link = $(this).parent();
-        previous_sublink = selected_sublink.prev();
-        next_sublink = selected_sublink.next();
+        selected_link = $(this).parent();
+        previous_link = selected_link.prev();
+        next_link = selected_link.next();
 
         updatecontent();
     })
@@ -310,7 +313,7 @@ $(document.body)
     // Quand on sélectionne un élément éditable (c'est là le plus important)
     .on('focus', '[contenteditable=true]', function (e) {
 
-        // on récupère les paramètres du lien 
+        
 
         updatecontent();
     })
@@ -412,33 +415,15 @@ var deletecommand = new command({
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
         case 'element-bold':
-            document.execCommand('bold');
+            $('.content-editable-selected').toggleClass('text-bold');
             updatecontent();
             break;
         case 'element-italic':
-            document.execCommand('italic');
+            $('.content-editable-selected').toggleClass('text-italic');
             updatecontent();
             break;
         case 'element-underline':
-            document.execCommand('underline');
-            updatecontent();
-            break;
-        case 'justify-left':
-            $(element_select).removeClass('text-justify');
-            $(element_select).removeClass('text-center');
-            $(element_select).addClass('text-left');
-            updatecontent();
-            break;
-        case 'justify-center':
-            $(element_select).removeClass('text-justify');
-            $(element_select).removeClass('text-left');
-            $(element_select).addClass('text-center');
-            updatecontent();
-            break;
-        case 'justify-full':
-            $(element_select).removeClass('text-left');
-            $(element_select).removeClass('text-center');
-            $(element_select).addClass('text-justify');
+            $('.content-editable-selected').toggleClass('text-underline');
             updatecontent();
             break;
     }
@@ -467,3 +452,4 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 })
 new ClipboardJS('#copy-css-link'); // pas touche
 new ClipboardJS('#copy-raw-code'); // pas touche
+

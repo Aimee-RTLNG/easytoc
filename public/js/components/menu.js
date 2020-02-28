@@ -19,9 +19,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var element;
 var element_selected_container;
-var previous_element;
-var selected_element;
-var next_element;
+var previous_link;
+var selected_link;
+var next_link;
 var previous_sublink;
 var selected_sublink;
 var next_sublink;
@@ -289,21 +289,24 @@ $('#btn-save-project').on('click', function () {
 
 var element_select;
 $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
-// Empêcher la redirection
 .on('click', '#full-menu a', function (e) {
+  e.preventDefault(); // Empêcher la redirection
+}).on('focus', '#full-menu a, #full-menu button', function (e) {
   e.preventDefault();
-}) // Quand on clique sur un sous menu
-.on('click', '#full-menu .has-submenu li', function (e) {
-  $('.content-editable-selected').removeClass('content-editable-selected'); // $(this).closest('.element-container').addClass('content-editable-selected');
+  $('.content-editable-selected').removeClass('content-editable-selected');
 
-  $(this).addClass('content-editable-selected');
-  selected__link = $(this).parent();
-  previous_sublink = selected_sublink.prev();
-  next_sublink = selected_sublink.next();
+  if ($(this).hasClass('sub-link')) {
+    $(this).addClass('content-editable-selected');
+  } else {
+    $(this).closest('.element-container').addClass('content-editable-selected');
+  }
+
+  selected_link = $(this).parent();
+  previous_link = selected_link.prev();
+  next_link = selected_link.next();
   updatecontent();
 }) // Quand on sélectionne un élément éditable (c'est là le plus important)
 .on('focus', '[contenteditable=true]', function (e) {
-  // on récupère les paramètres du lien 
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#full-menu #menu-title', function () {
@@ -395,38 +398,17 @@ var deletecommand = new command({
 $('.text-formatting').on("click", function () {
   switch ($(this).attr('id')) {
     case 'element-bold':
-      document.execCommand('bold');
+      $('.content-editable-selected').toggleClass('text-bold');
       updatecontent();
       break;
 
     case 'element-italic':
-      document.execCommand('italic');
+      $('.content-editable-selected').toggleClass('text-italic');
       updatecontent();
       break;
 
     case 'element-underline':
-      document.execCommand('underline');
-      updatecontent();
-      break;
-
-    case 'justify-left':
-      $(element_select).removeClass('text-justify');
-      $(element_select).removeClass('text-center');
-      $(element_select).addClass('text-left');
-      updatecontent();
-      break;
-
-    case 'justify-center':
-      $(element_select).removeClass('text-justify');
-      $(element_select).removeClass('text-left');
-      $(element_select).addClass('text-center');
-      updatecontent();
-      break;
-
-    case 'justify-full':
-      $(element_select).removeClass('text-left');
-      $(element_select).removeClass('text-center');
-      $(element_select).addClass('text-justify');
+      $('.content-editable-selected').toggleClass('text-underline');
       updatecontent();
       break;
   }

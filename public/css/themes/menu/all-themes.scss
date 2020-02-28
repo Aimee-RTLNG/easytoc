@@ -145,6 +145,7 @@ $themes: (
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
                 }
 
                 &.menu-title{
@@ -153,9 +154,9 @@ $themes: (
                     }
                 }
 
-                a:hover, a:focus, button:hover, button:focus{
-                    background-color: themed('aHoverColor'); 
-                    border-bottom: 5px solid themed('borderHover'); 
+                a:hover, a:focus, button:hover, button:focus, .content-editable-selected {
+                    background-color: themed('aHoverColor') !important; 
+                    border-bottom: 5px solid themed('borderHover') !important; 
                 }
             }
 
@@ -205,4 +206,16 @@ $themes: (
             text-align: center;
         }
     }
+}
+
+.text-bold > a:first-child, .text-bold button span{
+    font-weight: bold !important;
+}
+
+.text-italic > a:first-child, .text-italic button span{
+    font-style: italic !important;
+}
+
+.text-underline > a:first-child, .text-underline button span{
+    text-decoration: underline !important;
 }

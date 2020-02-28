@@ -57,7 +57,8 @@ body {
 }
 
 .content-editable-selected {
-    border: 3px dotted blue !important;
+    border: 3px dotted black !important;
+    outline : 3px dotted white !important;
 }
 
 // Boutons copier le contenu

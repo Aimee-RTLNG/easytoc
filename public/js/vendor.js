@@ -51312,6 +51312,11 @@ document.onkeyup = function (e) {
       }
     }
   }
+}; // Désactiver le drag and drop des links !!!!!!
+
+
+window.ondragstart = function () {
+  return false;
 };
 
 /***/ }),

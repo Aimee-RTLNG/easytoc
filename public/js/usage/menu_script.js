@@ -1,11 +1,8 @@
-// Attention ; jquery
 
 let menu = document.getElementById("full-menu");
 let menu_buttons = menu.getElementsByTagName('button');
 
 function displayMenu( event ){
-
-   console.log(event);
 
    let element = event.target;
    if( element.tagName == "SPAN" ){
@@ -23,15 +20,13 @@ function displayMenu( event ){
       if( bouton_menu.classList.contains('open') ){
          bouton_menu.classList.remove('open');
          bouton_menu.classList.add('closed');
-         submenu.classList.toggle('hidden');
+         // submenu.classList.toggle('hidden');
       }
    }
 
    let submenu = document.getElementById(submenu_id);
 
-   console.log(submenu.classList);
    submenu.classList.toggle('hidden');
-   console.log(submenu.classList);
 
    if( submenu.classList.contains('hidden') ){
       element.classList.remove('open');

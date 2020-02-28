@@ -99,10 +99,9 @@ body {
 }
 
 .content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
-    border: 3px dotted blue !important;
+    border: 3px dotted black !important;
+    outline : 3px dotted white !important;
 }
-
-
 
 form {
     border: 0 !important;
