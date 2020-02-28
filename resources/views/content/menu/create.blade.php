@@ -145,7 +145,7 @@
                     <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
                         <div class="col">
                             <label class="creator-panel__link" for="menu-creator-link">{{ __('Logo de menu') }}</label>
-                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/favicon.ico') }}" class="form-control input-creator" autocomplete="off"/>
+                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.png') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
                         <div>
                             <input type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
@@ -165,8 +165,8 @@
                             <i class="fa fa-heading"></i>
                             {{ __('Rubrique avec sous-menu') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}">
-                            <i class="fa fa-link"></i>
+                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien de sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}" disabled>
+                            <i class="fa fa-list-ul"></i>
                             {{ __('Lien de sous-menu') }}
                         </button>
                     </div>
@@ -188,7 +188,6 @@
                 </div>
                 <div role="section" class="row mt-4 form_actions_element custom-info-element" aria-labelledby="form_actions_element" style="display: none">
                     <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-labelledby="form_actions_crud">
-
                         <div class="col">
                             <label for="nav-name">{{ __('Nom du lien') }}</label>
                             <input type="text" id="nav-name" class="form-control" placeholder="{{ __('Titre') }}">
@@ -199,13 +198,29 @@
                             <input type="url" id="nav-link" class="form-control" placeholder="URL">
                         </div>
                         
-                        <button disabled="true" aria-label="{{ __('Supprimer') }}" class="btn btn-primary mb-0 btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                        <button aria-label="{{ __('Supprimer') }}" id="action-delete" class="btn btn-primary mb-0 btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                             <i class="fa fa-trash"></i>
                             {{ __('Supprimer') }}
                         </button>
-
                     </div>
-                    {{-- ici --}}
+                    <div role="section" class="w-100 mt-3 mr-3 d-flex justify-content-around align-items-end" aria-labelledby="form_actions_crud">
+                        <button aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" class="btn btn-primary mb-0 btn_crea form-element-action action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}">
+                            <i class="fa fa-arrow-left"></i>
+                            {{ __('Déplacer à gauche') }}
+                        </button>
+                        <button aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" class="btn btn-primary mb-0 btn_crea form-element-action action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}">
+                            <i class="fa fa-arrow-right"></i>
+                            {{ __('Déplacer à droite') }}
+                        </button>
+                        <button aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" class="btn btn-primary mb-0 btn_crea form-element-action action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}">
+                            <i class="fa fa-arrow-up"></i>
+                            {{ __('Déplacer en haut') }}
+                        </button>
+                        <button aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" class="btn btn-primary mb-0 btn_crea form-element-action action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}">
+                            <i class="fa fa-arrow-down"></i>
+                            {{ __('Déplacer en bas') }}
+                        </button>
+                    </div>
                 </div>
 
                 <div class="bloc-creation-interface">
