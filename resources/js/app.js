@@ -219,7 +219,8 @@ $(window).on('load', function(){
 // CTRL ALT D - move down
 // CTRL ALT T - trash
 // CTRL ALT I - bloc informations
-// CTRL ALT S - bloc informations
+// CTRL ALT S - bloc save
+// CTRL ALT P - bloc parametres
 
 // (bien relacher la touche custom avant le ctrl alt )
 
@@ -230,18 +231,47 @@ document.onkeyup = function(e) {
         if( $(".content-editable-selected").length > 0 ){
             if( !$("#action-move-up").attr('disabled') ){
                 $("#action-move-up").click();
+            } else {
+                $(".action-move-row-up").click();
             }
         }
     } 
     // Move Down
     // CTRL ALT + D
     else if (e.ctrlKey && e.altKey && e.which == 68) {
-          if( $(".content-editable-selected").length > 0 ){
-              if( !$("#action-move-down").attr('disabled') ){
-                 $("#action-move-down").click();
-              }
-          }
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-down").attr('disabled') ){
+                $("#action-move-down").click();
+            } else {
+                $(".action-move-row-down").click();
+            }
+        }
     } 
+
+    // Move Left
+    // CTRL ALT + L
+    else if (e.ctrlKey && e.altKey && e.which == 76) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-left").attr('disabled') ){
+               $("#action-move-left").click();
+            } else {
+                $(".action-move-col-left").click();
+            }
+        }
+    } 
+
+    // Move Right
+    // CTRL ALT + R
+    else if (e.ctrlKey && e.altKey && e.which == 82) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-right").attr('disabled') ){
+               $("#action-move-right").click();
+            } else {
+                $(".action-move-col-right").click();
+            }
+        }
+     } 
+
     // Suprrimer 
     // CTRL ATL + T 
     else if (e.ctrlKey && e.altKey && e.which == 84) {
@@ -266,6 +296,7 @@ document.onkeyup = function(e) {
         }
     } 
     // Sauvegarder
+    // CTRL ALT + S
     else if (e.ctrlKey && e.altKey && e.which == 83) {
         console.log(e);
         if( $('#btn-save-project, #btn-update-project').length > 0 ){

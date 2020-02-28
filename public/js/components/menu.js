@@ -299,20 +299,39 @@ $(document.body).off('keyup').off('click') // ré-initialisation pour empêcher 
   console.log(previous_link);
   console.log(next_link);
   $('.content-editable-selected').removeClass('content-editable-selected');
+  $(selected_link).addClass('content-editable-selected');
+  $("#action-move-up").attr('disabled', true);
+  $("#action-move-down").attr('disabled', true);
+  $("#nav-link").removeAttr('disabled');
 
   if ($(this).hasClass('sub-link')) {
-    // lien de sous menu
-    $(this).addClass('content-editable-selected');
-  } else if ($(this).hasClass('menu-submenus')) {} else {
-    $(this).closest('.element-container').addClass('content-editable-selected');
+    link_type = "sub-link";
+    $("#action-move-right").attr('disabled', true);
+    $("#action-move-left").attr('disabled', true);
+    $("#action-move-up").removeAttr('disabled');
+    $("#action-move-down").removeAttr('disabled');
+  } else if ($(this).hasClass('menu-submenus')) {
+    link_type = "menu";
+    $("#action-move-right").removeAttr('disabled');
+    $("#action-move-left").removeAttr('disabled');
+    $("#nav-link").attr('disabled', true);
+    $("#nav-link").val("");
+  } else {
+    link_type = "link";
+    $("#action-move-right").removeAttr('disabled');
+    $("#action-move-left").removeAttr('disabled');
   } // Affiche les input pour personnalisr les liens
 
 
   $('.custom-info-element').slideDown();
-  $('#nav-name').val($(this).find('[contenteditable=true]').text().trim());
-  $('#nav-link').val($(this).find('a').first().attr('href'));
+  $('#nav-name').val($(selected_link).find('span').first().text().trim());
+
+  if (link_type != "menu") {
+    $('#nav-link').val($(selected_link).find('a').attr('href'));
+  }
+
   updatecontent();
-}) // ANCHOR Modification du texte via l'intérieur du menu
+}) // ANCHOR Modification du titre du menu via l'intérieur du menu
 .on('keyup', '#full-menu #menu-title ', function (e) {
   $('#menu-creator-title').val($('#full-menu #menu-title').text().trim());
   updatecontent();
@@ -324,6 +343,7 @@ $(document.body).off('keyup').off('click') // ré-initialisation pour empêcher 
   if ($(e.target).attr('id') == "nav-name") {
     $(link_text).text($('#nav-name').val());
   } else if ($(e.target).attr('id') == "nav-link") {
+    console.log($(link_selected).attr('href'));
     $(link_selected).attr('href', $('#nav-link').val());
   } // $('.content-editable-selected').find('span').first().text();
 
@@ -342,39 +362,17 @@ $(".form-element-action").on('click', function (e) {
     addLink("sub_menu");
   } else if ($(this).attr('id') == "insert-sub_menu") {
     addLink("sub_link");
+  } else if ($(this).attr('id') == "delete-link") {
+    deleteLink();
   }
 
   updatecontent();
 }); // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
 
-function deleteLink() {} // ANCHOR Fonction Undo/Redo suppression 
+function deleteLink() {
+  $(selected_link).remove();
+} // ANCHOR Mise en forme du texte (gras, italic, underline...) 
 
-
-function command(instance) {
-  this.command = instance;
-  this.done = [];
-
-  this.execute = function execute() {
-    this.command.execute();
-    this.done.push(this.command);
-  };
-
-  this.undo = function undo() {
-    var command = this.done.pop();
-    command.undo();
-  };
-} // ANCHOR Fonction Suppression
-
-
-var deletecommand = new command({
-  execute: function execute() {
-    element = $(".content-editable-selected").removeClass('content-editable-selected');
-    element = element.detach();
-  },
-  undo: function undo() {
-    element.appendTo("#full-form");
-  }
-}); // ANCHOR Mise en forme du texte (gras, italic, underline...) 
 
 $('.text-formatting').on("click", function () {
   switch ($(this).attr('id')) {
