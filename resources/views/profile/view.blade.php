@@ -45,13 +45,14 @@
                 </div>
             </div>
         </div>
-        <div class="row profile_content">
+        <a class="sr-only sr-only-focusable" href="#my-account">{{ __('Passer vos créations pour modifier les informations de votre compte') }}</a>
+        <div class="row profile_content" id="profile-content">
             <div class="col-lg-8">
                 <div class="dashboard">
                     <div class="row profile_content__filters m-0 p-0">
                         <div class="profile_content__options col-12">
                             <div id="list-filters" class="list-filters">
-                                <button class="btn btn-filter-type active" data-type="all">
+                                <button class="btn btn-filter-type active" data-type="all" tabindex="0">
                                     {{ __('Tous') }}
                                     <div class="all_types">
                                         <span class="type-pin type-Menu" data-type="Menu"></span>
@@ -59,15 +60,15 @@
                                         <span class="type-pin type-Table" data-type="Table"></span>
                                     </div>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="menu">
+                                <button class="btn btn-filter-type" data-type="menu" tabindex="0">
                                     {{ __('Menu') }}
                                     <span class="type-pin type-Menu" data-type="Menu"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="form">
+                                <button class="btn btn-filter-type" data-type="form" tabindex="0">
                                     {{ __('Formulaire') }}
                                     <span class="type-pin type-Form" data-type="Form"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="table">
+                                <button class="btn btn-filter-type" data-type="table" tabindex="0">
                                     {{ __('Tableau') }}
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </button>
@@ -159,7 +160,7 @@
                 </div>
             </div>
             <div class="col-lg-4 modif-compte">
-                <div class="mon-compte">
+                <div class="mon-compte" id="my-account">
                     <div class="mon-compte__entete">
                         <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
                         <h2 class="mon-compte__entete__title">{{ __('Informations de votre compte') }}</h2>
@@ -344,6 +345,7 @@
                                     </div>
                                     
                                 </div>
+                                <a class="sr-only sr-only-focusable" href="#profile-content">{{ __('Voir vos créations') }}</a>
                             </form>
                         </div>
                     </div>

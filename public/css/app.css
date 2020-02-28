@@ -9796,6 +9796,12 @@ pre.prettyprinted {
   margin: 20px 0;
 }
 
+.wysiwyg .secondary_title:focus {
+  outline: none;
+  color: #3490dc;
+  text-decoration: underline;
+}
+
 .wysiwyg .third_title {
   margin-left: 10px;
   padding-top: 25px;
@@ -9820,6 +9826,10 @@ pre.prettyprinted {
 
 .wysiwyg .child-bloc {
   margin-left: 15px;
+}
+
+nav.navbar {
+  overflow: hidden;
 }
 
 .navbar {
@@ -9872,6 +9882,7 @@ pre.prettyprinted {
 }
 
 .navbar .container .menu-connect .nav-item a:focus {
+  outline: none;
   background-color: #1B6EC2;
   color: white;
 }
@@ -9919,11 +9930,27 @@ pre.prettyprinted {
   transition: all .2s;
 }
 
+@media (max-width: 991px) {
+  .link-flag {
+    padding: 10px 20px;
+  }
+  .link-flag:hover, .link-flag:focus {
+    padding: 10px 20px;
+  }
+}
+
 .link-flag:hover, .link-flag:focus {
   color: white !important;
   border-bottom: 5px solid #3490dc;
   background-color: black;
   padding: 10px;
+}
+
+@media (min-width: 991px) {
+  .link-flag:hover, .link-flag:focus {
+    margin-left: -5px;
+    margin-right: 0px;
+  }
 }
 
 #logo-nav {
@@ -11848,6 +11875,14 @@ body {
   background-color: #F4F2F0;
 }
 
+.modif-compte .help-block {
+  color: #e3342f;
+}
+
+.modif-compte .warning-block {
+  color: #155595;
+}
+
 .full-list {
   overflow: hidden;
 }
@@ -12037,8 +12072,12 @@ body {
   margin-top: 5px;
 }
 
-.list-filters .btn:hover {
+.list-filters .btn:hover, .list-filters .btn:focus {
   background-color: rgba(27, 110, 194, 0.2);
+}
+
+.list-filters .btn.active:focus {
+  background-color: rgba(27, 110, 194, 0.8);
 }
 
 .list-filters .btn.active {
@@ -12123,6 +12162,10 @@ body {
 
 .mon-compte input.form-control {
   font-family: 'Roboto','Arial', sans-serif;
+}
+
+.mon-compte input.form-control:focus {
+  border: 3px #1B6EC2 solid;
 }
 
 .mon-compte__entete {
@@ -12435,6 +12478,18 @@ body {
   }
 }
 
+.crud_btn > *:focus {
+  border: 3px #3490dc solid;
+}
+
+.crud_btn .btn-danger:focus {
+  box-shadow: 0 0 0 0.3rem rgba(227, 52, 47, 0.5);
+}
+
+.see-content-button:focus {
+  color: #155595;
+}
+
 @media (max-width: 575.98px) {
   .profile_content .select-home .dropdown-menu.show {
     left: -10px !important;
@@ -12560,6 +12615,12 @@ body {
   padding-top: 25px;
 }
 
+.visu__title:focus {
+  outline: none;
+  color: #3490dc;
+  text-decoration: underline;
+}
+
 .edit-content-button, .delete-content-button {
   padding: 2px 10px;
   min-width: 138px;
@@ -12567,6 +12628,7 @@ body {
 
 .content-html-code {
   max-width: 100%;
+  flex: 0 0 100%;
 }
 
 .element-actions {

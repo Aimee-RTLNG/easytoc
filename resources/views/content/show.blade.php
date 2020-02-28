@@ -70,7 +70,7 @@
         </div>
 
         {{-- Visualisation --}}
-        <h3 class="visu__title">{{ __('Visualisation') }}</h3>
+        <h3 class="visu__title" tabindex="0">{{ __('Visualisation') }}</h3>
         <div class="row">
 
             <div class="content-html-preview col-12">
@@ -80,7 +80,7 @@
         </div>
 
         {{-- Code généré --}}
-        <h3 class="visu__title">{{ __('Code généré') }}</h3>
+        <h3 class="visu__title" tabindex="0">{{ __('Code généré') }}</h3>
         <div class="row">
 
             <div class="visu_info">
@@ -104,7 +104,7 @@
             @elseif ($content->type_id == 3)
                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet"></xmp>
             @endif
-            <h3 class="mt-3">
+            <h3 class="mt-3 ml-2">
                 {{ __("Voici le code brut généré: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}
             </h3>
             <div class="copy-container visu-copy-container btn-code w-100">

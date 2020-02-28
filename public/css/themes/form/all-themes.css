@@ -85,6 +85,14 @@
   border-top: 2px solid #787878;
 }
 
+#nav-blueprint {
+  overflow-x: scroll;
+}
+
+#content-created-blueprint {
+  min-width: 370px;
+}
+
 #full-form {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -450,7 +458,7 @@
 
 #form-actions {
   width: 90vw;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -464,6 +472,7 @@
 }
 
 #form-actions input {
+  max-width: 600px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -477,7 +486,7 @@
   border: none;
   background-color: #EFEFEF;
   border-radius: 12px;
-  min-width: 40%;
+  min-width: 200px;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
@@ -496,7 +505,7 @@
   border: none;
   background-color: #393737;
   border-radius: 12px;
-  min-width: 40%;
+  min-width: 200px;
 }
 
 #form-actions input[type="submit"]:hover, #form-actions input[type="submit"]:focus {

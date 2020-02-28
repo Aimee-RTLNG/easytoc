@@ -16,7 +16,7 @@
         utilisateurs et visiteurs du site : <strong><a href="http://easytoc.ritleng.mmi-unistra.fr"
         arget="_blank">easytoc.ritleng.mmi-unistra.fr</a></strong> les informations suivantes :</p>
 
-    <h3 class="secondary_title">1. Informations légales :</h3>
+    <h3 class="secondary_title" tabindex="0">1. Informations légales :</h3>
 
     <p>Statut du propriétaire : <strong>particulier</strong><br />
         Le Propriétaire est : <strong>Aimée RITLENG</strong><br />
@@ -32,7 +32,7 @@
         L’hebergeur du site est : <strong>OVH 2 rue Kellermann 59100 Roubaix </strong><br />
     </p>
 
-    <h3 class="secondary_title" class="secondary_title">2. Présentation et principe :</h3>
+    <h3 class="secondary_title" tabindex="0">2. Présentation et principe :</h3>
 
     <p>Est désigné ci-après : <strong>Utilisateur</strong>, tout internaute se connectant et
         utilisant le site susnommé : <a href="http://easytoc.ritleng.mmi-unistra.fr"
@@ -49,7 +49,7 @@
         utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa
         responsabilité exclusive.</p>
 
-    <h3 class="secondary_title">3. Accessibilité :</h3>
+    <h3 class="secondary_title" tabindex="0">3. Accessibilité :</h3>
 
     <p>Le site easytoc.ritleng.mmi-unistra.fr est par principe accessible aux utilisateurs 24/24h, 7/7j, sauf interruption,
     programmée ou non, pour les besoins de sa maintenance ou en cas de force majeure. En cas d’impossibilité d’accès au
@@ -58,7 +58,7 @@
     soumis qu’à une obligation de moyen, easytoc.ritleng.mmi-unistra.fr ne saurait être tenu pour responsable de tout
     dommage, quelle qu’en soit la nature, résultant d’une indisponibilité du service.</p>
 
-    <h3 class="secondary_title">4. Propriété intellectuelle :</h3>
+    <h3 class="secondary_title" tabindex="0">4. Propriété intellectuelle :</h3>
 
     <p>
         <em>Aimée RITLENG</em> est propriétaire exclusif de tous les droits de propriété intellectuelle ou détient les
@@ -71,7 +71,7 @@
         constitutive d’une contrefaçon et passible de poursuite conformément aux dispositions des articles L.335-2 et
         suivants du Code de Propriété Intellectuelle.</p>
 
-    <h3 class="secondary_title">5. Liens hypertextes et cookies :</h3>
+    <h3 class="secondary_title" tabindex="0">5. Liens hypertextes et cookies :</h3>
 
     <p>Le site <strong>easytoc.ritleng.mmi-unistra.fr</strong> contient un certain nombre de liens hypertextes vers
     d’autres sites (partenaires, informations …) mis en place avec l’autorisation de <em>Aimée RITLENG</em>. Cependant,
@@ -88,7 +88,7 @@
     cookies, tapez dans votre moteur de recherche : bloquage des cookies sous IE ou firefox et suivez les instructions
     en fonction de votre version.</p>
 
-    <h3 class="secondary_title">6. Protection des biens et des personnes - gestion des données personnelles :</h3>
+    <h3 class="secondary_title" tabindex="0">6. Protection des biens et des personnes - gestion des données personnelles :</h3>
 
     <p>En France, les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n°
     2004-801 du 6 août 2004, l'article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995.</p>

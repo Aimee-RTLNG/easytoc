@@ -221,6 +221,11 @@ pre.prettyprinted{
         font-size: 1.8rem;
         font-weight: bold;
         margin: 20px 0;
+        &:focus {
+            outline: none;
+            color: $blue;
+            text-decoration: underline;
+        }
     }
     .third_title {
         margin-left: 10px;

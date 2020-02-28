@@ -92,6 +92,7 @@ $themes: (
 }
 .table-title {
     font-size: 24px;
+    font-family: 'Arial','Helvetica', sans-serif;
     font-weight: 500;
     @include themify($themes) {
         border-bottom: 2px solid themed('borderColor');
@@ -99,6 +100,7 @@ $themes: (
 }
 
 #full-table {
+    font-family: 'Arial','Helvetica', sans-serif;
     padding: 20px 0px;
     font-size: 14px;
     margin-top: 10px;
@@ -106,7 +108,7 @@ $themes: (
     max-width: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    overflow: hidden;
+    overflow: hidden; 
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
