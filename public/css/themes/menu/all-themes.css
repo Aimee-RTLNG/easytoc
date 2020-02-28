@@ -118,6 +118,11 @@
   text-decoration: underline;
 }
 
+.theme-white #full-menu .menu-items .menu-item a:hover, .theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:hover, .theme-white #full-menu .menu-items .menu-item button:focus, .theme-white #full-menu .menu-items .menu-item .content-editable-selected {
+  background-color: #cacaca !important;
+  border-bottom: 5px solid #5e5e5e !important;
+}
+
 .theme-white #full-menu .menu-items .menu-item:hover, .theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-white #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #cacaca;
   border-bottom: 5px solid #5e5e5e;
@@ -288,7 +293,7 @@
   background-color: black !important;
   border-bottom: 5px solid #d4d4d4 !important;
 }
-  
+
 .theme-black #full-menu .menu-items .menu-item:hover, .theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-black #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: black;
   border-bottom: 5px solid #d4d4d4;
@@ -453,6 +458,11 @@
 
 .theme-green #full-menu .menu-items .menu-item.menu-title:hover, .theme-green #full-menu .menu-items .menu-item.menu-title:focus {
   text-decoration: underline;
+}
+
+.theme-green #full-menu .menu-items .menu-item a:hover, .theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:hover, .theme-green #full-menu .menu-items .menu-item button:focus, .theme-green #full-menu .menu-items .menu-item .content-editable-selected {
+  background-color: #016d67 !important;
+  border-bottom: 5px solid #48f8bd !important;
 }
 
 .theme-green #full-menu .menu-items .menu-item:hover, .theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-green #full-menu .menu-items .menu-item .menu-item > a:focus {
@@ -621,6 +631,11 @@
   text-decoration: underline;
 }
 
+.theme-red #full-menu .menu-items .menu-item a:hover, .theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:hover, .theme-red #full-menu .menu-items .menu-item button:focus, .theme-red #full-menu .menu-items .menu-item .content-editable-selected {
+  background-color: #700e0e !important;
+  border-bottom: 5px solid #fc4040 !important;
+}
+
 .theme-red #full-menu .menu-items .menu-item:hover, .theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-red #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #700e0e;
   border-bottom: 5px solid #fc4040;
@@ -785,6 +800,11 @@
 
 .theme-blue #full-menu .menu-items .menu-item.menu-title:hover, .theme-blue #full-menu .menu-items .menu-item.menu-title:focus {
   text-decoration: underline;
+}
+
+.theme-blue #full-menu .menu-items .menu-item a:hover, .theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:hover, .theme-blue #full-menu .menu-items .menu-item button:focus, .theme-blue #full-menu .menu-items .menu-item .content-editable-selected {
+  background-color: #0a1a4d !important;
+  border-bottom: 5px solid #7ae4ff !important;
 }
 
 .theme-blue #full-menu .menu-items .menu-item:hover, .theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus {

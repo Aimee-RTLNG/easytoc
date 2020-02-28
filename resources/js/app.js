@@ -282,8 +282,7 @@ document.onkeyup = function(e) {
     }
 };
 
-// Désactiver le drag and drop des links !!!!!!
-
+// Désactiver le drag and drop des links et des images
 window.ondragstart = function(){
     return false;
 }
