@@ -13,16 +13,23 @@
 
             <div class="panel-body">
 
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                    
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                
+                    <div class="d-flex element-actions">
+                        <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="{{ __('Supprimer') }}" class="btn btn-danger delete-content-button" onclick="return confirm({{ __('Voulez vous vraiment supprimer cet élément ?') }})">       
+                        </form>
+                    </div>
 
                     <form action="{{ route('content.update', ['content'=>$content]) }}" method="post">
                             @csrf
@@ -36,13 +43,7 @@
                             </button>
                     </form>
                     
-                    <div class="d-flex element-actions">
-                        <form action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="{{ __('Supprimer') }}" class="btn btn-danger delete-content-button" onclick="return confirm({{ __('Voulez vous vraiment supprimer cet élément ?') }})">       
-                        </form>
-                    </div>
+
             </div>
 
         </div>

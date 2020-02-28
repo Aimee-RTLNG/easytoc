@@ -128,14 +128,14 @@
   color: black;
 }
 
-.theme-white #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-white #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-white #full-menu .menu-items .has-submenu .menu-submenus.closed:after {
   content: "▾";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
 }
 
-.theme-white #full-menu .menu-items .has-submenu .menu-submenus.open .theme-white #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-white #full-menu .menu-items .has-submenu .menu-submenus.open:after {
   content: "▴";
   font-weight: bold;
   padding-left: 10px;
@@ -143,7 +143,6 @@
 }
 
 .theme-white #full-menu .menu-items .has-submenu ul {
-  display: none;
   width: calc(100% + 40px);
   position: absolute;
   left: -40px;
@@ -291,14 +290,14 @@
   color: white;
 }
 
-.theme-black #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-black #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-black #full-menu .menu-items .has-submenu .menu-submenus.closed:after {
   content: "▾";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
 }
 
-.theme-black #full-menu .menu-items .has-submenu .menu-submenus.open .theme-black #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-black #full-menu .menu-items .has-submenu .menu-submenus.open:after {
   content: "▴";
   font-weight: bold;
   padding-left: 10px;
@@ -306,7 +305,6 @@
 }
 
 .theme-black #full-menu .menu-items .has-submenu ul {
-  display: none;
   width: calc(100% + 40px);
   position: absolute;
   left: -40px;
@@ -454,14 +452,14 @@
   color: black;
 }
 
-.theme-green #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-green #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-green #full-menu .menu-items .has-submenu .menu-submenus.closed:after {
   content: "▾";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
 }
 
-.theme-green #full-menu .menu-items .has-submenu .menu-submenus.open .theme-green #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-green #full-menu .menu-items .has-submenu .menu-submenus.open:after {
   content: "▴";
   font-weight: bold;
   padding-left: 10px;
@@ -469,7 +467,6 @@
 }
 
 .theme-green #full-menu .menu-items .has-submenu ul {
-  display: none;
   width: calc(100% + 40px);
   position: absolute;
   left: -40px;
@@ -617,14 +614,14 @@
   color: white;
 }
 
-.theme-red #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-red #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-red #full-menu .menu-items .has-submenu .menu-submenus.closed:after {
   content: "▾";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
 }
 
-.theme-red #full-menu .menu-items .has-submenu .menu-submenus.open .theme-red #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-red #full-menu .menu-items .has-submenu .menu-submenus.open:after {
   content: "▴";
   font-weight: bold;
   padding-left: 10px;
@@ -632,7 +629,6 @@
 }
 
 .theme-red #full-menu .menu-items .has-submenu ul {
-  display: none;
   width: calc(100% + 40px);
   position: absolute;
   left: -40px;
@@ -780,14 +776,14 @@
   color: white;
 }
 
-.theme-blue #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-blue #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-blue #full-menu .menu-items .has-submenu .menu-submenus.closed:after {
   content: "▾";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
 }
 
-.theme-blue #full-menu .menu-items .has-submenu .menu-submenus.open .theme-blue #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-blue #full-menu .menu-items .has-submenu .menu-submenus.open:after {
   content: "▴";
   font-weight: bold;
   padding-left: 10px;
@@ -795,7 +791,6 @@
 }
 
 .theme-blue #full-menu .menu-items .has-submenu ul {
-  display: none;
   width: calc(100% + 40px);
   position: absolute;
   left: -40px;
@@ -943,14 +938,14 @@
   color: white;
 }
 
-.theme-grey #full-menu .menu-items .has-submenu .menu-submenus.closed .theme-grey #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-grey #full-menu .menu-items .has-submenu .menu-submenus.closed:after {
   content: "▾";
   font-weight: bold;
   padding-left: 10px;
   font-size: 20px;
 }
 
-.theme-grey #full-menu .menu-items .has-submenu .menu-submenus.open .theme-grey #full-menu .menu-items .has-submenu .menu-submenus:after {
+.theme-grey #full-menu .menu-items .has-submenu .menu-submenus.open:after {
   content: "▴";
   font-weight: bold;
   padding-left: 10px;
@@ -958,7 +953,6 @@
 }
 
 .theme-grey #full-menu .menu-items .has-submenu ul {
-  display: none;
   width: calc(100% + 40px);
   position: absolute;
   left: -40px;

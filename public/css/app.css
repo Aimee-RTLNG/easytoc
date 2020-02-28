@@ -11404,7 +11404,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .edit-project-action {
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -11729,7 +11729,7 @@ body {
 }
 
 .project-action {
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 

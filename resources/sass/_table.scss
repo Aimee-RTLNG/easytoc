@@ -101,7 +101,7 @@ body {
 
 // Intégration 
 .project-action {
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     @include media-breakpoint-down(sm) {
         .btn-delete-def, .form_btn-delete-def {

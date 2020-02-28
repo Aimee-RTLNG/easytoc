@@ -168,14 +168,14 @@ $themes: (
                     border: 0px solid black;
                     color: themed('textColor'); 
 
-                    &.closed &:after{
+                    &.closed:after{
                         content : "▾";
                         font-weight: bold;
                         padding-left: 10px;
                         font-size: 20px;
                     }
 
-                    &.open &:after{
+                    &.open:after{
                         content : "▴";
                         font-weight: bold;
                         padding-left: 10px;
@@ -184,7 +184,6 @@ $themes: (
                 }
     
                 ul{
-                    display: none;
                     width: calc(100% + 40px);
                     position: absolute;
                     left: -40px;

@@ -165,10 +165,6 @@
                             <i class="fa fa-heading"></i>
                             {{ __('Rubrique avec sous-menu') }}
                         </button>
-                        <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien en sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __('Lien en sous-menu') }}">
-                            <i class="fa fa-list-ul"></i>
-                            {{ __('Lien en sous-menu') }}
-                        </button>
                     </div>
                     <div role="section" class="col-md-5" aria-labelledby="form_actions_text">
                         <h3 id="form_actions_text" class="mb-3 creator-panel__title">{{ __('Mise en forme du texte') }}</h3>
@@ -203,14 +199,6 @@
 
                 <div class="bloc-creation-interface">
                     <div class="bloc-visualisation col mb-3 p-0">
-                        <div class="side-tool" style="display: none">
-                            <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
-                                <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
-                            </button>
-                            <button  id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
-                                <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
-                            </button>
-                        </div>
 
                         <div class="col p-0 m-0">
                             <nav>
@@ -260,11 +248,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="side-tool" style="display: none">
-                            <button class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
-                                <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
-                            </button>
-                        </div>
+
                     </div>
 
                     <div id="actions-interface" class="bloc-actions d-none col-3 p-0">
@@ -381,10 +365,6 @@
         <!-- Actions importantes sur le projet -->
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
-                <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
-                    <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
-                    <p>{{ __('Annuler les modifications') }}</p>
-                </button>
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                     <p>

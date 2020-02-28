@@ -356,10 +356,6 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3" role="region" aria-labelledby="form_actions">
-            <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" aria-label="{{ __('Annuler les modifications') }}" title="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
-                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
-                <p>{{ __('Annuler les modifications') }}</p>
-            </button>
             <button type="submit" class="btn btn-form-final btn-success btn-crea" id="btn-save-project" aria-label="{{ __('Sauvegarder ce projet') }}" title="{{ __('Sauvegarder ce projet') }}">
                 <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                 <p>

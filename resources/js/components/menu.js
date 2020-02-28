@@ -248,7 +248,7 @@ $('.add-element').on('click', function () {
 // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 $('#btn-save-project').on('click', function () {
     updatecontent();
-    let post_url = $("#full-form-post").attr('action');
+    let post_url = $("#full-menu-post").attr('action');
     $.ajax({
         method: "POST",
         url: post_url,
@@ -296,17 +296,14 @@ $(document.body)
     // Quand on clique sur un sous menu
     .on('click', '#full-menu .has-submenu li', function (e) {
         $('.content-editable-selected').removeClass('content-editable-selected');
-        $('.sublink-selected').removeClass('sublink-selected');
 
         // $(this).closest('.element-container').addClass('content-editable-selected');
-        $(this).addClass('sublink-selected').addClass('content-editable-selected');
+        $(this).addClass('content-editable-selected');
 
-        selected_sublink = $('.sublink-selected');
+        selected__link = $(this).parent();
         previous_sublink = selected_sublink.prev();
         next_sublink = selected_sublink.next();
-        refreshMoveButtons(previous_sublink, next_sublink, true);
 
-        setSideWindow();
         updatecontent();
     })
 
@@ -327,235 +324,21 @@ $(document.body)
 
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
-    $('#generated-menu').attr("action", $('#form-creator-link').val());
-    $('#generated-menu').attr("method", $('#form-creator-method').val());
-    $("#actions-interface").addClass('d-none');
-    $('.side-tool').hide();
     updatecontent();
 })
 
 // ANCHOR Actions sur l'élément ciblé
 $(".form-element-action").on('click', function (e) {
 
-    if ($(element_select).hasClass('element-container')) {
-        element_selected_container = element_select;
-    } else if ($(element_select).hasClass('sublink-selected')) {
-        element_selected_container = $('.sublink-selected');
-    } else {
-        element_selected_container = $(element_select).closest(".element-container");
-    }
-
-    previous_element = element_selected_container.prev();
-    next_element = element_selected_container.next();
-
-    switch ($(this).data("action")) {
-        // Déplacement vers le haut
-        case "move-up":
-            if (selected_sublink) {
-                // to do , ne compte pas le seelect
-                previous_sublink = selected_sublink.prev();
-                next_sublink = selected_sublink.next();
-                if (previous_element.attr("id") != "form-title" && previous_sublink.attr("disabled") != "true" && previous_sublink.attr('data-tag') == "sublink") {
-                    previous_sublink.insertAfter(selected_sublink);
-                }
-                refreshMoveButtons(previous_sublink, next_sublink, true);
-
-            } else {
-
-                if (previous_element.attr("id") != "form-title" && previous_element.hasClass("element-container")) {
-                    previous_element.insertAfter(element_selected_container);
-                }
-                previous_element = element_selected_container.prev();
-                next_element = element_selected_container.next();
-                refreshMoveButtons(previous_element, next_element, false);
-                // Déplacement des Tools latéraux
-                $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
-                // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
-            }
-            break;
-        // Déplacement vers le bas
-        case "move-down":
-            if (selected_sublink) {
-                // to do , ne compte pas le seelect
-                previous_sublink = selected_sublink.prev();
-                next_sublink = selected_sublink.next();
-                if (next_element.attr("id") != "form-title" && next_sublink.attr("disabled") != "true" && next_sublink.attr('data-tag') == "sublink") {
-                    next_sublink.insertBefore(selected_sublink);
-                }
-                refreshMoveButtons(previous_sublink, next_sublink, true);
-
-            } else {
-                if (next_element.attr("id") != "form-title" && next_element.hasClass("element-container")) {
-                    next_element.insertBefore(element_selected_container);
-                }
-                previous_element = element_selected_container.prev();
-                next_element = element_selected_container.next();
-                refreshMoveButtons(previous_element, next_element, false);
-                // Déplacement des Tools latéraux
-                $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
-                // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
-            }
-            break;
-        // Suppression
-        case "delete":
-            deletecommand.execute();
-            $("#actions-interface").addClass('d-none');
-            $(".side-tool").hide();
-            $('.action-delete').attr('disabled', 'true');
-            $('.action-undo').removeAttr('disabled');
-            if( lang == "en" ){
-                message = "Deleted element";
-            } else {
-                message = "Élément supprimé";
-            }
-            alertMsg(message, "success");
-            break;
-        // Annuler la suppression
-        case "undo":
-            deletecommand.undo();
-            $(this).attr('disabled', 'true');
-            $('.alert-success').slideUp();
-            $('.element-container').last().find('[contenteditable=true]').first().focus();
-            if( lang == "en" ){
-                message = "Element recovered";
-            } else {
-                message = "Élément rétabli";
-            }
-            alertMsg(message, "success");
-            break;
-        // Changement de l'attr multiple   
-        case "multiple-answer":
-            if (element_selected_container.find('select').attr('multiple')) {
-                element_selected_container.find('select').removeAttr('multiple');
-            } else {
-                element_selected_container.find('select').attr('multiple', 'true');
-            }
-            break;
-        // Changement de l'attr required
-        case "required":
-            if (element_selected_container.hasClass('field-required')) {
-                element_selected_container.removeClass('field-required');
-                if ($(element_selected_container).hasClass('insert-binary_answer')) {
-                    element_selected_container.find("input").removeAttr("required");
-                } else {
-                    element_selected_container.find("input:not([type='checkbox'])").removeAttr("required");
-                    element_selected_container.find("select").removeAttr("required");
-                    element_selected_container.find("textarea").removeAttr("required");
-                    element_selected_container.find("input[type='radio']").first().removeAttr("required");
-                }
-                // Retirer l'étoile dans le label (après le span)
-                element_selected_container.find("abbr").remove();
-                if ($("#full-form abbr").length == 0) {
-                    $(".indicator-required").remove();
-                }
-
-            } else {
-                element_selected_container.addClass('field-required');
-                if ($(element_selected_container).hasClass('insert-binary_answer')) {
-                    element_selected_container.find("input").attr("required", "required");
-                } else {
-                    element_selected_container.find("input:not([type='checkbox'])").attr("required", "required");
-                    element_selected_container.find("select").attr("required", "required");
-                    element_selected_container.find("textarea").attr("required", "required");
-                    element_selected_container.find("input[type='radio']").first().attr("required", "required");
-                }
-                // Ajouter l'étoile dans le label
-                var required_star = element_types["type-special"]["make-required"];
-                var required_indicator = element_types["type-special"]["indicator-required"];
-                if (element_selected_container.find("abbr").length == 0) {
-                    $(required_star).insertAfter(element_selected_container.find(".label-text"));
-                }
-                if ($("#full-form .indicator-required").length == 0) {
-                    $(required_indicator).insertAfter($("#form-title"));
-                }
-            }
-            break;
-        // Ajout d'action
-        case "add-sublink":
-            addsublink();
-            if (selected_sublink) {
-                previous_sublink = selected_sublink.prev();
-                next_sublink = selected_sublink.next();
-                refreshMoveButtons(previous_sublink, next_sublink, true);
-            }
-            if( lang == "en" ){
-                message = "sublink added";
-            } else {
-                message = "sublink ajoutée";
-            }
-            alertMsg(message, "success");
-            break;
-        case "delete-sublink":
-            deletesublink();
-            if( lang == "en" ){
-                message = "Deleted sublink";
-            } else {
-                message = "sublink supprimée";
-            }
-            alertMsg(message, "success");
-            break;
-    }
 
     updatecontent();
 
 }).on('change', function (e) {
 
-    // Changement de type
-    switch ($(this).data("action")) {
-        case "answer-type":
-            input.attr('type', $(this).val());
-            break;
-    }
 
     updatecontent();
 
 }).on('keyup', function (e) {
-
-    switch ($(this).data("action")) {
-        // Changement d'intitulé
-        case "question-text":
-            intitule.text($(this).val());
-            break;
-        // Changement de longueur max
-        case "maxlength":
-            if ($(this).val() == 0) {
-                input.removeAttr('maxlength');
-            } else if ($.isNumeric($(this).val()) && $(this).val() > 0) {
-                input.attr('maxlength', $(this).val());
-            }
-            break;
-        // Changement de longueur max
-        case "sublinks-name":
-            if ($(this).val() != 0) {
-                $(element_selected_container).find('input').attr('name', $(this).val());
-                $(element_selected_container).find('select').attr('name', $(this).val());
-                $(element_selected_container).find('textarea').attr('name', $(this).val());
-            }
-            break;
-        // Changement de nom de l'sublink
-        case "sublink-label":
-            if ($(this).val() != 0 && $('.content-editable-selected input').length > 0) {
-                $('.content-editable-selected .label-sublink-text').text($(this).val());
-            } else if ($(this).val() != 0 && $('.content-editable-selected select').length > 0) {
-                $('.content-editable-selected select sublink:selected').text($(this).val());
-            }
-            break;
-        // Changement de valeur de l'sublink
-        case "sublink-value":
-            if ($(this).val() != 0 && $('.content-editable-selected input').length > 0) {
-                input.attr('value', $(this).val());
-            } else if ($(this).val() != 0 && $('.content-editable-selected select').length > 0) {
-                $('.content-editable-selected select sublink:selected').attr('value', $(this).val());
-            }
-            break;
-        // Changement de placeholder
-        case "placeholder":
-            input.attr('placeholder', $(this).val());
-            if ($(input).prop("tagName") == "SELECT") {
-                $(input).find('sublink').first().text($(this).val());
-            };
-            break;
-    }
 
     updatecontent();
 
@@ -587,47 +370,19 @@ function selectText(element) {
 };
 
 // ANCHOR Fonction d'ajout d'sublink ( osef ça concerne pas les menus )
-export function addsublink(sublink_type_parameter) {
-    setSideWindow();
-    let sublink_parent_element = $(".content-editable-selected");
-    let sublink_type = sublink_type_parameter || $(sublink_parent_element).attr("data-elementtypename");
-    if (!sublink_type) {
-        sublink_parent_element = $(".content-editable-selected").closest(".element-container");
-        sublink_type = $(".content-editable-selected").closest(".element-container").attr("data-elementtypename");
-    }
+export function addlink() {
+    
 
-    let sublink_group = $(sublink_parent_element).find('fieldset');
-    let first_sublink = $(sublink_group).find('input').first();
-    let sublink_name = $(first_sublink).attr('name');
-    if (sublink_group.length == 0) {
-        sublink_group = $(sublink_parent_element).find('select');
-        sublink_name = "";
-    }
-    if (!sublink_name) {
-        sublink_name = Math.random().toString(36).substr(2, 9);
-    }
-
-    let sublink_id = Math.random().toString(36).substr(2, 9);
-    let sublink = element_types["type-answer-sublink"][sublink_type];
-    let sublink_id_replace_regex = /REPLACEID/g;
-    sublink = sublink.replace(sublink_id_replace_regex, sublink_id);
-    let sublink_name_replace_regex = /REPLACENAME/g;
-    sublink = sublink.replace(sublink_name_replace_regex, sublink_name);
-    $(sublink_group).append(sublink);
 
 }
 
 // ANCHOR Fonction de suppression d'sublink dans un select ( osef ça concerne pas les menus )
-function deletesublink() {
-    let select_sublink_selected = $(".content-editable-selected select sublink:selected");
-    $(select_sublink_selected).remove();
-    $(".content-editable-selected select").val($(".content-editable-selected select sublink:first").val());
-    $('.action-delete-sublink').hide();
+function deleteLink() {
+    
+
 }
 
 // ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
-// Je comprend pas ce truc mais c'est une fonction essentielle pour que le UNDO remarche..
-// Autant la laisser définie même si non utilisée dans deletecommand (sur ce script, elle est utilisée), elle fait pas de mal :)
 function command(instance) {
     this.command = instance;
     this.done = [];
@@ -643,8 +398,6 @@ function command(instance) {
 }
 
 // ANCHOR Fonction Suppression
-// Je comprend pas moi-même comment ça marche. Quand on clique sur supprimer, ça ne fait que "détacher" l'élement
-// Si tu comptes modifier cette fonction, cela risque de poser problème.. c'est risqué.
 var deletecommand = new command({
     execute: function () {
         element = $(".content-editable-selected").removeClass('content-editable-selected');
@@ -698,46 +451,6 @@ $('input[name="theme"]').on('change', function () {
     $('#generated-menu').attr('class', theme);
     updatecontent();
 })
-
-// ANCHOR Activer / désactiver les boutons de déplacement dynamique
-// Cette fonction permet de re-placer les boutons de déplacement (haut/bas)
-// A toi de voir si tu peux l'utiliser ou non
-// Attention : c'est une fonction exportée, il faut faire attention à ce qu'elle ne soit pas appelée dans un autre fichier !
-export function refreshMoveButtons(previous_element, next_element, sublink) {
-    if (sublink) {
-        if (previous_element) {
-            if (previous_element.attr("disabled") != "true" && previous_element.attr('data-tag') == "sublink") {
-                $('#action-move-up').removeAttr('disabled');
-            } else {
-                $('#action-move-up').attr('disabled', true);
-            }
-            if (next_element.attr("disabled") != "true" && next_element.attr('data-tag') == "sublink") {
-                $('#action-move-down').removeAttr('disabled');
-            } else {
-                $('#action-move-down').attr('disabled', true);
-            }
-        } else {
-            $('#action-move-up').attr('disabled', true);
-            $('#action-move-down').attr('disabled', true);
-        }
-    } else {
-        if (previous_element) {
-            if ((previous_element.attr("id") == "form-title" || previous_element.hasClass("indicator-required")) || !$(previous_element).hasClass("element-container")) {
-                $('#action-move-up').attr('disabled', true);
-            } else {
-                $('#action-move-up').removeAttr('disabled');
-            }
-            if (!$(next_element).hasClass("element-container")) {
-                $('#action-move-down').attr('disabled', true);
-            } else {
-                $('#action-move-down').removeAttr('disabled');
-            }
-        } else {
-            $('#action-move-up').attr('disabled', true);
-            $('#action-move-down').attr('disabled', true);
-        }
-    }
-}
 
 // ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )
 $("#copy-raw-code, #copy-css-link").on('click', function () {
