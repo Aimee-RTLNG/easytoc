@@ -9874,11 +9874,13 @@ nav.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .navbar .container #navbarSupportedContent .menu-lang {
   justify-content: space-evenly;
   min-height: 65px;
+  min-width: 105px;
 }
 
 .navbar .container .menu-connect .nav-item a:focus {
@@ -10707,6 +10709,7 @@ nav.navbar {
   height: 100vh;
   min-height: 700px;
   max-height: 1200px;
+  padding: 40px 0px;
 }
 
 .section-home__title {
@@ -10746,6 +10749,16 @@ nav.navbar {
   font-size: 1.4rem;
   width: 100%;
   left: -20px !important;
+}
+
+.use-list__argu {
+  height: 295px;
+}
+
+@media (max-width: 991px) {
+  .use-list__argu {
+    height: 330px;
+  }
 }
 
 .show .select-home__link {
@@ -10965,6 +10978,7 @@ nav.navbar {
 
 .use-list__item__txt {
   font-weight: normal;
+  max-width: 100%;
 }
 
 .use-list__item__titre {
@@ -11063,7 +11077,6 @@ nav.navbar {
 @media (max-width: 991.98px) {
   .section-home {
     height: auto;
-    padding: 40px 0px;
     min-height: 700px;
     max-height: none;
   }

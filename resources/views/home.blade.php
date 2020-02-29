@@ -137,7 +137,7 @@
                     <div class="section-home__underline"></div>
                 </div>
                 <div class="slider-use-list">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Améliorer la visibilité')}}</h3>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="use-list__item__ombre"></div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                             <h3 class="use-list__item__titre">{{__("Rendre l'intéraction facile")}}</h3>
@@ -157,7 +157,7 @@
                         </div>
                         <div class="use-list__item__ombre"></div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Etre compris par tous')}}</h3>

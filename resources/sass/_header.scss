@@ -38,12 +38,14 @@ nav.navbar{
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    height: 100%;
                 }
             }
 
             .menu-lang{
                 justify-content: space-evenly;
                 min-height: 65px;
+                min-width: 105px;
             }
 
         }

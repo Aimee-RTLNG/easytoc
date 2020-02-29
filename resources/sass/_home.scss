@@ -5,6 +5,8 @@
     height: 100vh;
     min-height: 700px;
     max-height: 1200px;
+    padding: 40px 0px;
+
     &__title {
         @include expletus;
         font-weight: bold;
@@ -36,6 +38,12 @@
         font-size: 1.4rem;
         width: 100%;
         left: -20px !important;
+    }
+}
+.use-list__argu {
+    height: 295px;
+    @media (max-width:991px){
+        height: 330px;
     }
 }
 .show .select-home__link {
@@ -201,6 +209,7 @@
         }
         &__txt {
             font-weight: normal;
+            max-width: 100%;
         }
         &__titre {
             font-size: 2.3rem;
@@ -296,7 +305,6 @@
 
     .section-home {
         height: auto;
-        padding: 40px 0px;
         min-height: 700px;
         max-height: none;
         &__row {
