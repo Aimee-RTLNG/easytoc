@@ -104,18 +104,31 @@ export function getOldContent() {
     selected_theme.prop('checked', true);
 
     // Titre (non présent pour les menu)
-    let actual_title = $("#full-menu #menu-title").text();
-    $("#menu-creator-title").val(actual_title);
+    let actual_title = $("#full-menu #menu-title").text().trim();
+    if( actual_title ){
+        $("#menu-creator-title").val(actual_title);
+    }
 
-    // Lien (non présent pour les menu)
+    // Lien du logo
     let actual_link = $("#menu-logo").css('background-image');
-    console.log(actual_link);
-    $("#menu-creator-link").val(actual_link);
+    if( actual_link ){
+        actual_link = actual_link.replace('url("', "");
+        actual_link = actual_link.replace('")', "");
+        $("#menu-creator-link").val(actual_link);
+    }
 
-    // sublink de réinitialisation (non présent pour les menu)
-    let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
-    if (actual_reset.length > 0) {
-        $('#reset-button').prop('checked', true);
+    // option image
+    if( $('#full-menu').has('#menu-logo').length ){
+        $("#menu-creator-link-display").attr('checked', true);
+    } else {
+        $("#menu-creator-link-display").removeAttr('checked');
+    }
+
+    // option titre
+    if( $('#full-menu').has('#menu-title').length ){
+        $("#menu-creator-title-display").attr('checked', true);
+    } else {
+        $("#menu-creator-title-display").removeAttr('checked');
     }
 }
 

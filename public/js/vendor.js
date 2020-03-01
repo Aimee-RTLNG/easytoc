@@ -51257,6 +51257,8 @@ $(window).on('load', function () {
     onglet_actif = $('.menu-connect .nav-item')[0];
   } else if (window.location.pathname.indexOf("login") != -1) {
     onglet_actif = $('.menu-connect .nav-item')[1];
+  } else if (window.location.pathname.indexOf("edit") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
   } else if (window.location.pathname.indexOf("profile") != -1) {
     onglet_actif = $('.menu-connect .nav-item')[0];
   } else if (window.location.pathname.indexOf("cgu") != -1) {

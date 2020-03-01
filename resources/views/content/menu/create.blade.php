@@ -46,12 +46,12 @@
                     <input type="hidden" name="type_id" value="3">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
+                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
+                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
                         <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
