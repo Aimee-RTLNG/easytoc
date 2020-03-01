@@ -47,12 +47,12 @@
                     <input type="hidden" name="type_id" value="1">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
+                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
+                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
                         <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
@@ -435,10 +435,10 @@
         <!-- Actions importantes sur le projet -->
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
-                <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
+                {{-- <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
                     <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
-                </button>
+                </button> --}}
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
                     <p>

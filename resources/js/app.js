@@ -187,7 +187,6 @@ new ClipboardJS('#copy-raw-code');
 
 // Navigation menu
 $(window).on('load', function(){
-    console.log(window.location.pathname.indexOf("aide"));
     let onglet_actif = $('nav .nav-link')[0];
     if ( window.location.pathname.indexOf("menu") != -1 ){
         onglet_actif = $('nav .nav-link')[1];
@@ -201,6 +200,8 @@ $(window).on('load', function(){
         onglet_actif = $('.menu-connect .nav-item')[0];
     } else if (  window.location.pathname.indexOf("login") != -1  ) {
         onglet_actif = $('.menu-connect .nav-item')[1];
+    } else if (  window.location.pathname.indexOf("edit") != -1  ) {
+        onglet_actif = $('.menu-connect .nav-item')[0];
     } else if (  window.location.pathname.indexOf("profile") != -1  ) {
         onglet_actif = $('.menu-connect .nav-item')[0];
     } else if (  window.location.pathname.indexOf("cgu") != -1  ) {
@@ -219,34 +220,85 @@ $(window).on('load', function(){
 // CTRL ALT D - move down
 // CTRL ALT T - trash
 // CTRL ALT I - bloc informations
-// CTRL ALT S - bloc informations
+// CTRL ALT S - bloc save
+// CTRL ALT P - bloc parametres
 
 // (bien relacher la touche custom avant le ctrl alt )
 
 document.onkeyup = function(e) {
+    // Move up
+    // CTRL ALT + U
     if (e.ctrlKey && e.altKey && e.which == 85) {
         if( $(".content-editable-selected").length > 0 ){
             if( !$("#action-move-up").attr('disabled') ){
                 $("#action-move-up").click();
+            } else {
+                $(".action-move-row-up").click();
             }
         }
-    } else if (e.ctrlKey && e.altKey && e.which == 68) {
-          if( $(".content-editable-selected").length > 0 ){
-              if( !$("#action-move-down").attr('disabled') ){
-                 $("#action-move-down").click();
-              }
-          }
-    } else if (e.ctrlKey && e.altKey && e.which == 84) {
+    } 
+    // Move Down
+    // CTRL ALT + D
+    else if (e.ctrlKey && e.altKey && e.which == 68) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-down").attr('disabled') ){
+                $("#action-move-down").click();
+            } else {
+                $(".action-move-row-down").click();
+            }
+        }
+    } 
+
+    // Move Left
+    // CTRL ALT + L
+    else if (e.ctrlKey && e.altKey && e.which == 76) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-left").attr('disabled') ){
+               $("#action-move-left").click();
+            } else {
+                $(".action-move-col-left").click();
+            }
+        }
+    } 
+
+    // Move Right
+    // CTRL ALT + R
+    else if (e.ctrlKey && e.altKey && e.which == 82) {
+        if( $(".content-editable-selected").length > 0 ){
+            if( !$("#action-move-right").attr('disabled') ){
+               $("#action-move-right").click();
+            } else {
+                $(".action-move-col-right").click();
+            }
+        }
+     } 
+
+    // Suprrimer 
+    // CTRL ATL + T 
+    else if (e.ctrlKey && e.altKey && e.which == 84) {
         if( $(".content-editable-selected").length > 0 ){
             if( !$("#action-delete").attr('disabled') ){
                $("#action-delete").click();
             }
         }
-    } else if (e.ctrlKey && e.altKey && e.which == 73) {
+    } 
+    // Accéder au bloc informations
+    // CTRL ATL + I
+    else if (e.ctrlKey && e.altKey && e.which == 73) {
         if( $(".action-supp-crea").length > 0 ){
             $(".action-supp-crea input").first().focus();
         }
-    } else if (e.ctrlKey && e.altKey && e.which == 83) {
+    } 
+    // Accéder au bloc propriétés 
+    // CTRL ATL + P 
+    else if (e.ctrlKey && e.altKey && e.which == 80) {
+        if( $("#content-interface").length > 0 ){
+            $("#content-interface input").first().focus();
+        }
+    } 
+    // Sauvegarder
+    // CTRL ALT + S
+    else if (e.ctrlKey && e.altKey && e.which == 83) {
         console.log(e);
         if( $('#btn-save-project, #btn-update-project').length > 0 ){
             console.log(e);
@@ -261,3 +313,8 @@ document.onkeyup = function(e) {
         }
     }
 };
+
+// Désactiver le drag and drop des links et des images
+window.ondragstart = function(){
+    return false;
+}

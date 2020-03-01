@@ -51243,7 +51243,6 @@ new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code'); // Navigation menu
 
 $(window).on('load', function () {
-  console.log(window.location.pathname.indexOf("aide"));
   var onglet_actif = $('nav .nav-link')[0];
 
   if (window.location.pathname.indexOf("menu") != -1) {
@@ -51258,6 +51257,8 @@ $(window).on('load', function () {
     onglet_actif = $('.menu-connect .nav-item')[0];
   } else if (window.location.pathname.indexOf("login") != -1) {
     onglet_actif = $('.menu-connect .nav-item')[1];
+  } else if (window.location.pathname.indexOf("edit") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
   } else if (window.location.pathname.indexOf("profile") != -1) {
     onglet_actif = $('.menu-connect .nav-item')[0];
   } else if (window.location.pathname.indexOf("cgu") != -1) {
@@ -51274,49 +51275,95 @@ $(window).on('load', function () {
 // CTRL ALT D - move down
 // CTRL ALT T - trash
 // CTRL ALT I - bloc informations
-// CTRL ALT S - bloc informations
+// CTRL ALT S - bloc save
+// CTRL ALT P - bloc parametres
 // (bien relacher la touche custom avant le ctrl alt )
 
 document.onkeyup = function (e) {
+  // Move up
+  // CTRL ALT + U
   if (e.ctrlKey && e.altKey && e.which == 85) {
     if ($(".content-editable-selected").length > 0) {
       if (!$("#action-move-up").attr('disabled')) {
         $("#action-move-up").click();
+      } else {
+        $(".action-move-row-up").click();
       }
     }
-  } else if (e.ctrlKey && e.altKey && e.which == 68) {
-    if ($(".content-editable-selected").length > 0) {
-      if (!$("#action-move-down").attr('disabled')) {
-        $("#action-move-down").click();
+  } // Move Down
+  // CTRL ALT + D
+  else if (e.ctrlKey && e.altKey && e.which == 68) {
+      if ($(".content-editable-selected").length > 0) {
+        if (!$("#action-move-down").attr('disabled')) {
+          $("#action-move-down").click();
+        } else {
+          $(".action-move-row-down").click();
+        }
       }
-    }
-  } else if (e.ctrlKey && e.altKey && e.which == 84) {
-    if ($(".content-editable-selected").length > 0) {
-      if (!$("#action-delete").attr('disabled')) {
-        $("#action-delete").click();
-      }
-    }
-  } else if (e.ctrlKey && e.altKey && e.which == 73) {
-    if ($(".action-supp-crea").length > 0) {
-      $(".action-supp-crea input").first().focus();
-    }
-  } else if (e.ctrlKey && e.altKey && e.which == 83) {
-    console.log(e);
+    } // Move Left
+    // CTRL ALT + L
+    else if (e.ctrlKey && e.altKey && e.which == 76) {
+        if ($(".content-editable-selected").length > 0) {
+          if (!$("#action-move-left").attr('disabled')) {
+            $("#action-move-left").click();
+          } else {
+            $(".action-move-col-left").click();
+          }
+        }
+      } // Move Right
+      // CTRL ALT + R
+      else if (e.ctrlKey && e.altKey && e.which == 82) {
+          if ($(".content-editable-selected").length > 0) {
+            if (!$("#action-move-right").attr('disabled')) {
+              $("#action-move-right").click();
+            } else {
+              $(".action-move-col-right").click();
+            }
+          }
+        } // Suprrimer 
+        // CTRL ATL + T 
+        else if (e.ctrlKey && e.altKey && e.which == 84) {
+            if ($(".content-editable-selected").length > 0) {
+              if (!$("#action-delete").attr('disabled')) {
+                $("#action-delete").click();
+              }
+            }
+          } // Accéder au bloc informations
+          // CTRL ATL + I
+          else if (e.ctrlKey && e.altKey && e.which == 73) {
+              if ($(".action-supp-crea").length > 0) {
+                $(".action-supp-crea input").first().focus();
+              }
+            } // Accéder au bloc propriétés 
+            // CTRL ATL + P 
+            else if (e.ctrlKey && e.altKey && e.which == 80) {
+                if ($("#content-interface").length > 0) {
+                  $("#content-interface input").first().focus();
+                }
+              } // Sauvegarder
+              // CTRL ALT + S
+              else if (e.ctrlKey && e.altKey && e.which == 83) {
+                  console.log(e);
 
-    if ($('#btn-save-project, #btn-update-project').length > 0) {
-      console.log(e);
-      var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+                  if ($('#btn-save-project, #btn-update-project').length > 0) {
+                    console.log(e);
+                    var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
 
-      if (lang == "en") {
-        _message = "Are you sure to save and quit your project ? You will be redirected.";
-      }
+                    if (lang == "en") {
+                      _message = "Are you sure to save and quit your project ? You will be redirected.";
+                    }
 
-      if (window.confirm(_message)) {
-        $('#btn-save-project').click();
-        $('#btn-update-project').click();
-      }
-    }
-  }
+                    if (window.confirm(_message)) {
+                      $('#btn-save-project').click();
+                      $('#btn-update-project').click();
+                    }
+                  }
+                }
+}; // Désactiver le drag and drop des links et des images
+
+
+window.ondragstart = function () {
+  return false;
 };
 
 /***/ }),
@@ -52602,10 +52649,10 @@ function getOldContent() {
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre
 
-  var actual_title = $("#table-title").text();
+  var actual_title = $("#table-title").text().trim();
   $("#table-creator-title").val(actual_title); // Légende
 
-  var actual_caption = $("#table-caption span").text();
+  var actual_caption = $("#table-caption span").text().trim();
   $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
@@ -53392,7 +53439,7 @@ $('.add-element').on('click', function () {
       _rows.each(function (index) {
         if (index >= rows_header) {
           var new_header = $(this).find('th, td').first();
-          var old_text = $(new_header).find('span').text();
+          var old_text = $(new_header).find('span').text().trim();
           var new_cell_html = element_types["type-unique"]["insert-header-row"];
           $(new_header).replaceWith(new_cell_html);
           $(new_header).find('span').find('span').text(old_text);
@@ -53404,7 +53451,7 @@ $('.add-element').on('click', function () {
         _rows.each(function (index) {
           if (index >= rows_header) {
             var new_cell = $(this).find('th, td').first();
-            var old_text = $(new_cell).find('span').text();
+            var old_text = $(new_cell).find('span').text().trim();
             var new_cell_html = element_types["type-unique"]["insert-cell"];
             $(new_cell).replaceWith(new_cell_html);
             $(this).find('td').first().find('span').text(old_text);
@@ -53439,7 +53486,7 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').text() // "html": $('#raw-code').find('span').text()
+      "html": $('#raw-code').text().trim() // "html": $('#raw-code').find('span').text()
 
     }
   }).done(function (msg) {
@@ -53449,7 +53496,7 @@ $('#btn-save-project').on('click', function () {
   }).fail(function (xhr, status, error) {
     // console.log(xhr.responseText);
     // console.log(status);
-    console.log($('#raw-code').text()); // Erreur
+    console.log($('#raw-code').text().trim()); // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
@@ -53659,10 +53706,10 @@ $(document.body).off('keyup') // ré-initialisation
   updateContent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
-  $('#table-creator-title').val($('#table-title').text());
+  $('#table-creator-title').val($('#table-title').text().trim());
   updateContent();
 }).on('keyup', '#table-caption', function () {
-  $('#table-creator-caption').val($('#table-caption span').text());
+  $('#table-creator-caption').val($('#table-caption span').text().trim());
   updateContent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 

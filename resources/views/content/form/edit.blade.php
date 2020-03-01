@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Modifier le formulaire') }}</h2>
+        <h2 class="entete__title">{{ __('Modifier un formulaire') }}</h2>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3">
@@ -48,13 +48,13 @@
                     <input type="hidden" name="type_id" value="1">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
+                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" value="{{ old('title', $content->title) }}" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" value="{{ old('description', $content->description) }}"></textarea>
+                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required>{{ old('description', $content->description) }}</textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                     <!-- Code en brut (non formatté) -->
@@ -432,16 +432,7 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action row edit-project-action col-12 my-3" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
-                <p>{{ __('Annuler les modifications') }}</p>
-            </button>
-            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
-                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
-                <p>
-                    {{ __('Sauvegarder ce projet') }}
-                </p>
-            </button>
+            
             <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -452,6 +443,19 @@
                     <p>{{ __('Supprimer') }}</p>
                 </button>       
             </form>
+
+            <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <p>{{ __('Annuler les modifications') }}</p>
+            </button>
+
+            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
+                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <p>
+                    {{ __('Sauvegarder ce projet') }}
+                </p>
+            </button>
+            
         </div>
 
         @endif

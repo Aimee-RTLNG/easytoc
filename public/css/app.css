@@ -9790,6 +9790,15 @@ pre.prettyprinted {
   border-radius: 5px !important;
 }
 
+img, a {
+  -webkit-user-drag: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  user-drag: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
 .wysiwyg .secondary_title {
   font-size: 1.8rem;
   font-weight: bold;
@@ -11258,7 +11267,8 @@ body {
 }
 
 .content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select {
-  border: 3px dotted blue !important;
+  border: 3px dotted black !important;
+  outline: 3px dotted white !important;
 }
 
 form {
@@ -11492,7 +11502,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .edit-project-action {
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -11779,7 +11789,8 @@ body {
 }
 
 .content-editable-selected {
-  border: 3px dotted blue !important;
+  border: 3px dotted black !important;
+  outline: 3px dotted white !important;
 }
 
 #copy-css-link, #copy-raw-code {
@@ -11817,7 +11828,7 @@ body {
 }
 
 .project-action {
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -11878,6 +11889,12 @@ body {
 
 .menu-tabs #content-created-blueprint {
   resize: vertical;
+  height: 500px;
+}
+
+.menu-tabs .element-container, .menu-tabs .content-editable-selected {
+  padding: 0;
+  margin: 0;
 }
 
 .menu-blueprint {
