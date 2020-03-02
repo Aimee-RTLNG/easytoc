@@ -26,6 +26,12 @@ $( document ).ready(function() {
 
 // ANCHOR Burger menu
 window.addEventListener("DOMContentLoaded", (event) => {
+
+    $("#rgpd-mgr").on("click", function(e){
+		e.preventDefault();
+		tarteaucitron.userInterface.openPanel();
+	});
+
     var btn_burger = document.getElementById('bars');
     btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');

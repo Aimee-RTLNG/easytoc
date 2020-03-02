@@ -30,13 +30,30 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
-        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-         
+        <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">         
         <!-- page specific style -->
         @yield('pagespecificstyles')
+
+        <script type="text/javascript" src="{{ URL::asset('/tarteaucitron/tarteaucitron.js') }}"></script>
+
+        <script type="text/javascript">
+			tarteaucitron.init({
+			  "privacyUrl": "", /* Privacy policy url */
+			  "cookieName": "tarteaucitron", /* Cookie name */
+			  "orientation": "bottom", /* Banner position (top - bottom) */
+			  "showAlertSmall": false, /* Show the small banner on bottom right */
+			  "cookieslist": true, /* Show the cookie list */
+			  "adblocker": false, /* Show a Warning if an adblocker is detected */
+			  "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+			  "highPrivacy": false, /* Disable auto consent */
+			  "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+			  "removeCredit": false, /* Remove credit link */
+			  "moreInfoLink": true, /* Show more info link */
+			  "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+			  "readmoreLink": "/cookiespolicy" /* Change the default readmore link */
+			});
+		</script>
 
     </head>
     <body>
@@ -130,12 +147,17 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" id="rgpd-mgr" href="#" title="{{ __('Gestion des cookies') }}">{{ __('Gestion des cookies') }}</a></li>
                         <li class="nav-items"><a class="nav-link" >Copyright 2019</a></li>
                     </ul>
                 </div>
             </div>
        </div>
     </footer>
+
+        <script type="text/javascript">
+            (tarteaucitron.job = tarteaucitron.job || []).push('youtube');
+        </script>
     
         <script>
             var baseUrl = "{{ URL::asset('/') }}";
@@ -144,8 +166,6 @@
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
         <!-- page specific scripts -->
         @yield('pagespecificscripts')
 

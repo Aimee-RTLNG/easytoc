@@ -9837,6 +9837,10 @@ img, a {
   margin-left: 15px;
 }
 
+#tarteaucitronPersonalize, #tarteaucitronPercentage, .tac_activate .tac_float .tarteaucitronAllow {
+  background-color: #155595 !important;
+}
+
 nav.navbar {
   overflow: hidden;
 }
@@ -10187,6 +10191,10 @@ nav.navbar {
 
 .menu-footer .nav-link {
   padding: 0px 16px;
+}
+
+.menu-footer > .nav {
+  justify-content: center;
 }
 
 .menu-footer .nav-items:not(:first-child) .nav-link {
@@ -10828,6 +10836,33 @@ nav.navbar {
 
 .home-present > .container {
   height: auto;
+}
+
+.youtube_player {
+  display: flex;
+  width: 100%;
+  height: 340px;
+}
+
+@media (max-width: 768px) {
+  .youtube_player {
+    height: 288px;
+  }
+}
+
+@media (max-width: 500px) {
+  .youtube_player {
+    height: 240px;
+  }
+}
+
+.youtube_player *:not(.tac_float) {
+  width: 100%;
+  height: 100%;
+}
+
+.youtube_player .tac_activate {
+  height: 50px !important;
 }
 
 .video-yt {

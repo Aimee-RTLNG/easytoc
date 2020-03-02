@@ -56,13 +56,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-6">
+                <div class="col-xl-7 col-lg-6 mb-3">
                     <div class="home-present__video">
-                        <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
-                        {{-- <div class="video-yt__btn">
-                            <a class="btn-primary btn-form-final" href="#">{{__('Audio-Description')}}</a>
-                            <a class="btn-primary btn-form-final" href="#">{{__('Activer les sous-titres')}}</a>
-                        </div> --}}
+                        {{-- <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe> --}}
+                        <div class="youtube_player" videoID="X51vpwvHq5I" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
                     </div>
                 </div>
             </div>
