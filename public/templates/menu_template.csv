@@ -1,0 +1,13 @@
+Type;Title / Titre;Link / Lien;Th�me
+menu;Mon premier site;https://i.pinimg.com/originals/9d/16/87/9d1687fe53247d0da876e4bff2e3ce64.png;green
+link;Accueil;/home;
+link;Ma biographie;/bio;
+link;Mon blog;/blog;
+section;Mes chats;;
+sub-link;Moustache;/mustache;
+sub-link;Nuage;/cloud;
+section;Mes chiens;;
+sub-link;Pablo;/pablo;
+sub-link;Filou;/filou;
+sub-link;Doudou;/doudou;
+;;;

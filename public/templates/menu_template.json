@@ -1,0 +1,40 @@
+{
+	"type": "menu",
+	"title": "Tableau des scores",
+	"logo": "Scores par équipes et par activités",
+	"theme": "green",
+	"items": [
+	  {
+        "type": "link",
+        "name": "Accueil",
+        "url": "/home"
+      },
+      {
+        "type": "link",
+        "name": "Ma biographie",
+        "url": "/bio"
+      },
+      {
+        "type": "link",
+        "name": "Mon blog",
+        "url": "/blog"
+      },
+      {
+        "type": "section",
+        "name": "Mes chats",
+        "items" : {
+            "Moustache" : "/mustache",
+            "Nuage" : "/cloud"
+        }
+      },
+      {
+        "type": "section",
+        "name": "Mes chiens",
+        "items" : {
+            "Pablo" : "/pablo",
+            "Filou" : "/filou",
+            "Doudou" : "/doudou"
+        }
+      }
+    ]
+}
