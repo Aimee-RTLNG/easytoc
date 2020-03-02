@@ -192,14 +192,43 @@
 
                     <div id="importMenu">
                         <h3>{{ __('Générer un menu à partir de données') }}</h3>
+                        <p>
+                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci
+                            via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
+                        </p>
+                        <p>
+                            {{ __('En important votre fichier de données, Easy To C genèrera votre code, vous aurez ensuite la possibilité de modifier celui-ci selon vos souhaits.') }}
+                        </p>
                     </div>  
                     
                     <div id="generateMenu">
                         <h3>{{ __('Générer un menu exemple') }}</h3>
+                        <p>
+                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en 
+                            vous basant sur un exemple de menu.") }}
+                        </p>
+                        <p>
+                            {{ __("En cliquant sur le bouton 'Générer un exemple', un menu sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
+                        </p>
+                        <p>
+                            {{ __("Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de menuEasy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
+                        </p>
                     </div>  
 
                     <div id="addElementMenu">
                         <h3>{{ __('Ajouter du contenu au menu') }}</h3>
+                        <p>
+                            {{ __('En créant votre menu, vous aurez la possibilité de modifier à loisir son titre et le logo de votre menu.') }}
+                        </p>
+                        <p>
+                            {{ __("Easy To C vous propose également la possibilité d'ajouter une rubrique avec sous-menu, d'ajouter un lien simple ou un lien de sous-menu tout en personnalisant leurs titres.") }}
+                        </p>
+                        <p>
+                            {{ __("Vous pourrez déplacer chaque rubrique de gauche à droite et chaque sous-menus de bas en haut. Vous n'avez plus aucune excuse pour vous y mettre !") }}
+                        </p>
+                        <p>
+                            {{ __("Nous vous rappelons que la sauvegarde d'un projet est disponible uniquement à nos utilisateurs inscrits. Voir ") }}<a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a>
+                        </p>
                     </div>  
                 </div>
 
@@ -210,14 +239,79 @@
 
                     <div id="importForm">
                         <h3>{{ __('Générer un formulaire à partir de données') }}</h3>
+                        <p>
+                            {{ __("Si vous possedez déjà un code personnel générant un formulaire par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }} 
+                            {{ __("En important votre fichier de données, Easy To C generera votre code, vous aurez ensuite la possibilité de modifier votre formulaire selon vos souhaits.") }}
+                        </p>
                     </div>  
                     
                     <div id="generateForm">
                         <h3>{{ __('Générer un formulaire exemple') }}</h3>
+                        <p>
+                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en 
+                            vous basant sur un exemple de formulaire.") }}
+                            {{ __("En cliquant sur le bouton 'Générer un exemple', un formulaire sera généré automatiquement sur l'espace de travail d'Easy To C présentant l'ensemble des fonctionnalités proposées.
+                            Vous pourrez ainsi vous faire une idée sur les possiblités offertes par le générateur de formulaire Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
+                        </p>
                     </div>  
 
                     <div id="addElementForm">
                         <h3>{{ __('Ajouter du contenu au formulaire') }}</h3>
+                        <p>
+                            {{ __("En créant votre formulaire vous aurez la possibilité de modifier à loisir son titre, son lien de traitement des données ainsi que sa méthode (GET ou POST). Un bouton de réinitialisation permet de remettre à zéro l'espace de travail.
+                            Vous avez 2 niveaux de personnalisation :") }}
+                        </p>
+                        <p>
+                            <b>{{ __("Ajouter un élément statique") }}</b>
+                        </p>
+                        <p>
+                            <i>{{ __("Nouvelle section : ") }}</i>{{ __("Ajouter une nouvelle section à votre formulaire.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Titre : ") }}</i>{{ __("Ajoute un titre sur votre formulaire.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Paragraphe : ") }}</i>{{ __("Ajoute un paragraphe.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Lien : ") }}</i>{{ __("Ajoute un lien hypertexte à votre formulaire.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Liste numérotée : ") }}</i>{{ __("Ajoute une liste numérotée au formulaire.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Liste à puces : ") }}</i>{{ __("Ajoute une liste sous forme de puces au formulaire.") }}
+                        </p>
+                        <p>
+                            <b>{{ __("Ajouter une question") }}</b>
+                        </p>
+                        <p>
+                            <i>{{ __("Réponse libre courte : ") }}</i>{{ __("Ajoute une question avec un champs de texte court. Vous pouvez précisez le type de réponse attendu (Texte, Nombre, Email ou Date).") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Réponse libre longue : ") }}</i>{{ __("Ajoute une question avec un champs de texte long.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Réponse oui/non : ") }}</i>{{ __("Ajoute une réponse.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Choix unique : ") }}</i>{{ __("Ajoute une question à choix unique.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Choix multiple : ") }}</i>{{ __("Ajoute une question à choix multiple.") }}
+                        </p>
+                        <p>
+                            <i>{{ __("Choix en liste : ") }}</i>{{ __("Ajoute un choix en liste d'options. Vous pouvez ajouter des options et spécifier des choix multiples ou une réponse obligatoire par option.") }}
+                        </p>
+                        <p>
+                            {{ __("Ainsi que les options d'actions sur les éléments et celles de mise en forme du texte.") }}
+                        </p>
+                        <p>
+                            {{ __("Vous n'avez plus aucune excuse pour vous y mettre !") }}
+                        </p>
+                        <p>
+                            {{ __("Nous vous rappelons que la sauvegarde d'un projet est disponible uniquement à nos utilisateurs inscrits. Voir ") }}<a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a>
+                        </p>
                     </div>  
                 </div>
 
