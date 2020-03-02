@@ -9854,6 +9854,10 @@ nav.navbar {
   min-height: 65px;
 }
 
+.navbar .container #navbarSupportedContent .btn-connect {
+  transition: all .2s;
+}
+
 .navbar .container #navbarSupportedContent.navbar-collapse.show {
   display: flex;
 }
@@ -9883,6 +9887,7 @@ nav.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all .2s;
 }
 
 .navbar .container #navbarSupportedContent .menu-lang {
