@@ -18,6 +18,15 @@
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
          
+        {{-- SEO --}}
+        <meta name="title" content="Easy to C - Générateur de menus, tableaux et formulaires">
+        <meta name="description" content="Easy to C est le nouveau générateur de contenu web ! Il vous permet de créer vous même des menus, tableaux et formulaires accessibles.">
+        <meta name="keywords" content="accessibilité, création, génération, tableau, menu, formulaire, accessible, compte, sauvegarde, facile, pratique">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="French">
+        <meta name="author" content="Aimee RITLENG, Louise MATT, Pierre BOULANGER">
+
         <!-- page specific style -->
         @yield('pagespecificstyles')
 
