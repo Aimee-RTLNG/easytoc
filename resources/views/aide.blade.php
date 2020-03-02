@@ -18,7 +18,7 @@
             
         </div>
 
-        <div class="help-container">
+        <div class="help-container" tabindex="2">
 
             {{-- ANCHOR Contenu de la page d'aide --}}
             <div class="help-text-container"> 
@@ -173,14 +173,35 @@
 
                     <div id="importTable">
                         <h3>{{ __('Générer un tableau à partir de données') }}</h3>
+                        <p>
+                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci
+                            via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
+                        </p>
+                        <p>
+                            {{ __('En important votre fichier de données, Easy To C generera votre code, vous aurez ensuite la possibilité de modifier celui-ci selon vos souhaits.') }}
+                        </p>
                     </div>  
                     
                     <div id="generateTable">
                         <h3>{{ __('Générer un tableau exemple') }}</h3>
+                        <p>
+                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en 
+                            vous basant sur un exemple de tableau. En cliquant sur le bouton 'Générer un exemple', un tableau sera généré automatiquement sur l'espace de travail d'Easy To C.
+                            Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de tableau Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester") }}
+                        </p>
+                        
                     </div>  
 
                     <div id="addElementTable">
                         <h3>{{ __('Ajouter du contenu au tableau') }}</h3>
+                        <p>
+                            {{ __("En créant votre tableau, vous aurez la possibilité de modifier à loisir son titre, son nombre de lignes, de colonnes et leur contenu ainsi que sa légende.
+                            Mais ce n'est pas  tout, Easy To C vous propose également la possibilité d'ajouter des en-têtes verticales et/ou horizontales et également un pied de tableau.
+                            Vous pourrez déplacer une case, en fusionner certaines, déplacer ou supprimer une ligne/colonne. Vous n'avez plus aucune excuse pour vous y mettre !") }}
+                        </p>
+                        <p>
+                            {{ __("Nous vous rappelons que la sauvegarde d'un projet est disponible uniquement à nos utilisateurs inscrits. Voir ") }}<a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a>
+                        </p>
                     </div>  
 
                 </div>
@@ -197,7 +218,7 @@
                             via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
                         </p>
                         <p>
-                            {{ __('En important votre fichier de données, Easy To C genèrera votre code, vous aurez ensuite la possibilité de modifier celui-ci selon vos souhaits.') }}
+                            {{ __('En important votre fichier de données, Easy To C generera votre code, vous aurez ensuite la possibilité de modifier celui-ci selon vos souhaits.') }}
                         </p>
                     </div>  
                     
@@ -318,7 +339,7 @@
             </div>
 
             {{-- Sommaire --}}
-            <div class="summary-container">
+            <div class="summary-container" tabindex="1">
                 {{-- ANCHOR Sommaire --}}
                 <h3>{{ __('Table des matières') }}</h3>
                 <ul>
