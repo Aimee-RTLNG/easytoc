@@ -1,10 +1,10 @@
 {
 	"type": "menu",
-	"title": "Tableau des scores",
-	"logo": "Scores par équipes et par activités",
-	"theme": "green",
+	"title": "Mon premier site",
+	"logo": "https://yahyaconsultants.com/wp-content/uploads/2018/05/icon_naverblog.png",
+	"theme": "black",
 	"items": [
-	  {
+	    {
         "type": "link",
         "name": "Accueil",
         "url": "/home"
@@ -20,21 +20,37 @@
         "url": "/blog"
       },
       {
-        "type": "section",
-        "name": "Mes chats",
-        "items" : {
-            "Moustache" : "/mustache",
-            "Nuage" : "/cloud"
-        }
+        "type": "sub_menu",
+        "name": "Mes chats"
       },
       {
-        "type": "section",
-        "name": "Mes chiens",
-        "items" : {
-            "Pablo" : "/pablo",
-            "Filou" : "/filou",
-            "Doudou" : "/doudou"
-        }
+        "type": "sub_link",
+        "name": "Moustache",
+        "url": "/mustache"
+      },
+      {
+        "type": "sub_link",
+        "name": "Nuage",
+        "url": "/clouds"
+      },
+      {
+        "type": "sub_menu",
+        "name": "Mes chiens"
+      },
+      {
+        "type": "sub_link",
+        "name": "Pablo",
+        "url": "/Pablo"
+      },
+      {
+        "type": "sub_link",
+        "name": "Filou",
+        "url": "/filou"
+      },
+      {
+        "type": "sub_link",
+        "name": "Doudou",
+        "url": "/doudou"
       }
     ]
 }

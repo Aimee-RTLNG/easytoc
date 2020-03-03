@@ -168,7 +168,7 @@ $('#menu-creator-title').on('keyup', function () {
 });
 
 // ANCHOR Afficher ou non le titre du menu
-$('#menu-creator-title-display').on('click', function () {
+$('#menu-creator-title-display').off().on('click', function () {
     if( $(this).is(":checked") ){
         $('#full-menu .menu-identity .menu-separator').before( element_types["type-info"]["insert-title"] );
         $('#full-menu .menu-identity #menu-title').text( $('#menu-creator-title').val() );
@@ -201,7 +201,7 @@ $('#menu-creator-link').on('keyup', function () {
 });
 
 // ANCHOR Afficher ou non le logo
-$('#menu-creator-link-display').on('click', function () {
+$('#menu-creator-link-display').off().on('click', function () {
    if( $(this).is(":checked") ){
      $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
      $('#full-menu .menu-identity #menu-logo').css('background-image', 'url('+$('#menu-creator-link').val()+')');
@@ -238,7 +238,6 @@ export function addLink( type ) {
     } else {
         menu_length = $("#menubar-easytoc").children("li").length;
     }
-    console.log(menu_length);
     
     if( menu_length > 8 ){
         message = "Vous ne pouvez pas rajouter plus de liens";
