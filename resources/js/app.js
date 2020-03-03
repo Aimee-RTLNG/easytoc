@@ -318,3 +318,6 @@ document.onkeyup = function(e) {
 window.ondragstart = function(){
     return false;
 }
+
+// On désactive le cache pour les appels AJAX
+$.ajaxSetup({ cache: false });

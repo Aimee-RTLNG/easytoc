@@ -238,7 +238,6 @@ export function addLink( type ) {
     } else {
         menu_length = $("#menubar-easytoc").children("li").length;
     }
-    console.log(menu_length);
     
     if( menu_length > 8 ){
         message = "Vous ne pouvez pas rajouter plus de liens";
