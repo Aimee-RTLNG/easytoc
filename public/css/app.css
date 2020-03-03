@@ -9760,6 +9760,9 @@ textarea.shadow-box {
   .mb-4-md {
     margin-bottom: 1.5rem;
   }
+  .mb-3-md {
+    margin-bottom: 1rem;
+  }
 }
 
 /* style du code généré */
@@ -9839,6 +9842,10 @@ img, a {
 
 #tarteaucitronPersonalize, #tarteaucitronPercentage, .tac_activate .tac_float .tarteaucitronAllow {
   background-color: #155595 !important;
+}
+
+.input-creator:disabled {
+  opacity: 0.4;
 }
 
 nav.navbar {
@@ -11535,6 +11542,10 @@ input[type="checkbox"], input[type="radio"] {
   max-width: 100%;
 }
 
+.interface-creation .project-action__btn {
+  justify-content: center;
+}
+
 .edit-project-action {
   flex-wrap: wrap;
   justify-content: space-around;
@@ -11934,6 +11945,24 @@ body {
 
 .menu-blueprint {
   min-height: 350px;
+}
+
+.cont-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  padding-right: 10px;
+  height: 60%;
+}
+
+.cont-checkbox label {
+  margin-bottom: 0px;
+  margin-left: 5px;
+}
+
+.creator-panel__link, .creator-panel__title {
+  margin-bottom: 3px;
 }
 
 .compte-page {

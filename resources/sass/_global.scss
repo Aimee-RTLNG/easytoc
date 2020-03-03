@@ -184,6 +184,9 @@ textarea {
     .mb-4-md {
         margin-bottom: 1.5rem;
     }
+    .mb-3-md {
+        margin-bottom: 1rem;
+    }
  }
 
  /* style du code généré */
@@ -261,4 +264,7 @@ img, a {
 }
 #tarteaucitronPersonalize, #tarteaucitronPercentage, .tac_activate .tac_float .tarteaucitronAllow {
     background-color: $bleu-fonce !important;
+}
+.input-creator:disabled {
+    opacity: 0.4;
 }

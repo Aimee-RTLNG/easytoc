@@ -133,25 +133,25 @@
             <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
-                <div class="pb-3 row m-0" role="region">
-                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
-                        <div class="col pl-0">
+                <div class="pb-3 row" role="region">
+                    <div class="col-md-6 d-flex align-items-end p-0 mb-3-md" role="region">
+                        <div class="col">
                             <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre de menu') }}</label>
                             <input type="text" name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre de menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre de menu') }}" autocomplete="off"/>
                         </div>
-                        <div>
-                            <input type="checkbox" name="menu-creator-title-display" id="menu-creator-title-display" checked autocomplete="off" />
+                        <div class="cont-checkbox">
+                            <input class="check-box" type="checkbox" name="menu-creator-title-display" id="menu-creator-title-display" checked autocomplete="off" />
                             <label class="creator-panel__title-display" for="menu-creator-title-display">{{ __('Afficher le titre') }}</label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
+                    <div class="col-md-6 d-flex align-items-end mb-3-md p-0" role="region">
                         <div class="col">
-                            <label class="creator-panel__link" for="menu-creator-link">{{ __('Logo de menu') }}</label>
+                            <label class="creator-panel__link creator-panel__title" for="menu-creator-link">{{ __('Logo de menu') }}</label>
                             <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.png') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
-                        <div>
-                            <input type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
+                        <div class="cont-checkbox">
+                            <input class="check-box" type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
                             <label class="creator-panel__link-display" for="menu-creator-link-display">{{ __('Afficher le logo') }}</label>
                         </div>
                     </div>
@@ -190,15 +190,15 @@
                     </div>
                 </div>
                 <div role="section" class="row mt-4 form_actions_element custom-info-element" aria-labelledby="form_actions_element" style="display: none">
-                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-labelledby="form_actions_crud">
+                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
                         <div class="col">
-                            <label for="nav-name">{{ __('Nom du lien') }}</label>
-                            <input type="text" id="nav-name" class="form-control" placeholder="{{ __('Titre') }}">
+                            <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
+                            <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
                         </div>
 
                         <div class="col">
-                            <label for="nav-link">{{ __('URL de redirection du lien') }}</label>
-                            <input type="url" id="nav-link" class="form-control" placeholder="URL">
+                            <label class="creator-panel__title" for="nav-link">{{ __('URL de redirection du lien') }}</label>
+                            <input type="url" id="nav-link" class="form-control input-creator" placeholder="URL">
                         </div>
                         
                         <button aria-label="{{ __('Supprimer') }}" id="action-delete" class="btn btn-primary mb-0 btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
@@ -431,7 +431,7 @@
     </button>
 </div>
 
-<div class="modal fade import-data" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
+<div class="modal fade import-data" tabindex="-1" aria-live="assertive" aria-atomic="true" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

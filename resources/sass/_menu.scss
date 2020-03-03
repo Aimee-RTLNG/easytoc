@@ -14,3 +14,15 @@
 .menu-blueprint{
     min-height: 350px;
 }
+.cont-checkbox {
+    @include flex-row-center;
+    padding-right: 10px;
+    height: 60%;
+    label {
+        margin-bottom: 0px;
+        margin-left: 5px;
+    }
+ }
+.creator-panel__link, .creator-panel__title {
+    margin-bottom: 3px;
+}

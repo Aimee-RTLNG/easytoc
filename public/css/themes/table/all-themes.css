@@ -66,6 +66,7 @@
   border-left: 2px solid grey;
   position: relative;
   top: 10px;
+  padding-left: 10px;
 }
 
 .theme-white #full-table th {
@@ -104,6 +105,7 @@
   border-left: 2px solid #596275;
   position: relative;
   top: 10px;
+  padding-left: 10px;
 }
 
 .theme-black #full-table th {
@@ -142,6 +144,7 @@
   border-left: 2px solid #079992;
   position: relative;
   top: 10px;
+  padding-left: 10px;
 }
 
 .theme-green #full-table th {
@@ -180,6 +183,7 @@
   border-left: 2px solid #740101;
   position: relative;
   top: 10px;
+  padding-left: 10px;
 }
 
 .theme-red #full-table th {
@@ -218,6 +222,7 @@
   border-left: 2px solid #192a56;
   position: relative;
   top: 10px;
+  padding-left: 10px;
 }
 
 .theme-blue #full-table th {
@@ -256,6 +261,7 @@
   border-left: 2px solid black;
   position: relative;
   top: 10px;
+  padding-left: 10px;
 }
 
 .theme-grey #full-table th {

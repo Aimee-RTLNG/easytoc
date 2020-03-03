@@ -31,7 +31,7 @@
         <h2 class="entete__title">{{ __('Créer un formulaire') }}</h2>
         <div class="entete__under"></div>
     </div>
-    <div class="panel-body mb-3">
+    <div class="panel-body mb-3 interface-creation">
         <!-- Display Validation Errors -->
         @include('common.errors')
 
@@ -321,7 +321,7 @@
                         </div>
                     </div>
 
-                    <div id="actions-interface" class="bloc-actions d-none col-3 p-0">
+                    <div id="actions-interface" class="bloc-actions d-none col-3 p-0" aria-atomic="true" aria-live="assertive">
                         <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
                         <div class="border bg-white rounded p-3 action-supp" role="section">
                             <div class="action-supp-crea" role="section">
@@ -452,7 +452,7 @@
     </div>
 </div>
 
-<div class="alert alert-success" role="alert" style="display: none" id="alert-message">
+<div class="alert alert-success" aria-live="assertive" aria-atomic="true" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
         Contenu de l'alerte
     </span>
@@ -463,7 +463,7 @@
     </button>
 </div>
 
-<div class="modal fade import-data" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
+<div class="modal fade import-data" aria-live="assertive" aria-atomic="true" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

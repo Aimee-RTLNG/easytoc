@@ -123,6 +123,7 @@ $themes: (
             border-left: 2px solid themed('borderColor');
             position: relative;
             top: 10px;
+            padding-left: 10px;
         }
         th{
             background-color: themed('backgroundTheadColor');  

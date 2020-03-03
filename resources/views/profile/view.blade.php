@@ -78,7 +78,7 @@
                                 <i class="fas fa-sort"></i>
                             </button> --}}
                             <div class="input-group filter-name">
-                                <input type="text" class="form-control" placeholder="{{ __('Rechercher') }}">
+                                <input type="text" class="form-control" id="search_create" placeholder="{{ __('Rechercher') }}">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fas fa-search"></i>

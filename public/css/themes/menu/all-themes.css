@@ -42,6 +42,7 @@
 
 .theme-white #full-menu .menu-identity .menu-logo {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -102,6 +103,7 @@
   -webkit-transition: all .2s;
   transition: all .2s;
   border-bottom: 0px solid white;
+  padding: 0px;
 }
 
 .theme-white #full-menu .menu-items .menu-item a {
@@ -127,7 +129,7 @@
   border-bottom: 5px solid #5e5e5e !important;
 }
 
-.theme-white #full-menu .menu-items .menu-item:hover, .theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-white #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-white #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #cacaca;
   border-bottom: 5px solid #5e5e5e;
 }
@@ -217,6 +219,7 @@
 
 .theme-black #full-menu .menu-identity .menu-logo {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -277,6 +280,7 @@
   -webkit-transition: all .2s;
   transition: all .2s;
   border-bottom: 0px solid white;
+  padding: 0px;
 }
 
 .theme-black #full-menu .menu-items .menu-item a {
@@ -302,7 +306,7 @@
   border-bottom: 5px solid #d4d4d4 !important;
 }
 
-.theme-black #full-menu .menu-items .menu-item:hover, .theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-black #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-black #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: black;
   border-bottom: 5px solid #d4d4d4;
 }
@@ -392,6 +396,7 @@
 
 .theme-green #full-menu .menu-identity .menu-logo {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -452,6 +457,7 @@
   -webkit-transition: all .2s;
   transition: all .2s;
   border-bottom: 0px solid white;
+  padding: 0px;
 }
 
 .theme-green #full-menu .menu-items .menu-item a {
@@ -477,7 +483,7 @@
   border-bottom: 5px solid #48f8bd !important;
 }
 
-.theme-green #full-menu .menu-items .menu-item:hover, .theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-green #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-green #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #016d67;
   border-bottom: 5px solid #48f8bd;
 }
@@ -567,6 +573,7 @@
 
 .theme-red #full-menu .menu-identity .menu-logo {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -627,6 +634,7 @@
   -webkit-transition: all .2s;
   transition: all .2s;
   border-bottom: 0px solid white;
+  padding: 0px;
 }
 
 .theme-red #full-menu .menu-items .menu-item a {
@@ -652,7 +660,7 @@
   border-bottom: 5px solid #fc4040 !important;
 }
 
-.theme-red #full-menu .menu-items .menu-item:hover, .theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-red #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-red #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #700e0e;
   border-bottom: 5px solid #fc4040;
 }
@@ -742,6 +750,7 @@
 
 .theme-blue #full-menu .menu-identity .menu-logo {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -802,6 +811,7 @@
   -webkit-transition: all .2s;
   transition: all .2s;
   border-bottom: 0px solid white;
+  padding: 0px;
 }
 
 .theme-blue #full-menu .menu-items .menu-item a {
@@ -827,7 +837,7 @@
   border-bottom: 5px solid #7ae4ff !important;
 }
 
-.theme-blue #full-menu .menu-items .menu-item:hover, .theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #0a1a4d;
   border-bottom: 5px solid #7ae4ff;
 }
@@ -917,6 +927,7 @@
 
 .theme-grey #full-menu .menu-identity .menu-logo {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -977,6 +988,7 @@
   -webkit-transition: all .2s;
   transition: all .2s;
   border-bottom: 0px solid white;
+  padding: 0px;
 }
 
 .theme-grey #full-menu .menu-items .menu-item a {
@@ -1002,7 +1014,7 @@
   border-bottom: 5px solid #e2e2e2 !important;
 }
 
-.theme-grey #full-menu .menu-items .menu-item:hover, .theme-grey #full-menu .menu-items .menu-item a:focus, .theme-grey #full-menu .menu-items .menu-item button:focus, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-grey #full-menu .menu-items .menu-item a:focus, .theme-grey #full-menu .menu-items .menu-item button:focus, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:focus {
   background-color: #2e2e2e;
   border-bottom: 5px solid #e2e2e2;
 }

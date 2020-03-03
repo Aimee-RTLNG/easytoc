@@ -1,6 +1,12 @@
 
 let menu = document.getElementById("full-menu");
-let menu_buttons = menu.getElementsByTagName('button');
+if(menu != null) {
+   let menu_buttons = menu.getElementsByTagName('button');
+}
+else {
+   let menu_buttons = null;
+}
+
 
 function displayMenu( event ){
 
@@ -20,7 +26,8 @@ function displayMenu( event ){
       if( bouton_menu.classList.contains('open') ){
          bouton_menu.classList.remove('open');
          bouton_menu.classList.add('closed');
-         // submenu.classList.toggle('hidden');
+      }
+      else {
       }
    }
 

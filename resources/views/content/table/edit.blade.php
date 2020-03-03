@@ -386,7 +386,7 @@
     </div>
 </div>
 
-<div class="alert alert-success" role="alert" style="display: none">
+<div class="alert alert-success" aria-live="assertive" aria-atomic="true" role="alert" style="display: none">
     <span class="alert-content">
         Contenu de l'alerte
     </span>
@@ -397,7 +397,7 @@
     </button>
 </div>
 
-<div class="alert alert-success" role="alert" style="display: none" id="alert-message">
+<div class="alert alert-success" aria-live="assertive" aria-atomic="true" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
         Contenu de l'alerte
     </span>
@@ -408,7 +408,7 @@
     </button>
 </div>
 
-<div class="modal fade import-data" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
+<div class="modal fade import-data" aria-live="assertive" aria-atomic="true" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

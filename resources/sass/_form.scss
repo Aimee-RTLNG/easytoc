@@ -282,6 +282,9 @@ input[type="checkbox"], input[type="radio"]{
         @include flex-row-between-center;
     }
 }
+.interface-creation .project-action__btn {
+    justify-content: center;
+}
 .edit-project-action {
     flex-wrap: wrap;
     justify-content: space-around;
