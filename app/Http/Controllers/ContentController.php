@@ -26,6 +26,10 @@ class ContentController extends Controller
         return view('profile.view');
     }
 
+    public function create($type_name)
+    {
+        return view('content/'.$type_name.'/create');
+    }
 
     /**
      * Display the specified resource.
@@ -35,17 +39,11 @@ class ContentController extends Controller
      */
     public function show(\App\Content $content)
     {
-        return view('content.show', ['content'=>$content]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('content.create');
+        if (Auth::id() == $content->user['id']){
+            return view('content.show', ['content'=>$content]);
+        } else {
+            return view('home');
+        }
     }
 
     /**
@@ -71,7 +69,8 @@ class ContentController extends Controller
      */
     public function edit(\App\Content $content)
     {
-        return view('content.edit', ['content'=>$content] );
+        $type_name = strtolower($content->type["name_en"]);
+        return view('content/'.$type_name.'/edit', ['content'=>$content] );
     }
 
     /**

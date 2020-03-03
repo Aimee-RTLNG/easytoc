@@ -28,6 +28,18 @@
         border-left: 1px solid white;
     }
 }
+.link-help, .link-footer {
+    transition: all 0.2s;
+    &:hover, &:focus {
+        color: $dark;
+        background-color: white;
+        padding: 4px 10px;
+        transition: all 0.2s;
+    }
+}
+.link-help {
+    text-decoration: underline;
+}
 
 @media (max-width: 767px) {
     .menu-footer {

@@ -24,11 +24,13 @@
 }
 .select-home {
     background-color: $bleu;
-    &__link:before {
-        content: "\f061";
-        font-family: "Font Awesome 5 Free";
-        position: relative;
-        left: -10px;
+    &__link {
+        padding-left: 12px;
+        svg {
+            position: absolute;
+            left: 8px;
+            top: 13px;
+        }
     }
     .dropdown-menu.show {
         font-size: 1.4rem;
@@ -37,8 +39,7 @@
     }
 }
 .show .select-home__link {
-    top: 2px;
-    position: relative;
+    padding-top: 8px;
 }
 .home-present {
     position: relative;
@@ -62,18 +63,8 @@
             line-height: 3.0rem;
             padding-left: 48px;
             list-style-type: none;
-            li:before {
-                content :'\f061';
-                font-size: 18px;
-                color: $bleu;
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-                padding-right: 20px;
-            }
-            li:hover:before{
-                position: relative;
-                left: 10px;
-                transition: left 0.5s;
+            a:hover {
+                color: $bleu-fonce;
             }
         }
         &__btn {
@@ -82,7 +73,7 @@
         }
     }
     &__video {
-        padding-left: 60px;
+        padding-left: 30px;
         height: 100%;
         @include flex-col-center-center;
     }
@@ -110,9 +101,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    i {
+    svg {
         cursor: pointer;
-        font-size: 2.5rem;
+        font-size: 36px;
     }
 }
 // Section outils
@@ -120,15 +111,24 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .home-tools {
    &__item {
        @include flex-col-between-center;
         height: 450px;
+        max-width: 100%;
+        width: 100%;
         background-color: $gris-fonce;
         border-radius: 10px;
         color: white;
         padding: 15px 25px;
+        &:focus {
+            border: 4px $bleu solid;
+        }
+        &__descr {
+            max-width: 100%;
+        }
         &__name {
             text-transform: uppercase;
             @include expletus;
@@ -149,6 +149,7 @@
             a {
                 text-align: center;
                 width: 100%;
+                max-width: 100%;
                 justify-content: center;
                 font-size: 2.0rem;
                 &:focus {
@@ -173,6 +174,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .use-list {
     &__item {
@@ -185,6 +187,9 @@
         padding: 15px 19px;
         text-align: center;
         z-index: 2;
+        &:focus {
+            border: 4px #1b6ec2 solid;
+        }
         &__icon {
             height: 59px;
             min-height: 59px;
@@ -288,6 +293,7 @@
 }
 @include media-breakpoint-down(md) { 
     //992
+
     .section-home {
         height: auto;
         padding: 40px 0px;
@@ -299,6 +305,9 @@
         &__title {
             min-width: 85%;
         }
+    }
+    .home-present {
+        padding-bottom: 55px;
     }
     .home-present__txt {
         padding-bottom: 30px;
@@ -347,9 +356,9 @@
         min-width: 100%;
         font-size: 3rem;
     }
-    .home-present__txt__tips li:before{
-        padding-right: 14px;
-    }
+    // .home-present__txt__tips li:before{
+    //     padding-right: 14px;
+    // }
     .video-yt {
         height: 200px;
     }

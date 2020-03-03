@@ -92,6 +92,13 @@
                 .form-control {
                     width: 100%;
                 }
+                .form-label {
+                    min-height: 36px;
+                    line-height: 1.8rem;
+                    display: flex;
+                    align-items: flex-end;
+                    padding-bottom: 2px;
+                }
             }
         }
     }
@@ -141,12 +148,17 @@
         width: 196px;
         border-radius: 5px;
         background-color: $gris-clair;
-        box-shadow: 0px 0px 18px -11px rgba(0, 0, 0, 1);
         height: 30px;
         @include flex-row-between-center;
         padding: 0 10px;
+        transition: all .2s;
         &:nth-child(2) {
             margin-left: 10px;
+        }
+
+        &:hover{
+            background-color: $gris-fonce;
+            color: white;
         }
     }
 }
@@ -162,7 +174,7 @@
         font-weight: bold;
         a {
             color: $bleu;
-            &:hover {
+            &:hover, &:focus {
                 color: $bleu;
             }
         }
@@ -171,15 +183,28 @@
 .link-account-ok, .link-form {
     color: $bleu;
     margin-top: 2px;
-    &:hover {
+    &:hover, &:focus {
         color: $bleu;
     }
 }
 .invalid-feedback {
     position: absolute;
+    display: block;
+    @include acumin;
+    line-height: 1rem;
+    max-width: 100%;
+    padding-top: 4px;
+}
+.warning-block {
+    @include acumin;
+    line-height: 1.1rem;
+    margin-top: 5px;
 }
 .form-control.is-invalid {
     border-width: 3px;
+    & ~ .btn-seepassword__icon {
+        background-color: $red;
+    }
 }
 .me-forever {
     @include flex-col-between-start;
@@ -206,6 +231,9 @@
         &--connexion {
             margin-bottom: 15px;
         }
+    }
+    .connexion .btn-seepassword__icon {
+        right: 0px;
     }
     .register {
         flex-direction: column;

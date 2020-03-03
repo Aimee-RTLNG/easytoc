@@ -1,0 +1,294 @@
+// Themes
+
+$themes: (
+    white: (
+        backgroundColor: #fff,
+        textBackgroundColor: black,
+        textColor : black,
+        required : orange,
+        aColor : black,
+    ),
+    black: (
+        backgroundColor: #222,
+        textBackgroundColor: white,
+        textColor : black,
+        required : orange,
+        aColor : black,
+    ),
+    green: (
+        backgroundColor: #366E3B,
+        textBackgroundColor: white,
+        textColor : #366E3B,
+        required : orange,
+        aColor : #366E3B,
+    ),
+    red: (
+        backgroundColor: #C90000,
+        textBackgroundColor: white,
+        textColor : #D74A4A,
+        required : orange,
+        aColor : #C90000,
+    ),
+    blue: (
+        backgroundColor: #155595,
+        textBackgroundColor: white,
+        textColor : #1B6EC2,
+        required : orange,
+        aColor : black,
+    ),
+    grey: (
+        backgroundColor: #3A3A3A,
+        textBackgroundColor: white,
+        textColor : #787878,
+        required : orange,
+        aColor : black,
+    )
+);
+
+
+// Implementation des themes
+
+@mixin themify($themes) {
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+// Styles
+
+#full-form {
+    h1 {
+      font-family: sans-serif;
+      font-weight: lighter;
+    }
+    a {
+      cursor: pointer;
+    } 
+    .text-justify {
+        text-align: justify !important;
+    }
+    .text-left {
+        text-align: left !important;
+    }
+    .text-center {
+        text-align: center !important;
+    }
+  }
+// ----
+#generated-form {
+    margin: 20px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#form-title {
+    @include themify($themes) {
+        background-color: themed('backgroundColor'); 
+        color: themed('textBackgroundColor');
+    }
+    hr {
+        @include themify($themes) {
+            border-top: 2px solid themed('textColor'); 
+        }
+    }
+    padding: 25px;
+    margin: 0 -21px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#nav-blueprint {
+    overflow-x: scroll;
+}
+#content-created-blueprint {
+    min-width: 370px;
+}
+#full-form {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    @include themify($themes) {
+        border: 2px solid themed('backgroundColor');
+                select:focus {
+            border: none !important;
+        }
+    }
+    color: black;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    h1 {
+        margin: auto;
+        padding: 20px 18px;
+    }
+    & > * {
+        max-width: 100%;
+        padding: 0px 20px;
+        label {
+            width: 100%;
+        }
+    }
+    p {
+        line-height: 20px;
+        font-size: 14px;
+    }
+    li {
+        line-height: 25px;
+        font-size: 14px;  
+    }
+    select option {
+        padding: 5px 4px;
+    }
+    select[multiple]:focus option:checked {
+        @include themify($themes) {
+            background: themed('backgroundColor') linear-gradient(0deg, themed('backgroundColor') 0%, themed('backgroundColor') 100%);
+            color: themed('textColor') ;
+        }
+      }
+    label[data-tag="option"] {
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        span {
+            margin: 0px;
+            margin-left: 10px;
+        }
+    }
+    a {
+        @include themify($themes) {
+            color: themed('aColor') ;
+        }
+        text-decoration: none;
+        &:hover, &:focus{
+            @include themify($themes) {
+                color: themed('aColor') ;
+            }
+            text-decoration: underline;
+            font-size: inherit;
+        }
+    }
+    ul, ol {
+        padding-left: 0px;
+        li {
+            margin-left: 40px;
+            list-style-type: none;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 7px;
+                left: -15px;
+                height: 7px;
+                width: 7px;
+                @include themify($themes) {
+                    background-color: themed('backgroundColor') ;
+                }
+                border-radius: 50%;
+            }
+        }
+    }
+    .form-control {
+        font-family: Arial, Helvetica, sans-serif;
+        display: block;
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: .375rem .75rem;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        margin-top: 8px;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .insert-one_answer, .insert-many_answer, .insert-binary_answer {
+        margin-bottom: 20px;
+    }
+    select {
+        width: 100%;
+    }
+    abbr[aria-label='required'] {
+        @include themify($themes) {
+            color: themed('required') ;
+        }
+    }
+    label > span {
+        margin-bottom: 20px;
+        @include themify($themes) {
+            color: themed('textColor') ;
+        }
+        font-weight: bold;
+    }
+    fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 0px 15px 0px;
+        border: none;
+        font-weight: bold;
+        @include themify($themes) {
+            color: themed('textColor') ;
+        }
+        label span {
+            color: black !important;
+            font-weight: normal;
+        }
+        label {
+            margin: 4px 0px;
+        }
+    }   
+}
+#form-actions {
+    width: 90vw;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    input {
+        max-width: 600px;
+        cursor: pointer;
+        font-size: 16px;
+        &:hover, &:focus{
+            color: white;
+        }
+    }
+    input[type="reset"] {
+        padding: 10px 30px;
+        border: none;
+        background-color: #EFEFEF;
+        border-radius: 12px;
+        min-width: 200px;
+        transition: all 0.25s ease;
+        &:hover, &:focus {
+            background-color: #E13838;
+            transition: all 0.25s ease;
+        }
+    }  
+    input[type="submit"] {
+        color: white;
+        transition: all 0.25s ease;
+        padding: 10px 30px;
+        border: none;
+        background-color: #393737;
+        border-radius: 12px;
+        min-width: 200px;
+        &:hover, &:focus {
+            background-color: #63CF72;
+            transition: all 0.25s ease;
+        }
+    }
+}

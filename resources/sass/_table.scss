@@ -1,0 +1,147 @@
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
+body {
+    background-color: #fafafa;
+}
+
+/* utile */
+
+.hidden {
+    /* attention : en utilisant cette classe, il faut ajouter aria-hidden="true" à l'élement */
+    display: none;
+}
+
+/* style du blueprint */
+
+    #content-created-blueprint {
+        // background-color: #f2f2f2;
+        // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        background-color: #4da5dc;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='95' height='95' fill='%23165ba0'/%3E%3C/svg%3E");    
+    }
+
+/* style du code */
+
+    #nav-code {
+        padding: 2em;
+        border: 1px solid rgba(0, 0, 0, 0.192);
+        border-top: 0;
+    }
+
+
+/* style de l'interface actions */
+
+[contenteditable="true"]:hover, #full-form input, .element-container{
+    cursor: pointer;
+}
+
+#content-created-blueprint table *{
+    border: 0;
+    padding: 5px;
+
+    &:hover, &:focus{
+        border: 3px dotted black;
+    }
+}
+
+#content-created-blueprint caption{
+    &:hover, &:focus{
+        border: 0 !important;
+    }
+}
+
+.element-container{
+    margin: 10px 5px; 
+    padding: 5px;
+}
+
+.content-editable-selected {
+    border: 3px dotted black !important;
+    outline : 3px dotted white !important;
+}
+
+// Boutons copier le contenu
+
+#copy-css-link, #copy-raw-code {
+    position: relative;
+    bottom: -10px;
+    right: 100px;
+}
+
+.copy-container{
+    position: absolute;
+}
+
+// Side tools (déplacer supprimer)
+
+.side-tool {
+    width: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    &.horizontal-tools{
+        display: flex;
+    }
+
+    button{
+        margin: 0;
+        padding: 0;
+        border-radius: 2px;
+        color: white;
+        border: none;
+        min-width: 20px;
+    }
+
+    .btn-info:disabled{
+        background-color: rgb(129, 129, 129);
+    }
+
+}
+
+// Intégration 
+.project-action {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    @include media-breakpoint-down(sm) {
+        .btn-delete-def, .form_btn-delete-def {
+            width: 100%;
+        }
+    }
+    @media(max-width: 565px) {
+        .btn-crea:not(:last-child)  {
+            margin-right: 0px;
+        }
+    }
+    & > * {
+        margin-bottom: 10px;
+        @media(max-width: 565px) {
+            width: 100%;
+        }
+    }
+    & > button {
+        padding: 2px 8px;
+    }
+}
+
+.tab-radio-header {
+    @include flex-row-start-center;
+    min-height: 32px;
+}
+.choice-header-tab {
+    @include flex-row-between-center;
+}
+.btn-save-tab {
+    height: auto;
+    min-height: 45px;
+}
+
+// Aperçu tableau 
+#nav-blueprint #generated-table {
+    background-color: $body-bg;
+    padding: 20px;
+}
+.visualisation #generated-table {
+    margin: 30px 0px;
+}

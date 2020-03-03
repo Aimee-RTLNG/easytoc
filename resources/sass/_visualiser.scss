@@ -1,0 +1,85 @@
+// Visualiser un projet 
+.visu__title {
+    &:focus {
+        outline: none;
+        color: $blue;
+        text-decoration: underline;
+    }
+}
+.edit-content-button, .delete-content-button {
+    padding: 2px 10px;
+    min-width: 138px;
+}
+.content-html-code {
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+.element-actions {
+    display: flex;
+}
+.edit-content-button {
+    margin-right: 10px;
+}
+.delete-content-button {
+    color: $red;
+    background-color: $gris-clair;
+    border: none;
+    .rond-i {
+        color: white;
+        background-color: $red;
+    }
+    &:hover, &:focus {
+        background-color: $gris-clair-hover;
+        color: $red;
+    }
+}
+.visu__title {
+    @include expletus;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.visualisation {
+    &__infos {
+        margin-bottom: 20px;
+    }
+    .content-description {
+        margin-bottom: 20px;
+    }
+}
+
+// Formulaire généré 
+.visu-copy-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    #copy-css-link, #copy-raw-code {
+        top: 50px;
+        bottom: 0px;
+        right: 15px;
+    }
+}
+.visualisation {
+    &__infos {
+        .element-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            @include media-breakpoint-down(lg) {
+                justify-content: flex-start;
+            }
+        }
+    }
+    .visu_info {
+        margin-bottom: -8px;
+        .btn {
+            margin-top: 10px;
+        }
+    }
+    .prettyprint {
+        margin-bottom: 20px !important;
+    }
+    .btn-code {
+        margin-top: -20px;
+    }
+}

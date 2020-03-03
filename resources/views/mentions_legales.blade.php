@@ -1,24 +1,26 @@
 @extends('layouts/app')
 
-@section('titre') Mentions légales - EasyToC @endsection
+@section('titre') {{ __('Mentions légales') }} - EasyToC @endsection
 
 @section('content')
-<div class="container">
+<div class="container wysiwyg">
     <div class="entete">
-        <h2 class="entete__title">Mentions légales</h2>
+        <h2 class="entete__title">
+            {{ __('Mentions légales') }}
+        </h2>
         <div class="entete__under"></div>
     </div>
 
     <p>Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21
         juin 2004 pour la Confiance dans l'économie numérique, dite L.C.E.N., nous portons à la connaissance des
         utilisateurs et visiteurs du site : <strong><a href="http://easytoc.ritleng.mmi-unistra.fr"
-        arget="_blank">easytoc.ritleng.mmi-unistra.fr</a></strong> les informations suivantes :</p><br />
+        arget="_blank">easytoc.ritleng.mmi-unistra.fr</a></strong> les informations suivantes :</p>
 
-    <h3><strong>1. Informations légales :</strong></h3><br />
+    <h3 class="secondary_title" tabindex="0">1. Informations légales :</h3>
 
     <p>Statut du propriétaire : <strong>particulier</strong><br />
         Le Propriétaire est : <strong>Aimée RITLENG</strong><br />
-        Adresse postale du propriétaire : <strong>Whatever 67000 Strasbourg</strong><br />
+        Adresse postale du propriétaire : <strong>30 Rue du Maire André Traband, 67500 Haguenau</strong><br />
         <br />
         Le Créateur du site est : <strong>easytoc.ritleng.mmi-unistra.fr</strong><br />
         Le Responsable de la publication est : <strong>RITLENG Aimée</strong><br />
@@ -28,13 +30,9 @@
         Le Webmaster est : <strong>Aimee RITLENG</strong><br />
         Contacter le Webmaster : <strong><a href="mailto:aimeeritleng@outlook.com?subject=Contact a partir des mentions lÃ©gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong><br />
         L’hebergeur du site est : <strong>OVH 2 rue Kellermann 59100 Roubaix </strong><br />
-        <strong><u>CREDIT :</u> </strong> Les mentions légales ont étés générées par<strong> <a
-                href="https://www.generer-mentions-legales.com/generateur-mentions-legales.html"
-                target="_blank">générateur de mentions legales</a></strong><br /></p>
+    </p>
 
-    <br />
-
-    <h3><strong>2. Présentation et principe :</strong></h3><br />
+    <h3 class="secondary_title" tabindex="0">2. Présentation et principe :</h3>
 
     <p>Est désigné ci-après : <strong>Utilisateur</strong>, tout internaute se connectant et
         utilisant le site susnommé : <a href="http://easytoc.ritleng.mmi-unistra.fr"
@@ -51,9 +49,7 @@
         utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa
         responsabilité exclusive.</p>
 
-    <br />
-
-    <h3><strong>3. Accessibilité :</strong></h3><br />
+    <h3 class="secondary_title" tabindex="0">3. Accessibilité :</h3>
 
     <p>Le site easytoc.ritleng.mmi-unistra.fr est par principe accessible aux utilisateurs 24/24h, 7/7j, sauf interruption,
     programmée ou non, pour les besoins de sa maintenance ou en cas de force majeure. En cas d’impossibilité d’accès au
@@ -62,11 +58,9 @@
     soumis qu’à une obligation de moyen, easytoc.ritleng.mmi-unistra.fr ne saurait être tenu pour responsable de tout
     dommage, quelle qu’en soit la nature, résultant d’une indisponibilité du service.</p>
 
-    <br />
+    <h3 class="secondary_title" tabindex="0">4. Propriété intellectuelle :</h3>
 
-    <h3><strong>4. Propriété intellectuelle :</strong></h3>
-
-    <p><br />
+    <p>
         <em>Aimée RITLENG</em> est propriétaire exclusif de tous les droits de propriété intellectuelle ou détient les
         droits d’usage sur tous les éléments accessibles sur le site, tant sur la structure que sur les textes, images,
         graphismes, logo, icônes, sons, logiciels…<br />
@@ -77,8 +71,7 @@
         constitutive d’une contrefaçon et passible de poursuite conformément aux dispositions des articles L.335-2 et
         suivants du Code de Propriété Intellectuelle.</p>
 
-    <h3><br />
-        <strong>5. Liens hypertextes et cookies :</strong></h3><br />
+    <h3 class="secondary_title" tabindex="0">5. Liens hypertextes et cookies :</h3>
 
     <p>Le site <strong>easytoc.ritleng.mmi-unistra.fr</strong> contient un certain nombre de liens hypertextes vers
     d’autres sites (partenaires, informations …) mis en place avec l’autorisation de <em>Aimée RITLENG</em>. Cependant,
@@ -95,10 +88,10 @@
     cookies, tapez dans votre moteur de recherche : bloquage des cookies sous IE ou firefox et suivez les instructions
     en fonction de votre version.</p>
 
-    <h3><br /><strong>6. Protection des biens et des personnes - gestion des données personnelles :</strong></h3><br />
+    <h3 class="secondary_title" tabindex="0">6. Protection des biens et des personnes - gestion des données personnelles :</h3>
 
     <p>En France, les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n°
-    2004-801 du 6 août 2004, l'article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995.</p><br />
+    2004-801 du 6 août 2004, l'article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995.</p>
 
     <p>Sur le site <strong>easytoc.ritleng.mmi-unistra.fr</strong>, <em>Aimée RITLENG</em> ne
         collecte des informations personnelles ( suivant l'article 4 loi n°78-17 du 06 janvier 1978) relatives à
@@ -110,10 +103,10 @@
         l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de
         suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à
         <strong>easytoc.ritleng.mmi-unistra.fr</strong> par email : <strong><a
-                href="mailto:aimeeritleng@outlook.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong>
+                href="mailto:aimeeritleng@outlook.com?subject=Contact à partir des mentions légales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong>
         ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce,
         en précisant l’adresse à laquelle la réponse doit être envoyée.</p>
-    <br />
+
     <p>Aucune information personnelle de l'utilisateur du site easytoc.ritleng.mmi-unistra.fr
         n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des
         tiers. Seule l'hypothèse du rachat du site <strong>easytoc.ritleng.mmi-unistra.fr</strong> et de ses droits

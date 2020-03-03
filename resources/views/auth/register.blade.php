@@ -17,10 +17,10 @@
                             <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Facebook</a>
                             <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Google</a>
                         </div>
-                        <p class="commentaire">Tous les champs sont obligatoires</p>
+                        <p class="commentaire">{{ __('Tous les champs sont obligatoires') }}</p>
                    </div>
                     <div class="register__line">
-                        <label for="name" class="form-label">{{ __('Nom') }}</label>
+                        <label for="name" class="form-label">{{ __('Identifiant') }}</label>
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="far fa-eye"></i>
+                                        <i class="fas fa-eye" title="{{ __('Voir le mot de passe en clair') }}"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -65,7 +65,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="far fa-eye"></i>
+                                        <i class="fas fa-eye" title="{{ __('Voir le mot de passe en clair') }}"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -92,11 +92,9 @@
                         </div> 
                     </div>
               
-                </div>
-                <div class="register__illu" style="background-image: url('./images/register-fond.jpg');">
-                </div>
-            </div>
+            </form>
         </div>
+        <div class="register__illu" style="background-image: url('./images/register-fond.jpg');"></div>
     </div>
-</div> 
+</div>
 @endsection

@@ -1,3 +1,6 @@
+// Prettify
+@import '/node_modules/code-prettify/styles/suburst.css';
+
 body {
     background-color: #fafafa;
 }
@@ -12,57 +15,469 @@ body {
 /* style du blueprint */
 
     #content-created-blueprint {
-        background-color: #f2f2f2;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        // background-color: #f2f2f2;
+        // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.61' fill='%23ffffff'/%3E%3C/svg%3E");
+        background-color: #24b1f2;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='92' height='92' fill-opacity='0.92' fill='%232e6bff'/%3E%3C/svg%3E");
     }
 
-/* style du preview */
+/* style du code */
 
-
-    #content-created-preview {
+    #nav-code {
         padding: 2em;
-    }
-
-/* style du code généré */
-
-    xmp{
-        margin: 0;
-        padding: 0;
-        white-space: pre-line;
-        display: inherit;
-    }
-
-    pre.prettyprinted{
-        font-size: 100% !important;
-        margin: 0 !important;
-        padding: 1.5em !important;
-        width: 100% !important;
-        border-top-left-radius: 0px !important;
-        border-top-right-radius: 0px !important;
-        border-bottom-left-radius: 5px !important;
-        border-bottom-right-radius: 5px !important;
-        background-color: #212529;
+        border: 1px solid rgba(0, 0, 0, 0.192);
+        border-top: 0;
     }
 
 
 /* style de l'interface actions */
 
-#content-created-blueprint form *{
-    border: 3px dotted rgba(0,0,0,0);
-    padding: 5px;
+[contenteditable="true"]:hover, #full-form input, .element-container{
+    cursor: pointer;
+}
+
+[data-tag="text"]:hover, [data-tag="label-text"]:hover, [data-tag="form-title"]:hover{
     cursor: text;
 }
 
-#content-created-blueprint form *:hover{
-    border: 3px dotted black;
+#content-created-blueprint form *{
+    border: 0;
+    &:hover, &:focus{
+        border: 3px dotted black;
+    }
+
+    // tous les contenus non modifiables en soit
+    label:hover, abbr:hover, .indicator-required:hover, legend span:hover, fieldset label span:hover{
+        border: 0;
+    }
+
+    select{
+        min-height: 30px;
+    }
+
+    fieldset{
+        border: none;
+        display: flex;
+        flex-direction: column;
+
+        &:hover, &:focus{
+            border: none;
+        }
+
+        label{
+
+            margin: 5px 15px;
+
+            &:hover, &:focus{
+                border : none;
+            }
+        }
+    }
+
+    legend{
+        border: none;
+    }
+
+    hr {
+        border: 2px solid rgba(0,0,0,0.5) !important;
+        padding: 0 !important;
+    
+        &:hover, &:focus {
+            border: 2px solid rgba(0,0,0,0.5) !important;
+        }
+    }
+
+    .type-layout *:hover{
+        border: 0 !important;
+    }
+
+}
+
+.element-container{
+    margin: 10px 5px; 
+    padding: 5px;
+}
+
+.content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
+    border: 3px dotted black !important;
+    outline : 3px dotted white !important;
 }
 
 form {
     border: 0 !important;
 }
 
-easytoc, easytoc *:hover, easytoc:hover {
+input[type="checkbox"], input[type="radio"]{
     cursor: pointer !important;
-    padding: 0px !important;
-    border: 3px dotted rgba(0,0,0,0) !important;
+}
+
+// input[type="text"], textarea{
+//     border: 1px solid black !important;
+// }
+
+// Boutons copier le contenu
+
+#copy-css-link, #copy-raw-code {
+    position: relative;
+    bottom: -10px;
+    right: 70px;
+}
+
+.copy-container{
+    position: absolute;
+}
+
+// Side tools (déplacer supprimer)
+
+.side-tool {
+    width: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    button{
+        margin: 0;
+        padding: 0;
+        border-radius: 2px;
+        color: white;
+        border: none;
+    }
+
+    .btn-info:disabled{
+        background-color: rgb(129, 129, 129);
+    }
+
+}
+
+// Formulaire - création 
+.creator-panel {
+    @include flex-row-between-start;
+    margin: 0px;
+    &__title {
+        @include expletus;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 0px;
+        line-height: 2rem;
+    }
+}
+#chara-desc-remains {
+    position: absolute;
+    bottom: 12px;
+    right: 25px;
+    color: $gris-moyen;
+    font-size: 1.2rem;
+}
+.actions-panel {
+    @include flex-col-around-start;
+    & > * {
+        width: 100%;
+    }
+    &__btn {
+        @include flex-row-between-center;
+    }
+}
+.btn-crea {
+    font-size: 1.6rem;
+    padding: 2px 4px;
+    &__icon { 
+        background-color: white;
+        height: 30px;
+        width: 30px;
+        min-height: 30px;
+        min-width: 30px;
+        border-radius: 50%;
+        color: $bleu;
+        font-size: 15px;
+        @include flex-row-center;
+    }
+    p {
+        margin-left: 10px;
+        line-height: 1.8rem;
+        text-align: left;
+    }
+    &:not(:last-child) {
+        margin-right: 5px;
+    }
+}
+.template-panel {
+    @media (max-width: 768px) {
+        margin-top: 24px;
+    }
+    &__choice {
+        height: 110px;
+        padding: 10px;
+        background-color: $gris-crea;
+        @include flex-row-around-center;
+        & > div {
+            height: 100%;
+            @include flex-col-around-start;
+            & > div {
+                @include flex-row-start-center;
+            }
+        }
+        label {
+            padding-left: 8px;
+            margin-bottom: 0px;
+        }
+        input[type='radio'] {
+            -webkit-appearance:none;
+            width:15px;
+            height:15px;
+            border-radius:6px;
+            outline:none;
+            border: none;
+            background-color: white;
+            &:focus {
+                border: $bleu 1.5px solid;
+            }
+          }
+          
+          input[type='radio']:hover {
+            box-shadow:0 0 5px 0px $gris-clair inset;
+          }
+          
+          input[type='radio']:before {
+            content:'';
+            display:block;
+            width:60%;
+            height:60%;
+            margin: 20% auto;    
+            border-radius:50%;    
+          }
+          input[type='radio'][value='grey']:checked:before {
+            background:grey;
+          }
+          input[type='radio'][value='green']:checked:before {
+            background:$green;
+          }
+          input[type='radio'][value='black']:checked:before {
+            background:black;
+          }
+          input[type='radio'][value='red']:checked:before {
+            background:$red;
+          }
+          input[type='radio'][value='white']:checked:before {
+            background:$gris-clair;
+            border: 1px black solid;
+          }
+          input[type='radio'][value='blue']:checked:before {
+            background:$bleu;
+          }
+    }
+}
+.help-panel {
+    @include flex-col-between-start;
+    height: 50px;
+    margin-top: 6px;
+    color: $bleu;
+    a:hover {
+        text-decoration: underline;
+        color: $bleu-fonce;
+    }
+}
+.project-action {
+    @include flex-row-center;
+    &__btn {
+        @include flex-row-between-center;
+    }
+}
+.edit-project-action {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 700px;
+    margin: 0 auto;
+    .btn-crea {
+        margin-right: 0px;
+    }
+}
+.main-info-form {
+    @include flex-row-around-end;
+    margin-bottom: 16px;
+    .reset-button {
+        @include flex-row-start-center;
+    }
+    & > * {
+        margin-bottom: 10px;
+    }
+}
+.input-creator {
+    background-color: $gris-crea;
+    color: black;
+    font-weight: bold;
+    &::placeholder {
+        color: black;
+        font-weight: bold;
+    }
+    &:focus {
+        background-color: $gris-clair;
+        border: 2px $bleu solid;
+        color: black;
+        font-weight: bold;
+    }
+}
+.content-interface {
+    padding: 20px;
+    padding-bottom: 45px;
+}
+
+.action-required-cont, .action-multiple__cont {
+    // position: relative;
+    // top: 50%;
+    // transform: translateY(-50%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.action-supp-titre {
+    margin-bottom: 10px;
+}
+@media (max-width: 992px) {
+    .action-required-cont, .action-multiple__cont {
+        justify-content: flex-start;
+    }
+    .action-supp-titre {
+        margin-bottom: 6px;
+        margin-top: 10px;
+    }
+}
+.action-supp {
+    text-align: center;
+    position: relative;
+    width: 240px;
+    margin-bottom: 2px;
+    @media (max-width: 992px){
+        text-align: left;
+    }
+}
+.action-supp-crea {
+    & > * {
+        margin-bottom: 15px;
+        padding: 0;
+    }
+    
+}
+.btn-save-project {
+    font-size: 1.6rem;
+}
+.blueprint {
+    position: relative;
+    &__titre {
+        margin-bottom : 20px;
+    }
+    &__btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@include media-breakpoint-down(lg) { 
+    .info-panel {
+        margin-bottom: 20px;
+    }
+    .form_actions_element {
+        & > div:first-child {
+            margin-bottom: 10px;
+        }
+    }
+    #nav-code {
+        padding: 1em;
+    }
+    .blueprint {
+        &__titre {
+            margin-bottom: 8px;
+        }
+        &__btn {
+            position: relative;
+            top: 0;
+            left: 0px;
+            margin-bottom: 10px;
+        }
+    }
+}
+// Génération formulaire
+#nav-blueprint {
+    font-size: 14px;
+    label {
+        font-size: 14px;
+        width: 100%;
+    }
+    #full-form {
+        max-width: 100%;
+        width: 100%;
+        background-color: white;
+        .form-control {
+            margin-bottom: 0px;
+        }
+    }
+    #form-actions {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+.bloc-creation-interface  {
+    flex-wrap: wrap;
+    & > .bloc-visualisation {
+        display: flex;
+        max-width: 100%;
+    }
+}
+.content-html-preview {
+    #full-form .form-control {
+        margin-bottom: 0px;
+    }
+}
+.crea-item__btn-delete {
+    width: auto;
+}
+.btn-delete-def {
+    padding: 8px 10px;
+    color: white;
+    background-color: $red;
+    font-weight: bold;
+    @include flex-row-between-center;
+    width: 150px;
+    border-radius: 10px;
+    font-size: 1.6rem;
+}
+.elmt-select-options {
+    position: fixed;
+    max-width: 25%;
+}
+
+
+@include media-breakpoint-down(md) {
+    .edit-project-action > * {
+        margin-bottom: 20px;
+    } 
+    .edit-project-action {
+        .btn-danger {
+            order: 2;
+        }
+    }
+
+}
+@media (max-width: 768px) {
+    .btn-gris {
+        width: 100%;
+    }
+}
+@include media-breakpoint-down(xs) {
+    .form_btn-delete-def {
+        width: 100%;
+        .btn-delete-def {
+            width: 100%;
+        }
+    }
+    .edit-project-action {
+        .btn-success {
+            width: 100%;
+            margin-right: 0px;
+        }
+        .btn-crea {
+            padding: 8px 20px;
+        }
+    }
 }
