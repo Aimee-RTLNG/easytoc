@@ -52608,29 +52608,29 @@ var element_types; // En exportant ce tableau objet, on permet au fichier import
 if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
   element_types = {
     "type-info": {
-      "insert-title": '\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
-      "insert-img": '\t<div class="menu-logo" id="menu-logo"></div>\n',
-      "insert-banner": "\t<div class='menu-logo menu-logo-solo'></div>\n",
-      "insert-separator": '\t<span class="menu-separator"></span>\n'
+      "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
+      "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
+      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+      "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
     },
     "type-menu": {
-      "insert-menu_link": '\t<li role="none" class="menu-item element-container"><a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Go to the Link page"><span contenteditable="true" class="menu-item-title">Link</span></a></li>\n',
-      "insert-sub_link": '\t\t<li role="none" class="menu-item" ><a role="menuitem" href="/" class="menu-link sub-link" title="Go to the Menu - Link page"><span contenteditable="true" class="menu-item-title">Sub-menu link</span></a></li>\n',
-      "insert-sub_menu": '\t<li role="none" class="menu-item has-submenu element-container"><button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)"><span contenteditable="true" class="menu-item-title">Menu</span></button><ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID"></ul></li>\n'
+      "insert-menu_link": '\n\t\t<li role="none" class="menu-item element-container">\n\t<a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Go to the Link page">\n\t<span contenteditable="true" class="menu-item-title">Link</span></a></li>\n',
+      "insert-sub_link": '\n\t\t\t<li role="none" class="menu-item">\n\t<a role="menuitem" href="/" class="menu-link sub-link" title="Go to the Menu - Link page">\n\t<span contenteditable="true" class="menu-item-title">Sub-menu link</span></a></li>\n',
+      "insert-sub_menu": '\n\t\t<li role="none" class="menu-item has-submenu element-container">\n\t\t\t<button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)">\n\t\t\t\t<span contenteditable="true" class="menu-item-title">Menu</span>\n\t\t\t</button>\n\t\t\t<ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID">\n\t\t\t</ul>\n\t\t</li>\n'
     }
   };
 } else {
   element_types = {
     "type-info": {
-      "insert-title": '\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
-      "insert-img": "\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
-      "insert-banner": "\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
-      "insert-separator": '\t<span class="menu-separator"></span>\n'
+      "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
+      "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
     },
     "type-menu": {
-      "insert-menu_link": '\t<li role="none" class="menu-item element-container"><a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Se rendre sur la page Lien"><span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
-      "insert-sub_link": '\t\t<li role="none" class="menu-item" ><a role="menuitem" href="/" class="menu-link sub-link" title="Se rendre sur la page menu - Lien"><span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
-      "insert-sub_menu": '\t<li role="none" class="menu-item has-submenu element-container"><button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID"  class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)"><span contenteditable="true" class="menu-item-title">Menu</span></button><ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID"></ul></li>\n'
+      "insert-menu_link": '\n\t\t<li role="none" class="menu-item element-container">\n\t\t\t<a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Se rendre sur la page Lien">\n\t<span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+      "insert-sub_link": '\n\t\t\t<li role="none" class="menu-item">\n\t\t\t<a role="menuitem" href="/" class="menu-link sub-link" title="Se rendre sur la page menu - Lien">\n\t<span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+      "insert-sub_menu": '\n\t\t<li role="none" class="menu-item has-submenu element-container">\n\t\t\t<button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)">\n\t\t\t\t<span contenteditable="true" class="menu-item-title">Menu</span>\n\t\t\t</button>\n\t\t\t<ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID">\n\t\t\t</ul>\n\t\t</li>\n'
     }
   };
 } // FIXME A verifier
