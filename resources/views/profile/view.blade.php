@@ -25,13 +25,13 @@
         </div>
         @endif
         <div class="row d-flex">
-            <div class="col-8">
+            <div class="col-lg-8">
                 <div class="entete">
                     <h2 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h2>
                     <div class="entete__under"></div>
                 </div>
             </div>
-            <div class="col-4 d-flex align-items-center justify-content-center">
+            <div class="col-lg-4 start-project-profile">
                 <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
                     <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-arrow-right"></i>
@@ -45,13 +45,14 @@
                 </div>
             </div>
         </div>
-        <div class="row profile_content">
+        <a class="sr-only sr-only-focusable" href="#my-account">{{ __('Passer vos créations pour modifier les informations de votre compte') }}</a>
+        <div class="row profile_content" id="profile-content">
             <div class="col-lg-8">
                 <div class="dashboard">
                     <div class="row profile_content__filters m-0 p-0">
-                        <div class="profile_content__options col-12 d-flex justify-space-between">
+                        <div class="profile_content__options col-12">
                             <div id="list-filters" class="list-filters">
-                                <button class="btn btn-filter-type active" data-type="all">
+                                <button class="btn btn-filter-type active" data-type="all" tabindex="0">
                                     {{ __('Tous') }}
                                     <div class="all_types">
                                         <span class="type-pin type-Menu" data-type="Menu"></span>
@@ -59,15 +60,15 @@
                                         <span class="type-pin type-Table" data-type="Table"></span>
                                     </div>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="menu">
+                                <button class="btn btn-filter-type" data-type="menu" tabindex="0">
                                     {{ __('Menu') }}
                                     <span class="type-pin type-Menu" data-type="Menu"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="form">
+                                <button class="btn btn-filter-type" data-type="form" tabindex="0">
                                     {{ __('Formulaire') }}
                                     <span class="type-pin type-Form" data-type="Form"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="table">
+                                <button class="btn btn-filter-type" data-type="table" tabindex="0">
                                     {{ __('Tableau') }}
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </button>
@@ -88,7 +89,7 @@
                     </div>
                     
                     @if($user->contents->isEmpty())
-                        <h2 class="dashboard__title">
+                        <h2 class="dashboard__title mt-5">
                             {{ __('Vous n\'avez aucun projet sauvegardé') }}
                         </h2>
                     @endif
@@ -159,12 +160,12 @@
                 </div>
             </div>
             <div class="col-lg-4 modif-compte">
-                <div class="mon-compte">
+                <div class="mon-compte" id="my-account">
                     <div class="mon-compte__entete">
                         <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
                         <h2 class="mon-compte__entete__title">{{ __('Informations de votre compte') }}</h2>
                         <div class="fleche-plus">
-                            <i class="fas fa-chevron-down " tabindex="0"></i>
+                            <i class="fas fa-chevron-down" tabindex="0"></i>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -323,9 +324,9 @@
                             <div class="mon-compte__entete">
                                 <div class="mon-compte__entete__picto"><i class="fas fa-frown"></i></div>
                                 <h2 class="mon-compte__entete__title">{{ __('Supprimer votre compte') }}</h2>
-                                <div class="fleche-plus">
+                                {{-- <div class="fleche-plus">
                                     <i class="fas fa-chevron-down " tabindex="0"></i>
-                                </div>
+                                </div> --}}
                             </div>
                             <form id="formDeleteUser" class="form-horizontal" method="POST" action="{{ route('profile.destroy', ['user' => $user]) }}">
                                 {{ csrf_field() }}
@@ -344,6 +345,7 @@
                                     </div>
                                     
                                 </div>
+                                <a class="sr-only sr-only-focusable" href="#profile-content">{{ __('Voir vos créations') }}</a>
                             </form>
                         </div>
                     </div>

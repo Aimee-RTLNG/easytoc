@@ -85,6 +85,14 @@
   border-top: 2px solid #787878;
 }
 
+#nav-blueprint {
+  overflow-x: scroll;
+}
+
+#content-created-blueprint {
+  min-width: 370px;
+}
+
 #full-form {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -249,32 +257,32 @@
   color: black;
 }
 
-#full-form a:hover {
+#full-form a:hover, #full-form a:focus, #full-form a:focus {
   text-decoration: underline;
   font-size: inherit;
 }
 
-.theme-white #full-form a:hover {
+.theme-white #full-form a:hover, .theme-white #full-form a:focus, .theme-white #full-form a:focus {
   color: black;
 }
 
-.theme-black #full-form a:hover {
+.theme-black #full-form a:hover, .theme-black #full-form a:focus, .theme-black #full-form a:focus {
   color: black;
 }
 
-.theme-green #full-form a:hover {
+.theme-green #full-form a:hover, .theme-green #full-form a:focus, .theme-green #full-form a:focus {
   color: #366E3B;
 }
 
-.theme-red #full-form a:hover {
+.theme-red #full-form a:hover, .theme-red #full-form a:focus, .theme-red #full-form a:focus {
   color: #C90000;
 }
 
-.theme-blue #full-form a:hover {
+.theme-blue #full-form a:hover, .theme-blue #full-form a:focus, .theme-blue #full-form a:focus {
   color: black;
 }
 
-.theme-grey #full-form a:hover {
+.theme-grey #full-form a:hover, .theme-grey #full-form a:focus, .theme-grey #full-form a:focus {
   color: black;
 }
 
@@ -450,7 +458,7 @@
 
 #form-actions {
   width: 90vw;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -464,11 +472,12 @@
 }
 
 #form-actions input {
+  max-width: 600px;
   cursor: pointer;
   font-size: 16px;
 }
 
-#form-actions input:hover {
+#form-actions input:hover, #form-actions input:focus {
   color: white;
 }
 
@@ -477,12 +486,12 @@
   border: none;
   background-color: #EFEFEF;
   border-radius: 12px;
-  min-width: 40%;
+  min-width: 200px;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
 
-#form-actions input[type="reset"]:hover {
+#form-actions input[type="reset"]:hover, #form-actions input[type="reset"]:focus {
   background-color: #E13838;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
@@ -496,10 +505,10 @@
   border: none;
   background-color: #393737;
   border-radius: 12px;
-  min-width: 40%;
+  min-width: 200px;
 }
 
-#form-actions input[type="submit"]:hover {
+#form-actions input[type="submit"]:hover, #form-actions input[type="submit"]:focus {
   background-color: #63CF72;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;

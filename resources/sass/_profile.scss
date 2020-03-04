@@ -1,6 +1,14 @@
 .compte-page {
     background-color: $gris-clair;
 }
+.modif-compte {
+    .help-block {
+        color: $red;
+    }
+    .warning-block {
+        color: $bleu-fonce;
+    }
+}
 .full-list {
     overflow: hidden;
 }
@@ -127,7 +135,6 @@
         line-height: 1.2rem;
         @include flex-col-center-center;
         border-radius: 0;
-
         &:not(:last-child) {
             border-right: 2px solid $bleu;
         }
@@ -135,8 +142,11 @@
             margin-top: 5px;
         }
     }
-    .btn:hover {
+    .btn:hover, .btn:focus {
         background-color: rgba($bleu, 0.2);
+    }
+    .btn.active:focus {
+        background-color: rgba($bleu, 0.8);
     }
     .btn.active {
         background-color: $bleu;
@@ -205,6 +215,9 @@
     }
     input.form-control {
         font-family: 'Roboto','Arial', sans-serif;
+        &:focus {
+            border: 3px $bleu solid;
+        }
     }
     &__entete {
         @include flex-row-center;
@@ -255,7 +268,7 @@
             font-size: 2.5rem;
             @include expletus;
             font-weight: 700;
-            &:hover{
+            &:hover, &:focus{
                 color: $bleu;
             }
         }
@@ -302,7 +315,7 @@
         }
         .btn-gris{
             background-color: $gris-clair;
-            &:hover {
+            &:hover, &:focus {
                 background-color: $gris-clair-hover;
             }
         }
@@ -333,6 +346,14 @@
 .btn--rouge {
     color: white;
     background-color: $red;
+}
+.start-project-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media(max-width: 991px) {
+        justify-content: flex-start;
+    }
 }
 .fleche-plus {
     display: none;
@@ -408,6 +429,9 @@
     }
     .list-filters {
         margin-left: 0px;
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        }
         .btn {
             flex: 1 1;
         }
@@ -441,6 +465,17 @@
             }
         }
     }
+}
+.crud_btn > *:focus {
+    border: 3px $blue solid;
+}
+.crud_btn {
+    .btn-danger:focus {
+        box-shadow: 0 0 0 0.3rem rgba($red, 0.5);
+    }
+}
+.see-content-button:focus{
+    color: $bleu-fonce;
 }
 @include media-breakpoint-down(xs) {
     .profile_content .select-home .dropdown-menu.show {

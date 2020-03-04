@@ -9,9 +9,21 @@ body {
 .btn-primary {
     @include expletus;
 }
+.btn-primary:hover,.btn-primary:focus  {
+    color: #fff;
+    background-color: #165ba0;
+    border-color: #155595;
+}
+#btn-save-project:focus {
+    border: 2px $bleu solid;
+}
+.modal-content .close {
+    font-size: 35px;
+    padding: 4px 15px;
+}
 a {
     color: inherit;
-    &:hover {
+    &:hover, &:focus {
         color: inherit;
         text-decoration: none;
     }
@@ -38,6 +50,9 @@ p, h1, h2{
         @include expletus;
         font-size: 3.4rem;
         font-weight: bold;
+        @media (max-width: 576px) {
+            font-size: 2.8rem;
+        }
         &--username {
             color: $bleu;
             display: block;
@@ -88,6 +103,9 @@ textarea {
     background-color: $gris-crea;
     border: 1px $border solid;
     @include flex-row-center;
+    &:hover, &:focus {
+        border: 2px $bleu solid;
+    }
   }
   
   .check-box:hover {
@@ -135,9 +153,6 @@ textarea {
       border-radius: 50%;
       @include flex-row-center;
   }
-  .code-display {
-    overflow-wrap: break-word;
-  }
 
   .required-failed{
       border: 3px solid rgb(221, 19, 19);
@@ -170,3 +185,77 @@ textarea {
         margin-bottom: 1.5rem;
     }
  }
+
+ /* style du code généré */
+
+ xmp{
+    margin: 0;
+    padding: 0;
+    display: inherit;
+}
+
+.code-display{
+    font-size: 1em !important;
+    margin: 0 !important;
+    padding: 1.5em !important;
+    width: 100% !important;
+    border-radius: 5px !important;
+    border: 1px solid #888;
+    // word-break: break-all;
+    overflow: hidden;
+    color: white;
+    font-family: monospace, monospace;
+    background: #000;
+}
+
+pre.prettyprinted{
+    font-size: 100% !important;
+    margin: 0 !important;
+    padding: 1.5em !important;
+    width: 100% !important;
+    border-radius: 5px !important;
+}
+
+img, a {
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    user-drag: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+// Page intérieur texte
+.wysiwyg {
+    .secondary_title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 20px 0;
+        &:focus {
+            outline: none;
+            color: $blue;
+            text-decoration: underline;
+        }
+    }
+    .third_title {
+        margin-left: 10px;
+        padding-top: 25px;
+        font-weight: bold;
+        margin: 10px 0;
+        font-size: 1.575rem;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    a {
+        color: $blue;
+        font-weight: bold;
+        text-decoration: underline;
+        &:hover {
+            color: $bleu-fonce;
+        }
+    }
+    .child-bloc {
+        margin-left: 15px;
+    }
+}

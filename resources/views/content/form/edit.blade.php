@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Modifier le formulaire') }}</h2>
+        <h2 class="entete__title">{{ __('Modifier un formulaire') }}</h2>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3">
@@ -48,13 +48,13 @@
                     <input type="hidden" name="type_id" value="1">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
+                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" value="{{ old('title', $content->title) }}" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" value="{{ old('description', $content->description) }}"></textarea>
+                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required>{{ old('description', $content->description) }}</textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                     <!-- Code en brut (non formatté) -->
@@ -92,35 +92,35 @@
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
                 <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary">
+                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                     <div>
                         <div>
-                            <input type="radio" value="blue" id="radio01" name="theme">
-                            <label tabindex="0" for="radio01">{{ __('Bleu') }}</label>
+                            <input type="radio" value="blue" id="radio01" name="theme" checked>
+                            <label for="radio01">{{ __('Bleu') }}</label>
                         </div>
                         <div>
-                            <input type="radio" value="white" id="radio02" name="theme" checked>
-                            <label tabindex="0" for="radio02">{{ __('Blanc') }}</label>
+                            <input type="radio" value="white" id="radio02" name="theme">
+                            <label for="radio02">{{ __('Blanc') }}</label>
                         </div>
                     </div>
                     <div>
                         <div>
                             <input type="radio" value="green" id="radio03" name="theme">
-                            <label tabindex="0" for="radio03">{{ __('Vert') }}</label>
+                            <label for="radio03">{{ __('Vert') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="red" id="radio04" name="theme">
-                            <label tabindex="0" for="radio04">{{ __('Rouge') }}</label>
+                            <label for="radio04">{{ __('Rouge') }}</label>
                         </div>
                     </div>
                     <div>
                         <div>
                             <input type="radio" value="black" id="radio05" name="theme">
-                            <label tabindex="0" for="radio05">{{ __('Noir') }}</label>
+                            <label for="radio05">{{ __('Noir') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="grey" id="radio06" name="theme">
-                            <label tabindex="0" for="radio06">{{ __('Gris') }}</label>
+                            <label for="radio06">{{ __('Gris') }}</label>
                         </div>
                     </div>
                 </div>
@@ -264,10 +264,10 @@
                 <div class="bloc-creation-interface">
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
-                            <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
+                            <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
                                 <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                             </button>
-                            <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
+                            <button id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
                                 <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                             </button>
                         </div>
@@ -298,7 +298,7 @@
                                 </a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
                                     <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
-                                        {{ __("Copier") }}
+                                        {{ __("Copier le lien css") }}
                                     </button>
                                 </div>
                                 <!-- Lien du style à utiliser -->
@@ -306,14 +306,14 @@
                                 <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
                                     <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
-                                        {{ __("Copier") }}
+                                        {{ __("Copier le code généré") }}
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="side-tool" style="display: none">
-                        <button accesskey="t" class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
+                        <button class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
                             <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                         </button>
                     </div>
@@ -432,16 +432,7 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action row edit-project-action col-12 my-3" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
-                <p>{{ __('Annuler les modifications') }}</p>
-            </button>
-            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
-                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
-                <p>
-                    {{ __('Sauvegarder ce projet') }}
-                </p>
-            </button>
+            
             <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -452,6 +443,19 @@
                     <p>{{ __('Supprimer') }}</p>
                 </button>       
             </form>
+
+            <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <p>{{ __('Annuler les modifications') }}</p>
+            </button>
+
+            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-form" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
+                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <p>
+                    {{ __('Sauvegarder ce projet') }}
+                </p>
+            </button>
+            
         </div>
 
         @endif
@@ -482,8 +486,20 @@
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button>
+                {{-- <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
+                <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
+                    <div class="btn-crea__icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <p>{{ __('Importer mes données') }}</p>
+                </button>
+                <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
+                    <div class="btn-crea__icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <p>{{ __('Annuler') }}</p>
+                </button>
             </div>
         </div>
     </div>

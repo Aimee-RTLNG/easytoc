@@ -51081,7 +51081,8 @@ __webpack_require__(/*! clipboard/dist/clipboard.min.js */ "./node_modules/clipb
 
 
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlusCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSort"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPen"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faItalic"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBold"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUnderline"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignCenter"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignJustify"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTasks"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faComment"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLines"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faParagraph"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeading"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faLink"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListOl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListUl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faQuestionCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrashAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSync"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileCode"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faVectorSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLinesVertical"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSave"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCut"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectGroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectUngroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faExclamationTriangle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFrown"]);
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch(); // ANCHOR Visualisation des contenus générés (form, table, menu)
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
+var message; // ANCHOR Visualisation des contenus générés (form, table, menu)
 // Empêcher l'envoi du formulaire 
 
 $(document).ready(function () {
@@ -51223,7 +51224,152 @@ function setSideWindow() {
     $('#actions-interface').removeClass('p-0');
     $('#actions-interface').addClass('col-12'); // ---
   }
-}
+} // Copier le contenu du code sur la page visualisation
+// ANCHOR Copier le contenu code 
+
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+  if (lang == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
+  $(this).text(message);
+  alertMsg(message);
+});
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code'); // Navigation menu
+
+$(window).on('load', function () {
+  var onglet_actif = $('nav .nav-link')[0];
+
+  if (window.location.pathname.indexOf("menu") != -1) {
+    onglet_actif = $('nav .nav-link')[1];
+  } else if (window.location.pathname.indexOf("table") != -1) {
+    onglet_actif = $('nav .nav-link')[2];
+  } else if (window.location.pathname.indexOf("form") != -1) {
+    onglet_actif = $('nav .nav-link')[3];
+  } else if (window.location.pathname.indexOf("aide") != -1) {
+    onglet_actif = $('nav .nav-link')[4];
+  } else if (window.location.pathname.indexOf("register") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("login") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[1];
+  } else if (window.location.pathname.indexOf("edit") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("profile") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("cgu") != -1) {
+    onglet_actif = false;
+  } else if (window.location.pathname.indexOf("mentions_legales") != -1) {
+    onglet_actif = false;
+  }
+
+  if (onglet_actif) {
+    $(onglet_actif).addClass('onglet-actif');
+  }
+}); // RACCOURCIS CLAVIER
+// CTRL ALT U - move up 
+// CTRL ALT D - move down
+// CTRL ALT T - trash
+// CTRL ALT I - bloc informations
+// CTRL ALT S - bloc save
+// CTRL ALT P - bloc parametres
+// (bien relacher la touche custom avant le ctrl alt )
+
+document.onkeyup = function (e) {
+  // Move up
+  // CTRL ALT + U
+  if (e.ctrlKey && e.altKey && e.which == 85) {
+    if ($(".content-editable-selected").length > 0) {
+      if (!$("#action-move-up").attr('disabled')) {
+        $("#action-move-up").click();
+      } else {
+        $(".action-move-row-up").click();
+      }
+    }
+  } // Move Down
+  // CTRL ALT + D
+  else if (e.ctrlKey && e.altKey && e.which == 68) {
+      if ($(".content-editable-selected").length > 0) {
+        if (!$("#action-move-down").attr('disabled')) {
+          $("#action-move-down").click();
+        } else {
+          $(".action-move-row-down").click();
+        }
+      }
+    } // Move Left
+    // CTRL ALT + L
+    else if (e.ctrlKey && e.altKey && e.which == 76) {
+        if ($(".content-editable-selected").length > 0) {
+          if (!$("#action-move-left").attr('disabled')) {
+            $("#action-move-left").click();
+          } else {
+            $(".action-move-col-left").click();
+          }
+        }
+      } // Move Right
+      // CTRL ALT + R
+      else if (e.ctrlKey && e.altKey && e.which == 82) {
+          if ($(".content-editable-selected").length > 0) {
+            if (!$("#action-move-right").attr('disabled')) {
+              $("#action-move-right").click();
+            } else {
+              $(".action-move-col-right").click();
+            }
+          }
+        } // Suprrimer 
+        // CTRL ATL + T 
+        else if (e.ctrlKey && e.altKey && e.which == 84) {
+            if ($(".content-editable-selected").length > 0) {
+              if (!$("#action-delete").attr('disabled')) {
+                $("#action-delete").click();
+              }
+            }
+          } // Accéder au bloc informations
+          // CTRL ATL + I
+          else if (e.ctrlKey && e.altKey && e.which == 73) {
+              if ($(".action-supp-crea").length > 0) {
+                $(".action-supp-crea input").first().focus();
+              }
+            } // Accéder au bloc propriétés 
+            // CTRL ATL + P 
+            else if (e.ctrlKey && e.altKey && e.which == 80) {
+                if ($("#content-interface").length > 0) {
+                  $("#content-interface input").first().focus();
+                }
+              } // Sauvegarder
+              // CTRL ALT + S
+              else if (e.ctrlKey && e.altKey && e.which == 83) {
+                  console.log(e);
+
+                  if ($('#btn-save-project, #btn-update-project').length > 0) {
+                    console.log(e);
+                    var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+
+                    if (lang == "en") {
+                      _message = "Are you sure to save and quit your project ? You will be redirected.";
+                    }
+
+                    if (window.confirm(_message)) {
+                      $('#btn-save-project').click();
+                      $('#btn-update-project').click();
+                    }
+                  }
+                }
+}; // Désactiver le drag and drop des links et des images
+
+
+window.ondragstart = function () {
+  return false;
+}; // On désactive le cache pour les appels AJAX
+
+
+$.ajaxSetup({
+  cache: false
+});
 
 /***/ }),
 
@@ -51397,7 +51543,7 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     "type-special": {
       "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
       "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-      "reset-button": "\n\t<input type='reset' value='Reset' accesskey='r' form='generated-form' title='Reset the form'>"
+      "reset-button": "\n\t<input type='reset' value='Reset' form='generated-form' title='Reset the form'>"
     }
   };
 } else {
@@ -51426,7 +51572,7 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     "type-special": {
       "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
       "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-      "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
+      "reset-button": "\n\t<input type='reset' value='Réinitialiser' form='generated-form'>"
     }
   };
 } // Bien séparer le contenu en fonction des langues si le texte à l'intérieur des balises peut se traduire : pas la peine si uniquement le mot "Menu" apparait.
@@ -51581,7 +51727,7 @@ $('.add-element').on('click', function () {
   addElement(element_type, element_type_name); // on ajoute l'élement
 
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
-}); // ANCHOR Sauvegarde définitive
+}); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 
 $('#btn-save-project').on('click', function () {
   updatecontent();
@@ -51622,7 +51768,7 @@ $('#btn-save-project').on('click', function () {
 }); // ANCHOR Action sur l'élement
 
 var element_select;
-$(document.body).off('keyup') // ré-initialisation
+$(document.body).off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois 
 // Empeche de passer le focus sur l'input quand on clique sur le label (pour contrer comportement de formulaire de base)
 .on('click', '.element-container label, .element-container legend', function (e) {
   if ($(e.target).prop('tagName') != "SELECT") {
@@ -51653,7 +51799,7 @@ $(document.body).off('keyup') // ré-initialisation
   refreshMoveButtons(previous_option, next_option, true);
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
-}) // Quand on sélectionne un élément éditable
+}) // Quand on sélectionne un élément éditable (c'est là le plus important)
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
   // on récupère l'élément sélectionné et on focus sur l'élément parent
   if (e.target) {
@@ -51775,7 +51921,7 @@ $(document.body).off('keyup') // ré-initialisation
 
         var option_value = $('.content-editable-selected input').attr('value');
         $("#elem-option-value").val(option_value);
-      } // on cache toutes les actions de bases pour les réafficher en fonction
+      } // on cache toutes les actions de bases pour les réafficher en fonction du contenu sélectionné
 
 
       $('.action-answer-type').hide();
@@ -52390,6 +52536,576 @@ new ClipboardJS('#copy-raw-code'); // pas touche
 
 /***/ }),
 
+/***/ "./resources/js/components/menu.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/menu.js ***!
+  \*****************************************/
+/*! exports provided: element_types, getOldContent, addLink */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addLink", function() { return addLink; });
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+// ANCHOR Données initiales
+// On importe les variables et fonctions externes (qui sont définie dans app.js)
+
+var element_content;
+var link_type;
+var previous_link;
+var selected_link;
+var next_link;
+var message;
+var user_id = $('input[name=user_id]').val();
+var type_id = $('input[name=type_id]').val();
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // ANCHOR Caractères restants Description du projet
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans le textarea description
+
+$('#desc-input').keypress(function (e) {
+  var tval = $('#desc-input').val(),
+      tlength = tval.length,
+      set = $('#desc-input').attr('maxlength'),
+      remain = parseInt(set - tlength);
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
+
+  if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+    $('#desc-input').val(tval.substring(0, tlength - 1));
+  }
+}); // ANCHOR Caractères restants Titre du projet
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans l'input de titre
+
+$('#title-input').keypress(function (e) {
+  var tval = $('#title-input').val(),
+      tlength = tval.length,
+      set = $('#title-input').attr('maxlength'),
+      remain = parseInt(set - tlength);
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
+
+  if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+    $('#title-input').val(tval.substring(0, tlength - 1));
+  }
+}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+// Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
+// et la bonne structure. 
+// \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
+
+var element_types; // En exportant ce tableau objet, on permet au fichier import_data_... de générer du contenu en fonction des données importées
+// le fichier import_data_menu/form/table appelera donc un élément de se tableau grâce aux index (ne pas oublier d'importer cette variable dans le fichier import)
+// par exemple, si dans le CSV, j'ai un élément de type 'link', alors il cherchera dans ce tableau objet element_types['type-layout']['insert-link]
+
+if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  element_types = {
+    "type-info": {
+      "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
+      "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
+      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+      "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
+    },
+    "type-menu": {
+      "insert-menu_link": '\n\t\t<li role="none" class="menu-item element-container">\n\t<a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Go to the Link page">\n\t<span contenteditable="true" class="menu-item-title">Link</span></a></li>\n',
+      "insert-sub_link": '\n\t\t\t<li role="none" class="menu-item">\n\t<a role="menuitem" href="/" class="menu-link sub-link" title="Go to the Menu - Link page">\n\t<span contenteditable="true" class="menu-item-title">Sub-menu link</span></a></li>\n',
+      "insert-sub_menu": '\n\t\t<li role="none" class="menu-item has-submenu element-container">\n\t\t\t<button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)">\n\t\t\t\t<span contenteditable="true" class="menu-item-title">Menu</span>\n\t\t\t</button>\n\t\t\t<ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID">\n\t\t\t</ul>\n\t\t</li>\n'
+    }
+  };
+} else {
+  element_types = {
+    "type-info": {
+      "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
+      "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
+    },
+    "type-menu": {
+      "insert-menu_link": '\n\t\t<li role="none" class="menu-item element-container">\n\t\t\t<a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Se rendre sur la page Lien">\n\t<span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+      "insert-sub_link": '\n\t\t\t<li role="none" class="menu-item">\n\t\t\t<a role="menuitem" href="/" class="menu-link sub-link" title="Se rendre sur la page menu - Lien">\n\t<span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+      "insert-sub_menu": '\n\t\t<li role="none" class="menu-item has-submenu element-container">\n\t\t\t<button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)">\n\t\t\t\t<span contenteditable="true" class="menu-item-title">Menu</span>\n\t\t\t</button>\n\t\t\t<ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID">\n\t\t\t</ul>\n\t\t</li>\n'
+    }
+  };
+} // FIXME A verifier
+
+
+function getOldContent() {
+  // On rend l'ancien contenu modifiable
+  $('#full-menu .menu-item-title').attr('contenteditable', true);
+  $('#full-menu #menu-title').attr('contenteditable', true); // On récupère les paramètres
+  // Theme
+
+  var actual_theme = $("#generated-menu").attr('class');
+  actual_theme = actual_theme.replace('theme-', '');
+  var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
+  selected_theme.prop('checked', true); // Titre (non présent pour les menu)
+
+  var actual_title = $("#full-menu #menu-title").text().trim();
+
+  if (actual_title) {
+    $("#menu-creator-title").val(actual_title);
+  } // Lien du logo
+
+
+  var actual_link = $("#menu-logo").css('background-image');
+
+  if (actual_link) {
+    actual_link = actual_link.replace('url("', "");
+    actual_link = actual_link.replace('")', "");
+    $("#menu-creator-link").val(actual_link);
+  } // option image
+
+
+  if ($('#full-menu').has('#menu-logo').length) {
+    $("#menu-creator-link-display").attr('checked', true);
+  } else {
+    $("#menu-creator-link-display").removeAttr('checked');
+  } // option titre
+
+
+  if ($('#full-menu').has('#menu-title').length) {
+    $("#menu-creator-title-display").attr('checked', true);
+  } else {
+    $("#menu-creator-title-display").removeAttr('checked');
+  }
+} // ANCHOR Fonction de sauvegarde
+
+function updatecontent() {
+  // on récupère le contenu
+  var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
+
+  blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
+  blueprint_content = blueprint_content.replace(/ content-editable-selected/g, ""); // on remplace les doubles sauts de lignes
+
+  blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n"); // on update le code par rapport au blueprint
+
+  $('#raw-code').html(blueprint_content);
+  var code_content = $('<div>').text($('#raw-code').text()).html(); // prettify (permet de rendre le code joli)
+
+  $("#formatted-code").html(PR.prettyPrintOne(code_content));
+}
+
+; // ANCHOR Initialisation du formulaire
+
+if ($('#raw-code').val().length <= 0) {
+  // Il n'y a aucun contenu précédent : on est donc en création à partir de 0
+  updatecontent();
+} else {
+  // Il y a du contenu déjà crée : on est en modification ou en génération de contenu
+  getOldContent();
+  updatecontent();
+} // ANCHOR Changement de titre du menu
+
+
+$('#menu-creator-title').on('keyup', function () {
+  $('#full-menu #menu-title').text($('#menu-creator-title').val());
+  updatecontent();
+}); // ANCHOR Afficher ou non le titre du menu
+
+$('#menu-creator-title-display').off().on('click', function () {
+  if ($(this).is(":checked")) {
+    $('#full-menu .menu-identity .menu-separator').before(element_types["type-info"]["insert-title"]);
+    $('#full-menu .menu-identity #menu-title').text($('#menu-creator-title').val());
+
+    if ($('#menu-creator-link-display').is(":checked")) {
+      $('#full-menu .menu-identity #menu-logo').removeClass('menu-logo-solo');
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    }
+  } else {
+    $('#full-menu #menu-title').remove();
+
+    if ($('#menu-creator-link-display').is(":checked")) {
+      $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').addClass('hidden');
+      $('#menubar-easytoc').addClass('full-width');
+    }
+  }
+}); // ANCHOR Changement de lien du logo
+
+$('#menu-creator-link').on('keyup', function () {
+  $("#menu-logo").css('background-image', 'url(' + $('#menu-creator-link').val() + ')');
+  updatecontent();
+}); // ANCHOR Afficher ou non le logo
+
+$('#menu-creator-link-display').off().on('click', function () {
+  if ($(this).is(":checked")) {
+    $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
+    $('#full-menu .menu-identity #menu-logo').css('background-image', 'url(' + $('#menu-creator-link').val() + ')');
+
+    if (!$('#menu-creator-title-display').is(":checked")) {
+      $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    }
+  } else {
+    $('#full-menu #menu-logo').remove();
+
+    if ($('#menu-creator-title-display').is(":checked")) {
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').addClass('hidden');
+      $('#menubar-easytoc').addClass('full-width');
+    }
+  }
+}); // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
+// Cette fonction se base sur la liste d'élément précédemment définis element_types 
+
+function addLink(type) {
+  // permettra d'identifier l'élément (lui donne un ID aléatoire)
+  var element_id = Math.random().toString(36).substr(2, 9);
+  var menu_length;
+
+  if (type == "sub_link") {
+    menu_length = $(selected_link).find('ul').children("li").length;
+    console.log($(selected_link).find('ul'));
+  } else {
+    menu_length = $("#menubar-easytoc").children("li").length;
+  }
+
+  if (menu_length > 8) {
+    message = "Vous ne pouvez pas rajouter plus de liens";
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "You already have too much links !";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    return;
+  } // on récupère le type de l'élément
+
+
+  if (type == "link") {
+    var added_content = element_types["type-menu"]["insert-menu_link"];
+    var id_replace_regex = /REPLACEID/g;
+    element_content = added_content.replace(id_replace_regex, element_id);
+    $('#menubar-easytoc').append(element_content);
+  } else if (type == "sub_link") {
+    // On ajoute un lien
+    var _added_content = element_types["type-menu"]["insert-sub_link"];
+    var _id_replace_regex = /REPLACEID/g;
+    element_content = _added_content.replace(_id_replace_regex, element_id);
+    $(selected_link).find('ul').append(element_content); // On définit le titre du lien
+
+    var menu_title = $(selected_link).find('.menu-submenus span').text().trim();
+    var link_title = 'Se rendre sur la page ' + menu_title + ' - ' + $(selected_link).find('ul li').last().text().trim();
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+      link_title = 'Go to page ' + menu_title + ' - ' + $(selected_link).find('ul li').last().text().trim();
+    }
+
+    $(selected_link).find('li a').last().attr('title', link_title);
+  } else if (type == "sub_menu") {
+    var _added_content2 = element_types["type-menu"]["insert-sub_menu"];
+    var _id_replace_regex2 = /REPLACEID/g;
+    element_content = _added_content2.replace(_id_replace_regex2, element_id);
+    $('#menubar-easytoc').append(element_content);
+  }
+
+  updatecontent();
+} // ANCHOR Ajout d'un élément : quand on clique sur un bouton avec la classe .add-element
+
+$('.add-element').on('click', function () {
+  if ($(this).attr('id') == "insert-menu_link") {
+    addLink("link");
+  } else if ($(this).attr('id') == "insert-sub_menu") {
+    addLink("sub_menu");
+  } else if ($(this).attr('id') == "insert-sub_link") {
+    addLink("sub_link");
+  }
+
+  updatecontent();
+}); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
+
+$('#btn-save-project').on('click', function () {
+  updatecontent();
+  var post_url = $("#full-menu-post").attr('action');
+  $.ajax({
+    method: "POST",
+    url: post_url,
+    data: {
+      "_token": csrf_token,
+      "type_id": type_id,
+      "user_id": user_id,
+      "title": $('#title-input').val(),
+      "description": $('#desc-input').val(),
+      "html": $('#raw-code').text()
+    }
+  }).done(function (msg) {
+    // console.log(msg);
+    window.location.href = "profile/" + user_id + "/view";
+    $("#title-input").removeClass('required-failed');
+  }).fail(function (xhr, status, error) {
+    console.log(xhr.responseText);
+    console.log(status);
+    console.log(error); // TODO Erreur
+
+    if (!$('#title-input').val()) {
+      $("#title-input").addClass('required-failed');
+      $("#title-input").focus();
+    }
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+  });
+}); // ANCHOR Action sur l'élement
+
+$(document.body).off('keyup').off('click') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
+.on('click', '#full-menu a', function (e) {
+  e.preventDefault(); // Empêcher la redirection
+}).on('focus', '#full-menu a, #full-menu button', function (e) {
+  e.preventDefault();
+  selected_link = $(this).closest('li');
+  previous_link = selected_link.prev();
+  next_link = selected_link.next();
+  $('.content-editable-selected').removeClass('content-editable-selected');
+  $(selected_link).addClass('content-editable-selected');
+  $("#insert-sub_link").attr('disabled', true);
+  $("#action-move-up").attr('disabled', true);
+  $("#action-move-down").attr('disabled', true);
+  $("#nav-link").removeAttr('disabled');
+
+  if ($(this).hasClass('sub-link')) {
+    link_type = "sub-link";
+    $("#action-move-right").attr('disabled', true);
+    $("#action-move-left").attr('disabled', true);
+    $("#action-move-up").removeAttr('disabled');
+    $("#action-move-down").removeAttr('disabled');
+  } else if ($(this).hasClass('menu-submenus')) {
+    link_type = "menu";
+    $("#insert-sub_link").removeAttr('disabled');
+    $("#action-move-right").removeAttr('disabled');
+    $("#action-move-left").removeAttr('disabled');
+    $("#nav-link").attr('disabled', true);
+    $("#nav-link").val("");
+  } else {
+    link_type = "link";
+    $("#action-move-right").removeAttr('disabled');
+    $("#action-move-left").removeAttr('disabled');
+  } // Affiche les input pour personnaliser les liens
+
+
+  $('.custom-info-element').slideDown();
+  $('#nav-name').val($(selected_link).find('span').first().text().trim());
+
+  if (link_type != "menu") {
+    $('#nav-link').val($(selected_link).find('a').attr('href'));
+  }
+
+  setMove(selected_link);
+  updatecontent();
+}) // ANCHOR Modification du titre du menu via l'intérieur du menu
+.on('keyup', '#full-menu #menu-title ', function (e) {
+  $('#menu-creator-title').val($('#full-menu #menu-title').text().trim());
+  updatecontent();
+}) // ANCHOR Modification du titre
+.on('keyup', '#nav-name, #nav-link', function (e) {
+  var link_text = $(selected_link).find('span');
+  var link_selected = $(selected_link).find('a');
+  var link_title;
+
+  if ($(e.target).attr('id') == "nav-name") {
+    if (link_type == "menu") {
+      var menu_title = $('#nav-name').val();
+      $(link_text).first().text(menu_title);
+    } else {
+      $(link_text).text($('#nav-name').val());
+
+      if (link_type == "link") {
+        link_title = 'Se rendre sur la page ' + $('#nav-name').val();
+
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+          link_title = 'Go to page ' + $('#nav-name').val();
+        }
+
+        $(link_selected).attr('title', link_title);
+      } else {
+        var _menu_title = $(selected_link).parent().parent().find('button').text().trim();
+
+        link_title = 'Se rendre sur la page ' + _menu_title + ' - ' + $('#nav-name').val();
+
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+          link_title = 'Go to page ' + _menu_title + ' - ' + $('#nav-name').val();
+        }
+
+        $(link_selected).attr('title', link_title);
+      }
+    }
+  } else if ($(e.target).attr('id') == "nav-link") {
+    $(link_selected).attr('href', $('#nav-link').val());
+  }
+
+  updatecontent();
+}).on('keyup', 'a span[contenteditable=true]', function () {
+  var link_title;
+  var link_selected = $(selected_link).find('a');
+
+  if (link_type == "link") {
+    link_title = 'Se rendre sur la page ' + $('#nav-name').val();
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+      link_title = 'Go to page ' + $('#nav-name').val();
+    }
+
+    $(link_selected).attr('title', link_title);
+  } else {
+    var menu_title = $(selected_link).parent().parent().find('button').text().trim();
+    link_title = 'Se rendre sur la page ' + menu_title + ' - ' + $('#nav-name').val();
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+      link_title = 'Go to page ' + menu_title + ' - ' + $('#nav-name').val();
+    }
+
+    $(link_selected).attr('title', link_title);
+  }
+
+  $('#nav-name').val($(this).text().trim());
+}); // ANCHOR Masquer les sidetools au changement d'onglet
+
+$("#nav-code-tab").on('click', function () {
+  updatecontent();
+}); // ANCHOR Actions sur l'élément ciblé
+
+$(".form-element-action").on('click', function (e) {
+  if ($(this).attr('id') == "action-delete") {
+    deleteLink();
+  } else if ($(this).attr('data-action') == "move-up") {
+    moveLink("up");
+  } else if ($(this).attr('data-action') == "move-down") {
+    moveLink("down");
+  } else if ($(this).attr('data-action') == "move-right") {
+    moveLink("right");
+  } else if ($(this).attr('data-action') == "move-left") {
+    moveLink("left");
+  }
+
+  updatecontent();
+}); // ANCHOR Fonction de déplacement d'un lien
+
+function moveLink(direction) {
+  switch (direction) {
+    case "up":
+    case "left":
+      $(selected_link).insertBefore(previous_link);
+      break;
+
+    case "down":
+    case "right":
+      $(selected_link).insertAfter(next_link);
+      break;
+
+    default:
+      break;
+  }
+
+  setMove(selected_link);
+} // ANCHOR Fonction de suppression de link
+
+
+function deleteLink() {
+  $(selected_link).remove();
+}
+
+function setMove(selected_link) {
+  previous_link = $(selected_link).prev();
+  next_link = $(selected_link).next();
+
+  if (previous_link.length == 0) {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-left").attr('disabled', true);
+    } else if (link_type == "sub-link") {
+      $("#action-move-up").attr('disabled', true);
+    }
+  } else {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-left").removeAttr('disabled');
+    } else if (link_type == "sub-link") {
+      $("#action-move-up").removeAttr('disabled');
+    }
+  }
+
+  if (next_link.length == 0) {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-right").attr('disabled', true);
+    } else if (link_type == "sub-link") {
+      $("#action-move-down").attr('disabled', true);
+    }
+  } else {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-right").removeAttr('disabled');
+    } else if (link_type == "sub-link") {
+      $("#action-move-down").removeAttr('disabled');
+    }
+  }
+} // ANCHOR Mise en forme du texte (gras, italic, underline...) 
+
+
+$('.text-formatting').on("click", function () {
+  switch ($(this).attr('id')) {
+    case 'element-bold':
+      $('.content-editable-selected').toggleClass('text-bold');
+      updatecontent();
+      break;
+
+    case 'element-italic':
+      $('.content-editable-selected').toggleClass('text-italic');
+      updatecontent();
+      break;
+
+    case 'element-underline':
+      $('.content-editable-selected').toggleClass('text-underline');
+      updatecontent();
+      break;
+  }
+
+  updatecontent();
+}); // ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite 
+
+$('input[name="theme"]').on('change', function () {
+  var theme = "theme-" + $(this).val();
+  $('#generated-menu').attr('class', theme);
+  updatecontent();
+}); // ANCHOR Copier le contenu code rapidement grâce aux boutons 
+
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
+  $(this).text(message);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+});
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code'); // ANCHOR
+
+/***/ }),
+
 /***/ "./resources/js/components/table.js":
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
@@ -52405,8 +53121,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
-// ANCHOR Données initiales
+/* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
+// Imports
+
 
 var element;
 var element_selected_container;
@@ -52428,9 +53145,7 @@ var parent_tag;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
 var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
-// Imports
-
- // Reset des boutons d'options
+// Reset des boutons d'options
 
 $('#lateral-header-button').prop('checked', false);
 $('#footer-button').prop('checked', false);
@@ -52452,7 +53167,7 @@ $('#desc-input').keypress(function (e) {
       set = $('#desc-input').attr('maxlength'),
       remain = parseInt(set - tlength);
 
-  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     $('#chara-desc-remains').text(remain + " characters left");
   } else {
     $('#chara-desc-remains').text(remain + " caractères restants");
@@ -52469,7 +53184,7 @@ $('#title-input').keypress(function (e) {
       set = $('#title-input').attr('maxlength'),
       remain = parseInt(set - tlength);
 
-  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     $('#chara-title-remains').text(remain + " characters left");
   } else {
     $('#chara-title-remains').text(remain + " caractères restants");
@@ -52508,10 +53223,10 @@ function getOldContent() {
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre
 
-  var actual_title = $("#table-title").text();
+  var actual_title = $("#table-title").text().trim();
   $("#table-creator-title").val(actual_title); // Légende
 
-  var actual_caption = $("#table-caption span").text();
+  var actual_caption = $("#table-caption span").text().trim();
   $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
@@ -52615,13 +53330,13 @@ $('#table-row-nb').on('change', function () {
   var new_nb_row = $(this).val();
 
   if (new_nb_row < 2) {
-    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
       message = "Why would you want a table without rows ?";
     } else {
       message = "Pourquoi un tableau sans lignes ?";
     }
 
-    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     $(this).val("2");
     return;
   }
@@ -52634,13 +53349,13 @@ $('#table-row-nb').on('change', function () {
     for (var i = 0; i < nb_new_row; i++) {
       addRow("down");
 
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Row added";
       } else {
         message = "Ligne ajoutée";
       }
 
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_row < actual_nb_row) {
     var _nb_new_row = actual_nb_row - new_nb_row;
@@ -52651,13 +53366,13 @@ $('#table-row-nb').on('change', function () {
       if (!is_removed) {
         break;
       } else {
-        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
           message = "Row deleted";
         } else {
           message = "Ligne supprimée";
         }
 
-        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       }
     }
   }
@@ -52671,13 +53386,13 @@ $('#table-col-nb').on('change', function () {
   var new_nb_col = $(this).val();
 
   if (new_nb_col < 2) {
-    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
       message = "Why would you want a table without columns ?";
     } else {
       message = "Pourquoi un tableau sans colonnes ?";
     }
 
-    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     $(this).val("2");
     return;
   }
@@ -52690,13 +53405,13 @@ $('#table-col-nb').on('change', function () {
     for (var i = 0; i < nb_new_col; i++) {
       addCol("right");
 
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Column added";
       } else {
         message = "Colonne ajoutée";
       }
 
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_col < actual_nb_col) {
     var _nb_new_col = actual_nb_col - new_nb_col;
@@ -52714,13 +53429,13 @@ $('#table-col-nb').on('change', function () {
       var col_removed = removeCol(col_cells);
 
       if (col_removed) {
-        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
           message = "Column removed";
         } else {
           message = "Colonne retirée";
         }
 
-        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       } else {
         break;
       }
@@ -52879,7 +53594,7 @@ function removeRow(row) {
 
 
   if (row_length > 1 && is_filled) {
-    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
       message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
     } else {
       message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
@@ -53049,7 +53764,7 @@ function removeCol(cells) {
     }); // Si la ligne est remplie : on demande confirmation
 
     if (is_filled) {
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
       } else {
         message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
@@ -53114,13 +53829,13 @@ $('.cell-action').on('click', function () {
     if ($('.content-editable-selected').next().length) {
       mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
     } else {
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Can't merge : no cell next to this one";
       } else {
         message = "Fusion impossible : pas de case à droite";
       }
 
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // MERGE DOWN
 
   } else if (element_action == "merge-down") {
@@ -53129,13 +53844,13 @@ $('.cell-action').on('click', function () {
     if (other_cell.length) {
       mergeCell("col", $('.content-editable-selected'), other_cell[0]);
     } else {
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Can't merge : no cell under to this one";
       } else {
         message = "Fusion impossible : pas de case en bas";
       }
 
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // SPLIT
 
   } else if (element_action == "split-cell") {
@@ -53156,24 +53871,24 @@ $('.cell-action').on('click', function () {
       if (col_removed) {
         $('#table-col-nb').val(parseInt(nb_col) - 1);
 
-        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
           message = "Deleted column";
         } else {
           message = "Colonne supprimée";
         }
 
-        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
         $(next_element_select).find("span").focus();
       }
     } else {
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
       } else {
         message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
       }
 
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     }
   } // Supprimer la ligne
   else if (element_action == "delete-row") {
@@ -53192,24 +53907,24 @@ $('.cell-action').on('click', function () {
         if (row_removed) {
           $('#table-row-nb').val(parseInt(nb_row) - 1);
 
-          if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
             message = "Deleted row";
           } else {
             message = "Ligne supprimée";
           }
 
-          Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
+          Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
           $(_next_element_select).find('span').focus();
         }
       } else {
-        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
           message = "Why would you want a table without rows ?";
         } else {
           message = "Pourquoi un tableau sans lignes ?";
         }
 
-        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
       }
     }
 
@@ -53250,13 +53965,13 @@ $('.add-element').on('click', function () {
         $('#full-table tfoot tr').append(cell_html);
       }
 
-      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
         message = "Pied de tableau ajouté";
       } else {
         message = "Table footer added";
       }
 
-      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     } else {
       // On enlève le footer (déjà activé)
       $("#full-table tfoot").remove();
@@ -53278,13 +53993,13 @@ $('.add-element').on('click', function () {
           removeRow($(this));
         });
       } else {
-        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
           message = "Please add the lateral headers first";
         } else {
           message = "Veuillez d'abord ajouter des en-têtes verticales";
         }
 
-        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
     } // PREMIERE COLONNE EN HEADER
@@ -53298,7 +54013,7 @@ $('.add-element').on('click', function () {
       _rows.each(function (index) {
         if (index >= rows_header) {
           var new_header = $(this).find('th, td').first();
-          var old_text = $(new_header).find('span').text();
+          var old_text = $(new_header).find('span').text().trim();
           var new_cell_html = element_types["type-unique"]["insert-header-row"];
           $(new_header).replaceWith(new_cell_html);
           $(new_header).find('span').find('span').text(old_text);
@@ -53310,20 +54025,20 @@ $('.add-element').on('click', function () {
         _rows.each(function (index) {
           if (index >= rows_header) {
             var new_cell = $(this).find('th, td').first();
-            var old_text = $(new_cell).find('span').text();
+            var old_text = $(new_cell).find('span').text().trim();
             var new_cell_html = element_types["type-unique"]["insert-cell"];
             $(new_cell).replaceWith(new_cell_html);
             $(this).find('td').first().find('span').text(old_text);
           }
         });
       } else {
-        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
           message = "Please add the horizontal headers first";
         } else {
           message = "Veuillez d'abord ajouter des en-têtes horizontales";
         }
 
-        Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+        Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
     }
@@ -53345,7 +54060,7 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').text() // "html": $('#raw-code').find('span').text()
+      "html": $('#raw-code').text().trim() // "html": $('#raw-code').find('span').text()
 
     }
   }).done(function (msg) {
@@ -53355,20 +54070,20 @@ $('#btn-save-project').on('click', function () {
   }).fail(function (xhr, status, error) {
     // console.log(xhr.responseText);
     // console.log(status);
-    console.log($('#raw-code').text()); // Erreur
+    console.log($('#raw-code').text().trim()); // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
     }
 
-    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
       message = "Some informations are missing : please fill the empty fields.";
     } else {
       message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
     }
 
-    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
 
@@ -53565,10 +54280,10 @@ $(document.body).off('keyup') // ré-initialisation
   updateContent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
-  $('#table-creator-title').val($('#table-title').text());
+  $('#table-creator-title').val($('#table-title').text().trim());
   updateContent();
 }).on('keyup', '#table-caption', function () {
-  $('#table-creator-caption').val($('#table-caption span').text());
+  $('#table-creator-caption').val($('#table-caption span').text().trim());
   updateContent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
@@ -53680,7 +54395,7 @@ $('input[name="theme"]').on('change', function () {
 }); // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
     message = "Code copied !";
     $(".copy-container button").text("Copy");
   } else {
@@ -53689,7 +54404,7 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
   }
 
   $(this).text(message);
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message);
+  Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message);
 });
 new ClipboardJS('#copy-css-link');
 new ClipboardJS('#copy-raw-code');

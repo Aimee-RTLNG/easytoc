@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateProfile extends FormRequest
 {
@@ -25,10 +27,12 @@ class UpdateProfile extends FormRequest
      */
     public function rules()
     {
+        $id = Auth::user()->id;
+        $u = User::find($id);
         $pw_db = $this->user()->password;
         return [
             'name' => 'string|min:3|max:255',
-            'email' => 'string|min:10|max:255|unique:users,email',
+            'email' => 'string|min:10|max:255|unique:users,email,' .$u->id,
             'password' => 'sometimes|nullable|required_with:password_confirmation|string|confirmed',
             'password_confirmation' => 'sometimes|nullable|required_with:password|string',
             'current_password' => 'sometimes|required_with:password',

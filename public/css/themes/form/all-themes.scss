@@ -108,6 +108,12 @@ $themes: (
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
+#nav-blueprint {
+    overflow-x: scroll;
+}
+#content-created-blueprint {
+    min-width: 370px;
+}
 #full-form {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -163,7 +169,7 @@ $themes: (
             color: themed('aColor') ;
         }
         text-decoration: none;
-        &:hover{
+        &:hover, &:focus{
             @include themify($themes) {
                 color: themed('aColor') ;
             }
@@ -246,16 +252,17 @@ $themes: (
 }
 #form-actions {
     width: 90vw;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 30px;
     input {
+        max-width: 600px;
         cursor: pointer;
         font-size: 16px;
-        &:hover{
+        &:hover, &:focus{
             color: white;
         }
     }
@@ -264,9 +271,9 @@ $themes: (
         border: none;
         background-color: #EFEFEF;
         border-radius: 12px;
-        min-width: 40%;
+        min-width: 200px;
         transition: all 0.25s ease;
-        &:hover {
+        &:hover, &:focus {
             background-color: #E13838;
             transition: all 0.25s ease;
         }
@@ -278,8 +285,8 @@ $themes: (
         border: none;
         background-color: #393737;
         border-radius: 12px;
-        min-width: 40%;
-        &:hover {
+        min-width: 200px;
+        &:hover, &:focus {
             background-color: #63CF72;
             transition: all 0.25s ease;
         }

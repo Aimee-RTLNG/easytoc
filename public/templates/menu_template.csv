@@ -1,0 +1,13 @@
+Type;Title / Titre;Link / Lien;Th�me
+menu;Mon premier site;https://yahyaconsultants.com/wp-content/uploads/2018/05/icon_naverblog.png;black
+link;Accueil;/home;
+link;Ma biographie;/bio;
+link;Mon blog;/blog;
+sub_menu;Mes chats;;
+sub_link;Moustache;/mustache;
+sub_link;Nuage;/cloud;
+sub_menu;Mes chiens;;
+sub_link;Pablo;/pablo;
+sub_link;Filou;/filou;
+sub_link;Doudou;/doudou;
+;;;

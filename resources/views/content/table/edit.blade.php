@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Créer un tableau') }}</h2>
+        <h2 class="entete__title">{{ __('Modifier un tableau') }}</h2>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3">
@@ -48,12 +48,12 @@
                     <input type="hidden" name="type_id" value="2">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }}</label>
+                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" value="{{ old('title', $content->title) }}" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }}</label>
+                        <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
                         <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300">{{ old('description', $content->description) }}</textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
@@ -92,35 +92,35 @@
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
                 <h3 id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du tableau') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary">
+                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                     <div>
                         <div>
-                            <input type="radio" value="blue" id="radio01" name="theme">
-                            <label tabindex="0" for="radio01">{{ __('Bleu') }}</label>
+                            <input type="radio" value="blue" id="radio01" name="theme" checked>
+                            <label for="radio01">{{ __('Bleu') }}</label>
                         </div>
                         <div>
-                            <input type="radio" value="white" id="radio02" name="theme" checked>
-                            <label tabindex="0" for="radio02">{{ __('Blanc') }}</label>
+                            <input type="radio" value="white" id="radio02" name="theme">
+                            <label for="radio02">{{ __('Blanc') }}</label>
                         </div>
                     </div>
                     <div>
                         <div>
                             <input type="radio" value="green" id="radio03" name="theme">
-                            <label tabindex="0" for="radio03">{{ __('Vert') }}</label>
+                            <label for="radio03">{{ __('Vert') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="red" id="radio04" name="theme">
-                            <label tabindex="0" for="radio04">{{ __('Rouge') }}</label>
+                            <label for="radio04">{{ __('Rouge') }}</label>
                         </div>
                     </div>
                     <div>
                         <div>
                             <input type="radio" value="black" id="radio05" name="theme">
-                            <label tabindex="0" for="radio05">{{ __('Noir') }}</label>
+                            <label for="radio05">{{ __('Noir') }}</label>
                         </div>
                         <div>
                             <input type="radio" value="grey" id="radio06" name="theme">
-                            <label tabindex="0" for="radio06">{{ __('Gris') }}</label>
+                            <label for="radio06">{{ __('Gris') }}</label>
                         </div>
                     </div>
                 </div>
@@ -161,15 +161,15 @@
                         {{-- OPTIONS DU TABLEAU --}}
                         <div class="choice-header-tab">
                             <label class="central-header-button tab-radio-header" for="central-header-button">
-                                <input type="checkbox" class="add-element type-special check-box" value="" id="central-header-button" name="central-header-button" checked>
+                                <input tabindex="0" type="checkbox" class="add-element type-special check-box" value="" id="central-header-button" name="central-header-button" checked>
                                 <span class="ml-3">{{ __('En-têtes horizontales') }}</span>
                             </label>
                             <label class="lateral-header-button tab-radio-header" for="lateral-header-button">
-                                <input type="checkbox" class="add-element type-special check-box" value="" id="lateral-header-button" name="lateral-header-button">
+                                <input tabindex="0" type="checkbox" class="add-element type-special check-box" value="" id="lateral-header-button" name="lateral-header-button">
                                 <span class="ml-3">{{ __('En-têtes verticales') }}</span>
                             </label>
                             <label class="footer-button tab-radio-header" for="footer-button">
-                                <input type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
+                                <input tabindex="0" type="checkbox" class="add-element type-special check-box" value="" id="footer-button" name="footer-button">
                                 <span class="ml-3">{{ __('Pied de tableau') }}</span>
                             </label>
                         </div>
@@ -308,7 +308,7 @@
                         <nav class="">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le tableau') }}">{{ __('Tableau') }}</a>
-                                <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title={{ __('Voir le code généré') }}>{{ __('Code généré') }}</a>
+                                <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}">{{ __('Code généré') }}</a>
                             </div>
                         </nav>
 
@@ -332,7 +332,7 @@
                                 </a>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
                                     <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}"> 
-                                        {{ __("Copier") }}
+                                        {{ __("Copier le lien css") }}
                                     </button>
                                 </div>
                                 <!-- Lien du style à utiliser -->
@@ -340,7 +340,7 @@
                                 <h3 class="mt-3">{{ __("Voici le code brut pour votre tableau: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}</h3>
                                 <div class="copy-container w-100 d-flex flex-row-reverse">
                                     <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}" > 
-                                        {{ __("Copier") }}
+                                        {{ __("Copier le code généré") }}
                                     </button>
                                 </div>
                                 <!-- Code formatté -->
@@ -348,28 +348,7 @@
                             </div>
                         </div>
                     </div>
-
-
-                    {{-- <div class="side-tool vertical-tools" style="display: none">
-                        <button accesskey="u" id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
-                            <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
-                        </button>
-                        <button accesskey="d" id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer verse le bas') }}">
-                            <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
-                        </button>
-                    </div> --}}
-
                 </div>
-
-                {{-- <div class="side-tool horizontal-tools flex-row justify-content-around" style="display: none">
-                    <button accesskey="l" id="action-move-left" data-action="move-left" class="btn-info table-element-action action-move-left" title="{{ __('Déplacer vers la gauche') }}">
-                        <i class="fas fa-caret-left" title="{{ __('Déplacer vers la gauche') }}"></i>
-                    </button>
-                    <button accesskey="r" id="action-move-right" data-action="move-right" class="btn-info table-element-action action-move-right" title="{{ __('Déplacer vers la droite') }}">
-                        <i class="fas fa-caret-right" title="{{ __('Déplacer vers la droite') }}"></i>
-                    </button>
-                </div> --}}
-
             </div>
         </div>
 
@@ -377,16 +356,7 @@
 
         <!-- Actions importantes sur le projet -->
         <div class="project-action col-8 mx-auto my-3" role="region" aria-labelledby="form_actions">
-            <button title="{{ __('Annuler les modifications') }}" type="button" accesskey="c" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
-                <p>{{ __('Annuler les modifications') }}</p>
-            </button>
-            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-table" accesskey="s" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
-                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
-                <p>
-                    {{ __('Sauvegarder ce projet') }}
-                </p>
-            </button>
+            
             <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -397,6 +367,19 @@
                     <p>{{ __('Supprimer') }}</p>
                 </button>
             </form>
+
+            <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
+                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <p>{{ __('Annuler les modifications') }}</p>
+            </button>
+
+            <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-table" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
+                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <p>
+                    {{ __('Sauvegarder ce projet') }}
+                </p>
+            </button>
+
         </div>
 
         @endif
@@ -438,8 +421,20 @@
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button>
+                {{-- <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
+                <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
+                    <div class="btn-crea__icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <p>{{ __('Importer mes données') }}</p>
+                </button>
+                <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
+                    <div class="btn-crea__icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <p>{{ __('Annuler') }}</p>
+                </button>
             </div>
         </div>
     </div>

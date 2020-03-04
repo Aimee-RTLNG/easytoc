@@ -1,4 +1,5 @@
-// ANCHOR Données initiales
+// Imports
+import { alertMsg } from "../../js/app";
 import { lang } from "../app";
 
 let element;
@@ -23,9 +24,6 @@ let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
 // let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
-
-// Imports
-import { alertMsg } from "../../js/app";
 
 // Reset des boutons d'options
 $('#lateral-header-button').prop('checked', false);
@@ -108,11 +106,11 @@ export function getOldContent() {
     selected_theme.prop('checked', true);
 
     // Titre
-    let actual_title = $("#table-title").text();
+    let actual_title = $("#table-title").text().trim();
     $("#table-creator-title").val(actual_title);
 
     // Légende
-    let actual_caption = $("#table-caption span").text();
+    let actual_caption = $("#table-caption span").text().trim();
     $("#table-creator-caption").val(actual_caption);
 
 }
@@ -885,7 +883,7 @@ $('.add-element').on('click', function () {
             rows.each(function (index) {
                 if (index >= rows_header) {
                     let new_header = $(this).find('th, td').first();
-                    let old_text = $(new_header).find('span').text();
+                    let old_text = $(new_header).find('span').text().trim();
                     let new_cell_html = element_types["type-unique"]["insert-header-row"];
                     $(new_header).replaceWith(new_cell_html);
                     $(new_header).find('span').find('span').text(old_text);
@@ -897,7 +895,7 @@ $('.add-element').on('click', function () {
                 rows.each(function (index) {
                     if (index >= rows_header) {
                         let new_cell = $(this).find('th, td').first();
-                        let old_text = $(new_cell).find('span').text();
+                        let old_text = $(new_cell).find('span').text().trim();
                         let new_cell_html = element_types["type-unique"]["insert-cell"];
                         $(new_cell).replaceWith(new_cell_html);
                         $(this).find('td').first().find('span').text(old_text);
@@ -933,7 +931,7 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').text()
+            "html": $('#raw-code').text().trim()
             // "html": $('#raw-code').find('span').text()
         }
     }).done(function (msg) {
@@ -943,7 +941,7 @@ $('#btn-save-project').on('click', function () {
     }).fail(function (xhr, status, error) {
         // console.log(xhr.responseText);
         // console.log(status);
-        console.log($('#raw-code').text());
+        console.log($('#raw-code').text().trim());
         // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');
@@ -1159,14 +1157,14 @@ $(document.body)
     // ANCHOR Modification du texte via l'intérieur du formulaire
     .on('keyup', '#table-title', function () {
 
-        $('#table-creator-title').val($('#table-title').text());
+        $('#table-creator-title').val($('#table-title').text().trim());
         updateContent();
 
     })
 
     .on('keyup', '#table-caption', function () {
 
-        $('#table-creator-caption').val($('#table-caption span').text());
+        $('#table-creator-caption').val($('#table-caption span').text().trim());
         updateContent();
 
     });

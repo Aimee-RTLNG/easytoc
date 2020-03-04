@@ -29,34 +29,6 @@ body {
         border-top: 0;
     }
 
-/* style du code généré */
-
-    xmp{
-        margin: 0;
-        padding: 0;
-        white-space: pre-line;
-        display: inherit;
-    }
-
-    .code-display{
-        font-size: 100% !important;
-        margin: 0 !important;
-        padding: 1.5em !important;
-        width: 100% !important;
-        border-radius: 5px !important;
-        border: 1px solid #888;
-        word-break: break-all;
-    }
-
-    pre.prettyprinted{
-        font-size: 100% !important;
-        margin: 0 !important;
-        padding: 1.5em !important;
-        width: 100% !important;
-        border-radius: 5px !important;
-        white-space: pre !important;
-    }
-
 
 /* style de l'interface actions */
 
@@ -70,7 +42,7 @@ body {
 
 #content-created-blueprint form *{
     border: 0;
-    &:hover{
+    &:hover, &:focus{
         border: 3px dotted black;
     }
 
@@ -88,7 +60,7 @@ body {
         display: flex;
         flex-direction: column;
 
-        &:hover{
+        &:hover, &:focus{
             border: none;
         }
 
@@ -96,7 +68,7 @@ body {
 
             margin: 5px 15px;
 
-            &:hover{
+            &:hover, &:focus{
                 border : none;
             }
         }
@@ -110,7 +82,7 @@ body {
         border: 2px solid rgba(0,0,0,0.5) !important;
         padding: 0 !important;
     
-        &:hover {
+        &:hover, &:focus {
             border: 2px solid rgba(0,0,0,0.5) !important;
         }
     }
@@ -127,10 +99,9 @@ body {
 }
 
 .content-editable-selected, .option-selected, #full-form select:focus, .content-editable-selected select{
-    border: 3px dotted blue !important;
+    border: 3px dotted black !important;
+    outline : 3px dotted white !important;
 }
-
-
 
 form {
     border: 0 !important;
@@ -208,8 +179,8 @@ input[type="checkbox"], input[type="radio"]{
 }
 .btn-crea {
     font-size: 1.6rem;
-    padding: 2px 8px;
-    &__icon {
+    padding: 2px 4px;
+    &__icon { 
         background-color: white;
         height: 30px;
         width: 30px;
@@ -257,6 +228,9 @@ input[type="checkbox"], input[type="radio"]{
             outline:none;
             border: none;
             background-color: white;
+            &:focus {
+                border: $bleu 1.5px solid;
+            }
           }
           
           input[type='radio']:hover {
@@ -285,7 +259,7 @@ input[type="checkbox"], input[type="radio"]{
           }
           input[type='radio'][value='white']:checked:before {
             background:$gris-clair;
-            border: 1px $gris-crea solid;
+            border: 1px black solid;
           }
           input[type='radio'][value='blue']:checked:before {
             background:$bleu;
@@ -310,7 +284,7 @@ input[type="checkbox"], input[type="radio"]{
 }
 .edit-project-action {
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     max-width: 700px;
     margin: 0 auto;
     .btn-crea {
@@ -337,7 +311,7 @@ input[type="checkbox"], input[type="radio"]{
     }
     &:focus {
         background-color: $gris-clair;
-        border: 1px $gris-crea solid;
+        border: 2px $bleu solid;
         color: black;
         font-weight: bold;
     }
@@ -372,19 +346,10 @@ input[type="checkbox"], input[type="radio"]{
     text-align: center;
     position: relative;
     width: 240px;
+    margin-bottom: 2px;
     @media (max-width: 992px){
         text-align: left;
     }
-    // &__aide {
-    //     position: absolute;
-    //     right: 10px;
-    //     top: 10px;
-    // }
-    // .element_add-option {
-    //     position: relative;
-    //     top: 50%;
-    //     transform: translateY(-50%);
-    // }
 }
 .action-supp-crea {
     & > * {

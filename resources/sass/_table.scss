@@ -29,32 +29,6 @@ body {
         border-top: 0;
     }
 
-/* style du code généré */
-
-    xmp{
-        margin: 0;
-        padding: 0;
-        white-space: pre-line;
-        display: inherit;
-    }
-
-    .code-display{
-        font-size: 100% !important;
-        margin: 0 !important;
-        padding: 1.5em !important;
-        width: 100% !important;
-        border-radius: 5px !important;
-        border: 1px solid #888;
-    }
-
-    pre.prettyprinted{
-        font-size: 100% !important;
-        margin: 0 !important;
-        padding: 1.5em !important;
-        width: 100% !important;
-        border-radius: 5px !important;
-    }
-
 
 /* style de l'interface actions */
 
@@ -66,13 +40,13 @@ body {
     border: 0;
     padding: 5px;
 
-    &:hover{
+    &:hover, &:focus{
         border: 3px dotted black;
     }
 }
 
 #content-created-blueprint caption{
-    &:hover{
+    &:hover, &:focus{
         border: 0 !important;
     }
 }
@@ -83,7 +57,8 @@ body {
 }
 
 .content-editable-selected {
-    border: 3px dotted blue !important;
+    border: 3px dotted black !important;
+    outline : 3px dotted white !important;
 }
 
 // Boutons copier le contenu
@@ -127,7 +102,7 @@ body {
 
 // Intégration 
 .project-action {
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     @include media-breakpoint-down(sm) {
         .btn-delete-def, .form_btn-delete-def {
