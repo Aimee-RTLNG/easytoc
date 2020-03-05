@@ -111,7 +111,7 @@
                             <b>"{{ __("Visualiser") }}"</b> {{ __('vous permettra de voir votre projet, l\'afficher en tant que tel mais également voir le code qui permet de le générer et le copier. Les autres actions possibles sur ce projet sont également présentes sur la page Visualisation.') }}
                         </p> 
                         <p>
-                            <b>"{{ __("Modifer") }}"</b> {{ __('vous permettra de modifier votre projet avec la même interface qui vous a permis de le créer. Les outils sont les mêmes pour ne pas vous dérouter. Sur la page de modification, vous aurez la possibilité d\'annuler ou de sauvegarder vos modifications. Vous pourrez également le supprimer.') }}
+                            <b>"{{ __("Modifier") }}"</b> {{ __('vous permettra de modifier votre projet avec la même interface qui vous a permis de le créer. Les outils sont les mêmes pour ne pas vous dérouter. Sur la page de modification, vous aurez la possibilité d\'annuler ou de sauvegarder vos modifications. Vous pourrez également le supprimer.') }}
                         </p> 
                         <p>
                             <b>"{{ __("Supprimer") }}"</b> {{ __('vous permettra de supprimer définitivement votre projet. Un message de confirmation vous demandera de valider la suppression avant de le faire. Attention : un dossier supprimé ne peut pas être rétabli.') }}
