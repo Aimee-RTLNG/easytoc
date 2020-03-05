@@ -31,7 +31,7 @@
 
     <div class="entete">
         <h2 class="entete__title">
-            Visualiser mon {{ $content->type["name_fr"] }}
+            {{ __('Visualiser mon') }}{{ $content->type["name_fr"] }}
         </h2>
         <div class="entete__under"></div>
     </div>
