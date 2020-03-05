@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                 </form>
@@ -162,7 +162,7 @@
                             {{ __('Lien simple') }}
                         </button>
                         <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Rubrique avec sous-menu') }}" id="insert-sub_menu" role="listitem" title="{{ __("Ajouter une rubrique avec sous-menu") }}">
-                            <i class="fa fa-heading"></i>
+                            <i class="fas fa-chevron-circle-down"></i>
                             {{ __('Rubrique avec sous-menu') }}
                         </button>
                         <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien de sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}" disabled>
@@ -186,7 +186,7 @@
                         </button>
                     </div>
                 </div>
-                <div role="section" class="row mt-4 form_actions_element custom-info-element" aria-labelledby="form_actions_element" style="display: none">
+                <div role="section" class="row mt-4 form_actions_element custom-info-element action-supp-crea" aria-labelledby="form_actions_element" style="display: none">
                     <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
                         <div class="col">
                             <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>

@@ -1,12 +1,12 @@
 <div data-tag="menu" class="theme-blue" id="generated-menu" name="generated-menu">
     <nav id="full-menu" role="menubar">
-        <div class="menu-identity">
+        <a href="/" class="menu-identity">
             <div class="menu-logo" id="menu-logo" style="background-image: url('{{ URL::asset('images/Logo-white.png') }}')"></div>
             <span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">
                 {{ __('Titre du menu') }}
             </span>
             <span class="menu-separator"></span>
-        </div>
+        </a>
         <ul class="menu-items" role="menubar" id="menubar-easytoc">
             <li role="none" class="menu-item element-container">
                 <a role="menuitem"  href="/home" class="menu-name" tabindex="0" title="{{ __('Se rendre sur la page Accueil') }}">
@@ -83,5 +83,10 @@
                 </a>
             </li>
         </ul>
+        <div class="bars_easytoc" aria-haspopup="true" tabindex="0">
+            <div class="bars_easytoc__line line1"></div>
+            <div class="bars_easytoc__line line2"></div>
+            <div class="bars_easytoc__line line3"></div>
+        </div>
     </nav>
 </div>

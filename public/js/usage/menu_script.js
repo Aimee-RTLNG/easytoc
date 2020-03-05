@@ -6,6 +6,20 @@ if(menu != null) {
 else {
    let menu_buttons = null;
 }
+let open_menu = $('.bars_easytoc');
+if(open_menu.length > 0) {
+   open_menu.on('click', function() {
+      $('#menubar-easytoc').toggleClass('open-resp');
+      $(this).toggleClass('close');
+   })
+}
+let sous_menu = $('.has-submenu');
+if(sous_menu.length > 0) {
+   sous_menu.on('click', function() {
+      $(this).toggleClass('open-ss-menu');
+      $('.open-ss-menu button').addClass('open');
+   })
+}
 
 
 function displayMenu( event ){

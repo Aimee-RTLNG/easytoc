@@ -234,13 +234,11 @@ export function addLink( type ) {
 
     if( type == "sub_link" ){
         menu_length = $( selected_link ).find('ul').children("li").length;
-        console.log ( $( selected_link ).find('ul') );
     } else {
         menu_length = $("#menubar-easytoc").children("li").length;
     }
-    console.log(menu_length);
     
-    if( menu_length > 8 ){
+    if( menu_length > 7 ){
         message = "Vous ne pouvez pas rajouter plus de liens";
         if (lang == "en" ){
             message = "You already have too much links !"

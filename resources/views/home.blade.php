@@ -194,7 +194,7 @@
                     <div class="def__txt">
                         <p>{{__('En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
                         </p>
-                        <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais comme un outil favorisant l’inclusion sociale.')}}
+                        <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais un outil favorisant l’inclusion sociale.')}}
                         </p>
                         <p>{{__('L’Europe parle de l’accessibilité numérique comme d’une obligation citoyenne : une plus large diffusion de produits et services numériques accessibles favorise l’insertion professionnelle, l’intégration sociale et un cadre de vie autonome.')}}
                         </p>

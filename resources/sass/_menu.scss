@@ -2,7 +2,10 @@
 
     #content-created-blueprint{
         resize: vertical;
-        height: 500px;
+        height: 430px;
+        @media (max-width: 991px ) {
+            height: 800px;
+        }
     }
     
     .element-container , .content-editable-selected{
