@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+
+        {{-- SEO --}}
+        <meta name="title" content="EasytoC - Générateur de menus, tableaux et formulaires">
         <meta name="description" content="EasyToC vous permet de générer des menus, tableaux et formulaires en un code html accessible">
 
         <meta property="og:title" content="EasyToC un générateur de menus, tableaux et formulaires accessibles." />
@@ -22,6 +24,12 @@
         <meta property="twitter:url" content="{{url()->current()}}" />
         <meta name="application-name" content="EasyToC" />
 
+        <meta name="keywords" content="accessibilité, création, génération, tableau, menu, formulaire, accessible, compte, sauvegarde, facile, pratique">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="French">
+        <meta name="author" content="Aimee RITLENG, Louise MATT, Pierre BOULANGER">
+
         <title> @yield('titre') </title>
 
         <!-- Favicon -->
@@ -31,7 +39,9 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">         
+        <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
         <!-- page specific style -->
         @yield('pagespecificstyles')
 
@@ -136,7 +146,7 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
+                    <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }}<a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>
@@ -147,8 +157,7 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
-                        <li class="nav-items"><a class="nav-link text-light" id="rgpd-mgr" href="#" title="{{ __('Gestion des cookies') }}">{{ __('Gestion des cookies') }}</a></li>
-                        <li class="nav-items"><a class="nav-link" >Copyright 2019</a></li>
+                        <li class="nav-items"><a class="nav-link" >Copyright / {{ __('Tous droits réservés') }} - 2020</a></li>
                     </ul>
                 </div>
             </div>
@@ -166,6 +175,7 @@
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
+
         <!-- page specific scripts -->
         @yield('pagespecificscripts')
 

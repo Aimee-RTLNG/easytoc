@@ -1,4 +1,5 @@
-// ANCHOR Données initiales
+// Imports
+import { alertMsg } from "../../js/app";
 import { lang } from "../app";
 
 let element;
@@ -23,9 +24,6 @@ let user_id = $('input[name=user_id]').val();
 let type_id = $('input[name=type_id]').val();
 let csrf_token = $('meta[name="csrf-token"]').attr('content');
 // let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
-
-// Imports
-import { alertMsg } from "../../js/app";
 
 // Reset des boutons d'options
 $('#lateral-header-button').prop('checked', false);
@@ -941,9 +939,9 @@ $('#btn-save-project').on('click', function () {
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
-        // console.log(xhr.responseText);
-        // console.log(status);
-        console.log($('#raw-code').text().trim());
+        console.log(xhr.responseText);
+        console.log(status);
+        // console.log($('#raw-code').text().trim());
         // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');

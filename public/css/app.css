@@ -9865,6 +9865,10 @@ nav.navbar {
   min-height: 65px;
 }
 
+.navbar .container #navbarSupportedContent .btn-connect {
+  transition: all .2s;
+}
+
 .navbar .container #navbarSupportedContent.navbar-collapse.show {
   display: flex;
 }
@@ -9895,6 +9899,7 @@ nav.navbar {
   justify-content: center;
   align-items: center;
   height: 100%;
+  transition: all .2s;
 }
 
 .navbar .container #navbarSupportedContent .menu-lang {
@@ -10450,17 +10455,22 @@ nav.navbar {
   width: 196px;
   border-radius: 5px;
   background-color: #F4F2F0;
-  box-shadow: 0px 0px 18px -11px black;
   height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 100%;
   padding: 0 10px;
+  transition: all .2s;
 }
 
 .connect-network a:nth-child(2) {
   margin-left: 10px;
+}
+
+.connect-network a:hover {
+  background-color: #171819;
+  color: white;
 }
 
 .check-conditions {

@@ -28,7 +28,7 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="home-present__txt">
                         <h2 class="home-present__txt__titre section-home__title">{{ __('Laissez nous vous aider à rendre votre site web plus accessible') }}</h2>
-                        <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. Easy to C peut vous aider dans cette démarche.')}}
+                        <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. EasytoC peut vous aider dans cette démarche.')}}
                         </p>
                         <div class="home-present__txt__btn">
                             <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
@@ -50,8 +50,8 @@
                             @endguest
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li><a class="link-ancre" tabindex="0" href="#tools">{{__('Comment fonctionnent les outils Easy to C ?')}}</a></li>
-                            <li><a class="link-ancre" tabindex="0" href="#how">{{__('Comment Easy to C peut m’aider ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#tools">{{__('Comment fonctionnent les outils EasytoC ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#how">{{__('Comment EasytoC peut m’aider ?')}}</a></li>
                             <li><a class="link-ancre" tabindex="0" href="#reasons">{{__('Pourquoi rendre son site accessible ?')}}</a></li>
                         </ul>
                     </div>

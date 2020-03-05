@@ -469,6 +469,7 @@
 
 <script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script>
 <script type="application/javascript" src="{{ URL::asset('js/components/menu.js') }}"></script>
+<script type="application/javascript" src="{{ URL::asset('js/components/import_data_menu.js') }}"></script>
 {{-- Script PRETTIFY + skin --}}
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 

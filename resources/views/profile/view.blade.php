@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-lg-4 start-project-profile">
-                <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
+                <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="{{ __('Menu création d\'éléments HTML') }}">
                     <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-arrow-right"></i>
                         <p>{{ __('Commencer un projet') }}</p>

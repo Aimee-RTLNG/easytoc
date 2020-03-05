@@ -11,6 +11,10 @@ nav.navbar{
         #navbarSupportedContent{
             min-height: 65px;
 
+            .btn-connect{
+                transition: all .2s;
+            }
+
             &.navbar-collapse.show{
                 display: flex;
             }
@@ -39,6 +43,7 @@ nav.navbar{
                     justify-content: center;
                     align-items: center;
                     height: 100%;
+                    transition: all .2s;
                 }
             }
 

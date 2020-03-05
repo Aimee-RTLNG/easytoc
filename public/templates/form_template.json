@@ -1,6 +1,6 @@
 {
 	"type": "form",
-	"title": "Exemple de formulaire Easy to C",
+	"title": "Exemple de formulaire EasytoC",
 	"url": "/form.php",
 	"options": {"method" : "post", "reset" : "reset"},
 	"style": "green",
@@ -156,7 +156,7 @@
 		},
 		{
 			"type": "binary-answer",
-			"content": "J'accepte de partager les informations confidentielles données, me concernant moi et mes chaussettes, avec Easy to C.",
+			"content": "J'accepte de partager les informations confidentielles données, me concernant moi et mes chaussettes, avec EasytoC.",
 			"name": "approval",
 			"options": "required",
 			"style": [

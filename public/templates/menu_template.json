@@ -1,0 +1,56 @@
+{
+	"type": "menu",
+	"title": "Mon premier site",
+	"logo": "https://yahyaconsultants.com/wp-content/uploads/2018/05/icon_naverblog.png",
+	"theme": "black",
+	"items": [
+	    {
+        "type": "link",
+        "name": "Accueil",
+        "url": "/home"
+      },
+      {
+        "type": "link",
+        "name": "Ma biographie",
+        "url": "/bio"
+      },
+      {
+        "type": "link",
+        "name": "Mon blog",
+        "url": "/blog"
+      },
+      {
+        "type": "sub_menu",
+        "name": "Mes chats"
+      },
+      {
+        "type": "sub_link",
+        "name": "Moustache",
+        "url": "/mustache"
+      },
+      {
+        "type": "sub_link",
+        "name": "Nuage",
+        "url": "/clouds"
+      },
+      {
+        "type": "sub_menu",
+        "name": "Mes chiens"
+      },
+      {
+        "type": "sub_link",
+        "name": "Pablo",
+        "url": "/Pablo"
+      },
+      {
+        "type": "sub_link",
+        "name": "Filou",
+        "url": "/filou"
+      },
+      {
+        "type": "sub_link",
+        "name": "Doudou",
+        "url": "/doudou"
+      }
+    ]
+}

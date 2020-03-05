@@ -86,7 +86,7 @@ $('#import-data').on('click', function () {
         if( lang == "en"){
             message = "Incorrect file format : only JSON and CSV allowed;";
         } else {
-            message = "Format de fichier invalide : fichiers JSON et CSVQ seulement.";
+            message = "Format de fichier invalide : fichiers JSON et CSV seulement.";
         }
         alertMsg(message, "error");
     }

@@ -169,7 +169,7 @@ $themes: (
             color: themed('aColor') ;
         }
         text-decoration: none;
-        &:hover, &:focus, &:focus{
+        &:hover, &:focus{
             @include themify($themes) {
                 color: themed('aColor') ;
             }
