@@ -111,7 +111,7 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
+                    <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }} <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>

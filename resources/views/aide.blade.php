@@ -151,18 +151,62 @@
 
                     <div id="infoProject">
                         <h3>{{ __('Informations essentielles') }}</h3>
+                        <p>
+                            {{ __("Une fois inscrit et connecté sur Easy To C, vous aurez la possiblité d'avoir une vision globale sur l'ensemble de vos projets sauvegardé sur le tableau de bord accessible depuis la page de votre Compte.") }}
+                            {{ __("En tant que nouveau venu vous n'aurez bien sur aucun projet. Pour commencer un projet, il vous suffira de cliquer sur le bouton 'Commencer un projet' puis choisir la nature de votre projet ( menu, tableau, formulaire).") }}
+                        </p>
+                        <p>
+                            {{ __('Pour sauvegarder votre projet vous devrez cliquer sur le bouton "Sauvegarder mon projet" disponible en dessous de la zone de travail.') }}
+                            {{ __('Votre projet sera alors sauvegardé et disponible à tout moment via le tableau de bord, vous pourrez retravailler dessus plus tard.') }}
+                        </p>
                     </div>   
 
                     <div id="updateProject">
                         <h3>{{ __('Modifier mon projet') }}</h3>
+                        <p>
+                            {{ __("Si vous n'êtes pas satisfait de votre réalisation ou que vous vouliez simplement modifier tout ou partie de celle-ci, vous avez la possibilité de modifier celui-ci en vous rendant dans votre tableau de bord. Vous retrouverez vos projets avec l'option") }}<strong>{{ __(" Modifier") }}</strong>{{ __(" a droite du résumé du projet.") }}
+                        </p>
                     </div>   
 
                     <div id="useCode">
                         <h3>{{ __('Utiliser le code généreré') }}</h3>
+                        <p>
+                            {{ __("Une fois votre projet terminé, vous pouvez utiliser le code à des fins extérieures en utilisant le code généré. Vous n'avez qu'à copier/coller le code (n'oubliez pas la première balise link pour obtenir le même style graphique) pour l'utiliser") }}
+                        </p>
+                        <p>
+                            <strong>{{ __('Attention') }}</strong> {{ __('Si vous voulez importer vos données vous devez impérativement avoir un fichier au format CSV ou format JSON') }}
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    {{ __('Exemple de fichier JSON') }}
+                                </p>
+                                <pre class="prettyprint linenums:4 content-panel prettyprinted">{ {{ __('prenom : toto') }}, <br>{{ __('age : 25') }} }</pre>
+                            </div>
+                            <div class="col">
+                                <br>
+                                <p>
+                                    {{ __('Exemple de fichier CSV') }}
+                                </p>
+                                <pre class="prettyprint linenums:4 content-panel prettyprinted">{{ __('équipe gagnante;équipe verte;équipe rouge;équipe bleu;;;;') }}</pre>
+                            </div>
+                        </div>
                     </div>   
 
                     <div id="actionsProject">
                         <h3>{{ __('Actions sur mon projet') }}</h3>
+                        <p>
+                            {{ __('Sur votre tableau de bord, vous retrouvez la totalité de vos projets enregistrés. Pour chaque projets, plusieures options sont disponibles :') }}
+                        </p>
+                        <p>
+                            <strong>{{ __("Visualiser : ") }}</strong>{{ __("Visualiser votre projet.") }}
+                        </p>
+                        <p>
+                            <strong>{{ __("Modifier : ") }}</strong>{{ __("Modifier mon projet.") }}
+                        </p>
+                        <p>
+                            <strong>{{ __("Supprimer : ") }}</strong>{{ __("Supprimer mon projet.") }}
+                        </p>
                     </div>  
                 </div>
 
@@ -174,7 +218,7 @@
                     <div id="importTable">
                         <h3>{{ __('Générer un tableau à partir de données') }}</h3>
                         <p>
-                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci
+                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes vous avez la possibilité de travailler sur celui-ci
                             via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
                         </p>
                         <p>
@@ -286,43 +330,43 @@
                             <b>{{ __("Ajouter un élément statique") }}</b>
                         </p>
                         <p>
-                            <i>{{ __("Nouvelle section : ") }}</i>{{ __("Ajouter une nouvelle section à votre formulaire.") }}
+                            <strong>{{ __("Nouvelle section : ") }}</strong>{{ __("Ajouter une nouvelle section à votre formulaire.") }}
                         </p>
                         <p>
-                            <i>{{ __("Titre : ") }}</i>{{ __("Ajoute un titre sur votre formulaire.") }}
+                            <strong>{{ __("Titre : ") }}</strong>{{ __("Ajoute un titre sur votre formulaire.") }}
                         </p>
                         <p>
-                            <i>{{ __("Paragraphe : ") }}</i>{{ __("Ajoute un paragraphe.") }}
+                            <strong>{{ __("Paragraphe : ") }}</strong>{{ __("Ajoute un paragraphe.") }}
                         </p>
                         <p>
-                            <i>{{ __("Lien : ") }}</i>{{ __("Ajoute un lien hypertexte à votre formulaire.") }}
+                            <strong>{{ __("Lien : ") }}</strong>{{ __("Ajoute un lien hypertexte à votre formulaire.") }}
                         </p>
                         <p>
-                            <i>{{ __("Liste numérotée : ") }}</i>{{ __("Ajoute une liste numérotée au formulaire.") }}
+                            <strong>{{ __("Liste numérotée : ") }}</strong>{{ __("Ajoute une liste numérotée au formulaire.") }}
                         </p>
                         <p>
-                            <i>{{ __("Liste à puces : ") }}</i>{{ __("Ajoute une liste sous forme de puces au formulaire.") }}
+                            <strong>{{ __("Liste à puces : ") }}</strong>{{ __("Ajoute une liste sous forme de puces au formulaire.") }}
                         </p>
                         <p>
                             <b>{{ __("Ajouter une question") }}</b>
                         </p>
                         <p>
-                            <i>{{ __("Réponse libre courte : ") }}</i>{{ __("Ajoute une question avec un champs de texte court. Vous pouvez précisez le type de réponse attendu (Texte, Nombre, Email ou Date).") }}
+                            <strong>{{ __("Réponse libre courte : ") }}</strong>{{ __("Ajoute une question avec un champs de texte court. Vous pouvez précisez le type de réponse attendu (Texte, Nombre, Email ou Date).") }}
                         </p>
                         <p>
-                            <i>{{ __("Réponse libre longue : ") }}</i>{{ __("Ajoute une question avec un champs de texte long.") }}
+                            <strong>{{ __("Réponse libre longue : ") }}</strong>{{ __("Ajoute une question avec un champs de texte long.") }}
                         </p>
                         <p>
-                            <i>{{ __("Réponse oui/non : ") }}</i>{{ __("Ajoute une réponse.") }}
+                            <strong>{{ __("Réponse oui/non : ") }}</strong>{{ __("Ajoute une réponse.") }}
                         </p>
                         <p>
-                            <i>{{ __("Choix unique : ") }}</i>{{ __("Ajoute une question à choix unique.") }}
+                            <strong>{{ __("Choix unique : ") }}</strong>{{ __("Ajoute une question à choix unique.") }}
                         </p>
                         <p>
-                            <i>{{ __("Choix multiple : ") }}</i>{{ __("Ajoute une question à choix multiple.") }}
+                            <strong>{{ __("Choix multiple : ") }}</strong>{{ __("Ajoute une question à choix multiple.") }}
                         </p>
                         <p>
-                            <i>{{ __("Choix en liste : ") }}</i>{{ __("Ajoute un choix en liste d'options. Vous pouvez ajouter des options et spécifier des choix multiples ou une réponse obligatoire par option.") }}
+                            <strong>{{ __("Choix en liste : ") }}</strong>{{ __("Ajoute un choix en liste d'options. Vous pouvez ajouter des options et spécifier des choix multiples ou une réponse obligatoire par option.") }}
                         </p>
                         <p>
                             {{ __("Ainsi que les options d'actions sur les éléments et celles de mise en forme du texte.") }}
