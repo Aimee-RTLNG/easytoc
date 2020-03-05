@@ -51343,10 +51343,7 @@ document.onkeyup = function (e) {
               } // Sauvegarder
               // CTRL ALT + S
               else if (e.ctrlKey && e.altKey && e.which == 83) {
-                  console.log(e);
-
                   if ($('#btn-save-project, #btn-update-project').length > 0) {
-                    console.log(e);
                     var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
 
                     if (lang == "en") {
@@ -52775,7 +52772,6 @@ function addLink(type) {
 
   if (type == "sub_link") {
     menu_length = $(selected_link).find('ul').children("li").length;
-    console.log($(selected_link).find('ul'));
   } else {
     menu_length = $("#menubar-easytoc").children("li").length;
   }
@@ -54068,9 +54064,9 @@ $('#btn-save-project').on('click', function () {
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    // console.log(xhr.responseText);
-    // console.log(status);
-    console.log($('#raw-code').text().trim()); // Erreur
+    console.log(xhr.responseText);
+    console.log(status); // console.log($('#raw-code').text().trim());
+    // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');

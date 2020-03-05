@@ -19,8 +19,8 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
          
         {{-- SEO --}}
-        <meta name="title" content="Easy to C - Générateur de menus, tableaux et formulaires">
-        <meta name="description" content="Easy to C est le nouveau générateur de contenu web ! Il vous permet de créer vous même des menus, tableaux et formulaires accessibles.">
+        <meta name="title" content="EasytoC - Générateur de menus, tableaux et formulaires">
+        <meta name="description" content="EasytoC est le nouveau générateur de contenu web ! Il vous permet de créer vous même des menus, tableaux et formulaires accessibles.">
         <meta name="keywords" content="accessibilité, création, génération, tableau, menu, formulaire, accessible, compte, sauvegarde, facile, pratique">
         <meta name="robots" content="index, follow">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -111,7 +111,7 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">Vous pouvez retrouver nos tutoriels sur la page <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
+                    <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }}<a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>
@@ -122,7 +122,7 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
-                        <li class="nav-items"><a class="nav-link" >Copyright 2019</a></li>
+                        <li class="nav-items"><a class="nav-link" >Copyright / {{ __('Tous droits réservés') }} - 2020</a></li>
                     </ul>
                 </div>
             </div>
@@ -136,7 +136,6 @@
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
         <!-- page specific scripts -->
         @yield('pagespecificscripts')

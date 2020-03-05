@@ -299,9 +299,7 @@ document.onkeyup = function(e) {
     // Sauvegarder
     // CTRL ALT + S
     else if (e.ctrlKey && e.altKey && e.which == 83) {
-        console.log(e);
         if( $('#btn-save-project, #btn-update-project').length > 0 ){
-            console.log(e);
             let message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
             if ( lang == "en" ){
                 message = "Are you sure to save and quit your project ? You will be redirected.";
