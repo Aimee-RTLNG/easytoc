@@ -1,121 +1,184 @@
 // ANCHOR Données initiales
-let element;
-let element_selected_container;
-let input;
-let intitule;
-let previous_element;
-let next_element;
-let message;
-let previous_option;
-let selected_option;
-let next_option;
 
-let user_id = $('input[name=user_id]').val();
-let type_id = $('input[name=type_id]').val();
-let csrf_token = $('meta[name="csrf-token"]').attr('content');
-let initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n';
+// On importe les variables et fonctions externes (qui sont définie dans app.js)
+import { 
+    lang,  // la variable lang est soit "en" soit "fr" et permet de définir le contenu des messages
+    setSideWindow, // c'est unn fonction qui permet d'ajuster la side tools box quand on scroll. Comme elle est commune aux trois outils, elle est définie dans app.js
+    alertMsg // fonction qui affiche le message pop up en bas à droite
+} from "../app"; 
 
-// Imports
-import { alertMsg } from "../../js/app";
+// Ce code était orienté formulaire, il y a donc les variables de contenu générés par la section d’un élément : 
+// les titres des variables sont assez explicites, tu peux t’imaginer déjà le nom des variables qui existeraient pour les menu : element, link, intitule etc…
+// chacune de ses variables est redéfinie quand on clique sur un element qui a la classe '.element-container'
+let element; // sert à identifier 
+let element_selected_container; // sert à identifier tout le container qui contient l'élement sélectionenr (généralement la racine de '.element-container' )
+let intitule; // par exemple menu_title
+let input; // par exemple menu_link
+let previous_element; // par exemple : previous_menu
+let next_element; // par exemple : next_menu
+let previous_option; // par exemple : previous_lower_menu
+let selected_option; // par exemple : selected_lower_menu
+let next_option; // par exemple : next_lower_menu
 
-// ANCHOR Caractères restants Description du projet
+let message; // variable qui contient les messages qui apparaissent dans l'infobulle en bas à droite (et qui sera définie en fonction de la variable lang)
+
+let user_id = $('input[name=user_id]').val(); // récupère l'id de l'utilisateur pour la sauvegarde AJAX
+let type_id = $('input[name=type_id]').val(); // récupère l'id du type (menu, form, table) pour la sauvegarde AJAX
+let csrf_token = $('meta[name="csrf-token"]').attr('content'); // sans ce token, on ne peut pas envoyer le formulaire en AJAX
+
+// ANCHOR Caractères restants Description du projet ( à ne pas toucher )
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans le textarea description
 $('#desc-input').keypress(function (e) {
     var tval = $('#desc-input').val(),
         tlength = tval.length,
         set = $('#desc-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-desc-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+        $('#chara-desc-remains').text(remain + " characters left");
+    } else {
+        $('#chara-desc-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#desc-input').val((tval).substring(0, tlength - 1))
     }
 })
 
-// ANCHOR Caractères restants Titre du projet
+// ANCHOR Caractères restants Titre du projet ( à ne pas toucher )
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans l'input de titre
 $('#title-input').keypress(function (e) {
     var tval = $('#title-input').val(),
         tlength = tval.length,
         set = $('#title-input').attr('maxlength'),
         remain = parseInt(set - tlength);
-    $('#chara-title-remains').text(remain + " caractères restants");
+    if( lang == "en" ){
+        $('#chara-title-remains').text(remain + " characters left");
+    } else {
+        $('#chara-title-remains').text(remain + " caractères restants");
+    }
     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
         $('#title-input').val((tval).substring(0, tlength - 1))
     }
 })
 
 // ANCHOR Liste de tous les tags possibles dans un formulaire
+// Pourrait donc être remplacé par une liste, des liens etc...
 const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5",
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
 
-/*
-let translation_test = getTranslation("Thème du formulaire", "en");
-console.log(translation_test);
-*/
+// ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
+$(window).on('scroll', function() {
+    setSideWindow();
+});
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
-// \t = tabulation,  \n = saut de ligne
-export let element_types = {
-    "type-question": {
-        "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-        "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-        "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-        "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-        "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-        "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
-    },
-    "type-answer-option": {
-        "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-        "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-        "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
-    },
-    "type-layout": {
-        "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-        "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-        "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-        "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-        "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
-        "insert-horizontal_rule": "<hr contenteditable='true'>",
-    },
-    "type-special": {
-        "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
-        "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-        "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
-    }
-};
+// Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
+// et la bonne structure. 
+// \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
+export let element_types; // En exportant ce tableau objet, on permet au fichier import_data_... de générer du contenu en fonction des données importées
+// le fichier import_data_menu/form/table appelera donc un élément de se tableau grâce aux index (ne pas oublier d'importer cette variable dans le fichier import)
+// par exemple, si dans le CSV, j'ai un élément de type 'link', alors il cherchera dans ce tableau objet element_types['type-layout']['insert-link]
+if( lang == "en" ){
+    element_types = {
+        "type-question": {
+            "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
+            "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
+            "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+            "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+            "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+            "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choose an option </option>\n\t\t</select>\n</label>"
+        },
+        "type-answer-option": {
+            "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+        },
+        "type-layout": {
+            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Title</h2>",
+            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraph</p>",
+            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Name of the link</a>",
+            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ol>",
+            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ul>",
+            "insert-horizontal_rule": "<hr contenteditable='true'>",
+        },
+        "type-special": {
+            "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
+            "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+            "reset-button": "\n\t<input type='reset' value='Reset' form='generated-form' title='Reset the form'>"
+        }
+    };
+} else {
+    element_types = {
+        "type-question": {
+            "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+            "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+            "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+            "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+            "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+            "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
+        },
+        "type-answer-option": {
+            "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+            "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+        },
+        "type-layout": {
+            "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+            "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+            "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+            "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+            "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+            "insert-horizontal_rule": "<hr contenteditable='true'>",
+        },
+        "type-special": {
+            "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+            "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+            "reset-button": "\n\t<input type='reset' value='Réinitialiser' form='generated-form'>"
+        }
+    };
+}
+// Bien séparer le contenu en fonction des langues si le texte à l'intérieur des balises peut se traduire : pas la peine si uniquement le mot "Menu" apparait.
+// Par contre, si le mot Lien est écrit, alors il faudra un équivalent Link
 
+// ANCHOR Rendre l'ancien contenu dynamique ( à ne pas toucher )
+// Cette fonction, utilisée à la fois sur ce fichier et sur le fichier import_machin, permet de rendre le contenu HTML dynamique
+// c'est à dire : imaginons que je load un "<h1>Titre</h1>" dans l'espace de création, soit parce que je suis en modification, soit parce que j'ai importé des données
+// mon contenu ne possède pas les bons attributs pour permettre le changement dynamique ( contenteditable ) car, lors de la sauvegarde, ceux-ci sont enlevés (logique)
+// il faut alors remettre des "contenteditable" sur chaque élément modifiable dans le texte.
+// de plus, cette fonction permet de récupèrer les paramètre du contenu généré (titre du formulaire, lien, theme, options).... 
 export function getOldContent() {
     // On rend l'ancien contenu modifiable
     $('#full-form .label-text').attr('contenteditable', true);
     $('#full-form .label-option-text').attr('contenteditable', true);
     $('#full-form #form-title, #full-form h2,#full-form p,#full-form a,#full-form ol,#full-form ul,#full-form hr').attr('contenteditable', true);
+    
     // On récupère les paramètres
-
     // Theme
     let actual_theme = $("#generated-form").attr('class');
     actual_theme = actual_theme.replace('theme-', '');
     let selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
     selected_theme.prop('checked', true);
 
-    // Titre
+    // Titre (non présent pour les menu)
     let actual_title = $("#full-form #form-title").text();
     $("#form-creator-title").val(actual_title);
 
-    // Methode
+    // Methode (non présent pour les menu)
     let actual_method = $("#generated-form").attr('method');
     $("#form-creator-method").val(actual_method);
 
-    // Lien
+    // Lien (non présent pour les menu)
     let actual_link = $("#generated-form").attr('action');
     $("#form-creator-link").val(actual_link);
 
-    // Option de réinitialisation
+    // Option de réinitialisation (non présent pour les menu)
     let actual_reset = $("#content-created-blueprint").find('input[type=reset]');
     if (actual_reset.length > 0) {
         $('#reset-button').prop('checked', true);
     }
 }
 
-// ANCHOR Fonction de sauvegarde
+// ANCHOR Fonction de sauvegarde ( à ne pas toucher )
 function updatecontent() {
 
     // on récupère le contenu
@@ -132,39 +195,40 @@ function updatecontent() {
     $('#raw-code').html(blueprint_content);
     var code_content = $('<div>').text($('#raw-code').text()).html();
 
-    // prettify
+    // prettify (permet de rendre le code joli)
     $("#formatted-code").html(PR.prettyPrintOne(code_content));
 };
 
-// ANCHOR Initialisation du formulaire
+// ANCHOR Initialisation du formulaire ( à ne pas toucher )
 if ($('#raw-code').val().length <= 0) {
-    console.log("Création");
-    $('#content-created-blueprint').html(initial_content);
+    // Il n'y a aucun contenu précédent : on est donc en création à partir de 0
     updatecontent();
 } else {
-    console.log("Modification");
+    // Il y a du contenu déjà crée : on est en modification ou en génération de contenu
     getOldContent();
     updatecontent();
 }
 
-// ANCHOR Changement de titre
+// ANCHOR Changement de titre ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 $('#form-creator-title').on('keyup', function () {
     $('#form-title').text($('#form-creator-title').val());
     updatecontent();
 });
 
-// ANCHOR Changement de lien
+// ANCHOR Changement de lien ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 $('#form-creator-link').on('keyup', function () {
     $('#generated-form').attr("action", $('#form-creator-link').val());
     updatecontent();
 });
 
-// ANCHOR Changement de méthode
+// ANCHOR Changement de méthode ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 $('#form-creator-method').on('change', function () {
     $('#generated-form').attr("method", $('#form-creator-method').val());
     updatecontent();
 });
 
+// ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
+// Cette fonction se base sur la liste d'élément précédemment définis element_types 
 export function addElement(element_type, element_type_name) {
     // permettra d'identifier l'élément (lui donne un ID aléatoire)
     let element_id = Math.random().toString(36).substr(2, 9);
@@ -217,19 +281,24 @@ export function addElement(element_type, element_type_name) {
         addOption();
     }
 
-    message = "Element ajouté";
+    if( lang == "en" ){
+        message = "Element added";
+    } else {
+        message = "Element ajouté";
+    }
     alertMsg(message, "success");
     updatecontent();
 }
 
-// ANCHOR Ajout d'un élément
+// ANCHOR Ajout d'un élément : quand on clique sur un bouton avec la classe .add-element
 $('.add-element').on('click', function () {
-    let element_type = $(this).attr("class");
-    let element_type_name = $(this).attr("id");
-    addElement(element_type, element_type_name);
+    let element_type = $(this).attr("class"); // récupère le type d'élément à ajouter
+    let element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
+    addElement(element_type, element_type_name); // on ajoute l'élement
+    setSideWindow();
 });
 
-// ANCHOR Sauvegarde définitive
+// ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 $('#btn-save-project').on('click', function () {
     updatecontent();
     let post_url = $("#full-form-post").attr('action');
@@ -242,10 +311,10 @@ $('#btn-save-project').on('click', function () {
             "user_id": user_id,
             "title": $('#title-input').val(),
             "description": $('#desc-input').val(),
-            "html": $('#raw-code').val()
+            "html": $('#raw-code').text()
         }
     }).done(function (msg) {
-        console.log(msg);
+        // console.log(msg);
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
@@ -257,7 +326,11 @@ $('#btn-save-project').on('click', function () {
             $("#title-input").addClass('required-failed');
             $("#title-input").focus();
         }
-        message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+        if( lang == "en" ){
+            message = "Some informations are missing : please fill the empty fields.";
+        } else {
+            message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+        }
         alertMsg(message, "error");
     });
 })
@@ -266,7 +339,7 @@ $('#btn-save-project').on('click', function () {
 let element_select;
 $(document.body)
 
-    .off('keyup') // ré-initialisation
+    .off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois 
 
     // Empeche de passer le focus sur l'input quand on clique sur le label (pour contrer comportement de formulaire de base)
     .on('click', '.element-container label, .element-container legend', function (e) {
@@ -275,6 +348,7 @@ $(document.body)
         } else {
             $(this).closest('label').focus();
         }
+        setSideWindow();
     })
 
     // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
@@ -284,6 +358,7 @@ $(document.body)
         } else if (e.target.nodeName == "LEGEND") {
             $(this).find('legend span[contenteditable=true]').focus();
         }
+        setSideWindow();
     })
 
     // Quand on clique sur une option
@@ -299,10 +374,11 @@ $(document.body)
         next_option = selected_option.next();
         refreshMoveButtons(previous_option, next_option, true);
 
+        setSideWindow();
         updatecontent();
     })
 
-    // Quand on sélectionne un élément éditable
+    // Quand on sélectionne un élément éditable (c'est là le plus important)
     .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
 
         // on récupère l'élément sélectionné et on focus sur l'élément parent
@@ -310,6 +386,7 @@ $(document.body)
             element_select = e.target;
 
             // on ré initialise les classes
+            setSideWindow();
             $(".content-editable-selected").removeClass('content-editable-selected');
             $(".option-selected").removeClass('option-selected');
             selected_option = false;
@@ -329,6 +406,7 @@ $(document.body)
             refreshMoveButtons(previous_element, next_element, false);
         }
 
+        setSideWindow();
         $(element_selected_container).addClass("content-editable-selected");
 
         let tag = $(this).attr('data-tag');
@@ -338,6 +416,8 @@ $(document.body)
             $('.element_add-option').attr("disabled", 'true');
 
             $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px");
+            // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
+            
 
             let element_type = $(element_selected_container).attr('data-elementtype');
             let element_name = $(element_selected_container).attr('data-elementtypename');
@@ -424,7 +504,7 @@ $(document.body)
                     $("#elem-option-value").val(option_value);
                 }
 
-                // on cache toutes les actions de bases pour les réafficher en fonction
+                // on cache toutes les actions de bases pour les réafficher en fonction du contenu sélectionné
                 $('.action-answer-type').hide();
                 $('.action-placeholder').hide();
                 $('.action-maxlength').hide();
@@ -518,7 +598,7 @@ $(document.body)
                         // event de changement d'url
                         let link_title;
                         $('#elem-url-title').on('keyup', function (e) {
-                            console.log($('#elem-url-title').val());
+                            // console.log($('#elem-url-title').val());
                             e.stopPropagation();
                             link_title = $('#elem-url-title').val();
                             $(intitule).attr('title', link_title);
@@ -527,18 +607,17 @@ $(document.body)
                     }
 
                 }
-
-                $("#actions-interface").show(); // on affiche l'interface de modification spécifique
+                $("#actions-interface").removeClass('d-none'); // on affiche l'interface de modification spécifique
 
             } else {
-                $("#actions-interface").hide(); // on masque l'interface de modification spécifique
+                $("#actions-interface").addClass('d-none'); // on masque l'interface de modification spécifique
             }
 
         } else {
             // Si on a sélectionné le titre principal
             $('.action-delete').attr('disabled', 'true');
             $('.side-tool').hide();
-            $("#actions-interface").hide(); // on affiche l'interface de modification
+            $("#actions-interface").addClass('d-none'); // on affiche l'interface de modification
         }
 
         updatecontent();
@@ -546,7 +625,7 @@ $(document.body)
     // quand on déselectionne un élement...
     .on('blur', '[contenteditable=true]', function (e) {
         // e.preventDefault();
-        let element_select_before = window.getSelection().getRangeAt(0).startContainer;
+        // let element_select_before = window.getSelection().getRangeAt(0).startContainer;
         updatecontent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
@@ -557,12 +636,11 @@ $(document.body)
 
     });
 
-
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
     $('#generated-form').attr("action", $('#form-creator-link').val());
     $('#generated-form').attr("method", $('#form-creator-method').val());
-    $("#actions-interface").hide();
+    $("#actions-interface").addClass('d-none');
     $('.side-tool').hide();
     updatecontent();
 })
@@ -603,6 +681,7 @@ $(".form-element-action").on('click', function (e) {
                 refreshMoveButtons(previous_element, next_element, false);
                 // Déplacement des Tools latéraux
                 $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+                // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
             }
             break;
         // Déplacement vers le bas
@@ -625,16 +704,21 @@ $(".form-element-action").on('click', function (e) {
                 refreshMoveButtons(previous_element, next_element, false);
                 // Déplacement des Tools latéraux
                 $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+                // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
             }
             break;
         // Suppression
         case "delete":
             deletecommand.execute();
-            $("#actions-interface").hide();
+            $("#actions-interface").addClass('d-none');
             $(".side-tool").hide();
             $('.action-delete').attr('disabled', 'true');
             $('.action-undo').removeAttr('disabled');
-            message = "Élément supprimé";
+            if( lang == "en" ){
+                message = "Deleted element";
+            } else {
+                message = "Élément supprimé";
+            }
             alertMsg(message, "success");
             break;
         // Annuler la suppression
@@ -643,7 +727,11 @@ $(".form-element-action").on('click', function (e) {
             $(this).attr('disabled', 'true');
             $('.alert-success').slideUp();
             $('.element-container').last().find('[contenteditable=true]').first().focus();
-            message = "Élément rétabli";
+            if( lang == "en" ){
+                message = "Element recovered";
+            } else {
+                message = "Élément rétabli";
+            }
             alertMsg(message, "success");
             break;
         // Changement de l'attr multiple   
@@ -666,7 +754,7 @@ $(".form-element-action").on('click', function (e) {
                     element_selected_container.find("textarea").removeAttr("required");
                     element_selected_container.find("input[type='radio']").first().removeAttr("required");
                 }
-                // TODO Retirer l'étoile dans le label (après le span)
+                // Retirer l'étoile dans le label (après le span)
                 element_selected_container.find("abbr").remove();
                 if ($("#full-form abbr").length == 0) {
                     $(".indicator-required").remove();
@@ -701,12 +789,20 @@ $(".form-element-action").on('click', function (e) {
                 next_option = selected_option.next();
                 refreshMoveButtons(previous_option, next_option, true);
             }
-            message = "Option ajoutée";
+            if( lang == "en" ){
+                message = "Option added";
+            } else {
+                message = "Option ajoutée";
+            }
             alertMsg(message, "success");
             break;
         case "delete-option":
             deleteOption();
-            message = "Option supprimée";
+            if( lang == "en" ){
+                message = "Deleted option";
+            } else {
+                message = "Option supprimée";
+            }
             alertMsg(message, "success");
             break;
     }
@@ -777,7 +873,7 @@ $(".form-element-action").on('click', function (e) {
 });
 
 // ANCHOR Selection de tout le texte au clic
-// NOTE Non utilisé
+// NOTE Non utilisé : permet en gros de sélectionner tout le texte au clic sur un element contenteditabme
 function selectText(element) {
     var sel, range;
     var el = element[0];
@@ -801,8 +897,9 @@ function selectText(element) {
     }
 };
 
-// ANCHOR Fonction d'ajout d'option
+// ANCHOR Fonction d'ajout d'option ( osef ça concerne pas les menus )
 export function addOption(option_type_parameter) {
+    setSideWindow();
     let option_parent_element = $(".content-editable-selected");
     let option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
     if (!option_type) {
@@ -831,15 +928,17 @@ export function addOption(option_type_parameter) {
 
 }
 
-// ANCHOR Fonction de suppression d'option (select)
+// ANCHOR Fonction de suppression d'option dans un select ( osef ça concerne pas les menus )
 function deleteOption() {
     let select_option_selected = $(".content-editable-selected select option:selected");
-    select_option_selected.remove();
+    $(select_option_selected).remove();
     $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
     $('.action-delete-option').hide();
 }
 
-// ANCHOR Fonction Undo/Redo suppression
+// ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
+// Je comprend pas ce truc mais c'est une fonction essentielle pour que le UNDO remarche..
+// Autant la laisser définie même si non utilisée dans deletecommand (sur ce script, elle est utilisée), elle fait pas de mal :)
 function command(instance) {
     this.command = instance;
     this.done = [];
@@ -855,6 +954,8 @@ function command(instance) {
 }
 
 // ANCHOR Fonction Suppression
+// Je comprend pas moi-même comment ça marche. Quand on clique sur supprimer, ça ne fait que "détacher" l'élement
+// Si tu comptes modifier cette fonction, cela risque de poser problème.. c'est risqué.
 var deletecommand = new command({
     execute: function () {
         element = $(".content-editable-selected").removeClass('content-editable-selected');
@@ -865,7 +966,7 @@ var deletecommand = new command({
     }
 });
 
-// ANCHOR Mise en forme du texte (gras, italic, underline...)
+// ANCHOR Mise en forme du texte (gras, italic, underline...) ( à ne pas toucher )
 $('.text-formatting').on("click", function () {
     switch ($(this).attr('id')) {
         case 'element-bold':
@@ -902,14 +1003,17 @@ $('.text-formatting').on("click", function () {
     updatecontent();
 })
 
-// ANCHOR Theme
+// ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite ( à ne pas toucher )
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-form').attr('class', theme);
     updatecontent();
 })
 
-// ANCHOR Activer / désactiver les boutons de déplacement
+// ANCHOR Activer / désactiver les boutons de déplacement dynamique
+// Cette fonction permet de re-placer les boutons de déplacement (haut/bas)
+// A toi de voir si tu peux l'utiliser ou non
+// Attention : c'est une fonction exportée, il faut faire attention à ce qu'elle ne soit pas appelée dans un autre fichier !
 export function refreshMoveButtons(previous_element, next_element, option) {
     if (option) {
         if (previous_element) {
@@ -946,13 +1050,22 @@ export function refreshMoveButtons(previous_element, next_element, option) {
     }
 }
 
-// ANCHOR Copier le contenu code 
+// ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-    message = "Code copié !";
-    $(".copy-container button").text("Copier");
+    if( lang == "en" ){
+        message = "Code copied !";
+        $(".copy-container button").text("Copy");
+
+    } else {
+        message = "Code copié !";
+        $(".copy-container button").text("Copier");
+    }
     $(this).text(message);
     alertMsg(message, "success");
 })
-new ClipboardJS('#copy-css-link');
-new ClipboardJS('#copy-raw-code');
+new ClipboardJS('#copy-css-link'); // pas touche
+new ClipboardJS('#copy-raw-code'); // pas touche
 
+
+  
+  

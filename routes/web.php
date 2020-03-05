@@ -23,6 +23,8 @@ Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 Route::view('/menu', '/content/menu/create')->name('menu');
 Route::view('/formulaire', '/content/form/create')->name('formulaire');
 Route::view('/tableau', '/content/table/create')->name('tableau');
+// Route::get('/formulaire', 'FormulaireController@index')->name('formulaire');
+// Route::get('/tableau', 'TableauController@index')->name('tableau');
 
 // ROUTE LANGUES
 // Route qui permet de connaître la langue active
@@ -47,9 +49,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Profile
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/profile', function () {
+        $var_user_id = Auth::id();
+        return redirect('/profile/'.$var_user_id.'/view');
+    });
     Route::get('/profile/{user}/view', 'Profile\ProfileController@edit')->name('profile.view');
     Route::put('/profile/{user}/info', 'Profile\ProfileController@updateInfo')->name('profile.updateInfo');
     Route::put('/profile/{user}/password', 'Profile\ProfileController@updatePass')->name('profile.updatePass');
+    Route::post('/profile/{user}/destroy', 'Profile\ProfileController@destroy')->name('profile.destroy');
 });
 
 // Content

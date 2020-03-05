@@ -51059,12 +51059,14 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg */
+/*! exports provided: alertMsg, lang, setSideWindow */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSideWindow", function() { return setSideWindow; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51078,8 +51080,9 @@ __webpack_require__(/*! clipboard/dist/clipboard.min.js */ "./node_modules/clipb
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlusCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSort"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPen"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faItalic"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBold"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUnderline"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignCenter"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignJustify"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTasks"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faComment"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLines"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faParagraph"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeading"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faLink"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListOl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListUl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faQuestionCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrashAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSync"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileCode"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faVectorSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLinesVertical"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSave"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCut"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectGroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectUngroup"]);
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch(); // ANCHOR Visualisation des contenus générés (form, table, menu)
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlusCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSort"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPen"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faItalic"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBold"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUnderline"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignCenter"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignJustify"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTasks"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faComment"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLines"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faParagraph"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeading"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faLink"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListOl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListUl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faQuestionCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrashAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSync"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileCode"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faVectorSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLinesVertical"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSave"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCut"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectGroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectUngroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faExclamationTriangle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFrown"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
+var message; // ANCHOR Visualisation des contenus générés (form, table, menu)
 // Empêcher l'envoi du formulaire 
 
 $(document).ready(function () {
@@ -51184,36 +51187,186 @@ function alertMsg(message, state) {
   alert_timeout = setTimeout(function () {
     alert_container.slideUp();
   }, 7000);
-}
-/* 
+} // Traduction en JS
 
-// Traduction en JS
-let imported_traduction;
-export let translation = $.getJSON(baseUrl + 'lang/en.json', function(data){
-    return data;
-})
-.done(function (json) {
-    imported_traduction = true;
-    console.log("Traduction importée");
-})
-.fail(function (jqxhr, textStatus, error) {
-    console.log(textStatus);
-    console.log(error);
-    console.log ("Erreur dans le chargement de la traduction");
-    return [];
-})
+var lang = $('html').attr('lang'); // Side tools 
 
-export function getTranslation(text, lang){
-    console.log(translation);
-    if(lang == "en"){
-        console.log("Français vers Anglais");
-    }else if(lang=="fr"){
-        console.log("Anglais vers français")
+function setSideWindow() {
+  if ($(window).width() >= 992) {
+    if ($(window).scrollTop() > 800) {
+      // Integration aside
+      $('.action-supp').css('width', '240px');
+      $('#actions-interface').removeClass('col-12');
+      $('#actions-interface').addClass('col-3');
+      $('#actions-interface').addClass('p-0'); // ---
+
+      $('.action-supp').css('position', 'fixed');
+      $('.action-supp').css('top', '25px');
+      $('.action-supp').css('max-width', '25%');
+      var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
+      var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
+
+      if (main_bottom - bottom < 435) {
+        var calcul = 435 - (main_bottom - bottom);
+        $('.action-supp').css('top', '-' + calcul + 'px');
+      }
+    } else {
+      $('.action-supp').css('position', 'relative');
+      $('.action-supp').css('top', '0');
+      $('.action-supp').css('max-width', '100%');
     }
-    return text + " = test";
-}
+  } else {
+    // Integration full width
+    $('.action-supp').css('position', 'relative');
+    $('.action-supp').css('max-width', '100%');
+    $('.action-supp').css('width', '100%');
+    $('#actions-interface').removeClass('col-3');
+    $('#actions-interface').removeClass('p-0');
+    $('#actions-interface').addClass('col-12'); // ---
+  }
+} // Copier le contenu du code sur la page visualisation
+// ANCHOR Copier le contenu code 
 
-*/
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+  if (lang == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
+  $(this).text(message);
+  alertMsg(message);
+});
+new ClipboardJS('#copy-css-link');
+new ClipboardJS('#copy-raw-code'); // Navigation menu
+
+$(window).on('load', function () {
+  var onglet_actif = $('nav .nav-link')[0];
+
+  if (window.location.pathname.indexOf("menu") != -1) {
+    onglet_actif = $('nav .nav-link')[1];
+  } else if (window.location.pathname.indexOf("table") != -1) {
+    onglet_actif = $('nav .nav-link')[2];
+  } else if (window.location.pathname.indexOf("form") != -1) {
+    onglet_actif = $('nav .nav-link')[3];
+  } else if (window.location.pathname.indexOf("aide") != -1) {
+    onglet_actif = $('nav .nav-link')[4];
+  } else if (window.location.pathname.indexOf("register") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("login") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[1];
+  } else if (window.location.pathname.indexOf("edit") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("profile") != -1) {
+    onglet_actif = $('.menu-connect .nav-item')[0];
+  } else if (window.location.pathname.indexOf("cgu") != -1) {
+    onglet_actif = false;
+  } else if (window.location.pathname.indexOf("mentions_legales") != -1) {
+    onglet_actif = false;
+  }
+
+  if (onglet_actif) {
+    $(onglet_actif).addClass('onglet-actif');
+  }
+}); // RACCOURCIS CLAVIER
+// CTRL ALT U - move up 
+// CTRL ALT D - move down
+// CTRL ALT T - trash
+// CTRL ALT I - bloc informations
+// CTRL ALT S - bloc save
+// CTRL ALT P - bloc parametres
+// (bien relacher la touche custom avant le ctrl alt )
+
+document.onkeyup = function (e) {
+  // Move up
+  // CTRL ALT + U
+  if (e.ctrlKey && e.altKey && e.which == 85) {
+    if ($(".content-editable-selected").length > 0) {
+      if (!$("#action-move-up").attr('disabled')) {
+        $("#action-move-up").click();
+      } else {
+        $(".action-move-row-up").click();
+      }
+    }
+  } // Move Down
+  // CTRL ALT + D
+  else if (e.ctrlKey && e.altKey && e.which == 68) {
+      if ($(".content-editable-selected").length > 0) {
+        if (!$("#action-move-down").attr('disabled')) {
+          $("#action-move-down").click();
+        } else {
+          $(".action-move-row-down").click();
+        }
+      }
+    } // Move Left
+    // CTRL ALT + L
+    else if (e.ctrlKey && e.altKey && e.which == 76) {
+        if ($(".content-editable-selected").length > 0) {
+          if (!$("#action-move-left").attr('disabled')) {
+            $("#action-move-left").click();
+          } else {
+            $(".action-move-col-left").click();
+          }
+        }
+      } // Move Right
+      // CTRL ALT + R
+      else if (e.ctrlKey && e.altKey && e.which == 82) {
+          if ($(".content-editable-selected").length > 0) {
+            if (!$("#action-move-right").attr('disabled')) {
+              $("#action-move-right").click();
+            } else {
+              $(".action-move-col-right").click();
+            }
+          }
+        } // Suprrimer 
+        // CTRL ATL + T 
+        else if (e.ctrlKey && e.altKey && e.which == 84) {
+            if ($(".content-editable-selected").length > 0) {
+              if (!$("#action-delete").attr('disabled')) {
+                $("#action-delete").click();
+              }
+            }
+          } // Accéder au bloc informations
+          // CTRL ATL + I
+          else if (e.ctrlKey && e.altKey && e.which == 73) {
+              if ($(".action-supp-crea").length > 0) {
+                $(".action-supp-crea input").first().focus();
+              }
+            } // Accéder au bloc propriétés 
+            // CTRL ATL + P 
+            else if (e.ctrlKey && e.altKey && e.which == 80) {
+                if ($("#content-interface").length > 0) {
+                  $("#content-interface input").first().focus();
+                }
+              } // Sauvegarder
+              // CTRL ALT + S
+              else if (e.ctrlKey && e.altKey && e.which == 83) {
+                  if ($('#btn-save-project, #btn-update-project').length > 0) {
+                    var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+
+                    if (lang == "en") {
+                      _message = "Are you sure to save and quit your project ? You will be redirected.";
+                    }
+
+                    if (window.confirm(_message)) {
+                      $('#btn-save-project').click();
+                      $('#btn-update-project').click();
+                    }
+                  }
+                }
+}; // Désactiver le drag and drop des links et des images
+
+
+window.ondragstart = function () {
+  return false;
+}; // On désactive le cache pour les appels AJAX
+
+
+$.ajaxSetup({
+  cache: false
+});
 
 /***/ }),
 
@@ -51277,85 +51430,158 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addElement", function() { return addElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addOption", function() { return addOption; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "refreshMoveButtons", function() { return refreshMoveButtons; });
-/* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 // ANCHOR Données initiales
-var element;
-var element_selected_container;
-var input;
-var intitule;
-var previous_element;
-var next_element;
-var message;
-var previous_option;
-var selected_option;
-var next_option;
-var user_id = $('input[name=user_id]').val();
-var type_id = $('input[name=type_id]').val();
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<form data-tag="form" class="theme-white" id="generated-form" action="#" method="get" name="generated-form">\n<div id="full-form">\n\t<h1 contenteditable="true" id="form-title" data-tag="form-title">Titre du formulaire</h1>\n</div>\n</form>\n<div class="mt-4" id="form-actions" contenteditable="false">\n\t<input data-tag="input-submit" form="generated-form" type="submit" disabled value="Envoyer" accesskey="s">\n</div>\n'; // Imports
+// On importe les variables et fonctions externes (qui sont définie dans app.js)
+ // Ce code était orienté formulaire, il y a donc les variables de contenu générés par la section d’un élément : 
+// les titres des variables sont assez explicites, tu peux t’imaginer déjà le nom des variables qui existeraient pour les menu : element, link, intitule etc…
+// chacune de ses variables est redéfinie quand on clique sur un element qui a la classe '.element-container'
 
- // ANCHOR Caractères restants Description du projet
+var element; // sert à identifier 
+
+var element_selected_container; // sert à identifier tout le container qui contient l'élement sélectionenr (généralement la racine de '.element-container' )
+
+var intitule; // par exemple menu_title
+
+var input; // par exemple menu_link
+
+var previous_element; // par exemple : previous_menu
+
+var next_element; // par exemple : next_menu
+
+var previous_option; // par exemple : previous_lower_menu
+
+var selected_option; // par exemple : selected_lower_menu
+
+var next_option; // par exemple : next_lower_menu
+
+var message; // variable qui contient les messages qui apparaissent dans l'infobulle en bas à droite (et qui sera définie en fonction de la variable lang)
+
+var user_id = $('input[name=user_id]').val(); // récupère l'id de l'utilisateur pour la sauvegarde AJAX
+
+var type_id = $('input[name=type_id]').val(); // récupère l'id du type (menu, form, table) pour la sauvegarde AJAX
+
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // sans ce token, on ne peut pas envoyer le formulaire en AJAX
+// ANCHOR Caractères restants Description du projet ( à ne pas toucher )
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans le textarea description
 
 $('#desc-input').keypress(function (e) {
   var tval = $('#desc-input').val(),
       tlength = tval.length,
       set = $('#desc-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-desc-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#desc-input').val(tval.substring(0, tlength - 1));
   }
-}); // ANCHOR Caractères restants Titre du projet
+}); // ANCHOR Caractères restants Titre du projet ( à ne pas toucher )
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans l'input de titre
 
 $('#title-input').keypress(function (e) {
   var tval = $('#title-input').val(),
       tlength = tval.length,
       set = $('#title-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-title-remains').text(remain + " caractères restants");
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#title-input').val(tval.substring(0, tlength - 1));
   }
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
+// Pourrait donc être remplacé par une liste, des liens etc...
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"];
-/*
-let translation_test = getTranslation("Thème du formulaire", "en");
-console.log(translation_test);
-*/
-// ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
-// \t = tabulation,  \n = saut de ligne
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
 
-var element_types = {
-  "type-question": {
-    "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
-    "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
-    "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
-    "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-    "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
-    "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
-  },
-  "type-answer-option": {
-    "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-    "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
-    "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
-  },
-  "type-layout": {
-    "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
-    "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
-    "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
-    "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
-    "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
-    "insert-horizontal_rule": "<hr contenteditable='true'>"
-  },
-  "type-special": {
-    "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
-    "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
-    "reset-button": "\n\t<input type='reset' value='Réinitialiser' accesskey='r' form='generated-form'>"
-  }
-};
+$(window).on('scroll', function () {
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
+}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+// Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
+// et la bonne structure. 
+// \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
+
+var element_types; // En exportant ce tableau objet, on permet au fichier import_data_... de générer du contenu en fonction des données importées
+// le fichier import_data_menu/form/table appelera donc un élément de se tableau grâce aux index (ne pas oublier d'importer cette variable dans le fichier import)
+// par exemple, si dans le CSV, j'ai un élément de type 'link', alors il cherchera dans ce tableau objet element_types['type-layout']['insert-link]
+
+if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  element_types = {
+    "type-question": {
+      "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Short answer' data-tag='input-text'/>\n\t\t</label>",
+      "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Long answer' data-tag='input-text'/></textarea>\n\t\t</label>",
+      "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>I Agree</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+      "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+      "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Caption</span></legend>\n\t</fieldset>\n",
+      "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choose an option </option>\n\t\t</select>\n</label>"
+    },
+    "type-answer-option": {
+      "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+    },
+    "type-layout": {
+      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Title</h2>",
+      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraph</p>",
+      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Name of the link</a>",
+      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ol>",
+      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Name of the list<li>A</li><li>B</li><li>C</li></ul>",
+      "insert-horizontal_rule": "<hr contenteditable='true'>"
+    },
+    "type-special": {
+      "indicator-required": "\t<i class='indicator-required'>All fields marked with an asterisk are required.</i>\n",
+      "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+      "reset-button": "\n\t<input type='reset' value='Reset' form='generated-form' title='Reset the form'>"
+    }
+  };
+} else {
+  element_types = {
+    "type-question": {
+      "insert-short_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<input id='REPLACEID' type='text' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse courte' data-tag='input-text'/>\n\t\t</label>",
+      "insert-long_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t\t<textarea id='REPLACEID' type='textarea' name='REPLACENAME' class='form-control' placeholder='Exemple de réponse longue' data-tag='input-text'/></textarea>\n\t\t</label>",
+      "insert-binary_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t\t\t<label for='REPLACEID' data-tag='option'>\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' data-tag='input-checkbox' checked>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Affirmation</span>\n\t\t\t</label>\n\t\t</fieldset>\n",
+      "insert-one_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+      "insert-many_answer": "\t<fieldset>\n\t\t\t<legend><span class='label-text' data-tag='label-text' contenteditable='true'>Légende</span></legend>\n\t</fieldset>\n",
+      "insert-list_answer": "\t<label for='REPLACEID' data-tag='label'><span class='label-text' data-tag='label-text' contenteditable='true'>Exemple de question</span>\n\t\t<select id='REPLACEID' name='REPLACENAME' class='form-control' data-tag='option' >\n\t\t\t<option value='' disabled selected data-tag='option'> Choisir une option </option>\n\t\t</select>\n</label>"
+    },
+    "type-answer-option": {
+      "insert-one_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='radio' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-many_answer": "\t\t<label for='REPLACEID' data-tag='option' >\n\t\t\t\t<input class='input-option' type='checkbox' id='REPLACEID' name='REPLACENAME' value='answer-value'>\n\t\t\t\t<span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span>\n\t\t\t</label>\n\t\t",
+      "insert-list_answer": "\t<option class='select-option'  value='answer-value' data-tag='option'><span class='label-option-text' data-tag='label-option-text' contenteditable='true'>Option</span></option>\n"
+    },
+    "type-layout": {
+      "insert-title": "<h2 contenteditable='true' class='layout-text' data-tag='text'>Titre</h2>",
+      "insert-paragraph": "<p contenteditable='true'class='layout-text' data-tag='text'>Paragraphe</p>",
+      "insert-link": "<a href='' contenteditable='true' class='layout-text' data-tag='label-text'>Nom du lien</a>",
+      "insert-ordered_list": "<ol contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ol>",
+      "insert-unordered_list": "<ul contenteditable='true' class='layout-text' data-tag='text'>Nom de la liste<li>A</li><li>B</li><li>C</li></ul>",
+      "insert-horizontal_rule": "<hr contenteditable='true'>"
+    },
+    "type-special": {
+      "indicator-required": "\t<i class='indicator-required'>Tous les champs marqués par une étoile sont requis.</i>\n",
+      "make-required": "\t<abbr title='required' aria-label='required'>*</abbr>\n",
+      "reset-button": "\n\t<input type='reset' value='Réinitialiser' form='generated-form'>"
+    }
+  };
+} // Bien séparer le contenu en fonction des langues si le texte à l'intérieur des balises peut se traduire : pas la peine si uniquement le mot "Menu" apparait.
+// Par contre, si le mot Lien est écrit, alors il faudra un équivalent Link
+// ANCHOR Rendre l'ancien contenu dynamique ( à ne pas toucher )
+// Cette fonction, utilisée à la fois sur ce fichier et sur le fichier import_machin, permet de rendre le contenu HTML dynamique
+// c'est à dire : imaginons que je load un "<h1>Titre</h1>" dans l'espace de création, soit parce que je suis en modification, soit parce que j'ai importé des données
+// mon contenu ne possède pas les bons attributs pour permettre le changement dynamique ( contenteditable ) car, lors de la sauvegarde, ceux-ci sont enlevés (logique)
+// il faut alors remettre des "contenteditable" sur chaque élément modifiable dans le texte.
+// de plus, cette fonction permet de récupèrer les paramètre du contenu généré (titre du formulaire, lien, theme, options).... 
+
+
 function getOldContent() {
   // On rend l'ancien contenu modifiable
   $('#full-form .label-text').attr('contenteditable', true);
@@ -51366,23 +51592,23 @@ function getOldContent() {
   var actual_theme = $("#generated-form").attr('class');
   actual_theme = actual_theme.replace('theme-', '');
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
-  selected_theme.prop('checked', true); // Titre
+  selected_theme.prop('checked', true); // Titre (non présent pour les menu)
 
   var actual_title = $("#full-form #form-title").text();
-  $("#form-creator-title").val(actual_title); // Methode
+  $("#form-creator-title").val(actual_title); // Methode (non présent pour les menu)
 
   var actual_method = $("#generated-form").attr('method');
-  $("#form-creator-method").val(actual_method); // Lien
+  $("#form-creator-method").val(actual_method); // Lien (non présent pour les menu)
 
   var actual_link = $("#generated-form").attr('action');
-  $("#form-creator-link").val(actual_link); // Option de réinitialisation
+  $("#form-creator-link").val(actual_link); // Option de réinitialisation (non présent pour les menu)
 
   var actual_reset = $("#content-created-blueprint").find('input[type=reset]');
 
   if (actual_reset.length > 0) {
     $('#reset-button').prop('checked', true);
   }
-} // ANCHOR Fonction de sauvegarde
+} // ANCHOR Fonction de sauvegarde ( à ne pas toucher )
 
 function updatecontent() {
   // on récupère le contenu
@@ -51396,38 +51622,39 @@ function updatecontent() {
   blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n"); // on update le code par rapport au blueprint
 
   $('#raw-code').html(blueprint_content);
-  var code_content = $('<div>').text($('#raw-code').text()).html(); // prettify
+  var code_content = $('<div>').text($('#raw-code').text()).html(); // prettify (permet de rendre le code joli)
 
   $("#formatted-code").html(PR.prettyPrintOne(code_content));
 }
 
-; // ANCHOR Initialisation du formulaire
+; // ANCHOR Initialisation du formulaire ( à ne pas toucher )
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création");
-  $('#content-created-blueprint').html(initial_content);
+  // Il n'y a aucun contenu précédent : on est donc en création à partir de 0
   updatecontent();
 } else {
-  console.log("Modification");
+  // Il y a du contenu déjà crée : on est en modification ou en génération de contenu
   getOldContent();
   updatecontent();
-} // ANCHOR Changement de titre
+} // ANCHOR Changement de titre ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 
 
 $('#form-creator-title').on('keyup', function () {
   $('#form-title').text($('#form-creator-title').val());
   updatecontent();
-}); // ANCHOR Changement de lien
+}); // ANCHOR Changement de lien ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 
 $('#form-creator-link').on('keyup', function () {
   $('#generated-form').attr("action", $('#form-creator-link').val());
   updatecontent();
-}); // ANCHOR Changement de méthode
+}); // ANCHOR Changement de méthode ( n'existe pas pour les menu : concerne le titre du formulaire [et non du projet] )
 
 $('#form-creator-method').on('change', function () {
   $('#generated-form').attr("method", $('#form-creator-method').val());
   updatecontent();
-});
+}); // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
+// Cette fonction se base sur la liste d'élément précédemment définis element_types 
+
 function addElement(element_type, element_type_name) {
   // permettra d'identifier l'élément (lui donne un ID aléatoire)
   var element_id = Math.random().toString(36).substr(2, 9);
@@ -51479,16 +51706,25 @@ function addElement(element_type, element_type_name) {
     addOption();
   }
 
-  message = "Element ajouté";
-  Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Element added";
+  } else {
+    message = "Element ajouté";
+  }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
   updatecontent();
-} // ANCHOR Ajout d'un élément
+} // ANCHOR Ajout d'un élément : quand on clique sur un bouton avec la classe .add-element
 
 $('.add-element').on('click', function () {
-  var element_type = $(this).attr("class");
-  var element_type_name = $(this).attr("id");
-  addElement(element_type, element_type_name);
-}); // ANCHOR Sauvegarde définitive
+  var element_type = $(this).attr("class"); // récupère le type d'élément à ajouter
+
+  var element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
+
+  addElement(element_type, element_type_name); // on ajoute l'élement
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
+}); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 
 $('#btn-save-project').on('click', function () {
   updatecontent();
@@ -51502,10 +51738,10 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').val()
+      "html": $('#raw-code').text()
     }
   }).done(function (msg) {
-    console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
@@ -51518,13 +51754,18 @@ $('#btn-save-project').on('click', function () {
       $("#title-input").focus();
     }
 
-    message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
-    Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
 
 var element_select;
-$(document.body).off('keyup') // ré-initialisation
+$(document.body).off('keyup') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois 
 // Empeche de passer le focus sur l'input quand on clique sur le label (pour contrer comportement de formulaire de base)
 .on('click', '.element-container label, .element-container legend', function (e) {
   if ($(e.target).prop('tagName') != "SELECT") {
@@ -51532,6 +51773,8 @@ $(document.body).off('keyup') // ré-initialisation
   } else {
     $(this).closest('label').focus();
   }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
 .on('click', '.element-container', function (e) {
   if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
@@ -51539,6 +51782,8 @@ $(document.body).off('keyup') // ré-initialisation
   } else if (e.target.nodeName == "LEGEND") {
     $(this).find('legend span[contenteditable=true]').focus();
   }
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Quand on clique sur une option
 .on('click', '#full-form fieldset label, #full-form select option', function (e) {
   $('.content-editable-selected').removeClass('content-editable-selected');
@@ -51549,13 +51794,15 @@ $(document.body).off('keyup') // ré-initialisation
   previous_option = selected_option.prev();
   next_option = selected_option.next();
   refreshMoveButtons(previous_option, next_option, true);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
-}) // Quand on sélectionne un élément éditable
+}) // Quand on sélectionne un élément éditable (c'est là le plus important)
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
   // on récupère l'élément sélectionné et on focus sur l'élément parent
   if (e.target) {
     element_select = e.target; // on ré initialise les classes
 
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
     $(".content-editable-selected").removeClass('content-editable-selected');
     $(".option-selected").removeClass('option-selected');
     selected_option = false;
@@ -51575,6 +51822,7 @@ $(document.body).off('keyup') // ré-initialisation
     refreshMoveButtons(previous_element, next_element, false);
   }
 
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
 
@@ -51582,7 +51830,8 @@ $(document.body).off('keyup') // ré-initialisation
     // si ce n'est pas le titre général du formulaire (position verouillée)
     $('.action-delete').removeAttr('disabled');
     $('.element_add-option').attr("disabled", 'true');
-    $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px");
+    $('.side-tool').css("margin-top", $('.content-editable-selected').position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
+
     var element_type = $(element_selected_container).attr('data-elementtype');
     var element_name = $(element_selected_container).attr('data-elementtypename');
 
@@ -51669,7 +51918,7 @@ $(document.body).off('keyup') // ré-initialisation
 
         var option_value = $('.content-editable-selected input').attr('value');
         $("#elem-option-value").val(option_value);
-      } // on cache toutes les actions de bases pour les réafficher en fonction
+      } // on cache toutes les actions de bases pour les réafficher en fonction du contenu sélectionné
 
 
       $('.action-answer-type').hide();
@@ -51770,7 +52019,7 @@ $(document.body).off('keyup') // ré-initialisation
 
           var link_title;
           $('#elem-url-title').on('keyup', function (e) {
-            console.log($('#elem-url-title').val());
+            // console.log($('#elem-url-title').val());
             e.stopPropagation();
             link_title = $('#elem-url-title').val();
             $(intitule).attr('title', link_title);
@@ -51779,22 +52028,22 @@ $(document.body).off('keyup') // ré-initialisation
         }
       }
 
-      $("#actions-interface").show(); // on affiche l'interface de modification spécifique
+      $("#actions-interface").removeClass('d-none'); // on affiche l'interface de modification spécifique
     } else {
-      $("#actions-interface").hide(); // on masque l'interface de modification spécifique
+      $("#actions-interface").addClass('d-none'); // on masque l'interface de modification spécifique
     }
   } else {
     // Si on a sélectionné le titre principal
     $('.action-delete').attr('disabled', 'true');
     $('.side-tool').hide();
-    $("#actions-interface").hide(); // on affiche l'interface de modification
+    $("#actions-interface").addClass('d-none'); // on affiche l'interface de modification
   }
 
   updatecontent();
 }) // quand on déselectionne un élement...
 .on('blur', '[contenteditable=true]', function (e) {
   // e.preventDefault();
-  var element_select_before = window.getSelection().getRangeAt(0).startContainer;
+  // let element_select_before = window.getSelection().getRangeAt(0).startContainer;
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#form-title', function () {
@@ -51805,7 +52054,7 @@ $(document.body).off('keyup') // ré-initialisation
 $("#nav-code-tab").on('click', function () {
   $('#generated-form').attr("action", $('#form-creator-link').val());
   $('#generated-form').attr("method", $('#form-creator-method').val());
-  $("#actions-interface").hide();
+  $("#actions-interface").addClass('d-none');
   $('.side-tool').hide();
   updatecontent();
 }); // ANCHOR Actions sur l'élément ciblé
@@ -51844,7 +52093,7 @@ $(".form-element-action").on('click', function (e) {
         next_element = element_selected_container.next();
         refreshMoveButtons(previous_element, next_element, false); // Déplacement des Tools latéraux
 
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
       }
 
       break;
@@ -51870,7 +52119,7 @@ $(".form-element-action").on('click', function (e) {
         next_element = element_selected_container.next();
         refreshMoveButtons(previous_element, next_element, false); // Déplacement des Tools latéraux
 
-        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px");
+        $('.side-tool').css("margin-top", $(element_selected_container).position().top + "px"); // $("#actions-interface .action-supp").css('top', $(element_selected_container).position().top + "px");
       }
 
       break;
@@ -51878,12 +52127,18 @@ $(".form-element-action").on('click', function (e) {
 
     case "delete":
       deletecommand.execute();
-      $("#actions-interface").hide();
+      $("#actions-interface").addClass('d-none');
       $(".side-tool").hide();
       $('.action-delete').attr('disabled', 'true');
       $('.action-undo').removeAttr('disabled');
-      message = "Élément supprimé";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Deleted element";
+      } else {
+        message = "Élément supprimé";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
     // Annuler la suppression
 
@@ -51892,8 +52147,14 @@ $(".form-element-action").on('click', function (e) {
       $(this).attr('disabled', 'true');
       $('.alert-success').slideUp();
       $('.element-container').last().find('[contenteditable=true]').first().focus();
-      message = "Élément rétabli";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Element recovered";
+      } else {
+        message = "Élément rétabli";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
     // Changement de l'attr multiple   
 
@@ -51918,7 +52179,7 @@ $(".form-element-action").on('click', function (e) {
           element_selected_container.find("select").removeAttr("required");
           element_selected_container.find("textarea").removeAttr("required");
           element_selected_container.find("input[type='radio']").first().removeAttr("required");
-        } // TODO Retirer l'étoile dans le label (après le span)
+        } // Retirer l'étoile dans le label (après le span)
 
 
         element_selected_container.find("abbr").remove();
@@ -51963,14 +52224,25 @@ $(".form-element-action").on('click', function (e) {
         refreshMoveButtons(previous_option, next_option, true);
       }
 
-      message = "Option ajoutée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Option added";
+      } else {
+        message = "Option ajoutée";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
 
     case "delete-option":
       deleteOption();
-      message = "Option supprimée";
-      Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+
+      if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Deleted option";
+      } else {
+        message = "Option supprimée";
+      }
+
+      Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       break;
   }
 
@@ -52045,7 +52317,7 @@ $(".form-element-action").on('click', function (e) {
 
   updatecontent();
 }); // ANCHOR Selection de tout le texte au clic
-// NOTE Non utilisé
+// NOTE Non utilisé : permet en gros de sélectionner tout le texte au clic sur un element contenteditabme
 
 function selectText(element) {
   var sel, range;
@@ -52082,9 +52354,10 @@ function selectText(element) {
   }
 }
 
-; // ANCHOR Fonction d'ajout d'option
+; // ANCHOR Fonction d'ajout d'option ( osef ça concerne pas les menus )
 
 function addOption(option_type_parameter) {
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   var option_parent_element = $(".content-editable-selected");
   var option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
 
@@ -52113,14 +52386,16 @@ function addOption(option_type_parameter) {
   var option_name_replace_regex = /REPLACENAME/g;
   option = option.replace(option_name_replace_regex, option_name);
   $(option_group).append(option);
-} // ANCHOR Fonction de suppression d'option (select)
+} // ANCHOR Fonction de suppression d'option dans un select ( osef ça concerne pas les menus )
 
 function deleteOption() {
   var select_option_selected = $(".content-editable-selected select option:selected");
-  select_option_selected.remove();
+  $(select_option_selected).remove();
   $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
   $('.action-delete-option').hide();
-} // ANCHOR Fonction Undo/Redo suppression
+} // ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
+// Je comprend pas ce truc mais c'est une fonction essentielle pour que le UNDO remarche..
+// Autant la laisser définie même si non utilisée dans deletecommand (sur ce script, elle est utilisée), elle fait pas de mal :)
 
 
 function command(instance) {
@@ -52137,6 +52412,8 @@ function command(instance) {
     command.undo();
   };
 } // ANCHOR Fonction Suppression
+// Je comprend pas moi-même comment ça marche. Quand on clique sur supprimer, ça ne fait que "détacher" l'élement
+// Si tu comptes modifier cette fonction, cela risque de poser problème.. c'est risqué.
 
 
 var deletecommand = new command({
@@ -52147,7 +52424,7 @@ var deletecommand = new command({
   undo: function undo() {
     element.appendTo("#full-form");
   }
-}); // ANCHOR Mise en forme du texte (gras, italic, underline...)
+}); // ANCHOR Mise en forme du texte (gras, italic, underline...) ( à ne pas toucher )
 
 $('.text-formatting').on("click", function () {
   switch ($(this).attr('id')) {
@@ -52189,13 +52466,16 @@ $('.text-formatting').on("click", function () {
   }
 
   updatecontent();
-}); // ANCHOR Theme
+}); // ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite ( à ne pas toucher )
 
 $('input[name="theme"]').on('change', function () {
   var theme = "theme-" + $(this).val();
   $('#generated-form').attr('class', theme);
   updatecontent();
-}); // ANCHOR Activer / désactiver les boutons de déplacement
+}); // ANCHOR Activer / désactiver les boutons de déplacement dynamique
+// Cette fonction permet de re-placer les boutons de déplacement (haut/bas)
+// A toi de voir si tu peux l'utiliser ou non
+// Attention : c'est une fonction exportée, il faut faire attention à ce qu'elle ne soit pas appelée dans un autre fichier !
 
 function refreshMoveButtons(previous_element, next_element, option) {
   if (option) {
@@ -52233,16 +52513,592 @@ function refreshMoveButtons(previous_element, next_element, option) {
       $('#action-move-down').attr('disabled', true);
     }
   }
-} // ANCHOR Copier le contenu code 
+} // ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-  message = "Code copié !";
-  $(".copy-container button").text("Copier");
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
   $(this).text(message);
-  Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
+});
+new ClipboardJS('#copy-css-link'); // pas touche
+
+new ClipboardJS('#copy-raw-code'); // pas touche
+
+/***/ }),
+
+/***/ "./resources/js/components/menu.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/menu.js ***!
+  \*****************************************/
+/*! exports provided: element_types, getOldContent, addLink */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addLink", function() { return addLink; });
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+// ANCHOR Données initiales
+// On importe les variables et fonctions externes (qui sont définie dans app.js)
+
+var element_content;
+var link_type;
+var previous_link;
+var selected_link;
+var next_link;
+var message;
+var user_id = $('input[name=user_id]').val();
+var type_id = $('input[name=type_id]').val();
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // ANCHOR Caractères restants Description du projet
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans le textarea description
+
+$('#desc-input').keypress(function (e) {
+  var tval = $('#desc-input').val(),
+      tlength = tval.length,
+      set = $('#desc-input').attr('maxlength'),
+      remain = parseInt(set - tlength);
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
+
+  if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+    $('#desc-input').val(tval.substring(0, tlength - 1));
+  }
+}); // ANCHOR Caractères restants Titre du projet
+// Permet d'afficher "x caractères restants" lorsque l'on écrit dans l'input de titre
+
+$('#title-input').keypress(function (e) {
+  var tval = $('#title-input').val(),
+      tlength = tval.length,
+      set = $('#title-input').attr('maxlength'),
+      remain = parseInt(set - tlength);
+
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
+
+  if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+    $('#title-input').val(tval.substring(0, tlength - 1));
+  }
+}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+// Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
+// et la bonne structure. 
+// \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
+
+var element_types; // En exportant ce tableau objet, on permet au fichier import_data_... de générer du contenu en fonction des données importées
+// le fichier import_data_menu/form/table appelera donc un élément de se tableau grâce aux index (ne pas oublier d'importer cette variable dans le fichier import)
+// par exemple, si dans le CSV, j'ai un élément de type 'link', alors il cherchera dans ce tableau objet element_types['type-layout']['insert-link]
+
+if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+  element_types = {
+    "type-info": {
+      "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
+      "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
+      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+      "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
+    },
+    "type-menu": {
+      "insert-menu_link": '\n\t\t<li role="none" class="menu-item element-container">\n\t<a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Go to the Link page">\n\t<span contenteditable="true" class="menu-item-title">Link</span></a></li>\n',
+      "insert-sub_link": '\n\t\t\t<li role="none" class="menu-item">\n\t<a role="menuitem" href="/" class="menu-link sub-link" title="Go to the Menu - Link page">\n\t<span contenteditable="true" class="menu-item-title">Sub-menu link</span></a></li>\n',
+      "insert-sub_menu": '\n\t\t<li role="none" class="menu-item has-submenu element-container">\n\t\t\t<button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)">\n\t\t\t\t<span contenteditable="true" class="menu-item-title">Menu</span>\n\t\t\t</button>\n\t\t\t<ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID">\n\t\t\t</ul>\n\t\t</li>\n'
+    }
+  };
+} else {
+  element_types = {
+    "type-info": {
+      "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
+      "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
+    },
+    "type-menu": {
+      "insert-menu_link": '\n\t\t<li role="none" class="menu-item element-container">\n\t\t\t<a role="menuitem"  href="/" class="menu-name" tabindex="0" title="Se rendre sur la page Lien">\n\t<span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+      "insert-sub_link": '\n\t\t\t<li role="none" class="menu-item">\n\t\t\t<a role="menuitem" href="/" class="menu-link sub-link" title="Se rendre sur la page menu - Lien">\n\t<span contenteditable="true" class="menu-item-title">Lien</span></a></li>\n',
+      "insert-sub_menu": '\n\t\t<li role="none" class="menu-item has-submenu element-container">\n\t\t\t<button role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="REPLACEID" class="menu-name menu-submenus closed" tabindex="0" onclick="displayMenu(event)">\n\t\t\t\t<span contenteditable="true" class="menu-item-title">Menu</span>\n\t\t\t</button>\n\t\t\t<ul role="menu" class="submenu hidden" aria-label="" id="REPLACEID">\n\t\t\t</ul>\n\t\t</li>\n'
+    }
+  };
+} // FIXME A verifier
+
+
+function getOldContent() {
+  // On rend l'ancien contenu modifiable
+  $('#full-menu .menu-item-title').attr('contenteditable', true);
+  $('#full-menu #menu-title').attr('contenteditable', true); // On récupère les paramètres
+  // Theme
+
+  var actual_theme = $("#generated-menu").attr('class');
+  actual_theme = actual_theme.replace('theme-', '');
+  var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
+  selected_theme.prop('checked', true); // Titre (non présent pour les menu)
+
+  var actual_title = $("#full-menu #menu-title").text().trim();
+
+  if (actual_title) {
+    $("#menu-creator-title").val(actual_title);
+  } // Lien du logo
+
+
+  var actual_link = $("#menu-logo").css('background-image');
+
+  if (actual_link) {
+    actual_link = actual_link.replace('url("', "");
+    actual_link = actual_link.replace('")', "");
+    $("#menu-creator-link").val(actual_link);
+  } // option image
+
+
+  if ($('#full-menu').has('#menu-logo').length) {
+    $("#menu-creator-link-display").attr('checked', true);
+  } else {
+    $("#menu-creator-link-display").removeAttr('checked');
+  } // option titre
+
+
+  if ($('#full-menu').has('#menu-title').length) {
+    $("#menu-creator-title-display").attr('checked', true);
+  } else {
+    $("#menu-creator-title-display").removeAttr('checked');
+  }
+} // ANCHOR Fonction de sauvegarde
+
+function updatecontent() {
+  // on récupère le contenu
+  var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
+
+  blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
+  blueprint_content = blueprint_content.replace(/ content-editable-selected/g, ""); // on remplace les doubles sauts de lignes
+
+  blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n"); // on update le code par rapport au blueprint
+
+  $('#raw-code').html(blueprint_content);
+  var code_content = $('<div>').text($('#raw-code').text()).html(); // prettify (permet de rendre le code joli)
+
+  $("#formatted-code").html(PR.prettyPrintOne(code_content));
+}
+
+; // ANCHOR Initialisation du formulaire
+
+if ($('#raw-code').val().length <= 0) {
+  // Il n'y a aucun contenu précédent : on est donc en création à partir de 0
+  updatecontent();
+} else {
+  // Il y a du contenu déjà crée : on est en modification ou en génération de contenu
+  getOldContent();
+  updatecontent();
+} // ANCHOR Changement de titre du menu
+
+
+$('#menu-creator-title').on('keyup', function () {
+  $('#full-menu #menu-title').text($('#menu-creator-title').val());
+  updatecontent();
+}); // ANCHOR Afficher ou non le titre du menu
+
+$('#menu-creator-title-display').off().on('click', function () {
+  if ($(this).is(":checked")) {
+    $('#full-menu .menu-identity .menu-separator').before(element_types["type-info"]["insert-title"]);
+    $('#full-menu .menu-identity #menu-title').text($('#menu-creator-title').val());
+
+    if ($('#menu-creator-link-display').is(":checked")) {
+      $('#full-menu .menu-identity #menu-logo').removeClass('menu-logo-solo');
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    }
+  } else {
+    $('#full-menu #menu-title').remove();
+
+    if ($('#menu-creator-link-display').is(":checked")) {
+      $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').addClass('hidden');
+      $('#menubar-easytoc').addClass('full-width');
+    }
+  }
+}); // ANCHOR Changement de lien du logo
+
+$('#menu-creator-link').on('keyup', function () {
+  $("#menu-logo").css('background-image', 'url(' + $('#menu-creator-link').val() + ')');
+  updatecontent();
+}); // ANCHOR Afficher ou non le logo
+
+$('#menu-creator-link-display').off().on('click', function () {
+  if ($(this).is(":checked")) {
+    $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
+    $('#full-menu .menu-identity #menu-logo').css('background-image', 'url(' + $('#menu-creator-link').val() + ')');
+
+    if (!$('#menu-creator-title-display').is(":checked")) {
+      $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    }
+  } else {
+    $('#full-menu #menu-logo').remove();
+
+    if ($('#menu-creator-title-display').is(":checked")) {
+      $('#full-menu .menu-identity').removeClass('hidden');
+      $('#menubar-easytoc').removeClass('full-width');
+    } else {
+      $('#full-menu .menu-identity').addClass('hidden');
+      $('#menubar-easytoc').addClass('full-width');
+    }
+  }
+}); // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
+// Cette fonction se base sur la liste d'élément précédemment définis element_types 
+
+function addLink(type) {
+  // permettra d'identifier l'élément (lui donne un ID aléatoire)
+  var element_id = Math.random().toString(36).substr(2, 9);
+  var menu_length;
+
+  if (type == "sub_link") {
+    menu_length = $(selected_link).find('ul').children("li").length;
+  } else {
+    menu_length = $("#menubar-easytoc").children("li").length;
+  }
+
+  if (menu_length > 8) {
+    message = "Vous ne pouvez pas rajouter plus de liens";
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "You already have too much links !";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+    return;
+  } // on récupère le type de l'élément
+
+
+  if (type == "link") {
+    var added_content = element_types["type-menu"]["insert-menu_link"];
+    var id_replace_regex = /REPLACEID/g;
+    element_content = added_content.replace(id_replace_regex, element_id);
+    $('#menubar-easytoc').append(element_content);
+  } else if (type == "sub_link") {
+    // On ajoute un lien
+    var _added_content = element_types["type-menu"]["insert-sub_link"];
+    var _id_replace_regex = /REPLACEID/g;
+    element_content = _added_content.replace(_id_replace_regex, element_id);
+    $(selected_link).find('ul').append(element_content); // On définit le titre du lien
+
+    var menu_title = $(selected_link).find('.menu-submenus span').text().trim();
+    var link_title = 'Se rendre sur la page ' + menu_title + ' - ' + $(selected_link).find('ul li').last().text().trim();
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+      link_title = 'Go to page ' + menu_title + ' - ' + $(selected_link).find('ul li').last().text().trim();
+    }
+
+    $(selected_link).find('li a').last().attr('title', link_title);
+  } else if (type == "sub_menu") {
+    var _added_content2 = element_types["type-menu"]["insert-sub_menu"];
+    var _id_replace_regex2 = /REPLACEID/g;
+    element_content = _added_content2.replace(_id_replace_regex2, element_id);
+    $('#menubar-easytoc').append(element_content);
+  }
+
+  updatecontent();
+} // ANCHOR Ajout d'un élément : quand on clique sur un bouton avec la classe .add-element
+
+$('.add-element').on('click', function () {
+  if ($(this).attr('id') == "insert-menu_link") {
+    addLink("link");
+  } else if ($(this).attr('id') == "insert-sub_menu") {
+    addLink("sub_menu");
+  } else if ($(this).attr('id') == "insert-sub_link") {
+    addLink("sub_link");
+  }
+
+  updatecontent();
+}); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
+
+$('#btn-save-project').on('click', function () {
+  updatecontent();
+  var post_url = $("#full-menu-post").attr('action');
+  $.ajax({
+    method: "POST",
+    url: post_url,
+    data: {
+      "_token": csrf_token,
+      "type_id": type_id,
+      "user_id": user_id,
+      "title": $('#title-input').val(),
+      "description": $('#desc-input').val(),
+      "html": $('#raw-code').text()
+    }
+  }).done(function (msg) {
+    // console.log(msg);
+    window.location.href = "profile/" + user_id + "/view";
+    $("#title-input").removeClass('required-failed');
+  }).fail(function (xhr, status, error) {
+    console.log(xhr.responseText);
+    console.log(status);
+    console.log(error); // TODO Erreur
+
+    if (!$('#title-input').val()) {
+      $("#title-input").addClass('required-failed');
+      $("#title-input").focus();
+    }
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
+    Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
+  });
+}); // ANCHOR Action sur l'élement
+
+$(document.body).off('keyup').off('click') // ré-initialisation pour empêcher les écouteurs d'évenements de se lancer plusieurs fois
+.on('click', '#full-menu a', function (e) {
+  e.preventDefault(); // Empêcher la redirection
+}).on('focus', '#full-menu a, #full-menu button', function (e) {
+  e.preventDefault();
+  selected_link = $(this).closest('li');
+  previous_link = selected_link.prev();
+  next_link = selected_link.next();
+  $('.content-editable-selected').removeClass('content-editable-selected');
+  $(selected_link).addClass('content-editable-selected');
+  $("#insert-sub_link").attr('disabled', true);
+  $("#action-move-up").attr('disabled', true);
+  $("#action-move-down").attr('disabled', true);
+  $("#nav-link").removeAttr('disabled');
+
+  if ($(this).hasClass('sub-link')) {
+    link_type = "sub-link";
+    $("#action-move-right").attr('disabled', true);
+    $("#action-move-left").attr('disabled', true);
+    $("#action-move-up").removeAttr('disabled');
+    $("#action-move-down").removeAttr('disabled');
+  } else if ($(this).hasClass('menu-submenus')) {
+    link_type = "menu";
+    $("#insert-sub_link").removeAttr('disabled');
+    $("#action-move-right").removeAttr('disabled');
+    $("#action-move-left").removeAttr('disabled');
+    $("#nav-link").attr('disabled', true);
+    $("#nav-link").val("");
+  } else {
+    link_type = "link";
+    $("#action-move-right").removeAttr('disabled');
+    $("#action-move-left").removeAttr('disabled');
+  } // Affiche les input pour personnaliser les liens
+
+
+  $('.custom-info-element').slideDown();
+  $('#nav-name').val($(selected_link).find('span').first().text().trim());
+
+  if (link_type != "menu") {
+    $('#nav-link').val($(selected_link).find('a').attr('href'));
+  }
+
+  setMove(selected_link);
+  updatecontent();
+}) // ANCHOR Modification du titre du menu via l'intérieur du menu
+.on('keyup', '#full-menu #menu-title ', function (e) {
+  $('#menu-creator-title').val($('#full-menu #menu-title').text().trim());
+  updatecontent();
+}) // ANCHOR Modification du titre
+.on('keyup', '#nav-name, #nav-link', function (e) {
+  var link_text = $(selected_link).find('span');
+  var link_selected = $(selected_link).find('a');
+  var link_title;
+
+  if ($(e.target).attr('id') == "nav-name") {
+    if (link_type == "menu") {
+      var menu_title = $('#nav-name').val();
+      $(link_text).first().text(menu_title);
+    } else {
+      $(link_text).text($('#nav-name').val());
+
+      if (link_type == "link") {
+        link_title = 'Se rendre sur la page ' + $('#nav-name').val();
+
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+          link_title = 'Go to page ' + $('#nav-name').val();
+        }
+
+        $(link_selected).attr('title', link_title);
+      } else {
+        var _menu_title = $(selected_link).parent().parent().find('button').text().trim();
+
+        link_title = 'Se rendre sur la page ' + _menu_title + ' - ' + $('#nav-name').val();
+
+        if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+          link_title = 'Go to page ' + _menu_title + ' - ' + $('#nav-name').val();
+        }
+
+        $(link_selected).attr('title', link_title);
+      }
+    }
+  } else if ($(e.target).attr('id') == "nav-link") {
+    $(link_selected).attr('href', $('#nav-link').val());
+  }
+
+  updatecontent();
+}).on('keyup', 'a span[contenteditable=true]', function () {
+  var link_title;
+  var link_selected = $(selected_link).find('a');
+
+  if (link_type == "link") {
+    link_title = 'Se rendre sur la page ' + $('#nav-name').val();
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+      link_title = 'Go to page ' + $('#nav-name').val();
+    }
+
+    $(link_selected).attr('title', link_title);
+  } else {
+    var menu_title = $(selected_link).parent().parent().find('button').text().trim();
+    link_title = 'Se rendre sur la page ' + menu_title + ' - ' + $('#nav-name').val();
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == 'en') {
+      link_title = 'Go to page ' + menu_title + ' - ' + $('#nav-name').val();
+    }
+
+    $(link_selected).attr('title', link_title);
+  }
+
+  $('#nav-name').val($(this).text().trim());
+}); // ANCHOR Masquer les sidetools au changement d'onglet
+
+$("#nav-code-tab").on('click', function () {
+  updatecontent();
+}); // ANCHOR Actions sur l'élément ciblé
+
+$(".form-element-action").on('click', function (e) {
+  if ($(this).attr('id') == "action-delete") {
+    deleteLink();
+  } else if ($(this).attr('data-action') == "move-up") {
+    moveLink("up");
+  } else if ($(this).attr('data-action') == "move-down") {
+    moveLink("down");
+  } else if ($(this).attr('data-action') == "move-right") {
+    moveLink("right");
+  } else if ($(this).attr('data-action') == "move-left") {
+    moveLink("left");
+  }
+
+  updatecontent();
+}); // ANCHOR Fonction de déplacement d'un lien
+
+function moveLink(direction) {
+  switch (direction) {
+    case "up":
+    case "left":
+      $(selected_link).insertBefore(previous_link);
+      break;
+
+    case "down":
+    case "right":
+      $(selected_link).insertAfter(next_link);
+      break;
+
+    default:
+      break;
+  }
+
+  setMove(selected_link);
+} // ANCHOR Fonction de suppression de link
+
+
+function deleteLink() {
+  $(selected_link).remove();
+}
+
+function setMove(selected_link) {
+  previous_link = $(selected_link).prev();
+  next_link = $(selected_link).next();
+
+  if (previous_link.length == 0) {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-left").attr('disabled', true);
+    } else if (link_type == "sub-link") {
+      $("#action-move-up").attr('disabled', true);
+    }
+  } else {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-left").removeAttr('disabled');
+    } else if (link_type == "sub-link") {
+      $("#action-move-up").removeAttr('disabled');
+    }
+  }
+
+  if (next_link.length == 0) {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-right").attr('disabled', true);
+    } else if (link_type == "sub-link") {
+      $("#action-move-down").attr('disabled', true);
+    }
+  } else {
+    if (link_type == "menu" || link_type == "link") {
+      $("#action-move-right").removeAttr('disabled');
+    } else if (link_type == "sub-link") {
+      $("#action-move-down").removeAttr('disabled');
+    }
+  }
+} // ANCHOR Mise en forme du texte (gras, italic, underline...) 
+
+
+$('.text-formatting').on("click", function () {
+  switch ($(this).attr('id')) {
+    case 'element-bold':
+      $('.content-editable-selected').toggleClass('text-bold');
+      updatecontent();
+      break;
+
+    case 'element-italic':
+      $('.content-editable-selected').toggleClass('text-italic');
+      updatecontent();
+      break;
+
+    case 'element-underline':
+      $('.content-editable-selected').toggleClass('text-underline');
+      updatecontent();
+      break;
+  }
+
+  updatecontent();
+}); // ANCHOR Permet d'actualiser le thème choisi via les boutons radios en haut à droite 
+
+$('input[name="theme"]').on('change', function () {
+  var theme = "theme-" + $(this).val();
+  $('#generated-menu').attr('class', theme);
+  updatecontent();
+}); // ANCHOR Copier le contenu code rapidement grâce aux boutons 
+
+$("#copy-raw-code, #copy-css-link").on('click', function () {
+  if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
+  $(this).text(message);
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
 });
 new ClipboardJS('#copy-css-link');
-new ClipboardJS('#copy-raw-code');
+new ClipboardJS('#copy-raw-code'); // ANCHOR
 
 /***/ }),
 
@@ -52250,18 +53106,21 @@ new ClipboardJS('#copy-raw-code');
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: element_types, getOldContent, addCol, addRow, removeCol */
+/*! exports provided: element_types, getOldContent, updateContent, addCol, addRow, removeCol */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateContent", function() { return updateContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/app */ "./resources/js/app.js");
-// ANCHOR Données initiales
+// Imports
+
+
 var element;
 var element_selected_container;
 var input;
@@ -52281,10 +53140,8 @@ var selected_row;
 var parent_tag;
 var user_id = $('input[name=user_id]').val();
 var type_id = $('input[name=type_id]').val();
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
-var initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>'; // Imports
-
- // Reset des boutons d'options
+var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_content = '<div id="generated-table" class="theme-white">\n\t<span class="table-title table-text" id="table-title" contenteditable=true data-tag="title">Titre</span>\n\t<table data-tag="table" id="full-table">\n\t\t<caption class="table-caption" id="table-caption">\n\t\t\t<span class="table-text" contenteditable="true" data-tag="caption">Légende</span>\n\t\t</caption>\n\t\t<thead data-tag="header">\n\t\t\t<tr>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t\t<th class="table-header-cell cell-text" contenteditable="true" data-tag="cell-header" scope="col">Ceci est un test</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t\t<td contenteditable="true" data-tag="cell">Ceci est un test</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>';
+// Reset des boutons d'options
 
 $('#lateral-header-button').prop('checked', false);
 $('#footer-button').prop('checked', false);
@@ -52292,14 +53149,25 @@ $('#central-header-button').prop('checked', true);
 $('#radio02').prop('checked', true);
 $('#radio02').prop('checked', true);
 $('#table-row-nb').val('2');
-$('#table-col-nb').val('2'); // ANCHOR Caractères restants Description du projet
+$('#table-col-nb').val('2'); // On désactive les boutons qui ne s'activent qu'au clic sur un élément
+
+$('.text-formatting').prop('disabled', true);
+$('.element_move').prop('disabled', true);
+$('.action-delete').prop('disabled', true);
+$('.element_merge-right').prop('disabled', true);
+$(".element_delete").prop('disabled', true); // ANCHOR Caractères restants Description du projet
 
 $('#desc-input').keypress(function (e) {
   var tval = $('#desc-input').val(),
       tlength = tval.length,
       set = $('#desc-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-desc-remains').text(remain + " caractères restants");
+
+  if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-desc-remains').text(remain + " characters left");
+  } else {
+    $('#chara-desc-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#desc-input').val(tval.substring(0, tlength - 1));
@@ -52311,7 +53179,12 @@ $('#title-input').keypress(function (e) {
       tlength = tval.length,
       set = $('#title-input').attr('maxlength'),
       remain = parseInt(set - tlength);
-  $('#chara-title-remains').text(remain + " caractères restants");
+
+  if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    $('#chara-title-remains').text(remain + " characters left");
+  } else {
+    $('#chara-title-remains').text(remain + " caractères restants");
+  }
 
   if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
     $('#title-input').val(tval.substring(0, tlength - 1));
@@ -52323,21 +53196,21 @@ var tags_list = ["table", "tr", "th", "td", "abbr"]; // ANCHOR Liste WYSIWYG : l
 
 var element_types = {
   "type-container": {
-    "insert-header": "\n\t\t<thead class='table-head' data-tag='header'></thead>",
-    "insert-row": "\n\t\t\t<tr class='table-row' data-tag='row'></tr>",
-    "insert-footer": "\n\t\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
-    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'>Légende</span>\n\t</caption>"
+    "insert-header": "\n\t<thead class='table-head' data-tag='header'></thead>",
+    "insert-row": "\n\t\t<tr class='table-row' data-tag='row'>&#10</tr>",
+    "insert-footer": "\n\t<tfoot class='table-footer' data-tag='footer'></tfoot>",
+    "insert-caption": "\n\t<caption id='table-caption' class='table-caption'>\n\t\t<span class='table-text' data-tag='caption' contenteditable='true'></span>\n\t</caption>"
   },
   "type-unique": {
-    "insert-header-col": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='col'>&#160</th>",
-    "insert-header-row": "\n\t\t\t\t<th class='table-header-cell cell-text' contenteditable=true data-tag='cell-header' scope='row'>&#160</th>",
-    "insert-cell": "\n\t\t\t\t<td class='table-cell cell-text' contenteditable=true data-tag='cell'>&#160</td>"
+    "insert-header-col": "\n\t\t\t<th class='table-header-cell cell-text' data-tag='cell-header' scope='col'><span contenteditable=true >&#160</span></th>",
+    "insert-header-row": "\n\t\t\t<th class='table-header-cell cell-text' data-tag='cell-header' scope='row'><span contenteditable=true >&#160</span></th>",
+    "insert-cell": "\n\t\t\t<td class='table-cell cell-text' data-tag='cell'><span contenteditable=true >&#160</span></td>"
   }
 };
 function getOldContent() {
   // On rend l'ancien contenu modifiable
-  $('#full-table th').attr('contenteditable', true);
-  $('#full-table td').attr('contenteditable', true);
+  $('#full-table th span').attr('contenteditable', true);
+  $('#full-table td span').attr('contenteditable', true);
   $('#table-title').attr('contenteditable', true);
   $('#table-caption').attr('contenteditable', true); // Theme
 
@@ -52346,15 +53219,67 @@ function getOldContent() {
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre
 
-  var actual_title = $("#table-title").text();
+  var actual_title = $("#table-title").text().trim();
   $("#table-creator-title").val(actual_title); // Légende
 
-  var actual_caption = $("#table-caption span").text();
+  var actual_caption = $("#table-caption span").text().trim();
   $("#table-creator-caption").val(actual_caption);
 } // ANCHOR Fonction de sauvegarde
 
-function updatecontent() {
-  // on récupère le contenu
+function updateContent() {
+  // On ajoute des ID sur chaque headers
+  $('#full-table tr th').each(function (index, element) {
+    var element_id = Math.random().toString(36).substr(2, 9);
+    $(element).attr('id', element_id);
+  }); // On associe les id à toutes les cellules TD 
+
+  var headers_id = [];
+  $('#full-table thead tr').each(function (index, element) {
+    var headers = $(this).find('th');
+    var headers_id_row = [];
+    headers.each(function (index, element) {
+      headers_id_row.push($(element).attr('id'));
+
+      if ($(element).attr('colspan') > 1) {
+        var nb_colspan = $(element).attr('colspan');
+
+        for (var i = 1; i < nb_colspan; i++) {
+          headers_id_row.push($(element).attr('id'));
+        }
+      }
+    });
+    headers_id.push(headers_id_row);
+  }); // On associe les ID aux cellules de colonnes
+
+  $('#full-table tbody tr, #full-table tfoot tr').each(function (index, element) {
+    var row_index = index;
+    var row_header_id;
+
+    if ($(this).find('th').length) {
+      row_header_id = $(this).find('th').first().attr('id');
+    }
+
+    var normal_cells = $(this).find('td');
+    normal_cells.each(function (index, element) {
+      var cell_index = index;
+      var cell_headers = ""; // On ajoute l'id du header latéral si existe 
+
+      if (row_header_id) {
+        cell_headers = row_header_id;
+      }
+
+      headers_id.forEach(function (item, index) {
+        // Si les header latéraux sont présents, les headers du THEAD sont décalés de 1 (une colonne en trop)
+        if (row_header_id) {
+          cell_headers = cell_headers + " " + item[cell_index + 1];
+        } else {
+          cell_headers = cell_headers + " " + item[cell_index];
+        }
+      });
+      $(element).attr('headers', cell_headers);
+    });
+  }); // on récupère le contenu
+
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
 
   blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
@@ -52369,31 +53294,30 @@ function updatecontent() {
 
   $("#formatted-code").html(PR.prettyPrintOne(code_content));
 }
-
 ;
 $('#edit-table').on('click', function () {
-  updatecontent();
+  updateContent();
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
-  console.log("Création");
-  $('#content-created-blueprint').html(initial_content);
-  updatecontent();
+  // console.log("Création");
+  // $('#content-created-blueprint').html(initial_content);
+  updateContent();
 } else {
-  console.log("Modification");
+  // console.log("Modification");
   getOldContent();
-  updatecontent();
+  updateContent();
 } // ANCHOR Changement de titre
 
 
 $('#table-creator-title').on('keyup', function () {
   $('#table-title').text($('#table-creator-title').val());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement de caption
 
 $('#table-creator-caption').on('keyup', function () {
   $('#table-caption span').text($('#table-creator-caption').val());
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement du nombre de lignes via INPUT
 
 $('#table-row-nb').on('change', function () {
@@ -52402,9 +53326,14 @@ $('#table-row-nb').on('change', function () {
   var new_nb_row = $(this).val();
 
   if (new_nb_row < 2) {
-    message = "A quoi sert un tableau sans lignes ?";
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Why would you want a table without rows ?";
+    } else {
+      message = "Pourquoi un tableau sans lignes ?";
+    }
+
     Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
-    this.val("2");
+    $(this).val("2");
     return;
   }
 
@@ -52415,7 +53344,13 @@ $('#table-row-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_row; i++) {
       addRow("down");
-      message = "Ligne ajoutée";
+
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Row added";
+      } else {
+        message = "Ligne ajoutée";
+      }
+
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_row < actual_nb_row) {
@@ -52427,13 +53362,18 @@ $('#table-row-nb').on('change', function () {
       if (!is_removed) {
         break;
       } else {
-        message = "Ligne supprimée";
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Row deleted";
+        } else {
+          message = "Ligne supprimée";
+        }
+
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       }
     }
   }
 
-  updatecontent();
+  updateContent();
 }); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
@@ -52442,7 +53382,12 @@ $('#table-col-nb').on('change', function () {
   var new_nb_col = $(this).val();
 
   if (new_nb_col < 2) {
-    message = "A quoi sert un tableau sans colonnes ?";
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Why would you want a table without columns ?";
+    } else {
+      message = "Pourquoi un tableau sans colonnes ?";
+    }
+
     Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     $(this).val("2");
     return;
@@ -52455,7 +53400,13 @@ $('#table-col-nb').on('change', function () {
 
     for (var i = 0; i < nb_new_col; i++) {
       addCol("right");
-      message = "Colonne ajoutée";
+
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Column added";
+      } else {
+        message = "Colonne ajoutée";
+      }
+
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     }
   } else if (new_nb_col < actual_nb_col) {
@@ -52474,7 +53425,12 @@ $('#table-col-nb').on('change', function () {
       var col_removed = removeCol(col_cells);
 
       if (col_removed) {
-        message = "Colonne supprimée";
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Column removed";
+        } else {
+          message = "Colonne retirée";
+        }
+
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
       } else {
         break;
@@ -52482,7 +53438,7 @@ $('#table-col-nb').on('change', function () {
     }
   }
 
-  updatecontent();
+  updateContent();
 }); // Ajout de colonne
 
 function addCol(side) {
@@ -52492,29 +53448,38 @@ function addCol(side) {
   var cell_html = element_types["type-unique"]["insert-cell"];
   var rows_header = $("#full-table").find('thead tr').length;
   cell_html = "\n\t\t\t\t" + cell_html + "\n\t\t\t";
-  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t";
-  var is_header;
-
-  if ($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY") {
-    is_header = true;
-  }
+  cell_header_html = "\n\t\t\t\t" + cell_header_html + "\n\t\t\t"; // let is_header;
+  // if($(".content-editable-selected").hasClass('table-header-cell') && parent_tag == "TBODY"){
+  //     is_header = true;
+  // }
 
   if (side == "left") {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertBefore($(tr).find("td")[cell_index]);
+        if ($(tr).find("td").length) {
+          var tbody_insert_before = $(tr).find("td")[cell_index];
+          $(tbody_insert_before).before(cell_html);
+        }
 
         if (index < rows_header) {
-          $(cell_header_html).insertBefore($(tr).find("th")[cell_index]);
+          var thead_insert_before = $(tr).find("th")[cell_index];
+
+          if (!thead_insert_before) {
+            thead_insert_before = $(tr).find("th").first();
+          }
+
+          $(thead_insert_before).before(cell_header_html);
         }
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertBefore($(tr).find("td").first());
+        // $(cell_html).insertBefore($(tr).find("td").first());
+        $(tr).find("td").first().before(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertBefore($(tr).find("th").first());
+          // $(cell_header_html).insertBefore($(tr).find("th").first());
+          $(tr).find("th").first().before(cell_header_html);
         }
       });
     }
@@ -52522,18 +53487,29 @@ function addCol(side) {
     if ($(".content-editable-selected").length) {
       cell_index = $(".content-editable-selected").parent().find(".content-editable-selected").index();
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertAfter($(tr).find("td")[cell_index]);
+        if ($(tr).find("td").length) {
+          var tbody_insert_after = $(tr).find("td")[cell_index];
+          $(tbody_insert_after).after(cell_html);
+        }
 
         if (index < rows_header) {
-          $(cell_header_html).insertAfter($(tr).find("th")[cell_index]);
+          var thead_insert_after = $(tr).find("th")[cell_index];
+
+          if (!thead_insert_after) {
+            thead_insert_after = $(tr).find("th").last();
+          }
+
+          $(thead_insert_after).after(cell_header_html);
         }
       });
     } else {
       $("#full-table tr").each(function (index, tr) {
-        $(cell_html).insertAfter($(tr).find("td").last());
+        // $(cell_html).insertAfter($(tr).find("td").last());
+        $(tr).find("td").last().after(cell_html);
 
         if (index < rows_header) {
-          $(cell_header_html).insertAfter($(tr).find("th").last());
+          //  $(cell_header_html).insertAfter($(tr).find("th").last());
+          $(tr).find("th").last().after(cell_header_html);
         }
       });
     }
@@ -52554,19 +53530,23 @@ function addRow(side) {
 
   if (side == "up") {
     if ($('.content-editable-selected').length) {
-      $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      // $(row_html + "\n\t\t\t").insertBefore($(".content-editable-selected").closest('tr'));
+      $(".content-editable-selected").closest('tr').before(row_html + "\n\t\t");
       inserted_row = $(".content-editable-selected").closest('tr').prev();
     } else {
-      $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      // $(row_html + "\n\t\t\t").insertBefore($("#full-table").find('tbody tr').first());
+      $("#full-table").find('tbody tr').first().before(row_html + "\n\t\t");
       inserted_row = $("#full-table").find('tbody tr').first();
     }
   } // Ligne en dessous
   else if (side == "down") {
       if ($('.content-editable-selected').length) {
-        $(row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($(".content-editable-selected").closest('tr'));
+        $(".content-editable-selected").closest('tr').after(row_html + "\n\t\t");
         inserted_row = $(".content-editable-selected").closest('tr').next();
       } else {
-        $(row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+        // $("\n\t\t\t" + row_html + "\n\t\t\t").insertAfter($("#full-table tbody").find('tr').last());
+        $("#full-table tbody").find('tr').last().after(row_html + "\n\t\t");
         inserted_row = $("#full-table").find('tbody tr').last();
       }
     } // On ajoute les colonnes
@@ -52585,7 +53565,7 @@ function addRow(side) {
       }
     }
 
-    inserted_row.append("\n\t\t\t\t" + cell_html + "\n\t\t\t");
+    inserted_row.append(cell_html + "\n\t\t");
   }
 } // Suppression de ligne
 
@@ -52610,8 +53590,14 @@ function removeRow(row) {
 
 
   if (row_length > 1 && is_filled) {
-    if (confirm('Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?')) {
-      row.remove();
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+    } else {
+      message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+    }
+
+    if (confirm(message)) {
+      $(row).remove();
       return true;
     } // Si on annule la suppression
     else {
@@ -52620,7 +53606,7 @@ function removeRow(row) {
       }
   } // Si il n'y a rien : on supprime
   else {
-      row.remove();
+      $(row).remove();
       return true;
     }
 } // Déplacement de ligne
@@ -52628,9 +53614,23 @@ function removeRow(row) {
 
 function moveRow(side) {
   if (side == "up") {
-    $(selected_row).insertBefore(previous_row);
+    // $(selected_row).insertBefore(previous_row);
+    $(selected_row).find('td, th').each(function (index, element) {
+      var previous_cell = previous_row.find('td, th')[index];
+      var previous_text = $(previous_cell).find('span').text();
+      var actual_text = $(this).find('span').text();
+      $(previous_cell).find('span').text(actual_text);
+      $(this).find('span').text(previous_text);
+    });
   } else if (side == "down") {
-    $(selected_row).insertAfter(next_row);
+    // $(selected_row).insertAfter(next_row);
+    $(selected_row).find('td, th').each(function (index, element) {
+      var next_cell = next_row.find('td, th')[index];
+      var next_text = $(next_cell).find('span').text();
+      var actual_text = $(this).find('span').text();
+      $(next_cell).find('span').text(actual_text);
+      $(this).find('span').text(next_text);
+    });
   }
 } // Déplacement de colonne
 
@@ -52642,39 +53642,47 @@ function moveCol(side) {
 
   if (side == "left") {
     rows.each(function () {
-      cols = $(this).children('th, td');
-      cols.eq(col_id).detach().insertBefore(cols.eq(col_id - 1));
+      cols = $(this).children('td, th');
+      var other_text = cols.eq(col_id - 1).find('span').text();
+      var actual_text = cols.eq(col_id).find('span').text();
+      cols.eq(col_id).find('span').text(other_text);
+      cols.eq(col_id - 1).find('span').text(actual_text);
     });
+    $(previous_cell).find("span").focus();
   } else if (side == "right") {
     rows.each(function () {
-      cols = $(this).children('th, td');
-      cols.eq(col_id).detach().insertAfter(cols.eq(col_id + 1));
+      cols = $(this).children('td, th');
+      var other_text = cols.eq(col_id + 1).find('span').text();
+      var actual_text = cols.eq(col_id).find('span').text();
+      cols.eq(col_id).find('span').text(other_text);
+      cols.eq(col_id + 1).find('span').text(actual_text);
     });
+    $(next_cell).find("span").focus();
   }
 }
 
 function moveCell(side) {
-  var text_cell = $(".content-editable-selected").text();
+  var text_cell = $(".content-editable-selected").find('span').text();
   var text_other;
   var other_cell;
 
   if (side == "up") {
     other_cell = $(".content-editable-selected").parent().prev().find('td, th')[selected_cell_index];
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   } else if (side == "down") {
     other_cell = $(".content-editable-selected").parent().next().find('td, th')[selected_cell_index];
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   } else if (side == "left") {
     other_cell = $(".content-editable-selected").prev();
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   } else if (side == "right") {
     other_cell = $(".content-editable-selected").next();
-    text_other = $(other_cell).text();
+    text_other = $(other_cell).find('span').text();
   }
 
-  $(".content-editable-selected").text(text_other);
-  $(other_cell).text(text_cell);
-  $(other_cell).focus();
+  $(".content-editable-selected span").text(text_other);
+  $(other_cell).find('span').text(text_cell);
+  $(other_cell).find('span').focus();
 }
 
 function mergeCell(side, cell, other_cell) {
@@ -52708,8 +53716,8 @@ function mergeCell(side, cell, other_cell) {
     $(other_cell).detach();
   }
 
-  $('.content-editable-selected').focus();
-  updatecontent();
+  $('.content-editable-selected span').focus();
+  updateContent();
 }
 
 function splitCell() {
@@ -52752,14 +53760,21 @@ function removeCol(cells) {
     }); // Si la ligne est remplie : on demande confirmation
 
     if (is_filled) {
-      if (confirm('Attention : il y a du contenu dans la colonne en question. Voulez-vous vraiment supprimer ?')) {
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+      } else {
+        message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+      }
+
+      if (confirm(message)) {
         cells.forEach(function (item, index) {
           var actual_cell = item;
 
           if (actual_cell) {
-            actual_cell.remove();
+            $(actual_cell).remove();
           }
         });
+        $(".element_delete").prop('disabled', true);
         return true;
       } // Si on annule la suppression
       else {
@@ -52772,9 +53787,10 @@ function removeCol(cells) {
           var actual_cell = item;
 
           if (actual_cell) {
-            actual_cell.remove();
+            $(actual_cell).remove();
           }
         });
+        $(".element_delete").prop('disabled', true);
         return true;
       }
   } else {
@@ -52788,7 +53804,7 @@ $('.cell-action').on('click', function () {
   var nb_row = $('#table-row-nb').val(); // Vider la case
 
   if (element_action == "empty-cell") {
-    $('.content-editable-selected').text(""); // DEPLACER LIGNE VERS LE HAUT
+    $('.content-editable-selected').find('span').text(""); // DEPLACER LIGNE VERS LE HAUT
   } else if (element_action == "move-row-up") {
     moveRow("up"); // DEPLACER LIGNE VERS LE BAS
   } else if (element_action == "move-row-down") {
@@ -52809,7 +53825,12 @@ $('.cell-action').on('click', function () {
     if ($('.content-editable-selected').next().length) {
       mergeCell("row", $('.content-editable-selected'), $('.content-editable-selected').next());
     } else {
-      message = "Fusion impossible : pas de case à droite";
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Can't merge : no cell next to this one";
+      } else {
+        message = "Fusion impossible : pas de case à droite";
+      }
+
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // MERGE DOWN
 
@@ -52819,7 +53840,12 @@ $('.cell-action').on('click', function () {
     if (other_cell.length) {
       mergeCell("col", $('.content-editable-selected'), other_cell[0]);
     } else {
-      message = "Fusion impossible : pas de case en bas";
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Can't merge : no cell under to this one";
+      } else {
+        message = "Fusion impossible : pas de case en bas";
+      }
+
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     } // SPLIT
 
@@ -52840,13 +53866,24 @@ $('.cell-action').on('click', function () {
 
       if (col_removed) {
         $('#table-col-nb').val(parseInt(nb_col) - 1);
-        message = "Colonne supprimée";
+
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Deleted column";
+        } else {
+          message = "Colonne supprimée";
+        }
+
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
-        next_element_select.focus();
+        $(next_element_select).find("span").focus();
       }
     } else {
-      message = "A quoi sert un tableau sans colonnes ?";
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Warning : there is some content on the selected row. Do you really want to delete it ?";
+      } else {
+        message = "Attention : il y a du contenu dans la ligne en question. Voulez-vous vraiment supprimer ?";
+      }
+
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
     }
   } // Supprimer la ligne
@@ -52865,20 +53902,30 @@ $('.cell-action').on('click', function () {
 
         if (row_removed) {
           $('#table-row-nb').val(parseInt(nb_row) - 1);
-          message = "Colonne supprimée";
+
+          if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+            message = "Deleted row";
+          } else {
+            message = "Ligne supprimée";
+          }
+
           Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success"); // Quand elle est supprimée, on focus 
 
-          _next_element_select.focus();
+          $(_next_element_select).find('span').focus();
         }
       } else {
-        message = "A quoi sert un tableau sans lignes ?";
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Why would you want a table without rows ?";
+        } else {
+          message = "Pourquoi un tableau sans lignes ?";
+        }
+
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
       }
     }
 
-  console.log($('.content-editable-selected'));
-  $('.content-editable-selected').focus();
-  updatecontent();
+  $('.content-editable-selected span').focus();
+  updateContent();
 }); // ANCHOR Ajout d'un élément
 
 $('.add-element').on('click', function () {
@@ -52914,7 +53961,12 @@ $('.add-element').on('click', function () {
         $('#full-table tfoot tr').append(cell_html);
       }
 
-      message = "Pied de tableau ajouté";
+      if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+        message = "Pied de tableau ajouté";
+      } else {
+        message = "Table footer added";
+      }
+
       Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
     } else {
       // On enlève le footer (déjà activé)
@@ -52928,7 +53980,7 @@ $('.add-element').on('click', function () {
       $('#full-table thead').append(element_types["type-container"]["insert-row"]);
       $('#full-table thead tr').append(element_types["type-unique"]["insert-header-col"]);
       $('#full-table thead th').first().addClass("content-editable-selected");
-      $(".content-editable-selected").focus();
+      $(".content-editable-selected span").focus();
       addRow("down");
       $('#full-table thead tr').first().remove();
     } else {
@@ -52937,7 +53989,12 @@ $('.add-element').on('click', function () {
           removeRow($(this));
         });
       } else {
-        message = "Veuillez d'abord ajouter des en-têtes verticales.";
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Please add the lateral headers first";
+        } else {
+          message = "Veuillez d'abord ajouter des en-têtes verticales";
+        }
+
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
@@ -52952,11 +54009,11 @@ $('.add-element').on('click', function () {
       _rows.each(function (index) {
         if (index >= rows_header) {
           var new_header = $(this).find('th, td').first();
-          var old_text = $(new_header).text();
+          var old_text = $(new_header).find('span').text().trim();
           var new_cell_html = element_types["type-unique"]["insert-header-row"];
           $(new_header).replaceWith(new_cell_html);
-          $(new_header).text(old_text);
-          $(this).find('th').first().text(old_text);
+          $(new_header).find('span').find('span').text(old_text);
+          $(this).find('th').first().find('span').text(old_text);
         }
       });
     } else {
@@ -52964,26 +54021,31 @@ $('.add-element').on('click', function () {
         _rows.each(function (index) {
           if (index >= rows_header) {
             var new_cell = $(this).find('th, td').first();
-            var old_text = $(new_cell).text();
+            var old_text = $(new_cell).find('span').text().trim();
             var new_cell_html = element_types["type-unique"]["insert-cell"];
             $(new_cell).replaceWith(new_cell_html);
-            $(this).find('td').first().text(old_text);
+            $(this).find('td').first().find('span').text(old_text);
           }
         });
       } else {
-        message = "Veuillez d'abord ajouter des en-têtes horizontales.";
+        if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+          message = "Please add the horizontal headers first";
+        } else {
+          message = "Veuillez d'abord ajouter des en-têtes horizontales";
+        }
+
         Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         $(this).prop('checked', 'true');
       }
     }
   }
 
-  $('.content-editable-selected').focus();
-  updatecontent();
+  $('.content-editable-selected span').focus();
+  updateContent();
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {
-  updatecontent();
+  updateContent();
   var post_url = $("#full-table-post").attr('action');
   $.ajax({
     method: "POST",
@@ -52994,39 +54056,54 @@ $('#btn-save-project').on('click', function () {
       "user_id": user_id,
       "title": $('#title-input').val(),
       "description": $('#desc-input').val(),
-      "html": $('#raw-code').val()
+      "html": $('#raw-code').text().trim() // "html": $('#raw-code').find('span').text()
+
     }
   }).done(function (msg) {
-    console.log(msg);
+    // console.log(msg);
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
     console.log(xhr.responseText);
-    console.log(status);
-    console.log(error); // Erreur
+    console.log(status); // console.log($('#raw-code').text().trim());
+    // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');
       $("#title-input").focus();
     }
 
-    message = "Votre projet n'a pas de titre : veuillez remplir le champ en rouge.";
+    if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Some informations are missing : please fill the empty fields.";
+    } else {
+      message = "Il manque des informations à votre projet : veuillez remplir les champs manquants.";
+    }
+
     Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 }); // ANCHOR Action sur l'élement
 
 var element_select;
 $(document.body).off('keyup') // ré-initialisation
+.on('click', 'td, th', function (e) {
+  $(e.target).find('span').focus();
+}) // ré-initialisation
 // Quand on sélectionne un élément éditable
 .on('focus', '[contenteditable=true]', function (e) {
   // on récupère l'élément sélectionné et on focus sur l'élément parent
   if (e.target) {
     $(".content-editable-selected").removeClass("content-editable-selected");
     element_selected_container = e.target;
+    $('.text-formatting').prop('disabled', false);
   }
 
-  $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
+
+  if (tag != "title" && tag != "caption") {
+    $(element_selected_container).closest('td, th').addClass("content-editable-selected");
+  } else {
+    $(element_selected_container).addClass("content-editable-selected");
+  }
 
   if (tag != "title" && tag != "caption") {
     // si ce n'est pas le titre ou la caption
@@ -53045,6 +54122,8 @@ $(document.body).off('keyup') // ré-initialisation
     if (parent_tag == "THEAD") {
       $('.side-tool.vertical-tools').hide();
       $('.action-merge-right').attr('disabled', false);
+      $('.aaction-move-row-up').attr('disabled', true);
+      $('.action-move-row-down').attr('disabled', false);
       $('.action-merge-down').attr('disabled', true);
 
       if ($("#full-table thead tr").length < 2) {
@@ -53062,7 +54141,6 @@ $(document.body).off('keyup') // ré-initialisation
           $('#insert-col_left').attr('disabled', true);
           $('.action-merge-right').attr('disabled', true);
           $('.action-merge-down').attr('disabled', false);
-          $('.action-move-col-right').attr('disabled', true);
         } // Si l'élément n'est ni un header horizontal ni vertical
         else {
             $('#insert-col_left').removeAttr('disabled');
@@ -53083,6 +54161,11 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-move-cell-up').attr('disabled', false);
       $('.action-move-row-up').attr('disabled', false);
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-row-up').attr('disabled', true);
+      }
+
       $('#action-move-up').show();
     } // Si il n'y a pas de ligne en dessous, on ne peut pas le déplacer vers le bas
 
@@ -53095,6 +54178,11 @@ $(document.body).off('keyup') // ré-initialisation
     } else {
       $('.action-move-cell-down').attr('disabled', false);
       $('.action-move-row-down').attr('disabled', false);
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-row-down').attr('disabled', true);
+      }
+
       $('#action-move-down').show();
     } // Si il n'y a plus qu'une ligne
 
@@ -53128,12 +54216,12 @@ $(document.body).off('keyup') // ré-initialisation
       }
     }); // Si il n'y a plus qu'une colonne
 
-    if (selected_row[0].cells.length <= 2) {
+    if (selected_row[0].cells && selected_row[0].cells.length <= 2) {
       $('.action-delete-col').attr('disabled', true);
     } else {
       $('.action-delete-col').attr('disabled', false);
     } // Si il n'y a pas de colonne à gauche , on ne peut pas le déplacer vers la gauche
-    // console.log(previous_col);
+    // // console.log(previous_col);
 
 
     if (previous_col.length == 0) {
@@ -53141,24 +54229,29 @@ $(document.body).off('keyup') // ré-initialisation
       $('.action-move-cell-left').attr('disabled', true);
       $('.action-move-col-left').attr('disabled', true);
     } else {
-      $('.action-move-cell-left').attr('disabled', false);
       $('.action-move-col-left').attr('disabled', false);
+      $('.action-move-cell-left').attr('disabled', false);
       $('#action-move-left').show();
     } // Si il n'y a pas de colonne à droite, on ne peut pas le déplacer vers la droite
-    // console.log(next_col);
+    // // console.log(next_col);
 
 
     if (next_col.length == 0) {
       $('.action-move-cell-right').attr('disabled', true);
-      $('.action-move-col-right').attr('disabled', true);
       $('#action-move-right').hide();
       $('.action-merge-right').attr('disabled', true);
+      $('.action-move-col-right').attr('disabled', true);
     } else {
       $('.action-move-cell-right').attr('disabled', false);
       $('#action-move-right').show();
 
       if (!$('.content-editable-selected').hasClass('table-header-cell')) {
         $('.action-move-col-right').attr('disabled', false);
+      }
+
+      if (parent_tag == "THEAD") {
+        $('.action-move-col-right').attr('disabled', true);
+        $('.action-move-col-left').attr('disabled', true);
       }
     } // Si il n'y a pas de cellule adjacente ; pas de merge
 
@@ -53180,19 +54273,19 @@ $(document.body).off('keyup') // ré-initialisation
     $('.side-tool').hide();
   }
 
-  updatecontent();
+  updateContent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
-  $('#table-creator-title').val($('#table-title').text());
-  updatecontent();
+  $('#table-creator-title').val($('#table-title').text().trim());
+  updateContent();
 }).on('keyup', '#table-caption', function () {
-  $('#table-creator-caption').val($('#table-caption span').text());
-  updatecontent();
+  $('#table-creator-caption').val($('#table-caption span').text().trim());
+  updateContent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
   $('.side-tool').hide();
-  updatecontent();
+  updateContent();
 }); // ANCHOR Fonction Undo/Redo suppression
 
 function command(instance) {
@@ -53221,7 +54314,7 @@ var deletecommand = new command({
 }); // ANCHOR Mise en tablee du texte (gras, italic, underline...)
 
 $('.text-formatting').on("click", function () {
-  // TODO NS_ERROR_FAILURE
+  // NS_ERROR_FAILURE
   var is_text_selected;
 
   if (window.getSelection().toString().length) {
@@ -53242,7 +54335,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'element-italic':
@@ -53256,7 +54349,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'element-underline':
@@ -53270,26 +54363,26 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-left':
       $('.content-editable-selected').attr('style', 'text-align: left');
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-center':
       $('.content-editable-selected').attr('style', 'text-align: center');
-      updatecontent();
+      updateContent();
       break;
 
     case 'justify-right':
       $('.content-editable-selected').attr('style', 'text-align: right');
-      updatecontent();
+      updateContent();
       break;
   }
 
-  updatecontent();
+  updateContent();
 }); // ANCHOR Theme
 
 $('input[name="theme"]').on('change', function () {
@@ -53298,8 +54391,14 @@ $('input[name="theme"]').on('change', function () {
 }); // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
-  message = "Code copié !";
-  $(".copy-container button").text("Copier");
+  if (_js_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+    message = "Code copied !";
+    $(".copy-container button").text("Copy");
+  } else {
+    message = "Code copié !";
+    $(".copy-container button").text("Copier");
+  }
+
   $(this).text(message);
   Object(_js_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message);
 });

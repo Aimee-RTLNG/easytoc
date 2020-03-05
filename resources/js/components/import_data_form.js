@@ -1,5 +1,5 @@
 // Imports
-import { alertMsg } from "../app";
+import { alertMsg, lang } from "../app";
 import { getOldContent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
 
 // Variables
@@ -70,8 +70,12 @@ $('#import-data').on('click', function () {
                     success = true;
                 } catch (e) {
                     success = false;
-                    console.log(e);
-                    message = "Votre fichier est invalide. Merci de réessayer.";
+                    // console.log(e);
+                    if( lang == "en"){
+                        message = "Your file has an error : please try again.";
+                    } else {
+                        message = "Votre fichier contient une erreur. Merci de réessayer.";
+                    }
                     alertMsg(message, "error");
                 }
             }
@@ -79,7 +83,11 @@ $('#import-data').on('click', function () {
         }
     }
     else {
-        message = "Format de fichier incorrect";
+        if( lang == "en"){
+            message = "Incorrect file format : only JSON and CSV allowed;";
+        } else {
+            message = "Format de fichier invalide : fichiers JSON et CSV seulement.";
+        }
         alertMsg(message, "error");
     }
 });
@@ -93,7 +101,11 @@ $('#generate-example').on('click', function () {
         .fail(function (jqxhr, textStatus, error) {
             console.log(textStatus);
             console.log(error);
-            message = "Erreur dans le chargement de l'exemple";
+            if( lang == "en"){
+                message = "Error while loading : the example could not be generated";
+            } else {
+                message = "Erreur dans le chargement de l'exemple";
+            }
             alertMsg(message, "error");
         })
 });
@@ -112,7 +124,7 @@ function importData(form) {
     // On enlève le contenu précédent sauf le titre
     $("#full-form .element-container").remove();
     $('.side-tool').hide();
-    $("#actions-interface").hide();
+    $("#actions-interface").addClass('d-none');
 
     // On ajoute les items du formulaire uploadé
     let items_list = form.items;
@@ -150,7 +162,7 @@ function importData(form) {
                 $('.content-editable-selected input, .content-editable-selected textarea').attr('maxlength', items_list[key].maxlength);
                 // Options
                 if (items_list[key].options) {
-                    if (items_list[key].options.includes("required") && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
+                    if (items_list[key].options.indexOf("required") != -1 && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
                         $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required');
                         // Attribut required : petite étoile à côté du label
                         var required_star = element_types["type-special"]["make-required"];
@@ -158,7 +170,7 @@ function importData(form) {
                         $('.content-editable-selected').addClass('field-required');
                         required_count += 1;
                     }
-                    if (items_list[key].options.includes("multiple-choice")) {
+                    if (items_list[key].options.indexOf("multiple-choice") != -1) {
                         $('.content-editable-selected select').attr('multiple', 'multiple');
                     }
                 }
@@ -210,10 +222,18 @@ function importData(form) {
     getOldContent();
 
     if (success) {
-        message = "Données récupérées";
+        if(lang == "en"){
+            message = "Data imported";
+        } else {
+            message = "Données récupérées";
+        }
         alertMsg(message, "success");
     } else {
-        message = "Erreur dans l'importation des données";
+        if(lang == "en"){
+            message = "Error while loading data";
+        } else {
+            message = "Erreur dans l'importation des données";
+        }
         alertMsg(message, "error");
     }
 

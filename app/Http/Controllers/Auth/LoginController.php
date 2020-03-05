@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -72,7 +72,7 @@ class LoginController extends Controller
                 $newUser->provider_id       = $user->id;
                 $newUser->save();            auth()->login($newUser, true);
             }
-            return redirect()->to('/home');
+            return redirect()->to('/');
             // $user->token;
         
         }

@@ -111,9 +111,14 @@ $('#import-data').on('click', function () {
           importData(formatted_json);
           success = true;
         } catch (e) {
-          success = false;
-          console.log(e);
-          message = "Votre fichier est invalide. Merci de réessayer.";
+          success = false; // console.log(e);
+
+          if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+            message = "Your file has an error : please try again.";
+          } else {
+            message = "Votre fichier contient une erreur. Merci de réessayer.";
+          }
+
           Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
         }
       };
@@ -121,7 +126,12 @@ $('#import-data').on('click', function () {
       reader.readAsText($("#imported_data")[0].files[0]);
     }
   } else {
-    message = "Format de fichier incorrect";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Incorrect file format : only JSON and CSV allowed;";
+    } else {
+      message = "Format de fichier invalide : fichiers JSON et CSV seulement.";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 }); // ANCHOR Générer un exemple
@@ -132,7 +142,13 @@ $('#generate-example').on('click', function () {
   }).fail(function (jqxhr, textStatus, error) {
     console.log(textStatus);
     console.log(error);
-    message = "Erreur dans le chargement de l'exemple";
+
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Error while loading : the example could not be generated";
+    } else {
+      message = "Erreur dans le chargement de l'exemple";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   });
 });
@@ -151,7 +167,7 @@ function importData(form) {
 
   $("#full-form .element-container").remove();
   $('.side-tool').hide();
-  $("#actions-interface").hide(); // On ajoute les items du formulaire uploadé
+  $("#actions-interface").addClass('d-none'); // On ajoute les items du formulaire uploadé
 
   var items_list = form.items;
   Object.keys(items_list).forEach(function (key) {
@@ -191,7 +207,7 @@ function importData(form) {
         $('.content-editable-selected input, .content-editable-selected textarea').attr('maxlength', items_list[key].maxlength); // Options
 
         if (items_list[key].options) {
-          if (items_list[key].options.includes("required") && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
+          if (items_list[key].options.indexOf("required") != -1 && element_type_name != "insert-one_answer" && element_type_name != "insert-many_answer") {
             $('.content-editable-selected input, .content-editable-selected textarea, .content-editable-selected select').attr('required', 'required'); // Attribut required : petite étoile à côté du label
 
             var required_star = _form__WEBPACK_IMPORTED_MODULE_1__["element_types"]["type-special"]["make-required"];
@@ -200,7 +216,7 @@ function importData(form) {
             required_count += 1;
           }
 
-          if (items_list[key].options.includes("multiple-choice")) {
+          if (items_list[key].options.indexOf("multiple-choice") != -1) {
             $('.content-editable-selected select').attr('multiple', 'multiple');
           }
         } // Type de réponse input text (email, nombre...)
@@ -254,10 +270,20 @@ function importData(form) {
   Object(_form__WEBPACK_IMPORTED_MODULE_1__["getOldContent"])();
 
   if (success) {
-    message = "Données récupérées";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Data imported";
+    } else {
+      message = "Données récupérées";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
   } else {
-    message = "Erreur dans l'importation des données";
+    if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
+      message = "Error while loading data";
+    } else {
+      message = "Erreur dans l'importation des données";
+    }
+
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 
@@ -268,7 +294,7 @@ function importData(form) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!***********************************************************!*\
   !*** multi ./resources/js/components/import_data_form.js ***!
   \***********************************************************/
@@ -280,4 +306,4 @@ module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resour
 
 /***/ })
 
-},[[3,"/js/manifest","/js/vendor"]]]);
+},[[4,"/js/manifest","/js/vendor"]]]);

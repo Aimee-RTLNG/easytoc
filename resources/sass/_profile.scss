@@ -1,12 +1,25 @@
 .compte-page {
     background-color: $gris-clair;
 }
+.modif-compte {
+    .help-block {
+        color: $red;
+    }
+    .warning-block {
+        color: $bleu-fonce;
+    }
+}
 .full-list {
     overflow: hidden;
 }
 .profile_content {
     padding-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
+
+    .filter-name{
+        width: 200px;
+    }
+
     &__list-crea {
         width: 250px;
         max-width: 250px;
@@ -32,12 +45,8 @@
         margin-bottom: 40px;
     }
     &__options {
-        @include flex-row-start-center;
+        @include flex-row-between-center;
         width: 100%;
-        & > div {
-            flex: 1 1;
-            height: 50px;
-        }
     }
     &__sort {
         @include flex-row-between-center;
@@ -49,25 +58,12 @@
             border-radius: 0px;
             @include shadow-box;
         }
-        .filter-name {
-            height: 100%;
-            width: 240px;
-            position: relative;
-            svg {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 9px;
-                color: #CACACA;
-            }
-        }
         input {
             padding-left: 30px;
             height: 100%;
             width: 100%;
             color: $gris;
             border: none;
-            @include shadow-box;
             &::placeholder {
                 color: #CACACA;
             }
@@ -85,14 +81,14 @@
     width: 10px;
     height: 10px;
     border-radius: 30px;
-    &[data-type="Menu"] {
-        background-color: rgb(226, 95, 95);
+    &[data-type="Menu"], &[data-type="menu"] {
+        background-color: rgb(207, 24, 24);
     }
-    &[data-type="Table"] {
-        background-color: rgb(90, 180, 68);
+    &[data-type="Table"], &[data-type="table"] {
+        background-color: rgb(5, 221, 5);
     }
     &[data-type="Form"], &[data-type="form"] {
-        background-color: rgb(43, 139, 177);
+        background-color: rgb(2, 46, 170);
     }
 }
 .all_types {
@@ -125,8 +121,9 @@
 }
 
 .list-filters {
-    margin-left: 10px;
     display: flex;
+    border: 2px solid $bleu;
+    border-radius: .5rem;
     .btn {
         min-width: 77px;
         border: none;
@@ -137,19 +134,22 @@
         font-size: 1.5rem;
         line-height: 1.2rem;
         @include flex-col-center-center;
-        @include shadow-box;
-        -webkit-box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
-        -moz-box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
-        box-shadow: inset 15px 0px 24px -22px rgba(0,0,0,0.51);
+        border-radius: 0;
+        &:not(:last-child) {
+            border-right: 2px solid $bleu;
+        }
         span {
             margin-top: 5px;
         }
     }
-    .btn:hover {
-        background-color: #ddd;
+    .btn:hover, .btn:focus {
+        background-color: rgba($bleu, 0.2);
+    }
+    .btn.active:focus {
+        background-color: rgba($bleu, 0.8);
     }
     .btn.active {
-        background-color: #666;
+        background-color: $bleu;
         color: white;
     }
 }
@@ -158,14 +158,17 @@
     font-size: 1.4rem;
 }
 .dashboard {
-    min-height: 360px;
+    // min-height: 360px;
     @include shadow-box;
-    background-color: $gris-clair;
-    padding: 35px 35px 20px 0px;
-    border-radius: 12px;
+    background-color: white;
+    padding: 15px 0px;
+    border-radius: 10px;
     font-size: 2.0rem;
     @include expletus;
     font-weight: bold;
+    .btn-delete-def {
+        font-size: 1.6rem;
+    }
     &__title {
         padding-left:45px;
         font-weight: 700;
@@ -207,15 +210,17 @@
         font-weight: 700;
         color: $dark;
         background-color: $gris-clair;
-        @include shadow-box;
         border: none;
         height: 35px;
     }
     input.form-control {
         font-family: 'Roboto','Arial', sans-serif;
+        &:focus {
+            border: 3px $bleu solid;
+        }
     }
     &__entete {
-        @include flex-row-around-center;
+        @include flex-row-center;
         margin-bottom: 20px;
         &__picto {
             height: 40px;
@@ -239,7 +244,8 @@
         color: white;
     }
     &__btn-save {
-        margin-top: 30px;
+        margin-top: 10px;
+        margin-bottom: 25px;
     }
 }
 .formInfoSend {
@@ -249,16 +255,22 @@
 // Bloc de créations 
 .crea-item  {
     position: relative;
-    background-color: white;
-    border-radius: 20px;
-    padding: 30px 20px 20px 40px;
-    margin-bottom: 30px;
+    border-radius: 0;
+    background-color: rgb(230, 241, 253);
+    &:nth-child(2n){
+        background-color: white;
+    }
+    padding: 20px 0px 20px 40px;
+    margin-bottom: 10px;
     &__entete {
         @include flex-col-between-start;
         &__title {
             font-size: 2.5rem;
             @include expletus;
             font-weight: 700;
+            &:hover, &:focus{
+                color: $bleu;
+            }
         }
         &__under {
             height: 4px;
@@ -296,13 +308,14 @@
             width: 100%;
             padding: 2px 6px;
             min-width: 130px;
+            margin-bottom: 5px;
             p {
                 margin-left: 6px;
             }
         }
         .btn-gris{
             background-color: $gris-clair;
-            &:hover {
+            &:hover, &:focus {
                 background-color: $gris-clair-hover;
             }
         }
@@ -334,6 +347,14 @@
     color: white;
     background-color: $red;
 }
+.start-project-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media(max-width: 991px) {
+        justify-content: flex-start;
+    }
+}
 .fleche-plus {
     display: none;
     position: absolute;
@@ -363,7 +384,7 @@
         height: 66px;
         transition: height 0.5s ease;
         &.open {
-            height: 610px;
+            height: 700px;
         }
         &__entete {
             justify-content: flex-start;
@@ -375,6 +396,11 @@
         }
     }
 
+}
+@media (max-width: 1200px) {
+    .crud_btn {
+        margin-left: -10px;
+    }
 }
 @include media-breakpoint-down(sm) {
     .dashboard {
@@ -403,6 +429,9 @@
     }
     .list-filters {
         margin-left: 0px;
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        }
         .btn {
             flex: 1 1;
         }
@@ -426,16 +455,27 @@
             @include flex-row-between-center;
         }
         .btn:not(.btn-gris) {
+            margin-bottom: 5px;
             justify-content: center;
             min-width: 50px;
             width: 50px;
-            margin-bottom: 0px;
             margin-right: 6px;
             p {
                 display: none;
             }
         }
     }
+}
+.crud_btn > *:focus {
+    border: 3px $blue solid;
+}
+.crud_btn {
+    .btn-danger:focus {
+        box-shadow: 0 0 0 0.3rem rgba($red, 0.5);
+    }
+}
+.see-content-button:focus{
+    color: $bleu-fonce;
 }
 @include media-breakpoint-down(xs) {
     .profile_content .select-home .dropdown-menu.show {
@@ -450,7 +490,7 @@
         .btn, .filter-name {
             width: 100%;
             height: 50%;
-            margin-bottom: 5px;
+            margin-top: 5px;
         }
         .btn-filter-date {
             @include flex-row-between-center;
@@ -467,7 +507,7 @@
 
 @media (max-width: 368px) {
     .mon-compte.open {
-        height: 644px;
+        height: 750px;
     }
     .mon-compte__entete {
         padding-right: 20px;

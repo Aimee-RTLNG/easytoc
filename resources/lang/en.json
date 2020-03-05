@@ -45,12 +45,12 @@
 
     "###____PAGE_____ACCUEIL_____###":"########################################################",
     "Laissez nous vous aider à rendre votre site web plus accessible": "Let us help you make your website more accessible",
-    "Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. Easy to C peut vous aider dans cette démarche.": "For some people, accessing web resources is difficult and painful. Making sites accessible is important so that everyone, regardless of their condition, has equal access to knowledge and skills. Easy to C can help you in this process.",
+    "Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. EasytoC peut vous aider dans cette démarche.": "For some people, accessing web resources is difficult and painful. Making sites accessible is important so that everyone, regardless of their condition, has equal access to knowledge and skills. EasytoC can help you in this process.",
     "Menu création d´éléments HTML": "Menu creation of HTML elements",
     "Commencer un projet": "Start a project",
     "Pourquoi rendre son site accessible ?" : "Why make your site accessible?",
-    "Comment Easy to C peut m’aider ?" : "How can Easy to C help me ?",
-    "Comment fonctionnent les outils Easy to C ?": "How do Easy to C tools work?",
+    "Comment EasytoC peut m’aider ?" : "How can EasytoC help me ?",
+    "Comment fonctionnent les outils EasytoC ?": "How do EasytoC tools work?",
     "Audio-Description": "Audio-Description",
     "Activer les sous-titres" : "Activate subtitles",
     "Nous vous proposons trois outils pour vous faciliter la vie" : "We offer three tools to make your life easier",
@@ -162,16 +162,17 @@
     "Réinitialiser mon mot de passe": "Reset Password",
     "Envoyer un lien de réinitialisation": "Send Password Reset Link",
     "Mettre à jour mon mot de passe": "Reset my password",
+    "Adresse e-mail déjà utilisée : choisissez une autre adresse.": "Email adress already in use !",
 
     "###____PAGE_____CREATION_____FORM____###":"########################################################",
     "Thème du formulaire": "Form's theme",
-    "Titre du formulaire": "Form title",
-    "Lien de traitement des données": "Form's data process URL (à vérifier)",
+    "Titre du formulaire": "Form's title",
+    "Lien de traitement des données": "Form's data process URL",
     "Méthode": "Method",
     "Option du formulaire": "Form's option",
     "Bouton de réinitialisation": "Reset possibility",
     "Ajouter une question": "Add a question",
-    "Nouvelle section": "New section (à vérifier)",
+    "Nouvelle section": "New section",
     "Paragraphe": "Paragraph",
     "Lien": "Link",
     "Liste numérotée": "Ordered list",
@@ -186,6 +187,10 @@
     "Exemple de question" : "Example of question",
     "Exemple de réponse courte" : "Short answer",
     "Exemple de réponse longue" : "Long answer",
-    "Type de réponse attendue" : "Excepted answer type"
+    "Type de réponse attendue" : "Excepted answer type",
+    "En-tête" : "Header",
+    "Cellule" : "Cell",
 
+    "###____GLOBAL____PAGE____CREATION____###":"########################################################",
+    "Titre du projet" : "Project's title"
 }

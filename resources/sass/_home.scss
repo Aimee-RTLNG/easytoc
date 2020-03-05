@@ -73,7 +73,7 @@
         }
     }
     &__video {
-        padding-left: 60px;
+        padding-left: 30px;
         height: 100%;
         @include flex-col-center-center;
     }
@@ -103,7 +103,7 @@
     justify-content: center;
     svg {
         cursor: pointer;
-        font-size: 2.5rem;
+        font-size: 36px;
     }
 }
 // Section outils
@@ -111,15 +111,24 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .home-tools {
    &__item {
        @include flex-col-between-center;
         height: 450px;
+        max-width: 100%;
+        width: 100%;
         background-color: $gris-fonce;
         border-radius: 10px;
         color: white;
         padding: 15px 25px;
+        &:focus {
+            border: 4px $bleu solid;
+        }
+        &__descr {
+            max-width: 100%;
+        }
         &__name {
             text-transform: uppercase;
             @include expletus;
@@ -140,6 +149,7 @@
             a {
                 text-align: center;
                 width: 100%;
+                max-width: 100%;
                 justify-content: center;
                 font-size: 2.0rem;
                 &:focus {
@@ -164,6 +174,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .use-list {
     &__item {
@@ -176,6 +187,9 @@
         padding: 15px 19px;
         text-align: center;
         z-index: 2;
+        &:focus {
+            border: 4px #1b6ec2 solid;
+        }
         &__icon {
             height: 59px;
             min-height: 59px;
@@ -279,6 +293,7 @@
 }
 @include media-breakpoint-down(md) { 
     //992
+
     .section-home {
         height: auto;
         padding: 40px 0px;
@@ -290,6 +305,9 @@
         &__title {
             min-width: 85%;
         }
+    }
+    .home-present {
+        padding-bottom: 55px;
     }
     .home-present__txt {
         padding-bottom: 30px;

@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["/js/app"],{
 
-/***/ 5:
+/***/ 7:
 /*!***********************************!*\
   !*** multi ./resources/js/app.js ***!
   \***********************************/
@@ -12,4 +12,4 @@ module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resour
 
 /***/ })
 
-},[[5,"/js/manifest","/js/vendor"]]]);
+},[[7,"/js/manifest","/js/vendor"]]]);

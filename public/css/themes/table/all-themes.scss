@@ -6,42 +6,54 @@ $themes: (
         backgroundTheadColor: rgb(189, 189, 189),
         backgroundTfootColor: rgb(139, 138, 138),
         textColor : black,
-        borderColor : grey
+        headTextColor: black,
+        borderColor : grey,
+        helpMarker : black,
     ),
     black: (
         backgroundColor: rgb(51, 51, 51),
         backgroundTheadColor: rgb(15, 15, 15),
         backgroundTfootColor: rgb(31, 31, 31),
         textColor : white,
-        borderColor : white
+        headTextColor: white,
+        borderColor : #596275,
+        helpMarker : red,
     ),
     green: (
-        backgroundColor: green,
-        backgroundTheadColor: rgb(1, 88, 1),
-        backgroundTfootColor: rgb(1, 58, 1),
-        textColor : white,
-        borderColor : rgb(1, 88, 1)
+        backgroundColor: #D5F2B7,
+        backgroundTheadColor: #38ada9,
+        backgroundTfootColor: #079992,
+        textColor : black,
+        headTextColor: white,
+        borderColor : #079992,
+        helpMarker : black,
     ),
     red: (
-        backgroundColor: red,
+        backgroundColor: #FFE9E9,
         backgroundTheadColor: rgb(151, 0, 0),
         backgroundTfootColor: rgb(116, 1, 1),
-        textColor : white,
-        borderColor : rgb(151, 0, 0)
+        headTextColor: white,
+        textColor : black,
+        borderColor : rgb(116, 1, 1),
+        helpMarker : black,
     ),
     blue: (
-        backgroundColor: rgb(106, 106, 255),
-        backgroundTheadColor: rgb(64, 64, 233),
-        backgroundTfootColor: rgb(72, 72, 228),
-        textColor : white,
-        borderColor : rgb(64, 64, 233),
+        backgroundColor: #98C3DB,
+        backgroundTheadColor: #273c75,
+        backgroundTfootColor: #192a56,
+        textColor : black,
+        headTextColor: white,
+        borderColor : #192a56,
+        helpMarker : black,
     ),
     grey: (
         backgroundColor: grey,
         backgroundTheadColor: rgb(71, 71, 71),
         backgroundTfootColor: rgb(95, 95, 95),
-        textColor : black,
-        borderColor : rgb(71, 71, 71)
+        textColor : white,
+        headTextColor: white,
+        borderColor : black,
+        helpMarker : black,
     )
 );
 
@@ -68,37 +80,69 @@ $themes: (
     @return map-get($theme-map, $key);
 }
 
-
+// AIde interface 
+#content-created-blueprint .theme-black table *:hover {
+    border: 3px dotted red;
+}
 // Styles
+#generated-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+.table-title {
+    font-size: 24px;
+    font-family: 'Arial','Helvetica', sans-serif;
+    font-weight: 500;
+    @include themify($themes) {
+        border-bottom: 2px solid themed('borderColor');
+    }
+}
 
 #full-table {
+    font-family: 'Arial','Helvetica', sans-serif;
+    padding: 20px 0px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
     @include themify($themes) {
       color: themed('textColor');  
       background-color: themed('backgroundColor');  
       border-collapse: collapse;
       width: 100%;
-      overflow: auto;
-
         .table-caption{
+            caption-side: bottom;
             font-size: 15px;
             color: black;
             font-style: italic;
+            border-left: 2px solid themed('borderColor');
+            position: relative;
+            top: 10px;
         }
-
         th{
             background-color: themed('backgroundTheadColor');  
             font-weight: bold;
             border: 2px solid themed('borderColor');
-            min-width: 40px;
+            min-width: 90px;
+            padding: 10px 6px;
+            font-size: 16px;
+            color: themed('headTextColor');
         }
 
         td{
             border: 1px solid themed('borderColor');
-            min-width: 40px;
+            min-width: 90px;
+            padding: 10px 6px;
         }
 
         tfoot td{
             background-color: themed('backgroundTfootColor');  
+            color: themed('headTextColor');
         }
 
     }
