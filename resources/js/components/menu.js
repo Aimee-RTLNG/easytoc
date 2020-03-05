@@ -233,7 +233,6 @@ export function addLink( type ) {
 
     if( type == "sub_link" ){
         menu_length = $( selected_link ).find('ul').children("li").length;
-        console.log ( $( selected_link ).find('ul') );
     } else {
         menu_length = $("#menubar-easytoc").children("li").length;
     }

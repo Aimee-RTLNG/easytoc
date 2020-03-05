@@ -19,8 +19,8 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
          
         {{-- SEO --}}
-        <meta name="title" content="Easy to C - Générateur de menus, tableaux et formulaires">
-        <meta name="description" content="Easy to C est le nouveau générateur de contenu web ! Il vous permet de créer vous même des menus, tableaux et formulaires accessibles.">
+        <meta name="title" content="EasytoC - Générateur de menus, tableaux et formulaires">
+        <meta name="description" content="EasytoC est le nouveau générateur de contenu web ! Il vous permet de créer vous même des menus, tableaux et formulaires accessibles.">
         <meta name="keywords" content="accessibilité, création, génération, tableau, menu, formulaire, accessible, compte, sauvegarde, facile, pratique">
         <meta name="robots" content="index, follow">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -122,7 +122,7 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
-                        <li class="nav-items"><a class="nav-link" >Copyright 2019</a></li>
+                        <li class="nav-items"><a class="nav-link" >Copyright - Tous droits réservés : 2019</a></li>
                     </ul>
                 </div>
             </div>
