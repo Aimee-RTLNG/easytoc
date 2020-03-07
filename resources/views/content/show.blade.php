@@ -77,7 +77,7 @@
         <h3 class="visu__title" tabindex="0">{{ __('Visualisation') }}</h3>
         <div class="row m-0 p-0">
 
-            <div class="content-html-preview col-12">
+            <div class="content-html-preview col-12 my-5 py-5">
                 {!! $content->html !!}
             </div>
 
@@ -86,16 +86,17 @@
         <hr class="py-5">
 
         {{-- Code généré --}}
-        <h3 class="visu__title" tabindex="0">{{ __('Code généré') }}</h3>
+        <div class="d-flex justify-content-between">
+            <h3 class="visu__title" tabindex="0">
+                {{ __('Code généré') }}
+            </h3>
+            <a target="_blank" href="../aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
+                <i class="fa fa-question-circle"></i>
+                {{ __("Besoin d'aide !") }}
+            </a>
+        </div>
         <div class="row m-0 p-0">
 
-            <div class="visu_info">
-                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                <a target="_blank" href="../aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
-                    <i class="fa fa-question-circle"></i>
-                    {{ __("Besoin d'aide !") }}
-                </a>
-            </div>
             <div class="copy-container visu-copy-container w-100">
                 <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}"> 
                     {{ __("Copier") }}
