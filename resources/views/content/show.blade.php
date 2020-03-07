@@ -31,20 +31,22 @@
 
     <div class="entete">
         <h2 class="entete__title">
-            Visualiser mon {{ $content->type["name_fr"] }}
+            {{ __('Visualiser mon ') }} {{ $content->type["name_fr"] }}
         </h2>
         <div class="entete__under"></div>
     </div>
         {{-- Infos prrojet et actions --}}
         <div class="row visualisation__infos">
             <div class="col-lg-7">
-                <div class="content-title">
-                    <h3 class="visu__title">
+                <div class="content-title py-3">
+                    <h2 class="mb-2">{{ __('Titre') }}</h2>
+                    <h3 class="visu__title text-italic pl-5">
                         {{ $content->title }}
                     </h3>
                 </div>
-                <div class="content-description">
-                    <p>
+                <div class="content-description py-3">
+                    <h2 class="mb-2">{{ __('Description') }}</h2>
+                    <p class="pl-5">
                         {{ $content->description }}
                     </p>
                 </div>
@@ -59,8 +61,8 @@
                 <form class="crea-item__btn-delete btn btn-gris btn-form-final" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" value="" class="btn btn-form-final btn-danger delete-content-button">
-                        <div class="rond-i ">
+                    <button type="submit" value="" class="shadow-box btn-delete-def btn btn-danger btn-form-final">
+                        <div class="rond-i crea-item__btns__icon btn--danger">
                             <i class="fa fa-times"></i>
                         </div>
                         {{ __('Supprimer') }}
@@ -69,9 +71,11 @@
             </div>
         </div>
 
+        <hr class="py-3">
+
         {{-- Visualisation --}}
         <h3 class="visu__title" tabindex="0">{{ __('Visualisation') }}</h3>
-        <div class="row">
+        <div class="row m-0 p-0">
 
             <div class="content-html-preview col-12">
                 {!! $content->html !!}
@@ -79,9 +83,11 @@
 
         </div>
 
+        <hr class="py-5">
+
         {{-- Code généré --}}
         <h3 class="visu__title" tabindex="0">{{ __('Code généré') }}</h3>
-        <div class="row">
+        <div class="row m-0 p-0">
 
             <div class="visu_info">
                 <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
@@ -102,7 +108,10 @@
             @elseif ($content->type_id == 2)
                 <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/table/all-themes.css') }}" rel="stylesheet"></xmp>
             @elseif ($content->type_id == 3)
-                <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet"></xmp>
+                <div class="code-display" id="css-link">
+                    <xmp><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                    <xmp><script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script></xmp>
+                </div>
             @endif
             <h3 class="mt-3 ml-2">
                 {{ __("Voici le code brut généré: copiez le où vous le souhaitez, mais ne le modifiez pas !") }}

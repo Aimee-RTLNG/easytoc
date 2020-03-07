@@ -255,7 +255,7 @@
                                     </a>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
-                                            {{ __("Copier le lien css") }}
+                                            {{ __("Copier le lien CSS et JS") }}
                                         </button>
                                     </div>
                                     <!-- Lien du style à utiliser -->
