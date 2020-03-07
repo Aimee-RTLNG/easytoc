@@ -51059,14 +51059,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg, lang, setSideWindow */
+/*! exports provided: alertMsg, lang */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSideWindow", function() { return setSideWindow; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51189,42 +51188,7 @@ function alertMsg(message, state) {
   }, 7000);
 } // Traduction en JS
 
-var lang = $('html').attr('lang'); // Side tools 
-
-function setSideWindow() {
-  if ($(window).width() >= 992) {
-    if ($(window).scrollTop() > 800) {
-      // Integration aside
-      $('.action-supp').css('width', '240px');
-      $('#actions-interface').removeClass('col-12');
-      $('#actions-interface').addClass('col-3');
-      $('#actions-interface').addClass('p-0'); // ---
-
-      $('.action-supp').css('position', 'fixed');
-      $('.action-supp').css('top', '25px');
-      $('.action-supp').css('max-width', '25%');
-      var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
-      var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
-
-      if (main_bottom - bottom < 435) {
-        var calcul = 435 - (main_bottom - bottom);
-        $('.action-supp').css('top', '-' + calcul + 'px');
-      }
-    } else {
-      $('.action-supp').css('position', 'relative');
-      $('.action-supp').css('top', '0');
-      $('.action-supp').css('max-width', '100%');
-    }
-  } else {
-    // Integration full width
-    $('.action-supp').css('position', 'relative');
-    $('.action-supp').css('max-width', '100%');
-    $('.action-supp').css('width', '100%');
-    $('#actions-interface').removeClass('col-3');
-    $('#actions-interface').removeClass('p-0');
-    $('#actions-interface').addClass('col-12'); // ---
-  }
-} // Copier le contenu du code sur la page visualisation
+var lang = $('html').attr('lang'); // Copier le contenu du code sur la page visualisation
 // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
@@ -51367,6 +51331,9 @@ window.ondragstart = function () {
 $.ajaxSetup({
   cache: false
 });
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 /***/ }),
 
@@ -51501,11 +51468,7 @@ $('#title-input').keypress(function (e) {
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
 // Pourrait donc être remplacé par une liste, des liens etc...
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
-
-$(window).on('scroll', function () {
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
-}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
 // et la bonne structure. 
 // \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
@@ -51722,8 +51685,6 @@ $('.add-element').on('click', function () {
   var element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
 
   addElement(element_type, element_type_name); // on ajoute l'élement
-
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 
 $('#btn-save-project').on('click', function () {
@@ -51773,8 +51734,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   } else {
     $(this).closest('label').focus();
   }
-
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
 .on('click', '.element-container', function (e) {
   if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
@@ -51782,8 +51741,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   } else if (e.target.nodeName == "LEGEND") {
     $(this).find('legend span[contenteditable=true]').focus();
   }
-
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Quand on clique sur une option
 .on('click', '#full-form fieldset label, #full-form select option', function (e) {
   $('.content-editable-selected').removeClass('content-editable-selected');
@@ -51794,7 +51751,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   previous_option = selected_option.prev();
   next_option = selected_option.next();
   refreshMoveButtons(previous_option, next_option, true);
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
 }) // Quand on sélectionne un élément éditable (c'est là le plus important)
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
@@ -51802,7 +51758,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   if (e.target) {
     element_select = e.target; // on ré initialise les classes
 
-    Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
     $(".content-editable-selected").removeClass('content-editable-selected');
     $(".option-selected").removeClass('option-selected');
     selected_option = false;
@@ -51822,7 +51777,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
     refreshMoveButtons(previous_element, next_element, false);
   }
 
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
 
@@ -52357,7 +52311,6 @@ function selectText(element) {
 ; // ANCHOR Fonction d'ajout d'option ( osef ça concerne pas les menus )
 
 function addOption(option_type_parameter) {
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   var option_parent_element = $(".content-editable-selected");
   var option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
 

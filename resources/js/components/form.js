@@ -3,7 +3,6 @@
 // On importe les variables et fonctions externes (qui sont définie dans app.js)
 import { 
     lang,  // la variable lang est soit "en" soit "fr" et permet de définir le contenu des messages
-    setSideWindow, // c'est unn fonction qui permet d'ajuster la side tools box quand on scroll. Comme elle est commune aux trois outils, elle est définie dans app.js
     alertMsg // fonction qui affiche le message pop up en bas à droite
 } from "../app"; 
 
@@ -65,11 +64,6 @@ $('#title-input').keypress(function (e) {
 const tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5",
     "select", "optgroup", "option", "hr", "textarea", "abbr"
 ];
-
-// ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
-$(window).on('scroll', function() {
-    setSideWindow();
-});
 
 // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
@@ -295,7 +289,6 @@ $('.add-element').on('click', function () {
     let element_type = $(this).attr("class"); // récupère le type d'élément à ajouter
     let element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
     addElement(element_type, element_type_name); // on ajoute l'élement
-    setSideWindow();
 });
 
 // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
@@ -348,7 +341,6 @@ $(document.body)
         } else {
             $(this).closest('label').focus();
         }
-        setSideWindow();
     })
 
     // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
@@ -358,7 +350,6 @@ $(document.body)
         } else if (e.target.nodeName == "LEGEND") {
             $(this).find('legend span[contenteditable=true]').focus();
         }
-        setSideWindow();
     })
 
     // Quand on clique sur une option
@@ -374,7 +365,6 @@ $(document.body)
         next_option = selected_option.next();
         refreshMoveButtons(previous_option, next_option, true);
 
-        setSideWindow();
         updatecontent();
     })
 
@@ -386,7 +376,6 @@ $(document.body)
             element_select = e.target;
 
             // on ré initialise les classes
-            setSideWindow();
             $(".content-editable-selected").removeClass('content-editable-selected');
             $(".option-selected").removeClass('option-selected');
             selected_option = false;
@@ -406,7 +395,6 @@ $(document.body)
             refreshMoveButtons(previous_element, next_element, false);
         }
 
-        setSideWindow();
         $(element_selected_container).addClass("content-editable-selected");
 
         let tag = $(this).attr('data-tag');
@@ -899,7 +887,6 @@ function selectText(element) {
 
 // ANCHOR Fonction d'ajout d'option ( osef ça concerne pas les menus )
 export function addOption(option_type_parameter) {
-    setSideWindow();
     let option_parent_element = $(".content-editable-selected");
     let option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
     if (!option_type) {

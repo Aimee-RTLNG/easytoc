@@ -317,8 +317,8 @@ input[type="checkbox"], input[type="radio"]{
     }
 }
 .content-interface {
-    padding: 20px;
-    padding-bottom: 45px;
+    padding: 20px 0;
+    padding-bottom: 30px;
 }
 
 .action-required-cont, .action-multiple__cont {
@@ -345,7 +345,7 @@ input[type="checkbox"], input[type="radio"]{
 .action-supp {
     text-align: center;
     position: relative;
-    width: 240px;
+    margin-right: 10px;
     margin-bottom: 2px;
     @media (max-width: 992px){
         text-align: left;
