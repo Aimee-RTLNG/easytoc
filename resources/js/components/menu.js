@@ -137,8 +137,8 @@ function updatecontent() {
     // lien du logo
     let actual_link = $("#menu-creator-link").val();
     if( actual_link ){
-        $("#menu-logo").css('background-image', "url('"+actual_link+"')");
-        console.log( "url('"+actual_link+"')" );
+        let new_url = "url('" + encodeURI(actual_link) + "')";
+        $("#menu-logo").css('background-image', new_url);
     }
 
     // on récupère le contenu
@@ -148,6 +148,7 @@ function updatecontent() {
     blueprint_content = blueprint_content.replace(/ content-editable-selected/g, "");
     // on remplace les doubles sauts de lignes
     blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
+    blueprint_content = blueprint_content.replace(/&quot;/g, "'");
 
     // on update le code par rapport au blueprint
     $('#raw-code').html(blueprint_content);
