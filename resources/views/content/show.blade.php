@@ -12,7 +12,7 @@
     @if (session('info'))
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-success alert-dismissible">
+            <div class="alert alert-success alert-dismissible" aria-live="assertive" aria-atomic="true">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true" title="{{ __('Fermer') }}">×</button>
                 {{ session('info') }}
             </div>
@@ -86,6 +86,15 @@
         <hr class="py-5">
 
         {{-- Code généré --}}
+        {{-- <h3 class="visu__title mt-4" tabindex="0">{{ __('Code généré') }}</h3>
+        <div class="col-12 ">
+            <div class="visu_info">
+                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                <a target="_blank" href="../aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
+                    <i class="fa fa-question-circle"></i>
+                    {{ __("Besoin d'aide !") }}
+                </a>
+            </div> --}}
         <div class="d-flex justify-content-between">
             <h3 class="visu__title" tabindex="0">
                 {{ __('Code généré') }}
@@ -134,5 +143,6 @@
 @section('pagespecificscripts')
     {{-- <script type="application/javascript" src="{{ URL::asset('js/components/content_view.js') }}"></script> --}}
     {{-- Script PRETTIFY + skin --}}
+    <script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=true&amp;skin=sunburst"></script>
 @endsection

@@ -111,8 +111,10 @@ export function getOldContent() {
     // Lien du logo
     let actual_link = $("#menu-logo").css('background-image');
     if( actual_link ){
-        actual_link = actual_link.replace('url("', "");
-        actual_link = actual_link.replace('")', "");
+        // actual_link = actual_link.replace('url("', "");
+        // actual_link = actual_link.replace('")', "");
+        actual_link = actual_link.replace("url('", "");
+        actual_link = actual_link.replace("')", "");
         $("#menu-creator-link").val(actual_link);
     }
 
@@ -203,6 +205,7 @@ $('#menu-creator-title-display').off().on('click', function () {
 
 // ANCHOR Changement de lien du logo
 $('#menu-creator-link').on('keyup', function () {
+    // $("#menu-logo").css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
     $("#menu-logo").css('background-image', 'url('+$('#menu-creator-link').val().trim()+')');
     updatecontent();
 });
@@ -212,6 +215,8 @@ $('#menu-creator-link-display').off().on('click', function () {
    if( $(this).is(":checked") ){
      $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
      $('#full-menu .menu-identity #menu-logo').css('background-image', 'url('+$('#menu-creator-link').val().trim()+')');
+    //  $('#full-menu .menu-identity #menu-logo').css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
+
      if( !$('#menu-creator-title-display').is(":checked") ){
         $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
         $('#full-menu .menu-identity').removeClass('hidden');
@@ -245,7 +250,7 @@ export function addLink( type ) {
         menu_length = $("#menubar-easytoc").children("li").length;
     }
     
-    if( menu_length > 8 ){
+    if( menu_length > 7 ){
         message = "Vous ne pouvez pas rajouter plus de liens";
         if (lang == "en" ){
             message = "You already have too much links !"

@@ -25,7 +25,7 @@ nav.navbar{
                     flex-direction: column;
                     padding-bottom: 15px;
                     .menu-connect{
-                        padding: 0px 10px;
+                        padding: 0px 25px;
                         justify-content: center;
                     }
                 }
@@ -42,13 +42,18 @@ nav.navbar{
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    height: 100%;
                     transition: all .2s;
                 }
             }
 
             .menu-lang{
-                justify-content: space-evenly;
+                // justify-content: space-evenly;
+                // min-height: 65px;
+                // min-width: 105px;
+                justify-content: space-around;
                 min-height: 65px;
+                min-width: 80px;
             }
 
         }

@@ -24,6 +24,9 @@
     .nav-link {
         padding: 0px 16px;
     }
+    & > .nav {
+        justify-content: center;
+    }
     .nav-items:not(:first-child) .nav-link{
         border-left: 1px solid white;
     }

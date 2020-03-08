@@ -1,3 +1,7 @@
+#full-form {
+  font-size: 14px;
+}
+
 #full-form h1 {
   font-family: sans-serif;
   font-weight: lighter;
@@ -22,13 +26,21 @@
 #generated-form {
   margin: 20px 0px;
   font-family: Arial, Helvetica, sans-serif;
+  min-width: 225px;
 }
 
 #form-title {
+  font-size: 28px;
   padding: 25px;
   margin: 0 -21px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  #form-title {
+    font-size: 20px;
+  }
 }
 
 .theme-white #form-title {
@@ -187,31 +199,31 @@
 .theme-black #full-form select[multiple]:focus option:checked {
   background: #222 -webkit-gradient(linear, left bottom, left top, from(#222), to(#222));
   background: #222 linear-gradient(0deg, #222 0%, #222 100%);
-  color: black;
+  color: white;
 }
 
 .theme-green #full-form select[multiple]:focus option:checked {
   background: #366E3B -webkit-gradient(linear, left bottom, left top, from(#366E3B), to(#366E3B));
   background: #366E3B linear-gradient(0deg, #366E3B 0%, #366E3B 100%);
-  color: #366E3B;
+  color: white;
 }
 
 .theme-red #full-form select[multiple]:focus option:checked {
   background: #C90000 -webkit-gradient(linear, left bottom, left top, from(#C90000), to(#C90000));
   background: #C90000 linear-gradient(0deg, #C90000 0%, #C90000 100%);
-  color: #D74A4A;
+  color: white;
 }
 
 .theme-blue #full-form select[multiple]:focus option:checked {
   background: #155595 -webkit-gradient(linear, left bottom, left top, from(#155595), to(#155595));
   background: #155595 linear-gradient(0deg, #155595 0%, #155595 100%);
-  color: #1B6EC2;
+  color: white;
 }
 
 .theme-grey #full-form select[multiple]:focus option:checked {
   background: #3A3A3A -webkit-gradient(linear, left bottom, left top, from(#3A3A3A), to(#3A3A3A));
   background: #3A3A3A linear-gradient(0deg, #3A3A3A 0%, #3A3A3A 100%);
-  color: #787878;
+  color: white;
 }
 
 #full-form label[data-tag="option"] {
@@ -250,39 +262,39 @@
 }
 
 .theme-blue #full-form a {
-  color: black;
+  color: #155595;
 }
 
 .theme-grey #full-form a {
   color: black;
 }
 
-#full-form a:hover, #full-form a:focus, #full-form a:focus {
+#full-form a:hover, #full-form a:focus {
   text-decoration: underline;
   font-size: inherit;
 }
 
-.theme-white #full-form a:hover, .theme-white #full-form a:focus, .theme-white #full-form a:focus {
+.theme-white #full-form a:hover, .theme-white #full-form a:focus {
   color: black;
 }
 
-.theme-black #full-form a:hover, .theme-black #full-form a:focus, .theme-black #full-form a:focus {
+.theme-black #full-form a:hover, .theme-black #full-form a:focus {
   color: black;
 }
 
-.theme-green #full-form a:hover, .theme-green #full-form a:focus, .theme-green #full-form a:focus {
+.theme-green #full-form a:hover, .theme-green #full-form a:focus {
   color: #366E3B;
 }
 
-.theme-red #full-form a:hover, .theme-red #full-form a:focus, .theme-red #full-form a:focus {
+.theme-red #full-form a:hover, .theme-red #full-form a:focus {
   color: #C90000;
 }
 
-.theme-blue #full-form a:hover, .theme-blue #full-form a:focus, .theme-blue #full-form a:focus {
-  color: black;
+.theme-blue #full-form a:hover, .theme-blue #full-form a:focus {
+  color: #155595;
 }
 
-.theme-grey #full-form a:hover, .theme-grey #full-form a:focus, .theme-grey #full-form a:focus {
+.theme-grey #full-form a:hover, .theme-grey #full-form a:focus {
   color: black;
 }
 
@@ -333,7 +345,7 @@
 #full-form .form-control {
   font-family: Arial, Helvetica, sans-serif;
   display: block;
-  max-width: 100%;
+  max-width: 95%;
   width: 100%;
   margin-bottom: 20px;
   padding: .375rem .75rem;
@@ -458,7 +470,7 @@
 
 #form-actions {
   width: 90vw;
-  max-width: 100%;
+  max-width: 600px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -469,6 +481,14 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 30px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media (max-width: 575px) {
+  #form-actions input:first-child {
+    margin-bottom: 5px;
+  }
 }
 
 #form-actions input {

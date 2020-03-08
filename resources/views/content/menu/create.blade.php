@@ -31,7 +31,7 @@
         <h2 class="entete__title">{{ __('Créer un menu') }}</h2>
         <div class="entete__under"></div>
     </div>
-    <div class="panel-body mb-3">
+    <div class="panel-body interface-creation mb-3">
         <!-- Display Validation Errors -->
         @include('common.errors')
 
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                 </form>
@@ -130,25 +130,25 @@
             <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
-                <div class="pb-3 row m-0" role="region">
-                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
-                        <div class="col pl-0">
+                <div class="pb-3 row" role="region">
+                    <div class="col-md-6 d-flex align-items-end p-0 mb-3-md" role="region">
+                        <div class="col">
                             <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre de menu') }}</label>
                             <input type="text" name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre de menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre de menu') }}" autocomplete="off"/>
                         </div>
-                        <div>
-                            <input type="checkbox" name="menu-creator-title-display" id="menu-creator-title-display" checked autocomplete="off" />
+                        <div class="cont-checkbox">
+                            <input class="check-box" type="checkbox" name="menu-creator-title-display" id="menu-creator-title-display" checked autocomplete="off" />
                             <label class="creator-panel__title-display" for="menu-creator-title-display">{{ __('Afficher le titre') }}</label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
+                    <div class="col-md-6 d-flex align-items-end mb-3-md p-0" role="region">
                         <div class="col">
-                            <label class="creator-panel__link" for="menu-creator-link">{{ __('Logo de menu') }}</label>
+                            <label class="creator-panel__link creator-panel__title" for="menu-creator-link">{{ __('Logo de menu') }}</label>
                             <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.png') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
-                        <div>
-                            <input type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
+                        <div class="cont-checkbox">
+                            <input class="check-box" type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
                             <label class="creator-panel__link-display" for="menu-creator-link-display">{{ __('Afficher le logo') }}</label>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                             {{ __('Lien simple') }}
                         </button>
                         <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Rubrique avec sous-menu') }}" id="insert-sub_menu" role="listitem" title="{{ __("Ajouter une rubrique avec sous-menu") }}">
-                            <i class="fa fa-heading"></i>
+                            <i class="fas fa-chevron-circle-down"></i>
                             {{ __('Rubrique avec sous-menu') }}
                         </button>
                         <button class="btn btn-primary btn_crea add-element type-menu" type="button" aria-label="{{ __('Lien de sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}" disabled>
@@ -186,16 +186,16 @@
                         </button>
                     </div>
                 </div>
-                <div role="section" class="row mt-4 form_actions_element custom-info-element" aria-labelledby="form_actions_element" style="display: none">
-                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-labelledby="form_actions_crud">
+                <div role="section" class="row mt-4 form_actions_element custom-info-element action-supp-crea" aria-labelledby="form_actions_element" style="display: none">
+                    <div role="section" class="w-100 mr-3 panel_item_menu" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
                         <div class="col">
-                            <label for="nav-name">{{ __('Nom du lien') }}</label>
-                            <input type="text" id="nav-name" class="form-control" placeholder="{{ __('Titre') }}">
+                            <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
+                            <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
                         </div>
 
                         <div class="col">
-                            <label for="nav-link">{{ __('URL de redirection du lien') }}</label>
-                            <input type="url" id="nav-link" class="form-control" placeholder="URL">
+                            <label class="creator-panel__title" for="nav-link">{{ __('URL de redirection du lien') }}</label>
+                            <input type="url" id="nav-link" class="form-control input-creator" placeholder="URL">
                         </div>
                         
                         <button aria-label="{{ __('Supprimer') }}" id="action-delete" class="btn btn-primary mb-0 btn_crea element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
@@ -203,20 +203,20 @@
                             {{ __('Supprimer') }}
                         </button>
                     </div>
-                    <div role="section" class="w-100 mt-3 mr-3 d-flex justify-content-around align-items-end" aria-labelledby="form_actions_crud">
-                        <button aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" class="btn btn-primary mb-0 btn_crea form-element-action action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}">
+                    <div role="section" class="w-100 mt-3 mr-3 move_item_menu" aria-labelledby="form_actions_crud">
+                        <button aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" class="btn btn-primary btn_crea form-element-action action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}">
                             <i class="fa fa-arrow-left"></i>
                             {{ __('Déplacer à gauche') }}
                         </button>
-                        <button aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" class="btn btn-primary mb-0 btn_crea form-element-action action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}">
+                        <button aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" class="btn btn-primary btn_crea form-element-action action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}">
                             <i class="fa fa-arrow-right"></i>
                             {{ __('Déplacer à droite') }}
                         </button>
-                        <button aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" class="btn btn-primary mb-0 btn_crea form-element-action action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}">
+                        <button aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" class="btn btn-primary btn_crea form-element-action action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}">
                             <i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer en haut') }}
                         </button>
-                        <button aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" class="btn btn-primary mb-0 btn_crea form-element-action action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}">
+                        <button aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" class="btn btn-primary btn_crea form-element-action action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}">
                             <i class="fa fa-arrow-down"></i>
                             {{ __('Déplacer en bas') }}
                         </button>
@@ -260,7 +260,7 @@
                                     </div>
                                     <!-- Lien du style à utiliser -->
                                     <div class="code-display" id="css-link">
-                                        <xmp><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
+                                        <xmp><link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet"></xmp>
                                         <xmp><script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script></xmp>
                                     </div>
                                     <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
@@ -404,7 +404,7 @@
     </div>
 </div>
 
-<div class="alert alert-success" role="alert" style="display: none" id="alert-message">
+<div class="alert alert-success" aria-live="assertive" aria-atomic="true" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
         Contenu de l'alerte
     </span>
@@ -415,7 +415,7 @@
     </button>
 </div>
 
-<div class="modal fade import-data" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
+<div class="modal fade import-data" aria-live="assertive" aria-atomic="true" tabindex="-1" role="dialog" id="importData" aria-labelledby="importDataTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
