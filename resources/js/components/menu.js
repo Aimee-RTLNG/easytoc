@@ -3,7 +3,6 @@
 // On importe les variables et fonctions externes (qui sont définie dans app.js)
 import { 
     lang,  // la variable lang est soit "en" soit "fr" et permet de définir le contenu des messages
-    setSideWindow, // c'est un fonction qui permet d'ajuster la side tools box quand on scroll.
     alertMsg // fonction qui affiche le message pop up en bas à droite
 } from "../app"; 
 

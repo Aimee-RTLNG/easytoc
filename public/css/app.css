@@ -9747,10 +9747,13 @@ textarea.shadow-box {
 .bloc-creation-interface {
   display: flex;
   max-width: 100%;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 3px dashed rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
   margin-left: 0px;
+}
+
+.main-info-form {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 @media (max-width: 768px) {
@@ -9846,6 +9849,89 @@ img, a {
 
 .input-creator:disabled {
   opacity: 0.4;
+}
+
+.static-buttons-creator {
+  position: -webkit-sticky;
+  position: sticky;
+  height: 55px;
+  width: 100%;
+  background-color: white;
+  top: 0px;
+  z-index: 50;
+  padding: 10px 10px;
+  margin: 0 auto;
+  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.static-buttons-creator .btn-separator {
+  margin: 0px 10px;
+  height: 20px;
+  background-color: grey;
+  opacity: 0.3;
+  width: 2px;
+}
+
+.static-buttons-creator .btn {
+  height: 100%;
+  width: 35px;
+}
+
+.static-buttons-creator svg {
+  color: white;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.static-buttons-creator .db-icons {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.static-buttons-creator .db-icons svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.static-buttons-creator .db-icons svg:last-child {
+  margin-left: 5px;
+}
+
+#actions-interface-bloc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.tooltip {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  border-radius: 4px;
 }
 
 nav.navbar {
@@ -11624,8 +11710,8 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .content-interface {
-  padding: 20px;
-  padding-bottom: 45px;
+  padding: 20px 0;
+  padding-bottom: 30px;
 }
 
 .action-required-cont, .action-multiple__cont {
@@ -11652,7 +11738,7 @@ input[type="checkbox"], input[type="radio"] {
 .action-supp {
   text-align: center;
   position: relative;
-  width: 240px;
+  margin-right: 10px;
   margin-bottom: 2px;
 }
 
