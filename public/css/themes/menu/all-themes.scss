@@ -208,9 +208,12 @@ body {
                     border-bottom: 5px solid themed('borderHover') !important; 
                 }
 
-                a:focus,button:focus, .menu-item > a:hover , .menu-item > a:focus{
+                a:focus,button:focus {
                     background-color: themed('aHoverColor'); 
                     border-bottom: 5px solid themed('borderHover'); 
+                }
+                .menu-item > a:focus, .menu-item > a:hover {
+                    border-bottom:0px solid themed('borderHover') !important; 
                 }
             }
 

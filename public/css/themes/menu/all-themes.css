@@ -199,9 +199,13 @@ body {
   border-bottom: 5px solid #5e5e5e !important;
 }
 
-.theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-white #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-white #full-menu .menu-items .menu-item a:focus, .theme-white #full-menu .menu-items .menu-item button:focus {
   background-color: #999494;
   border-bottom: 5px solid #5e5e5e;
+}
+
+.theme-white #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover {
+  border-bottom: 0px solid #5e5e5e !important;
 }
 
 .theme-white #full-menu .menu-items .has-submenu .menu-submenus {
@@ -407,9 +411,13 @@ body {
   border-bottom: 5px solid #d4d4d4 !important;
 }
 
-.theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-black #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:focus {
   background-color: black;
   border-bottom: 5px solid #d4d4d4;
+}
+
+.theme-black #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover {
+  border-bottom: 0px solid #d4d4d4 !important;
 }
 
 .theme-black #full-menu .menu-items .has-submenu .menu-submenus {
@@ -615,9 +623,13 @@ body {
   border-bottom: 5px solid #48f8bd !important;
 }
 
-.theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-green #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-green #full-menu .menu-items .menu-item a:focus, .theme-green #full-menu .menu-items .menu-item button:focus {
   background-color: #016d67;
   border-bottom: 5px solid #48f8bd;
+}
+
+.theme-green #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover {
+  border-bottom: 0px solid #48f8bd !important;
 }
 
 .theme-green #full-menu .menu-items .has-submenu .menu-submenus {
@@ -823,9 +835,13 @@ body {
   border-bottom: 5px solid #fc4040 !important;
 }
 
-.theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-red #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-red #full-menu .menu-items .menu-item a:focus, .theme-red #full-menu .menu-items .menu-item button:focus {
   background-color: #700e0e;
   border-bottom: 5px solid #fc4040;
+}
+
+.theme-red #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover {
+  border-bottom: 0px solid #fc4040 !important;
 }
 
 .theme-red #full-menu .menu-items .has-submenu .menu-submenus {
@@ -1031,9 +1047,13 @@ body {
   border-bottom: 5px solid #7ae4ff !important;
 }
 
-.theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-blue #full-menu .menu-items .menu-item a:focus, .theme-blue #full-menu .menu-items .menu-item button:focus {
   background-color: #0a1a4d;
   border-bottom: 5px solid #7ae4ff;
+}
+
+.theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover {
+  border-bottom: 0px solid #7ae4ff !important;
 }
 
 .theme-blue #full-menu .menu-items .has-submenu .menu-submenus {
@@ -1239,9 +1259,13 @@ body {
   border-bottom: 5px solid #e2e2e2 !important;
 }
 
-.theme-grey #full-menu .menu-items .menu-item a:focus, .theme-grey #full-menu .menu-items .menu-item button:focus, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:hover, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:focus {
+.theme-grey #full-menu .menu-items .menu-item a:focus, .theme-grey #full-menu .menu-items .menu-item button:focus {
   background-color: #2e2e2e;
   border-bottom: 5px solid #e2e2e2;
+}
+
+.theme-grey #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:hover {
+  border-bottom: 0px solid #e2e2e2 !important;
 }
 
 .theme-grey #full-menu .menu-items .has-submenu .menu-submenus {

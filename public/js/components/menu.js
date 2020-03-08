@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\easytoc\resources\js\components\menu.js */"./resources/js/components/menu.js");
+module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\components\menu.js */"./resources/js/components/menu.js");
 
 
 /***/ })
