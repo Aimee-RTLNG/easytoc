@@ -52611,8 +52611,8 @@ function getOldContent() {
   var actual_link = $("#menu-logo").css('background-image');
 
   if (actual_link) {
-    // actual_link = actual_link.replace('url("', "");
-    // actual_link = actual_link.replace('")', "");
+    actual_link = actual_link.replace('url("', "");
+    actual_link = actual_link.replace('")', "");
     actual_link = actual_link.replace("url('", "");
     actual_link = actual_link.replace("')", "");
     $("#menu-creator-link").val(actual_link);
