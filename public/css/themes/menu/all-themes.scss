@@ -2,36 +2,48 @@
 
 $themes: (
     white: (
+        btnClose: rgb(94, 94, 94),
+        backgroundColorSub: rgb(202, 202, 202),
         backgroundColor: #fff,
-        aHoverColor: rgb(202, 202, 202),
+        aHoverColor: rgb(153, 148, 148),
         borderHover : rgb(94, 94, 94),
         textColor : black
     ),
     black: (
+        btnClose: rgb(212, 212, 212),
+        backgroundColorSub: rgb(0, 0, 0),
         backgroundColor: rgb(51, 51, 51),
         aHoverColor: rgb(0, 0, 0),
         borderHover : rgb(212, 212, 212),
         textColor : white
     ),
     green: (
+        btnClose: white,
+        backgroundColorSub: rgb(72, 248, 189),
         backgroundColor: #38ada9,
         aHoverColor: #016d67,
         borderHover : rgb(72, 248, 189),
         textColor : black
     ),
     red: (
+        btnClose: white,
+        backgroundColorSub: rgb(112, 14, 14),
         backgroundColor: rgb(185, 44, 44),
         aHoverColor: rgb(112, 14, 14),
         borderHover : rgb(252, 64, 64),
         textColor : white
     ),
     blue: (
+        btnClose: white,
+        backgroundColorSub: #0a1a4d,
         backgroundColor: #273c75,
         aHoverColor: #0a1a4d,
         borderHover : rgb(122, 228, 255),
         textColor : white
     ),
     grey: (
+        btnClose: rgb(226, 226, 226),
+        backgroundColorSub: rgb(46, 46, 46),
         backgroundColor: rgb(97, 97, 97),
         aHoverColor: rgb(46, 46, 46),
         borderHover : rgb(226, 226, 226),
@@ -64,8 +76,22 @@ $themes: (
 
 
 // Styles
-
+body {
+    margin: 0px;
+}
 #full-menu {
+    a {
+        @include themify($themes) {
+            color: themed('textColor'); 
+        }
+        text-decoration: none;
+    }
+    .menu-item{
+        font-size: 14px;
+        button {
+            font-size: 14px;
+        }
+    }
     @include themify($themes) {
         color: themed('textColor');  
         background-color: themed('backgroundColor');  
@@ -92,14 +118,30 @@ $themes: (
             .menu-title{
                 color: themed('textColor');
                 max-width: 100px;
+                @media (max-width: 991px) {
+                    max-width: 440px;
+                }
+                @media (max-width: 767px) {
+                    max-width: 300px;
+                }
+                @media (max-width: 575px) {
+                    max-width: 175px;
+                }
+                @media (max-width: 450px) {
+                    max-width: 50%;
+                }
             }
 
             .menu-logo{
                 width: 40px;
+                min-width: 40px;
                 height: 40px;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
+                @media (max-width: 450px) {
+                    max-width: 50%;
+                }
             }
 
             .menu-logo-solo{
@@ -144,6 +186,7 @@ $themes: (
                 background-color: themed('backgroundColor');  
                 transition: all .2s;
                 border-bottom: 0px solid white;
+                padding: 0px;
 
                 a{
                     width: 100%;
@@ -165,7 +208,7 @@ $themes: (
                     border-bottom: 5px solid themed('borderHover') !important; 
                 }
 
-                &:hover, a:focus,button:focus, .menu-item > a:hover , .menu-item > a:focus{
+                a:focus,button:focus, .menu-item > a:hover , .menu-item > a:focus{
                     background-color: themed('aHoverColor'); 
                     border-bottom: 5px solid themed('borderHover'); 
                 }
@@ -173,7 +216,6 @@ $themes: (
 
         
             .has-submenu{
-
                 .menu-submenus{
                     width: 100%;
                     height: 100%;
@@ -200,9 +242,9 @@ $themes: (
                     width: calc(100% + 40px);
                     position: absolute;
                     z-index: 9;
-                    left: -40px;
-                    top: 60px;
-
+                    left: -20px;
+                    top: 100%;
+                    padding-left: 0px;
                     li span{
                         padding: 10px;
                     }
@@ -231,4 +273,145 @@ $themes: (
 
 .text-underline > a:first-child, .text-underline button span, a.text-underline span{
     text-decoration: underline !important;
+}
+.d-none {
+    display: none;
+}
+.bars_easytoc {
+    width: 50px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 25px;
+    outline: none;
+    padding-right: 20px;
+    &:focus {
+        outline: none;
+    }
+    &__line {
+        height: 3px;
+        width: 100%;
+        @include themify($themes) {
+            background-color : themed('btnClose');
+        }
+        border-radius: 2px;
+    }
+    &.close {
+        position: relative;
+        height: 45px;
+        left: -20px;
+        .bars_easytoc__line {
+            width: 40px;
+            position: absolute;
+            transition: all 0.2s;
+            top: 50%;
+            left: 15px;
+            width: 45px;
+            &.line2 {
+                display: none;
+            }
+            &.line1 {
+                transform: rotate(45deg);
+            }
+            &.line3 {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    #full-menu {
+        position: relative;
+    }
+    .submenu .menu-item {
+        @include themify($themes) {
+            background-color: themed('backgroundColorSub') !important;
+        }
+    }
+    #generated-menu #full-menu .menu-items {
+        display: none;
+        .menu-item a {
+            min-height: 50px;
+            height: 50px;
+            padding: 0px;
+        }
+        &.open-resp {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0px;
+            width: 100%;
+            & > li {
+                font-size: 17px;
+                & > button {
+                    font-size: 17px;
+                }
+            }
+            .menu-item {
+                margin: 0px;
+                flex-direction: column;
+                height: auto;
+                min-height: 50px;
+                &.open-ss-menu {
+                    a {
+                        &:hover {
+                            border-bottom: 0px !important;
+                        }
+                    }
+                    .menu-item {
+                        height: 35px;
+                    }
+                }
+            }
+            .has-submenu ul {
+                position: relative;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                padding: 0px;
+            }
+            .has-submenu .menu-submenus {
+                position: relative;
+                height: 50px;
+                &.open {
+                    @include themify($themes) {
+                        background-color: themed('backgroundColorSub') !important;
+                        border-bottom: 5px solid themed('borderHover') !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .bars_easytoc {
+        display: flex;
+    }
+    #full-menu {
+        @include themify($themes) {
+            justify-content: space-between;
+        }
+    }
+    #full-menu {
+        align-items: center;
+    }
+    #full-menu .menu-identity {
+        @include themify($themes) {
+            width: auto;
+        }
+    }
+    #full-menu .menu-identity .menu-logo {
+        @include themify($themes) {
+            width: 90px;
+            min-width: 40px;
+            height: 58px;
+        }
+    }
+    #full-menu .menu-identity .menu-title {
+        font-size: 20px;
+        line-height: 20px;
+    }
 }

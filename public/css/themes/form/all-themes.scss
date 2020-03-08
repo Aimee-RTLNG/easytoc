@@ -5,6 +5,7 @@ $themes: (
         backgroundColor: #fff,
         textBackgroundColor: black,
         textColor : black,
+        textColorSelect : black,
         required : orange,
         aColor : black,
     ),
@@ -12,6 +13,7 @@ $themes: (
         backgroundColor: #222,
         textBackgroundColor: white,
         textColor : black,
+        textColorSelect : white,
         required : orange,
         aColor : black,
     ),
@@ -19,6 +21,7 @@ $themes: (
         backgroundColor: #366E3B,
         textBackgroundColor: white,
         textColor : #366E3B,
+        textColorSelect : white,
         required : orange,
         aColor : #366E3B,
     ),
@@ -27,19 +30,22 @@ $themes: (
         textBackgroundColor: white,
         textColor : #D74A4A,
         required : orange,
+        textColorSelect : white,
         aColor : #C90000,
     ),
     blue: (
         backgroundColor: #155595,
         textBackgroundColor: white,
         textColor : #1B6EC2,
+        textColorSelect : white,
         required : orange,
-        aColor : black,
+        aColor : #155595,
     ),
     grey: (
         backgroundColor: #3A3A3A,
         textBackgroundColor: white,
         textColor : #787878,
+        textColorSelect : white,
         required : orange,
         aColor : black,
     )
@@ -71,6 +77,7 @@ $themes: (
 // Styles
 
 #full-form {
+    font-size: 14px;
     h1 {
       font-family: sans-serif;
       font-weight: lighter;
@@ -92,8 +99,13 @@ $themes: (
 #generated-form {
     margin: 20px 0px;
     font-family: Arial, Helvetica, sans-serif;
+    min-width: 225px;
 }
 #form-title {
+    font-size: 28px;
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
     @include themify($themes) {
         background-color: themed('backgroundColor'); 
         color: themed('textBackgroundColor');
@@ -152,7 +164,7 @@ $themes: (
     select[multiple]:focus option:checked {
         @include themify($themes) {
             background: themed('backgroundColor') linear-gradient(0deg, themed('backgroundColor') 0%, themed('backgroundColor') 100%);
-            color: themed('textColor') ;
+            color: themed('textColorSelect') ;
         }
       }
     label[data-tag="option"] {
@@ -200,7 +212,7 @@ $themes: (
     .form-control {
         font-family: Arial, Helvetica, sans-serif;
         display: block;
-        max-width: 100%;
+        max-width: 95%;
         width: 100%;
         margin-bottom: 20px;
         padding: .375rem .75rem;
@@ -252,12 +264,18 @@ $themes: (
 }
 #form-actions {
     width: 90vw;
-    max-width: 100%;
+    max-width: 600px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 30px;
+    flex-wrap: wrap;
+    @media (max-width: 575px) {
+        input:first-child {
+            margin-bottom: 5px;
+        }
+    }
     input {
         max-width: 600px;
         cursor: pointer;

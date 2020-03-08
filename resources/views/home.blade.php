@@ -56,13 +56,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-6">
+                <div class="col-xl-7 col-lg-6 mb-3">
                     <div class="home-present__video">
-                        <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe>
-                        {{-- <div class="video-yt__btn">
-                            <a class="btn-primary btn-form-final" href="#">{{__('Audio-Description')}}</a>
-                            <a class="btn-primary btn-form-final" href="#">{{__('Activer les sous-titres')}}</a>
-                        </div> --}}
+                        {{-- <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe> --}}
+                        <div class="youtube_player" videoID="X51vpwvHq5I" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
                     </div>
                 </div>
             </div>
@@ -137,7 +134,7 @@
                     <div class="section-home__underline"></div>
                 </div>
                 <div class="slider-use-list">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Améliorer la visibilité')}}</h3>
@@ -147,7 +144,7 @@
                         </div>
                         <div class="use-list__item__ombre"></div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                             <h3 class="use-list__item__titre">{{__("Rendre l'intéraction facile")}}</h3>
@@ -157,7 +154,7 @@
                         </div>
                         <div class="use-list__item__ombre"></div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
                             <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Etre compris par tous')}}</h3>
@@ -197,7 +194,7 @@
                     <div class="def__txt">
                         <p>{{__('En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
                         </p>
-                        <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais comme un outil favorisant l’inclusion sociale.')}}
+                        <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais un outil favorisant l’inclusion sociale.')}}
                         </p>
                         <p>{{__('L’Europe parle de l’accessibilité numérique comme d’une obligation citoyenne : une plus large diffusion de produits et services numériques accessibles favorise l’insertion professionnelle, l’intégration sociale et un cadre de vie autonome.')}}
                         </p>
