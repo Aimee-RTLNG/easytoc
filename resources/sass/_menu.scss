@@ -19,7 +19,6 @@
 }
 .cont-checkbox {
     @include flex-row-center;
-    padding-right: 10px;
     height: 60%;
     label {
         margin-bottom: 0px;
@@ -56,5 +55,35 @@
             margin-left: 0px;
         }
         justify-content: center;
+    }
+}
+.btns_menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    @media (max-width: 575px){
+        flex-direction: column;
+    }
+}
+.btns_menu__child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    @media (max-width: 576px) {
+       button {
+        margin: 0px 2px;
+       }
+    }
+}
+
+
+@media (max-width: 575px) {
+    .static-buttons-creator {
+        height: 80px;
+    }
+    .btns_menu__child {
+        width: 310px;
+        max-width: 100%;
     }
 }
