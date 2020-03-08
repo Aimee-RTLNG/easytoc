@@ -939,9 +939,9 @@ $('#btn-save-project').on('click', function () {
         window.location.href = "profile/" + user_id + "/view";
         $("#title-input").removeClass('required-failed');
     }).fail(function (xhr, status, error) {
-        // console.log(xhr.responseText);
-        // console.log(status);
-        console.log($('#raw-code').text().trim());
+        console.log(xhr.responseText);
+        console.log(status);
+        // console.log($('#raw-code').text().trim());
         // Erreur
         if (!$('#title-input').val()) {
             $("#title-input").addClass('required-failed');

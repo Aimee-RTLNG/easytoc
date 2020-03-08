@@ -9,9 +9,9 @@ require('clipboard/dist/clipboard.min.js');
 // ANCHOR Font awesome
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 
-import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup, faExclamationTriangle, faFrown} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload, faSync, faFileUpload, faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup, faExclamationTriangle, faFrown, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup, faExclamationTriangle, faFrown);
+library.add(faUserCircle, faArrowCircleUp, faArrowCircleDown, faTrash, faSortUp, faSortDown, faEye, faArrowRight, faArrowLeft, faPlusCircle, faSearch, faSort, faPen, faTimes, faItalic, faBold, faUnderline, faAlignCenter, faAlignJustify, faAlignLeft, faUndo, faCheckSquare, faTasks, faCaretDown, faCheckCircle, faComment, faCommentAlt, faGripLines, faParagraph, faHeading, faLink, faListOl, faListUl, faQuestionCircle, faEdit, faTrashAlt, faAngleDown, faChevronDown, faUpload,faSync,faFileUpload,faFileCode,faVectorSquare,faGripLinesVertical,faSave, faCaretUp, faCaretLeft, faCaretRight, faArrowUp, faArrowDown, faAlignRight, faCut, faObjectGroup, faObjectUngroup, faExclamationTriangle, faFrown, faChevronCircleDown);
 
 dom.watch();
 
@@ -26,6 +26,12 @@ $( document ).ready(function() {
 
 // ANCHOR Burger menu
 window.addEventListener("DOMContentLoaded", (event) => {
+
+    $("#rgpd-mgr").on("click", function(e){
+		e.preventDefault();
+		tarteaucitron.userInterface.openPanel();
+	});
+
     var btn_burger = document.getElementById('bars');
     btn_burger.addEventListener('click', function () {
         btn_burger.classList.toggle('open');
@@ -125,46 +131,6 @@ export function alertMsg(message, state) {
 
 // Traduction en JS
 export var lang = $('html').attr('lang');
-
-// Side tools 
-export function setSideWindow(){
-    if($(window).width() >= 992){
-        if( $(window).scrollTop() > 800 ){
-            // Integration aside
-            $('.action-supp').css('width', '240px');
-            $('#actions-interface').removeClass('col-12');
-            $('#actions-interface').addClass('col-3');
-            $('#actions-interface').addClass('p-0');
-            // ---
-            $('.action-supp').css('position', 'fixed');
-            $('.action-supp').css('top', '25px');
-            $('.action-supp').css('max-width', '25%');
-    
-            var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
-            var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
-            if( ( main_bottom - bottom ) < 435 ){
-                let calcul = 435  - ( main_bottom - bottom );
-                $('.action-supp').css('top', '-'+calcul+'px');
-            }
-    
-        } else {
-            $('.action-supp').css('position', 'relative');
-            $('.action-supp').css('top', '0');
-            $('.action-supp').css('max-width', '100%');
-        }
-    }
-    else {
-        // Integration full width
-        $('.action-supp').css('position', 'relative');
-        $('.action-supp').css('max-width', '100%');
-        $('.action-supp').css('width', '100%');
-
-        $('#actions-interface').removeClass('col-3');
-        $('#actions-interface').removeClass('p-0');
-        $('#actions-interface').addClass('col-12');
-        // ---
-    }
-}
 
 // Copier le contenu du code sur la page visualisation
 
@@ -299,9 +265,7 @@ document.onkeyup = function(e) {
     // Sauvegarder
     // CTRL ALT + S
     else if (e.ctrlKey && e.altKey && e.which == 83) {
-        console.log(e);
         if( $('#btn-save-project, #btn-update-project').length > 0 ){
-            console.log(e);
             let message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
             if ( lang == "en" ){
                 message = "Are you sure to save and quit your project ? You will be redirected.";
@@ -321,3 +285,7 @@ window.ondragstart = function(){
 
 // On désactive le cache pour les appels AJAX
 $.ajaxSetup({ cache: false });
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})

@@ -9747,10 +9747,13 @@ textarea.shadow-box {
 .bloc-creation-interface {
   display: flex;
   max-width: 100%;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 3px dashed rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
   margin-left: 0px;
+}
+
+.main-info-form {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 @media (max-width: 768px) {
@@ -9759,6 +9762,30 @@ textarea.shadow-box {
   }
   .mb-4-md {
     margin-bottom: 1.5rem;
+  }
+  .mb-3-md {
+    margin-bottom: 1rem;
+  }
+  .mt-3-md {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .mt-4-sm {
+    margin-top: 1.5rem;
+  }
+  .mb-4-sm {
+    margin-bottom: 1.5rem;
+  }
+  .mb-3-sm {
+    margin-bottom: 1rem;
+  }
+  .mt-3-sm {
+    margin-top: 1rem;
+  }
+  .d-none-sm {
+    display: none;
   }
 }
 
@@ -9837,6 +9864,97 @@ img, a {
   margin-left: 15px;
 }
 
+#tarteaucitronPersonalize, #tarteaucitronPercentage, .tac_activate .tac_float .tarteaucitronAllow {
+  background-color: #155595 !important;
+}
+
+.input-creator:disabled {
+  opacity: 0.4;
+}
+
+.static-buttons-creator {
+  position: -webkit-sticky;
+  position: sticky;
+  height: 55px;
+  width: 100%;
+  background-color: white;
+  top: 0px;
+  z-index: 50;
+  padding: 10px 10px;
+  margin: 0 auto;
+  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.static-buttons-creator .btn-separator {
+  margin: 0px 10px;
+  height: 20px;
+  background-color: grey;
+  opacity: 0.3;
+  width: 2px;
+}
+
+.static-buttons-creator .btn {
+  height: 100%;
+  width: 35px;
+}
+
+.static-buttons-creator svg {
+  color: white;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.static-buttons-creator .db-icons {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.static-buttons-creator .db-icons svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.static-buttons-creator .db-icons svg:last-child {
+  margin-left: 5px;
+}
+
+#actions-interface-bloc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.tooltip {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  border-radius: 4px;
+}
+
 nav.navbar {
   overflow: hidden;
 }
@@ -9870,7 +9988,7 @@ nav.navbar {
     padding-bottom: 15px;
   }
   .navbar .container #navbarSupportedContent.navbar-collapse .menu-connect {
-    padding: 0px 10px;
+    padding: 0px 25px;
     justify-content: center;
   }
 }
@@ -9887,12 +10005,14 @@ nav.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   transition: all .2s;
 }
 
 .navbar .container #navbarSupportedContent .menu-lang {
-  justify-content: space-evenly;
+  justify-content: space-around;
   min-height: 65px;
+  min-width: 80px;
 }
 
 .navbar .container .menu-connect .nav-item a:focus {
@@ -10190,6 +10310,10 @@ nav.navbar {
 
 .menu-footer .nav-link {
   padding: 0px 16px;
+}
+
+.menu-footer > .nav {
+  justify-content: center;
 }
 
 .menu-footer .nav-items:not(:first-child) .nav-link {
@@ -10726,6 +10850,7 @@ nav.navbar {
   height: 100vh;
   min-height: 700px;
   max-height: 1200px;
+  padding: 40px 0px;
 }
 
 .section-home__title {
@@ -10765,6 +10890,16 @@ nav.navbar {
   font-size: 1.4rem;
   width: 100%;
   left: -20px !important;
+}
+
+.use-list__argu {
+  height: 295px;
+}
+
+@media (max-width: 991px) {
+  .use-list__argu {
+    height: 330px;
+  }
 }
 
 .show .select-home__link {
@@ -10825,6 +10960,33 @@ nav.navbar {
 
 .home-present > .container {
   height: auto;
+}
+
+.youtube_player {
+  display: flex;
+  width: 100%;
+  height: 340px;
+}
+
+@media (max-width: 768px) {
+  .youtube_player {
+    height: 288px;
+  }
+}
+
+@media (max-width: 500px) {
+  .youtube_player {
+    height: 240px;
+  }
+}
+
+.youtube_player *:not(.tac_float) {
+  width: 100%;
+  height: 100%;
+}
+
+.youtube_player .tac_activate {
+  height: 50px !important;
 }
 
 .video-yt {
@@ -10984,6 +11146,7 @@ nav.navbar {
 
 .use-list__item__txt {
   font-weight: normal;
+  max-width: 100%;
 }
 
 .use-list__item__titre {
@@ -11082,7 +11245,6 @@ nav.navbar {
 @media (max-width: 991.98px) {
   .section-home {
     height: auto;
-    padding: 40px 0px;
     min-height: 700px;
     max-height: none;
   }
@@ -11334,7 +11496,6 @@ input[type="checkbox"], input[type="radio"] {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  max-width: 100%;
 }
 
 .actions-panel > * {
@@ -11497,6 +11658,10 @@ input[type="checkbox"], input[type="radio"] {
   max-width: 100%;
 }
 
+.interface-creation .project-action__btn {
+  justify-content: center;
+}
+
 .edit-project-action {
   flex-wrap: wrap;
   justify-content: space-around;
@@ -11566,8 +11731,8 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .content-interface {
-  padding: 20px;
-  padding-bottom: 45px;
+  padding: 20px 0;
+  padding-bottom: 30px;
 }
 
 .action-required-cont, .action-multiple__cont {
@@ -11581,7 +11746,7 @@ input[type="checkbox"], input[type="radio"] {
   margin-bottom: 10px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .action-required-cont, .action-multiple__cont {
     justify-content: flex-start;
   }
@@ -11594,7 +11759,7 @@ input[type="checkbox"], input[type="radio"] {
 .action-supp {
   text-align: center;
   position: relative;
-  width: 240px;
+  margin-right: 10px;
   margin-bottom: 2px;
 }
 
@@ -11886,7 +12051,13 @@ body {
 
 .menu-tabs #content-created-blueprint {
   resize: vertical;
-  height: 500px;
+  height: 430px;
+}
+
+@media (max-width: 991px) {
+  .menu-tabs #content-created-blueprint {
+    height: 800px;
+  }
 }
 
 .menu-tabs .element-container, .menu-tabs .content-editable-selected {
@@ -11896,6 +12067,99 @@ body {
 
 .menu-blueprint {
   min-height: 350px;
+}
+
+.cont-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 60%;
+}
+
+.cont-checkbox label {
+  margin-bottom: 0px;
+  margin-left: 5px;
+}
+
+.creator-panel__link, .creator-panel__title {
+  margin-bottom: 3px;
+}
+
+.panel_item_menu, .move_item_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.move_item_menu {
+  flex-wrap: wrap;
+}
+
+.move_item_menu button {
+  min-width: 164px;
+  max-height: 32px;
+  margin-bottom: 0px;
+}
+
+@media (max-width: 769px) {
+  .move_item_menu button {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 530px) {
+  .move_item_menu button {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .move_item_menu button:nth-child(2n) {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .move_item_menu {
+    justify-content: center;
+  }
+  .move_item_menu button:nth-child(2n) {
+    margin-left: 0px;
+  }
+}
+
+.btns_menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 575px) {
+  .btns_menu {
+    flex-direction: column;
+  }
+}
+
+.btns_menu__child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+
+@media (max-width: 576px) {
+  .btns_menu__child button {
+    margin: 0px 2px;
+  }
+}
+
+@media (max-width: 575px) {
+  .static-buttons-creator {
+    height: 80px;
+  }
+  .btns_menu__child {
+    width: 310px;
+    max-width: 100%;
+  }
 }
 
 .compte-page {
@@ -12293,7 +12557,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  max-width: 100%;
 }
 
 .crea-item__btns a {
@@ -12357,14 +12620,10 @@ body {
 }
 
 .crea-item__infos {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  max-width: 100%;
 }
 
 .btn--rouge {
@@ -12406,7 +12665,7 @@ body {
   }
   .modif-compte {
     order: -1;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
   }
   .mon-compte {
     font-size: 1.6rem;
@@ -12415,7 +12674,7 @@ body {
     transition: height 0.5s ease;
   }
   .mon-compte.open {
-    height: 700px;
+    height: 790px;
   }
   .mon-compte__entete {
     justify-content: flex-start;

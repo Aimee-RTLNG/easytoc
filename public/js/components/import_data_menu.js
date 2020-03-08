@@ -39,7 +39,6 @@ $('#import-data').on('click', function () {
 
         for (var i = 1; i < rows.length - 1; i++) {
           var row = rows[i].split(";");
-          console.log(row);
 
           if (i == 1) {
             // Première ligne : paramètres généraux
@@ -199,7 +198,7 @@ function importData(menu) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\import_data_menu.js */"./resources/js/components/import_data_menu.js");
+module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\components\import_data_menu.js */"./resources/js/components/import_data_menu.js");
 
 
 /***/ })
