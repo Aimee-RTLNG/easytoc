@@ -11980,6 +11980,12 @@ body {
   margin-bottom: 3px;
 }
 
+.move_item_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .compte-page {
   background-color: #F4F2F0;
 }

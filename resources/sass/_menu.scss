@@ -29,3 +29,8 @@
 .creator-panel__link, .creator-panel__title {
     margin-bottom: 3px;
 }
+.move_item_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}

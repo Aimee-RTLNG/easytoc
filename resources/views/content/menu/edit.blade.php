@@ -190,7 +190,7 @@
                     </div>
                 </div>
                 <div role="section" class="row mt-4 form_actions_element custom-info-element action-supp-crea" aria-labelledby="form_actions_element" style="display: none">
-                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
+                    <div role="section" class="w-100 mr-3 move_item_menu" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
                         <div class="col">
                             <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
                             <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
@@ -255,7 +255,7 @@
                                     </a>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#css-link" id="copy-css-link" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
-                                            {{ __("Copier le lien css") }}
+                                            {{ __("Copier le lien CSS et JS") }}
                                         </button>
                                     </div>
                                     <!-- Lien du style à utiliser -->

@@ -52681,13 +52681,22 @@ function getOldContent() {
 } // ANCHOR Fonction de sauvegarde
 
 function updatecontent() {
-  // on récupère le contenu
+  // lien du logo
+  var actual_link = $("#menu-creator-link").val();
+
+  if (actual_link) {
+    var new_url = "url('" + encodeURI(actual_link) + "')";
+    $("#menu-logo").css('background-image', new_url);
+  } // on récupère le contenu
+
+
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
 
   blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
   blueprint_content = blueprint_content.replace(/ content-editable-selected/g, ""); // on remplace les doubles sauts de lignes
 
-  blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n"); // on update le code par rapport au blueprint
+  blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
+  blueprint_content = blueprint_content.replace(/&quot;/g, "'"); // on update le code par rapport au blueprint
 
   $('#raw-code').html(blueprint_content);
   var code_content = $('<div>').text($('#raw-code').text()).html(); // prettify (permet de rendre le code joli)
@@ -52740,14 +52749,15 @@ $('#menu-creator-title-display').off().on('click', function () {
 }); // ANCHOR Changement de lien du logo
 
 $('#menu-creator-link').on('keyup', function () {
-  $("#menu-logo").css('background-image', "url(" + $("#menu-creator-link").val().trim() + ")");
+  // $("#menu-logo").css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
+  $("#menu-logo").css('background-image', 'url(' + $('#menu-creator-link').val().trim() + ')');
   updatecontent();
 }); // ANCHOR Afficher ou non le logo
 
 $('#menu-creator-link-display').off().on('click', function () {
   if ($(this).is(":checked")) {
     $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
-    $('#full-menu .menu-identity #menu-logo').css('background-image', "url(" + $("#menu-creator-link").val().trim() + ")");
+    $('#full-menu .menu-identity #menu-logo').css('background-image', 'url(' + $('#menu-creator-link').val().trim() + ')'); //  $('#full-menu .menu-identity #menu-logo').css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
 
     if (!$('#menu-creator-title-display').is(":checked")) {
       $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');

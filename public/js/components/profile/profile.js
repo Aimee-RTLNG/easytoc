@@ -57,7 +57,7 @@ function sortList(order) {
 } // Filtres par nom
 
 
-$("#list-filters .btn-filter-date").on('click', function () {
+$(".btn-filter-date").on('click', function () {
   if (!$(this).hasClass('active')) {
     $(this).addClass('active');
   }
@@ -118,4 +118,4 @@ module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\e
 
 /***/ })
 
-},[[0,"/js/manifest","/js/vendor"]]]);
+},[[0,"/js/manifest"]]]);
