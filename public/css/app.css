@@ -11980,10 +11980,45 @@ body {
   margin-bottom: 3px;
 }
 
-.move_item_menu {
+.panel_item_menu, .move_item_menu {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.move_item_menu {
+  flex-wrap: wrap;
+}
+
+.move_item_menu button {
+  min-width: 164px;
+  max-height: 32px;
+  margin-bottom: 0px;
+}
+
+@media (max-width: 769px) {
+  .move_item_menu button {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 530px) {
+  .move_item_menu button {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .move_item_menu button:nth-child(2n) {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .move_item_menu {
+    justify-content: center;
+  }
+  .move_item_menu button:nth-child(2n) {
+    margin-left: 0px;
+  }
 }
 
 .compte-page {

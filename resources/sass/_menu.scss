@@ -29,8 +29,32 @@
 .creator-panel__link, .creator-panel__title {
     margin-bottom: 3px;
 }
-.move_item_menu {
+.panel_item_menu, .move_item_menu {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+}
+.move_item_menu {
+    flex-wrap: wrap;
+    button {
+        min-width: 164px;
+        max-height: 32px;
+        margin-bottom: 0px;
+        @media (max-width: 769px) {
+            margin-bottom: 12px;
+        }
+        @media (max-width: 530px) {
+            justify-content: center;
+            margin-bottom: 12px;
+            &:nth-child(2n){
+                margin-left: 10px;
+            }
+        }
+    }
+    @media (max-width: 375px) {
+        button:nth-child(2n){
+            margin-left: 0px;
+        }
+        justify-content: center;
+    }
 }

@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <div role="section" class="row mt-4 form_actions_element custom-info-element action-supp-crea" aria-labelledby="form_actions_element" style="display: none">
-                    <div role="section" class="w-100 mr-3 move_item_menu" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
+                    <div role="section" class="w-100 mr-3 panel_item_menu" aria-live="assertive" aria-atomic="true" aria-labelledby="form_actions_crud">
                         <div class="col">
                             <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
                             <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
@@ -203,20 +203,20 @@
                             {{ __('Supprimer') }}
                         </button>
                     </div>
-                    <div role="section" class="w-100 mt-3 mr-3 d-flex justify-content-around align-items-end" aria-labelledby="form_actions_crud">
-                        <button aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" class="btn btn-primary mb-0 btn_crea form-element-action action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}">
+                    <div role="section" class="w-100 mt-3 mr-3 move_item_menu" aria-labelledby="form_actions_crud">
+                        <button aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" class="btn btn-primary btn_crea form-element-action action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}">
                             <i class="fa fa-arrow-left"></i>
                             {{ __('Déplacer à gauche') }}
                         </button>
-                        <button aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" class="btn btn-primary mb-0 btn_crea form-element-action action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}">
+                        <button aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" class="btn btn-primary btn_crea form-element-action action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}">
                             <i class="fa fa-arrow-right"></i>
                             {{ __('Déplacer à droite') }}
                         </button>
-                        <button aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" class="btn btn-primary mb-0 btn_crea form-element-action action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}">
+                        <button aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" class="btn btn-primary btn_crea form-element-action action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}">
                             <i class="fa fa-arrow-up"></i>
                             {{ __('Déplacer en haut') }}
                         </button>
-                        <button aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" class="btn btn-primary mb-0 btn_crea form-element-action action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}">
+                        <button aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" class="btn btn-primary btn_crea form-element-action action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}">
                             <i class="fa fa-arrow-down"></i>
                             {{ __('Déplacer en bas') }}
                         </button>
