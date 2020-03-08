@@ -52,7 +52,7 @@
                     <div class="row profile_content__filters m-0 p-0">
                         <div class="profile_content__options col-12">
                             <div id="list-filters" class="list-filters">
-                                <button class="btn btn-filter-type active" data-type="all" tabindex="0">
+                                <button class="btn btn-filter-type active" title="{{ __('Voir toutes vos créations')}}" data-type="all" tabindex="0">
                                     {{ __('Tous') }}
                                     <div class="all_types">
                                         <span class="type-pin type-Menu" data-type="Menu"></span>
@@ -60,15 +60,15 @@
                                         <span class="type-pin type-Table" data-type="Table"></span>
                                     </div>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="menu" tabindex="0">
+                                <button class="btn btn-filter-type" data-type="menu" title="{{ __('Voir uniquement vos créations Menu')}}" tabindex="0">
                                     {{ __('Menu') }}
                                     <span class="type-pin type-Menu" data-type="Menu"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="form" tabindex="0">
+                                <button class="btn btn-filter-type" data-type="form" title="{{ __('Voir uniquement vos créations Formulaire')}}" tabindex="0">
                                     {{ __('Formulaire') }}
                                     <span class="type-pin type-Form" data-type="Form"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="table" tabindex="0">
+                                <button class="btn btn-filter-type" data-type="table" title="{{ __('Voir uniquement vos créations Tableaux')}}" tabindex="0">
                                     {{ __('Tableau') }}
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </button>

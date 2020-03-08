@@ -9881,7 +9881,7 @@ nav.navbar {
     padding-bottom: 15px;
   }
   .navbar .container #navbarSupportedContent.navbar-collapse .menu-connect {
-    padding: 0px 10px;
+    padding: 0px 25px;
     justify-content: center;
   }
 }
@@ -9903,9 +9903,9 @@ nav.navbar {
 }
 
 .navbar .container #navbarSupportedContent .menu-lang {
-  justify-content: space-evenly;
+  justify-content: space-around;
   min-height: 65px;
-  min-width: 105px;
+  min-width: 80px;
 }
 
 .navbar .container .menu-connect .nav-item a:focus {
@@ -11389,7 +11389,6 @@ input[type="checkbox"], input[type="radio"] {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  max-width: 100%;
 }
 
 .actions-panel > * {
@@ -11640,7 +11639,7 @@ input[type="checkbox"], input[type="radio"] {
   margin-bottom: 10px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .action-required-cont, .action-multiple__cont {
     justify-content: flex-start;
   }
@@ -12376,7 +12375,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  max-width: 100%;
 }
 
 .crea-item__btns a {
@@ -12440,14 +12438,10 @@ body {
 }
 
 .crea-item__infos {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  max-width: 100%;
 }
 
 .btn--rouge {
@@ -12489,7 +12483,7 @@ body {
   }
   .modif-compte {
     order: -1;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
   }
   .mon-compte {
     font-size: 1.6rem;
@@ -12498,7 +12492,7 @@ body {
     transition: height 0.5s ease;
   }
   .mon-compte.open {
-    height: 700px;
+    height: 790px;
   }
   .mon-compte__entete {
     justify-content: flex-start;

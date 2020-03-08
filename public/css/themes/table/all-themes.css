@@ -63,9 +63,10 @@
   font-size: 15px;
   color: black;
   font-style: italic;
+  text-align: left;
   border-left: 2px solid grey;
   position: relative;
-  top: 10px;
+  margin-top: 10px;
   padding-left: 10px;
 }
 
@@ -90,6 +91,14 @@
   color: black;
 }
 
+.theme-white #full-table thead > tr:first-child > th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.theme-white #full-table thead > tr:first-child > th:last-child {
+  border-top-right-radius: 20px;
+}
+
 .theme-black #full-table {
   color: white;
   background-color: #333333;
@@ -102,9 +111,10 @@
   font-size: 15px;
   color: black;
   font-style: italic;
+  text-align: left;
   border-left: 2px solid #596275;
   position: relative;
-  top: 10px;
+  margin-top: 10px;
   padding-left: 10px;
 }
 
@@ -129,6 +139,14 @@
   color: white;
 }
 
+.theme-black #full-table thead > tr:first-child > th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.theme-black #full-table thead > tr:first-child > th:last-child {
+  border-top-right-radius: 20px;
+}
+
 .theme-green #full-table {
   color: black;
   background-color: #D5F2B7;
@@ -141,9 +159,10 @@
   font-size: 15px;
   color: black;
   font-style: italic;
+  text-align: left;
   border-left: 2px solid #079992;
   position: relative;
-  top: 10px;
+  margin-top: 10px;
   padding-left: 10px;
 }
 
@@ -168,6 +187,14 @@
   color: white;
 }
 
+.theme-green #full-table thead > tr:first-child > th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.theme-green #full-table thead > tr:first-child > th:last-child {
+  border-top-right-radius: 20px;
+}
+
 .theme-red #full-table {
   color: black;
   background-color: #FFE9E9;
@@ -180,9 +207,10 @@
   font-size: 15px;
   color: black;
   font-style: italic;
+  text-align: left;
   border-left: 2px solid #740101;
   position: relative;
-  top: 10px;
+  margin-top: 10px;
   padding-left: 10px;
 }
 
@@ -207,6 +235,14 @@
   color: white;
 }
 
+.theme-red #full-table thead > tr:first-child > th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.theme-red #full-table thead > tr:first-child > th:last-child {
+  border-top-right-radius: 20px;
+}
+
 .theme-blue #full-table {
   color: black;
   background-color: #98C3DB;
@@ -219,9 +255,10 @@
   font-size: 15px;
   color: black;
   font-style: italic;
+  text-align: left;
   border-left: 2px solid #192a56;
   position: relative;
-  top: 10px;
+  margin-top: 10px;
   padding-left: 10px;
 }
 
@@ -246,6 +283,14 @@
   color: white;
 }
 
+.theme-blue #full-table thead > tr:first-child > th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.theme-blue #full-table thead > tr:first-child > th:last-child {
+  border-top-right-radius: 20px;
+}
+
 .theme-grey #full-table {
   color: white;
   background-color: grey;
@@ -258,9 +303,10 @@
   font-size: 15px;
   color: black;
   font-style: italic;
+  text-align: left;
   border-left: 2px solid black;
   position: relative;
-  top: 10px;
+  margin-top: 10px;
   padding-left: 10px;
 }
 
@@ -283,6 +329,14 @@
 .theme-grey #full-table tfoot td {
   background-color: #5f5f5f;
   color: white;
+}
+
+.theme-grey #full-table thead > tr:first-child > th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.theme-grey #full-table thead > tr:first-child > th:last-child {
+  border-top-right-radius: 20px;
 }
 
 .font-style-italic {

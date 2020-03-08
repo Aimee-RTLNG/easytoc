@@ -76,8 +76,22 @@ $themes: (
 
 
 // Styles
-
+body {
+    margin: 0px;
+}
 #full-menu {
+    a {
+        @include themify($themes) {
+            color: themed('textColor'); 
+        }
+        text-decoration: none;
+    }
+    .menu-item{
+        font-size: 14px;
+        button {
+            font-size: 14px;
+        }
+    }
     @include themify($themes) {
         color: themed('textColor');  
         background-color: themed('backgroundColor');  
@@ -104,6 +118,18 @@ $themes: (
             .menu-title{
                 color: themed('textColor');
                 max-width: 100px;
+                @media (max-width: 991px) {
+                    max-width: 440px;
+                }
+                @media (max-width: 767px) {
+                    max-width: 300px;
+                }
+                @media (max-width: 575px) {
+                    max-width: 175px;
+                }
+                @media (max-width: 450px) {
+                    max-width: 50%;
+                }
             }
 
             .menu-logo{
@@ -113,6 +139,9 @@ $themes: (
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
+                @media (max-width: 450px) {
+                    max-width: 50%;
+                }
             }
 
             .menu-logo-solo{
@@ -213,9 +242,9 @@ $themes: (
                     width: calc(100% + 40px);
                     position: absolute;
                     z-index: 9;
-                    left: -40px;
+                    left: -20px;
                     top: 100%;
-
+                    padding-left: 0px;
                     li span{
                         padding: 10px;
                     }
@@ -249,14 +278,15 @@ $themes: (
     display: none;
 }
 .bars_easytoc {
+    width: 50px;
     cursor: pointer;
     display: none;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    width: 40px;
     height: 25px;
     outline: none;
+    padding-right: 20px;
     &:focus {
         outline: none;
     }
@@ -271,10 +301,14 @@ $themes: (
     &.close {
         position: relative;
         height: 45px;
+        left: -20px;
         .bars_easytoc__line {
+            width: 40px;
             position: absolute;
             transition: all 0.2s;
             top: 50%;
+            left: 15px;
+            width: 45px;
             &.line2 {
                 display: none;
             }
@@ -301,6 +335,8 @@ $themes: (
         display: none;
         .menu-item a {
             min-height: 50px;
+            height: 50px;
+            padding: 0px;
         }
         &.open-resp {
             display: flex;
@@ -309,6 +345,12 @@ $themes: (
             top: 100%;
             left: 0px;
             width: 100%;
+            & > li {
+                font-size: 17px;
+                & > button {
+                    font-size: 17px;
+                }
+            }
             .menu-item {
                 margin: 0px;
                 flex-direction: column;
@@ -351,7 +393,6 @@ $themes: (
     #full-menu {
         @include themify($themes) {
             justify-content: space-between;
-            padding-right: 20px;
         }
     }
     #full-menu {
@@ -372,6 +413,5 @@ $themes: (
     #full-menu .menu-identity .menu-title {
         font-size: 20px;
         line-height: 20px;
-        max-width: 50%;
     }
 }

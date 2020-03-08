@@ -6,20 +6,37 @@ if(menu != null) {
 else {
    let menu_buttons = null;
 }
-let open_menu = $('.bars_easytoc');
-if(open_menu.length > 0) {
-   open_menu.on('click', function() {
-      $('#menubar-easytoc').toggleClass('open-resp');
-      $(this).toggleClass('close');
+
+let open_menu = document.querySelector('.bars_easytoc');
+
+if(open_menu) {
+   open_menu.addEventListener('click', function() {
+      document.getElementById('menubar-easytoc').classList.toggle('open-resp');
+      this.classList.toggle('close');
    })
 }
-let sous_menu = $('.has-submenu');
-if(sous_menu.length > 0) {
-   sous_menu.on('click', function() {
-      $(this).toggleClass('open-ss-menu');
-      $('.open-ss-menu button').addClass('open');
-   })
-}
+let sous_menus = document.querySelectorAll('.has-submenu');
+
+// if(sous_menus) {
+//    for (let sous_menu of sous_menus) {
+//       sous_menu.addEventListener('click', function(event) {
+//          let have_arrows = document.querySelectorAll('.open-ss-menu button');
+//          this.classList.toggle('open-ss-menu');
+//          for (let have_arrow of have_arrows) {
+//             have_arrow.classList.add('open');   
+//             have_arrow.classList.remove('closed');   
+//          }   
+//          // let menus_deroulant = document.querySelectorAll('.menu-item.has-submenu')
+//          // for (let menu_deroulant of menus_deroulant) {
+//          //    console.log(this.classList);
+//          //    if(!menu_deroulant.classList.contains("open-ss-menu ")) {
+//          //       this.classList.remove('open');   
+//          //       this.classList.add('closed');  
+//          //    }
+//          // }
+//       })
+//     }
+// }
 
 
 function displayMenu( event ){

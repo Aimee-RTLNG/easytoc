@@ -17,7 +17,6 @@
 
         <meta property="twitter:title" content="EasyToC, un générateur de formulaires, tableaux et menus dans en code HTML accessible." />
         <meta property="twitter:description" content="EasyToC générateur de menus, tableaux et formulaire" />
-        <meta property="og:description" content="Pour certaines personnes, l’accès aux ressources web est difficile et pénible .Easy to C peut vous aider à rendre vos sites accessibles, peu importe votre niveau avec le code." />
         <meta property="twitter:image" content="{{ URL::asset('images/capture_easytoc.jpg') }}" />
 
         <meta property="twitter:site" content="EasyToC" />
@@ -97,7 +96,7 @@
                             <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Passer en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav menu-connect col m-0">
+                        <ul class="navbar-nav menu-connect col-lg-3 m-0">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('register'))
@@ -146,7 +145,7 @@
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
                     <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
-                    <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }}<a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
+                    <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }} <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
                     <h3 class="footer-title">{{ __('Contact') }}</h3>

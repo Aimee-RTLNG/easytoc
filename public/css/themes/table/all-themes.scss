@@ -120,9 +120,10 @@ $themes: (
             font-size: 15px;
             color: black;
             font-style: italic;
+            text-align: left;
             border-left: 2px solid themed('borderColor');
             position: relative;
-            top: 10px;
+            margin-top: 10px;
             padding-left: 10px;
         }
         th{
@@ -145,7 +146,12 @@ $themes: (
             background-color: themed('backgroundTfootColor');  
             color: themed('headTextColor');
         }
-
+        thead > tr:first-child > th:first-child {
+            border-top-left-radius: 20px;
+        }
+        thead > tr:first-child > th:last-child{
+            border-top-right-radius: 20px;
+        }
     }
 }
 

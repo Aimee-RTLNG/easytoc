@@ -77,8 +77,8 @@ if( lang == "en" ){
     element_types = {
         "type-info": {
             "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
-            "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
-            "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+            "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo'></div>\n",
+            "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
             "insert-separator": '\n\t\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
@@ -111,8 +111,10 @@ export function getOldContent() {
     // Lien du logo
     let actual_link = $("#menu-logo").css('background-image');
     if( actual_link ){
-        actual_link = actual_link.replace('url("', "");
-        actual_link = actual_link.replace('")', "");
+        // actual_link = actual_link.replace('url("', "");
+        // actual_link = actual_link.replace('")', "");
+        actual_link = actual_link.replace("url('", "");
+        actual_link = actual_link.replace("')", "");
         $("#menu-creator-link").val(actual_link);
     }
 
@@ -195,7 +197,7 @@ $('#menu-creator-title-display').off().on('click', function () {
 
 // ANCHOR Changement de lien du logo
 $('#menu-creator-link').on('keyup', function () {
-    $("#menu-logo").css('background-image', 'url('+$('#menu-creator-link').val()+')');
+    $("#menu-logo").css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
     updatecontent();
 });
 
@@ -203,7 +205,7 @@ $('#menu-creator-link').on('keyup', function () {
 $('#menu-creator-link-display').off().on('click', function () {
    if( $(this).is(":checked") ){
      $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
-     $('#full-menu .menu-identity #menu-logo').css('background-image', 'url('+$('#menu-creator-link').val()+')');
+     $('#full-menu .menu-identity #menu-logo').css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
      if( !$('#menu-creator-title-display').is(":checked") ){
         $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
         $('#full-menu .menu-identity').removeClass('hidden');
