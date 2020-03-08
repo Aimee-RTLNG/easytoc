@@ -51557,7 +51557,7 @@ function getOldContent() {
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre (non présent pour les menu)
 
-  var actual_title = $("#full-form #form-title").text();
+  var actual_title = $("#full-form #form-title").text().trim();
   $("#form-creator-title").val(actual_title); // Methode (non présent pour les menu)
 
   var actual_method = $("#generated-form").attr('method');
@@ -51809,12 +51809,12 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
       if (intitule) {
         intitule.off('keyup'); // re-init
 
-        $('#elem-title').val(intitule.text()); // récupère la valeur de l'elem
+        $('#elem-title').val(intitule.text().trim()); // récupère la valeur de l'elem
 
         intitule.on('keyup', function () {
           // traitement modif
           e.stopPropagation();
-          $('#elem-title').val(intitule.text());
+          $('#elem-title').val(intitule.text().trim());
           updatecontent();
         });
       } // on récupère le placeholder 
@@ -51830,7 +51830,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
 
       if ($(element_selected_container).find('select').length > 0) {
         input = $(element_selected_container).find('select');
-        placeholder = input.find('option').first().text();
+        placeholder = input.find('option').first().text().trim();
 
         if ($(element_selected_container).find('select').attr('multiple')) {
           $('#elem-multiple-choice').prop('checked', true);
@@ -51866,7 +51866,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
         option_label.on('keyup', function () {
           // traitement modif
           e.stopPropagation();
-          $("#elem-option-label").val(option_label.text());
+          $("#elem-option-label").val(option_label.text().trim());
           updatecontent();
         }); // on recupère la valeur de l'option
 
@@ -51942,7 +51942,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
           $('.action-delete-option').show();
         }
 
-        $("#elem-option-label").val(_option_label.text()); // on recupère la valeur de l'option
+        $("#elem-option-label").val(_option_label.text().trim()); // on recupère la valeur de l'option
 
         var _option_value = $('.content-editable-selected select option:selected:enabled').attr('value');
 
@@ -52001,7 +52001,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#form-title', function () {
-  $('#form-creator-title').val($('#form-title').text());
+  $('#form-creator-title').val($('#form-title').text().trim());
   updatecontent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 

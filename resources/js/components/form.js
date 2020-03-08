@@ -154,7 +154,7 @@ export function getOldContent() {
     selected_theme.prop('checked', true);
 
     // Titre (non présent pour les menu)
-    let actual_title = $("#full-form #form-title").text();
+    let actual_title = $("#full-form #form-title").text().trim();
     $("#form-creator-title").val(actual_title);
 
     // Methode (non présent pour les menu)
@@ -429,10 +429,10 @@ $(document.body)
                 // on récupère l'intitule
                 if (intitule) {
                     intitule.off('keyup'); // re-init
-                    $('#elem-title').val(intitule.text()); // récupère la valeur de l'elem
+                    $('#elem-title').val(intitule.text().trim()); // récupère la valeur de l'elem
                     intitule.on('keyup', function () { // traitement modif
                         e.stopPropagation();
-                        $('#elem-title').val(intitule.text());
+                        $('#elem-title').val(intitule.text().trim());
                         updatecontent();
                     })
                 }
@@ -447,7 +447,7 @@ $(document.body)
                 // si c'est un select 
                 if ($(element_selected_container).find('select').length > 0) {
                     input = $(element_selected_container).find('select');
-                    placeholder = input.find('option').first().text();
+                    placeholder = input.find('option').first().text().trim();
                     if($(element_selected_container).find('select').attr('multiple')){
                         $('#elem-multiple-choice').prop('checked', true);
                     }else{
@@ -483,7 +483,7 @@ $(document.body)
                     option_label.off('keyup'); // re-init
                     option_label.on('keyup', function () { // traitement modif
                         e.stopPropagation();
-                        $("#elem-option-label").val(option_label.text());
+                        $("#elem-option-label").val(option_label.text().trim());
                         updatecontent();
                     })
 
@@ -553,7 +553,7 @@ $(document.body)
                         $('.action-option-value').show();
                         $('.action-delete-option').show();
                     }
-                    $("#elem-option-label").val(option_label.text());
+                    $("#elem-option-label").val(option_label.text().trim());
 
                     // on recupère la valeur de l'option
                     let option_value = $('.content-editable-selected select option:selected:enabled').attr('value');
@@ -619,7 +619,7 @@ $(document.body)
     // ANCHOR Modification du texte via l'intérieur du formulaire
     .on('keyup', '#form-title', function () {
 
-        $('#form-creator-title').val($('#form-title').text());
+        $('#form-creator-title').val($('#form-title').text().trim());
         updatecontent();
 
     });

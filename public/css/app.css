@@ -9754,7 +9754,6 @@ textarea.shadow-box {
 .main-info-form {
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 3px dashed rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -9871,6 +9870,20 @@ img, a {
   color: white;
   width: 15px !important;
   height: 15px !important;
+}
+
+.static-buttons-creator .db-icons {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.static-buttons-creator .db-icons svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.static-buttons-creator .db-icons svg:last-child {
+  margin-left: 5px;
 }
 
 #actions-interface-bloc {

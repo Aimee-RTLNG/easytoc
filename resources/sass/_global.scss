@@ -179,7 +179,7 @@ textarea {
 .main-info-form{
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 3px dashed rgba(0,0,0,.2);
+    //border-bottom: 3px dashed rgba(0,0,0,.2);
 }
 
 @media (max-width: 768px){
@@ -298,6 +298,20 @@ img, a {
         color: white;
         width: 15px !important;
         height: 15px !important;
+    }
+
+    .db-icons{
+        align-items: center;
+        justify-content: space-between;
+
+        svg{
+            width: 12px !important;
+            height: 12px !important;
+
+            &:last-child{
+                margin-left: 5px;
+            }
+        }
     }
 
 }
