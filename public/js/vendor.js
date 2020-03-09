@@ -41623,8 +41623,7 @@ var csrf_token = $('meta[name="csrf-token"]').attr('content'); // let initial_co
 $('#lateral-header-button').prop('checked', false);
 $('#footer-button').prop('checked', false);
 $('#central-header-button').prop('checked', true);
-$('#radio02').prop('checked', true);
-$('#radio02').prop('checked', true);
+$('#radio01').prop('checked', true);
 $('#table-row-nb').val('2');
 $('#table-col-nb').val('2'); // On désactive les boutons qui ne s'activent qu'au clic sur un élément
 
