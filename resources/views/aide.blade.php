@@ -28,51 +28,51 @@
                 <ul>
                     {{-- Compte Utilisateur --}}
                     <li>
-                        <a href="#account" title="{{ __('Compte Easy to C') }}">{{ __('Compte Easy to C') }}</a>
+                        <a href="#account" title="I. {{ __('Compte Easy to C') }}">{{ __('Compte Easy to C') }}</a>
                         <ul>
                             {{-- S'inscrire / Se connecter --}}
-                            <li><a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a></li>
-                            <li><a href="#signIn" title="{{ __('Se connecter à son compte Easy to C') }}">{{ __('Se connecter à son compte') }}</a></li>
-                            <li><a href="#listAccount" title="{{ __("Mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
-                            <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
-                            <li><a href="#deleteAccount" title="{{ __('Supprimer son compte') }}">{{ __('Supprimer son compte') }}</a></li>
+                            <li><a href="#signUp" title="I.a {{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a></li>
+                            <li><a href="#signIn" title="I.b {{ __('Se connecter à son compte Easy to C') }}">{{ __('Se connecter à son compte') }}</a></li>
+                            <li><a href="#listAccount" title="I.c {{ __("Mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
+                            <li><a href="#infoAccount" title="I.d {{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
+                            <li><a href="#deleteAccount" title="I.e {{ __('Supprimer son compte') }}">{{ __('Supprimer son compte') }}</a></li>
                         </ul>
                     </li>
                     {{-- Création d'un projet --}}
                     <li>
-                        <a href="#project" title="{{ __('Créer un projet') }}">{{ __('Créer un projet') }}</a>
+                        <a href="#project" title="II. {{ __('Créer un projet') }}">{{ __('Créer un projet') }}</a>
                         <ul> 
-                            <li><a href="#infoProject" title="{{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
-                            <li><a href="#updateProject" title="{{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
-                            <li><a href="#useCode" title="{{ __('Utiliser le code généreré') }}">{{ __('Utiliser le code généreré') }}</a></li>
-                            <li><a href="#actionsProject" title="{{ __('Actions sur mon projet') }}">{{ __('Actions sur le projet') }}</a></li>
+                            <li><a href="#infoProject" title="II.a {{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
+                            <li><a href="#updateProject" title="II.b {{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
+                            <li><a href="#useCode" title="II.c {{ __('Utiliser le code généreré') }}">{{ __('Utiliser le code généreré') }}</a></li>
+                            <li><a href="#actionsProject" title="II.d {{ __('Actions sur mon projet') }}">{{ __('Actions sur le projet') }}</a></li>
                         </ul>
                     </li>
                     {{-- Générateur de tableau --}}
                     <li>
-                        <a href="#tableCreator" title="{{ __('Générer un tableau') }}">{{ __('Générateur de tableau') }}</a>
+                        <a href="#tableCreator" title="III. {{ __('Générer un tableau') }}">{{ __('Générateur de tableau') }}</a>
                         <ul> 
-                            <li><a href="#importTable" title="{{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
-                            <li><a href="#generateTable" title="{{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
-                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au tableau') }}">{{ __('Ajouter du contenu au tableau') }}</a></li>
+                            <li><a href="#importTable" title="III.a {{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
+                            <li><a href="#generateTable" title="III.b {{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
+                            <li><a href="#addElementTable" title="III.c {{ __('Ajouter du contenu au tableau') }}">{{ __('Ajouter du contenu au tableau') }}</a></li>
                         </ul>
                     </li>
                     {{-- Générateur de menu --}}
                     <li>
-                        <a href="#menuCreator" title="{{ __('Générer un menu') }}">{{ __('Générateur de menu') }}</a>
+                        <a href="#menuCreator" title="IV. {{ __('Générer un menu') }}">{{ __('Générateur de menu') }}</a>
                         <ul> 
-                            <li><a href="#importMenu" title="{{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
-                            <li><a href="#generateTable" title="{{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
-                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au menu') }}">{{ __('Ajouter du contenu au menu') }}</a></li>
+                            <li><a href="#importMenu" title="IV.a {{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
+                            <li><a href="#generateTable" title="IV.b {{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
+                            <li><a href="#addElementTable" title="IV.c {{ __('Ajouter du contenu au menu') }}">{{ __('Ajouter du contenu au menu') }}</a></li>
                         </ul>
                     </li>
                     {{-- Générateur de formulaire --}}
                     <li>
-                        <a href="#formCreator" title="{{ __('Générer un formulaire') }}">{{ __('Générateur de formulaire') }}</a>
+                        <a href="#formCreator" title="V. {{ __('Générer un formulaire') }}">{{ __('Générateur de formulaire') }}</a>
                         <ul> 
-                            <li><a href="#importForm" title="{{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
-                            <li><a href="#generateForm" title="{{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
-                            <li><a href="#addElementForm" title="{{ __('Ajouter du contenu au formulaire') }}">{{ __('Ajouter du contenu au formulaire') }}</a></li>
+                            <li><a href="#importForm" title="V.a {{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
+                            <li><a href="#generateForm" title="V.b {{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
+                            <li><a href="#addElementForm" title="V.c {{ __('Ajouter du contenu au formulaire') }}">{{ __('Ajouter du contenu au formulaire') }}</a></li>
                         </ul>
                     </li>
                 </ul>
