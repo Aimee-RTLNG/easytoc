@@ -125,9 +125,38 @@
 
 
 // -------- Fonts ---------//
-@mixin expletus {
-    font-family: 'Expletus Sans', sans-serif;
+
+@mixin fontface($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
 }
+
+@include fontface('expletus', '../fonts/ExpletusSans-Regular', 300, normal);
+@include fontface('expletus', '../fonts/ExpletusSans-Medium', 700);
+@include fontface('expletus', '../fonts/ExpletusSans-Bold', 700, bold);
+
+@mixin expletus {
+    font-family: 'expletus', 'Arial', sans-serif;
+}
+
 @mixin acumin {
-    font-family: "Roboto", sans-serif;
+    font-family: Arial, sans-serif;
 }

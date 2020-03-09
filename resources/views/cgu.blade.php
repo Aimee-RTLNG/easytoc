@@ -5,7 +5,7 @@
 @section('content')
 <div class="container wysiwyg">
     <div class="entete">
-        <h2 class="entete__title">{{ __('Condition d\'Utilisations') }} - {{ __("Informations légales") }}</h2>
+        <h1 class="entete__title">{{ __('Condition d\'Utilisations') }} - {{ __("Informations légales") }}</h1>
         <div class="entete__under"></div>
     </div>
             <h3 class="secondary_title" tabindex="0">{{ __("1. Présentation du site.") }}</h3>
@@ -136,13 +136,13 @@
                 {{ __("Sous Internet Explorer : onglet outil (pictogramme en forme de rouage en haut a droite) / options internet. Cliquez sur Confidentialité et choisissez Bloquer tous les cookies. Validez sur Ok.") }}
             </p>
             <p>
-                {{ __("Sous Firefox : en haut de la fenêtre du navigateur, cliquez sur le bouton Firefox, puis aller dans l'onglet Options. Cliquer sur l'onglet Vie privée. Paramétrez les Règles de conservation sur :  utiliser les paramètres personnalisés pour l'historique. Enfin décochez-la pour  désactiver les cookies.") }}
+                {{ __("Sous Firefox : en haut de la fenêtre du navigateur, cliquez sur le bouton Firefox, puis aller dans l'onglet Options. Cliquer sur l'onglet Vie privée. Paramétrez les Règles de conservation sur : utiliser les paramètres personnalisés pour l'historique. Enfin décochez-la pour désactiver les cookies.") }}
             </p>
             <p>
                 {{ __("Sous Safari : Cliquez en haut à droite du navigateur sur le pictogramme de menu (symbolisé par un rouage). Sélectionnez Paramètres. Cliquez sur Afficher les paramètres avancés. Dans la section 'Confidentialité', cliquez sur Paramètres de contenu. Dans la section 'Cookies', vous pouvez bloquer les cookies") }}
             </p>
             <p>
-                {{ __("Sous Chrome : Cliquez en haut à droite du navigateur sur le pictogramme de menu (symbolisé par trois lignes horizontales). Sélectionnez Paramètres. Cliquez sur Afficher les paramètres avancés. Dans la section 'Confidentialité', cliquez sur préférences.  Dans l'onglet 'Confidentialité', vous pouvez bloquer les cookies.") }}
+                {{ __("Sous Chrome : Cliquez en haut à droite du navigateur sur le pictogramme de menu (symbolisé par trois lignes horizontales). Sélectionnez Paramètres. Cliquez sur Afficher les paramètres avancés. Dans la section 'Confidentialité', cliquez sur préférences. Dans l'onglet 'Confidentialité', vous pouvez bloquer les cookies.") }}
             </p>
 
             <h3 class="secondary_title" tabindex="0">

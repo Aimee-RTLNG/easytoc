@@ -30,9 +30,9 @@
     @endif
 
     <div class="entete">
-        <h2 class="entete__title">
+        <h1 class="entete__title">
             {{ __('Visualiser mon ') }} {{ $content->type["name_fr"] }}
-        </h2>
+        </h1>
         <div class="entete__under"></div>
     </div>
         {{-- Infos prrojet et actions --}}
