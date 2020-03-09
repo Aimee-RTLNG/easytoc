@@ -9,11 +9,12 @@ body {
 }
 .btn-primary {
     @include expletus;
+    transition: all .2s;
 }
 .btn-primary:hover,.btn-primary:focus  {
     color: #fff;
-    background-color: #165ba0;
-    border-color: #155595;
+    background-color: $hover-primary;
+    border-color: $hover-primary;
 }
 #btn-save-project:focus {
     border: 2px $bleu solid;

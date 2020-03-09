@@ -264,7 +264,7 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Lien CSS à mettre dans la balise') }} &lt;head&gt; </h2>
                                     <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
@@ -446,6 +446,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <label for="imported_data">{{ __('Importer des données via un fichier CSV ou JSON : attention, les autres formats ne sont pas acceptés.') }}</label>
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
