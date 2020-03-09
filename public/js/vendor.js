@@ -51059,14 +51059,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: alertMsg, lang, setSideWindow */
+/*! exports provided: alertMsg, lang */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSideWindow", function() { return setSideWindow; });
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -51080,7 +51079,7 @@ __webpack_require__(/*! clipboard/dist/clipboard.min.js */ "./node_modules/clipb
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlusCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSort"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPen"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faItalic"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBold"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUnderline"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignCenter"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignJustify"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTasks"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faComment"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLines"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faParagraph"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeading"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faLink"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListOl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListUl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faQuestionCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrashAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSync"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileCode"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faVectorSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLinesVertical"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSave"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCut"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectGroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectUngroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faExclamationTriangle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFrown"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowCircleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSortDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlusCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSort"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPen"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faItalic"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBold"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUnderline"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignCenter"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignJustify"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTasks"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCheckCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faComment"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLines"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faParagraph"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeading"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faLink"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListOl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faListUl"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faQuestionCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrashAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSync"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileUpload"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFileCode"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faVectorSquare"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faGripLinesVertical"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSave"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCaretRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowUp"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAlignRight"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCut"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectGroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faObjectUngroup"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faExclamationTriangle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFrown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faChevronCircleDown"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
 var message; // ANCHOR Visualisation des contenus générés (form, table, menu)
 // Empêcher l'envoi du formulaire 
@@ -51090,6 +51089,10 @@ $(document).ready(function () {
 }); // ANCHOR Burger menu
 
 window.addEventListener("DOMContentLoaded", function (event) {
+  $("#rgpd-mgr").on("click", function (e) {
+    e.preventDefault();
+    tarteaucitron.userInterface.openPanel();
+  });
   var btn_burger = document.getElementById('bars');
   btn_burger.addEventListener('click', function () {
     btn_burger.classList.toggle('open');
@@ -51189,42 +51192,7 @@ function alertMsg(message, state) {
   }, 7000);
 } // Traduction en JS
 
-var lang = $('html').attr('lang'); // Side tools 
-
-function setSideWindow() {
-  if ($(window).width() >= 992) {
-    if ($(window).scrollTop() > 800) {
-      // Integration aside
-      $('.action-supp').css('width', '240px');
-      $('#actions-interface').removeClass('col-12');
-      $('#actions-interface').addClass('col-3');
-      $('#actions-interface').addClass('p-0'); // ---
-
-      $('.action-supp').css('position', 'fixed');
-      $('.action-supp').css('top', '25px');
-      $('.action-supp').css('max-width', '25%');
-      var bottom = $('.action-supp').position().top + $('.action-supp').offset().top + $('.action-supp').outerHeight(true);
-      var main_bottom = $('#content-interface').position().top + $('#content-interface').offset().top + $('#content-interface').outerHeight(true);
-
-      if (main_bottom - bottom < 435) {
-        var calcul = 435 - (main_bottom - bottom);
-        $('.action-supp').css('top', '-' + calcul + 'px');
-      }
-    } else {
-      $('.action-supp').css('position', 'relative');
-      $('.action-supp').css('top', '0');
-      $('.action-supp').css('max-width', '100%');
-    }
-  } else {
-    // Integration full width
-    $('.action-supp').css('position', 'relative');
-    $('.action-supp').css('max-width', '100%');
-    $('.action-supp').css('width', '100%');
-    $('#actions-interface').removeClass('col-3');
-    $('#actions-interface').removeClass('p-0');
-    $('#actions-interface').addClass('col-12'); // ---
-  }
-} // Copier le contenu du code sur la page visualisation
+var lang = $('html').attr('lang'); // Copier le contenu du code sur la page visualisation
 // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
@@ -51343,10 +51311,7 @@ document.onkeyup = function (e) {
               } // Sauvegarder
               // CTRL ALT + S
               else if (e.ctrlKey && e.altKey && e.which == 83) {
-                  console.log(e);
-
                   if ($('#btn-save-project, #btn-update-project').length > 0) {
-                    console.log(e);
                     var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
 
                     if (lang == "en") {
@@ -51369,6 +51334,9 @@ window.ondragstart = function () {
 
 $.ajaxSetup({
   cache: false
+});
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 /***/ }),
@@ -51504,11 +51472,7 @@ $('#title-input').keypress(function (e) {
 }); // ANCHOR Liste de tous les tags possibles dans un formulaire
 // Pourrait donc être remplacé par une liste, des liens etc...
 
-var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // ANCHOR Appel de la fonction qui positione la side toolbox ( à ne pas toucher )
-
-$(window).on('scroll', function () {
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
-}); // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
+var tags_list = ["form", "fieldset", "legend", "input", "button", "label", "a", "p", "h1", "h2", "h3", "h4", "h5", "select", "optgroup", "option", "hr", "textarea", "abbr"]; // ANCHOR Liste WYSIWYG : liste de tous les éléments dynamiques ajoutables
 // Cette liste est hyper importante : chaque élément qu'on ajoute dans le contenu doit être listé ici : cela permet d'être sûr d'avoir toujours les bonnes classes
 // et la bonne structure. 
 // \t = tabulation,  \n = saut de ligne :: permet au code d'être indenté lors de la génération du menu
@@ -51597,7 +51561,7 @@ function getOldContent() {
   var selected_theme = $('.theme-switch').find('input[value=' + actual_theme + ']');
   selected_theme.prop('checked', true); // Titre (non présent pour les menu)
 
-  var actual_title = $("#full-form #form-title").text();
+  var actual_title = $("#full-form #form-title").text().trim();
   $("#form-creator-title").val(actual_title); // Methode (non présent pour les menu)
 
   var actual_method = $("#generated-form").attr('method');
@@ -51725,8 +51689,6 @@ $('.add-element').on('click', function () {
   var element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
 
   addElement(element_type, element_type_name); // on ajoute l'élement
-
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 
 $('#btn-save-project').on('click', function () {
@@ -51776,8 +51738,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   } else {
     $(this).closest('label').focus();
   }
-
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Modifie le focus quand on clique sur une DIV, un FIELDSET ou une LEGEND (pour contrer comportement de formulaire de base)
 .on('click', '.element-container', function (e) {
   if (e.target.nodeName == "DIV" || e.target.nodeName == "FIELDSET") {
@@ -51785,8 +51745,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   } else if (e.target.nodeName == "LEGEND") {
     $(this).find('legend span[contenteditable=true]').focus();
   }
-
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
 }) // Quand on clique sur une option
 .on('click', '#full-form fieldset label, #full-form select option', function (e) {
   $('.content-editable-selected').removeClass('content-editable-selected');
@@ -51797,7 +51755,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   previous_option = selected_option.prev();
   next_option = selected_option.next();
   refreshMoveButtons(previous_option, next_option, true);
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   updatecontent();
 }) // Quand on sélectionne un élément éditable (c'est là le plus important)
 .on('focus', '[contenteditable=true], #full-form input, #full-form select, #full-form textarea, #full-form fieldset label, #full-form select option', function (e) {
@@ -51805,7 +51762,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   if (e.target) {
     element_select = e.target; // on ré initialise les classes
 
-    Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
     $(".content-editable-selected").removeClass('content-editable-selected');
     $(".option-selected").removeClass('option-selected');
     selected_option = false;
@@ -51825,7 +51781,6 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
     refreshMoveButtons(previous_element, next_element, false);
   }
 
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   $(element_selected_container).addClass("content-editable-selected");
   var tag = $(this).attr('data-tag');
 
@@ -51858,12 +51813,12 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
       if (intitule) {
         intitule.off('keyup'); // re-init
 
-        $('#elem-title').val(intitule.text()); // récupère la valeur de l'elem
+        $('#elem-title').val(intitule.text().trim()); // récupère la valeur de l'elem
 
         intitule.on('keyup', function () {
           // traitement modif
           e.stopPropagation();
-          $('#elem-title').val(intitule.text());
+          $('#elem-title').val(intitule.text().trim());
           updatecontent();
         });
       } // on récupère le placeholder 
@@ -51879,7 +51834,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
 
       if ($(element_selected_container).find('select').length > 0) {
         input = $(element_selected_container).find('select');
-        placeholder = input.find('option').first().text();
+        placeholder = input.find('option').first().text().trim();
 
         if ($(element_selected_container).find('select').attr('multiple')) {
           $('#elem-multiple-choice').prop('checked', true);
@@ -51915,7 +51870,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
         option_label.on('keyup', function () {
           // traitement modif
           e.stopPropagation();
-          $("#elem-option-label").val(option_label.text());
+          $("#elem-option-label").val(option_label.text().trim());
           updatecontent();
         }); // on recupère la valeur de l'option
 
@@ -51991,7 +51946,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
           $('.action-delete-option').show();
         }
 
-        $("#elem-option-label").val(_option_label.text()); // on recupère la valeur de l'option
+        $("#elem-option-label").val(_option_label.text().trim()); // on recupère la valeur de l'option
 
         var _option_value = $('.content-editable-selected select option:selected:enabled').attr('value');
 
@@ -52050,7 +52005,7 @@ $(document.body).off('keyup') // ré-initialisation pour empêcher les écouteur
   updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#form-title', function () {
-  $('#form-creator-title').val($('#form-title').text());
+  $('#form-creator-title').val($('#form-title').text().trim());
   updatecontent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
@@ -52360,7 +52315,6 @@ function selectText(element) {
 ; // ANCHOR Fonction d'ajout d'option ( osef ça concerne pas les menus )
 
 function addOption(option_type_parameter) {
-  Object(_app__WEBPACK_IMPORTED_MODULE_0__["setSideWindow"])();
   var option_parent_element = $(".content-editable-selected");
   var option_type = option_type_parameter || $(option_parent_element).attr("data-elementtypename");
 
@@ -52609,8 +52563,8 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
   element_types = {
     "type-info": {
       "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
-      "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
-      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+      "insert-img": '\n\t\t<a class="menu-logo" id="menu-logo" href=' / '></a>\n',
+      "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
       "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
     },
     "type-menu": {
@@ -52623,8 +52577,8 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
   element_types = {
     "type-info": {
       "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
-      "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
-      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+      "insert-img": "\n\t\t<a id='menu-logo' class='menu-logo' href='/'></a>\n",
+      "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
       "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
     },
     "type-menu": {
@@ -52659,6 +52613,8 @@ function getOldContent() {
   if (actual_link) {
     actual_link = actual_link.replace('url("', "");
     actual_link = actual_link.replace('")', "");
+    actual_link = actual_link.replace("url('", "");
+    actual_link = actual_link.replace("')", "");
     $("#menu-creator-link").val(actual_link);
   } // option image
 
@@ -52678,13 +52634,22 @@ function getOldContent() {
 } // ANCHOR Fonction de sauvegarde
 
 function updatecontent() {
-  // on récupère le contenu
+  // lien du logo
+  var actual_link = $("#menu-creator-link").val();
+
+  if (actual_link) {
+    var new_url = "url('" + encodeURI(actual_link) + "')";
+    $("#menu-logo").css('background-image', new_url);
+  } // on récupère le contenu
+
+
   var blueprint_content = $('#content-created-blueprint').html(); // on trie les éléments à ne pas inclure dans le code 
 
   blueprint_content = blueprint_content.replace(/ contenteditable="(.*?)\"/g, "");
   blueprint_content = blueprint_content.replace(/ content-editable-selected/g, ""); // on remplace les doubles sauts de lignes
 
-  blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n"); // on update le code par rapport au blueprint
+  blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
+  blueprint_content = blueprint_content.replace(/&quot;/g, "'"); // on update le code par rapport au blueprint
 
   $('#raw-code').html(blueprint_content);
   var code_content = $('<div>').text($('#raw-code').text()).html(); // prettify (permet de rendre le code joli)
@@ -52737,14 +52702,15 @@ $('#menu-creator-title-display').off().on('click', function () {
 }); // ANCHOR Changement de lien du logo
 
 $('#menu-creator-link').on('keyup', function () {
-  $("#menu-logo").css('background-image', 'url(' + $('#menu-creator-link').val() + ')');
+  // $("#menu-logo").css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
+  $("#menu-logo").css('background-image', 'url(' + $('#menu-creator-link').val().trim() + ')');
   updatecontent();
 }); // ANCHOR Afficher ou non le logo
 
 $('#menu-creator-link-display').off().on('click', function () {
   if ($(this).is(":checked")) {
     $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
-    $('#full-menu .menu-identity #menu-logo').css('background-image', 'url(' + $('#menu-creator-link').val() + ')');
+    $('#full-menu .menu-identity #menu-logo').css('background-image', 'url(' + $('#menu-creator-link').val().trim() + ')'); //  $('#full-menu .menu-identity #menu-logo').css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
 
     if (!$('#menu-creator-title-display').is(":checked")) {
       $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
@@ -52775,12 +52741,11 @@ function addLink(type) {
 
   if (type == "sub_link") {
     menu_length = $(selected_link).find('ul').children("li").length;
-    console.log($(selected_link).find('ul'));
   } else {
     menu_length = $("#menubar-easytoc").children("li").length;
   }
 
-  if (menu_length > 8) {
+  if (menu_length > 7) {
     message = "Vous ne pouvez pas rajouter plus de liens";
 
     if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
@@ -54068,9 +54033,9 @@ $('#btn-save-project').on('click', function () {
     window.location.href = "profile/" + user_id + "/view";
     $("#title-input").removeClass('required-failed');
   }).fail(function (xhr, status, error) {
-    // console.log(xhr.responseText);
-    // console.log(status);
-    console.log($('#raw-code').text().trim()); // Erreur
+    console.log(xhr.responseText);
+    console.log(status); // console.log($('#raw-code').text().trim());
+    // Erreur
 
     if (!$('#title-input').val()) {
       $("#title-input").addClass('required-failed');

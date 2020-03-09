@@ -7,7 +7,7 @@
 
     <div class="container">
         <div class="entete">
-            <h2 class="entete__title">{{ __('Aide') }}</h2>
+            <h1 class="entete__title">{{ __('Comment utiliser Easy to C ?') }}</h1>
             <div class="entete__under"></div>
         </div>
             
@@ -83,19 +83,19 @@
             <div class="help-text-container" style="order: -1"> 
 
                 <div id="account">
-                    <h2>{{ __('Compte Easy to C') }}</h2>
+                    <h2>{{ __('Compte EasytoC') }}</h2>
 
                     <p>
-                        {{ __("Vous n'avez pas besoin de créer un compte sur Easy to C pour pouvoir utiliser nos outils. Cependant, nous vous le recommandons fortement car cela vous permettra de sauvegarder votre contenu, de le retrouver ultérieurement et de le modifier à votre guise. De plus, il n'existe pas de limite de projets. La création de compte ne prend pas plus de quelques minutes: nous ne vous demandons pas d'informations personnelles.") }}
+                        {{ __("Vous n'avez pas besoin de créer un compte sur EasytoC pour pouvoir utiliser nos outils. Cependant, nous vous le recommandons fortement car cela vous permettra de sauvegarder votre contenu, de le retrouver ultérieurement et de le modifier à votre guise. De plus, il n'existe pas de limite de projets. La création de compte ne prend pas plus de quelques minutes: nous ne vous demandons pas d'informations personnelles.") }}
                     </p>
 
                     <div id="signUp">
-                        <h3>{{ __('Se créer un compte Easy to C') }}</h3>
+                        <h3>{{ __('Se créer un compte EasytoC') }}</h3>
                         <p>
-                            {{ __("Si vous souhaitez vous créer un compte sur Easy to C, voici quelques étapes très simples : il vous suffit de vous rendre sur la ") }} <a href="register" title="{{ __('Redirection vers la page Inscription') }}">
+                            {{ __("Si vous souhaitez vous créer un compte sur EasytoC, voici quelques étapes très simples : il vous suffit de vous rendre sur la ") }} <a href="register" title="{{ __('Redirection vers la page Inscription') }}">
                                 {{ __('page Inscription') }}
                             </a>.
-                            {{ __("Vous avez également la possibilité de vous inscrire plus rapidement en utilisant l'inscription via Facebook ou via Google. Si vous choissiez cette option, vous devez autorisé Easy to C à accéder à certaines informations de votre compte. Vous ne serez cependant pas connecté automatiquement.") }}
+                            {{ __("Vous avez également la possibilité de vous inscrire plus rapidement en utilisant l'inscription via Facebook ou via Google. Si vous choissiez cette option, vous devez autorisé EasytoC à accéder à certaines informations de votre compte. Vous ne serez cependant pas connecté automatiquement.") }}
                         </p>
                         <p>
                             {{ __("Sur cette page, vous avez alors à remplir quelques informations, notamment votre identifiant (nom du compte), qui n'a pas besoin d'être votre véritable nom ni votre prénom. Vous devez également indiquer une adresse e-mail, essentielle pour se connecter et accéder à son compte : c'est également sur cette adresse e-mail que vous recevrez des mails de notre part (uniquement dans le cadre d'une ré-initialisation de mot de passe). Votre mot de passe doit être indiqué deux fois pour éviter les fautes de frappes. Le mot de passe que vous choisissez doit minimum faire 8 caractères de long. Si par la suite, vous perdez votre mot de passe, vous avez la possibilité de le réinitialiser en cliquant sur ce lien: ") }}
@@ -104,7 +104,7 @@
                             </a>.
                         </p>
                         <p>
-                            {{ __("Afin de s'assurer que vous respecterez les Conditions Générales d'Utilisation du site Easy to C, vous ne pouvez procéder à l'inscription qu'après avoir lu et consenti à ces règles: le bouton \"J'ai lu et j'accepte les Conditions générales d'utilisation du site\" est obligatoire. Vous pouvez consulter ces conditions sur la ") }}
+                            {{ __("Afin de s'assurer que vous respecterez les Conditions Générales d'Utilisation du site EasytoC, vous ne pouvez procéder à l'inscription qu'après avoir lu et consenti à ces règles: le bouton \"J'ai lu et j'accepte les Conditions générales d'utilisation du site\" est obligatoire. Vous pouvez consulter ces conditions sur la ") }}
                             <a href="cgu" title="{{ __('Redirection vers la page CGU') }}">
                                 {{ __('page CGU') }}
                             </a>
@@ -135,9 +135,9 @@
                     </div>         
                     
                     <div id="signIn">
-                        <h3>{{ __('Se connecter à son compte Easy to C') }}</h3>
+                        <h3>{{ __('Se connecter à son compte EasytoC') }}</h3>
                         <p>
-                            {{ __("Si vous souhaitez vous connecter à votre compte sur Easy to C, rendez vous sur ") }} 
+                            {{ __("Si vous souhaitez vous connecter à votre compte sur EasytoC, rendez vous sur ") }} 
                             <a href="login" title="{{ __('Redirection vers la page Connexion') }}">
                                 {{ __('page Connexion') }}
                             </a>
@@ -435,6 +435,66 @@
                 </div>
 
             </div>
+
+
+            {{-- Sommaire --}}
+            <div class="summary-container">
+                {{-- ANCHOR Sommaire --}}
+                <h3>{{ __('Table des matières') }}</h3>
+                <ul>
+                    {{-- Compte Utilisateur --}}
+                    <li>
+                        <a href="#account" title="{{ __('Compte EasytoC') }}">{{ __('Compte EasytoC') }}</a>
+                        <ul>
+                            {{-- S'inscrire / Se connecter --}}
+                            <li><a href="#signUp" title="{{ __('Se créer un compte EasytoC') }}">{{ __('Créer un compte EasytoC') }}</a></li>
+                            <li><a href="#signIn" title="{{ __('Se connecter à son compte EasytoC') }}">{{ __('Se connecter à son compte') }}</a></li>
+                            <li><a href="#listAccount" title="{{ __("Accéder à mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
+                            <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
+                            <li><a href="#deleteAccount" title="{{ __('Effacer toutes les données de son compte') }}">{{ __('Supprimer son compte') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- Création d'un projet --}}
+                    <li>
+                        <a href="#project" title="{{ __('Création de projet') }}">{{ __('Créer un projet') }}</a>
+                        <ul> 
+                            <li><a href="#infoProject" title="{{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
+                            <li><a href="#updateProject" title="{{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
+                            <li><a href="#useCode" title="{{ __('Utiliser le code généreré') }}">{{ __('Utiliser le code généreré') }}</a></li>
+                            <li><a href="#actionsProject" title="{{ __('Actions sur mon projet') }}">{{ __('Actions sur le projet') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- Générateur de tableau --}}
+                    <li>
+                        <a href="#tableCreator" title="{{ __('Guide d\'utilisation du générateur de tableau') }}">{{ __('Générateur de tableau') }}</a>
+                        <ul> 
+                            <li><a href="#importTable" title="{{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
+                            <li><a href="#generateTable" title="{{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
+                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au tableau') }}">{{ __('Ajouter du contenu au tableau') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- Générateur de menu --}}
+                    <li>
+                        <a href="#menuCreator" title="{{ __('Guide d\'utilisation du générateur de menu') }}">{{ __('Générateur de menu') }}</a>
+                        <ul> 
+                            <li><a href="#importMenu" title="{{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
+                            <li><a href="#generateTable" title="{{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
+                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au menu') }}">{{ __('Ajouter du contenu au menu') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- Générateur de formulaire --}}
+                    <li>
+                        <a href="#formCreator" title="{{ __('Guide d\'utilisation du générateur de formulaire') }}">{{ __('Générateur de formulaire') }}</a>
+                        <ul> 
+                            <li><a href="#importForm" title="{{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
+                            <li><a href="#generateForm" title="{{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
+                            <li><a href="#addElementForm" title="{{ __('Ajouter du contenu au formulaire') }}">{{ __('Ajouter du contenu au formulaire') }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
             <hr class="pb-5">
 
         </div>

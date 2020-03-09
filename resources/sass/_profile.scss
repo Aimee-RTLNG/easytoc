@@ -214,7 +214,7 @@
         height: 35px;
     }
     input.form-control {
-        font-family: 'Roboto','Arial', sans-serif;
+        font-family: 'Arial','Arial', sans-serif;
         &:focus {
             border: 3px $bleu solid;
         }
@@ -290,7 +290,10 @@
         text-transform: capitalize;
     }
     &__btns {
-        @include flex-col-end-center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
         a {
             margin-bottom: 10px;
         }
@@ -337,10 +340,10 @@
         left: 30px;    
     }
     &__infos {
-        justify-content: space-between;
         display: flex;
         flex-direction: column;
-        @include flex-col-between-start;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 }
 .btn--rouge {
@@ -376,7 +379,7 @@
     }
     .modif-compte {
         order: -1;
-        margin-bottom: 50px;
+        margin-bottom: 25px;
     }
     .mon-compte {
         font-size: 1.6rem;
@@ -384,7 +387,7 @@
         height: 66px;
         transition: height 0.5s ease;
         &.open {
-            height: 700px;
+            height: 790px;
         }
         &__entete {
             justify-content: flex-start;

@@ -5,9 +5,9 @@
 @section('content')
 <div class="container wysiwyg">
     <div class="entete">
-        <h2 class="entete__title">
+        <h1 class="entete__title">
             {{ __('Mentions légales') }}
-        </h2>
+        </h1>
         <div class="entete__under"></div>
     </div>
 

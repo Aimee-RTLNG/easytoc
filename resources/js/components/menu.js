@@ -3,7 +3,6 @@
 // On importe les variables et fonctions externes (qui sont définie dans app.js)
 import { 
     lang,  // la variable lang est soit "en" soit "fr" et permet de définir le contenu des messages
-    setSideWindow, // c'est un fonction qui permet d'ajuster la side tools box quand on scroll.
     alertMsg // fonction qui affiche le message pop up en bas à droite
 } from "../app"; 
 
@@ -64,8 +63,8 @@ if( lang == "en" ){
     element_types = {
         "type-info": {
             "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
-            "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
-            "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+            "insert-img": '\n\t\t<a class="menu-logo" id="menu-logo" href='/'></a>\n',
+            "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
             "insert-separator": '\n\t\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
@@ -77,8 +76,8 @@ if( lang == "en" ){
     element_types = {
         "type-info": {
             "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
-            "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
-            "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo' style='background-image: url({{ URL::asset('images/Logo-white.png') }})'></div>\n",
+            "insert-img": "\n\t\t<a id='menu-logo' class='menu-logo' href='/'></a>\n",
+            "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
             "insert-separator": '\n\t\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
@@ -113,6 +112,8 @@ export function getOldContent() {
     if( actual_link ){
         actual_link = actual_link.replace('url("', "");
         actual_link = actual_link.replace('")', "");
+        actual_link = actual_link.replace("url('", "");
+        actual_link = actual_link.replace("')", "");
         $("#menu-creator-link").val(actual_link);
     }
 
@@ -134,6 +135,13 @@ export function getOldContent() {
 // ANCHOR Fonction de sauvegarde
 function updatecontent() {
 
+    // lien du logo
+    let actual_link = $("#menu-creator-link").val();
+    if( actual_link ){
+        let new_url = "url('" + encodeURI(actual_link) + "')";
+        $("#menu-logo").css('background-image', new_url);
+    }
+
     // on récupère le contenu
     var blueprint_content = $('#content-created-blueprint').html();
     // on trie les éléments à ne pas inclure dans le code 
@@ -141,6 +149,7 @@ function updatecontent() {
     blueprint_content = blueprint_content.replace(/ content-editable-selected/g, "");
     // on remplace les doubles sauts de lignes
     blueprint_content = blueprint_content.replace(/\n\s*\n/g, "\n");
+    blueprint_content = blueprint_content.replace(/&quot;/g, "'");
 
     // on update le code par rapport au blueprint
     $('#raw-code').html(blueprint_content);
@@ -195,7 +204,8 @@ $('#menu-creator-title-display').off().on('click', function () {
 
 // ANCHOR Changement de lien du logo
 $('#menu-creator-link').on('keyup', function () {
-    $("#menu-logo").css('background-image', 'url('+$('#menu-creator-link').val()+')');
+    // $("#menu-logo").css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
+    $("#menu-logo").css('background-image', 'url('+$('#menu-creator-link').val().trim()+')');
     updatecontent();
 });
 
@@ -203,7 +213,9 @@ $('#menu-creator-link').on('keyup', function () {
 $('#menu-creator-link-display').off().on('click', function () {
    if( $(this).is(":checked") ){
      $('#full-menu .menu-identity').prepend(element_types["type-info"]["insert-img"]);
-     $('#full-menu .menu-identity #menu-logo').css('background-image', 'url('+$('#menu-creator-link').val()+')');
+     $('#full-menu .menu-identity #menu-logo').css('background-image', 'url('+$('#menu-creator-link').val().trim()+')');
+    //  $('#full-menu .menu-identity #menu-logo').css('background-image', "url("+$("#menu-creator-link").val().trim()+")");
+
      if( !$('#menu-creator-title-display').is(":checked") ){
         $('#full-menu .menu-identity #menu-logo').addClass('menu-logo-solo');
         $('#full-menu .menu-identity').removeClass('hidden');
@@ -233,12 +245,11 @@ export function addLink( type ) {
 
     if( type == "sub_link" ){
         menu_length = $( selected_link ).find('ul').children("li").length;
-        console.log ( $( selected_link ).find('ul') );
     } else {
         menu_length = $("#menubar-easytoc").children("li").length;
     }
     
-    if( menu_length > 8 ){
+    if( menu_length > 7 ){
         message = "Vous ne pouvez pas rajouter plus de liens";
         if (lang == "en" ){
             message = "You already have too much links !"

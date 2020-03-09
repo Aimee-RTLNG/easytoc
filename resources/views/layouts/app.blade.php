@@ -5,6 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        {{-- SEO --}}
+        <meta name="title" content="EasytoC - Générateur de menus, tableaux et formulaires">
+        <meta name="description" content="EasyToC vous permet de générer des menus, tableaux et formulaires en un code html accessible">
+
+        <meta property="og:title" content="EasyToC un générateur de menus, tableaux et formulaires accessibles." />
+        <meta property="og:description" content="Pour certaines personnes, l’accès aux ressources web est difficile et pénible .Easy to C peut vous aider à rendre vos sites accessibles, peu importe votre niveau avec le code."" />
+        <meta property="og:image" content="{{ URL::asset('images/capture_easytoc.jpg') }}" />
+        <meta property="og:site_name" content="EasyToC" />
+        <link rel="canonical" href="{{url()->current()}}" />
+
+        <meta property="twitter:title" content="EasyToC, un générateur de formulaires, tableaux et menus dans en code HTML accessible." />
+        <meta property="twitter:description" content="EasyToC générateur de menus, tableaux et formulaire" />
+        <meta property="twitter:image" content="{{ URL::asset('images/capture_easytoc.jpg') }}" />
+
+        <meta property="twitter:site" content="EasyToC" />
+        <meta property="twitter:url" content="{{url()->current()}}" />
+        <meta name="application-name" content="EasyToC" />
+
+        <meta name="keywords" content="accessibilité, création, génération, tableau, menu, formulaire, accessible, compte, sauvegarde, facile, pratique">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="French">
+        <meta name="author" content="Aimee RITLENG, Louise MATT, Pierre BOULANGER">
+
         <title> @yield('titre') </title>
 
         <!-- Favicon -->
@@ -12,34 +36,40 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
-        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-         
-        {{-- SEO --}}
-        <meta name="title" content="Easy to C - Générateur de menus, tableaux et formulaires">
-        <meta name="description" content="Easy to C est le nouveau générateur de contenu web ! Il vous permet de créer vous même des menus, tableaux et formulaires accessibles.">
-        <meta name="keywords" content="accessibilité, création, génération, tableau, menu, formulaire, accessible, compte, sauvegarde, facile, pratique">
-        <meta name="robots" content="index, follow">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="language" content="French">
-        <meta name="author" content="Aimee RITLENG, Louise MATT, Pierre BOULANGER">
 
         <!-- page specific style -->
         @yield('pagespecificstyles')
+
+        <script type="text/javascript" src="{{ URL::asset('/tarteaucitron/tarteaucitron.js') }}"></script>
+
+        <script type="text/javascript">
+			tarteaucitron.init({
+			  "privacyUrl": "", /* Privacy policy url */
+			  "cookieName": "tarteaucitron", /* Cookie name */
+			  "orientation": "bottom", /* Banner position (top - bottom) */
+			  "showAlertSmall": false, /* Show the small banner on bottom right */
+			  "cookieslist": true, /* Show the cookie list */
+			  "adblocker": false, /* Show a Warning if an adblocker is detected */
+			  "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+			  "highPrivacy": false, /* Disable auto consent */
+			  "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+			  "removeCredit": false, /* Remove credit link */
+			  "moreInfoLink": true, /* Show more info link */
+			  "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+			  "readmoreLink": "/cookiespolicy" /* Change the default readmore link */
+			});
+		</script>
 
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
                 <div class="container">
-                    <h1>
-                        <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
-                            <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav"/>
-                        </a>
-                    </h1>
+                    <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
+                        <img src="{{ URL::asset('images/Logo-white.webp') }}" id="logo-nav" alt="Easy to C"/>
+                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="{{ __('Menu de navigation') }}">
                         <div class="bars" id="bars">
                             <div class="bars__line bars--first"></div>
@@ -52,17 +82,17 @@
                             <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-dark bg-dark main-menu col-lg-7 m-0 p-0">
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}" title="{{ __('Accéder à l\'accueil') }}"><span>{{ __('Accueil') }}</span></a></li>
-                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}" title="{{ __('Créer un menu') }}"><span>{{ __('Créer un menu') }}</span></a></li>
-                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}" title="{{ __('Créer un tableau') }}"><span>{{ __('Créer un tableau') }}</span></a></li>
-                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}" title="{{ __('Créer un formulaire') }}"><span>{{ __('Créer un formulaire') }}</span></a></li>
+                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}" title="{{ __('Accéder au générateur de menu accessible') }}"><span>{{ __('Créer un menu') }}</span></a></li>
+                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}" title="{{ __('Accéder au générateur de tableau accessible') }}"><span>{{ __('Créer un tableau') }}</span></a></li>
+                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}" title="{{ __('Accéder au générateur de formulaire accessible') }}"><span>{{ __('Créer un formulaire') }}</span></a></li>
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}"><span>{{ __('Aide') }}</span></a></li>
                         </ul>
                         <ul class="navbar-nav text-light menu-lang col mr-3 p-0">
-                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Passer en français') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.png') }})"></div> {{ __('EN') }}</a>
-                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Passer en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav menu-connect col m-0">
+                        <ul class="navbar-nav menu-connect col-lg-3 m-0">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('register'))
@@ -122,12 +152,16 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
-                        <li class="nav-items"><a class="nav-link" >Copyright 2019</a></li>
+                        <li class="nav-items"><a class="nav-link" >Copyright / {{ __('Tous droits réservés') }} - 2020</a></li>
                     </ul>
                 </div>
             </div>
        </div>
     </footer>
+
+        <script type="text/javascript">
+            (tarteaucitron.job = tarteaucitron.job || []).push('youtube');
+        </script>
     
         <script>
             var baseUrl = "{{ URL::asset('/') }}";
@@ -136,7 +170,6 @@
         <script src="{{asset(mix('js/manifest.js'))}}" ></script>
         <script src="{{asset(mix('js/vendor.js'))}}" ></script>
         <script src="{{asset(mix('js/app.js'))}}" ></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
         <!-- page specific scripts -->
         @yield('pagespecificscripts')

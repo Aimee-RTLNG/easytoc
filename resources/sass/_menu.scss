@@ -2,7 +2,10 @@
 
     #content-created-blueprint{
         resize: vertical;
-        height: 500px;
+        height: 430px;
+        @media (max-width: 991px ) {
+            height: 800px;
+        }
     }
     
     .element-container , .content-editable-selected{
@@ -13,4 +16,74 @@
 }
 .menu-blueprint{
     min-height: 350px;
+}
+.cont-checkbox {
+    @include flex-row-center;
+    height: 60%;
+    label {
+        margin-bottom: 0px;
+        margin-left: 5px;
+    }
+ }
+.creator-panel__link, .creator-panel__title {
+    margin-bottom: 3px;
+}
+.panel_item_menu, .move_item_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.move_item_menu {
+    flex-wrap: wrap;
+    button {
+        min-width: 164px;
+        max-height: 32px;
+        margin-bottom: 0px;
+        @media (max-width: 769px) {
+            margin-bottom: 12px;
+        }
+        @media (max-width: 530px) {
+            justify-content: center;
+            margin-bottom: 12px;
+            &:nth-child(2n){
+                margin-left: 10px;
+            }
+        }
+    }
+    @media (max-width: 375px) {
+        button:nth-child(2n){
+            margin-left: 0px;
+        }
+        justify-content: center;
+    }
+}
+.btns_menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    @media (max-width: 575px){
+        flex-direction: column;
+    }
+}
+.btns_menu__child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    @media (max-width: 576px) {
+       button {
+        margin: 0px 2px;
+       }
+    }
+}
+
+
+@media (max-width: 575px) {
+    .static-buttons-creator {
+        height: 80px;
+    }
+    .btns_menu__child {
+        width: 310px;
+        max-width: 100%;
+    }
 }

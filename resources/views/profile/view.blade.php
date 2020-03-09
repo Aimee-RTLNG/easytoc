@@ -27,12 +27,12 @@
         <div class="row d-flex">
             <div class="col-lg-8">
                 <div class="entete">
-                    <h2 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h2>
+                    <h1 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h1>
                     <div class="entete__under"></div>
                 </div>
             </div>
             <div class="col-lg-4 start-project-profile">
-                <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="Menu création d'éléments HTML">
+                <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="{{ __('Menu création d\'éléments HTML') }}">
                     <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-arrow-right"></i>
                         <p>{{ __('Commencer un projet') }}</p>
@@ -52,7 +52,7 @@
                     <div class="row profile_content__filters m-0 p-0">
                         <div class="profile_content__options col-12">
                             <div id="list-filters" class="list-filters">
-                                <button class="btn btn-filter-type active" data-type="all" tabindex="0">
+                                <button class="btn btn-filter-type active" title="{{ __('Voir toutes vos créations')}}" data-type="all" tabindex="0">
                                     {{ __('Tous') }}
                                     <div class="all_types">
                                         <span class="type-pin type-Menu" data-type="Menu"></span>
@@ -60,15 +60,15 @@
                                         <span class="type-pin type-Table" data-type="Table"></span>
                                     </div>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="menu" tabindex="0">
+                                <button class="btn btn-filter-type" data-type="menu" title="{{ __('Voir uniquement vos créations Menu')}}" tabindex="0">
                                     {{ __('Menu') }}
                                     <span class="type-pin type-Menu" data-type="Menu"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="form" tabindex="0">
+                                <button class="btn btn-filter-type" data-type="form" title="{{ __('Voir uniquement vos créations Formulaire')}}" tabindex="0">
                                     {{ __('Formulaire') }}
                                     <span class="type-pin type-Form" data-type="Form"></span>
                                 </button>
-                                <button class="btn btn-filter-type" data-type="table" tabindex="0">
+                                <button class="btn btn-filter-type" data-type="table" title="{{ __('Voir uniquement vos créations Tableaux')}}" tabindex="0">
                                     {{ __('Tableau') }}
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </button>
@@ -78,7 +78,7 @@
                                 <i class="fas fa-sort"></i>
                             </button> --}}
                             <div class="input-group filter-name">
-                                <input type="text" class="form-control" placeholder="{{ __('Rechercher') }}">
+                                <input type="text" class="form-control" id="search_create" placeholder="{{ __('Rechercher') }}">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fas fa-search"></i>
