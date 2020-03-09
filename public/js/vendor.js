@@ -17895,7 +17895,7 @@ var prettyPrint;
     /** @type{!Element} */
     var container = document.createElement('div');
     // This could cause images to load and onload listeners to fire.
-    // E.g. <img onerror="alert(1337)" src="nosuchimage.webp">.
+    // E.g. <img onerror="alert(1337)" src="nosuchimage.png">.
     // We assume that the inner HTML is from a trusted source.
     // The pre-tag is required for IE8 which strips newlines from innerHTML
     // when it is injected into a <pre> tag.
@@ -19876,7 +19876,7 @@ var IN_GLOBAL_SCOPE = false;
         /** @type{!Element} */
         var container = document.createElement('div');
         // This could cause images to load and onload listeners to fire.
-        // E.g. <img onerror="alert(1337)" src="nosuchimage.webp">.
+        // E.g. <img onerror="alert(1337)" src="nosuchimage.png">.
         // We assume that the inner HTML is from a trusted source.
         // The pre-tag is required for IE8 which strips newlines from innerHTML
         // when it is injected into a <pre> tag.

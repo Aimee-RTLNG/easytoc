@@ -70,7 +70,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
-                        <img src="{{ URL::asset('images/Logo-white.webp') }}" id="logo-nav"/>
+                        <img src="{{ URL::asset('images/Logo-white.webp') }}" id="logo-nav" alt="Easy to C"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="{{ __('Menu de navigation') }}">
                         <div class="bars" id="bars">
