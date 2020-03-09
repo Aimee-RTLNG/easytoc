@@ -147,7 +147,7 @@
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6" role="region">
-                        <label class="creator-panel__title">Option du formulaire</label>
+                        <label class="creator-panel__title">{{ __('Option du formulaire') }}</label>
                         <label class="reset-button" for="reset-button" class="d-block">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="reset-button" name="reset-button">
                             <span class="ml-3">{{ __('Bouton de réinitialisation') }}</span>
