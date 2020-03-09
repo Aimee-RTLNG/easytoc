@@ -35,8 +35,9 @@
         <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/ico">
 
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
+        <script src="https://kit.fontawesome.com/245d0ea819.js" crossorigin="anonymous"></script>
 
         <!-- page specific style -->
         @yield('pagespecificstyles')
@@ -67,7 +68,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
-                        <img src="{{ URL::asset('images/Logo-white.webp') }}" id="logo-nav" alt="Easy to C"/>
+                        <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav" alt="Easy to C"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="{{ __('Menu de navigation') }}">
                         <div class="bars" id="bars">
@@ -87,8 +88,8 @@
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}"><span>{{ __('Aide') }}</span></a></li>
                         </ul>
                         <ul class="navbar-nav text-light menu-lang col mr-3 p-0">
-                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
-                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.png') }})"></div> {{ __('EN') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav menu-connect col-lg-3 m-0">
@@ -97,21 +98,21 @@
                                 @if (Route::has('register'))
                                     <li class="nav-item">
                                         <a class="btn-connect" href="{{ route('register') }}" title="{{ __('Page d\'inscription') }}">
-                                            <div class="btn-connect__icon"><i class="fas fa-pen"></i></div>
+                                            <div class="btn-connect__icon"><i class="fa fa-pencil"></i></div>
                                             <p class=" btn-connect__link">{{ __('Inscription') }}</p>
                                         </a>
                                     </li>
                                 @endif
                                 <li class="nav-item btn-connect--two">
                                     <a class="btn-connect"  href="{{ route('login') }}" title="{{ __('Page de connexion') }}">
-                                        <div class="btn-connect__icon"><i class="fas fa-arrow-right"></i></div>
+                                        <div class="btn-connect__icon"><i class="fa fa-arrow-right"></i></div>
                                         <p class=" btn-connect__link">{{ __('Connexion') }}</p>
                                     </a>
                                 </li>
                             @else
                                 <li class="nav-item">
                                     <a class=" btn-connect" href="{{ route('profile.view', auth()->user()) }}" title="{{ __('Accéder à mon compte') }}">
-                                        <div class="btn-connect__icon"><i class="fas fa-user-circle"></i></div>
+                                        <div class="btn-connect__icon"><i class="fa fa-user-circle"></i></div>
                                         <p class="btn-connect__link" >{{ __('Mon compte') }}</p>
                                     </a>
                                 </li>
@@ -119,7 +120,7 @@
                                     <a class="btn-connect" href="{{ route('logout') }}" title="{{ __('Se déconnecter') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
-                                        <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>
+                                        <div class="btn-connect__icon"><i class="fa fa-times"></i></i></div>
                                          <p class="btn-connect__link">{{ __('Déconnexion') }}</p>
                                     </a>
                                 </li>
@@ -139,11 +140,11 @@
        <div class="container">
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
-                    <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
+                    <h2 class="footer-title">{{ __('Besoin d\'aide ?') }}</h2>
                     <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }} <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
-                    <h3 class="footer-title">{{ __('Contact') }}</h3>
+                    <h2 class="footer-title">{{ __('Contact') }}</h2>
                     <p  class="footer-txt"><a class="link-footer" href="mailto:easytoc@outlook.com" title="{{ __('Envoyer un mail au Webmaster') }}">easytoc@outlook.com</a></p>
                 </div>
                 <div class="col-12 menu-footer">
@@ -151,6 +152,7 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" id="rgpd-mgr" href="#" title="{{ __('Ouvrir la gestion des cookies') }}">{{ __('Gestion des cookies') }}</a></li>
                         <li class="nav-items"><a class="nav-link" >Copyright / {{ __('Tous droits réservés') }} - 2020</a></li>
                     </ul>
                 </div>

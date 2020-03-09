@@ -33,18 +33,18 @@
                         <div class="home-present__txt__btn">
                             <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
                                 <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-arrow-right"></i>
+                                    <i class="fa fa-arrow-right"></i>
                                     {{__('Commencer un projet')}}
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Accéder à l\'espace de création de formulaire') }}</a>
-                                    <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Accéder à l\'espace de création de menu') }}</a>
-                                    <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Accéder à l\'espace de création de tableau') }}</a>
+                                    <a class="dropdown-item" href="{{ route('formulaire') }}" title="{{ __('Accéder à l\'espace de création de formulaire') }}">{{ __('Créer un formulaire') }}</a>
+                                    <a class="dropdown-item" href="{{ route('menu') }}" title="{{ __('Accéder à l\'espace de création de menu') }}">{{ __('Créer un menu') }}</a>
+                                    <a class="dropdown-item" href="{{ route('tableau') }}" title="{{ __('Accéder à l\'espace de création de tableau') }}">{{ __('Créer un tableau') }}</a>
                                 </div>
                             </div>
                             @guest
                                 <a href="register" class="btn-primary btn-form-final">
-                                    <i class="fas fa-arrow-right"></i>
+                                    <i class="fa fa-arrow-right"></i>
                                     <p>{{__("S'inscrire")}}</p>
                                 </a>
                             @endguest
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="next-section" >
-            <div tabindex="0"><i class="fas fa-chevron-down"></i></div>
+            <div tabindex="0"><i class="fa fa-chevron-down"></i></div>
         </div>
     </section>
     <section class="home-tools section-home" id="tools">
@@ -78,7 +78,7 @@
                 <div class="slider-tools">
                     <div class="col-lg-4 col-md-6">
                         <div class="home-tools__item" tabindex="0">
-                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.webp');">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.png');">
     
                             </div>
                             <div class="home-tools__item__txt">
@@ -94,7 +94,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="home-tools__item" tabindex="0">
-                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.webp');">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
     
                             </div>
                             <div class="home-tools__item__txt">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="home-tools__item" tabindex="0">
-                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.webp');">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
     
                             </div>
                             <div class="home-tools__item__txt">
@@ -136,7 +136,7 @@
                 <div class="slider-use-list">
                     <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
-                            <div class="use-list__item__icon" style="background-image: url('./images/002-view.webp');"></div>
+                            <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Améliorer la visibilité')}}</h3>
                             <p class="use-list__item__txt">
                                 {{__('Un site web accessible reflète un code optimisé, c’est à dire quelque chose de propre. Et même si vos utilisateur ne le vois pas, votre navigateur passe plus de temps sur vos pages et ainsi favorise votre référencement naturel. Ce qui permet d’être mieux vu et par tous.')}} 
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
-                            <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.webp');"></div>
+                            <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                             <h3 class="use-list__item__titre">{{__("Rendre l'intéraction facile")}}</h3>
                             <p class="use-list__item__txt">
                                 {{__('Interagir avec une page internet peut parfois s’avérer contraignant. Une erreur de code peut  gêner vos utilisateur, qui mécontent ou simplement désarçonner quitte le site. EasyToC vous guide, pour ne pas commettre d’erreurs et ainsi penser au confort de vos utilisateurs.')}}
@@ -156,7 +156,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
-                            <div class="use-list__item__icon" style="background-image: url('./images/001-ear.webp');"></div>
+                            <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Etre compris par tous')}}</h3>
                             <p class="use-list__item__txt">
                                 {{__("Négliger l’accessibilité d’un site web peut provoquer la perte de nombreux prospects. C’est pourquoi, EasyToC permet à vos utilisateur de voir et de comprendre vos contenus sans pour autant avoir la capacité de voir. Notamment avec la compatibilité de son code et les lecteurs d’écrans.")}}
@@ -188,7 +188,7 @@
                    </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="def__illu" style="background-image: url('./images/planete_people.webp');"></div>
+                    <div class="def__illu" style="background-image: url('./images/planete_people.png');"></div>
                 </div>
                 <div class="col-lg-4">
                     <div class="def__txt">

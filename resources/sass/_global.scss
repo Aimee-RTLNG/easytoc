@@ -9,11 +9,12 @@ body {
 }
 .btn-primary {
     @include expletus;
+    transition: all .2s;
 }
 .btn-primary:hover,.btn-primary:focus  {
     color: #fff;
-    background-color: #165ba0;
-    border-color: #155595;
+    background-color: $hover-primary;
+    border-color: $hover-primary;
 }
 #btn-save-project:focus {
     border: 2px $bleu solid;
@@ -97,6 +98,7 @@ textarea {
 .check-box {
     -webkit-appearance:none;
     width:15px;
+    min-width: 15px;
     height:15px;
     border-radius:6px;
     outline:none;
@@ -123,7 +125,7 @@ textarea {
   .check-box:checked:before {
     @include back-img-contain;
     background-color: transparent;
-    background-image : url("../images/check.webp");
+    background-image : url("../images/check.png");
   }
   // Btn Création 
   .btn_crea {
@@ -182,7 +184,29 @@ textarea {
     padding-bottom: 15px;
     //border-bottom: 3px dashed rgba(0,0,0,.2);
 }
-
+@media (max-width: 991px){
+    .mt-4-lg {
+        margin-top: 1.5rem;
+    }
+    .mb-4-lg {
+        margin-bottom: 1.5rem;
+    }
+    .mb-3-lg {
+        margin-bottom: 1rem;
+    }
+    .mt-3-lg {
+        margin-top: 1rem;
+    }
+    .mb-2-lg {
+        margin-bottom: 0.5rem;
+    }
+    .mt-2-lg {
+        margin-top: 0.5rem;
+    }
+    .d-none-lg {
+        display: none;
+    }
+}
 @media (max-width: 768px){
     //768
     .mt-4-md {
@@ -212,7 +236,37 @@ textarea {
     .mt-3-sm {
         margin-top: 1rem;
     }
+    .mb-2-sm {
+        margin-bottom: 0.5rem;
+    }
+    .mt-2-sm {
+        margin-top: 0.5rem;
+    }
     .d-none-sm {
+        display: none;
+     }
+ }
+ @media (max-width: 500px){
+    //768
+    .mt-4-xs {
+        margin-top: 1.5rem;
+    }
+    .mb-4-xs {
+        margin-bottom: 1.5rem;
+    }
+    .mb-3-xs {
+        margin-bottom: 1rem;
+    }
+    .mt-3-xs {
+        margin-top: 1rem;
+    }
+    .mb-2-xs {
+        margin-bottom: 0.5rem;
+    }
+    .mt-2-xs {
+        margin-top: 0.5rem;
+    }
+    .d-none-xs {
         display: none;
      }
  }
@@ -269,11 +323,11 @@ img, a {
         }
     }
     .third_title {
-        margin-left: 10px;
-        padding-top: 25px;
-        font-weight: bold;
-        margin: 10px 0;
-        font-size: 1.575rem;
+        &:focus {
+            outline: none;
+            color: $blue;
+            text-decoration: underline;
+        }
     }
     p {
         margin-bottom: 10px;
