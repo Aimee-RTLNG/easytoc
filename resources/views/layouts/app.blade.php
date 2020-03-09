@@ -36,7 +36,6 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        {{-- <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet"> --}}
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
 
         <!-- page specific style -->
