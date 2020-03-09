@@ -76,3 +76,15 @@
     }
 
 }
+
+@media (max-width: 991px) {
+    .help-container .summary-container {
+        width: 100%;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    .help-container {
+        display: block;
+     }
+}

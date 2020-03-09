@@ -85,16 +85,6 @@
 
         <hr class="py-5">
 
-        {{-- Code généré --}}
-        {{-- <h3 class="visu__title mt-4" tabindex="0">{{ __('Code généré') }}</h3>
-        <div class="col-12 ">
-            <div class="visu_info">
-                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                <a target="_blank" href="../aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
-                    <i class="fa fa-question-circle"></i>
-                    {{ __("Besoin d'aide !") }}
-                </a>
-            </div> --}}
         <div class="d-flex justify-content-between">
             <h3 class="visu__title" tabindex="0">
                 {{ __('Code généré') }}

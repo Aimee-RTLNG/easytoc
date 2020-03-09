@@ -10050,6 +10050,12 @@ nav.navbar {
   min-height: 65px;
 }
 
+@media (max-width: 991px) {
+  .navbar .container #navbarSupportedContent li.nav-items {
+    min-width: 100%;
+  }
+}
+
 .navbar .container #navbarSupportedContent .btn-connect {
   transition: all .2s;
 }
@@ -10058,7 +10064,7 @@ nav.navbar {
   display: flex;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .navbar .container #navbarSupportedContent.navbar-collapse {
     flex-wrap: nowrap;
     align-items: center;
@@ -10068,6 +10074,12 @@ nav.navbar {
   .navbar .container #navbarSupportedContent.navbar-collapse .menu-connect {
     padding: 0px 25px;
     justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar .container #navbarSupportedContent.navbar-collapse .menu-connect {
+    padding: 0px 5px;
   }
 }
 
@@ -10350,6 +10362,36 @@ nav.navbar {
   }
   .btn-connect--two {
     margin-left: 10%;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar .container #navbarSupportedContent .nav {
+    min-height: 325px;
+  }
+  .menu-site {
+    max-width: 100%;
+  }
+  .menu-site .navbar-brand {
+    margin-left: 25px;
+  }
+  .menu-site .navbar-toggler {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar .container #navbarSupportedContent.navbar-collapse .menu-connect {
+    padding: 0 10px;
+  }
+  .btn-connect--two {
+    margin-left: 3%;
+  }
+  .menu-site .navbar-brand {
+    margin-left: 5px;
+  }
+  .menu-site .navbar-toggler {
+    margin-right: 10px;
   }
 }
 
@@ -13195,6 +13237,18 @@ body {
 .help-container .help-text-container div div h3 {
   margin-left: 10px;
   padding-top: 25px;
+}
+
+@media (max-width: 991px) {
+  .help-container .summary-container {
+    width: 100%;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .help-container {
+    display: block;
+  }
 }
 
 .visu__title:focus {
