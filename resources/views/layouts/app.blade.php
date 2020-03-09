@@ -68,7 +68,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
                 <div class="container menu-site">
                     <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
-                        <img src="{{ URL::asset('images/Logo-white.webp') }}" id="logo-nav" alt="Easy to C"/>
+                        <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav" alt="Easy to C"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" title="{{ __('Menu de navigation') }}">
                         <div class="bars" id="bars">
@@ -88,8 +88,8 @@
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}"><span>{{ __('Aide') }}</span></a></li>
                         </ul>
                         <ul class="navbar-nav text-light menu-lang col mr-3 p-0">
-                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
-                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.png') }})"></div> {{ __('EN') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav menu-connect col-lg-3">

@@ -125,7 +125,7 @@ textarea {
   .check-box:checked:before {
     @include back-img-contain;
     background-color: transparent;
-    background-image : url("../images/check.webp");
+    background-image : url("../images/check.png");
   }
   // Btn Création 
   .btn_crea {
