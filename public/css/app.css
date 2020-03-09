@@ -9975,6 +9975,10 @@ img, a {
   border-radius: 4px;
 }
 
+#nav-tab {
+  justify-content: center;
+}
+
 nav.navbar {
   overflow: hidden;
 }

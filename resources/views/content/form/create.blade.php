@@ -36,7 +36,7 @@
         @include('common.errors')
 
         <!-- interface d'initialisation du projet -->
-        <div class="row creator-panel" role="region" aria-labelledby="interface-heading">
+        <div class="row creator-panel" role="region">
 
             @if (Auth::check())
             <!-- infos du projet -->
@@ -62,7 +62,7 @@
 
             <!-- actions d'initialisation -->
             <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
-                <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
+                <h2 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h2>
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
                         <div class="btn-crea__icon">
@@ -79,7 +79,7 @@
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
+                <h2 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
                     <a href="aide#formdata" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
                     <a href="aide#formcreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
@@ -88,8 +88,9 @@
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
+                <h2 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h2>
+                <div role="complementary" tabindex="0">
+                    <fieldset class="template-panel__choice shadow-box border-12 theme-switch" >
                     <div>
                         <div>
                             <input type="radio" value="blue" id="radio01" name="theme" checked>
@@ -120,6 +121,7 @@
                             <label for="radio06">{{ __('Gris') }}</label>
                         </div>
                     </div>
+                    </fieldset>
                 </div>
             </div>
         </div>
@@ -147,7 +149,7 @@
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6" role="region">
-                        <label class="creator-panel__title">{{ __('Option du formulaire') }}</label>
+                        <h2 class="creator-panel__title">{{ __('Option du formulaire') }}</h2>
                         <label class="reset-button" for="reset-button" class="d-block">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="reset-button" name="reset-button">
                             <span class="ml-3">{{ __('Bouton de réinitialisation') }}</span>
@@ -155,8 +157,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element static-buttons-creator" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="w-100 d-flex justify-content-around align-items-center">
+                <div role="section" class="row form_actions_element static-buttons-creator">
+                    <div role="section" class="w-100 d-flex justify-content-around align-items-center">
                         <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Nouvelle séparation') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une séparation") }}" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-grip-lines"></i>
                         </button>
@@ -251,6 +253,7 @@
                             <div class="tab-content" id="nav-tabContent" role="section">
 
                                 <!-- Code en brut (non formatté) -->
+                                <label for="html" class="d-none">Code html</label>
                                 <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                                 <!-- panneau blueprint -->
