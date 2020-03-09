@@ -76,7 +76,7 @@
                         </ul>
                     </li>
                 </ul>
-                <a class="sr-only sr-only-focusable" href="#account">{{ __('Fin de la table des matières retour au contenu') }}</a>
+                <a class="sr-only sr-only-focusable" href="#account">{{ __('Fin de la table des matières, retour au contenu') }}</a>
 
             </div>
 

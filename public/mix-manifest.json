@@ -1,13 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=8efb44ac8d9ca043a499",
-    "/js/components/form.js": "/js/components/form.js?id=a4c7fb4b5c1b0a1845a9",
-    "/js/components/import_data_form.js": "/js/components/import_data_form.js?id=f7b4cbcdadb4ee34c4fb",
-    "/js/components/import_data_menu.js": "/js/components/import_data_menu.js?id=0848bbb7e59f0b859441",
-    "/js/components/import_data_table.js": "/js/components/import_data_table.js?id=8323c1da55885f833a8c",
-    "/js/components/menu.js": "/js/components/menu.js?id=daec432ecca0a3ecb98b",
-    "/js/components/profile/profile.js": "/js/components/profile/profile.js?id=d7343d459be3971ff674",
-    "/css/app.css": "/css/app.css?id=0f9ef152eabee9ea7e7c",
-    "/js/components/table.js": "/js/components/table.js?id=46d55a3a5c32c87e927b",
-    "/js/manifest.js": "/js/manifest.js?id=41f053ba9a94d81b39f8",
-    "/js/vendor.js": "/js/vendor.js?id=22ab5f9b161a36b62fb5"
+    "/js/app.js": "/js/app.js",
+    "/js/components/form.js": "/js/components/form.js",
+    "/js/components/import_data_form.js": "/js/components/import_data_form.js",
+    "/js/components/import_data_menu.js": "/js/components/import_data_menu.js",
+    "/js/components/import_data_table.js": "/js/components/import_data_table.js",
+    "/js/components/menu.js": "/js/components/menu.js",
+    "/js/components/profile/profile.js": "/js/components/profile/profile.js",
+    "/css/app.css": "/css/app.css",
+    "/js/components/table.js": "/js/components/table.js",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/vendor.js": "/js/vendor.js"
 }
