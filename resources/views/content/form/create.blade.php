@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Créer un formulaire') }}</h2>
+        <h1 class="entete__title">{{ __('Créer un formulaire') }} {{ __('accessible') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3 interface-creation">
@@ -36,7 +36,7 @@
         @include('common.errors')
 
         <!-- interface d'initialisation du projet -->
-        <div class="row creator-panel" role="region" aria-labelledby="interface-heading">
+        <div class="row creator-panel" role="region">
 
             @if (Auth::check())
             <!-- infos du projet -->
@@ -62,24 +62,24 @@
 
             <!-- actions d'initialisation -->
             <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
-                <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
+                <h2 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h2>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer un tableau via le format CSV ou JSON") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-file-upload"></i>
+                            <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Créer un tableau exemple") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-sync"></i>
-                            {{-- <i class="fas fa-file-code"></i> --}}
+                            <i class="fa fa-sync"></i>
+                            {{-- <i class="fa fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
+                <h2 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
                     <a href="aide#formdata" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
                     <a href="aide#formcreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
@@ -88,8 +88,10 @@
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
+                <h2 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h2>
+                <div role="complementary" tabindex="0">
+                    <fieldset class="template-panel__choice shadow-box border-12 theme-switch" >
+                    <legend class="d-none">{{ __('Modifier le thème du formulaire') }}</legend>
                     <div>
                         <div>
                             <input type="radio" value="blue" id="radio01" name="theme" checked>
@@ -120,6 +122,7 @@
                             <label for="radio06">{{ __('Gris') }}</label>
                         </div>
                     </div>
+                    </fieldset>
                 </div>
             </div>
         </div>
@@ -147,7 +150,7 @@
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6" role="region">
-                        <label class="creator-panel__title">Option du formulaire</label>
+                        <h2 class="creator-panel__title">{{ __('Option du formulaire') }}</h2>
                         <label class="reset-button" for="reset-button" class="d-block">
                             <input type="checkbox" class="add-element type-special check-box" value="" id="reset-button" name="reset-button">
                             <span class="ml-3">{{ __('Bouton de réinitialisation') }}</span>
@@ -155,8 +158,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element static-buttons-creator" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="w-100 d-flex justify-content-around align-items-center">
+                <div role="section" class="row form_actions_element static-buttons-creator">
+                    <div role="section" class="w-100 d-flex justify-content-around align-items-center">
                         <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Nouvelle séparation') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une séparation") }}" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-grip-lines"></i>
                         </button>
@@ -231,10 +234,10 @@
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
-                                <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
+                                <i class="fa fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                             </button>
                             <button id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
-                                <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
+                                <i class="fa fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                             </button>
                         </div>
 
@@ -251,6 +254,7 @@
                             <div class="tab-content" id="nav-tabContent" role="section">
 
                                 <!-- Code en brut (non formatté) -->
+                                <label for="raw-code" class="d-none">Code html</label>
                                 <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                                 <!-- panneau blueprint -->
@@ -260,7 +264,7 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Lien CSS à mettre dans la balise') }} &lt;head&gt; </h2>
                                     <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
@@ -285,7 +289,7 @@
                         </div>
                         <div class="side-tool" style="display: none">
                             <button class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
-                                <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
+                                <i class="fa fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                             </button>
                         </div>
                     </div>
@@ -370,7 +374,7 @@
                                 <!-- Suppression d'option -->
                                 <div role="section" class="col action-delete-option" style="display:none">
                                     <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fa fa-trash"></i>
                                         {{ __("Supprimer l'option") }}
                                     </button>
                                 </div>
@@ -405,11 +409,11 @@
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
                 {{-- <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
-                    <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                    <div class="btn-crea__icon"><i class="fa fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button> --}}
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
-                    <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                    <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}
                     </p>
@@ -442,6 +446,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <label for="imported_data">{{ __('Importer des données via un fichier CSV ou JSON : attention, les autres formats ne sont pas acceptés.') }}</label>
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
@@ -449,13 +454,13 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fa fa-file-upload"></i>
                     </div>
                     <p>{{ __('Importer mes données') }}</p>
                 </button>
                 <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fa fa-trash-alt"></i>
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>

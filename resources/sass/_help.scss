@@ -1,5 +1,5 @@
 .help-container{
-    
+
     scroll-behavior: smooth;
     display: grid;
     grid-template-columns: 1fr 25em;
@@ -36,11 +36,11 @@
     }
 
     .help-text-container{
-        text-align: justify;
+        text-align: left;
         margin-right: 15px;
 
         a{
-            color: $indigo;
+            color: #3748A9;
             font-weight: bold;
             text-decoration: underline;
 

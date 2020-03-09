@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Créer un menu') }}</h2>
+        <h1 class="entete__title">{{ __('Créer un menu') }} {{ __('accessible') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body interface-creation mb-3">
@@ -65,15 +65,15 @@
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-file-upload"></i>
+                            <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-sync"></i>
-                            {{-- <i class="fas fa-file-code"></i> --}}
+                            <i class="fa fa-sync"></i>
+                            {{-- <i class="fa fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
@@ -145,7 +145,7 @@
                     <div class="col-md-6 d-flex align-items-end mb-3-md mt-3-md" role="region">
                         <div class="col pl-0">
                             <label class="creator-panel__link creator-panel__title" for="menu-creator-link">{{ __('Logo de menu') }}</label>
-                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.png') }}" class="form-control input-creator" autocomplete="off"/>
+                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.webp') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
                         <div class="cont-checkbox">
                             <input class="check-box" type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
@@ -238,7 +238,7 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h2>
                                     <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
@@ -277,7 +277,7 @@
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
-                    <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                    <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}
                     </p>
@@ -310,6 +310,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <label for="imported_data">{{ __('Importer des données via un fichier CSV ou JSON : attention, les autres formats ne sont pas acceptés.') }}</label>
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
@@ -317,13 +318,13 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fa fa-file-upload"></i>
                     </div>
                     <p>{{ __('Importer mes données') }}</p>
                 </button>
                 <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fa fa-trash-alt"></i>
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>

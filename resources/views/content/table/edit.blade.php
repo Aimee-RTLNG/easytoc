@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Modifier un tableau') }}</h2>
+        <h1 class="entete__title">{{ __('Modifier un tableau') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3">
@@ -69,7 +69,7 @@
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __('Importer des données') }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-file-upload"></i>
+                            <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
@@ -286,7 +286,7 @@
 
                             <!-- panneau code -->
                             <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                <h2 class="blueprint__titre creator-panel__title">{{ __('Lien CSS à mettre dans la balise') }} &lt;head&gt; </h2>
                                 <a href="aide#tablecode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                     <i class="fa fa-question-circle"></i>
                                     {{ __("Besoin d'aide !") }}
@@ -330,12 +330,12 @@
             </form>
 
             <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <div class="btn-crea__icon"><i class="fa fa-trash-alt"></i></div>
                 <p>{{ __('Annuler les modifications') }}</p>
             </button>
 
             <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-table" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" aria-label="{{ __('Sauvegarder ce projet') }}">
-                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                 <p>
                     {{ __('Sauvegarder ce projet') }}
                 </p>
@@ -379,18 +379,19 @@
                 </button>
             </div>
             <div class="modal-body">
+                <label for="imported_data">{{ __('Importer des données via un fichier CSV ou JSON : attention, les autres formats ne sont pas acceptés.') }}</label>
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fa fa-file-upload"></i>
                     </div>
                     <p>{{ __('Importer mes données') }}</p>
                 </button>
                 <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fa fa-trash-alt"></i>
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>
