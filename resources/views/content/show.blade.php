@@ -89,7 +89,7 @@
             <h3 class="visu__title" tabindex="0">
                 {{ __('Code généré') }}
             </h3>
-            <a target="_blank" href="../aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
+            <a target="_blank" href="../aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
                 <i class="fa fa-question-circle"></i>
                 {{ __("Besoin d'aide !") }}
             </a>
