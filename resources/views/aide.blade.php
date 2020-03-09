@@ -24,7 +24,7 @@
             {{-- Sommaire --}}
             <div class="summary-container">
                 {{-- ANCHOR Sommaire --}}
-                <h3>{{ __('Table des matières') }}</h3>
+                <h2>{{ __('Table des matières') }}</h2>
                 <ul>
                     {{-- Compte Utilisateur --}}
                     <li>

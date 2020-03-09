@@ -139,11 +139,11 @@
        <div class="container">
             <div class="row footer-cont">
                 <div class="col-md-6 footer__info">
-                    <h3 class="footer-title">{{ __('Besoin d\'aide ?') }}</h3>
+                    <h2 class="footer-title">{{ __('Besoin d\'aide ?') }}</h2>
                     <p  class="footer-txt">{{ __('Vous pouvez retrouver nos tutoriels sur la page') }} <a class="link-help" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></p>
                 </div>
                 <div class="col-md-6 footer__info-2 footer__info">
-                    <h3 class="footer-title">{{ __('Contact') }}</h3>
+                    <h2 class="footer-title">{{ __('Contact') }}</h2>
                     <p  class="footer-txt"><a class="link-footer" href="mailto:easytoc@outlook.com" title="{{ __('Envoyer un mail au Webmaster') }}">easytoc@outlook.com</a></p>
                 </div>
                 <div class="col-12 menu-footer">

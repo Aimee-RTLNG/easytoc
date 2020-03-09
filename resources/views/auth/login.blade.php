@@ -7,15 +7,15 @@
         <div class="register connexion">
                 <div class="register__info">
                     <div class="entete-title">
-                        <h2 class="register__title">{{ __('Connexion') }}</h2>
+                        <h1 class="register__title">{{ __('Connexion') }}</h1>
                         <div class="register__under-title"></div>
                     </div>
                     <form class="register__form" method="POST" action="{{ route('login') }}">
                             @csrf
                            <div>
                                 <div class="connect-network connect-network--connexion">
-                                    <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.webp" class="connect-network__img">{{ __('Connexion') }} Facebook</a>
-                                    <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.webp" class="connect-network__img">{{ __('Connexion') }} Google</a>
+                                    <a href="{{ route('provider_login','facebook') }}" title="{{ __('Se connecter via Facebook') }}"><img src="./images/facebook_logo.webp" class="connect-network__img" alt="Facebook">{{ __('Connexion') }} Facebook</a>
+                                    <a href="{{ route('provider_login','google') }}" title="{{ __('Se connecter via Google') }}"><img src="./images/google_logo.webp" class="connect-network__img" alt="Google">{{ __('Connexion') }} Google</a>
                                 </div>
                                 <p class="commentaire">{{ __('Tous les champs sont obligatoires') }}</p>
                            </div>
@@ -35,7 +35,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="fas fa-eye" title="{{ __('Voir le mot de passe en clair') }}"></i>
+                                        <i class="fas fa-eye"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -61,7 +61,7 @@
                                         <input type="checkbox" class="check" name="remember" id="remember_me">
                                         <label class="check-conditions__txt"  for="remember_me">{{ __('Se souvenir de moi') }}</label>
                                    </div>
-                                   <a class="link-account-ok" href="{{ route('register') }}">
+                                   <a class="link-account-ok" href="{{ route('register') }}" title="Se créer un compte">
                                         <i class="fas fa-arrow-right"></i> {{ __('Je n\'ai pas encore de compte') }}
                                     </a>
                                 </div>

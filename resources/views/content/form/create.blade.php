@@ -64,14 +64,14 @@
             <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
                 <h2 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h2>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer un tableau via le format CSV ou JSON") }}">
                         <div class="btn-crea__icon">
                             <i class="fas fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Créer un tableau exemple") }}">
                         <div class="btn-crea__icon">
                             <i class="fas fa-sync"></i>
                             {{-- <i class="fas fa-file-code"></i> --}}
@@ -91,6 +91,7 @@
                 <h2 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h2>
                 <div role="complementary" tabindex="0">
                     <fieldset class="template-panel__choice shadow-box border-12 theme-switch" >
+                    <legend class="d-none">{{ __('Modifier le thème du formulaire') }}</legend>
                     <div>
                         <div>
                             <input type="radio" value="blue" id="radio01" name="theme" checked>
@@ -253,7 +254,7 @@
                             <div class="tab-content" id="nav-tabContent" role="section">
 
                                 <!-- Code en brut (non formatté) -->
-                                <label for="html" class="d-none">Code html</label>
+                                <label for="raw-code" class="d-none">Code html</label>
                                 <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                                 <!-- panneau blueprint -->
