@@ -156,6 +156,7 @@
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
+                        <li class="nav-items"><a class="nav-link text-light" id="rgpd-mgr" href="#" title="{{ __('Gestion des cookies') }}">{{ __('Gestion des cookies') }}</a></li>
                         <li class="nav-items"><a class="nav-link" >Copyright / {{ __('Tous droits réservés') }} - 2020</a></li>
                     </ul>
                 </div>
