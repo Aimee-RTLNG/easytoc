@@ -251,9 +251,9 @@
                                 <p>
                                     {{ __('Easy To C vous propose des modèles pour chacun des trois outils - appelé template. Télécharger les gratuitement et tester les avec l\'interface de création Easy To C !') }}
                                 </p>
-                                <p><a href="../public/templates/sources/table_template.xlsx" download>{{ __('Je télécharge mon template de tableau') }}</a></p>
-                                <p><a href="../public/templates/sources/menu_template.xlsx" download>{{ __('Je télécharge mon template de menu') }}</a></p>
-                                <p><a href="../public/templates/sources/form_template.xlsx" download>{{ __('Je télécharge mon template de formulaire') }}</a></p>
+                                <p><a href="../public/templates/sources/table_template.xlsx" download>{{ __('Je télécharge mon modèle de tableau') }}</a></p>
+                                <p><a href="../public/templates/sources/menu_template.xlsx" download>{{ __('Je télécharge mon modèle de menu') }}</a></p>
+                                <p><a href="../public/templates/sources/form_template.xlsx" download>{{ __('Je télécharge mon modèle de formulaire') }}</a></p>
                     </div>   
 
                     <div id="actionsProject">
@@ -281,8 +281,7 @@
                     <div id="importTable">
                         <h3>{{ __('Générer un tableau à partir de données') }}</h3>
                         <p>
-                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes vous avez la possibilité de travailler sur celui-ci
-                            via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
+                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
                         </p>
                         <p>
                             {{ __('En important votre fichier de données, Easy To C generera votre code, vous aurez ensuite la possibilité de modifier celui-ci selon vos souhaits.') }}
@@ -292,9 +291,8 @@
                     <div id="generateTable">
                         <h3>{{ __('Générer un tableau exemple') }}</h3>
                         <p>
-                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en 
-                            vous basant sur un exemple de tableau. En cliquant sur le bouton 'Générer un exemple', un tableau sera généré automatiquement sur l'espace de travail d'Easy To C.
-                            Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de tableau Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester") }}
+                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de") }} {{ __("tableau") }}.{{ __(" En cliquant sur le bouton 'Générer un exemple', un ") }} {{ __("tableau") }} {{ __("sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
+                            {{ __("Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de") }} {{ __("tableau") }} {{ __("Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
                         </p>
                         
                     </div>  
@@ -302,9 +300,7 @@
                     <div id="addElementTable">
                         <h3>{{ __('Ajouter du contenu au tableau') }}</h3>
                         <p>
-                            {{ __("En créant votre tableau, vous aurez la possibilité de modifier à loisir son titre, son nombre de lignes, de colonnes et leur contenu ainsi que sa légende.
-                            Mais ce n'est pas  tout, Easy To C vous propose également la possibilité d'ajouter des en-têtes verticales et/ou horizontales et également un pied de tableau.
-                            Vous pourrez déplacer une case, en fusionner certaines, déplacer ou supprimer une ligne/colonne. Vous n'avez plus aucune excuse pour vous y mettre !") }}
+                            {{ __("En créant votre tableau, vous aurez la possibilité de modifier à loisir son titre, son nombre de lignes, de colonnes et leur contenu ainsi que sa légende. Mais ce n'est pas  tout, Easy To C vous propose également la possibilité d'ajouter des en-têtes verticales et/ou horizontales et également un pied de tableau. Vous pourrez déplacer une case, en fusionner certaines, déplacer ou supprimer une ligne/colonne. Vous n'avez plus aucune excuse pour vous y mettre !") }}
                         </p>
                         <p>
                             {{ __("Nous vous rappelons que la sauvegarde d'un projet est disponible uniquement à nos utilisateurs inscrits. Voir ") }}<a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a>
@@ -321,8 +317,7 @@
                     <div id="importMenu">
                         <h3>{{ __('Générer un menu à partir de données') }}</h3>
                         <p>
-                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci
-                            via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
+                            {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
                         </p>
                         <p>
                             {{ __('En important votre fichier de données, Easy To C generera votre code, vous aurez ensuite la possibilité de modifier celui-ci selon vos souhaits.') }}
@@ -332,8 +327,7 @@
                     <div id="generateMenu">
                         <h3>{{ __('Générer un menu exemple') }}</h3>
                         <p>
-                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en 
-                            vous basant sur un exemple de menu.") }}
+                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de menu.") }}
                         </p>
                         <p>
                             {{ __("En cliquant sur le bouton 'Générer un exemple', un menu sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
@@ -376,18 +370,15 @@
                     <div id="generateForm">
                         <h3>{{ __('Générer un formulaire exemple') }}</h3>
                         <p>
-                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en 
-                            vous basant sur un exemple de formulaire.") }}
-                            {{ __("En cliquant sur le bouton 'Générer un exemple', un formulaire sera généré automatiquement sur l'espace de travail d'Easy To C présentant l'ensemble des fonctionnalités proposées.
-                            Vous pourrez ainsi vous faire une idée sur les possiblités offertes par le générateur de formulaire Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
+                            {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de formulaire.") }}
+                            {{ __("En cliquant sur le bouton 'Générer un exemple', un formulaire sera généré automatiquement sur l'espace de travail d'Easy To C présentant l'ensemble des fonctionnalités proposées. Vous pourrez ainsi vous faire une idée sur les possiblités offertes par le générateur de formulaire Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
                         </p>
                     </div>  
 
                     <div id="addElementForm">
                         <h3>{{ __('Ajouter du contenu au formulaire') }}</h3>
                         <p>
-                            {{ __("En créant votre formulaire vous aurez la possibilité de modifier à loisir son titre, son lien de traitement des données ainsi que sa méthode (GET ou POST). Un bouton de réinitialisation permet de remettre à zéro l'espace de travail.
-                            Vous avez 2 niveaux de personnalisation :") }}
+                            {{ __("En créant votre formulaire vous aurez la possibilité de modifier à loisir son titre, son lien de traitement des données ainsi que sa méthode (GET ou POST). Un bouton de réinitialisation permet de remettre à zéro l'espace de travail. Vous avez 2 niveaux de personnalisation :") }}
                         </p>
                         <p>
                             <b>{{ __("Ajouter un élément statique") }}</b>
