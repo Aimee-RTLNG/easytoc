@@ -323,11 +323,11 @@ img, a {
         }
     }
     .third_title {
-        margin-left: 10px;
-        padding-top: 25px;
-        font-weight: bold;
-        margin: 10px 0;
-        font-size: 1.575rem;
+        &:focus {
+            outline: none;
+            color: $blue;
+            text-decoration: underline;
+        }
     }
     p {
         margin-bottom: 10px;

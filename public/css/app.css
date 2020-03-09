@@ -9914,12 +9914,10 @@ img, a {
   text-decoration: underline;
 }
 
-.wysiwyg .third_title {
-  margin-left: 10px;
-  padding-top: 25px;
-  font-weight: bold;
-  margin: 10px 0;
-  font-size: 1.575rem;
+.wysiwyg .third_title:focus {
+  outline: none;
+  color: #004D99;
+  text-decoration: underline;
 }
 
 .wysiwyg p {
@@ -13133,8 +13131,15 @@ body {
   top: 15px;
   left: 15px;
   align-self: start;
-  background-color: #e7e7e6;
+  background-color: white;
   padding: 10px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.help-container .summary-container .secondary_title {
+  margin-top: 5px;
+  text-align: center;
 }
 
 .help-container .summary-container ul {
@@ -13147,15 +13152,16 @@ body {
 }
 
 .help-container .summary-container a {
-  color: #1d1d1d;
+  color: #171819;
   font-weight: normal;
   transition: all .2s;
   list-style: none;
+  text-decoration: none;
 }
 
 .help-container .summary-container a:hover, .help-container .summary-container a:focus {
   color: #155595;
-  font-weight: bold;
+  text-decoration: underline;
 }
 
 .help-container .help-text-container {
