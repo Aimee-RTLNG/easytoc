@@ -49,7 +49,7 @@
 {{--{{ config('app.name') }}--}}
 
 
-<img  src="{{ url(asset('images/Logo-white.png'))}}" alt="{{config('app.name')}}">
+<img  src="{{ url(asset('images/Logo-white.webp'))}}" alt="{{config('app.name')}}">
 
 @endif
 

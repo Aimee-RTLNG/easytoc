@@ -14,8 +14,8 @@
                     @csrf
                    <div>
                         <div class="connect-network">
-                            <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Facebook</a>
-                            <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" class="connect-network__img">{{ __('S\'inscrire avec') }} Google</a>
+                            <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.webp" class="connect-network__img">{{ __('S\'inscrire avec') }} Facebook</a>
+                            <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.webp" class="connect-network__img">{{ __('S\'inscrire avec') }} Google</a>
                         </div>
                         <p class="commentaire">{{ __('Tous les champs sont obligatoires') }}</p>
                    </div>
