@@ -299,7 +299,8 @@ input[type="checkbox"], input[type="radio"]{
 }
 .main-info-form {
     @include flex-row-around-end;
-    margin-bottom: 16px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
     .reset-button {
         @include flex-row-start-center;
     }
@@ -482,5 +483,86 @@ input[type="checkbox"], input[type="radio"]{
         .btn-crea {
             padding: 8px 20px;
         }
+    }
+}
+
+.btns_form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    @media (max-width: 991px){
+        flex-direction: column;
+    }
+}
+.btns_form__sub-child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 48%;
+}
+.btns_form__child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    &.btns_form--first {
+        width: 58%;
+    }
+    @media (max-width: 576px) {
+       button {
+        margin: 0px 2px;
+       }
+    }
+}
+@media (max-width: 991px) {
+    .btns_form__child {
+        width: 70%;
+        &.btns_form--first {
+            width: 90%;
+        }
+    }
+    .form-btns.static-buttons-creator {
+        height: 85px;
+    }
+}
+@media (max-width: 767px) {
+    .btns_form__child {
+        &.btns_form--first {
+            width: 100%;
+        }
+    }
+    .form-btns.static-buttons-creator .btn-separator {
+        margin: 0px 4px;
+    }
+}
+@media (max-width: 575px) {
+    .static-buttons-creator {
+        height: 80px;
+    }
+}
+@media (max-width: 490px) {
+    .btns_form__child {
+        width: 100%;
+        &.btns_form--first {
+            width: 100%;
+        }
+    }
+    .btns_form--first {
+        flex-direction: column;
+        .btns_form__sub-child:first-child {
+            margin-bottom: 0.5rem;
+            width: 316px;
+            max-width: 100%;
+        }
+        .btns_form__sub-child {
+            width: 316px;
+            max-width: 100%;
+            &:nth-child(2) > div:first-child {
+                display: none;
+            }
+        }
+    }
+    .form-btns.static-buttons-creator {
+        height: 125px;
     }
 }
