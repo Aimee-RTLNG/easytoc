@@ -45,7 +45,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="fa fa-eye"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -65,7 +65,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="fa fa-eye"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -83,11 +83,11 @@
                         </div>
                         <div class="register__form-final">
                             <button type="submit" class="btn btn-primary btn-form-final">
-                                <i class="fas fa-arrow-right"></i>
+                                <i class="fa fa-arrow-right"></i>
                                 <p>{{ __('S\'inscrire') }}</p>
                             </button>
                             <a class="link-account-ok" href="{{ route('login') }}">
-                                <i class="fas fa-arrow-right"></i> {{ __('J\'ai déjà un compte') }}
+                                <i class="fa fa-arrow-right"></i> {{ __('J\'ai déjà un compte') }}
                             </a>
                         </div> 
                     </div>

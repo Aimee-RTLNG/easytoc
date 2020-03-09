@@ -66,15 +66,15 @@
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer un tableau via le format CSV ou JSON") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-file-upload"></i>
+                            <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Créer un tableau exemple") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-sync"></i>
-                            {{-- <i class="fas fa-file-code"></i> --}}
+                            <i class="fa fa-sync"></i>
+                            {{-- <i class="fa fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
@@ -234,10 +234,10 @@
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
-                                <i class="fas fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
+                                <i class="fa fa-sort-up" title="{{ __('Déplacer vers le haut') }}"></i>
                             </button>
                             <button id="action-move-down" data-action="move-down" class="btn-info form-element-action action-move-down" title="{{ __('Déplacer vers le bas') }}">
-                                <i class="fas fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
+                                <i class="fa fa-sort-down" title="{{ __('Déplacer vers le bas') }}"></i>
                             </button>
                         </div>
 
@@ -289,7 +289,7 @@
                         </div>
                         <div class="side-tool" style="display: none">
                             <button class="form-element-action action-delete btn-danger  mt-3" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}">
-                                <i class="fas fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
+                                <i class="fa fa-trash" title="{{ __('Supprimer l\'élément') }}"></i>
                             </button>
                         </div>
                     </div>
@@ -374,7 +374,7 @@
                                 <!-- Suppression d'option -->
                                 <div role="section" class="col action-delete-option" style="display:none">
                                     <button type="button" aria-label="{{ __('Supprimer l\'option') }}" data-action="delete-option" class="btn btn-primary btn_crea form-element-action element_delete-option">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fa fa-trash"></i>
                                         {{ __("Supprimer l'option") }}
                                     </button>
                                 </div>
@@ -409,11 +409,11 @@
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
                 {{-- <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
-                    <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                    <div class="btn-crea__icon"><i class="fa fa-trash-alt"></i></div>
                     <p>{{ __('Annuler les modifications') }}</p>
                 </button> --}}
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
-                    <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                    <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}
                     </p>
@@ -454,13 +454,13 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fa fa-file-upload"></i>
                     </div>
                     <p>{{ __('Importer mes données') }}</p>
                 </button>
                 <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fa fa-trash-alt"></i>
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>

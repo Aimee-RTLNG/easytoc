@@ -68,15 +68,15 @@
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-file-upload"></i>
+                            <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-sync"></i>
-                            {{-- <i class="fas fa-file-code"></i> --}}
+                            <i class="fa fa-sync"></i>
+                            {{-- <i class="fa fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
@@ -287,12 +287,12 @@
             </form>
 
             <button title="{{ __('Annuler les modifications') }}" type="button" class="btn btn-gris-annule btn-form-final" id="btn-cancel-project" aria-label="{{ __('Annuler les modifications') }}" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = '{{ route('content.show', ['content'=>$content]) }}' }">
-                <div class="btn-crea__icon"><i class="fas fa-trash-alt"></i></div>
+                <div class="btn-crea__icon"><i class="fa fa-trash-alt"></i></div>
                 <p>{{ __('Annuler les modifications') }}</p>
             </button>
 
             <button title="{{ __('Sauvegarder ce projet') }}" type="submit" form="edit-menu" class="btn btn-form-final btn-success btn-crea" id="btn-update-project" title="{{ __('Sauvegarder ce projet') }}">
-                <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                 <p>
                     {{ __('Sauvegarder ce projet') }}
                 </p>
@@ -333,13 +333,13 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fa fa-file-upload"></i>
                     </div>
                     <p>{{ __('Importer mes données') }}</p>
                 </button>
                 <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fa fa-trash-alt"></i>
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>

@@ -33,7 +33,7 @@
                         <div class="home-present__txt__btn">
                             <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
                                 <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-arrow-right"></i>
+                                    <i class="fa fa-arrow-right"></i>
                                     {{__('Commencer un projet')}}
                                 </a>
                                 <div class="dropdown-menu">
@@ -44,7 +44,7 @@
                             </div>
                             @guest
                                 <a href="register" class="btn-primary btn-form-final">
-                                    <i class="fas fa-arrow-right"></i>
+                                    <i class="fa fa-arrow-right"></i>
                                     <p>{{__("S'inscrire")}}</p>
                                 </a>
                             @endguest
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="next-section" >
-            <div tabindex="0"><i class="fas fa-chevron-down"></i></div>
+            <div tabindex="0"><i class="fa fa-chevron-down"></i></div>
         </div>
     </section>
     <section class="home-tools section-home" id="tools">

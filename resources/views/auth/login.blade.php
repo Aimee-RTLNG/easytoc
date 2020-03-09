@@ -35,7 +35,7 @@
                                 <div class="password-input d-flex">
                                     <input id="password" type="password" class="form-control form-control-mail @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <button type="button" class="btn-seepassword__icon btn-primary" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="fa fa-eye"></i>
                                     </button>
                                 </div>
                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -62,12 +62,12 @@
                                         <label class="check-conditions__txt"  for="remember_me">{{ __('Se souvenir de moi') }}</label>
                                    </div>
                                    <a class="link-account-ok" href="{{ route('register') }}" title="Se créer un compte">
-                                        <i class="fas fa-arrow-right"></i> {{ __('Je n\'ai pas encore de compte') }}
+                                        <i class="fa fa-arrow-right"></i> {{ __('Je n\'ai pas encore de compte') }}
                                     </a>
                                 </div>
                                 <div class="register__form-final">
                                     <button type="submit" class="btn btn-primary btn-form-final">
-                                        <i class="fas fa-arrow-right"></i>
+                                        <i class="fa fa-arrow-right"></i>
                                         <p>{{ __('Se connecter') }}</p>
                                     </button>
                                 </div> 
