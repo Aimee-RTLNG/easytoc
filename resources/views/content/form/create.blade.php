@@ -88,10 +88,12 @@
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h2 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h2>
+                {{-- <h2 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h2>
                 <div role="complementary" tabindex="0">
                     <fieldset class="template-panel__choice shadow-box border-12 theme-switch" >
-                    <legend class="d-none">{{ __('Modifier le thème du formulaire') }}</legend>
+                    <legend class="d-none">{{ __('Modifier le thème du formulaire') }}</legend> --}}
+                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h3>
+                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                     <div>
                         <div>
                             <input type="radio" value="blue" id="radio01" name="theme" checked>
@@ -238,7 +240,7 @@
                     </div>
                 </div>
 
-                <div class="bloc-creation-interface">
+                <div class="bloc-creation-interface crea_form_inter">
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
@@ -302,7 +304,7 @@
                         </div>
                     </div>
 
-                    <div id="actions-interface" class="bloc-actions d-none col-3 p-0">
+                    <div id="actions-interface" class="form-inter bloc-actions d-none col-3 p-0">
                         <div class="border bg-white rounded p-3 action-supp" role="section" id="actions-interface-bloc" >
                             <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
                             <div class="action-supp-crea" role="section">
