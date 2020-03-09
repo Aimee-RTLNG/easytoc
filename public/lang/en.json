@@ -336,6 +336,7 @@
     "Informations personnelles : « les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978)." : "Personal information: 'information that allows, in any form whatsoever, directly or indirectly, the identification of the natural persons to which it applies' (article 4 of law no. 78-17 of 6 January 1978).",
 
     "###____PAGE_____AIDE_____###":"#################################",
+    "Comment utiliser Easy to C ?" : "How to use Easy To C ?",
     "Voici quelques conseils afin de mieux comprendre et utiliser le potentiel de EasytoC, l’outil qui facilitera l’intégration de vos contenus. Les articles ci-dessous sont là pour résoudre tout problème que vous pourriez rencontrer et pour vous aider à découvrir des fonctionnalités dont vous ignoriez l'existence. Sélectionnez simplement l'une des sections ci-dessous pour accéder à plusieurs documents d'aide détaillés et pertinents pour les créateurs de formulaires, menus et tableaux en ligne." : "Here are a few tips to better understand and use the potential of EasytoC, the tool that will facilitate the integration of your content. The articles below are here to solve any problems you may encounter and to help you discover features you didn't know existed. Simply select one of the sections below to access several detailed and relevant help documents for creators of online forms, menus and tables.",
     "Compte Easy to C" : "Easy to C account",
     "Vous n'avez pas besoin de créer un compte sur Easy to C pour pouvoir utiliser nos outils. Cependant, nous vous le recommandons fortement car cela vous permettra de sauvegarder votre contenu, de le retrouver ultérieurement et de le modifier à votre guise. De plus, il n'existe pas de limite de projets. La création de compte ne prend pas plus de quelques minutes: nous ne vous demandons pas d'informations personnelles." : "You do not need to create an account on Easy to C to use our tools. However, we strongly recommend that you do so because it will allow you to save your content, retrieve it later and modify it as you wish. In addition, there is no project limit. Creating an account does not take more than a few minutes: we do not ask for any personal information.",
@@ -434,7 +435,7 @@
     "Nous vous rappelons que la sauvegarde d'un projet est disponible uniquement à nos utilisateurs inscrits. Voir " : "We remind you that saving a project is only available to our registered users. See ",
     "Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface." : "If you already have a personal code that generates a table using raw data (JSON files, CSV files), you can work on it using the 'Import data' button at the top left of the interface.",
     "Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de menu." :"Because we don't always have the right idea at the right time, or you have suffered too long from the white page syndrome, Easy to C offers you to work on the basis of a sample menu.",
-    "En cliquant sur le bouton 'Générer un exemple', un menu sera généré automatiquement sur l'espace de travail d'Easy To C." : "By clicking on the button 'Generate an example', a menu will be automatically generated on the Easy To C workspace.",
+    "En cliquant sur le bouton \"Générer un exemple\", un menu sera généré automatiquement sur l'espace de travail d'Easy To C." : "By clicking on the button \"Generate an example\", a menu will be automatically generated on the Easy To C workspace.",
     "Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de menuEasy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester." : "This will give you an idea of the possibilities offered by the MenuEasy To C menu generator and the many customization options it offers, and you can test them out.",
     "En créant votre menu, vous aurez la possibilité de modifier à loisir son titre et le logo de votre menu." : "When creating your menu, you will be able to modify its title and the logo of your menu at your leisure.",
     "Easy To C vous propose également la possibilité d'ajouter une rubrique avec sous-menu, d'ajouter un lien simple ou un lien de sous-menu tout en personnalisant leurs titres." : "Easy To C also offers you the possibility to add a heading with a sub-menu, to add a simple link or a sub-menu link while customizing their titles.",
@@ -525,5 +526,9 @@
     "Afficher le logo" : "Show logo",
     "Lien simple" : "simple link",
     "Rubrique avec sous-menu" : "Item with submenu",
-    "Lien de sous-menu" : "Submenu link"
+    "Lien de sous-menu" : "Submenu link",
+    "Mes projets" : "My projects",
+    "Générer un tableau" : "Generate a table",
+    "Générer un formulaire" : "Generate a form",
+    "Générer un menu" : "Generate a menu"
 }
