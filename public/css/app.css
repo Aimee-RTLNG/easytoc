@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(/node_modules/code-prettify/styles/suburst.css);@charset "UTF-8";
+@import url(/node_modules/code-prettify/styles/suburst.css);@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -9545,6 +9545,26 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+@font-face {
+  font-family: "expletus";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/ExpletusSans-Regular.eot?") format("eot"), url("../fonts/ExpletusSans-Regular.woff2") format("woff2"), url("../fonts/ExpletusSans-Regular.woff") format("woff"), url("../fonts/ExpletusSans-Regular.ttf") format("truetype"), url("../fonts/ExpletusSans-Regular.svg#expletus") format("svg");
+}
+
+@font-face {
+  font-family: "expletus";
+  font-weight: 700;
+  src: url("../fonts/ExpletusSans-Medium.eot?") format("eot"), url("../fonts/ExpletusSans-Medium.woff2") format("woff2"), url("../fonts/ExpletusSans-Medium.woff") format("woff"), url("../fonts/ExpletusSans-Medium.ttf") format("truetype"), url("../fonts/ExpletusSans-Medium.svg#expletus") format("svg");
+}
+
+@font-face {
+  font-family: "expletus";
+  font-style: bold;
+  font-weight: 700;
+  src: url("../fonts/ExpletusSans-Bold.eot?") format("eot"), url("../fonts/ExpletusSans-Bold.woff2") format("woff2"), url("../fonts/ExpletusSans-Bold.woff") format("woff"), url("../fonts/ExpletusSans-Bold.ttf") format("truetype"), url("../fonts/ExpletusSans-Bold.svg#expletus") format("svg");
+}
+
 html {
   font-size: 10px;
 }
@@ -9555,7 +9575,7 @@ body {
 }
 
 .btn-primary {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
 }
 
 .btn-primary:hover, .btn-primary:focus {
@@ -9607,7 +9627,7 @@ p, h1, h2 {
 }
 
 .entete__title {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-size: 3.4rem;
   font-weight: bold;
 }
@@ -10375,7 +10395,7 @@ nav.navbar {
 }
 
 .register {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   position: relative;
   margin-top: 35px;
   margin-bottom: 35px;
@@ -10774,7 +10794,7 @@ nav.navbar {
 
 .authen__content {
   padding: 30px;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   position: relative;
   margin-top: 70px;
   margin-bottom: 70px;
@@ -10854,7 +10874,7 @@ nav.navbar {
 }
 
 .section-home__title {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: bold;
   font-size: 4.0rem;
   width: 50%;
@@ -11054,7 +11074,7 @@ nav.navbar {
 
 .home-tools__item__name {
   text-transform: uppercase;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-size: 2.0rem;
   font-weight: bold;
 }
@@ -11191,7 +11211,7 @@ nav.navbar {
 
 .def__txt__citation {
   margin: 20px 5px 20px 35px;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: bold;
   font-size: 2.0rem;
   line-height: 2.3rem;
@@ -11476,7 +11496,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .creator-panel__title {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-size: 15px;
   font-weight: bold;
   margin: 0px;
@@ -12387,7 +12407,7 @@ body {
   padding: 15px 0px;
   border-radius: 10px;
   font-size: 2.0rem;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: bold;
 }
 
@@ -12436,14 +12456,14 @@ body {
 }
 
 .mon-compte label {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: 700;
   margin-left: 10px;
 }
 
 .mon-compte .form-control {
   padding-left: 10px;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: 700;
   color: #171819;
   background-color: #F4F2F0;
@@ -12484,7 +12504,7 @@ body {
 .mon-compte__entete__title {
   padding-left: 10px;
   font-size: 1.4rem;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: bold;
 }
 
@@ -12525,7 +12545,7 @@ body {
 
 .crea-item__entete__title {
   font-size: 2.5rem;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: 700;
 }
 
@@ -12608,7 +12628,7 @@ body {
   background: transparent;
   border: none;
   color: #e3342f;
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-weight: bold;
 }
 
@@ -12942,7 +12962,7 @@ body {
 }
 
 .visu__title {
-  font-family: 'Expletus Sans', sans-serif;
+  font-family: 'expletus', 'Arial', sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 10px;
