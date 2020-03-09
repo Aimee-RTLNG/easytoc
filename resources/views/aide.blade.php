@@ -18,13 +18,13 @@
             
         
 
-        <div class="help-container">
+        <div class="help-container wysiwyg">
 
 
             {{-- Sommaire --}}
             <div class="summary-container">
                 {{-- ANCHOR Sommaire --}}
-                <h2>{{ __('Table des matières') }}</h2>
+                <h2 tabindex="0" class="secondary_title">{{ __('Table des matières') }}</h2>
                 <ul>
                     {{-- Compte Utilisateur --}}
                     <li>
@@ -83,7 +83,7 @@
             <div class="help-text-container" style="order: -1"> 
 
                 <div id="account">
-                    <h2>{{ __('Compte Easy to C') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">I. {{ __('Compte Easy to C') }}</h2>
 
                     <p>
                         {{ __("Vous n'avez pas besoin de créer un compte sur Easy to C pour pouvoir utiliser nos outils. Cependant, nous vous le recommandons fortement car cela vous permettra de sauvegarder votre contenu, de le retrouver ultérieurement et de le modifier à votre guise. De plus, il n'existe pas de limite de projets. La création de compte ne prend pas plus de quelques minutes: nous ne vous demandons pas d'informations personnelles.") }}
@@ -206,7 +206,7 @@
                 <hr class="pb-5">
 
                 <div id="project">
-                    <h2>{{ __('Création de projet') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">II. {{ __('Création de projet') }}</h2>
 
                     <div id="infoProject">
                         <h3>{{ __('Informations essentielles') }}</h3>
@@ -276,7 +276,7 @@
                 <hr class="pb-5">
                 
                 <div id="tableCreator">
-                    <h2>{{ __('Guide d\'utilisation du générateur de tableau') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">III. {{ __('Guide d\'utilisation du générateur de tableau') }}</h2>
 
                     <div id="importTable">
                         <h3>{{ __('Générer un tableau à partir de données') }}</h3>
@@ -312,7 +312,7 @@
                 <hr class="pb-5">
 
                 <div id="menuCreator">
-                    <h2>{{ __('Guide d\'utilisation du générateur de menu') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">IV. {{ __('Guide d\'utilisation du générateur de menu') }}</h2>
 
                     <div id="importMenu">
                         <h3>{{ __('Générer un menu à partir de données') }}</h3>
@@ -357,7 +357,7 @@
                 <hr class="pb-5">
 
                 <div id="formCreator">
-                    <h2>{{ __('Guide d\'utilisation du générateur de formulaire') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">V. {{ __('Guide d\'utilisation du générateur de formulaire') }}</h2>
 
                     <div id="importForm">
                         <h3>{{ __('Générer un formulaire à partir de données') }}</h3>
