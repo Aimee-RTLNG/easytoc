@@ -251,9 +251,9 @@
                                 <p>
                                     {{ __('Easy To C vous propose des modèles pour chacun des trois outils - appelé template. Télécharger les gratuitement et tester les avec l\'interface de création Easy To C !') }}
                                 </p>
-                                <p><a href="../public/templates/sources/table_template.xlsx" download>{{ __('Je télécharge mon modèle de tableau') }}</a></p>
-                                <p><a href="../public/templates/sources/menu_template.xlsx" download>{{ __('Je télécharge mon modèle de menu') }}</a></p>
-                                <p><a href="../public/templates/sources/form_template.xlsx" download>{{ __('Je télécharge mon modèle de formulaire') }}</a></p>
+                                <p><a href="{{ URL::asset('templates/sources/table_template.xlsx') }}" download>{{ __('Je télécharge mon modèle de tableau') }}</a></p>
+                                <p><a href="{{ URL::asset('templates/sources/menu_template.xlsx') }}" download>{{ __('Je télécharge mon modèle de menu') }}</a></p>
+                                <p><a href="{{ URL::asset('templates/sources/form_template.xlsx') }}" download>{{ __('Je télécharge mon modèle de formulaire') }}</a></p>
                     </div>   
 
                     <div id="actionsProject">
