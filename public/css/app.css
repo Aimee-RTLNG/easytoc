@@ -12214,6 +12214,15 @@ body {
   }
 }
 
+@media (max-width: 460px) {
+  .tools-tab__sub-child.tool-resp {
+    width: 100%;
+  }
+  .show-xs {
+    display: block;
+  }
+}
+
 .menu-tabs #content-created-blueprint {
   resize: vertical;
   height: 430px;

@@ -224,7 +224,7 @@
                        </div>
                         <div class="tools-tab__child">
                            <div class="tools-tab__sub-child mb-2-xs">
-                                <div class="btn-separator d-none-lg"></div>
+                                <div class="btn-separator d-none-lg show-xs"></div>
                                 <button disabled="true" aria-label="{{ __('Déplacer la colonne à gauche') }}" title="{{ __('Déplacer la colonne à gauche') }}" class="btn btn-primary  cell-action element_move table-element-action action-move-col-left  d-flex justify-content-around db-icons" data-action="move-col-left" data-toggle="tooltip" data-placement="bottom">
                                     <i class="fa fa-arrow-left"></i><i class="fa fa-grip-lines-vertical"></i>
                                 </button>
