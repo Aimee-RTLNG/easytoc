@@ -122,7 +122,7 @@ textarea {
   .check-box:checked:before {
     @include back-img-contain;
     background-color: transparent;
-    background-image : url("../images/check.png");
+    background-image : url("../images/check.webp");
   }
   // Btn Création 
   .btn_crea {
