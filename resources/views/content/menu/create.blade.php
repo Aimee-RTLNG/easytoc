@@ -130,8 +130,8 @@
             <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
-                <div class="pb-3 row m-0 px-3" role="region">
-                    <div class="col-md-6 d-flex align-items-end m-0 p-0" role="region">
+                <div class="pb-md-3 row m-0" role="region">
+                    <div class="col-md-6 d-flex align-items-end m-0" role="region">
                         <div class="col pl-0">
                             <label class="creator-panel__title" for="menu-creator-title">{{ __('Titre de menu') }}</label>
                             <input type="text" name="menu-creator-title" id="menu-creator-title" placeholder="{{ __('Titre de menu') }}" class="form-control input-creator" size="30" value="{{ __('Titre de menu') }}" autocomplete="off"/>
@@ -142,8 +142,8 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 d-flex align-items-end mb-3-md p-0" role="region">
-                        <div class="col">
+                    <div class="col-md-6 d-flex align-items-end mb-3-md mt-3-md" role="region">
+                        <div class="col pl-0">
                             <label class="creator-panel__link creator-panel__title" for="menu-creator-link">{{ __('Logo de menu') }}</label>
                             <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.webp') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
@@ -157,55 +157,59 @@
                 <div role="section" class="row mt-4 form_actions_element custom-info-element m-0 p-0" aria-labelledby="form_actions_element" style="display: none">
                     <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end pb-2" aria-labelledby="form_actions_crud">
                         <div class="col">
-                            <label for="nav-name">{{ __('Nom du lien') }}</label>
-                            <input type="text" id="nav-name" class="form-control" placeholder="{{ __('Titre') }}">
+                            <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
+                            <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
                         </div>
 
                         <div class="col">
-                            <label for="nav-link">{{ __('URL de redirection du lien') }}</label>
-                            <input type="url" id="nav-link" class="form-control" placeholder="URL">
+                            <label class="creator-panel__title" for="nav-link">{{ __('URL de redirection du lien') }}</label>
+                            <input type="url" id="nav-link" class="form-control input-creator" placeholder="URL">
                         </div>
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element static-buttons-creator" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="w-100 d-flex justify-content-around align-items-center">
-                        <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien simple") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-link"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Rubrique avec sous-menu') }}" id="insert-sub_menu" role="listitem" title="{{ __("Ajouter une rubrique avec sous-menu") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-heading"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Lien de sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}" disabled data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-list-ul"></i>
-                        </button>
-                        <div class="btn-separator"></div>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem" title="{{ __("Mettre le texte en gras") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-bold"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem" title="{{ __("Mettre le texte en italique") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-italic"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem" title="{{ __("Mettre le texte en souligné") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-underline"></i>
-                        </button>
-                        <div class="btn-separator"></div>
-                        <button class="btn btn-primary mb-0 form-element-action action-move-left" aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-arrow-left"></i>
-                        </button>
-                        <button class="btn btn-primary mb-0 form-element-action action-move-right" aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                        <button class="btn btn-primary mb-0 form-element-action action-move-up" aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-arrow-up"></i>
-                        </button>
-                        <button class="btn btn-primary mb-0 form-element-action action-move-down" aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-arrow-down"></i>
-                        </button>
-                        <div class="btn-separator"></div>
-                        <button class="btn btn-primary mb-0 element_delete form-element-action action-delete" aria-label="{{ __('Supprimer') }}" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-trash"></i>
-                        </button>
+                <div role="section" class="row form_actions_element static-buttons-creator justify-content-center" aria-labelledby="form_actions_element">
+                    <div role="section" aria-labelledby="form_add_static" class="w-100 btns_menu">
+                        <div class="btns_menu__child mb-3-sm">
+                            <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien simple") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-link"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Rubrique avec sous-menu') }}" id="insert-sub_menu" role="listitem" title="{{ __("Ajouter une rubrique avec sous-menu") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-heading"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Lien de sous-menu') }}" id="insert-sub_link" role="listitem" title="{{ __("Ajouter un lien de sous-menu") }}" disabled data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-list-ul"></i>
+                            </button>
+                            <div class="btn-separator"></div>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem" title="{{ __("Mettre le texte en gras") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-bold"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem" title="{{ __("Mettre le texte en italique") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-italic"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem" title="{{ __("Mettre le texte en souligné") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-underline"></i>
+                            </button>
+                        </div>
+                        <div class="btns_menu__child">
+                            <div class="btn-separator d-none-sm"></div>
+                            <button class="btn btn-primary mb-0 form-element-action action-move-left" aria-label="{{ __('Déplacer à gauche') }}" id="action-move-left" data-action="move-left" title="{{ __('Déplacer à gauche') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-arrow-left"></i>
+                            </button>
+                            <button class="btn btn-primary mb-0 form-element-action action-move-right" aria-label="{{ __('Déplacer à droite') }}" id="action-move-right" data-action="move-right" title="{{ __('Déplacer à droite') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                            <button class="btn btn-primary mb-0 form-element-action action-move-up" aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button class="btn btn-primary mb-0 form-element-action action-move-down" aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-arrow-down"></i>
+                            </button>
+                            <div class="btn-separator"></div>
+                            <button class="btn btn-primary mb-0 element_delete form-element-action action-delete" aria-label="{{ __('Supprimer') }}" id="action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 

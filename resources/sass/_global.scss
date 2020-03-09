@@ -193,6 +193,27 @@ textarea {
     .mb-3-md {
         margin-bottom: 1rem;
     }
+    .mt-3-md {
+        margin-top: 1rem;
+    }
+ }
+ @media (max-width: 575px){
+    //768
+    .mt-4-sm {
+        margin-top: 1.5rem;
+    }
+    .mb-4-sm {
+        margin-bottom: 1.5rem;
+    }
+    .mb-3-sm {
+        margin-bottom: 1rem;
+    }
+    .mt-3-sm {
+        margin-top: 1rem;
+    }
+    .d-none-sm {
+        display: none;
+     }
  }
 
  /* style du code généré */
