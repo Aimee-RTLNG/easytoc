@@ -33,14 +33,14 @@
                             {{-- S'inscrire / Se connecter --}}
                             <li><a href="#signUp" title="{{ __('Se créer un compte Easy to C') }}">{{ __('Créer un compte Easy to C') }}</a></li>
                             <li><a href="#signIn" title="{{ __('Se connecter à son compte Easy to C') }}">{{ __('Se connecter à son compte') }}</a></li>
-                            <li><a href="#listAccount" title="{{ __("Accéder à mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
+                            <li><a href="#listAccount" title="{{ __("Mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
                             <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
-                            <li><a href="#deleteAccount" title="{{ __('Effacer toutes les données de son compte') }}">{{ __('Supprimer son compte') }}</a></li>
+                            <li><a href="#deleteAccount" title="{{ __('Supprimer son compte') }}">{{ __('Supprimer son compte') }}</a></li>
                         </ul>
                     </li>
                     {{-- Création d'un projet --}}
                     <li>
-                        <a href="#project" title="{{ __('Création de projet') }}">{{ __('Créer un projet') }}</a>
+                        <a href="#project" title="{{ __('Créer un projet') }}">{{ __('Créer un projet') }}</a>
                         <ul> 
                             <li><a href="#infoProject" title="{{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
                             <li><a href="#updateProject" title="{{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
@@ -50,7 +50,7 @@
                     </li>
                     {{-- Générateur de tableau --}}
                     <li>
-                        <a href="#tableCreator" title="{{ __('Guide d\'utilisation du générateur de tableau') }}">{{ __('Générateur de tableau') }}</a>
+                        <a href="#tableCreator" title="{{ __('Générer un tableau') }}">{{ __('Générateur de tableau') }}</a>
                         <ul> 
                             <li><a href="#importTable" title="{{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
                             <li><a href="#generateTable" title="{{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
@@ -59,7 +59,7 @@
                     </li>
                     {{-- Générateur de menu --}}
                     <li>
-                        <a href="#menuCreator" title="{{ __('Guide d\'utilisation du générateur de menu') }}">{{ __('Générateur de menu') }}</a>
+                        <a href="#menuCreator" title="{{ __('Générer un menu') }}">{{ __('Générateur de menu') }}</a>
                         <ul> 
                             <li><a href="#importMenu" title="{{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
                             <li><a href="#generateTable" title="{{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
@@ -68,7 +68,7 @@
                     </li>
                     {{-- Générateur de formulaire --}}
                     <li>
-                        <a href="#formCreator" title="{{ __('Guide d\'utilisation du générateur de formulaire') }}">{{ __('Générateur de formulaire') }}</a>
+                        <a href="#formCreator" title="{{ __('Générer un formulaire') }}">{{ __('Générateur de formulaire') }}</a>
                         <ul> 
                             <li><a href="#importForm" title="{{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
                             <li><a href="#generateForm" title="{{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
@@ -330,7 +330,7 @@
                             {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de menu.") }}
                         </p>
                         <p>
-                            {{ __("En cliquant sur le bouton 'Générer un exemple', un menu sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
+                            {{ __("En cliquant sur le bouton \"Générer un exemple\", un menu sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
                         </p>
                         <p>
                             {{ __("Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de menuEasy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
