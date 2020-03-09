@@ -239,7 +239,7 @@
                                 <p>
                                     {{ __('Exemple de fichier ') }}<strong>JSON</strong>
                                 </p>
-                                <pre class="prettyprint linenums:4 content-panel prettyprinted">{ {{ __('prenom : toto') }}, <br>{{ __('age : 25') }} }</pre>
+                                <pre class="prettyprint linenums:4 content-panel prettyprinted" style="background-color:black; color:white; border: 8px solid #e7e7e6">{ {{ __('prenom : toto') }}, <br>{{ __('age : 25') }} }</pre>
                             
                                 <br>
                                 <p>
