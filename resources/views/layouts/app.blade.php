@@ -87,8 +87,8 @@
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}"><span>{{ __('Aide') }}</span></a></li>
                         </ul>
                         <ul class="navbar-nav text-light menu-lang col mr-3 p-0">
-                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
-                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav menu-connect col-lg-3 m-0">
