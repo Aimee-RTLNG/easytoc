@@ -98,21 +98,21 @@
                                 @if (Route::has('register'))
                                     <li class="nav-item">
                                         <a class="btn-connect" href="{{ route('register') }}" title="{{ __('Page d\'inscription') }}">
-                                            <div class="btn-connect__icon"><i class="fas fa-pen"></i></div>
+                                            <div class="btn-connect__icon"><i class="fa fa-pencil"></i></div>
                                             <p class=" btn-connect__link">{{ __('Inscription') }}</p>
                                         </a>
                                     </li>
                                 @endif
                                 <li class="nav-item btn-connect--two">
                                     <a class="btn-connect"  href="{{ route('login') }}" title="{{ __('Page de connexion') }}">
-                                        <div class="btn-connect__icon"><i class="fas fa-arrow-right"></i></div>
+                                        <div class="btn-connect__icon"><i class="fa fa-arrow-right"></i></div>
                                         <p class=" btn-connect__link">{{ __('Connexion') }}</p>
                                     </a>
                                 </li>
                             @else
                                 <li class="nav-item">
                                     <a class=" btn-connect" href="{{ route('profile.view', auth()->user()) }}" title="{{ __('Accéder à mon compte') }}">
-                                        <div class="btn-connect__icon"><i class="fas fa-user-circle"></i></div>
+                                        <div class="btn-connect__icon"><i class="fa fa-user-circle"></i></div>
                                         <p class="btn-connect__link" >{{ __('Mon compte') }}</p>
                                     </a>
                                 </li>
@@ -120,7 +120,7 @@
                                     <a class="btn-connect" href="{{ route('logout') }}" title="{{ __('Se déconnecter') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
-                                        <div class="btn-connect__icon"><i class="fas fa-times"></i></i></div>
+                                        <div class="btn-connect__icon"><i class="fa fa-times"></i></i></div>
                                          <p class="btn-connect__link">{{ __('Déconnexion') }}</p>
                                     </a>
                                 </li>
