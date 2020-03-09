@@ -36,10 +36,8 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Expletus+Sans:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
         <!-- page specific style -->
         @yield('pagespecificstyles')
@@ -84,14 +82,14 @@
                             <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-dark bg-dark main-menu col-lg-7 m-0 p-0">
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}" title="{{ __('Accéder à l\'accueil') }}"><span>{{ __('Accueil') }}</span></a></li>
-                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}" title="{{ __('Créer un menu') }}"><span>{{ __('Créer un menu') }}</span></a></li>
-                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}" title="{{ __('Créer un tableau') }}"><span>{{ __('Créer un tableau') }}</span></a></li>
-                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}" title="{{ __('Créer un formulaire') }}"><span>{{ __('Créer un formulaire') }}</span></a></li>
+                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('menu') }}" title="{{ __('Accéder au générateur de menu accessible') }}"><span>{{ __('Créer un menu') }}</span></a></li>
+                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('tableau') }}" title="{{ __('Accéder au générateur de tableau accessible') }}"><span>{{ __('Créer un tableau') }}</span></a></li>
+                            <li class="nav-items"><a class="nav-link text-light" href="{{ route('formulaire') }}" title="{{ __('Accéder au générateur de formulaire accessible') }}"><span>{{ __('Créer un formulaire') }}</span></a></li>
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}"><span>{{ __('Aide') }}</span></a></li>
                         </ul>
                         <ul class="navbar-nav text-light menu-lang col mr-3 p-0">
-                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Passer en français') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
-                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Passer en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'en') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-en" style="background-image: url({{ URL::asset('images/en.webp') }})"></div> {{ __('EN') }}</a>
+                            <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en anglais') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.webp') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav menu-connect col-lg-3 m-0">
