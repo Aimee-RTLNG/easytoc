@@ -10033,6 +10033,15 @@ img, a {
   justify-content: center;
 }
 
+.static-buttons-creator .btn {
+  padding: 0.55rem 0.75rem;
+  font-size: 1.2rem;
+}
+
+.static-buttons-creator .btn i:nth-child(2) {
+  margin-left: 4px;
+}
+
 nav.navbar {
   overflow: hidden;
 }
@@ -11624,7 +11633,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .actions-panel__btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   max-width: 100%;
 }
@@ -12069,7 +12078,7 @@ input[type="checkbox"], input[type="radio"] {
     width: 90%;
   }
   .form-btns.static-buttons-creator {
-    height: 85px;
+    height: 96px;
   }
 }
 
@@ -12111,7 +12120,7 @@ input[type="checkbox"], input[type="radio"] {
     display: none;
   }
   .form-btns.static-buttons-creator {
-    height: 125px;
+    height: 132px;
   }
 }
 

@@ -441,3 +441,10 @@ img, a {
 #nav-tab{
     justify-content: center;
 }
+.static-buttons-creator .btn {
+    padding: 0.55rem 0.75rem;
+    font-size: 1.2rem;
+    i:nth-child(2) {
+        margin-left: 4px;
+    }
+}

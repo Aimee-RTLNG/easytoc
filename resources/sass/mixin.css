@@ -1,1 +1,20 @@
-/* No CSS *//*# sourceMappingURL=mixin.css.map */
+@font-face {
+  font-family: "expletus";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/ExpletusSans-Regular.eot?") format("eot"), url("../fonts/ExpletusSans-Regular.woff2") format("woff2"), url("../fonts/ExpletusSans-Regular.woff") format("woff"), url("../fonts/ExpletusSans-Regular.ttf") format("truetype"), url('../fonts/ExpletusSans-Regular.svg#str-replace("expletus", " ", "_")') format("svg");
+}
+
+@font-face {
+  font-family: "expletus";
+  font-weight: 700;
+  src: url("../fonts/ExpletusSans-Medium.eot?") format("eot"), url("../fonts/ExpletusSans-Medium.woff2") format("woff2"), url("../fonts/ExpletusSans-Medium.woff") format("woff"), url("../fonts/ExpletusSans-Medium.ttf") format("truetype"), url('../fonts/ExpletusSans-Medium.svg#str-replace("expletus", " ", "_")') format("svg");
+}
+
+@font-face {
+  font-family: "expletus";
+  font-style: bold;
+  font-weight: 700;
+  src: url("../fonts/ExpletusSans-Bold.eot?") format("eot"), url("../fonts/ExpletusSans-Bold.woff2") format("woff2"), url("../fonts/ExpletusSans-Bold.woff") format("woff"), url("../fonts/ExpletusSans-Bold.ttf") format("truetype"), url('../fonts/ExpletusSans-Bold.svg#str-replace("expletus", " ", "_")') format("svg");
+}
+/*# sourceMappingURL=mixin.css.map */
