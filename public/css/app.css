@@ -12139,6 +12139,25 @@ body {
   margin: 0 2px;
 }
 
+.nav.nav-tabs {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav.nav-tabs a {
+  width: 50%;
+  text-align: center;
+  border: none;
+}
+
+.nav.nav-tabs a.active {
+  background-color: #1B6EC2;
+  color: white;
+}
+
+.nav.nav-tabs a:hover, .nav.nav-tabs a:focus {
+  border: 2px solid #155595;
+}
+
 @media (max-width: 991px) {
   .tools-tab__child {
     width: 100%;
@@ -12182,7 +12201,7 @@ body {
     width: 50%;
   }
   .tools-tab__sub-child.tool-resp {
-    width: 64%;
+    width: 70%;
     align-self: center;
   }
   .tools-tab__child:nth-child(2) {

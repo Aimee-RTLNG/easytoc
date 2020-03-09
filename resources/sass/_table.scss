@@ -171,6 +171,21 @@ body {
         margin: 0 2px;
     }
 }
+.nav.nav-tabs {
+    @include shadow-box;
+    a {
+        width: 50%;
+        text-align: center;
+        border: none;
+        &.active {
+            background-color: $bleu;
+            color: white;
+        }
+        &:hover, &:focus {
+            border: 2px solid $bleu-fonce;
+        }
+    }
+}
 
 @media (max-width: 991px) {
     .tools-tab__child {
@@ -213,7 +228,7 @@ body {
         width: 50%;
     }
     .tools-tab__sub-child.tool-resp {
-        width: 64%;
+        width: 70%;
         align-self: center;
     }
     .tools-tab__child:nth-child(2) {
