@@ -5,7 +5,7 @@
 @section('content')
 <div class="container wysiwyg">
     <div class="entete">
-        <h2 class="entete__title">{{ __('Condition d\'Utilisations') }} - {{ __("Informations légales") }}</h2>
+        <h1 class="entete__title">{{ __('Condition d\'Utilisations') }} - {{ __("Informations légales") }}</h1>
         <div class="entete__under"></div>
     </div>
             <h3 class="secondary_title" tabindex="0">{{ __("1. Présentation du site.") }}</h3>

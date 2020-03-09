@@ -27,7 +27,7 @@
         <div class="row d-flex">
             <div class="col-lg-8">
                 <div class="entete">
-                    <h2 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h2>
+                    <h1 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h1>
                     <div class="entete__under"></div>
                 </div>
             </div>

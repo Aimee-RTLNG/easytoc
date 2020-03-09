@@ -7,7 +7,7 @@
 
     <div class="container">
         <div class="entete">
-            <h2 class="entete__title">{{ __('Aide') }}</h2>
+            <h1 class="entete__title">{{ __('Comment utiliser Easy to C ?') }}</h1>
             <div class="entete__under"></div>
         </div>
             

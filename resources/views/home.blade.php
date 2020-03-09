@@ -27,7 +27,7 @@
             <div class="row section-home__row">
                 <div class="col-xl-5 col-lg-6">
                     <div class="home-present__txt">
-                        <h2 class="home-present__txt__titre section-home__title">Easy to C, {{ __('pour que l\'accessibilité soit enfin une priorité') }}</h2>
+                        <h1 class="home-present__txt__titre section-home__title">Easy to C, {{ __('pour que l\'accessibilité soit enfin une priorité') }}</h1>
                         <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. EasytoC peut vous aider dans cette démarche.')}}
                         </p>
                         <div class="home-present__txt__btn">

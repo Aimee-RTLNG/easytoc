@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Créer un tableau') }}</h2>
+        <h1 class="entete__title">{{ __('Créer un tableau') }} {{ __('accessible') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body interface-creation mb-3">

@@ -52563,8 +52563,8 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
   element_types = {
     "type-info": {
       "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
-      "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
-      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+      "insert-img": '\n\t\t<a class="menu-logo" id="menu-logo" href=' / '></a>\n',
+      "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
       "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
     },
     "type-menu": {
@@ -52577,8 +52577,8 @@ if (_app__WEBPACK_IMPORTED_MODULE_0__["lang"] == "en") {
   element_types = {
     "type-info": {
       "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
-      "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo'></div>\n",
-      "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+      "insert-img": "\n\t\t<a id='menu-logo' class='menu-logo' href='/'></a>\n",
+      "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
       "insert-separator": '\n\t\t<span class="menu-separator"></span>\n'
     },
     "type-menu": {

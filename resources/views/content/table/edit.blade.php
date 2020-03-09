@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Modifier un tableau') }}</h2>
+        <h1 class="entete__title">{{ __('Modifier un tableau') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body mb-3">
