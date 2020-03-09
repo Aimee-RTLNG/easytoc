@@ -74,7 +74,6 @@
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __('Générer un exemple') }}">
                         <div class="btn-crea__icon">
                             <i class="fas fa-sync"></i>
-                            {{-- <i class="fas fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
@@ -143,12 +142,12 @@
                 </div>
 
                 <div class="row m-0 mb-lg-4" role="region">
-                    <div class="col-sm-6 col-md-3" role="region">
+                    <div class="col-sm-6 col-md-3 col-6" role="region">
                         {{-- NB LIGNES --}}
                         <label class="creator-panel__row_nb creator-panel__title" for="table-row-nb">{{ __('Nombre de lignes') }}</label>
                         <input class="form-control input-creator" type="number" name="table-row-nb" id="table-row-nb" size="3" value="2" min="2"/>
                     </div>
-                    <div class="col-sm-6 col-md-3" role="region">
+                    <div class="col-sm-6 col-md-3 col-6" role="region">
                         {{-- NB COLONNES --}}
                         <label class="creator-panel__col_nb creator-panel__title" for="table-col-nb">{{ __('Nombre de colonnes') }}</label>
                         <input class="form-control input-creator" type="number" name="table-col-nb" id="table-col-nb" size="3" value="2" min="2"/>
@@ -365,7 +364,6 @@
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                {{-- <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
                         <i class="fas fa-file-upload"></i>
@@ -378,7 +376,6 @@
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>
-                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
             </div>
         </div>
     </div>
