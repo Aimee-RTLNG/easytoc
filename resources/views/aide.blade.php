@@ -435,66 +435,6 @@
                 </div>
 
             </div>
-
-
-            {{-- Sommaire --}}
-            <div class="summary-container">
-                {{-- ANCHOR Sommaire --}}
-                <h3>{{ __('Table des matières') }}</h3>
-                <ul>
-                    {{-- Compte Utilisateur --}}
-                    <li>
-                        <a href="#account" title="{{ __('Compte EasytoC') }}">{{ __('Compte EasytoC') }}</a>
-                        <ul>
-                            {{-- S'inscrire / Se connecter --}}
-                            <li><a href="#signUp" title="{{ __('Se créer un compte EasytoC') }}">{{ __('Créer un compte EasytoC') }}</a></li>
-                            <li><a href="#signIn" title="{{ __('Se connecter à son compte EasytoC') }}">{{ __('Se connecter à son compte') }}</a></li>
-                            <li><a href="#listAccount" title="{{ __("Accéder à mes projets") }}">{{ __('Accéder à mes projets') }}</a></li>
-                            <li><a href="#infoAccount" title="{{ __('Modifier ses informations de compte') }}">{{ __('Modifier ses informations de compte') }}</a></li>
-                            <li><a href="#deleteAccount" title="{{ __('Effacer toutes les données de son compte') }}">{{ __('Supprimer son compte') }}</a></li>
-                        </ul>
-                    </li>
-                    {{-- Création d'un projet --}}
-                    <li>
-                        <a href="#project" title="{{ __('Création de projet') }}">{{ __('Créer un projet') }}</a>
-                        <ul> 
-                            <li><a href="#infoProject" title="{{ __('Informations essentielles') }}">{{ __('Informations essentielles') }}</a></li>
-                            <li><a href="#updateProject" title="{{ __('Modifier mon projet') }}">{{ __('Modifier mon projet') }}</a></li>
-                            <li><a href="#useCode" title="{{ __('Utiliser le code généreré') }}">{{ __('Utiliser le code généreré') }}</a></li>
-                            <li><a href="#actionsProject" title="{{ __('Actions sur mon projet') }}">{{ __('Actions sur le projet') }}</a></li>
-                        </ul>
-                    </li>
-                    {{-- Générateur de tableau --}}
-                    <li>
-                        <a href="#tableCreator" title="{{ __('Guide d\'utilisation du générateur de tableau') }}">{{ __('Générateur de tableau') }}</a>
-                        <ul> 
-                            <li><a href="#importTable" title="{{ __('Générer un tableau à partir de données') }}">{{ __('Générer un tableau à partir de données') }}</a></li>
-                            <li><a href="#generateTable" title="{{ __('Générer un tableau exemple') }}">{{ __('Générer un tableau exemple') }}</a></li>
-                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au tableau') }}">{{ __('Ajouter du contenu au tableau') }}</a></li>
-                        </ul>
-                    </li>
-                    {{-- Générateur de menu --}}
-                    <li>
-                        <a href="#menuCreator" title="{{ __('Guide d\'utilisation du générateur de menu') }}">{{ __('Générateur de menu') }}</a>
-                        <ul> 
-                            <li><a href="#importMenu" title="{{ __('Générer un menu à partir de données') }}">{{ __('Générer un menu à partir de données') }}</a></li>
-                            <li><a href="#generateTable" title="{{ __('Générer un menu exemple') }}">{{ __('Générer un menu exemple') }}</a></li>
-                            <li><a href="#addElementTable" title="{{ __('Ajouter du contenu au menu') }}">{{ __('Ajouter du contenu au menu') }}</a></li>
-                        </ul>
-                    </li>
-                    {{-- Générateur de formulaire --}}
-                    <li>
-                        <a href="#formCreator" title="{{ __('Guide d\'utilisation du générateur de formulaire') }}">{{ __('Générateur de formulaire') }}</a>
-                        <ul> 
-                            <li><a href="#importForm" title="{{ __('Générer un formulaire à partir de données') }}">{{ __('Générer un formulaire à partir de données') }}</a></li>
-                            <li><a href="#generateForm" title="{{ __('Générer un formulaire exemple') }}">{{ __('Générer un formulaire exemple') }}</a></li>
-                            <li><a href="#addElementForm" title="{{ __('Ajouter du contenu au formulaire') }}">{{ __('Ajouter du contenu au formulaire') }}</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-
             <hr class="pb-5">
 
         </div>
