@@ -218,6 +218,28 @@
                             {{ __('Pour sauvegarder votre projet vous devrez cliquer sur le bouton "Sauvegarder mon projet" disponible en dessous de la zone de travail.') }}
                             {{ __('Votre projet sera alors sauvegardé et disponible à tout moment via le tableau de bord, vous pourrez retravailler dessus plus tard.') }}
                         </p>
+
+                        <p>
+                            {{ __('Easy To C propose à ses utilisateurs des raccourcis clavier pour améliorer votre navigation sur les espaces de création : ') }}
+                        </p>
+                        
+                        <div class="container">
+                            <div class="row">
+                              <div class="col">
+                                <p><strong>CTRL + ALT + U</strong> - {{ __('Aller en haut') }}</p>
+                                <p><strong>CTRL + ALT + R</strong> - {{ __('Aller à droite') }}</p>
+                                <p><strong>CTRL + ALT + I</strong> - {{ __('Accéder au bloc informations') }}</p>
+                                <p><strong>CTRL + ALT + S</strong> - {{ __('Sauvegarder') }}</p>
+                              </div>
+                              <div class="col">
+                                <p><strong>CTRL + ALT + D</strong> - {{ __('Aller en bas') }}</p>
+                                <p><strong>CTRL + ALT + L</strong> - {{ __('Aller à gauche') }}</p>
+                                <p><strong>CTRL + ALT + P</strong> - {{ __('Accéder au bloc propriétés') }}</p>
+                                <p><strong>CTRL + ALT + T</strong> - {{ __('Supprimer') }}</p>                   
+                              </div>
+                            </div>
+                          </div>                       
+                        </div>                    
                     </div>   
 
                     <div id="updateProject">
@@ -294,7 +316,7 @@
                             {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de") }} {{ __("tableau") }}.{{ __(" En cliquant sur le bouton 'Générer un exemple', un ") }} {{ __("tableau") }} {{ __("sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
                             {{ __("Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de") }} {{ __("tableau") }} {{ __("Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
                         </p>
-                        
+                       
                     </div>  
 
                     <div id="addElementTable">

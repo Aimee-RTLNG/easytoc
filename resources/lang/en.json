@@ -479,9 +479,14 @@
     "Ainsi que les options d'actions sur les éléments et celles de mise en forme du texte." : "As well as action options on items and text formatting options.",
     "Vous n'avez plus aucune excuse pour vous y mettre !" : "You no longer have any excuse to get into it !",
     "accessible" : "accessible",
+    "Aller en haut": "Move Up",
+    "Aller en bas": "Move Down",
+    "Aller à droite": "Move Right",
+    "Aller à gauche": "Move Left",
+    "Accéder au bloc informations": "Go to the informations block",
+    "Accéder au bloc propriétés": "Go to the properties block",
     
 
-    
     "###____PAGES_____MODIFICATION_____PROJET_____###":"########################################################",
     "Modifier un formulaire" : "Modify a form",
     "Modifier un tableau" : "Modify a table",
