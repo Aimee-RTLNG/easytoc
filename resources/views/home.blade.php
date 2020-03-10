@@ -183,7 +183,7 @@
                         </p>
                         <p class="def__txt__citation"> {{__('L’accessibilité pourrait être considérée comme une source d’opportunités et de développement par les acteurs du Web.')}}
                         </p>
-                        <p> {{__('Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels.')}}
+                        <p> {{__('Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.')}}
                         </p>
                    </div>
                 </div>
@@ -192,7 +192,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="def__txt">
-                        <p>{{__('En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
+                        <p>{{__('Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels. En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
                         </p>
                         <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais un outil favorisant l’inclusion sociale.')}}
                         </p>
