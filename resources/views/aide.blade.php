@@ -224,8 +224,6 @@
                         <p>
                             {{ __('Easy To C propose à ses utilisateurs des raccourcis clavier pour améliorer votre navigation sur les espaces de création : ') }}
                         </p>
-                        
-                        <div class="container">
                             <div class="row">
                               <div class="col">
                                 <p><strong>CTRL + ALT + U</strong> - {{ __('Aller en haut') }}</p>
@@ -239,9 +237,7 @@
                                 <p><strong>CTRL + ALT + P</strong> - {{ __('Accéder au bloc propriétés') }}</p>
                                 <p><strong>CTRL + ALT + T</strong> - {{ __('Supprimer') }}</p>                   
                               </div>
-                            </div>
-                          </div>                       
-                        </div>                    
+                            </div>                                           
                     </div>   
 
                     <div id="updateProject">
