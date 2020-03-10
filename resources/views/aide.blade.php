@@ -18,13 +18,13 @@
             
         
 
-        <div class="help-container">
+        <div class="help-container wysiwyg">
 
 
             {{-- Sommaire --}}
-            <div class="summary-container">
+            <div class="summary-container shadow-box border-12">
                 {{-- ANCHOR Sommaire --}}
-                <h3>{{ __('Table des matières') }}</h3>
+                <h2 tabindex="0" class="secondary_title">{{ __('Table des matières') }}</h2>
                 <ul>
                     {{-- Compte Utilisateur --}}
                     <li>
@@ -76,6 +76,8 @@
                         </ul>
                     </li>
                 </ul>
+                <a class="sr-only sr-only-focusable" href="#account">{{ __('Fin de la table des matières, retour au contenu') }}</a>
+
             </div>
 
 
@@ -83,14 +85,14 @@
             <div class="help-text-container" style="order: -1"> 
 
                 <div id="account">
-                    <h2>{{ __('Compte Easy to C') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">I. {{ __('Compte Easy to C') }}</h2>
 
                     <p>
                         {{ __("Vous n'avez pas besoin de créer un compte sur Easy to C pour pouvoir utiliser nos outils. Cependant, nous vous le recommandons fortement car cela vous permettra de sauvegarder votre contenu, de le retrouver ultérieurement et de le modifier à votre guise. De plus, il n'existe pas de limite de projets. La création de compte ne prend pas plus de quelques minutes: nous ne vous demandons pas d'informations personnelles.") }}
                     </p>
 
                     <div id="signUp">
-                        <h3>{{ __('Se créer un compte Easy to C') }}</h3>
+                        <h3 class="third_title" tabindex="0">a. {{ __('Se créer un compte Easy to C') }}</h3>
                         <p>
                             {{ __("Si vous souhaitez vous créer un compte sur Easy to C, voici quelques étapes très simples : il vous suffit de vous rendre sur la ") }} <a href="register" title="{{ __('Redirection vers la page Inscription') }}">
                                 {{ __('page Inscription') }}
@@ -135,7 +137,7 @@
                     </div>         
                     
                     <div id="signIn">
-                        <h3>{{ __('Se connecter à son compte Easy to C') }}</h3>
+                        <h3 class="third_title" tabindex="0">b. {{ __('Se connecter à son compte Easy to C') }}</h3>
                         <p>
                             {{ __("Si vous souhaitez vous connecter à votre compte sur Easy to C, rendez vous sur ") }} 
                             <a href="login" title="{{ __('Redirection vers la page Connexion') }}">
@@ -156,7 +158,7 @@
                     </div>
 
                     <div id="listAccount">
-                        <h3>{{ __("Accéder à mes projets") }}</h3>
+                        <h3 class="third_title" tabindex="0">c. {{ __("Accéder à mes projets") }}</h3>
                         <p>
                             {{ __("Vous pouvez retrouver les différent projets que vous avez sauvegardé, accédez à la ") }} 
                             <a href="profile" title="{{ __('Redirection vers la page Mon Compte') }}">
@@ -178,7 +180,7 @@
                     </div>
 
                     <div id="infoAccount">
-                        <h3>{{ __('Modifier ses informations de compte') }}</h3>
+                        <h3 class="third_title" tabindex="0">d. {{ __('Modifier ses informations de compte') }}</h3>
                         <p>
                             {{ __("Vous pouvez retrouver les informations de votre compte sur votre tableau de bord de la ") }} 
                             <a href="profile" title="{{ __('Redirection vers la page Mon Compte') }}">
@@ -193,7 +195,7 @@
                     </div>
 
                     <div id="deleteAccount">
-                        <h3>{{ __('Supprimer son compte') }}</h3>
+                        <h3 class="third_title" tabindex="0">e. {{ __('Supprimer son compte') }}</h3>
                         <p>
                             {{ __("Si vous ne souhaitez plus utiliser votre compte, ou pour toute autre raison, vous avez la possibilité de Supprimer votre compte.") }}
                             {{ __("Vous devrez valider l'action avant que votre compte soit supprimé : ce sera la seule étape. Soyez vigilant, lors du choix que vous faites.") }}
@@ -206,10 +208,10 @@
                 <hr class="pb-5">
 
                 <div id="project">
-                    <h2>{{ __('Création de projet') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">II. {{ __('Création de projet') }}</h2>
 
                     <div id="infoProject">
-                        <h3>{{ __('Informations essentielles') }}</h3>
+                        <h3 class="third_title" tabindex="0">a. {{ __('Informations essentielles') }}</h3>
                         <p>
                             {{ __("Une fois inscrit et connecté sur Easy To C, vous aurez la possiblité d'avoir une vision globale sur l'ensemble de vos projets sauvegardé sur le tableau de bord accessible depuis la page de votre Compte.") }}
                             {{ __("En tant que nouveau venu vous n'aurez bien sur aucun projet. Pour commencer un projet, il vous suffira de cliquer sur le bouton 'Commencer un projet' puis choisir la nature de votre projet ( menu, tableau, formulaire).") }}
@@ -243,14 +245,14 @@
                     </div>   
 
                     <div id="updateProject">
-                        <h3>{{ __('Modifier mon projet') }}</h3>
+                        <h3 class="third_title" tabindex="0">b. {{ __('Modifier mon projet') }}</h3>
                         <p>
                             {{ __("Si vous n'êtes pas satisfait de votre réalisation ou que vous vouliez simplement modifier tout ou partie de celle-ci, vous avez la possibilité de modifier celui-ci en vous rendant dans votre tableau de bord. Vous retrouverez vos projets avec l'option") }}<strong>{{ __(" Modifier") }}</strong>{{ __(" a droite du résumé du projet.") }}
                         </p>
                     </div>   
 
                     <div id="useCode">
-                        <h3>{{ __('Utiliser le code généreré') }}</h3>
+                        <h3 class="third_title" tabindex="0">c. {{ __('Utiliser le code généreré') }}</h3>
                         <p>
                             {{ __("Une fois votre projet terminé, vous pouvez utiliser le code à des fins extérieures en utilisant le code généré. Vous n'avez qu'à copier/coller le code (n'oubliez pas la première balise link pour obtenir le même style graphique) pour l'utiliser") }}
                         </p>
@@ -279,7 +281,7 @@
                     </div>   
 
                     <div id="actionsProject">
-                        <h3>{{ __('Actions sur mon projet') }}</h3>
+                        <h3 class="third_title" tabindex="0">d. {{ __('Actions sur mon projet') }}</h3>
                         <p>
                             {{ __('Sur votre tableau de bord, vous retrouvez la totalité de vos projets enregistrés. Pour chaque projets, plusieures options sont disponibles :') }}
                         </p>
@@ -298,10 +300,10 @@
                 <hr class="pb-5">
                 
                 <div id="tableCreator">
-                    <h2>{{ __('Guide d\'utilisation du générateur de tableau') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">III. {{ __('Guide d\'utilisation du générateur de tableau') }}</h2>
 
                     <div id="importTable">
-                        <h3>{{ __('Générer un tableau à partir de données') }}</h3>
+                        <h3 class="third_title" tabindex="0">a. {{ __('Générer un tableau à partir de données') }}</h3>
                         <p>
                             {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
                         </p>
@@ -311,7 +313,7 @@
                     </div>  
                     
                     <div id="generateTable">
-                        <h3>{{ __('Générer un tableau exemple') }}</h3>
+                        <h3 class="third_title" tabindex="0">b. {{ __('Générer un tableau exemple') }}</h3>
                         <p>
                             {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de") }} {{ __("tableau") }}.{{ __(" En cliquant sur le bouton 'Générer un exemple', un ") }} {{ __("tableau") }} {{ __("sera généré automatiquement sur l'espace de travail d'Easy To C.") }}
                             {{ __("Vous pourrez ainsi vous faire une idée sur les possibilités offertes par le générateur de") }} {{ __("tableau") }} {{ __("Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
@@ -320,7 +322,7 @@
                     </div>  
 
                     <div id="addElementTable">
-                        <h3>{{ __('Ajouter du contenu au tableau') }}</h3>
+                        <h3 class="third_title" tabindex="0">c. {{ __('Ajouter du contenu au tableau') }}</h3>
                         <p>
                             {{ __("En créant votre tableau, vous aurez la possibilité de modifier à loisir son titre, son nombre de lignes, de colonnes et leur contenu ainsi que sa légende. Mais ce n'est pas  tout, Easy To C vous propose également la possibilité d'ajouter des en-têtes verticales et/ou horizontales et également un pied de tableau. Vous pourrez déplacer une case, en fusionner certaines, déplacer ou supprimer une ligne/colonne. Vous n'avez plus aucune excuse pour vous y mettre !") }}
                         </p>
@@ -334,10 +336,10 @@
                 <hr class="pb-5">
 
                 <div id="menuCreator">
-                    <h2>{{ __('Guide d\'utilisation du générateur de menu') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">IV. {{ __('Guide d\'utilisation du générateur de menu') }}</h2>
 
                     <div id="importMenu">
-                        <h3>{{ __('Générer un menu à partir de données') }}</h3>
+                        <h3 class="third_title" tabindex="0">a. {{ __('Générer un menu à partir de données') }}</h3>
                         <p>
                             {{ __("Si vous possedez déjà un code personnel générant un tableau par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }}
                         </p>
@@ -347,7 +349,7 @@
                     </div>  
                     
                     <div id="generateMenu">
-                        <h3>{{ __('Générer un menu exemple') }}</h3>
+                        <h3 class="third_title" tabindex="0">b. {{ __('Générer un menu exemple') }}</h3>
                         <p>
                             {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de menu.") }}
                         </p>
@@ -360,7 +362,7 @@
                     </div>  
 
                     <div id="addElementMenu">
-                        <h3>{{ __('Ajouter du contenu au menu') }}</h3>
+                        <h3 class="third_title" tabindex="0">c. {{ __('Ajouter du contenu au menu') }}</h3>
                         <p>
                             {{ __('En créant votre menu, vous aurez la possibilité de modifier à loisir son titre et le logo de votre menu.') }}
                         </p>
@@ -379,10 +381,10 @@
                 <hr class="pb-5">
 
                 <div id="formCreator">
-                    <h2>{{ __('Guide d\'utilisation du générateur de formulaire') }}</h2>
+                    <h2 tabindex="0" class="secondary_title">V. {{ __('Guide d\'utilisation du générateur de formulaire') }}</h2>
 
                     <div id="importForm">
-                        <h3>{{ __('Générer un formulaire à partir de données') }}</h3>
+                        <h3 class="third_title" tabindex="0">a. {{ __('Générer un formulaire à partir de données') }}</h3>
                         <p>
                             {{ __("Si vous possedez déjà un code personnel générant un formulaire par l'intermédiaire de données brutes ( fichiers JSON, fichiers CSV), vous avez la possibilité de travailler sur celui-ci via le bouton 'Importer des données' se situant en haut à gauche de l'interface.") }} 
                             {{ __("En important votre fichier de données, Easy To C generera votre code, vous aurez ensuite la possibilité de modifier votre formulaire selon vos souhaits.") }}
@@ -390,7 +392,7 @@
                     </div>  
                     
                     <div id="generateForm">
-                        <h3>{{ __('Générer un formulaire exemple') }}</h3>
+                        <h3 class="third_title" tabindex="0">b. {{ __('Générer un formulaire exemple') }}</h3>
                         <p>
                             {{ __("Parce que nous n'avons pas toujours la bonne idée au moment où l'on voudrait, ou que vous avez souffert trop longtemps du syndrome de la page blanche, Easy to C vous propose de travailler en vous basant sur un exemple de formulaire.") }}
                             {{ __("En cliquant sur le bouton 'Générer un exemple', un formulaire sera généré automatiquement sur l'espace de travail d'Easy To C présentant l'ensemble des fonctionnalités proposées. Vous pourrez ainsi vous faire une idée sur les possiblités offertes par le générateur de formulaire Easy To C et les nombreuses possibilités de personnalisation qu'il offre et ainsi les tester.") }}
@@ -398,7 +400,7 @@
                     </div>  
 
                     <div id="addElementForm">
-                        <h3>{{ __('Ajouter du contenu au formulaire') }}</h3>
+                        <h3 class="third_title" tabindex="0">c. {{ __('Ajouter du contenu au formulaire') }}</h3>
                         <p>
                             {{ __("En créant votre formulaire vous aurez la possibilité de modifier à loisir son titre, son lien de traitement des données ainsi que sa méthode (GET ou POST). Un bouton de réinitialisation permet de remettre à zéro l'espace de travail. Vous avez 2 niveaux de personnalisation :") }}
                         </p>

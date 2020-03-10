@@ -29,8 +29,7 @@ let csrf_token = $('meta[name="csrf-token"]').attr('content');
 $('#lateral-header-button').prop('checked', false);
 $('#footer-button').prop('checked', false);
 $('#central-header-button').prop('checked', true);
-$('#radio02').prop('checked', true);
-$('#radio02').prop('checked', true);
+$('#radio01').prop('checked', true);
 $('#table-row-nb').val('2');
 $('#table-col-nb').val('2');
 
