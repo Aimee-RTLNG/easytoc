@@ -36,12 +36,11 @@
         @include('common.errors')
 
         <!-- interface d'initialisation du projet -->
-        <div class="row creator-panel" role="region" aria-labelledby="interface-heading">
+        <div class="row creator-panel" role="region">
 
             @if (Auth::check())
             <!-- infos du projet -->
             <div class="info-panel col-lg-4" role="region" aria-labelledby="table_infos">
-                {{-- <h3 id="table_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le tableau') }}</h3> --}}
                 <form id="full-table-post" action="{{ route('content.store') }}" method="post" autocomplete="off">
                     @csrf
                     <input type="hidden" name="type_id" value="2">
@@ -62,7 +61,7 @@
 
             <!-- actions d'initialisation -->
             <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="table_tools">
-                <h3 id="table_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
+                <h2 id="table_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h2>
                 <div class="actions-panel__btn" role="complementary">
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __('Importer des données') }}">
                         <div class="btn-crea__icon">
@@ -78,48 +77,50 @@
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h3 id="table_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
+                <h2 id="table_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
-                    <a href="aide#importTable" title="{{ __('Guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#tableCreator" title="{{ __('Guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="aide#importTable">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#tableCreator">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
             <!-- templates -->
-            <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du tableau') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
-                    <div>
+            <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region">
+                <fieldset>
+                    <legend id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du tableau') }}</legend>
+                    <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                         <div>
-                            <input type="radio" value="blue" id="radio01" name="theme" checked>
-                            <label for="radio01">{{ __('Bleu') }}</label>
+                            <div>
+                                <input type="radio" value="blue" id="radio01" name="theme" checked>
+                                <label for="radio01">{{ __('Bleu') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="white" id="radio02" name="theme">
+                                <label for="radio02">{{ __('Blanc') }}</label>
+                            </div>
                         </div>
                         <div>
-                            <input type="radio" value="white" id="radio02" name="theme">
-                            <label for="radio02">{{ __('Blanc') }}</label>
+                            <div>
+                                <input type="radio" value="green" id="radio03" name="theme">
+                                <label for="radio03">{{ __('Vert') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="red" id="radio04" name="theme">
+                                <label for="radio04">{{ __('Rouge') }}</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="radio" value="black" id="radio05" name="theme">
+                                <label for="radio05">{{ __('Noir') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="grey" id="radio06" name="theme">
+                                <label for="radio06">{{ __('Gris') }}</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <input type="radio" value="green" id="radio03" name="theme">
-                            <label for="radio03">{{ __('Vert') }}</label>
-                        </div>
-                        <div>
-                            <input type="radio" value="red" id="radio04" name="theme">
-                            <label for="radio04">{{ __('Rouge') }}</label>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="radio" value="black" id="radio05" name="theme">
-                            <label for="radio05">{{ __('Noir') }}</label>
-                        </div>
-                        <div>
-                            <input type="radio" value="grey" id="radio06" name="theme">
-                            <label for="radio06">{{ __('Gris') }}</label>
-                        </div>
-                    </div>
-                </div>
+                </fieldset>
             </div>
 
         </div>
@@ -153,7 +154,7 @@
                         <input class="form-control input-creator" type="number" name="table-col-nb" id="table-col-nb" size="3" value="2" min="2"/>
                     </div>
                     <div class="col-md-6 mt-4-md" role="region">
-                        <label class="creator-panel__footer d-block creator-panel__title" for="table-footer">{{ __('Options du tableau') }}</label>
+                        <p class="creator-panel__footer d-block creator-panel__title" for="table-footer">{{ __('Options du tableau') }}</p>
                         {{-- OPTIONS DU TABLEAU --}}
                        <div class="choice-header-tab">
                         <label class="central-header-button tab-radio-header" for="central-header-button">
@@ -172,8 +173,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element static-buttons-creator tab-tools-cont" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="w-100 tools-tab">
+                <div role="section" class="row form_actions_element static-buttons-creator tab-tools-cont">
+                    <div role="section" class="w-100 tools-tab">
                         <div class="tools-tab__child mb-2-lg">
                             <div class="tools-tab__sub-child tool-resp mb-2-xs">
                                 <button class="btn btn-primary  add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à droite') }}" title="{{ __('Nouvelle colonne à droite') }}" id="insert-col_right" role="listitem" data-toggle="tooltip" data-placement="bottom">

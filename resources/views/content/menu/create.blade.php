@@ -73,22 +73,21 @@
                     <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
                         <div class="btn-crea__icon">
                             <i class="fa fa-sync"></i>
-                            {{-- <i class="fa fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
                 <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
                 <div class="help-panel">
-                    <a href="aide#importMenu" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#menuCreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="aide#importMenu">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#menuCreator">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du menu') }}</h3>
                 <fieldset>
+                    <legend id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du menu') }}</legend>
                     <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                         <div>
                             <div>
