@@ -36,11 +36,11 @@
         @include('common.errors')
 
         <!-- interface d'initialisation du projet -->
-        <div class="row creator-panel" role="region" aria-labelledby="interface-heading">
+        <div class="row creator-panel" role="region">
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel col-lg-4" role="region" aria-labelledby="form_infos">
+            <div class="info-panel col-lg-4" role="region">
                 {{-- <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le formulaire') }}</h3> --}}
                 <form action="{{ route('content.update', ['content'=>$content]) }}" method="post" id="edit-form">
                     @csrf
@@ -48,7 +48,7 @@
                     <input type="hidden" name="type_id" value="1">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
+                        <label class="creator-panel__title" for="title-input">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" value="{{ old('title', $content->title) }}" required>
                         <p id="chara-title-remains"></p>
                     </div>
@@ -414,7 +414,7 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action row edit-project-action col-12 my-3" role="region" aria-labelledby="form_actions">
+        <div class="project-action row edit-project-action col-12 my-3" role="region">
             
             <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf

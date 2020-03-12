@@ -73,11 +73,8 @@
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </button>
                             </div>
-                            {{-- <button class="btn btn-filter-date" data-date="old">
-                                {{ __('Plus récents') }}
-                                <i class="fa fa-sort"></i>
-                            </button> --}}
                             <div class="input-group filter-name">
+                                <label for="search_create" class="d-none" aria-hidden="true">{{ __('Rechercher') }}</label>
                                 <input type="text" class="form-control" id="search_create" placeholder="{{ __('Rechercher') }}">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
@@ -99,9 +96,9 @@
                             <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
                             <div class="col-md-8 crea-item__infos">
                                 <div class="crea-item__entete">
-                                    <h3 class="crea-item__entete__title">
+                                    <h2 class="crea-item__entete__title">
                                         <a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}" title="{{ __('Voir le projet') }}">{{ $content->title }}</a>
-                                    </h3>
+                                    </h2>
                                     <div class="crea-item__entete__under"></div>
                                 </div>
                                 <p class="crea-item__descr">

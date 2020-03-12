@@ -40,14 +40,14 @@
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel col-lg-4" role="region" aria-labelledby="form_infos">
+            <div class="info-panel col-lg-4" role="region">
                 {{-- <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le formulaire') }}</h3> --}}
                 <form id="full-form-post" action="{{ route('content.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="type_id" value="1">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
+                        <label class="creator-panel__title" for="title-input">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" required>
                         <p id="chara-title-remains"></p>
                     </div>
@@ -414,7 +414,7 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
+        <div class="project-action row m-0" role="region">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
