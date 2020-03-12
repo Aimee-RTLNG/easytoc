@@ -17,7 +17,7 @@
 
         <meta property="twitter:title" content="EasyToC, un générateur de formulaires, tableaux et menus dans en code HTML accessible." />
         <meta property="twitter:description" content="EasyToC générateur de menus, tableaux et formulaire" />
-        <meta property="twitter:image" content="{{ URL::asset('images/capture_easytoc.jpg') }}" />
+        <meta property="twitter:image" content="{{ URL::asset('images/capture_easytoc.JPG') }}" />
 
         <meta property="twitter:site" content="EasyToC" />
         <meta property="twitter:url" content="{{url()->current()}}" />
