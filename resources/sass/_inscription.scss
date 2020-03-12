@@ -274,9 +274,10 @@
 }
 @media (max-width: 576px) {
     .register {
-        height: 575px;
+        height: 593px;
         &__illu {
             display: none;
+            background-image: none;
         }
         &__info {
             height: 100%;
@@ -324,7 +325,10 @@
     .inscription {
         height: 725px;
         .register__check {
-            margin-top: 35px;
+            margin-top: 20px;
+        }
+        .check-conditions {
+            margin-bottom: 10px;
         }
     }
     .link-account-ok {

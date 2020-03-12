@@ -11,7 +11,7 @@
 
         <meta property="og:title" content="EasyToC un générateur de menus, tableaux et formulaires accessibles." />
         <meta property="og:description" content="Pour certaines personnes, l’accès aux ressources web est difficile et pénible .Easy to C peut vous aider à rendre vos sites accessibles, peu importe votre niveau avec le code."" />
-        <meta property="og:image" content="{{ URL::asset('images/capture_easytoc.jpg') }}" />
+        <meta property="og:image" content="{{ URL::asset('./images/capture_interface.jpg') }}" />
         <meta property="og:site_name" content="EasyToC" />
         <link rel="canonical" href="{{url()->current()}}" />
 
@@ -66,7 +66,7 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-                <div class="container">
+                <div class="container menu-site">
                     <a class="navbar-brand" href="{{ url('/') }}" title="EasyToC">
                         <img src="{{ URL::asset('images/Logo-white.png') }}" id="logo-nav" alt="Easy to C"/>
                     </a>
@@ -78,7 +78,7 @@
                         </div>
                     </button>
     
-                    <div class="collapse navbar-collapse justify-content-between row" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse justify-content-between row m-0" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-dark bg-dark main-menu col-lg-7 m-0 p-0">
                             <li class="nav-items"><a class="nav-link text-light" href="{{ route('home') }}" title="{{ __('Accéder à l\'accueil') }}"><span>{{ __('Accueil') }}</span></a></li>
@@ -92,7 +92,7 @@
                             <a class="text-light link-flag" href="{{ route('setlang', 'fr') }}" title="{{ __('Traduire le site en français') }}"><div class="flag flag-fr" style="background-image: url({{ URL::asset('images/fr.png') }})"></div> {{ __('FR') }}</a>
                         </ul>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav menu-connect col-lg-3 m-0">
+                        <ul class="navbar-nav menu-connect col-lg-3">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('register'))
@@ -151,7 +151,6 @@
                     <ul class="nav navbar-dark ">
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('mentions_legales') }}" title="{{ __('Accéder à la page des mentions légales') }}">{{ __('Mentions légales') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" href="{{ route('cgu') }}" title="{{ __('Accéder à la page des CGU') }}">{{ __('CGU') }}</a></li>
-                        <li class="nav-items"><a class="nav-link text-light" href="{{ route('aide') }}" title="{{ __('Accéder à la page d\'aide') }}">{{ __('Aide') }}</a></li>
                         <li class="nav-items"><a class="nav-link text-light" id="rgpd-mgr" href="#" title="{{ __('Ouvrir la gestion des cookies') }}">{{ __('Gestion des cookies') }}</a></li>
                         <li class="nav-items"><a class="nav-link" >Copyright / {{ __('Tous droits réservés') }} - 2020</a></li>
                     </ul>

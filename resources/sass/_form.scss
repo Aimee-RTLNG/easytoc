@@ -177,7 +177,7 @@ input[type="checkbox"], input[type="radio"]{
         width: 100%;
     }
     &__btn {
-        @include flex-row-between-center;
+        @include flex-row-start-center;
     }
 }
 .btn-crea {
@@ -522,7 +522,7 @@ input[type="checkbox"], input[type="radio"]{
         }
     }
     .form-btns.static-buttons-creator {
-        height: 85px;
+        height: 96px;
     }
 }
 @media (max-width: 767px) {
@@ -563,6 +563,22 @@ input[type="checkbox"], input[type="radio"]{
         }
     }
     .form-btns.static-buttons-creator {
-        height: 125px;
+        height: 132px;
+    }
+}
+@media (max-width: 991px) {
+    #actions-interface.form-inter {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1;
+        #actions-interface-bloc {
+            margin: 0px 15px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+    }
+    .bloc-creation-interface.crea_form_inter {
+        flex-direction: column;
     }
 }

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="register">
+    <div class="register inscription">
         <div class="register__info">
             <div class="entete-title">
                 <h1 class="register__title">{{ __('Inscription') }}</h1>

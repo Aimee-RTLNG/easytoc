@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required>{{ old('description', $content->description) }}</textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300">{{ old('description', $content->description) }}</textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                     <!-- Code en brut (non formatté) -->
@@ -235,7 +235,7 @@
                     </div>
                 </div>
 
-                <div class="bloc-creation-interface">
+                <div class="bloc-creation-interface crea_form_inter">
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
@@ -297,7 +297,7 @@
                     </div>
                 </div>
 
-                <div id="actions-interface" aria-atomic="true" aria-live="assertive" class="bloc-actions d-none col-3 p-0">
+                <div id="actions-interface" aria-atomic="true" aria-live="assertive" class="form-inter bloc-actions d-none col-3 p-0">
                     <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
                     <div class="border bg-white rounded p-3 action-supp" role="section">
                         <div class="action-supp-crea" role="section">
