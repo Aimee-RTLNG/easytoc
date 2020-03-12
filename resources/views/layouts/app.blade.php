@@ -11,13 +11,13 @@
 
         <meta property="og:title" content="EasyToC un générateur de menus, tableaux et formulaires accessibles." />
         <meta property="og:description" content="Pour certaines personnes, l’accès aux ressources web est difficile et pénible .Easy to C peut vous aider à rendre vos sites accessibles, peu importe votre niveau avec le code."" />
-        <meta property="og:image" content="{{ URL::asset('./images/capture_interface.jpg') }}" />
+        <meta property="og:image" content="{{ URL::asset('images/capture_interface.jpg') }}" />
         <meta property="og:site_name" content="EasyToC" />
         <link rel="canonical" href="{{url()->current()}}" />
 
         <meta property="twitter:title" content="EasyToC, un générateur de formulaires, tableaux et menus dans en code HTML accessible." />
         <meta property="twitter:description" content="EasyToC générateur de menus, tableaux et formulaire" />
-        <meta property="twitter:image" content="{{ URL::asset('images/capture_easytoc.jpg') }}" />
+        <meta property="twitter:image" content="{{ URL::asset('images/capture_easytoc.JPG') }}" />
 
         <meta property="twitter:site" content="EasyToC" />
         <meta property="twitter:url" content="{{url()->current()}}" />
