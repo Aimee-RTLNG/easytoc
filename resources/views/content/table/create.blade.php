@@ -275,6 +275,7 @@
                         <div class="tab-content" id="nav-tabContent" role="section">
 
                             <!-- Code en brut (non formaatté) -->
+                            <label for="raw-code" class="d-none" aria-hidden="true">{{__('Code généré')}}</label>
                             <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                             <!-- panneau blueprint -->
@@ -357,7 +358,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title creator-panel__title" id="importDataTitle">{{ __('Importer des données') }}</h5>
+                <h3 class="modal-title creator-panel__title" id="importDataTitle">{{ __('Importer des données') }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('Fermer') }}" title="{{ __('Fermer') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>

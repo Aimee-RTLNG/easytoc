@@ -58,6 +58,7 @@
                         <p id="chara-desc-remains"></p>
                     </div>
                     <!-- Code en brut (non formatté) -->
+                    <label for="raw-code" class="d-none" aria-hidden="true">{{__('Code généré')}}</label>
                     <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true">{{ old('html', $content->html) }}</textarea>
                 </form>
             </div>
@@ -455,7 +456,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="importDataTitle">{{ __('Importer des données') }}</h5>
+                <h3 class="modal-title" id="importDataTitle">{{ __('Importer des données') }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('Fermer') }}" title="{{ __('Fermer') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>
