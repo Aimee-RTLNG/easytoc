@@ -71,61 +71,57 @@
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Créer un tableau exemple") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Créer un formulaire exemple") }}">
                         <div class="btn-crea__icon">
                             <i class="fa fa-sync"></i>
-                            {{-- <i class="fa fa-file-code"></i> --}}
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
                 <h2 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
-                    <a href="aide#importForm" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#formCreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="aide#importForm">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#formCreator">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                {{-- <h2 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h2>
-                <div role="complementary" tabindex="0">
-                    <fieldset class="template-panel__choice shadow-box border-12 theme-switch" >
-                    <legend class="d-none">{{ __('Modifier le thème du formulaire') }}</legend> --}}
-                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
-                    <div>
+                <fieldset>
+                    <legend id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du formulaire') }}</legend>
+                    <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                         <div>
-                            <input type="radio" value="blue" id="radio01" name="theme" checked>
-                            <label for="radio01">{{ __('Bleu') }}</label>
+                            <div>
+                                <input type="radio" value="blue" id="radio01" name="theme" checked>
+                                <label for="radio01">{{ __('Bleu') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="white" id="radio02" name="theme">
+                                <label for="radio02">{{ __('Blanc') }}</label>
+                            </div>
                         </div>
                         <div>
-                            <input type="radio" value="white" id="radio02" name="theme">
-                            <label for="radio02">{{ __('Blanc') }}</label>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="radio" value="green" id="radio03" name="theme">
-                            <label for="radio03">{{ __('Vert') }}</label>
-                        </div>
-                        <div>
-                            <input type="radio" value="red" id="radio04" name="theme">
-                            <label for="radio04">{{ __('Rouge') }}</label>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="radio" value="black" id="radio05" name="theme">
-                            <label for="radio05">{{ __('Noir') }}</label>
+                            <div>
+                                <input type="radio" value="green" id="radio03" name="theme">
+                                <label for="radio03">{{ __('Vert') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="red" id="radio04" name="theme">
+                                <label for="radio04">{{ __('Rouge') }}</label>
+                            </div>
                         </div>
                         <div>
-                            <input type="radio" value="grey" id="radio06" name="theme">
-                            <label for="radio06">{{ __('Gris') }}</label>
+                            <div>
+                                <input type="radio" value="black" id="radio05" name="theme">
+                                <label for="radio05">{{ __('Noir') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="grey" id="radio06" name="theme">
+                                <label for="radio06">{{ __('Gris') }}</label>
+                            </div>
                         </div>
                     </div>
-                    </fieldset>
-                </div>
+                </fieldset>
             </div>
         </div>
 
@@ -135,7 +131,7 @@
             <div id="content-interface" class="content-interface col shadow-box border-12 bg-white" role="section" aria-label="{{ __('Actions sur l\'élement') }}">
                 <!-- navigation entre les panneaux -->
 
-                <div class="main-info-form row mx-0 px-0" role="region">
+                <div class="main-info-form row p-0 m-0" role="region">
                     <div class="col-lg-3 col-md-6" role="region">
                         <label class="creator-panel__title" for="form-creator-title">{{ __('Titre du formulaire') }}</label>
                         <input name="form-creator-title" id="form-creator-title" placeholder="{{ __('Titre du formulaire') }}" class="form-control input-creator" size="30" value="{{ __('Titre du formulaire') }}" />
@@ -160,8 +156,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element form-btns static-buttons-creator" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="btns_form w-100">
+                <div role="section" class="row form_actions_element form-btns static-buttons-creator">
+                    <div role="section" class="btns_form w-100">
                         <div class="btns_form__child mb-3-lg btns_form--first">
                             <div class="btns_form__sub-child">
                                 <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Nouvelle séparation') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une séparation") }}" data-toggle="tooltip" data-placement="bottom">
@@ -420,10 +416,6 @@
         <!-- Actions importantes sur le projet -->
         <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
-                {{-- <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" id="btn-cancel-project" aria-label="Annuler les modifications" onclick="if(confirm('{{ __('Voulez vous vraiment quitter sans sauvegarder ?') }}')){ window.location.href = 'profile/{{ auth()->user()->id }}/view' }">
-                    <div class="btn-crea__icon"><i class="fa fa-trash-alt"></i></div>
-                    <p>{{ __('Annuler les modifications') }}</p>
-                </button> --}}
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
                     <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                     <p>
@@ -462,8 +454,6 @@
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                {{-- <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
                         <i class="fa fa-file-upload"></i>
