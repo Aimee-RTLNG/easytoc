@@ -45,8 +45,6 @@
   margin-top: 10px;
   margin-bottom: 10px;
   max-width: 100%;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -91,14 +89,6 @@
   color: black;
 }
 
-.theme-white #full-table thead > tr:first-child > th:first-child {
-  border-top-left-radius: 20px;
-}
-
-.theme-white #full-table thead > tr:first-child > th:last-child {
-  border-top-right-radius: 20px;
-}
-
 .theme-black #full-table {
   color: white;
   background-color: #333333;
@@ -137,14 +127,6 @@
 .theme-black #full-table tfoot td {
   background-color: #1f1f1f;
   color: white;
-}
-
-.theme-black #full-table thead > tr:first-child > th:first-child {
-  border-top-left-radius: 20px;
-}
-
-.theme-black #full-table thead > tr:first-child > th:last-child {
-  border-top-right-radius: 20px;
 }
 
 .theme-green #full-table {
@@ -187,14 +169,6 @@
   color: white;
 }
 
-.theme-green #full-table thead > tr:first-child > th:first-child {
-  border-top-left-radius: 20px;
-}
-
-.theme-green #full-table thead > tr:first-child > th:last-child {
-  border-top-right-radius: 20px;
-}
-
 .theme-red #full-table {
   color: black;
   background-color: #FFE9E9;
@@ -233,14 +207,6 @@
 .theme-red #full-table tfoot td {
   background-color: #740101;
   color: white;
-}
-
-.theme-red #full-table thead > tr:first-child > th:first-child {
-  border-top-left-radius: 20px;
-}
-
-.theme-red #full-table thead > tr:first-child > th:last-child {
-  border-top-right-radius: 20px;
 }
 
 .theme-blue #full-table {
@@ -283,14 +249,6 @@
   color: white;
 }
 
-.theme-blue #full-table thead > tr:first-child > th:first-child {
-  border-top-left-radius: 20px;
-}
-
-.theme-blue #full-table thead > tr:first-child > th:last-child {
-  border-top-right-radius: 20px;
-}
-
 .theme-grey #full-table {
   color: white;
   background-color: grey;
@@ -329,14 +287,6 @@
 .theme-grey #full-table tfoot td {
   background-color: #5f5f5f;
   color: white;
-}
-
-.theme-grey #full-table thead > tr:first-child > th:first-child {
-  border-top-left-radius: 20px;
-}
-
-.theme-grey #full-table thead > tr:first-child > th:last-child {
-  border-top-right-radius: 20px;
 }
 
 .font-style-italic {

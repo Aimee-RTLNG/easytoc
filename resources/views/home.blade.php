@@ -28,7 +28,7 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="home-present__txt">
                         <h1 class="home-present__txt__titre section-home__title">Easy to C, {{ __('pour que l\'accessibilité soit enfin une priorité') }}</h1>
-                        <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. EasytoC peut vous aider dans cette démarche.')}}
+                        <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. Easy to C peut vous aider dans cette démarche.')}}
                         </p>
                         <div class="home-present__txt__btn">
                             <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
@@ -37,9 +37,9 @@
                                     {{__('Commencer un projet')}}
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Accéder à l\'espace de création de formulaire') }}</a>
-                                    <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Accéder à l\'espace de création de menu') }}</a>
-                                    <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Accéder à l\'espace de création de tableau') }}</a>
+                                    <a class="dropdown-item" href="{{ route('formulaire') }}" title="{{ __('Accéder à l\'espace de création de formulaire') }}">{{ __('Créer un formulaire') }}</a>
+                                    <a class="dropdown-item" href="{{ route('menu') }}" title="{{ __('Accéder à l\'espace de création de menu') }}">{{ __('Créer un menu') }}</a>
+                                    <a class="dropdown-item" href="{{ route('tableau') }}" title="{{ __('Accéder à l\'espace de création de tableau') }}">{{ __('Créer un tableau') }}</a>
                                 </div>
                             </div>
                             @guest
@@ -50,7 +50,7 @@
                             @endguest
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li><a class="link-ancre" tabindex="0" href="#tools">- {{__('Comment fonctionnent les outils EasytoC ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#tools">- {{__('Comment fonctionnent les outils Easy to C ?')}}</a></li>
                             <li><a class="link-ancre" tabindex="0" href="#how">- {{__('Comment Easy to C peut m’aider ?')}}</a></li>
                             <li><a class="link-ancre" tabindex="0" href="#reasons">- {{__('Pourquoi rendre son site accessible ?')}}</a></li>
                         </ul>
@@ -58,8 +58,7 @@
                 </div>
                 <div class="col-xl-7 col-lg-6 mb-3">
                     <div class="home-present__video">
-                        {{-- <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe> --}}
-                        <div class="youtube_player" videoID="X51vpwvHq5I" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
+                        <div class="youtube_player" videoID="IuEF3eShvbM" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
                     </div>
                 </div>
             </div>
@@ -78,7 +77,7 @@
                 <div class="slider-tools">
                     <div class="col-lg-4 col-md-6">
                         <div class="home-tools__item" tabindex="0">
-                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.webp');">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_menu.png');">
     
                             </div>
                             <div class="home-tools__item__txt">
@@ -94,7 +93,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="home-tools__item" tabindex="0">
-                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.webp');">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_table.png');">
     
                             </div>
                             <div class="home-tools__item__txt">
@@ -109,7 +108,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="home-tools__item" tabindex="0">
-                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.webp');">
+                            <div class="home-tools__item__illu" style="background-image: url('./images/icone_form.png');">
     
                             </div>
                             <div class="home-tools__item__txt">
@@ -136,7 +135,7 @@
                 <div class="slider-use-list">
                     <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
-                            <div class="use-list__item__icon" style="background-image: url('./images/002-view.webp');"></div>
+                            <div class="use-list__item__icon" style="background-image: url('./images/002-view.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Améliorer la visibilité')}}</h3>
                             <p class="use-list__item__txt">
                                 {{__('Un site web accessible reflète un code optimisé, c’est à dire quelque chose de propre. Et même si vos utilisateur ne le vois pas, votre navigateur passe plus de temps sur vos pages et ainsi favorise votre référencement naturel. Ce qui permet d’être mieux vu et par tous.')}} 
@@ -146,7 +145,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
-                            <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.webp');"></div>
+                            <div class="use-list__item__icon" style="background-image: url('./images/003-clicker.png');"></div>
                             <h3 class="use-list__item__titre">{{__("Rendre l'intéraction facile")}}</h3>
                             <p class="use-list__item__txt">
                                 {{__('Interagir avec une page internet peut parfois s’avérer contraignant. Une erreur de code peut  gêner vos utilisateur, qui mécontent ou simplement désarçonner quitte le site. EasyToC vous guide, pour ne pas commettre d’erreurs et ainsi penser au confort de vos utilisateurs.')}}
@@ -156,7 +155,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 use-list__argu">
                         <div class="use-list__item" tabindex="0">
-                            <div class="use-list__item__icon" style="background-image: url('./images/001-ear.webp');"></div>
+                            <div class="use-list__item__icon" style="background-image: url('./images/001-ear.png');"></div>
                             <h3 class="use-list__item__titre">{{__('Etre compris par tous')}}</h3>
                             <p class="use-list__item__txt">
                                 {{__("Négliger l’accessibilité d’un site web peut provoquer la perte de nombreux prospects. C’est pourquoi, EasyToC permet à vos utilisateur de voir et de comprendre vos contenus sans pour autant avoir la capacité de voir. Notamment avec la compatibilité de son code et les lecteurs d’écrans.")}}
@@ -183,16 +182,16 @@
                         </p>
                         <p class="def__txt__citation"> {{__('L’accessibilité pourrait être considérée comme une source d’opportunités et de développement par les acteurs du Web.')}}
                         </p>
-                        <p> {{__('Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels.')}}
+                        <p> {{__('Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.')}}
                         </p>
                    </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="def__illu" style="background-image: url('./images/planete_people.webp');"></div>
+                    <div class="def__illu" style="background-image: url('./images/planete_people.png');"></div>
                 </div>
                 <div class="col-lg-4">
                     <div class="def__txt">
-                        <p>{{__('En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
+                        <p>{{__('Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels. En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
                         </p>
                         <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais un outil favorisant l’inclusion sociale.')}}
                         </p>

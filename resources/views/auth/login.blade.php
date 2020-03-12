@@ -14,8 +14,8 @@
                             @csrf
                            <div>
                                 <div class="connect-network connect-network--connexion">
-                                    <a href="{{ route('provider_login','facebook') }}" title="{{ __('Se connecter via Facebook') }}"><img src="./images/facebook_logo.webp" class="connect-network__img" alt="Facebook">{{ __('Connexion') }} Facebook</a>
-                                    <a href="{{ route('provider_login','google') }}" title="{{ __('Se connecter via Google') }}"><img src="./images/google_logo.webp" class="connect-network__img" alt="Google">{{ __('Connexion') }} Google</a>
+                                    <a href="{{ route('provider_login','facebook') }}" title="{{ __('Se connecter via Facebook') }}"><img src="./images/facebook_logo.png" class="connect-network__img" alt="Facebook">{{ __('Connexion') }} Facebook</a>
+                                    <a href="{{ route('provider_login','google') }}" title="{{ __('Se connecter via Google') }}"><img src="./images/google_logo.png" class="connect-network__img" alt="Google">{{ __('Connexion') }} Google</a>
                                 </div>
                                 <p class="commentaire">{{ __('Tous les champs sont obligatoires') }}</p>
                            </div>
@@ -89,10 +89,10 @@
                         @csrf
                         <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4 mb-3">
-                                <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.webp" style="width: 30px; height: 30px; margin: 10px">{{ __('Se connecter avec') }} Google</a>
+                                <a href="{{ route('provider_login','google') }}"><img src="./images/google_logo.png" style="width: 30px; height: 30px; margin: 10px">{{ __('Se connecter avec') }} Google</a>
                             </div>
                             <div class="col-md-8 offset-md-4 mb-3">
-                                <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.webp" style="width: 30px; height: 30px; margin: 10px">{{ __('Se connecter avec') }} Facebook</a>
+                                <a href="{{ route('provider_login','facebook') }}"><img src="./images/facebook_logo.png" style="width: 30px; height: 30px; margin: 10px">{{ __('Se connecter avec') }} Facebook</a>
                             </div>
                         </div>
                         <div class="form-group row">

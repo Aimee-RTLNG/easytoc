@@ -8,7 +8,6 @@
     min-height: 700px;
     max-height: 1200px;
     padding: 40px 0px;
-
     &__title {
         @include expletus;
         font-weight: bold;
@@ -129,7 +128,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    svg {
+    svg, i {
         cursor: pointer;
         font-size: 36px;
     }

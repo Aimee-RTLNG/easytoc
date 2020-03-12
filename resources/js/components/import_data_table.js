@@ -150,7 +150,7 @@ function importData(table) {
                 $("#full-table thead").append(element_types["type-container"]["insert-row"]);
                 header_row.forEach(function(element, index){
                     $("#full-table thead tr").last().append(element_types["type-unique"]["insert-header-col"]);
-                    $("#full-table thead tr th").last().text(element);
+                    $("#full-table thead tr th").last().find('span').text(element);
                 });
             });
         }else{
@@ -164,11 +164,11 @@ function importData(table) {
                 body_row.forEach(function(element, index){
                     if( index == 0 && table.options.header_left == "true"){
                         $("#full-table tbody tr").last().append(element_types["type-unique"]["insert-header-row"]);
-                        $("#full-table tbody tr th").last().text(element);
+                        $("#full-table tbody tr th").last().find('span').text(element);
                         $('#lateral-header-button').prop('checked', true);
                     }else{
                         $("#full-table tbody tr").last().append(element_types["type-unique"]["insert-cell"]);
-                        $("#full-table tbody tr td").last().text(element);
+                        $("#full-table tbody tr td").last().find('span').text(element);
                     }
                 });
         });
@@ -181,7 +181,7 @@ function importData(table) {
             let footer_row = table.items.tfoot[0];
             footer_row.forEach(function(element, index){
                 $("#full-table tfoot tr").last().append(element_types["type-unique"]["insert-cell"]);
-                $("#full-table tfoot tr td").last().text(element);
+                $("#full-table tfoot tr td").last().find('span').text(element);
             });
         }
 

@@ -45,8 +45,12 @@
         margin-bottom: 20px;
     }
     .content-description {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
+}
+.last_updated {
+    color: $gris-moyen;
+    font-size: 1.2rem;
 }
 
 // Formulaire généré 
@@ -63,11 +67,26 @@
 .visualisation {
     &__infos {
         .element-actions {
+            flex-direction: column;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            @include media-breakpoint-down(lg) {
-                justify-content: flex-start;
+            justify-content: flex-start;
+            .btn {
+                width: 100%;
+                margin-right: 0px;
+                max-width: 200px;
+            }
+            form {
+                padding: 0px;
+            }
+            @include media-breakpoint-down(md) {
+                justify-content: space-around;
+                flex-direction: row;
+            }
+            @include media-breakpoint-down(sm) {
+                & > .btn {
+                    margin-right: 10px;
+                }
             }
         }
     }

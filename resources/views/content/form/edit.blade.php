@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required>{{ old('description', $content->description) }}</textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300">{{ old('description', $content->description) }}</textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                     <!-- Code en brut (non formatté) -->
@@ -84,8 +84,8 @@
                 </div>
                 <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
                 <div class="help-panel">
-                    <a href="aide#formdata" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#formcreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="aide#importForm" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#formCreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
@@ -159,79 +159,83 @@
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element static-buttons-creator" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="w-100 d-flex justify-content-around align-items-center">
-                        <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Nouvelle séparation') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une séparation") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-grip-lines"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem" title="{{ __("Ajouter un titre") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-heading"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem" title="{{ __("Ajouter un paragraphe") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-paragraph"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem" title="{{ __("Ajouter un lien") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-link"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem" title="{{ __("Ajouter une liste numérotée") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-list-ol"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem" title="{{ __("Ajouter une liste à puces") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-list-ul"></i>
-                        </button>
-                        <div class="btn-separator"></div>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem" title="{{ __("Mettre le texte en gras") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-bold"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem" title="{{ __("Mettre le texte en italique") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-italic"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem" title="{{ __("Mettre le texte en souligné") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-underline"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem" title="{{ __("Mettre le texte à gauche") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-align-left"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem" title="{{ __("Mettre le texte au centre") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-align-center"></i>
-                        </button>
-                        <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem" title="{{ __("Justifier le texte") }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-align-justify"></i>
-                        </button>
-                        <div class="btn-separator"></div>
-                        <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Réponse libre courte') }}" id="insert-short_answer" title="{{ __('Ajouter une réponse libre courte') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-comment"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Réponse libre longue') }}" id="insert-long_answer" title="{{ __('Ajouter une réponse libre longue') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-comment-alt"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Réponse Oui/Non') }}" id="insert-binary_answer" title="{{ __('Ajouter une réponse binaire') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-check-square"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Choix unique') }}"  id="insert-one_answer" title="{{ __('Ajouter une réponse à choix unique') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Choix multiple') }}" id="insert-many_answer" title="{{ __('Ajouter une réponse à choix multiple') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-tasks"></i>
-                        </button>
-                        <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer" title="{{ __('Ajouter une réponse à choix listé') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="btn-separator"></div>
-                        <button disabled="true" aria-label="{{ __('Supprimer') }}" class="btn btn-primary element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                        <button disabled="true" aria-label="{{ __('Annuler la suppression') }}" class="btn btn-primary element_undo form-element-action action-undo" data-action="undo" title="{{ __('Annuler la suppression') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-undo"></i>
-                        </button>
-                        <!-- Ajout d'option -->
-                        <button type="button" aria-label="{{ __('Ajouter une option') }}" disabled="true" data-action="add-option" class="btn btn-primary text-white form-element-action element_add-option" title="{{ __('Ajouter une option') }}" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-check-square"></i>
-                        </button>
+                <div role="section" class="row form_actions_element form-btns static-buttons-creator" aria-labelledby="form_actions_element">
+                    <div role="section" aria-labelledby="form_add_static" class="btns_form w-100">
+                       <div class="btns_form__child mb-3-lg btns_form--first">
+                            <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Nouvelle séparation') }}" id="insert-horizontal_rule" role="listitem" title="{{ __("Ajouter une séparation") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-grip-lines"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Titre') }}" id="insert-title" role="listitem" title="{{ __("Ajouter un titre") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-heading"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Paragraphe') }}" id="insert-paragraph" role="listitem" title="{{ __("Ajouter un paragraphe") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-paragraph"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Lien') }}" id="insert-link" role="listitem" title="{{ __("Ajouter un lien") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-link"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Liste numérotée') }}"  id="insert-ordered_list" role="listitem" title="{{ __("Ajouter une liste numérotée") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-list-ol"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-layout" type="button" aria-label="{{ __('Liste à puces') }}" id="insert-unordered_list" role="listitem" title="{{ __("Ajouter une liste à puces") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-list-ul"></i>
+                            </button>
+                            <div class="btn-separator"></div>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label=" {{ __('Gras') }}" id="element-bold" role="listitem" title="{{ __("Mettre le texte en gras") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-bold"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Italique') }}" id="element-italic" role="listitem" title="{{ __("Mettre le texte en italique") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-italic"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Souligné') }}" id="element-underline" role="listitem" title="{{ __("Mettre le texte en souligné") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-underline"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Aligner à gauche') }}" id="justify-left" role="listitem" title="{{ __("Mettre le texte à gauche") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-align-left"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Centrer') }}" id="justify-center" role="listitem" title="{{ __("Mettre le texte au centre") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-align-center"></i>
+                            </button>
+                            <button class="btn btn-primary text-formatting" type="button" aria-label="{{ __('Justifier') }}" id="justify-full" role="listitem" title="{{ __("Justifier le texte") }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-align-justify"></i>
+                            </button>
+                       </div>
+                        <div class="btns_form__child">
+                            <div class="btn-separator d-none-lg"></div>
+                            <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Réponse libre courte') }}" id="insert-short_answer" title="{{ __('Ajouter une réponse libre courte') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-comment"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Réponse libre longue') }}" id="insert-long_answer" title="{{ __('Ajouter une réponse libre longue') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-comment-alt"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Réponse Oui/Non') }}" id="insert-binary_answer" title="{{ __('Ajouter une réponse binaire') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-check-square"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Choix unique') }}"  id="insert-one_answer" title="{{ __('Ajouter une réponse à choix unique') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-check-circle"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Choix multiple') }}" id="insert-many_answer" title="{{ __('Ajouter une réponse à choix multiple') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-tasks"></i>
+                            </button>
+                            <button class="btn btn-primary add-element type-question" type="button" aria-label="{{ __('Choix en liste') }}" id="insert-list_answer" title="{{ __('Ajouter une réponse à choix listé') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="btn-separator"></div>
+                            <button disabled="true" aria-label="{{ __('Supprimer') }}" class="btn btn-primary element_delete form-element-action action-delete" data-action="delete" title="{{ __('Supprimer l\'élément') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button disabled="true" aria-label="{{ __('Annuler la suppression') }}" class="btn btn-primary element_undo form-element-action action-undo" data-action="undo" title="{{ __('Annuler la suppression') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-undo"></i>
+                            </button>
+                            <!-- Ajout d'option -->
+                            <button type="button" aria-label="{{ __('Ajouter une option') }}" disabled="true" data-action="add-option" class="btn btn-primary text-white form-element-action element_add-option" title="{{ __('Ajouter une option') }}" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-check-square"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bloc-creation-interface">
+                <div class="bloc-creation-interface crea_form_inter">
                     <div class="bloc-visualisation col mb-3 p-0">
                         <div class="side-tool" style="display: none">
                             <button id="action-move-up" data-action="move-up" class="mb-2 btn-info form-element-action action-move-up" title="{{ __('Déplacer vers le haut') }}">
@@ -245,8 +249,8 @@
                         <div class="col p-0 m-0">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le formulaire') }}">{{ __('Formulaire') }}</a>
-                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}">{{ __('Code généré') }}</a>
+                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le formulaire') }}"><i class="fa fa-eye mr-3"></i>{{ __('Formulaire') }}</a>
+                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}"><i class="fa fa-code mr-3"></i>{{ __('Code généré') }}</a>
                                 </div>
                             </nav>
 
@@ -261,8 +265,10 @@
 
                             <!-- panneau code -->
                             <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                <h2 class="blueprint__titre creator-panel__title">{{ __('Lien CSS à mettre dans la balise') }} &lt;head&gt; </h2>
-                                <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+
+                                <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                <a href="aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+
                                     <i class="fa fa-question-circle"></i>
                                     {{ __("Besoin d'aide !") }}
                                 </a>
@@ -291,7 +297,7 @@
                     </div>
                 </div>
 
-                <div id="actions-interface" aria-atomic="true" aria-live="assertive" class="bloc-actions d-none col-3 p-0">
+                <div id="actions-interface" aria-atomic="true" aria-live="assertive" class="form-inter bloc-actions d-none col-3 p-0">
                     <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
                     <div class="border bg-white rounded p-3 action-supp" role="section">
                         <div class="action-supp-crea" role="section">

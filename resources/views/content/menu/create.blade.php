@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container menu-bloc">
     @if (session('info'))
     <div class="row">
         <div class="col-md-12">
@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h1 class="entete__title">{{ __('Créer un menu') }} {{ __('accessible') }}</h1>
+        <h1 class="entete__title">{{ __('Créer un menu accessible') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body interface-creation mb-3">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required></textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                 </form>
@@ -80,8 +80,8 @@
                 </div>
                 <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
                 <div class="help-panel">
-                    <a href="aide#formdata" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#formcreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="aide#importMenu" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
+                    <a href="aide#menuCreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
                 </div>
             </div>
 
@@ -145,7 +145,7 @@
                     <div class="col-md-6 d-flex align-items-end mb-3-md mt-3-md" role="region">
                         <div class="col pl-0">
                             <label class="creator-panel__link creator-panel__title" for="menu-creator-link">{{ __('Logo de menu') }}</label>
-                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.webp') }}" class="form-control input-creator" autocomplete="off"/>
+                            <input type="url" name="menu-creator-link" id="menu-creator-link" placeholder="{{ __('URL') }}" value="{{ URL::asset('images/Logo-white.png') }}" class="form-control input-creator" autocomplete="off"/>
                         </div>
                         <div class="cont-checkbox">
                             <input class="check-box" type="checkbox" name="menu-creator-link-display" id="menu-creator-link-display" checked autocomplete="off" />
@@ -219,8 +219,8 @@
                         <div class="col p-0 m-0">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le menu') }}">{{ __('Menu') }}</a>
-                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}">{{ __('Code généré') }}</a>
+                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le formulaire') }}"><i class="fa fa-eye mr-3"></i>{{ __('Formulaire') }}</a>
+                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}"><i class="fa fa-code mr-3"></i>{{ __('Code généré') }}</a>
                                 </div>
                             </nav>
 
@@ -238,8 +238,10 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h2>
-                                    <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+
+                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <a href="aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
                                     </a>
