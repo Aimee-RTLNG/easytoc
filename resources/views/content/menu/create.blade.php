@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container menu-bloc">
     @if (session('info'))
     <div class="row">
         <div class="col-md-12">

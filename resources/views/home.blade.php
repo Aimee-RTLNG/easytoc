@@ -58,8 +58,7 @@
                 </div>
                 <div class="col-xl-7 col-lg-6 mb-3">
                     <div class="home-present__video">
-                        {{-- <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe> --}}
-                        <div class="youtube_player" videoID="X51vpwvHq5I" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
+                        <div class="youtube_player" videoID="IuEF3eShvbM" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
                     </div>
                 </div>
             </div>
