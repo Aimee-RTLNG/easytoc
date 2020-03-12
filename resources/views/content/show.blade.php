@@ -37,13 +37,13 @@
     </div>
         {{-- Infos prrojet et actions --}}
         <div class="row visualisation__infos">
-            <div class="col-lg-7 border-12 shadow-box mb-4-lg">
+            <div class="col-lg-9 border-12 shadow-box mb-4-lg">
                 <div class="content-title py-3">
                     {{-- <h2 class="mb-2">{{ __('Titre') }}</h2> --}}
                     <h3 class="visu__title text-italic pl-3 m-0">
                         {{ $content->title }}
                     </h3>
-                    <p class="pl-3 last_updated">Dernière modification :  {{ date('d/m/Y', strtotime($content->updated_at)) }}</p>
+                    <p class="pl-3 last_updated">{{__('Dernière modification')}} :  {{ date('d/m/Y', strtotime($content->updated_at)) }}</p>
                    
                 </div>
                 <div class="content-description py-3">
@@ -53,8 +53,8 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-5 element-actions">
-                <a class="btn btn-form-final btn-primary edit-content-button" href="{{ route('content.edit', ['content'=>$content]) }}">
+            <div class="col-lg-3 element-actions">
+                <a class="btn btn-form-final btn-primary edit-content-button mb-lg-3" href="{{ route('content.edit', ['content'=>$content]) }}">
                     <div class="rond-i">
                         <i class="fa fa-edit"></i>
                     </div>
