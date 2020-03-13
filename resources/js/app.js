@@ -297,3 +297,10 @@ $.ajaxSetup({ cache: false });
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 })
+
+$('.tooltip').not(this).hide();
+
+$("[data-toggle='tooltip']").on('click', function(){
+    $("[data-toggle='tooltip']").tooltip('hide');
+    $(this).tooltip('show');
+});
