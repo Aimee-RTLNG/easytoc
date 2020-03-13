@@ -220,7 +220,7 @@ body {
                     color: themed('textColorHover');
                 }
                 a, button {
-                    color: themed('textColor'); 
+                    color: themed('textColor') !important; 
                 }
                 .menu-item > a:focus, .menu-item > a:hover {
                     border-bottom:0px solid themed('borderHover') !important; 

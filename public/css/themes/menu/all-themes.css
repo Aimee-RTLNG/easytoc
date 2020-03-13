@@ -206,7 +206,7 @@ body {
 }
 
 .theme-white #full-menu .menu-items .menu-item a, .theme-white #full-menu .menu-items .menu-item button {
-  color: black;
+  color: black !important;
 }
 
 .theme-white #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-white #full-menu .menu-items .menu-item .menu-item > a:hover {
@@ -422,7 +422,7 @@ body {
 }
 
 .theme-black #full-menu .menu-items .menu-item a, .theme-black #full-menu .menu-items .menu-item button {
-  color: white;
+  color: white !important;
 }
 
 .theme-black #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-black #full-menu .menu-items .menu-item .menu-item > a:hover {
@@ -638,7 +638,7 @@ body {
 }
 
 .theme-green #full-menu .menu-items .menu-item a, .theme-green #full-menu .menu-items .menu-item button {
-  color: black;
+  color: black !important;
 }
 
 .theme-green #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-green #full-menu .menu-items .menu-item .menu-item > a:hover {
@@ -854,7 +854,7 @@ body {
 }
 
 .theme-red #full-menu .menu-items .menu-item a, .theme-red #full-menu .menu-items .menu-item button {
-  color: white;
+  color: white !important;
 }
 
 .theme-red #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-red #full-menu .menu-items .menu-item .menu-item > a:hover {
@@ -1070,7 +1070,7 @@ body {
 }
 
 .theme-blue #full-menu .menu-items .menu-item a, .theme-blue #full-menu .menu-items .menu-item button {
-  color: white;
+  color: white !important;
 }
 
 .theme-blue #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-blue #full-menu .menu-items .menu-item .menu-item > a:hover {
@@ -1286,7 +1286,7 @@ body {
 }
 
 .theme-grey #full-menu .menu-items .menu-item a, .theme-grey #full-menu .menu-items .menu-item button {
-  color: white;
+  color: white !important;
 }
 
 .theme-grey #full-menu .menu-items .menu-item .menu-item > a:focus, .theme-grey #full-menu .menu-items .menu-item .menu-item > a:hover {
