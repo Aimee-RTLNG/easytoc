@@ -213,7 +213,7 @@ function importData(form) {
     });
 
     // On ajoute le message d'information sur les champs requis s'il y en a 
-    if(required_count > 0 && $(".indicator-required").length() == 0) {
+    if(required_count > 0 && $(".indicator-required").length == 0) {
         var required_indicator = element_types["type-special"]["indicator-required"];
         $(required_indicator).insertAfter($("#form-title"));
     }
