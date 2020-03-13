@@ -561,6 +561,7 @@ $('.text-formatting').on("click", function () {
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-menu').attr('class', theme);
+
     updatecontent();
 })
 
@@ -580,4 +581,3 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 new ClipboardJS('#copy-css-link'); 
 new ClipboardJS('#copy-raw-code'); 
 
-// ANCHOR 

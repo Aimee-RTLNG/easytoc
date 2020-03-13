@@ -1265,6 +1265,8 @@ $('.text-formatting').on("click", function () {
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-table').attr('class', theme);
+
+    updateContent();
 })
 
 // ANCHOR Copier le contenu code 

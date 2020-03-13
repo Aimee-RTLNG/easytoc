@@ -994,6 +994,7 @@ $('.text-formatting').on("click", function () {
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-form').attr('class', theme);
+
     updatecontent();
 })
 
@@ -1053,6 +1054,3 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 new ClipboardJS('#copy-css-link'); // pas touche
 new ClipboardJS('#copy-raw-code'); // pas touche
 
-
-  
-  
