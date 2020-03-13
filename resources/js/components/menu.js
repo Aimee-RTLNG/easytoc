@@ -199,7 +199,7 @@ $('#menu-creator-title-display').off().on('click', function () {
             $('#menubar-easytoc').addClass('full-width');
         }
     }
-    updateContent();
+    updatecontent();
 });
 
 // ANCHOR Changement de lien du logo
@@ -234,7 +234,7 @@ $('#menu-creator-link-display').off().on('click', function () {
         $('#menubar-easytoc').addClass('full-width');
      }
    }
-   updateContent();
+   updatecontent();
 });
 
 // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
@@ -459,7 +459,7 @@ $(document.body)
         }
 
         $('#nav-name').val( $(this).text().trim() );
-        updateContent();
+        updatecontent();
     });
 
 // ANCHOR Masquer les sidetools au changement d'onglet
@@ -500,13 +500,13 @@ function moveLink( direction ) {
             break;
     }
     setMove( selected_link );
-    updateContent();
+    updatecontent();
 }
 
 // ANCHOR Fonction de suppression de link
 function deleteLink() {
     $(selected_link).remove();
-    updateContent();
+    updatecontent();
 }
 
 function setMove( selected_link ){
@@ -540,7 +540,7 @@ function setMove( selected_link ){
             $("#action-move-down").removeAttr('disabled');
         }
     }
-    updateContent();
+    updatecontent();
 }
 
 // ANCHOR Mise en forme du texte (gras, italic, underline...) 

@@ -1,6 +1,6 @@
 // Imports
 import { alertMsg, lang } from "../app";
-import { getOldContent, updateContent, removeCol, element_types } from "./table";
+import { getOldContent, updatecontent, removeCol, element_types } from "./table";
 
 // Variables
 let message;
@@ -240,7 +240,7 @@ function importData(table) {
         alertMsg(message, "error");
     }
 
-    updateContent();
+    updatecontent();
     $('#full-table tr td').last().focus();
 }
 

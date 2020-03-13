@@ -112,11 +112,11 @@ export function getOldContent() {
     let actual_caption = $("#table-caption span").text().trim();
     $("#table-creator-caption").val(actual_caption);
 
-    updateContent();
+    updatecontent();
 }
 
 // ANCHOR Fonction de sauvegarde
-export function updateContent() {
+export function updatecontent() {
 
     // On ajoute des ID sur chaque headers
     $('#full-table tr th').each(function (index, element) {
@@ -190,30 +190,30 @@ export function updateContent() {
 };
 
 $('#edit-table').on('click', function(){
-    updateContent();
+    updatecontent();
 })
 
 // ANCHOR Initialisation du tableau
 if ($('#raw-code').val().length <= 0) {
     // console.log("Création");
     // $('#content-created-blueprint').html(initial_content);
-    updateContent();
+    updatecontent();
 } else {
     // console.log("Modification");
     getOldContent();
-    updateContent();
+    updatecontent();
 }
 
 // ANCHOR Changement de titre
 $('#table-creator-title').on('keyup', function () {
     $('#table-title').text($('#table-creator-title').val());
-    updateContent();
+    updatecontent();
 });
 
 // ANCHOR Changement de caption
 $('#table-creator-caption').on('keyup', function () {
     $('#table-caption span').text($('#table-creator-caption').val());
-    updateContent();
+    updatecontent();
 });
 
 // ANCHOR Changement du nombre de lignes via INPUT
@@ -259,7 +259,7 @@ $('#table-row-nb').on('change', function () {
             }
         }
     }
-    updateContent();
+    updatecontent();
 });
 
 // ANCHOR Changement du nombre de colonnes via INPUT
@@ -311,7 +311,7 @@ $('#table-col-nb').on('change', function () {
             }
         }
     }
-    updateContent();
+    updatecontent();
 });
 
 // Ajout de colonne
@@ -380,7 +380,7 @@ export function addCol(side) {
             })
         }
     }
-    updateContent();
+    updatecontent();
 }
 
 // Ajout de ligne
@@ -431,7 +431,7 @@ export function addRow(side) {
         }
         inserted_row.append( cell_html + "\n\t\t" );
     }
-    updateContent();
+    updatecontent();
 }
 
 // Suppression de ligne
@@ -471,7 +471,7 @@ function removeRow(row) {
         $(row).remove();
         return true;
     }
-    updateContent();
+    updatecontent();
 }
 
 // Déplacement de ligne
@@ -497,7 +497,7 @@ function moveRow(side){
             $(this).find('span').text(next_text);
         })
     }
-    updateContent();
+    updatecontent();
 }
 
 // Déplacement de colonne
@@ -527,7 +527,7 @@ function moveCol(side){
         });
         $(next_cell).find("span").focus();
     }
-    updateContent();
+    updatecontent();
 }
 
 function moveCell(side){
@@ -552,7 +552,7 @@ function moveCell(side){
     $(".content-editable-selected span").text(text_other);
     $(other_cell).find('span').text(text_cell);
     $(other_cell).find('span').focus();
-    updateContent();
+    updatecontent();
 }
 
 function mergeCell(side, cell, other_cell){
@@ -581,7 +581,7 @@ function mergeCell(side, cell, other_cell){
     }
 
     $('.content-editable-selected span').focus();
-    updateContent();
+    updatecontent();
 }
 
 function splitCell(){
@@ -603,7 +603,7 @@ function splitCell(){
             $(next_row_cell).prepend(new_cell_html);
         }
     }
-    updateContent();
+    updatecontent();
 }
 
 // Suppression de colonne
@@ -656,7 +656,7 @@ export function removeCol(cells) {
         console.warn('Erreur dans la suppression de colonne : not an array.');
         return false;
     }
-    updateContent();
+    updatecontent();
 }
 
 $('.cell-action').on('click', function () {
@@ -797,7 +797,7 @@ $('.cell-action').on('click', function () {
     }
 
     $('.content-editable-selected span').focus();
-    updateContent();
+    updatecontent();
 });
 
 // ANCHOR Ajout d'un élément
@@ -922,13 +922,13 @@ $('.add-element').on('click', function () {
     }
 
     $('.content-editable-selected span').focus();
-    updateContent();
+    updatecontent();
 
 });
 
 // ANCHOR Sauvegarde définitive
 $('#btn-save-project').on('click', function () {
-    updateContent();
+    updatecontent();
     let post_url = $("#full-table-post").attr('action');
     $.ajax({
         method: "POST",
@@ -1160,20 +1160,20 @@ $(document.body)
             $('.side-tool').hide();
         }
 
-        updateContent();
+        updatecontent();
     })
     // ANCHOR Modification du texte via l'intérieur du formulaire
     .on('keyup', '#table-title', function () {
 
         $('#table-creator-title').val($('#table-title').text().trim());
-        updateContent();
+        updatecontent();
 
     })
 
     .on('keyup', '#table-caption', function () {
 
         $('#table-creator-caption').val($('#table-caption span').text().trim());
-        updateContent();
+        updatecontent();
 
     });
 
@@ -1181,7 +1181,7 @@ $(document.body)
 // ANCHOR Masquer les sidetools au changement d'onglet
 $("#nav-code-tab").on('click', function () {
     $('.side-tool').hide();
-    updateContent();
+    updatecontent();
 })
 
 // ANCHOR Fonction Undo/Redo suppression
@@ -1228,7 +1228,7 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-weight-bold');
                 }
             }
-            updateContent();
+            updatecontent();
             break;
         case 'element-italic':
             if(is_text_selected){
@@ -1240,7 +1240,7 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-style-italic');
                 }
             }
-            updateContent();
+            updatecontent();
             break;
         case 'element-underline':
             if(is_text_selected){
@@ -1252,22 +1252,22 @@ $('.text-formatting').on("click", function () {
                     $('.content-editable-selected').removeClass('font-underline');
                 }
             }
-            updateContent();
+            updatecontent();
             break;
         case 'justify-left':
             $('.content-editable-selected').attr('style', 'text-align: left');
-            updateContent();
+            updatecontent();
             break;
         case 'justify-center':
             $('.content-editable-selected').attr('style', 'text-align: center');
-            updateContent();
+            updatecontent();
             break;
         case 'justify-right':
             $('.content-editable-selected').attr('style', 'text-align: right');
-            updateContent();
+            updatecontent();
             break;
     }
-    updateContent();
+    updatecontent();
 })
 
 // ANCHOR Theme
@@ -1275,7 +1275,7 @@ $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-table').attr('class', theme);
 
-    updateContent();
+    updatecontent();
 })
 
 // ANCHOR Copier le contenu code 

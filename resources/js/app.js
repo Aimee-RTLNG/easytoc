@@ -254,13 +254,22 @@ document.onkeyup = function(e) {
             $(".action-supp-crea input").first().focus();
         }
     } 
-    // Accéder au bloc propriétés 
-    // CTRL ATL + P 
-    else if (e.ctrlKey && e.altKey && e.which == 80) {
-        if( $("#content-interface").length > 0 ){
-            $("#content-interface input").first().focus();
+    // Accéder au bloc d'actions 
+    // CTRL ATL + A
+    else if (e.ctrlKey && e.altKey && e.which == 65) {
+        if( $(".static-buttons-creator").length > 0 ){
+            $(".static-buttons-creator button").first().focus();
         }
     } 
+
+    // Accéder au bloc sélectionné
+    // CTRL ALT + B 
+    else if (e.ctrlKey && e.altKey && e.which == 66) {
+        if( $(".content-editable-selected").length > 0 ){
+            $(".content-editable-selected [contenteditable=true]").first().focus();
+        }
+    } 
+
     // Sauvegarder
     // CTRL ALT + S
     else if (e.ctrlKey && e.altKey && e.which == 83) {
@@ -272,7 +281,7 @@ document.onkeyup = function(e) {
             if (window.confirm(message)) { 
                 $('#btn-save-project').click();
                 $('#btn-update-project').click();
-            }        
+            }  
         }
     }
 };

@@ -1,1 +1,121 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{0:function(t,e,a){a("0qRS"),t.exports=a("pyCd")},"0qRS":function(t,e){for(var a=document.getElementById("list-filters").getElementsByClassName("btn-filter-type"),s=0;s<a.length;s++)a[s].addEventListener("click",(function(){var t=document.getElementsByClassName("active");t[0].className=t[0].className.replace(" active",""),this.className+=" active"}));$("#list-filters .btn-filter-type").on("click",(function(){var t=$(this).attr("data-type");switch(t){case"all":$(".list-element").fadeIn();break;default:$(".list-element").hide(),$(".list-element[data-type="+t+"]").fadeIn()}}));var n=$(".full-list");function i(t){var e=n.children(".list-element").detach().get();switch(t){case"ascending":e.sort((function(t,e){return new Date($(e).data("date"))-new Date($(t).data("date"))})),n.append(e);break;case"descending":e.sort((function(t,e){return new Date($(t).data("date"))-new Date($(e).data("date"))})),n.append(e)}}$(".btn-filter-date").on("click",(function(){switch($(this).hasClass("active")||$(this).addClass("active"),$(this).attr("data-date")){case"all":i("descending"),$(this).removeClass("active"),$(this).attr("data-date","old"),$(".fas",this).attr("class","fas fa-sort");break;case"old":i("descending"),$(this).attr("data-date","recent"),$(".fas",this).attr("class","fas fa-sort-down");break;case"recent":i("ascending"),$(this).attr("data-date","old"),$(".fas",this).attr("class","fas fa-sort-up")}})),$(".filter-name input").on("keyup",(function(){var t=$(this).val().toLowerCase();$(".full-list .list-element").filter((function(){$(this).toggle($(this).text().toLowerCase().indexOf(t)>-1)}))}))},pyCd:function(t,e){}},[[0,0,1]]]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["/js/components/profile/profile"],{
+
+/***/ "./resources/js/components/profile/profile.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/profile/profile.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Ajout de la classe Active sur le bouton filtre
+var btnContainer = document.getElementById("list-filters");
+var btns = btnContainer.getElementsByClassName("btn-filter-type");
+
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+} // Filtres par type
+
+
+$("#list-filters .btn-filter-type").on('click', function () {
+  var filter_type = $(this).attr('data-type');
+
+  switch (filter_type) {
+    case "all":
+      $('.list-element').fadeIn();
+      break;
+
+    default:
+      $('.list-element').hide();
+      $('.list-element[data-type=' + filter_type + ']').fadeIn();
+      break;
+  }
+});
+var full_list = $(".full-list");
+
+function sortList(order) {
+  var sorted_list = full_list.children('.list-element').detach().get();
+
+  switch (order) {
+    case "ascending":
+      sorted_list.sort(function (a, b) {
+        return new Date($(b).data("date")) - new Date($(a).data("date"));
+      });
+      full_list.append(sorted_list);
+      break;
+
+    case "descending":
+      sorted_list.sort(function (a, b) {
+        return new Date($(a).data("date")) - new Date($(b).data("date"));
+      });
+      full_list.append(sorted_list);
+      break;
+  }
+} // Filtres par nom
+
+
+$(".btn-filter-date").on('click', function () {
+  if (!$(this).hasClass('active')) {
+    $(this).addClass('active');
+  }
+
+  var filter_date = $(this).attr('data-date');
+
+  switch (filter_date) {
+    case "all":
+      sortList("descending");
+      $(this).removeClass('active');
+      $(this).attr('data-date', "old");
+      $(".fas", this).attr('class', 'fas fa-sort');
+      break;
+
+    case "old":
+      sortList("descending");
+      $(this).attr('data-date', "recent");
+      $(".fas", this).attr('class', 'fas fa-sort-down');
+      break;
+
+    case "recent":
+      sortList("ascending");
+      $(this).attr('data-date', "old");
+      $(".fas", this).attr('class', 'fas fa-sort-up');
+      break;
+  }
+});
+$('.filter-name input').on('keyup', function () {
+  var value = $(this).val().toLowerCase();
+  $(".full-list .list-element").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/*!************************************************************************************!*\
+  !*** multi ./resources/js/components/profile/profile.js ./resources/sass/app.scss ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\profile\profile.js */"./resources/js/components/profile/profile.js");
+module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\sass\app.scss */"./resources/sass/app.scss");
+
+
+/***/ })
+
+},[[0,"/js/manifest","/js/vendor"]]]);
