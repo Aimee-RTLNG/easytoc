@@ -235,7 +235,7 @@ body {
 }
 
 .theme-white #full-menu .menu-items .has-submenu ul {
-  width: calc(100% + 40px);
+  width: 100%;
   position: absolute;
   z-index: 9;
   left: -20px;
@@ -451,7 +451,7 @@ body {
 }
 
 .theme-black #full-menu .menu-items .has-submenu ul {
-  width: calc(100% + 40px);
+  width: 100%;
   position: absolute;
   z-index: 9;
   left: -20px;
@@ -667,7 +667,7 @@ body {
 }
 
 .theme-green #full-menu .menu-items .has-submenu ul {
-  width: calc(100% + 40px);
+  width: 100%;
   position: absolute;
   z-index: 9;
   left: -20px;
@@ -883,7 +883,7 @@ body {
 }
 
 .theme-red #full-menu .menu-items .has-submenu ul {
-  width: calc(100% + 40px);
+  width: 100%;
   position: absolute;
   z-index: 9;
   left: -20px;
@@ -1099,7 +1099,7 @@ body {
 }
 
 .theme-blue #full-menu .menu-items .has-submenu ul {
-  width: calc(100% + 40px);
+  width: 100%;
   position: absolute;
   z-index: 9;
   left: -20px;
@@ -1315,7 +1315,7 @@ body {
 }
 
 .theme-grey #full-menu .menu-items .has-submenu ul {
-  width: calc(100% + 40px);
+  width: 100%;
   position: absolute;
   z-index: 9;
   left: -20px;
