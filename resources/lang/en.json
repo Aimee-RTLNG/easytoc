@@ -618,5 +618,6 @@
     "Réinitialisation du mot de passe" : "Reset password",
     "Cher Utilisateur" : "Dear User",
     "Réinitialiser Mot de Passe" : "Reset Password",
-    "Si vous avez du mal à cliquer sur le bouton \"Reinitialiser Mot de Passe\", copiez et collez l'URL ci-dessous dans votre navigateur web :" : "If you have trouble clicking on the \"Reset Password\" button, copy and paste the URL below into your web browser:"
+    "Si vous avez du mal à cliquer sur le bouton \"Reinitialiser Mot de Passe\", copiez et collez l'URL ci-dessous dans votre navigateur web :" : "If you have trouble clicking on the \"Reset Password\" button, copy and paste the URL below into your web browser:",
+    "Voir les raccourcis clavier" : "See the keyboard shortcuts"
 }
