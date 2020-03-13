@@ -86,7 +86,7 @@
 }
 
 .theme-red #form-title hr {
-  border-top: 2px solid #D74A4A;
+  border-top: 2px solid #BF0E0E;
 }
 
 .theme-blue #form-title hr {
@@ -413,7 +413,7 @@
 }
 
 .theme-red #full-form label > span {
-  color: #D74A4A;
+  color: #BF0E0E;
 }
 
 .theme-blue #full-form label > span {
@@ -448,7 +448,7 @@
 }
 
 .theme-red #full-form fieldset {
-  color: #D74A4A;
+  color: #BF0E0E;
 }
 
 .theme-blue #full-form fieldset {
