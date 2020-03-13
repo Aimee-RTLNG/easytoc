@@ -49,6 +49,21 @@
 }
 .show .select-home__link {
     padding-top: 8px;
+    i {
+        padding-right: 10px;
+    }
+}
+@media (max-width: 475px) {
+    .home-present__txt__btn .dropdown-toggle::after {
+        right: 15px;
+        top: 51%;
+        position: absolute;
+    }
+}
+.select-home__link {
+    i {
+        padding-right: 10px;
+    }
 }
 .home-present {
     position: relative;
