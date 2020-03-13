@@ -45,11 +45,7 @@ class MailResetPasswordNotification extends Notification
         return (new MailMessage)
                     ->line('Vous recevez ce courriel parce que nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.')
                     ->action('Changer le mot de passe', $link)
-                    ->line("Ce lien de réinitialisation de mot de passe expirera dans 60 minutes.
-
-                    Si vous n'avez pas demandé de réinitialisation de mot de passe, aucune autre action n'est requise.
-                    
-                    Salutations,");
+                    ->line("Ce lien de réinitialisation de mot de passe expirera dans 60 minutes. Si vous n'avez pas demandé de réinitialisation de mot de passe, aucune autre action n'est requise. Salutations,");
     }
 
     /**

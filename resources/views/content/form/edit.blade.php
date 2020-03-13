@@ -75,7 +75,7 @@
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Créer un formulaire exemple") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple de formulaire") }}">
                         <div class="btn-crea__icon">
                             <i class="fa fa-sync"></i>
                         </div>
