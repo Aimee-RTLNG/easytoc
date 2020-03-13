@@ -81,10 +81,11 @@
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h2 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
+                <h2 id="form_help" class="mt-3 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
-                    <a href="aide#importMenu">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#menuCreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="/aide#importMenu">{{ __("Guide d'importation des données") }}</a>
+                    <a href="/aide#menuCreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="/aide#infoProject">{{ __("Voir les raccourcis clavier") }}</a>
                 </div>
             </div>
 
@@ -242,7 +243,7 @@
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
 
                                     <h2 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h2>
-                                    <a href="aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+                                    <a href="/aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
 
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}

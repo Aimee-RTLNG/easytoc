@@ -453,3 +453,11 @@ img, a {
 #tarteaucitronRoot #tarteaucitronPercentage {
     background-color: $bleu-fonce !important;
 }
+.raccourcis {
+    color: $bleu;
+    padding-left: 20px;
+    &:hover {
+        text-decoration: underline;
+        color: $bleu;
+    }
+}
