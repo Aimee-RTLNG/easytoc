@@ -81,50 +81,16 @@
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h2 id="table_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
+                <h2 id="table_help" class="mt-3 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
-                    <a href="aide#importTable">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#tableCreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="/aide#importTable">{{ __("Guide d'importation des données") }}</a>
+                    <a href="/aide#tableCreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="/aide#infoProject">{{ __("Voir les raccourcis clavier") }}</a>
                 </div>
             </div>
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region">
-                {{-- <fieldset>
-                    <legend id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du tableau') }}</legend>
-                    <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
-                        <div>
-                            <div>
-                                <input type="radio" value="blue" id="radio01" name="theme" checked>
-                                <label for="radio01">{{ __('Bleu') }}</label>
-                            </div>
-                            <div>
-                                <input type="radio" value="white" id="radio02" name="theme">
-                                <label for="radio02">{{ __('Blanc') }}</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <input type="radio" value="green" id="radio03" name="theme">
-                                <label for="radio03">{{ __('Vert') }}</label>
-                            </div>
-                            <div>
-                                <input type="radio" value="red" id="radio04" name="theme">
-                                <label for="radio04">{{ __('Rouge') }}</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <input type="radio" value="black" id="radio05" name="theme">
-                                <label for="radio05">{{ __('Noir') }}</label>
-                            </div>
-                            <div>
-                                <input type="radio" value="grey" id="radio06" name="theme">
-                                <label for="radio06">{{ __('Gris') }}</label>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset> --}}
                 <fieldset>
                     <legend id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du menu') }}</legend>
                     <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
@@ -325,7 +291,7 @@
                             <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
 
                                 <h3>{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                <a href="aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+                                <a href="/aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
 
                                     <i class="fa fa-question-circle"></i>
                                     {{ __("Besoin d'aide !") }}

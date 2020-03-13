@@ -10052,6 +10052,16 @@ img, a {
   background-color: #155595 !important;
 }
 
+.raccourcis {
+  color: #004D99;
+  padding-left: 20px;
+}
+
+.raccourcis:hover {
+  text-decoration: underline;
+  color: #004D99;
+}
+
 nav.navbar {
   overflow: hidden;
 }
