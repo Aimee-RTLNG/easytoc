@@ -174,7 +174,7 @@
                 </div>
 
                 <div role="section" class="row form_actions_element static-buttons-creator tab-tools-cont">
-                    <div role="section" class="w-100 tools-tab">
+                    <div role="section" class="w-100 tools-tab" aria-live="assertive" aria-atomic="true">
                         <div class="tools-tab__child mb-2-lg">
                             <div class="tools-tab__sub-child tool-resp mb-2-xs">
                                 <button class="btn btn-primary  add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à droite') }}" title="{{ __('Nouvelle colonne à droite') }}" id="insert-col_right" role="listitem" data-toggle="tooltip" data-placement="bottom">

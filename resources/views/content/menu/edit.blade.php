@@ -81,7 +81,7 @@
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
+                <h2 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
                     <a href="aide#importMenu">{{ __("Guide d'importation des données") }}</a>
                     <a href="aide#menuCreator">{{ __("Guide d'utilisation du créateur") }}</a>
@@ -159,8 +159,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row mt-4 form_actions_element custom-info-element m-0 p-0" aria-labelledby="form_actions_element" style="display: none">
-                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end pb-2" aria-labelledby="form_actions_crud">
+                <div role="section" class="row mt-4 form_actions_element custom-info-element m-0 p-0" style="display: none">
+                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end pb-2" aria-live="assertive" aria-atomic="true">
                         <div class="col">
                             <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
                             <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
@@ -207,7 +207,6 @@
                             <button class="btn btn-primary mb-0 form-element-action action-move-up" aria-label="{{ __('Déplacer en haut') }}" id="action-move-up" data-action="move-up" title="{{ __('Déplacer en haut') }}" data-toggle="tooltip" data-placement="bottom">
                                 <i class="fa fa-arrow-up"></i>
                             </button>
-                            {{-- <button aria-label="{{ __('Déplacer en bas') }}" class="btn btn-primary mb-0 form-element-action action-move-down" aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}" data-toggle="tooltip" data-placement="bottom"> --}}
                             <button class="btn btn-primary mb-0 form-element-action action-move-down" aria-label="{{ __('Déplacer en bas') }}" id="action-move-down" data-action="move-down" title="{{ __('Déplacer en bas') }}" data-toggle="tooltip" data-placement="bottom">
                                 <i class="fa fa-arrow-down"></i>
                             </button>
@@ -242,7 +241,7 @@
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
 
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h2>
                                     <a href="aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
 
                                         <i class="fa fa-question-circle"></i>
@@ -258,7 +257,7 @@
                                         <xmp><link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet"></xmp>
                                         <xmp><script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script></xmp>
                                     </div>
-                                    <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
+                                    <h2 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h2>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
                                             {{ __("Copier le code généré") }}
@@ -308,7 +307,7 @@
     </div>
 </div>
 
-<div class="alert alert-success" role="alert" style="display: none" id="alert-message">
+<div class="alert alert-success" aria-live="assertive" aria-atomic="true" role="alert" style="display: none" id="alert-message">
     <span class="alert-content">
         Contenu de l'alerte
     </span>

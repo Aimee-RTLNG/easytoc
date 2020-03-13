@@ -123,13 +123,13 @@
                             </div>
                             <div class="col-md-4 crea-item__btns">
                                 <div class="crud_btn">
-                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Visualiser')}}">
+                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Visualiser ma création')}}">
                                         <div  class="crea-item__btns__icon">
                                             <i class="fa fa-eye"></i>
                                         </div>
                                         <p>{{ __('Visualiser') }}</p>
                                     </a>
-                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Modifier')}}">
+                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Modifier ma création')}}">
                                         <div class="crea-item__btns__icon">
                                             <i class="fa fa-edit"></i>
                                         </div>
@@ -138,11 +138,8 @@
                                     <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        {{-- <div class="crea-item__btns__icon btn--rouge">
-                                            <i class="fa fa-times"></i>
-                                        </div> --}}
-                                        {{-- <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">        --}}
-                                        <button type="submit" value="{{ __('Supprimer') }}" class="shadow-box btn-delete-def btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                        
+                                    <button type="submit" value="{{ __('Supprimer') }}" class="shadow-box btn-delete-def btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{__('Supprimer ce projet')}}">
                                             <div class="crea-item__btns__icon btn--danger">
                                                 <i class="fa fa-times"></i>
                                             </div>

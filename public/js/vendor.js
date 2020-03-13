@@ -39577,8 +39577,7 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertMsg", function() { return alertMsg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lang", function() { return lang; });
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // require('code-prettify/src/run_prettify.js?autorun=true&amp;skin=sunburst');
-
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! code-prettify/src/prettify.js?autorun=true&amp;skin=sunburst */ "./node_modules/code-prettify/src/prettify.js?autorun=true&amp;skin=sunburst");
 

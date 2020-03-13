@@ -41,7 +41,6 @@
             @if (Auth::check())
             <!-- infos du projet -->
             <div class="info-panel col-lg-4" role="region">
-                {{-- <h3 id="form_infos" class="mb-3 font-weight-bold">{{ __('Informations basiques concernant le formulaire') }}</h3> --}}
                 <form id="full-form-post" action="{{ route('content.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="type_id" value="1">
@@ -271,7 +270,7 @@
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
 
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h3>
+                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Liens CSS à mettre dans la balise') }} &lt;head&gt; </h2>
                                     <a href="aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
                                     
                                         <i class="fa fa-question-circle"></i>
@@ -284,7 +283,7 @@
                                     </div>
                                     <!-- Lien du style à utiliser -->
                                     <xmp class="code-display" id="css-link"><link href="{{ URL::asset('css/themes/form/all-themes.css') }}" rel="stylesheet"></xmp>
-                                    <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
+                                    <h2 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre formulaire: copiez le où vous le souhaitez, sans le modifier !") }}</h2>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
                                             {{ __("Copier le code généré") }}
@@ -302,8 +301,8 @@
                         </div>
                     </div>
 
-                    <div id="actions-interface" class="form-inter bloc-actions d-none col-3 p-0">
-                        <div class="border bg-white rounded p-3 action-supp" role="section" id="actions-interface-bloc" >
+                    <div id="actions-interface" class="form-inter bloc-actions d-none col-3 p-0" aria-live="assertive" aria-atomic="true">
+                        <div class="border bg-white rounded p-3 action-supp" role="section" id="actions-interface-bloc">
                             <h3 id="form_edit_element" class=" creator-panel__title action-supp-titre">{{ __('Élément sélectionné') }}</h3>
                             <div class="action-supp-crea" role="section">
                                 <!-- Intitulé -->
