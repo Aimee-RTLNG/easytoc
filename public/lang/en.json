@@ -118,7 +118,11 @@
     "Supprimer votre compte" : "Delete my account",
     "Supprimer le compte" : "Delete the account",
     "Attention, en supprimant votre compte, tout le contenu sera également supprimé. On peut tout de même rester amis, non ?" : "Be careful, by deleting your account, all content will also be deleted. We can still be friends, right ?",
-    
+    "Modifier ma création" : "Modify my project",
+    "Visualiser ma création" : "View my project",
+    "Supprimer ce projet" : "Delete this project",
+
+
     "###____PAGE_____CONTENT_____###":"########################################################",
     "Sauvegarder": "Save",
     "Annuler":"Cancel",

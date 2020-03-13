@@ -1,6 +1,5 @@
 require('./bootstrap');
 
-// require('code-prettify/src/run_prettify.js?autorun=true&amp;skin=sunburst');
 require('code-prettify/src/prettify.js?autorun=true&amp;skin=sunburst');
 
 require('clipboard/dist/clipboard.min.js');
