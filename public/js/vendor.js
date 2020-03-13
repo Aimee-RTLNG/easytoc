@@ -39809,28 +39809,34 @@ document.onkeyup = function (e) {
               if ($(".action-supp-crea").length > 0) {
                 $(".action-supp-crea input").first().focus();
               }
-            } // Accéder au bloc propriétés 
-            // CTRL ATL + P 
-            else if (e.ctrlKey && e.altKey && e.which == 80) {
-                if ($("#content-interface").length > 0) {
-                  $("#content-interface input").first().focus();
+            } // Accéder au bloc d'actions 
+            // CTRL ATL + A
+            else if (e.ctrlKey && e.altKey && e.which == 65) {
+                if ($(".static-buttons-creator").length > 0) {
+                  $(".static-buttons-creator button").first().focus();
                 }
-              } // Sauvegarder
-              // CTRL ALT + S
-              else if (e.ctrlKey && e.altKey && e.which == 83) {
-                  if ($('#btn-save-project, #btn-update-project').length > 0) {
-                    var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
+              } // Accéder au bloc sélectionné
+              // CTRL ALT + B 
+              else if (e.ctrlKey && e.altKey && e.which == 66) {
+                  if ($(".content-editable-selected").length > 0) {
+                    $(".content-editable-selected [contenteditable=true]").first().focus();
+                  }
+                } // Sauvegarder
+                // CTRL ALT + S
+                else if (e.ctrlKey && e.altKey && e.which == 83) {
+                    if ($('#btn-save-project, #btn-update-project').length > 0) {
+                      var _message = "Vous êtes sur le point de sauvegarder et de quitter votre projet. Vous allez être redirigé.";
 
-                    if (lang == "en") {
-                      _message = "Are you sure to save and quit your project ? You will be redirected.";
-                    }
+                      if (lang == "en") {
+                        _message = "Are you sure to save and quit your project ? You will be redirected.";
+                      }
 
-                    if (window.confirm(_message)) {
-                      $('#btn-save-project').click();
-                      $('#btn-update-project').click();
+                      if (window.confirm(_message)) {
+                        $('#btn-save-project').click();
+                        $('#btn-update-project').click();
+                      }
                     }
                   }
-                }
 }; // Désactiver le drag and drop des links et des images
 
 
@@ -40196,6 +40202,8 @@ $('.add-element').on('click', function () {
   var element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
 
   addElement(element_type, element_type_name); // on ajoute l'élement
+
+  updatecontent();
 }); // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
 
 $('#btn-save-project').on('click', function () {
@@ -40850,6 +40858,7 @@ function addOption(option_type_parameter) {
   var option_name_replace_regex = /REPLACENAME/g;
   option = option.replace(option_name_replace_regex, option_name);
   $(option_group).append(option);
+  updatecontent();
 } // ANCHOR Fonction de suppression d'option dans un select ( osef ça concerne pas les menus )
 
 function deleteOption() {
@@ -40857,6 +40866,7 @@ function deleteOption() {
   $(select_option_selected).remove();
   $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
   $('.action-delete-option').hide();
+  updatecontent();
 } // ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
 // Je comprend pas ce truc mais c'est une fonction essentielle pour que le UNDO remarche..
 // Autant la laisser définie même si non utilisée dans deletecommand (sur ce script, elle est utilisée), elle fait pas de mal :)
@@ -40977,6 +40987,8 @@ function refreshMoveButtons(previous_element, next_element, option) {
       $('#action-move-down').attr('disabled', true);
     }
   }
+
+  updatecontent();
 } // ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
@@ -41206,6 +41218,8 @@ $('#menu-creator-title-display').off().on('click', function () {
       $('#menubar-easytoc').addClass('full-width');
     }
   }
+
+  updatecontent();
 }); // ANCHOR Changement de lien du logo
 
 $('#menu-creator-link').on('keyup', function () {
@@ -41238,6 +41252,8 @@ $('#menu-creator-link-display').off().on('click', function () {
       $('#menubar-easytoc').addClass('full-width');
     }
   }
+
+  updatecontent();
 }); // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
 // Cette fonction se base sur la liste d'élément précédemment définis element_types 
 
@@ -41454,6 +41470,7 @@ $(document.body).off('keyup').off('click') // ré-initialisation pour empêcher 
   }
 
   $('#nav-name').val($(this).text().trim());
+  updatecontent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
@@ -41493,11 +41510,13 @@ function moveLink(direction) {
   }
 
   setMove(selected_link);
+  updatecontent();
 } // ANCHOR Fonction de suppression de link
 
 
 function deleteLink() {
   $(selected_link).remove();
+  updatecontent();
 }
 
 function setMove(selected_link) {
@@ -41531,6 +41550,8 @@ function setMove(selected_link) {
       $("#action-move-down").removeAttr('disabled');
     }
   }
+
+  updatecontent();
 } // ANCHOR Mise en forme du texte (gras, italic, underline...) 
 
 
@@ -41574,7 +41595,7 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
   Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "success");
 });
 new ClipboardJS('#copy-css-link');
-new ClipboardJS('#copy-raw-code'); // ANCHOR
+new ClipboardJS('#copy-raw-code');
 
 /***/ }),
 
@@ -41582,14 +41603,14 @@ new ClipboardJS('#copy-raw-code'); // ANCHOR
 /*!******************************************!*\
   !*** ./resources/js/components/table.js ***!
   \******************************************/
-/*! exports provided: element_types, getOldContent, updateContent, addCol, addRow, removeCol */
+/*! exports provided: element_types, getOldContent, updatecontent, addCol, addRow, removeCol */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_types", function() { return element_types; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldContent", function() { return getOldContent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateContent", function() { return updateContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatecontent", function() { return updatecontent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCol", function() { return addCol; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRow", function() { return addRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCol", function() { return removeCol; });
@@ -41699,9 +41720,10 @@ function getOldContent() {
 
   var actual_caption = $("#table-caption span").text().trim();
   $("#table-creator-caption").val(actual_caption);
+  updatecontent();
 } // ANCHOR Fonction de sauvegarde
 
-function updateContent() {
+function updatecontent() {
   // On ajoute des ID sur chaque headers
   $('#full-table tr th').each(function (index, element) {
     var element_id = Math.random().toString(36).substr(2, 9);
@@ -41771,28 +41793,28 @@ function updateContent() {
 }
 ;
 $('#edit-table').on('click', function () {
-  updateContent();
+  updatecontent();
 }); // ANCHOR Initialisation du tableau
 
 if ($('#raw-code').val().length <= 0) {
   // console.log("Création");
   // $('#content-created-blueprint').html(initial_content);
-  updateContent();
+  updatecontent();
 } else {
   // console.log("Modification");
   getOldContent();
-  updateContent();
+  updatecontent();
 } // ANCHOR Changement de titre
 
 
 $('#table-creator-title').on('keyup', function () {
   $('#table-title').text($('#table-creator-title').val());
-  updateContent();
+  updatecontent();
 }); // ANCHOR Changement de caption
 
 $('#table-creator-caption').on('keyup', function () {
   $('#table-caption span').text($('#table-creator-caption').val());
-  updateContent();
+  updatecontent();
 }); // ANCHOR Changement du nombre de lignes via INPUT
 
 $('#table-row-nb').on('change', function () {
@@ -41848,7 +41870,7 @@ $('#table-row-nb').on('change', function () {
     }
   }
 
-  updateContent();
+  updatecontent();
 }); // ANCHOR Changement du nombre de colonnes via INPUT
 
 $('#table-col-nb').on('change', function () {
@@ -41913,7 +41935,7 @@ $('#table-col-nb').on('change', function () {
     }
   }
 
-  updateContent();
+  updatecontent();
 }); // Ajout de colonne
 
 function addCol(side) {
@@ -41989,6 +42011,8 @@ function addCol(side) {
       });
     }
   }
+
+  updatecontent();
 } // Ajout de ligne
 
 function addRow(side) {
@@ -42042,6 +42066,8 @@ function addRow(side) {
 
     inserted_row.append(cell_html + "\n\t\t");
   }
+
+  updatecontent();
 } // Suppression de ligne
 
 function removeRow(row) {
@@ -42084,6 +42110,8 @@ function removeRow(row) {
       $(row).remove();
       return true;
     }
+
+  updatecontent();
 } // Déplacement de ligne
 
 
@@ -42107,6 +42135,8 @@ function moveRow(side) {
       $(this).find('span').text(next_text);
     });
   }
+
+  updatecontent();
 } // Déplacement de colonne
 
 
@@ -42134,6 +42164,8 @@ function moveCol(side) {
     });
     $(next_cell).find("span").focus();
   }
+
+  updatecontent();
 }
 
 function moveCell(side) {
@@ -42158,6 +42190,7 @@ function moveCell(side) {
   $(".content-editable-selected span").text(text_other);
   $(other_cell).find('span').text(text_cell);
   $(other_cell).find('span').focus();
+  updatecontent();
 }
 
 function mergeCell(side, cell, other_cell) {
@@ -42192,7 +42225,7 @@ function mergeCell(side, cell, other_cell) {
   }
 
   $('.content-editable-selected span').focus();
-  updateContent();
+  updatecontent();
 }
 
 function splitCell() {
@@ -42218,6 +42251,8 @@ function splitCell() {
       $(next_row_cell).prepend(_new_cell_html);
     }
   }
+
+  updatecontent();
 } // Suppression de colonne
 
 
@@ -42272,6 +42307,8 @@ function removeCol(cells) {
     console.warn('Erreur dans la suppression de colonne : not an array.');
     return false;
   }
+
+  updatecontent();
 }
 $('.cell-action').on('click', function () {
   var element_action = $(this).attr("data-action");
@@ -42400,7 +42437,7 @@ $('.cell-action').on('click', function () {
     }
 
   $('.content-editable-selected span').focus();
-  updateContent();
+  updatecontent();
 }); // ANCHOR Ajout d'un élément
 
 $('.add-element').on('click', function () {
@@ -42516,11 +42553,11 @@ $('.add-element').on('click', function () {
   }
 
   $('.content-editable-selected span').focus();
-  updateContent();
+  updatecontent();
 }); // ANCHOR Sauvegarde définitive
 
 $('#btn-save-project').on('click', function () {
-  updateContent();
+  updatecontent();
   var post_url = $("#full-table-post").attr('action');
   $.ajax({
     method: "POST",
@@ -42748,19 +42785,19 @@ $(document.body).off('keyup') // ré-initialisation
     $('.side-tool').hide();
   }
 
-  updateContent();
+  updatecontent();
 }) // ANCHOR Modification du texte via l'intérieur du formulaire
 .on('keyup', '#table-title', function () {
   $('#table-creator-title').val($('#table-title').text().trim());
-  updateContent();
+  updatecontent();
 }).on('keyup', '#table-caption', function () {
   $('#table-creator-caption').val($('#table-caption span').text().trim());
-  updateContent();
+  updatecontent();
 }); // ANCHOR Masquer les sidetools au changement d'onglet
 
 $("#nav-code-tab").on('click', function () {
   $('.side-tool').hide();
-  updateContent();
+  updatecontent();
 }); // ANCHOR Fonction Undo/Redo suppression
 
 function command(instance) {
@@ -42810,7 +42847,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updateContent();
+      updatecontent();
       break;
 
     case 'element-italic':
@@ -42824,7 +42861,7 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updateContent();
+      updatecontent();
       break;
 
     case 'element-underline':
@@ -42838,31 +42875,32 @@ $('.text-formatting').on("click", function () {
         }
       }
 
-      updateContent();
+      updatecontent();
       break;
 
     case 'justify-left':
       $('.content-editable-selected').attr('style', 'text-align: left');
-      updateContent();
+      updatecontent();
       break;
 
     case 'justify-center':
       $('.content-editable-selected').attr('style', 'text-align: center');
-      updateContent();
+      updatecontent();
       break;
 
     case 'justify-right':
       $('.content-editable-selected').attr('style', 'text-align: right');
-      updateContent();
+      updatecontent();
       break;
   }
 
-  updateContent();
+  updatecontent();
 }); // ANCHOR Theme
 
 $('input[name="theme"]').on('change', function () {
   var theme = "theme-" + $(this).val();
   $('#generated-table').attr('class', theme);
+  updatecontent();
 }); // ANCHOR Copier le contenu code 
 
 $("#copy-raw-code, #copy-css-link").on('click', function () {
