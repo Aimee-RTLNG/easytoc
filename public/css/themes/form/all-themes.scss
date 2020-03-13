@@ -75,12 +75,17 @@ $themes: (
 }
 
 // Styles
-
+#nav-blueprint #full-form h1 {
+    font-weight: lighter;
+}
+.visualisation #full-form h1 {
+    font-weight: lighter;
+}
 #full-form {
     font-size: 14px;
     h1 {
       font-family: sans-serif;
-      font-weight: lighter;
+      font-weight: bold;
     }
     a {
       cursor: pointer;
