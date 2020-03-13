@@ -63,14 +63,14 @@
             <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
                 <h2 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h2>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer un menu via le format CSV ou JSON") }}">
                         <div class="btn-crea__icon">
                             <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple de menu") }}">
                         <div class="btn-crea__icon">
                             <i class="fa fa-sync"></i>
                         </div>

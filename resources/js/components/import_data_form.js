@@ -1,6 +1,6 @@
 // Imports
 import { alertMsg, lang } from "../app";
-import { getOldContent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
+import { getOldContent, updatecontent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
 
 // Variables
 let message;

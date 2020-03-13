@@ -228,13 +228,14 @@
                               <div class="col">
                                 <p><strong>CTRL + ALT + U</strong> - {{ __('Aller en haut') }}</p>
                                 <p><strong>CTRL + ALT + R</strong> - {{ __('Aller à droite') }}</p>
-                                <p><strong>CTRL + ALT + I</strong> - {{ __('Accéder au bloc informations') }}</p>
+                                <p><strong>CTRL + ALT + I</strong> - {{ __('Accéder au bloc informations concernant l\'élement sélectionné') }}</p>
                                 <p><strong>CTRL + ALT + S</strong> - {{ __('Sauvegarder') }}</p>
+                                <p><strong>CTRL + ALT + B</strong> - {{ __('Revenir à l\'élement sélectioné') }}</p>
                               </div>
                               <div class="col">
                                 <p><strong>CTRL + ALT + D</strong> - {{ __('Aller en bas') }}</p>
                                 <p><strong>CTRL + ALT + L</strong> - {{ __('Aller à gauche') }}</p>
-                                <p><strong>CTRL + ALT + P</strong> - {{ __('Accéder au bloc propriétés') }}</p>
+                                <p><strong>CTRL + ALT + A</strong> - {{ __('Accéder au bloc actions') }}</p>
                                 <p><strong>CTRL + ALT + T</strong> - {{ __('Supprimer') }}</p>                   
                               </div>
                             </div>                                           
