@@ -418,7 +418,7 @@ body {
 .theme-black #full-menu .menu-items .menu-item a:focus, .theme-black #full-menu .menu-items .menu-item button:focus, .theme-black #full-menu .menu-items .menu-item a:hover, .theme-black #full-menu .menu-items .menu-item button:hover {
   background-color: black;
   border-bottom: 5px solid #d4d4d4;
-  color: black;
+  color: white;
 }
 
 .theme-black #full-menu .menu-items .menu-item a, .theme-black #full-menu .menu-items .menu-item button {
