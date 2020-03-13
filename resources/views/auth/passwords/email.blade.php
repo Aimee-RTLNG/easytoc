@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('titre') {{ __('Réinitialisation du mot de passe') }} - EasyToC @endsection
+
 @section('content')
 <div class="container forget-email authen">
     <div class="row justify-content-center">

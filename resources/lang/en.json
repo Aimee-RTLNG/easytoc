@@ -610,5 +610,9 @@
     "Conditions générales d'utilisation du site": "General terms and conditions of use of the site",
     "Confirmation du mot de passe" : "Password confimation",
     "Tous les champs sont obligatoires" : "All fields are required",
-    "Passer vos créations pour modifier les informations de votre compte" : "Pass your creations to modify your account informations" 
+    "Passer vos créations pour modifier les informations de votre compte" : "Pass your creations to modify your account informations",
+    "Réinitialisation du mot de passe" : "Reset password",
+    "Cher Utilisateur" : "Dear User",
+    "Réinitialiser Mot de Passe" : "Reset Password",
+    "Si vous avez du mal à cliquer sur le bouton \"Reinitialiser Mot de Passe\", copiez et collez l'URL ci-dessous dans votre navigateur web :" : "If you have trouble clicking on the \"Reset Password\" button, copy and paste the URL below into your web browser:"
 }
