@@ -11049,6 +11049,22 @@ nav.navbar {
   padding-top: 8px;
 }
 
+.show .select-home__link i {
+  padding-right: 10px;
+}
+
+@media (max-width: 475px) {
+  .home-present__txt__btn .dropdown-toggle::after {
+    right: 15px;
+    top: 51%;
+    position: absolute;
+  }
+}
+
+.select-home__link i {
+  padding-right: 10px;
+}
+
 .home-present {
   position: relative;
   height: calc(100vh - 66px);
@@ -13340,6 +13356,10 @@ body {
 
 .visualisation__infos {
   margin-bottom: 20px;
+}
+
+.visualisation__infos > .shadow-box {
+  background-color: white;
 }
 
 .visualisation .content-description {

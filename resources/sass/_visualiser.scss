@@ -43,6 +43,9 @@
 .visualisation {
     &__infos {
         margin-bottom: 20px;
+        & > .shadow-box {
+            background-color: white;
+        }
     }
     .content-description {
         margin-bottom: 5px;
