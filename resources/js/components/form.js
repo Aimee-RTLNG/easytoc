@@ -289,6 +289,7 @@ $('.add-element').on('click', function () {
     let element_type = $(this).attr("class"); // récupère le type d'élément à ajouter
     let element_type_name = $(this).attr("id"); // récupère le nom spécifique d'élément à ajouter
     addElement(element_type, element_type_name); // on ajoute l'élement
+    updateContent();
 });
 
 // ANCHOR Sauvegarde définitive (quand on clique sur le bouton d'enregistrement ) ( normalement à ne pas toucher )
@@ -913,6 +914,7 @@ export function addOption(option_type_parameter) {
     option = option.replace(option_name_replace_regex, option_name);
     $(option_group).append(option);
 
+    updateContent();
 }
 
 // ANCHOR Fonction de suppression d'option dans un select ( osef ça concerne pas les menus )
@@ -921,6 +923,8 @@ function deleteOption() {
     $(select_option_selected).remove();
     $(".content-editable-selected select").val($(".content-editable-selected select option:first").val());
     $('.action-delete-option').hide();
+
+    updateContent();
 }
 
 // ANCHOR Fonction Undo/Redo suppression ( à ne pas toucher )
@@ -1036,6 +1040,8 @@ export function refreshMoveButtons(previous_element, next_element, option) {
             $('#action-move-down').attr('disabled', true);
         }
     }
+
+    updateContent();
 }
 
 // ANCHOR Copier le contenu code rapidement grâce aux boutons ( à ne pas toucher )

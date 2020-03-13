@@ -112,6 +112,7 @@ export function getOldContent() {
     let actual_caption = $("#table-caption span").text().trim();
     $("#table-creator-caption").val(actual_caption);
 
+    updateContent();
 }
 
 // ANCHOR Fonction de sauvegarde
@@ -379,6 +380,7 @@ export function addCol(side) {
             })
         }
     }
+    updateContent();
 }
 
 // Ajout de ligne
@@ -429,6 +431,7 @@ export function addRow(side) {
         }
         inserted_row.append( cell_html + "\n\t\t" );
     }
+    updateContent();
 }
 
 // Suppression de ligne
@@ -468,6 +471,7 @@ function removeRow(row) {
         $(row).remove();
         return true;
     }
+    updateContent();
 }
 
 // Déplacement de ligne
@@ -493,6 +497,7 @@ function moveRow(side){
             $(this).find('span').text(next_text);
         })
     }
+    updateContent();
 }
 
 // Déplacement de colonne
@@ -522,6 +527,7 @@ function moveCol(side){
         });
         $(next_cell).find("span").focus();
     }
+    updateContent();
 }
 
 function moveCell(side){
@@ -546,6 +552,7 @@ function moveCell(side){
     $(".content-editable-selected span").text(text_other);
     $(other_cell).find('span').text(text_cell);
     $(other_cell).find('span').focus();
+    updateContent();
 }
 
 function mergeCell(side, cell, other_cell){
@@ -596,6 +603,7 @@ function splitCell(){
             $(next_row_cell).prepend(new_cell_html);
         }
     }
+    updateContent();
 }
 
 // Suppression de colonne
@@ -648,6 +656,7 @@ export function removeCol(cells) {
         console.warn('Erreur dans la suppression de colonne : not an array.');
         return false;
     }
+    updateContent();
 }
 
 $('.cell-action').on('click', function () {
