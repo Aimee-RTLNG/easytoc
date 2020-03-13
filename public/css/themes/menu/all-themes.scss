@@ -7,6 +7,7 @@ $themes: (
         backgroundColor: #fff,
         aHoverColor: rgb(153, 148, 148),
         borderHover : rgb(94, 94, 94),
+        textColorHover : black,
         textColor : black
     ),
     black: (
@@ -15,6 +16,7 @@ $themes: (
         backgroundColor: rgb(51, 51, 51),
         aHoverColor: rgb(0, 0, 0),
         borderHover : rgb(212, 212, 212),
+        textColorHover : black,
         textColor : white
     ),
     green: (
@@ -23,6 +25,7 @@ $themes: (
         backgroundColor: #38ada9,
         aHoverColor: #016d67,
         borderHover : rgb(72, 248, 189),
+        textColorHover : white,
         textColor : black
     ),
     red: (
@@ -31,6 +34,7 @@ $themes: (
         backgroundColor: rgb(185, 44, 44),
         aHoverColor: rgb(112, 14, 14),
         borderHover : rgb(252, 64, 64),
+        textColorHover : white,
         textColor : white
     ),
     blue: (
@@ -39,6 +43,7 @@ $themes: (
         backgroundColor: #273c75,
         aHoverColor: #0a1a4d,
         borderHover : rgb(122, 228, 255),
+        textColorHover : white,
         textColor : white
     ),
     grey: (
@@ -47,6 +52,7 @@ $themes: (
         backgroundColor: rgb(97, 97, 97),
         aHoverColor: rgb(46, 46, 46),
         borderHover : rgb(226, 226, 226),
+        textColorHover : white,
         textColor : white
     )
 );
@@ -208,9 +214,13 @@ body {
                     border-bottom: 5px solid themed('borderHover') !important; 
                 }
 
-                a:focus,button:focus {
+                a:focus,button:focus,a:hover,button:hover{
                     background-color: themed('aHoverColor'); 
                     border-bottom: 5px solid themed('borderHover'); 
+                    color: themed('textColorHover');
+                }
+                a, button {
+                    color: themed('textColor'); 
                 }
                 .menu-item > a:focus, .menu-item > a:hover {
                     border-bottom:0px solid themed('borderHover') !important; 
@@ -224,7 +234,6 @@ body {
                     height: 100%;
                     background: none;
                     border: 0px solid black;
-                    color: themed('textColor'); 
 
                     &.closed:after{
                         content : "▾";

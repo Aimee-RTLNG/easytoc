@@ -263,7 +263,7 @@ function importData(table) {
     Object(_app__WEBPACK_IMPORTED_MODULE_0__["alertMsg"])(message, "error");
   }
 
-  Object(_table__WEBPACK_IMPORTED_MODULE_1__["updateContent"])();
+  Object(_table__WEBPACK_IMPORTED_MODULE_1__["updatecontent"])();
   $('#full-table tr td').last().focus();
 }
 
@@ -276,7 +276,7 @@ function importData(table) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\IUT\LP-MI-server\ProjetApp\easytoc\easytoc\resources\js\components\import_data_table.js */"./resources/js/components/import_data_table.js");
+module.exports = __webpack_require__(/*! C:\xampp2\htdocs\laravel\easytoc\resources\js\components\import_data_table.js */"./resources/js/components/import_data_table.js");
 
 
 /***/ })

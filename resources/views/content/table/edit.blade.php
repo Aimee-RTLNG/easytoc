@@ -40,14 +40,14 @@
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel col-lg-4" role="region" aria-labelledby="table_infos">
+            <div class="info-panel col-lg-4" role="region">
                 <form action="{{ route('content.update', ['content'=>$content]) }}" method="post" id="edit-table">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="type_id" value="2">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
+                        <label class="creator-panel__title" for="title-input">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" value="{{ old('title', $content->title) }}" required>
                         <p id="chara-title-remains"></p>
                     </div>
@@ -90,7 +90,7 @@
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region">
-                <fieldset>
+                {{-- <fieldset>
                     <legend id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du tableau') }}</legend>
                     <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                         <div>
@@ -124,7 +124,42 @@
                             </div>
                         </div>
                     </div>
-                </fieldset>
+                </fieldset> --}}
+                <fieldset>
+                    <legend id="table_themes" class="mb-3 creator-panel__title">{{ __('Thème du menu') }}</legend>
+                    <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
+                        <div>
+                            <div>
+                                <input type="radio" value="blue" id="radio01" name="theme" checked>
+                                <label for="radio01">{{ __('Bleu') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="white" id="radio02" name="theme">
+                                <label for="radio02">{{ __('Blanc') }}</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="radio" value="green" id="radio03" name="theme">
+                                <label for="radio03">{{ __('Vert') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="red" id="radio04" name="theme">
+                                <label for="radio04">{{ __('Rouge') }}</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="radio" value="black" id="radio05" name="theme">
+                                <label for="radio05">{{ __('Noir') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="grey" id="radio06" name="theme">
+                                <label for="radio06">{{ __('Gris') }}</label>
+                            </div>
+                        </div>
+                    </div>
+            </fieldset>
             </div>
 
         </div>
@@ -178,7 +213,7 @@
                 </div>
 
                 <div role="section" class="row form_actions_element static-buttons-creator tab-tools-cont">
-                    <div role="section" class="w-100 tools-tab">
+                    <div role="section" class="w-100 tools-tab" aria-live="assertive" aria-atomic="true">
                        <div class="tools-tab__child mb-2-lg">
                         <div class="tools-tab__sub-child tool-resp mb-2-xs">
                             <button class="btn btn-primary  add-element type-container" type="button" aria-label="{{ __('Nouvelle colonne à droite') }}" title="{{ __('Nouvelle colonne à droite') }}" id="insert-col_right" role="listitem" data-toggle="tooltip" data-placement="bottom">
@@ -320,7 +355,7 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action col-8 mx-auto my-3" role="region" aria-labelledby="form_actions">
+        <div class="project-action col-8 mx-auto my-3" role="region">
             
             <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                 @csrf

@@ -6,7 +6,7 @@ var next_element;
 
 // Imports
 import { alertMsg, lang } from "../app";
-import { addLink, getOldContent, element_types } from "./menu";
+import { addLink, getOldContent, updatecontent, element_types } from "./menu";
 
 $('#import-data').on('click', function () {
 

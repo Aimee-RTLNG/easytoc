@@ -1,10 +1,18 @@
+#nav-blueprint #full-form h1 {
+  font-weight: lighter;
+}
+
+.visualisation #full-form h1 {
+  font-weight: lighter;
+}
+
 #full-form {
   font-size: 14px;
 }
 
 #full-form h1 {
   font-family: sans-serif;
-  font-weight: lighter;
+  font-weight: bold;
 }
 
 #full-form a {
@@ -86,7 +94,7 @@
 }
 
 .theme-red #form-title hr {
-  border-top: 2px solid #D74A4A;
+  border-top: 2px solid #BF0E0E;
 }
 
 .theme-blue #form-title hr {
@@ -413,7 +421,7 @@
 }
 
 .theme-red #full-form label > span {
-  color: #D74A4A;
+  color: #BF0E0E;
 }
 
 .theme-blue #full-form label > span {
@@ -448,7 +456,7 @@
 }
 
 .theme-red #full-form fieldset {
-  color: #D74A4A;
+  color: #BF0E0E;
 }
 
 .theme-blue #full-form fieldset {

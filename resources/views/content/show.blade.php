@@ -6,6 +6,8 @@
     <link href="{{ URL::asset('css/themes/table/all-themes.css') }}" rel="stylesheet">
 @endsection
 
+@section('titre') {{ __('Visualisation') }} - EasyToC @endsection
+
 @section('content')
 <div class="container visualisation">
 
@@ -40,9 +42,9 @@
             <div class="col-lg-9 border-12 shadow-box mb-4-lg">
                 <div class="content-title py-3">
                     {{-- <h2 class="mb-2">{{ __('Titre') }}</h2> --}}
-                    <h3 class="visu__title text-italic pl-3 m-0">
+                    <h2 class="visu__title text-italic pl-3 m-0">
                         {{ $content->title }}
-                    </h3>
+                    </h2>
                     <p class="pl-3 last_updated">{{__('Dernière modification')}} :  {{ date('d/m/Y', strtotime($content->updated_at)) }}</p>
                    
                 </div>
@@ -76,7 +78,7 @@
         <hr class="py-3">
 
         {{-- Visualisation --}}
-        <h3 class="visu__title" tabindex="0"><i class="fa fa-eye mr-3" aria-hidden="true"></i> {{ __('Visualisation') }}</h3>
+        <h2 class="visu__title" tabindex="0"><i class="fa fa-eye mr-3" aria-hidden="true"></i> {{ __('Visualisation') }}</h2>
         <div class="row m-0 p-0">
 
             <div class="content-html-preview col-12 mb-4 py-5">
@@ -88,10 +90,10 @@
         <hr class="py-5">
 
         <div class="d-flex justify-content-between">
-            <h3 class="visu__title" tabindex="0">
+            <h2 class="visu__title" tabindex="0">
                 <i class="fa fa-code mr-3" aria-hidden="true"></i>
                 {{ __('Code généré') }}
-            </h3>
+            </h2>
             <a target="_blank" href="../aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Accéder à la page d\'aide') }}">
                 <i class="fa fa-question-circle"></i>
                 {{ __("Besoin d'aide !") }}
