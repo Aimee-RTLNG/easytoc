@@ -27,45 +27,44 @@
             <div class="row section-home__row">
                 <div class="col-xl-5 col-lg-6">
                     <div class="home-present__txt">
-                        <h2 class="home-present__txt__titre section-home__title">{{ __('Laissez nous vous aider à rendre votre site web plus accessible') }}</h2>
-                        <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. EasytoC peut vous aider dans cette démarche.')}}
+                        <h1 class="home-present__txt__titre section-home__title">Easy to C, {{ __('pour que l\'accessibilité soit enfin une priorité') }}</h1>
+                        <p class="home-present__txt__descr">{{__('Pour certaines personnes, l’accès aux ressources web est difficile et pénible. Rendre les sites accessibles est important pour que chacun, peu importe sa condition, ait un accès égal aux savoirs et aux connaissances. Easy to C peut vous aider dans cette démarche.')}}
                         </p>
                         <div class="home-present__txt__btn">
                             <div class="nav-item dropdown select-home btn-form-final btn-primary"  title="{{__('Menu création d´éléments HTML')}}">
                                 <a class="nav-link dropdown-toggle select-home__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-arrow-right"></i>
+                                    <i class="fa fa-arrow-right"></i>
                                     {{__('Commencer un projet')}}
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('formulaire') }}">{{ __('Créer un formulaire') }}</a>
-                                    <a class="dropdown-item" href="{{ route('menu') }}">{{ __('Créer un menu') }}</a>
-                                    <a class="dropdown-item" href="{{ route('tableau') }}">{{ __('Créer un tableau') }}</a>
+                                    <a class="dropdown-item" href="{{ route('formulaire') }}" title="{{ __('Accéder à l\'espace de création de formulaire') }}">{{ __('Créer un formulaire') }}</a>
+                                    <a class="dropdown-item" href="{{ route('menu') }}" title="{{ __('Accéder à l\'espace de création de menu') }}">{{ __('Créer un menu') }}</a>
+                                    <a class="dropdown-item" href="{{ route('tableau') }}" title="{{ __('Accéder à l\'espace de création de tableau') }}">{{ __('Créer un tableau') }}</a>
                                 </div>
                             </div>
                             @guest
                                 <a href="register" class="btn-primary btn-form-final">
-                                    <i class="fas fa-arrow-right"></i>
+                                    <i class="fa fa-arrow-right"></i>
                                     <p>{{__("S'inscrire")}}</p>
                                 </a>
                             @endguest
                         </div>
                         <ul class="home-present__txt__tips">
-                            <li><a class="link-ancre" tabindex="0" href="#tools">{{__('Comment fonctionnent les outils EasytoC ?')}}</a></li>
-                            <li><a class="link-ancre" tabindex="0" href="#how">{{__('Comment EasytoC peut m’aider ?')}}</a></li>
-                            <li><a class="link-ancre" tabindex="0" href="#reasons">{{__('Pourquoi rendre son site accessible ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#tools">- {{__('Comment fonctionnent les outils Easy to C ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#how">- {{__('Comment Easy to C peut m’aider ?')}}</a></li>
+                            <li><a class="link-ancre" tabindex="0" href="#reasons">- {{__('Pourquoi rendre son site accessible ?')}}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-6 mb-3">
                     <div class="home-present__video">
-                        {{-- <iframe class="video-yt" src="https://www.youtube.com/embed/X51vpwvHq5I"></iframe> --}}
-                        <div class="youtube_player" videoID="X51vpwvHq5I" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
+                        <div class="youtube_player" videoID="IuEF3eShvbM" theme="dark" rel="1" controls="1" showinfo="1" autoplay="0"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="next-section" >
-            <div tabindex="0"><i class="fas fa-chevron-down"></i></div>
+            <div tabindex="0"><i class="fa fa-chevron-down"></i></div>
         </div>
     </section>
     <section class="home-tools section-home" id="tools">
@@ -183,7 +182,7 @@
                         </p>
                         <p class="def__txt__citation"> {{__('L’accessibilité pourrait être considérée comme une source d’opportunités et de développement par les acteurs du Web.')}}
                         </p>
-                        <p> {{__('Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels.')}}
+                        <p> {{__('Améliorer l’accessibilité de votre site web vous permettra de toucher un public plus large, d’augmenter le trafic et les conversions sur votre site. Il faut toujours être conscient qu’entre 15% et 20% de la population souffrent d’un handicap.')}}
                         </p>
                    </div>
                 </div>
@@ -192,7 +191,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="def__txt">
-                        <p>{{__('En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
+                        <p>{{__('Ne pas travailler sur l’accessibilité web de son site, c’est se priver de millions de visiteurs potentiels. En France, la loi du 11 février 2005, “Pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées” impose, dans son article 47, “l’accessibilité des services de communication publique en ligne pour les services de l’Etat, des collectivités territoriales et des établissements publics qui en dépendent”, dans un premier temps. Dans d’autres pays cette obligation existe depuis les années 90, c’est le cas des Etats-Unis.')}}
                         </p>
                         <p class="def__txt__citation">{{__('L’univers d’Internet ne doit pas être une source d’exclusion supplémentaire, mais un outil favorisant l’inclusion sociale.')}}
                         </p>

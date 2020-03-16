@@ -1,5 +1,5 @@
 .help-container{
-    
+
     scroll-behavior: smooth;
     display: grid;
     grid-template-columns: 1fr 25em;
@@ -10,9 +10,14 @@
         top: 15px;
         left: 15px;
         align-self: start;
-        background-color: rgb(231, 231, 230);
+        background-color: white;
         padding: 10px;
-
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+        .secondary_title {
+            margin-top: 5px;
+            text-align: center;
+        }
         ul{
             list-style: upper-roman;
             list-style-position: outside;
@@ -23,24 +28,25 @@
         }
 
         a{
-            color: rgb(29, 29, 29);
+            color: $dark;
             font-weight: normal;
             transition: all .2s;
             list-style: none;
+            text-decoration: none;
 
             &:hover, &:focus{
                 color: $bleu-fonce;
-                font-weight: bold;
+                text-decoration: underline;
             }
         }
     }
 
     .help-text-container{
-        text-align: justify;
+        text-align: left;
         margin-right: 15px;
 
         a{
-            color: $indigo;
+            color: #3748A9;
             font-weight: bold;
             text-decoration: underline;
 
@@ -69,4 +75,16 @@
         }
     }
 
+}
+
+@media (max-width: 991px) {
+    .help-container .summary-container {
+        width: 100%;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    .help-container {
+        display: block;
+     }
 }

@@ -63,8 +63,8 @@ if( lang == "en" ){
     element_types = {
         "type-info": {
             "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">My menu</span>\n',
-            "insert-img": '\n\t\t<div class="menu-logo" id="menu-logo"></div>\n',
-            "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+            "insert-img": '\n\t\t<a class="menu-logo" id="menu-logo" href='/'></a>\n',
+            "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
             "insert-separator": '\n\t\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
@@ -76,8 +76,8 @@ if( lang == "en" ){
     element_types = {
         "type-info": {
             "insert-title": '\n\t\t<span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">Mon menu</span>\n',
-            "insert-img": "\n\t\t<div id='menu-logo' class='menu-logo'></div>\n",
-            "insert-banner": "\n\t\t<div class='menu-logo menu-logo-solo'></div>\n",
+            "insert-img": "\n\t\t<a id='menu-logo' class='menu-logo' href='/'></a>\n",
+            "insert-banner": "\n\t\t<a class='menu-logo menu-logo-solo' href='/'></a>\n",
             "insert-separator": '\n\t\t<span class="menu-separator"></span>\n',
         },
         "type-menu": {
@@ -110,8 +110,8 @@ export function getOldContent() {
     // Lien du logo
     let actual_link = $("#menu-logo").css('background-image');
     if( actual_link ){
-        // actual_link = actual_link.replace('url("', "");
-        // actual_link = actual_link.replace('")', "");
+        actual_link = actual_link.replace('url("', "");
+        actual_link = actual_link.replace('")', "");
         actual_link = actual_link.replace("url('", "");
         actual_link = actual_link.replace("')", "");
         $("#menu-creator-link").val(actual_link);
@@ -199,7 +199,7 @@ $('#menu-creator-title-display').off().on('click', function () {
             $('#menubar-easytoc').addClass('full-width');
         }
     }
-
+    updatecontent();
 });
 
 // ANCHOR Changement de lien du logo
@@ -234,6 +234,7 @@ $('#menu-creator-link-display').off().on('click', function () {
         $('#menubar-easytoc').addClass('full-width');
      }
    }
+   updatecontent();
 });
 
 // ANCHOR Fonction centrale !! Permet d'ajouter du contenu à l'espace de création
@@ -458,6 +459,7 @@ $(document.body)
         }
 
         $('#nav-name').val( $(this).text().trim() );
+        updatecontent();
     });
 
 // ANCHOR Masquer les sidetools au changement d'onglet
@@ -498,11 +500,13 @@ function moveLink( direction ) {
             break;
     }
     setMove( selected_link );
+    updatecontent();
 }
 
 // ANCHOR Fonction de suppression de link
 function deleteLink() {
     $(selected_link).remove();
+    updatecontent();
 }
 
 function setMove( selected_link ){
@@ -536,6 +540,7 @@ function setMove( selected_link ){
             $("#action-move-down").removeAttr('disabled');
         }
     }
+    updatecontent();
 }
 
 // ANCHOR Mise en forme du texte (gras, italic, underline...) 
@@ -561,6 +566,7 @@ $('.text-formatting').on("click", function () {
 $('input[name="theme"]').on('change', function () {
     let theme = "theme-" + $(this).val();
     $('#generated-menu').attr('class', theme);
+
     updatecontent();
 })
 
@@ -580,4 +586,3 @@ $("#copy-raw-code, #copy-css-link").on('click', function () {
 new ClipboardJS('#copy-css-link'); 
 new ClipboardJS('#copy-raw-code'); 
 
-// ANCHOR 

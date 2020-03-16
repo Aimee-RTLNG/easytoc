@@ -1,3 +1,4 @@
+
 .compte-page {
     background-color: $gris-clair;
 }
@@ -158,7 +159,6 @@
     font-size: 1.4rem;
 }
 .dashboard {
-    // min-height: 360px;
     @include shadow-box;
     background-color: white;
     padding: 15px 0px;
@@ -214,7 +214,7 @@
         height: 35px;
     }
     input.form-control {
-        font-family: 'Roboto','Arial', sans-serif;
+        font-family: 'Arial','Arial', sans-serif;
         &:focus {
             border: 3px $bleu solid;
         }

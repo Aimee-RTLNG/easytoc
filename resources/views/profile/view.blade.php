@@ -27,14 +27,14 @@
         <div class="row d-flex">
             <div class="col-lg-8">
                 <div class="entete">
-                    <h2 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h2>
+                    <h1 class="entete__title">{{ __('Voici votre tableau de bord') }}, <span class="entete__title--username">{{ $user->name }}</span></h1>
                     <div class="entete__under"></div>
                 </div>
             </div>
             <div class="col-lg-4 start-project-profile">
                 <div class="profile_content__list-crea nav-item dropdown select-home btn-form-final btn-primary"  title="{{ __('Menu création d\'éléments HTML') }}">
                     <a class="nav-link dropdown-toggle profile_content__list-crea__link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fa fa-arrow-right"></i>
                         <p>{{ __('Commencer un projet') }}</p>
                     </a>
                     <div class="dropdown-menu mt-2">
@@ -73,15 +73,12 @@
                                     <span class="type-pin type-Table" data-type="Table"></span>
                                 </button>
                             </div>
-                            {{-- <button class="btn btn-filter-date" data-date="old">
-                                {{ __('Plus récents') }}
-                                <i class="fas fa-sort"></i>
-                            </button> --}}
                             <div class="input-group filter-name">
+                                <label for="search_create" class="d-none" aria-hidden="true">{{ __('Rechercher') }}</label>
                                 <input type="text" class="form-control" id="search_create" placeholder="{{ __('Rechercher') }}">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fas fa-search"></i>
+                                        <i class="fa fa-search"></i>
                                     </span>
                                 </div>
                             </div>
@@ -99,9 +96,9 @@
                             <span class="type-pin type-{{ $content->type->name_en }}" data-type="{{ $content->type->name_en }}"></span>
                             <div class="col-md-8 crea-item__infos">
                                 <div class="crea-item__entete">
-                                    <h3 class="crea-item__entete__title">
+                                    <h2 class="crea-item__entete__title">
                                         <a class="see-content-button" href="{{ route('content.show', ['content'=>$content]) }}" title="{{ __('Voir le projet') }}">{{ $content->title }}</a>
-                                    </h3>
+                                    </h2>
                                     <div class="crea-item__entete__under"></div>
                                 </div>
                                 <p class="crea-item__descr">
@@ -126,13 +123,13 @@
                             </div>
                             <div class="col-md-4 crea-item__btns">
                                 <div class="crud_btn">
-                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Visualiser')}}">
+                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.show', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Visualiser ma création')}}">
                                         <div  class="crea-item__btns__icon">
                                             <i class="fa fa-eye"></i>
                                         </div>
                                         <p>{{ __('Visualiser') }}</p>
                                     </a>
-                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Modifier')}}">
+                                    <a class="btn btn-form-final btn-primary" href="{{ route('content.edit', ['content'=>$content]) }}" data-toggle="tooltip" title="{{ __('Modifier ma création')}}">
                                         <div class="crea-item__btns__icon">
                                             <i class="fa fa-edit"></i>
                                         </div>
@@ -141,11 +138,8 @@
                                     <form class="form_btn-delete-def" action="{{ route('content.destroy', ['content'=>$content]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        {{-- <div class="crea-item__btns__icon btn--rouge">
-                                            <i class="fa fa-times"></i>
-                                        </div> --}}
-                                        {{-- <input type="submit" value="{{ __('Supprimer') }}" class="" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{ __('Supprimer')}}">        --}}
-                                        <button type="submit" value="{{ __('Supprimer') }}" class="shadow-box btn-delete-def btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="Supprimer ce projet">
+                        
+                                    <button type="submit" value="{{ __('Supprimer') }}" class="shadow-box btn-delete-def btn btn-danger btn-form-final" onclick="return confirm('{{ __('Voulez vous vraiment supprimer cet élément ?') }}')" data-toggle="tooltip" title="{{__('Supprimer ce projet')}}">
                                             <div class="crea-item__btns__icon btn--danger">
                                                 <i class="fa fa-times"></i>
                                             </div>
@@ -162,10 +156,10 @@
             <div class="col-lg-4 modif-compte">
                 <div class="mon-compte" id="my-account">
                     <div class="mon-compte__entete">
-                        <div class="mon-compte__entete__picto"><i class="fas fa-user-circle"></i></div>
+                        <div class="mon-compte__entete__picto"><i class="fa fa-user-circle"></i></div>
                         <h2 class="mon-compte__entete__title">{{ __('Informations de votre compte') }}</h2>
                         <div class="fleche-plus">
-                            <i class="fas fa-chevron-down" tabindex="0"></i>
+                            <i class="fa fa-chevron-down" tabindex="0"></i>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -232,7 +226,7 @@
                                             <div class="password-input d-flex">
                                                 <input id="password" type="password" class="form-control" name="password">
                                                 <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                        <i class="fas fa-eye"></i>
+                                                        <i class="fa fa-eye"></i>
                                                 </button>
                                             </div>
                                             <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -257,7 +251,7 @@
                                             <div class="password-input d-flex">
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                                 <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                    <i class="fas fa-eye"></i>
+                                                    <i class="fa fa-eye"></i>
                                                 </button>
                                             </div>  
                                             <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -285,7 +279,7 @@
                                                 <div class="password-input d-flex">
                                                     <input id="current-password" type="password" class="form-control" name="current_password">
                                                     <button type="button" class="btn-seepassword__icon mon-compte__seepassword" aria-label="{{ __('Afficher/masquer le mot de passe en clair : cela va rendre votre mot de passe visible sur votre écran') }}" title="{{ __('Afficher/masquer le mot de passe en clair') }}">
-                                                        <i class="fas fa-eye"></i>
+                                                        <i class="fa fa-eye"></i>
                                                     </button>
                                                 </div>  
                                                 <!-- ATTENTION : ne pas toucher à cette structure / ni classes, ni style -->
@@ -322,10 +316,10 @@
                             </form>
                             <hr>
                             <div class="mon-compte__entete">
-                                <div class="mon-compte__entete__picto"><i class="fas fa-frown"></i></div>
+                                <div class="mon-compte__entete__picto"><i class="fa fa-frown"></i></div>
                                 <h2 class="mon-compte__entete__title">{{ __('Supprimer votre compte') }}</h2>
                                 {{-- <div class="fleche-plus">
-                                    <i class="fas fa-chevron-down " tabindex="0"></i>
+                                    <i class="fa fa-chevron-down " tabindex="0"></i>
                                 </div> --}}
                             </div>
                             <form id="formDeleteUser" class="form-horizontal" method="POST" action="{{ route('profile.destroy', ['user' => $user]) }}">

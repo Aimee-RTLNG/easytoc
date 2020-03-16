@@ -3,7 +3,7 @@
         <div class="menu-identity">
         {{-- <a href="/" class="menu-identity">
             <div class="menu-logo" id="menu-logo" style="background-image: url('{{ URL::asset('images/Logo-white.png') }}')"></div> --}}
-            <div class="menu-logo" id="menu-logo" style="background-image: url({{ URL::asset('images/Logo-white.png') }})"></div>
+            <a class="menu-logo" id="menu-logo" style="background-image: url({{ URL::asset('images/Logo-white.png') }})" href='/'></a>
             <span contenteditable="true" data-tag="menu-title" class="menu-title" id="menu-title">
                 {{ __('Titre du menu') }}
             </span>

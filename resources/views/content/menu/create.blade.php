@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container menu-bloc">
     @if (session('info'))
     <div class="row">
         <div class="col-md-12">
@@ -28,7 +28,7 @@
     </div>
     @endif
     <div class="entete">
-        <h2 class="entete__title">{{ __('Créer un menu') }}</h2>
+        <h1 class="entete__title">{{ __('Créer un menu accessible') }}</h1>
         <div class="entete__under"></div>
     </div>
     <div class="panel-body interface-creation mb-3">
@@ -36,23 +36,23 @@
         @include('common.errors')
 
         <!-- interface d'initialisation du projet -->
-        <div class="row creator-panel" role="region" aria-labelledby="interface-heading">
+        <div class="row creator-panel" role="region">
 
             @if (Auth::check())
             <!-- infos du projet -->
-            <div class="info-panel col-lg-4" role="region" aria-labelledby="menu_infos">
+            <div class="info-panel col-lg-4" role="region">
                 <form id="full-menu-post" action="{{ route('content.store') }}" method="post" autocomplete="off">
                     @csrf
                     <input type="hidden" name="type_id" value="3">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group" role="region">
-                        <label class="creator-panel__title" for="title">{{ __('Titre du projet') }} *</label>
+                        <label class="creator-panel__title" for="title-input">{{ __('Titre du projet') }} *</label>
                         <input class="shadow-box  border-12" type="text" name="title" placeholder="{{ __('Titre') }}" class="form-control" id="title-input" maxlength="150" required>
                         <p id="chara-title-remains"></p>
                     </div>
                     <div class="form-group" role="region">
                         <label class="creator-panel__title" for="desc-input">{{ __('Description du projet') }} *</label>
-                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300" required></textarea>
+                        <textarea class="shadow-box border-12" type="text" name="description" placeholder="{{ __('Description') }}" class="form-control" id="desc-input" rows="3" maxlength="300"></textarea>
                         <p id="chara-desc-remains"></p>
                     </div>
                 </form>
@@ -61,65 +61,67 @@
 
             <!-- actions d'initialisation -->
             <div class="actions-panel @if (Auth::check()) col-lg-5 col-md-6 @else col-lg-5 col-md-6 @endif" role="region" aria-labelledby="form_tools">
-                <h3 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h3>
+                <h2 id="form_tools" class="mb-3 creator-panel__title creator-panel__title">{{ __("Outils d'aide à la création") }}</h2>
                 <div class="actions-panel__btn" role="complementary">
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer des données") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" data-toggle="modal" data-target="#importData" title="{{ __("Importer un menu via le format CSV ou JSON") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-file-upload"></i>
+                            <i class="fa fa-file-upload"></i>
                         </div>
                         <p>{{ __('Importer des données') }}</p>
                     </button>
                     
-                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple") }}">
+                    <button type="button" class="btn btn-form-final btn-primary btn-crea" id="generate-example" title="{{ __("Générer un exemple de menu") }}">
                         <div class="btn-crea__icon">
-                            <i class="fas fa-sync"></i>
-                            {{-- <i class="fas fa-file-code"></i> --}}
+                            <i class="fa fa-sync"></i>
                         </div>
                         <p>{{ __('Générer un exemple') }}</p>
                     </button>
                 </div>
-                <h3 id="form_help" class="mt-5 creator-panel__title">{{ __("Aide") }}</h3>
+                <h2 id="form_help" class="mt-3 creator-panel__title">{{ __("Aide") }}</h2>
                 <div class="help-panel">
-                    <a href="aide#formdata" title="{{ __('Accéder au guide d\'importation des données') }}">{{ __("Guide d'importation des données") }}</a>
-                    <a href="aide#formcreator" title="{{ __('Accéder au guide d\'utilisation du créateur') }}">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="/aide#importMenu">{{ __("Guide d'importation des données") }}</a>
+                    <a href="/aide#menuCreator">{{ __("Guide d'utilisation du créateur") }}</a>
+                    <a href="/aide#infoProject">{{ __("Voir les raccourcis clavier") }}</a>
                 </div>
             </div>
 
             <!-- templates -->
             <div class="template-panel @if (Auth::check()) col-lg-3 col-md-6 @else col-lg-4 col-md-6 @endif justify-content-center align-items-center" role="region" aria-labelledby="form_themes">
-                <h3 id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du menu') }}</h3>
-                <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
-                    <div>
+                <fieldset>
+                    <legend id="form_themes" class="mb-3 creator-panel__title">{{ __('Thème du menu') }}</legend>
+                    <div class="template-panel__choice shadow-box border-12 theme-switch" role="complementary" tabindex="0">
                         <div>
-                            <input type="radio" value="blue" id="radio01" name="theme" checked>
-                            <label for="radio01">{{ __('Bleu') }}</label>
+                            <div>
+                                <input type="radio" value="blue" id="radio01" name="theme" checked>
+                                <label for="radio01">{{ __('Bleu') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="white" id="radio02" name="theme">
+                                <label for="radio02">{{ __('Blanc') }}</label>
+                            </div>
                         </div>
                         <div>
-                            <input type="radio" value="white" id="radio02" name="theme">
-                            <label for="radio02">{{ __('Blanc') }}</label>
+                            <div>
+                                <input type="radio" value="green" id="radio03" name="theme">
+                                <label for="radio03">{{ __('Vert') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="red" id="radio04" name="theme">
+                                <label for="radio04">{{ __('Rouge') }}</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="radio" value="black" id="radio05" name="theme">
+                                <label for="radio05">{{ __('Noir') }}</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="grey" id="radio06" name="theme">
+                                <label for="radio06">{{ __('Gris') }}</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <input type="radio" value="green" id="radio03" name="theme">
-                            <label for="radio03">{{ __('Vert') }}</label>
-                        </div>
-                        <div>
-                            <input type="radio" value="red" id="radio04" name="theme">
-                            <label for="radio04">{{ __('Rouge') }}</label>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="radio" value="black" id="radio05" name="theme">
-                            <label for="radio05">{{ __('Noir') }}</label>
-                        </div>
-                        <div>
-                            <input type="radio" value="grey" id="radio06" name="theme">
-                            <label for="radio06">{{ __('Gris') }}</label>
-                        </div>
-                    </div>
-                </div>
+                </fieldset>
             </div>
 
         </div>
@@ -154,8 +156,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row mt-4 form_actions_element custom-info-element m-0 p-0" aria-labelledby="form_actions_element" style="display: none">
-                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end pb-2" aria-labelledby="form_actions_crud">
+                <div role="section" class="row mt-4 form_actions_element custom-info-element m-0 p-0" style="display: none">
+                    <div role="section" class="w-100 mr-3 d-flex justify-content-between align-items-end pb-2" aria-live="assertive" aria-atomic="true">
                         <div class="col">
                             <label class="creator-panel__title" for="nav-name">{{ __('Nom du lien') }}</label>
                             <input type="text" id="nav-name" class="form-control input-creator" placeholder="{{ __('Titre') }}">
@@ -168,8 +170,8 @@
                     </div>
                 </div>
 
-                <div role="section" class="row form_actions_element static-buttons-creator justify-content-center" aria-labelledby="form_actions_element">
-                    <div role="section" aria-labelledby="form_add_static" class="w-100 btns_menu">
+                <div role="section" class="row form_actions_element static-buttons-creator justify-content-center">
+                    <div role="section" class="w-100 btns_menu">
                         <div class="btns_menu__child mb-3-sm">
                             <button class="btn btn-primary add-element type-menu" type="button" aria-label="{{ __('Lien simple') }}" id="insert-menu_link" role="listitem" title="{{ __("Ajouter un lien simple") }}" data-toggle="tooltip" data-placement="bottom">
                                 <i class="fa fa-link"></i>
@@ -219,8 +221,8 @@
                         <div class="col p-0 m-0">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le menu') }}">{{ __('Menu') }}</a>
-                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}">{{ __('Code généré') }}</a>
+                                    <a class="nav-item nav-link active" id="nav-blueprint-tab" data-toggle="tab" href="#nav-blueprint" role="tab" aria-controls="nav-blueprint" aria-selected="true" title="{{ __('Voir le formulaire') }}"><i class="fa fa-eye mr-3"></i>{{ __('Formulaire') }}</a>
+                                    <a class="nav-item nav-link" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab" aria-controls="nav-code" aria-selected="false" title="{{ __('Voir le code généré') }}"><i class="fa fa-code mr-3"></i>{{ __('Code généré') }}</a>
                                 </div>
                             </nav>
 
@@ -229,6 +231,7 @@
                             <div class="tab-content menu-tabs" id="nav-tabContent" role="section">
 
                                 <!-- Code en brut (non formatté) -->
+                                <label for="raw-code" class="d-none" aria-hidden="true">{{__('Code généré')}}</label>
                                 <textarea name="html" placeholder="html" id="raw-code" class="d-none" aria-hidden="true"></textarea>
 
                                 <!-- panneau blueprint -->
@@ -238,8 +241,10 @@
 
                                 <!-- panneau code -->
                                 <div class="tab-pane fade blueprint" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
-                                    <h3 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h3>
-                                    <a href="aide#formcode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+
+                                    <h2 class="blueprint__titre creator-panel__title">{{ __('Liens CSS et JS à mettre dans la balise') }} &lt;head&gt; </h2>
+                                    <a href="/aide#useCode" class="btn btn-primary btn_crea" title="{{ __('Voir la page d\'aide') }}">
+
                                         <i class="fa fa-question-circle"></i>
                                         {{ __("Besoin d'aide !") }}
                                     </a>
@@ -253,20 +258,18 @@
                                         <xmp><link href="{{ URL::asset('css/themes/menu/all-themes.css') }}" rel="stylesheet"></xmp>
                                         <xmp><script type="application/javascript" src="{{ URL::asset('js/usage/menu_script.js') }}"></script></xmp>
                                     </div>
-                                    <h3 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h3>
+                                    <h2 class="creator-panel__title mt-5 mb-4">{{ __("Voici le code brut pour votre menu: copiez le où vous le souhaitez, sans le modifier !") }}</h2>
                                     <div class="copy-container w-100 d-flex flex-row-reverse">
                                         <button data-clipboard-action="copy" data-clipboard-target="#formatted-code" id="copy-raw-code" type="button" class="btn btn-primary btn_crea" title="{{ __('Copier') }}">
                                             {{ __("Copier le code généré") }}
                                         </button>
                                     </div>
                                     <!-- Code formatté -->
-                                    <pre class="prettyprint   content-panel" id="formatted-code"></pre>
+                                    <pre class="prettyprint content-panel" id="formatted-code"></pre>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -274,10 +277,10 @@
         @if (Auth::check())
 
         <!-- Actions importantes sur le projet -->
-        <div class="project-action row m-0" role="region" aria-labelledby="form_actions">
+        <div class="project-action row m-0" role="region">
            <div class="col-lg-8 mt-4 mb-4 mx-auto project-action__btn p-0">
                 <button type="submit" class="btn btn-form-final btn-success btn-crea ml-2" id="btn-save-project" title="{{ __('Sauvegarder ce projet') }}">
-                    <div class="btn-crea__icon"><i class="fas fa-save"></i></div>
+                    <div class="btn-crea__icon"><i class="fa fa-save"></i></div>
                     <p>
                         {{ __('Sauvegarder ce projet') }}
                     </p>
@@ -304,26 +307,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="importDataTitle">{{ __('Importer des données') }}</h5>
+                <h3 class="modal-title" id="importDataTitle">{{ __('Importer des données') }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('Fermer') }}" title="{{ __('Fermer') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <label for="imported_data">{{ __('Importer des données via un fichier CSV ou JSON : attention, les autres formats ne sont pas acceptés.') }}</label>
                 <input type="file" name="imported_data" id="imported_data"/>
             </div>
             <div class="modal-footer">
-                {{-- <button type="button" id="import-data" class="btn btn-primary" data-dismiss="modal" title="{{ __('Importer mes données') }}">{{ __('Importer mes données') }}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('Annuler') }}">{{ __('Annuler') }}</button> --}}
                 <button type="button" class="btn btn-form-final btn-primary btn-crea" id="import-data" data-dismiss="modal" title="{{ __('Importer mes données') }}">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fa fa-file-upload"></i>
                     </div>
                     <p>{{ __('Importer mes données') }}</p>
                 </button>
                 <button type="button" class="btn btn-form-final btn-gris-annule btn-crea" data-dismiss="modal" title="{{ __('Annuler') }}" class="btn btn-form-final btn-gris-annule btn-crea">
                     <div class="btn-crea__icon">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fa fa-trash-alt"></i>
                     </div>
                     <p>{{ __('Annuler') }}</p>
                 </button>

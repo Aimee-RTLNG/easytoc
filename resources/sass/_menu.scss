@@ -65,6 +65,7 @@
         flex-direction: column;
     }
 }
+
 .btns_menu__child {
     display: flex;
     justify-content: space-around;
@@ -79,8 +80,8 @@
 
 
 @media (max-width: 575px) {
-    .static-buttons-creator {
-        height: 80px;
+    .menu-bloc .static-buttons-creator {
+        height: 96px;
     }
     .btns_menu__child {
         width: 310px;

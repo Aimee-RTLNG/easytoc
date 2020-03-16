@@ -1,4 +1,5 @@
 // Généraux
+
 html {
     font-size: 10px;
 }
@@ -8,11 +9,12 @@ body {
 }
 .btn-primary {
     @include expletus;
+    transition: all .2s;
 }
 .btn-primary:hover,.btn-primary:focus  {
     color: #fff;
-    background-color: #165ba0;
-    border-color: #155595;
+    background-color: $hover-primary;
+    border-color: $hover-primary;
 }
 #btn-save-project:focus {
     border: 2px $bleu solid;
@@ -96,6 +98,7 @@ textarea {
 .check-box {
     -webkit-appearance:none;
     width:15px;
+    min-width: 15px;
     height:15px;
     border-radius:6px;
     outline:none;
@@ -172,16 +175,36 @@ textarea {
     display: flex;
     max-width: 100%;
     margin-top: 10px;
-    // padding-top: 20px;
     margin-left: 0px;
 }
 
 .main-info-form{
     margin-bottom: 20px;
     padding-bottom: 15px;
-    //border-bottom: 3px dashed rgba(0,0,0,.2);
 }
-
+@media (max-width: 991px){
+    .mt-4-lg {
+        margin-top: 1.5rem;
+    }
+    .mb-4-lg {
+        margin-bottom: 1.5rem;
+    }
+    .mb-3-lg {
+        margin-bottom: 1rem;
+    }
+    .mt-3-lg {
+        margin-top: 1rem;
+    }
+    .mb-2-lg {
+        margin-bottom: 0.5rem;
+    }
+    .mt-2-lg {
+        margin-top: 0.5rem;
+    }
+    .d-none-lg {
+        display: none;
+    }
+}
 @media (max-width: 768px){
     //768
     .mt-4-md {
@@ -211,7 +234,43 @@ textarea {
     .mt-3-sm {
         margin-top: 1rem;
     }
+    .mb-2-sm {
+        margin-bottom: 0.5rem;
+    }
+    .mt-2-sm {
+        margin-top: 0.5rem;
+    }
+    .mr-2-sm {
+        margin-right: 0.5rem;
+    }
+    .mr-3-sm {
+        margin-right: 1rem;
+    }
     .d-none-sm {
+        display: none;
+     }
+ }
+ @media (max-width: 500px){
+    //768
+    .mt-4-xs {
+        margin-top: 1.5rem;
+    }
+    .mb-4-xs {
+        margin-bottom: 1.5rem;
+    }
+    .mb-3-xs {
+        margin-bottom: 1rem;
+    }
+    .mt-3-xs {
+        margin-top: 1rem;
+    }
+    .mb-2-xs {
+        margin-bottom: 0.5rem;
+    }
+    .mt-2-xs {
+        margin-top: 0.5rem;
+    }
+    .d-none-xs {
         display: none;
      }
  }
@@ -231,7 +290,6 @@ textarea {
     width: 100% !important;
     border-radius: 5px !important;
     border: 1px solid #888;
-    // word-break: break-all;
     overflow: hidden;
     color: white;
     font-family: monospace, monospace;
@@ -268,11 +326,11 @@ img, a {
         }
     }
     .third_title {
-        margin-left: 10px;
-        padding-top: 25px;
-        font-weight: bold;
-        margin: 10px 0;
-        font-size: 1.575rem;
+        &:focus {
+            outline: none;
+            color: $blue;
+            text-decoration: underline;
+        }
     }
     p {
         margin-bottom: 10px;
@@ -310,8 +368,6 @@ img, a {
     padding: 10px 10px;
     margin: 0 auto;
     box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2);
-    // box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-
     .btn-separator{
         margin: 0px 10px;
         height: 20px;
@@ -382,3 +438,26 @@ img, a {
     background-color: #000;
     border-radius: 4px;
   }
+
+#nav-tab{
+    justify-content: center;
+}
+.static-buttons-creator .btn {
+    padding: 0.55rem 0.75rem;
+    font-size: 1.2rem;
+    i:nth-child(2) {
+        margin-left: 4px;
+    }
+}
+
+#tarteaucitronRoot #tarteaucitronPercentage {
+    background-color: $bleu-fonce !important;
+}
+.raccourcis {
+    color: $bleu;
+    padding-left: 20px;
+    &:hover {
+        text-decoration: underline;
+        color: $bleu;
+    }
+}

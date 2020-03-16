@@ -1,6 +1,6 @@
 // Imports
 import { alertMsg, lang } from "../app";
-import { getOldContent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
+import { getOldContent, updatecontent, addElement, addOption, element_types, refreshMoveButtons } from "./form";
 
 // Variables
 let message;
@@ -213,7 +213,7 @@ function importData(form) {
     });
 
     // On ajoute le message d'information sur les champs requis s'il y en a 
-    if(required_count > 0 && $(".indicator-required").length() == 0) {
+    if(required_count > 0 && $(".indicator-required").length == 0) {
         var required_indicator = element_types["type-special"]["indicator-required"];
         $(required_indicator).insertAfter($("#form-title"));
     }
