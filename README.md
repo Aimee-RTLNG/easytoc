@@ -20,8 +20,8 @@ Easy to C est un projet étudiant réalisé dans le cadre de la Licence professi
 Nous avons choisi d'utiliser les technologies abordées en cours, dont le framework PHP Laravel. 
 
 Louise MATT (développement front) => [GitHub](https://github.com/louisetrg99) | [LinkedIn](https://www.linkedin.com/in/louise-matt-03220b169/) | [Portofolio](https://louisematt.com/)  
-Aimee RITLENG (développement front) => [GitHub](https://github.com/Aimee-RTLNG) | [LinkedIn](https://www.linkedin.com/in/aimee-ritleng-strasbourg/) | [Portofolio](https://aimee-ritleng.fr/)  
-Pierre BOULANGER (développement front) => [GitHub](https://github.com/PierreBlr) | [LinkedIn](https://www.linkedin.com/in/pierre-boulanger-053486a1/)  
+Aimee RITLENG (développement back) => [GitHub](https://github.com/Aimee-RTLNG) | [LinkedIn](https://www.linkedin.com/in/aimee-ritleng-strasbourg/) | [Portofolio](https://aimee-ritleng.fr/)  
+Pierre BOULANGER (rédaction et référencement) => [GitHub](https://github.com/PierreBlr) | [LinkedIn](https://www.linkedin.com/in/pierre-boulanger-053486a1/)  
 
 ## 
 
