@@ -619,5 +619,10 @@
     "Cher Utilisateur" : "Dear User",
     "Réinitialiser Mot de Passe" : "Reset Password",
     "Si vous avez du mal à cliquer sur le bouton \"Reinitialiser Mot de Passe\", copiez et collez l'URL ci-dessous dans votre navigateur web :" : "If you have trouble clicking on the \"Reset Password\" button, copy and paste the URL below into your web browser:",
-    "Voir les raccourcis clavier" : "See the keyboard shortcuts"
+    "Voir les raccourcis clavier" : "See the keyboard shortcuts",
+    "Concernant la connexion via Facebook et Google, seules les informations suivantes sont récupérées pour votre compte utilisateur : " : "The informations we collect when you login via Facebook or Google are the following :",
+    "Votre nom et votre prénom, pour l'utiliser en tant que Nom de compte / Pseudonyme." : "Your full name, so we can associate it to your Easy to C account as a login",
+    "Votre adresse e-mail, pour vous permettre de recevoir des mails de notre part dans le cas d'une modification de mot de passe." : "Your email address, so you can receive emails from us reguarding password reset demands",
+    "Pour supprimer ses informations, vous pouvez soit changer vos données directement via votre espace Mon Compte, ou supprimer votre compte." : "To delete those informations, you can either update this data or delete it via your My Account page",
+    "Nous fournissons des moyens pour que vous puissiez accéder, modifier et supprimer toutes les données que nous avons sur vous." : "We provide ways for you to access, alter, or delete your personal information."
 }

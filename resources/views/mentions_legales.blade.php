@@ -17,19 +17,17 @@
 
     <h3 class="secondary_title" tabindex="0">{{ __('1. Informations légales :') }}</h3>
 
-    <p>{{ __('Statut du propriétaire :') }} <strong>{{ __('particulier') }}</strong><br />
-        {{ __('Le Propriétaire est :') }}<strong>Aimée RITLENG</strong><br />
-        {{ __('Adresse postale du propriétaire :') }} <strong>30 Rue du Maire André Traband, 67500 Haguenau</strong><br />
-        <br />
-        {{ __('Le Créateur du site est :') }} <strong>easytoc.ritleng.mmi-unistra.fr</strong><br />
-        {{ __('Le Responsable de la publication est :') }} <strong>RITLENG Aimée</strong><br />
-        {{ __('Contacter le responsable de la publication :') }} <strong>aimeeritleng@outlook.com</strong><br />
-        {{ __('Le responsable de la publication est une') }}<strong> {{ __('personne physique') }}</strong><br />
-        <br />
-        {{ __('Le Webmaster est :') }} <strong>Aimee RITLENG</strong><br />
-        {{ __('Contacter le Webmaster :') }} <strong><a href="mailto:aimeeritleng@outlook.com?subject=Contact a partir des mentions lÃ©gales via le site easytoc.ritleng.mmi-unistra.fr">aimeeritleng@outlook.com</a></strong><br />
-        {{ __('L’hebergeur du site est :') }} <strong>OVH 2 rue Kellermann 59100 Roubaix </strong><br />
+    <p>{{ __("En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site") }} 
+        <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a> 
+        {{ __("l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :") }}
     </p>
+    <p><strong>{{ __("Propriétaire") }}</strong> : Aimee RITLENG –  – 30 Rue du Maire André Traband<br />
+    <strong>{{ __("Créateur") }}</strong>  : <a href="https://easytoc.ritleng.mmi-unistra.fr/">Aimee RITLENG, Louise MATT, Pierre BOULANGER</a><br />
+    <strong>{{ __("Responsable publication") }}</strong> : Louise MATT – 03 88 05 34 00<br />
+    {{ __("Le responsable publication est une personne physique ou une personne morale.") }}<br />
+    <strong>Webmaster</strong> : Pierre BOULANGER – contact@easytoc.fr<br />
+    <strong>{{ __("Hébergeur") }}</strong> : OVH – 9 Rue du Bassin de l'Industrie, 67000 Strasbourg<br />
+    {{ __("Crédits : Aimee RITLENG, Pierre BOULANGER, Louise MATT") }}
 
     <h3 class="secondary_title" tabindex="0">{{ __('2. Présentation et principe :') }}</h3>
 
@@ -90,6 +88,14 @@
         <strong>easytoc.ritleng.mmi-unistra.fr.</strong><br />
         {{ __("Le site") }} <strong>easytoc.ritleng.mmi-unistra.fr</strong> {{ __("est en conformité avec le RGPD voir notre politique RGPD") }}
         <strong>http://easytoc.ritleng.mmi-unistra.fr/mentions_legales.</strong></p>
+
+    <p>{{ __("Concernant la connexion via Facebook et Google, seules les informations suivantes sont récupérées pour votre compte utilisateur : ") }}</p>
+    <ul>
+        <li>{{ __("Votre nom et votre prénom, pour l'utiliser en tant que Nom de compte / Pseudonyme.") }}</li>
+        <li>{{ __("Votre adresse e-mail, pour vous permettre de recevoir des mails de notre part dans le cas d'une modification de mot de passe.") }}</li>
+    </ul>
+    <p>{{ __("Pour supprimer ses informations, vous pouvez soit changer vos données directement via votre espace Mon Compte, ou supprimer votre compte." ) }}</p> 
+    <p>{{ __("Nous fournissons des moyens pour que vous puissiez accéder, modifier et supprimer toutes les données que nous avons sur vous.") }}</p>
 
     <p>{{ __("Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.") }}</p><br />
 

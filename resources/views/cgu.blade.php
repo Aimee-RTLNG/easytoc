@@ -92,16 +92,16 @@
             </p>
             <p>
                 {{ __("A l'occasion de l'utilisation du site") }}
-                <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a>, 
+                <a href="https://easytoc.ritleng.mmi-unistra.fr/">https://easytoc.ritleng.mmi-unistra.fr/</a>, 
                 {{ __("peuvent êtres recueillies : l'URL des liens par l'intermédiaire desquels l'utilisateur a accédé au site") }} 
-                <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a>, 
+                <a href="/https://easytoc.ritleng.mmi-unistra.fr/">https://easytoc.ritleng.mmi-unistra.fr/</a>, 
                 {{ __("le fournisseur d'accès de l'utilisateur, l'adresse de protocole Internet (IP) de l'utilisateur.") }}
             </p>
             <p> 
                 {{ __("En tout état de cause Aimee RITLENG ne collecte des informations personnelles relatives à l'utilisateur que pour le besoin de certains services proposés par le site") }} 
-                <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a>. 
+                <a href="https://easytoc.ritleng.mmi-unistra.fr/">https://easytoc.ritleng.mmi-unistra.fr/</a>. 
                 {{ __("L'utilisateur fournit ces informations en toute connaissance de cause, notamment lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à l'utilisateur du site") }}
-                <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a> 
+                <a href="https://easytoc.ritleng.mmi-unistra.fr/">https://easytoc.ritleng.mmi-unistra.fr/</a> 
                 {{ __("l’obligation ou non de fournir ces informations.") }}
             </p>
             <p>
@@ -109,15 +109,23 @@
             </p>
             <p>
                 {{ __("Aucune information personnelle de l'utilisateur du site") }} 
-                <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a> 
+                <a href="https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a> 
                 {{ __("n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers. Seule l'hypothèse du rachat de Aimee RITLENG et de ses droits permettrait la transmission des dites informations à l'éventuel acquéreur qui serait à son tour tenu de la même obligation de conservation et de modification des données vis à vis de l'utilisateur du site") }}
-                <a href="http://https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a>.</p>
+                <a href="https://easytoc.ritleng.mmi-unistra.fr//">https://easytoc.ritleng.mmi-unistra.fr/</a>.</p>
             <p>
                 {{ __("Le site n'est pas déclaré à la CNIL car il ne recueille pas d'informations personnelles.") }}
             </p>
             <p>
                 {{ __("Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.") }}
             </p>
+            <p>{{ __("Concernant la connexion via Facebook et Google, seules les informations suivantes sont récupérées pour votre compte utilisateur : ") }}</p>
+            <ul>
+                <li>{{ __("Votre nom et votre prénom, pour l'utiliser en tant que Nom de compte / Pseudonyme.") }}</li>
+                <li>{{ __("Votre adresse e-mail, pour vous permettre de recevoir des mails de notre part dans le cas d'une modification de mot de passe.") }}</li>
+            </ul>
+            <p>{{ __("Pour supprimer ses informations, vous pouvez soit changer vos données directement via votre espace Mon Compte, ou supprimer votre compte." ) }}</p> 
+            <p>{{ __("Nous fournissons des moyens pour que vous puissiez accéder, modifier et supprimer toutes les données que nous avons sur vous.") }}</p>
+            
             <h3 class="secondary_title" tabindex="0">{{ __("8. Liens hypertextes et cookies.") }}</h3>
             <p>
                 {{ __("Le site") }} 
